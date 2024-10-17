@@ -1,3 +1,5 @@
+# AI ML Essentials
+
 ## 1. Defining Artificial Intelligence
 
 Defining AI is complex, as the term has evolved since the 1950s. A simple definition is:

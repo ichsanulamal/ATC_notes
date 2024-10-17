@@ -1,3 +1,5 @@
+# Installation & File System Navigation
+
 ## 1. Overview of Linux
 
 Linux is built on the foundation of older Unix operating systems, which means it shares many similarities. If you have experience with Unix, transitioning to Linux will be relatively straightforward. Developed by Linus Torvalds in the early 1990s, Linux comes in various distributions, often referred to as "distros." Most of these distros are free and open-source, though some may charge for downloads or support, primarily for security updates.

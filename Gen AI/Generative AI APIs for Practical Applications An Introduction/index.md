@@ -1,3 +1,5 @@
+# Generative AI APIs for Practical Applications: An Introduction
+
 Generative AI APIs for Practical Applications: An Introduction
 Generative artificial intelligence (AI) has taken the tech and business world by storm. It currently can create stories, text, images, summaries, essays, and much more, with sometimes nothing more than a few words to describe what you want. Unfortunately, it can also be used in ways that can be harmful, such as creating deepfakes and false information. In this course, you will discover the differences between generative AI and general AI and look at the history and future of generative AI. You will explore applications of generative AI and the ethical, safety, security, and privacy concerns associated with its use. Then you will identify common generative AI application programming interfaces (APIs) and best practices when using generative AI. Next, you will find out how to create images and text with generative AI, and you will focus on the challenges of AI integration into processes and workflows. Finally, you will learn how to integrate generative AI APIs to create tools like chatbots.
 Table of Contents

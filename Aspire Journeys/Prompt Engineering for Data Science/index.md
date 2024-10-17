@@ -1,3 +1,5 @@
+# Prompt Engineering for Data Science
+
 Question: Lisa is a data analyst working on a project that involves extensive data manipulation using Python and pandas. She has a large dataset containing information about customer transactions, including details such as transaction date, customer ID, product purchased, and transaction amount. Her goal is to perform various data manipulations, including filtering data based on specific criteria, sorting the DataFrame based on different columns, and iterating through the rows to perform custom operations.
  
 Which method should she use to leverage ChatGPT for iterating through the rows and sorting DataFrames in Python, particularly focusing on basic data manipulation tasks?
@@ -238,24 +240,24 @@ Adam is a data scientist who has developed the following code snippet designed f
 
 What will be the output or behavior of the given code snippet?
 
-
+```
 import pandas as pd
 
 import seaborn as sns
 
 import matplotlib.pyplot as plt
 
-# Assume 'data' is a pandas DataFrame loaded with relevant data
+> Assume 'data' is a pandas DataFrame loaded with relevant data
 
-# Code snippet
+> Code snippet
 
 sns.set(style="whitegrid")
 
-# Prompt Engineering: Creating a new feature 'engineered_feature' based on existing data
+> Prompt Engineering: Creating a new feature 'engineered_feature' based on existing data
 
 data['engineered_feature'] = data['feature_A'] * data['feature_B']
 
-# Univariate visualization
+> Univariate visualization
 
 plt.figure(figsize=(10, 6))
 
@@ -263,10 +265,10 @@ choices = ["histogram", "boxplot", "violinplot", "countplot", "ecdf_plot", "scat
 
 selected_choice = choices[2]  
 
-# Change the index to select different visualization
+> Change the index to select different visualization
 
 
-# Different visualization options
+> Different visualization options
 
 if selected_choice == "histogram":
 
@@ -490,7 +492,7 @@ df['Discount'].fillna(0, inplace=True)
 
 df['Total'].fillna(df['Quantity'] * df['Price'], inplace=True)
 
-# Display the updated DataFrame
+> Display the updated DataFrame
 
 print(df)
 
@@ -572,7 +574,7 @@ James has the following code snippet for reshaping and aggregating data using pi
 
 import pandas as pd
 
-# Sample DataFrame
+> Sample DataFrame
 
 data = {'Date': ['2022-01-01', '2022-01-01', '2022-01-02', '2022-01-02', '2022-01-01'],
         'Category': ['A', 'B', 'A', 'B', 'A'],
@@ -580,7 +582,7 @@ data = {'Date': ['2022-01-01', '2022-01-01', '2022-01-02', '2022-01-02', '2022-0
 
 df = pd.DataFrame(data)
 
-# Pivot table creation
+> Pivot table creation
 
 pivot_table = pd.pivot_table(df, values='Value', index='Date', columns='Category', aggfunc='sum')
 
@@ -651,14 +653,14 @@ Consider the following code snippet:
 
 import pandas as pd
 
-# Creating a sample DataFrame
+> Creating a sample DataFrame
 data = {'Name': ['Alice', 'Bob', 'Charlie'],
         'Age': [25, 30, 35],
         'City': ['New York', 'San Francisco', 'Los Angeles']}
 
 df = pd.DataFrame(data)
 
-# Using .info() to view DataFrame information
+> Using .info() to view DataFrame information
 df.info()
 
 What will be the output of the given code snippet?
@@ -669,7 +671,7 @@ T Option 1
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 3 entries, 0 to 2
 Data columns (total 3 columns):
- #   Column  Non-Null Count  Dtype 
+ >   Column  Non-Null Count  Dtype 
 ---  ------  --------------  ----- 
  0   Name    3 non-null      object
  1   Age     3 non-null      int64 
@@ -683,7 +685,7 @@ Option 2
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 3 entries, 0 to 2
 Data columns (total 3 columns):
- #   Column    Dtype 
+ >   Column    Dtype 
 ---  ------  --------------  ----- 
  0   Name          object
  1   Age          int64 
@@ -696,7 +698,7 @@ Option 3
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 3 entries, 0 to 2
 Data columns (total 3 columns):
- #       Dtype 
+ >       Dtype 
 ---  ------  --------------  ----- 
  0      object
  1      int64 
@@ -710,7 +712,7 @@ Option 4
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 3 entries, 0 to 2
 Data columns (total 3 columns):
- #   Column  
+ >   Column  
 ---  ------  
  0   Name    
  1   Age      
@@ -746,9 +748,9 @@ import plotly.express as px
 
 import pandas as pd
 
-# Assume 'df' is a pandas DataFrame containing time series data
+> Assume 'df' is a pandas DataFrame containing time series data
 
-# with columns 'Date' and 'Stock_Price'
+> with columns 'Date' and 'Stock_Price'
 
 fig = px.line(df, x='Date', y='Stock_Price', title='Stock Price Analysis')
 
@@ -810,7 +812,7 @@ Eva is working on a data manipulation project using Python and pandas. She has d
 
 import pandas as pd
 
-# Consider the following DataFrame 'df' with sample data
+> Consider the following DataFrame 'df' with sample data
 data = {'A': [1, 2, 3, 4, 5],
 
         'B': [10, 20, 30, 40, 50],
@@ -1117,9 +1119,9 @@ William is working as a Data Engineer at a leading tech company. His team is tas
 
 import pandas as pd
 
-# Assume 'projects_data' is a DataFrame loaded with the relevant dataset
+> Assume 'projects_data' is a DataFrame loaded with the relevant dataset
 
-# Code Snippet
+> Code Snippet
 
 filtered_data = projects_data[
     (projects_data['start_date'] >= '2023-01-01') &
@@ -1152,26 +1154,26 @@ Anna is a data engineer working with a DataFrame named df containing information
 
 import pandas as pd
 
-# Assume df is the DataFrame with the given columns
+> Assume df is the DataFrame with the given columns
 
-# Define a custom aggregation function
+> Define a custom aggregation function
 
 def custom_aggregation(x):
 
     return x.sum() / x.count()
 
-# Perform multi-column grouping and split-apply-combine
+> Perform multi-column grouping and split-apply-combine
 
 result = df.groupby(['Date', 'Category']).agg({
     'Quantity': 'sum',
     'Revenue': ['mean', custom_aggregation]
 }).reset_index()
 
-# Prompt Engineering: Create a new feature 'Profit_Per_Quantity' by multiplying 'Revenue' mean and 'Quantity' sum
+> Prompt Engineering: Create a new feature 'Profit_Per_Quantity' by multiplying 'Revenue' mean and 'Quantity' sum
 
 result['Profit_Per_Quantity'] = result[('Revenue', 'mean')] * result[('Quantity', 'sum')]
 
-# Display the result
+> Display the result
 
 print(result.head())
 
@@ -1224,7 +1226,7 @@ Jason is a data scientist working on a project that involves analyzing the relat
 
 3. import matplotlib.pyplot as plt
 
-4. # Sample Data
+4. > Sample Data
 
 5. data = {
 
@@ -1238,15 +1240,15 @@ Jason is a data scientist working on a project that involves analyzing the relat
 
 10. df = pd.DataFrame(data)
 
-11. # Code for Bivariate Visualization
+11. > Code for Bivariate Visualization
 
 12. plt.figure(figsize=(8, 6))
 
-13. # Code for bivariate visualization recommendation using ChatGPT
+13. > Code for bivariate visualization recommendation using ChatGPT
 
 14.  
 
-15. # Display the plot
+15. > Display the plot
 
 16. plt.show()
 
@@ -1271,7 +1273,7 @@ import plotly.express as px
 
 import pandas as pd
 
-# Assume 'temperature_data.csv' contains columns 'Date' and 'Temperature'
+> Assume 'temperature_data.csv' contains columns 'Date' and 'Temperature'
 
 df = pd.read_csv('temperature_data.csv')
 
@@ -1281,7 +1283,7 @@ fig = px.line(df, x='Date', y='Temperature', title='Temperature Trends Over Time
 
 fig.update_xaxes(type='category')
 
-# Adding a range slider for interactive zooming
+> Adding a range slider for interactive zooming
 
 fig.update_layout(xaxis_rangeslider_visible=True)
 
@@ -1491,7 +1493,7 @@ The Data Engineer of an organization is working on a data engineering project. H
 
 1. import pandas as pd
 
-2. # Creating a sample DataFrame
+2. > Creating a sample DataFrame
 
 3. data = {'Product': ['A', 'B', 'C', 'A', 'B', 'C'],
 
@@ -1501,11 +1503,11 @@ The Data Engineer of an organization is working on a data engineering project. H
 
 4. df_data = pd.DataFrame(data)
 
-5. # <Add code to fill missing values>
+5. > <Add code to fill missing values>
 
 6. df_data.fillna('your_code_here', inplace=True)
 
-7. # Displaying the modified DataFrame
+7. > Displaying the modified DataFrame
 
 8. print(df_data)
 
@@ -1554,7 +1556,7 @@ from plotly.subplots import make_subplots
 
 import plotly.express as px
 
-# Generate sample data
+> Generate sample data
 
 np.random.seed(42)
 
@@ -1568,7 +1570,7 @@ data = pd.DataFrame({
 
 })
 
-# Scatter plot using seaborn
+> Scatter plot using seaborn
 
 plt.figure(figsize=(10, 6))
 
@@ -1578,7 +1580,7 @@ plt.title('Interactive Scatter Plot')
 
 plt.show()
 
-# Heatmap using plotly
+> Heatmap using plotly
 
 fig = make_subplots(rows=1, cols=2, subplot_titles=['Heatmap - Option 1', 'Heatmap - Option 2'])
 
@@ -1631,14 +1633,14 @@ Consider the following code snippet:
 
 import pandas as pd
 
-# Creating a sample DataFrame
+> Creating a sample DataFrame
 data = {'Name': ['Alice', 'Bob', 'Charlie'],
         'Age': [25, 30, 35],
         'City': ['New York', 'San Francisco', 'Los Angeles']}
 
 df = pd.DataFrame(data)
 
-# Using .head() to display the first few rows of the DataFrame
+> Using .head() to display the first few rows of the DataFrame
 print(df.head())
 
 What will be the output of the given code snippet?
@@ -1806,7 +1808,7 @@ He has developed the following code snippet in Python using the pandas library.
 
 import pandas as pd
 
-# Sample DataFrame
+> Sample DataFrame
 
 employee_data = pd.DataFrame({
     'Employee_ID': [1, 2, 3, 4, 5],
@@ -1891,11 +1893,11 @@ Refer to the following code for a Pandas series:
 
 import pandas as pd 
 
-# create a series from a list 
+> create a series from a list 
 
 animal_series =pd.Series(['Dog', 'Cat', 'Lion'])
 
-# print the Series 
+> print the Series 
 animal_series
 
 What will be the output of this code?
@@ -1944,7 +1946,7 @@ Adam is data engineer tasked with cleaning categorical data using pandas in a Py
 
 import pandas as pd
 
-# Consider a DataFrame 'df' containing information about products in an online store
+> Consider a DataFrame 'df' containing information about products in an online store
 
 data = {'ProductID': [101, 102, 103, 104, 105],
         'Category': ['Electronics', 'Clothing', 'Electronics', 'Books', 'Toys'],
@@ -1965,33 +1967,33 @@ Which code snippets will help Adam accomplish the task?
 
 Option 1
 
-# df['Category'] = df['Category'].apply(lambda x: x.lower())
+> df['Category'] = df['Category'].apply(lambda x: x.lower())
 
-# df['Availability'] = df['Availability'].map({'In Stock': 1, 'Out of Stock': 0})
+> df['Availability'] = df['Availability'].map({'In Stock': 1, 'Out of Stock': 0})
 
 
 
 Option 2
 
-# df['Category'] = df['Category'].lower()
+> df['Category'] = df['Category'].lower()
 
-# df['Availability'] = df['Availability'].replace({'In Stock': 1, 'Out of Stock': 0})
+> df['Availability'] = df['Availability'].replace({'In Stock': 1, 'Out of Stock': 0})
 
 
 
 Option 3
 
-# df['Category'] = df['Category'].str.lower()
+> df['Category'] = df['Category'].str.lower()
 
-# df['Availability'] = df['Availability'].map({'In Stock': 1, 'Out of Stock': 0})
+> df['Availability'] = df['Availability'].map({'In Stock': 1, 'Out of Stock': 0})
 
 
 
 Option 4
 
-# df['Category'] = df['Category'].lower()
+> df['Category'] = df['Category'].lower()
 
-# df['Availability'] = df['Availability'].apply(lambda x: 1 if x == 'In Stock' else 0)
+> df['Availability'] = df['Availability'].apply(lambda x: 1 if x == 'In Stock' else 0)
 Result: Correct. Great job! 
 
 Option 1
@@ -2018,7 +2020,7 @@ import pandas as pd
 
 employee_df = pd.read_csv('employee_data.csv')
 
-# Insert code snippet here
+> Insert code snippet here
 
 print(avg_salary)
 
@@ -2104,7 +2106,7 @@ A data scientist has developed the following Python code snippet that involves w
 
 import pandas as pd
 
-# Create a sample DataFrame
+> Create a sample DataFrame
 
 data = {'Name': ['Alice', 'Bob', 'Charlie'],
         'Age': [25, 30, 35],
@@ -2112,7 +2114,7 @@ data = {'Name': ['Alice', 'Bob', 'Charlie'],
 
 df = pd.DataFrame(data)
 
-# Write the DataFrame to different file formats
+> Write the DataFrame to different file formats
 
 df.to_csv('data.csv', index=False)
 
@@ -2120,7 +2122,7 @@ df.to_excel('data.xlsx', index=False)
 
 df.to_json('data.json', orient='records')
 
-# Read the written files back into DataFrames
+> Read the written files back into DataFrames
 
 csv_df = pd.read_csv('data.csv')
 
@@ -2128,7 +2130,7 @@ excel_df = pd.read_excel('data.xlsx')
 
 json_df = pd.read_json('data.json')
 
-# Find the output of the following statement
+> Find the output of the following statement
 
 output_statement = (csv_df['Age'].mean(), excel_df['Age'].max(), json_df['Age'].min())
 
@@ -2157,7 +2159,7 @@ The data scientist of an organization has developed the following code snippet u
 
 import pandas as pd
 
-# Sample dataset
+> Sample dataset
 
 data = {'Date': ['2022-01-01', '2022-01-01', '2022-01-02', '2022-01-02', '2022-01-03'],
         'Category': ['A', 'B', 'A', 'B', 'A'],
