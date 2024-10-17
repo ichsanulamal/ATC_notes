@@ -1,0 +1,308 @@
+CompTIA Linux+: Infrastructure as Code and Git
+Infrastructure as Code (IaC) refers to the use of directive files written commonly in YAML or JSON syntax that control the deployment or configuration of IT components, including cloud resources such as virtual networks and virtual machines. Git version control is commonly used to manage multiple versions of files, which can include programming code. In this course, we will begin by exploring IaC. Then we will discover how continuous integration and continuous deployment (CI/CD) is relevant in managing IT code and infrastructure. Next, we will use Terraform to deploy IaC files and investigate the benefits of using Git for file version control. We will install Git on Linux, clone a Git repository, and work with local and remote Git repositories. Finally, we will branch and merge a Git repository and manage Git events that trigger Git hooks. This course can be used to prepare learners for the Linux+ XK0-005 certification exam.
+Table of Contents
+    1. Video: Course Overview (it_oslsca_03_enus_01)
+
+    2. Video: Infrastructure as Code (IaC) (it_oslsca_03_enus_02)
+
+    3. Video: Continuous Integration and Continuous Deployment (CI/CD) (it_oslsca_03_enus_03)
+
+    4. Video: Deploying Infrastructure as Code Using Terraform (it_oslsca_03_enus_04)
+
+    5. Video: Git and Version Control (it_oslsca_03_enus_05)
+
+    6. Video: Installing Git on Linux (it_oslsca_03_enus_06)
+
+    7. Video: Cloning a Git Repository (it_oslsca_03_enus_07)
+
+    8. Video: Managing a Git Repository (it_oslsca_03_enus_08)
+
+    9. Video: Branching and Merging a Git Repository (it_oslsca_03_enus_09)
+
+    10. Video: Managing Git Events to Trigger Git Hooks (it_oslsca_03_enus_10)
+
+    11. Video: Course Summary (it_oslsca_03_enus_11)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_oslsca_03_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic Title: Course Overview. Your host for this session is Dan Lachance. [Video description ends]
+Hi, I'm Dan Lachance.
+
+Infrastructure as Code refers to the use of directive files written commonly in either YAML or JSON syntax that control the deployment or configuration of IT components including cloud resources such as virtual networks and virtual machines. Git version control is commonly used to manage multiple versions of files which can include and often does include programming code.
+
+In this course, I'll start by discussing Infrastructure as Code, followed by covering how continuous integration and continuous deployment or CI/CD is relevant in managing IT code and infrastructure. I will then use Terraform to deploy Infrastructure as Code files and then cover the benefits of using Git for file version control.
+
+Next I will install Git on Linux, clone a Git repository and work with local and remote Git repositories. Lastly, I will branch and merge Git repository and manage Git events that trigger Git hooks. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+
+2. Video: Infrastructure as Code (IaC) (it_oslsca_03_enus_02)
+
+After completing this video, you will be able to define how IaC files written in YAML and JSON are used in the enterprise.
+define how IaC files written in YAML and JSON are used in the enterprise
+[Video description begins] Topic Title: Infrastructure as Code (IaC). Your host for this session is Dan Lachance. [Video description ends]
+Infrastructure as Code or IaC. This is one of those terms that we keep hearing more and more about. So what is this? We're talking about having a way to automate the deployment and the management of infrastructure such as networks, storage, virtual machines and various other IT services. It means that we can reduce the normal manual effort that it would take to deploy or configure this infrastructure by automating it. So it lends itself to scalability on a larger scale and a consistent secured configuration because it's automated through configuration files.
+
+With Infrastructure as Code, the instructions for either deploying or configuring resources, again, that could be on-premises in the cloud, it could be virtual machines, virtual networks, storage. Those instructions are stored in files and those files normally use YAML or JSON syntax, but certainly they're not limited to that.
+
+So IaC files then should use a version control system like you would with software programming code so you can track versions and changes. You don't have to, but it's a good idea and on a larger scale it often is done that way. You might use a version control system like Git.
+
+The benefits of using Infrastructure as Code are many. One of which is basically you have a documented infrastructure configuration already because the instructions for the deployment or configuration of resources is in a file. So it's sort of documented in a way you can rapidly deploy and configure and scale infrastructure because it's in a file. All you need to do is use the right tool to deploy the instructions in that file and things just magically happen.
+
+Whether you want to use Infrastructure as Code, as an automated way to set up a sandbox environment for testing, maybe to set up a virtual network and a bunch of virtual machines configured in a certain way, as opposed to setting that up manually every time you need to test software, test patches, test some kind of a configuration, it would be quicker and more consistent or for, of course, a production environment.
+
+If you want to roll out the same kind of cloud-based, let’s say, production environment in different regions around the world for different offices, you can have a consistent way of doing that by having the instructions as Infrastructure as Code stored in files. You launch or deploy those files, the configuration is configured accordingly. It doesn't have to be in the cloud. It could just as well be on-premises, but it is mostly beneficial with virtualized environments.
+
+Once you get your Infrastructure as Code directions in your files configured correctly and tested thoroughly, then you can be assured of having a consistent configuration when you deploy those files and it’s error-free. There's also the regulatory compliance side of things where perhaps you must have certain security controls, things configured in a certain way to remain compliant with certain types of regulations that can be built into your configuration files to make sure that you do remain compliant. And as you might guess, naturally, using Infrastructure as Code is much more efficient than manually configure things like virtual switches, virtual networks, virtual machines. It's much quicker once you set up the files and test them so you save time, which of course equates to saving money over time.
+
+There are plenty of tools that you can use to work with Infrastructure as Code, whether on-premises or in the cloud. For example, you might use Chef or Puppet as centralized configuration management type of tools that can also be used for deployment. You might use Ansible, products like Terraform. In the cloud, you might use an AWS or Amazon Web Services CloudFormation template. This is a template file that uses specific syntax and that syntax, those are the instructions that are used to deploy or configure cloud-based resources in AWS on the Microsoft Azure public cloud platform.
+
+The same type of thing is possible using what are called ARM templates. ARM stands for Azure Resource Manager, but in the end it's the same thing. You're really talking about text files using some kind of format, whether it’s YAML, JSON or something else with the instructions to deploy or configure stuff.
+
+So here on the screen we've got a screenshot of the Microsoft Azure portal template editor. [Video description begins] There are four options on the editor toolbar: Add resource, Quickstart Template, Load File and Download. On the left-hand pane, there are three options; Parameters (5), Variables (12) and Resources (8) where Resources is expanded. There are 19 lines of code in the right hand pane. [Video description ends]
+
+Notice the syntax over on the right. This is actual JSON which stands for JavaScript Object Notation. [Video description begins] The presenter is referring to the second line: "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#" [Video description ends] This is JSON syntax that's being used here to deploy a virtual machine where the virtual machine size is set to Standard_DS1_v2 that controls the underlying horsepower. So the number of virtual CPUs, the amount of RAM, the adminUsername is being specified, the adminPassword and your Infrastructure as Code or in this case your Azure templates can be much longer and much more complex. But this gives us a starting point for understanding how this can actually be used and how it's beneficial.
+
+So if we take a closer look at Microsoft Azure ARM template syntax within the ARM template, we could have a section called parameters where we specify things like virtual machine names. We can specify a defaultValue, the data type which is set here to a string. Then later on in the template, we might specify things like the region or the location in the cloud where we want this virtual machine deployed. In this example, the location is set to a value of canadaeast. Then you could specify properties of the virtual machine at the hardwareProfile level, like the virtual machine size and so on.
+
+So as a Linux technician, knowing what is used in your environment, if anything, for Infrastructure as Code is going to be very important as it can quickly help you deploy and configure resources either on-premises or in the cloud.
+
+3. Video: Continuous Integration and Continuous Deployment (CI/CD) (it_oslsca_03_enus_03)
+
+Upon completion of this video, you will be able to define the importance of CI/CD.
+define the importance of CI/CD
+[Video description begins] Topic Title: Continuous Integration and Continuous Deployment (CI/CD). Your host for this session is Dan Lachance. [Video description ends]
+An important concept when it comes to integrating software development and patching, testing and the deployment of solutions is continuous integration and continuous delivery and deployment, otherwise called CI/CD. So the purpose here is to end up having a strategy that is consistent and repeatable for the efficient and high-quality resultant software. It means that if we have frequent incremental software changes that are committed with automated testing, we have a quicker way to have a tight product as a result that we can deploy to customers, whether it's internal custom software or software or apps being developed for commercial sale. It can also even apply to how we deliver patches and configurations internally, including using Infrastructure as Code.
+
+When it comes to making changes to systems, their configurations or software, we have a couple of different methodologies, one of which is called the waterfall model. This is a linear type of model, linear meaning that when we have a project, whether it's to deploy a new configuration or develop a new custom piece of software or modify a website in some way, we have a number of project phases and each project phase depends on the previous phase having been completed in its entirety before the next phase begins. So it's one after the other, kind of in a serial fashion, hence linear.
+
+On the other side of the spectrum, we have an Agile methodology. This is called an iterative type of software development or systems development methodology. It's flexible in that it allows changes at any phase of the project. You don't have to have the previous phase completed before you move on to the next. So this fits in very well with CI/CD.
+
+Another important aspect of this which surfaces in real world deployments is multi-developer software version control. [Video description begins] Three versions of a file are graphically represented on the screen. Version 1 has code line 1 and code line 2. Version 2 has code line 1, code line 2 and code line 3. Version 3 has code line 1 and code line 3. [Video description ends] Now we're saying developer as in software developer, but technically it could be admins with config files like Infrastructure as Code. The idea is that we can have multiple versions of the same files that get changed by different individuals.
+
+As you can imagine, in a larger environment that becomes very difficult to track; Who made what change? Is it ready to be tested? Is it a solution that's ready to deploy? And so version control software becomes very important. One of the more popular types of solutions these days for this type of thing would include products like Jenkins or using Git. And we'll be focusing on Git a little bit more in a couple of demos.
+
+We also have to consider the security ramifications of a CI/CD pipeline. Pipeline meaning if you can imagine a pipe where at the beginning we have changes that are being made, commits that are being made, testing being made until we have a resultant product that can be deployed at the other end of the pipe. That's all we really mean when we say pipeline. But let's think about security while those things are occurring.
+
+First of all, if it's proprietary code, if it's software code that's being developed, there's an aspect of intellectual property or IP that must be considered to prevent data leakage such as to competitors.
+
+Then there are the development tools or the version control tools like Git or Jenkins that are being used as well. We want to make sure we have strong authentication measures in place for the credentials before those systems can be logged into and used. Not only that, but the entire network where the hosts exist to do that needs to be hardened. The network, the individual hosts, because we don't want to have, for example, infected software solutions or infected configurations of patches that were deploying or anything like that. There's too much liability and too many problems caused by this. Continuing with security restricting developer station access.
+
+We already talked about strong authentication, so that could come in the form of multi-factor authentication or MFA, which is a great idea, but then access to that host in the first place, especially if technicians need remote access.
+
+The last thing you want to do is make it publicly visible over the Internet. Instead, it might remain on a private network somewhere, either on-premises in the cloud with only a private IP address, which means therefore it’s only accessible after successfully VPNing into that network or perhaps using a jump box solution.
+
+There are some obvious things to think about too. If you’re using anything that depends on the HTTP protocol, make sure that connectivity only occurs over HTTPS. A secured connection, not just HTTP. And of course always encrypting all data at rest such as on software developer and technician stations at the disk storage level. CI and CD pipelines also must have security built into the process of creating and deploying these solutions in terms of a periodic review of build automation scripts.
+
+So as an example, when a software developer needs to make a change to a piece of code, let's say it's in an application container, they would check out that piece of code so it can't be modified by other technicians or developers that would make the changes, have some kind of automated testing when they commit the changes. And then that might trigger an automated build or compilation in the case of software. So we have a final result that is tried, tested and true and can be safely deployed.
+
+There needs to be a review of those automation scripts. Even if they worked in the past, over time, what once worked and was considered sufficient and secure may no longer be the case. Periodic review is paramount when it comes to a secure environment.
+
+Now we’ve been talking about CI/CD, but we really want to make sure we distinguish the difference between continuous delivery versus continuous deployment. Because with CI/CD, the CD part, sometimes these terms are used interchangeably, but technically they're a little bit different.
+
+So on the delivery side of things, we're talking about the manual deployment of things like application or system configuration changes. The deployment side of thing normally refers to the automatic deployment triggered from code check-ins and testing through to building and deploying the solution, maybe through push notifications to a mobile device that there is an app update available. So all of this is important to think about from a Linux technician's perspective, although it certainly is not tied specifically to the Linux operating system.
+
+4. Video: Deploying Infrastructure as Code Using Terraform (it_oslsca_03_enus_04)
+
+Learn how to use Terraform for IaC deployment.
+use Terraform for IaC deployment
+[Video description begins] Topic Title: Deploying Infrastructure as Code Using Terraform. Your host for this session is Dan Lachance. [Video description ends]
+Infrastructure as Code or IaC simply means that we’ve got definitions of our network infrastructure environment, things like storage, things like network configurations, even things like virtual machines, web applications. All of that stuff can be defined in files in some kind of specific format, whether it’s JSON or whatever the case might be. These are stored in files and we apply those files to create that infrastructure. And that's what we're going to be doing here using Terraform in Linux.
+
+The first thing I'm going to do is I'm going to use the wget command here in Linux where I'm going to specify the URL from the company that deals with Terraform. That’s hashicorp.com. I’m going to make sure I have the key ring file to authenticate to that repository and I need to basically make sure that my Linux host knows about that repository so that I can go ahead and actually install Terraform. That will be our next command here.
+
+For that I’ll run sudo apt update I’ll make sure my repository list is up to date and if that succeeds then we're going to run sudo apt install and of course we'll specify that we want to install terraform. That won't take very long, after which we can verify our installation just by running terraform. So terraform -v for verbose. It should return back the version of Terraform that we have installed so we know that it was installed successfully then because it knows what we're talking about when we type in that command.
+
+Now, all we're going to be doing here is taking a basic look at [Video description begins] The command generates the following two lines of output: Terraform v1.5.5 and on linux_amd64 [Video description ends] the skeletal structure that you would use for Terraform whether you want it to deploy infrastructure within your on-premises data center environment or in a cloud environment such as Google Cloud Platform, Amazon Web Services, Microsoft Azure. It doesn't matter which one. So we’re just going to build a simple little file that just returns back hello world to show that we can control it and deploy that. In this case, deploy that simply means show up the message using Terraform.
+
+So sudo nano for the text editor, I’m going to create a file here called test.tf. Terraform definition files usually have a .tf file extension. [Video description begins] The file test.tf opens in GNU nano 4.8 text editor. [Video description ends] In here, I’m going to use the provider keyword to specify I want a provider of “local” as opposed to a cloud provider where I want to deploy infrastructure in that specific cloud. And I’ll put my { on the same line. Then on the next line version = and in double quotes, I’ll put in ~> and 1.4. And actually that ” that is closing should be after the 1.4, not after the >. And on the next line, we’ll close that little block with a }. On the next line, I’ll use the resource keyword and the resource I want to refer to here is just a local file. So in double quotes I’ll specify local_file then a space and the file here we’ll call this definition block “test”. On the same line, { the content in the file. So content = I just want it to say Hello world! that’s in double quotes then on the next line I’ll specify filename = I want this called “test.txt” and on the next line we’ll close the entire section with a } once again. Now, this is an oversimplified example.
+
+Realistically, you would be deploying infrastructure like virtual networks, let's say in Microsoft Azure and storage accounts and public IP addresses and whatnot. Of course, your provider wouldn't be local. It would be different because you're using the definitions for deploying resources in a cloud environment. But at any rate, in this example, I’ll press Ctrl X here in nano [Video description begins] At the bottom of the editor, the following prompt appears: Save modified buffer? with two options Y Yes and N No. [Video description ends] I’ll type in Y to save the buffer and I’ll write that out to the test.tf file.
+
+Now normally the next thing you do with Terraform is you run terraform init so it knows about our test.tf file. There's just a little message here about the version here. Even though it says it’s deprecated, I know that this will work because that's the type of thing that I normally use for syntax when I specify the version. What we're looking for here down in the green text is that Terraform has been successfully initialized!
+
+So the next order of business then is to run terraform plan. What this does is it runs, you can think of it as being like a dry run against your Terraform files or file in our case. We still have our little warning about the version statement being deprecated, [Video description begins] The presenter points to the following Warning: Version constraints inside provider configuration blocks are deprecated. [Video description ends] but up above it says that the local file will be created with the content of Hello world! It’s even got some default permissions. We could change that, but that's the default permissions that will be created. The file name will be test.txt. However, if I do an ls of test.txt it doesn’t exist yet because when you run Terraform plan, it's just a quick little dry run to show you what the outcome would be.
+
+How do we actually run it for real? We run it for real with terraform apply. So down below it says, Do you want to perform these actions? And we have to type in the word yes. Press enter if we want to run it. Okay, so now if we use our up arrow key to go back to our command history to ls test.txt it’s there. And if we cat test.txt of course it returns back Hello world! Again, very simple example, but all we're doing is trying to prove that we can control each phase of using Terraform so that in the end it could realistically be used even to set up, let's say, a temporary testing sandbox environment. Well, as long as you've got the definitions for creating those infrastructure resources in your Terraform files.
+
+5. Video: Git and Version Control (it_oslsca_03_enus_05)
+
+After completing this video, you will be able to list the benefits of using Git for code version control.
+list the benefits of using Git for code version control
+[Video description begins] Topic Title: Git and Version Control. Your host for this session is Dan Lachance. [Video description ends]
+We have alluded to using version control systems that kind of aligns with the strategy of CI/CD and in some cases even with Infrastructure as Code. Let's focus on Git and version control.
+
+What we’re talking about is Git being an open-source file version control tool so anybody can use it on a variety of different software platforms. It's not tied only to Linux, however, it is often already pre-installed in newer Linux distributions because it's so useful and so commonplace. It's widely used, but we want to make sure that we distinguish the difference between Git and GitHub. GitHub is a website, but really it refers to a collection of tools that integrate with Git. Well, what exactly is this? What is version control?
+
+We're going to dive into it. First things first. Here’s a screenshot of the GitHub website so github.com. [Video description begins] In the screenshot, there are various options on the top including Code, Pull requests, Actions, Projects, Wiki, Security and Insights where the Code option is selected. There are 2 options on the right-hand: Go to file and Code, where the Code dropdown is expanded. [Video description ends] Why is this relevant? Well, first of all, you can sign up for a free account here and it lets you store various code projects. I say code projects. It doesn't have to really be software code. It could be any types of files that you might want to track in an organized way and keep multiple versions of meaning it could be configuration files like for Infrastructure as Code or cloud-based templates or whatever the case might be.
+
+Whatever it is that you want to store and control the versions of, you can store that on the GitHub website. Not only that, if there are public GitHub components that are available from others, you can also use them. Maybe bring down a copy of a code repository that someone has made freely available, or it doesn't have to be software code to be compiled. It could be a script, it could be cloud templates, it could be really any type of file that you choose it to be. So with version control, we are talking about having something that gives us the ability to keep track of who modified files and when and what they changed.
+
+So on the software side of things, it allows developers to check out and work with code segments. When you check out a piece of code, it cannot be modified by anybody else while it's checked out. Others can look at it in a read-only sense, but that’s about it.
+
+Now, once you've checked out some code and you've made changes, you can commit the changes or write them back and then that code gets merged back into the project, after which others, if they have the permissions to do so, have the potential ability to check out the codes to make other modifications. So version control provides accountability and an audit trail of changes to files within a project.
+
+To truly work effectively with Git, if you don’t already have that experience, you need to know some of the terminology. Repository, this is simply a subdirectory containing project files. As you might guess, you can have numerous repositories, both locally on your machine or synchronized up into a centralized location like on GitHub. There are many variations.
+
+Next, we have staged files. These are files within a repository that are ready to be committed to the repository for the purposes of change tracking. Just because you’ve saved a file doesn’t necessarily mean it’s been committed. So committing is an important task.
+
+The next term is a branch. This is just nothing but a different version of a repository. So they could have called it a version, but it's called a branch, which makes sense. It's like a branch of a tree that stems off from the main trunk. It's a change. So a new version of a repository. Now you can work with the branch and once the changes are complete and committed, you can actually merge that branch back into the main project from which it originally stemmed.
+
+The next term is clone. What this means in this context is you have a copy of a repository, so you might have cloned it, let's say from GitHub onto your local computer, but it's synchronized so the changes get synced back up to the repository, the original repository. The difference with a fork is that it's a standalone copy of a repository that does not get synchronized.
+
+Pictured on the screen, we have an example of someone having issued the git help --all command so using the git command, which as we said, is often built into many modern Linux distros. Now at the very top of the screenshot, it says you can issue git help and then a <command> to read about a specific subcommand. Now down below we have an alphabetical listing of what you might add after the word git like branch and from that you would have the option of listing branches, creating, deleting branches and so on as shown here on the help page.
+
+So knowing how to get help is important because there are quite a few commands available when you're working with Git at the command line. So common Git commands. git help commit Committing means you want to make sure something will be included in the repository for change tracking.
+
+git config --global user.name and in ” I’ve got cblackwell to set the username or to create a brand new empty repository. git init if you want to add files to an index in a repository you can use git add and then specify the file name because you might not just be initially creating brand new files when you create a new empty repository.
+
+You might have existing files you want to bring into the repository. Remember that when we commit, what we're really doing is submitting something in the project so that it gets tracked and so we can do that at the command line with git commit -m put in a message. So in ” I’ve got This is version 1.0. We can also run git status and also git log to view logged messages related to the use of git at the command line.
+
+6. Video: Installing Git on Linux (it_oslsca_03_enus_06)
+
+During this video, discover how to install Git on Ubuntu Linux and explore the Git file system structure.
+install Git on Ubuntu Linux and explore the Git file system structure
+[Video description begins] Topic Title: Installing Git on Linux. Your host for this session is Dan Lachance. [Video description ends]
+You'll recall that Git is a version control tool, so it's often used in software development environments to track version changes, but it's not limited to just software development files. You can use it to track version changes to any type of file.
+
+Here I’m on the github.com website where GitHub is really a collection of tools designed to work with Git. Also on github.com if you sign up for a free account, you can also check out some repositories that you might have the ability to access and clone or download locally to work on. But in this particular example, what we're going to be doing is we're going to be getting Git installed on the Linux platform. We know there are many different distributions of Linux out there, some of which will have certain software packages installed and some of which will not. In this case I'm using Ubuntu Linux.
+
+If I were to run git --version it already has Git installed. Of course, [Video description begins] The output is git version 2.25.1. [Video description ends] the question is, is it the most up to date version? Either way, if you don’t have Git installed or if you want to make sure you have the latest version on Linux, you can start by running sudo apt update to make sure your package repositories, your software package repository list is up to date followed by running of course, sudo apt either install git if you don’t have it installed or you could run sudo apt upgrade after you've updated your repository lists. Anything for which there are updates in this case for the cloud-init containerd distro docker package, it'll tell me what will be upgraded if I choose to continue. I'm not going to since there's nothing here that affects updating the version of Git, which is really our focal point here.
+
+When you're going to work with Git, the first thing you should do is set a couple of global configuration settings, things like your username, your email address. So if I were, for example to run git because we know it’s there config --global and then after that a space user.name. Here I’ll specify a name of “Codey Blackwell” and this can be important as you start doing things like cloning or downloading repositories you have access to out on the Internet and then merging those back into the main branch if you have access to do that. So we want to be able to attribute those changes to certain persons, but that's just the username.
+
+The next thing that we really should do when we install Git is run git config once again --global but this time we should specify user.email and specify the appropriate email address. After I've done those types of things I can check my work and you might do this.
+
+For example, if you use a bunch of different stations and you want to make sure it's configured with the appropriate global settings for you, you can run git config --list. Here, It returns back that our username is specified as well as the user email address. This stuff is literally stored within our home directory. So if I were to do a cat of ~ that means home directory in Linux / and there’s a hidden file here, which means it starts with a period called .gitconfig all one word. And in there notice that's where we have our global configuration settings in terms of the name and the email address. You can also run git config --global --edit should you need to make changes. What that’s going to do here at least in Ubuntu Linux is open it up in our text editor nano. We’re in the gitconfig file where we can make changes as appropriate.
+
+Of course, the next thing to consider is that we can also run git help to start learning about the command line syntax when working with git. So up at the top next to usage we have git and then a number of command line parameters. But we've also got the next level working commands. For example, clone. So it says Clone a repository into a new directory. So for example, if we were to run git clone --help it takes us into the help on how to run git clone for cloning a repository. So we have a number of command line parameters available for working with that. I’ll press Q to get out of that.
+
+Now, there’s no need to log in to Git locally. There’s no such concept. The only authentication that really kicks in is if you're going to be working with a remote server that hosts repositories that you want to gain access to. Now, not every remote repository hosted on a Git server requires authentication. Some are publicly available and we'll see that in other demos.
+
+And of course, if you wanted to remove Git either because it's not working correctly or you no longer need it on this host, one of the things that you could do is run sudo apt remove and then specify git. Of course, it will specify the package name and also how much disk space will be freed. Of course, this is not specific to Git. This is standard removal of software packages in this case in Ubuntu Linux. Where it asks whether I want to continue, of course, in this case I will choose no as I want to keep Git on this machine. It was already on it in Ubuntu.
+
+But there’s more work to be done with this tool set. Back here, in the web browser on github.com notice that you can search for something specifically. In this case I’ve just searched for hello world and we have a number of repositories showing up here in the listing. You can click on [Video description begins] There is a search bar on the top of the website. And on the left hand pane, there are filter options available such as Code, Repositories, Issues and several others. Repositories is selected. [Video description ends] a specific repository listing to get a listing of the files and directories for that specific item.
+
+And I’ve got a Code button if I click on the Code button notice here, when it comes to cloning the repository, such as making a copy, downloading it to a local directory on your machine, we've got the URL shown here. [Video description begins] The Code button expands and contains two tabs; Local and Codespaces where Local is selected. Under it, there are three options; HTTPS, SSH and GitHub CLI where HTTPS is selected and a URL is written below it. [Video description ends]
+
+So back to when we were talking about using Git clone, we could specify the URL after Git clone to pull down a copy of that repository. In some cases where you have to authenticate, you'll have to specify credentials. But for public repositories no such thing is needed.
+
+7. Video: Cloning a Git Repository (it_oslsca_03_enus_07)
+
+In this video, find out how to recognize how to clone a Git repository.
+recognize how to clone a Git repository
+[Video description begins] Topic Title: Cloning a Git Repository. Your host for this session is Dan Lachance. [Video description ends]
+In this demo, I’m going to be cloning a Git repository. So we know that cloning means copy, but what further details should we know about this? Well, what cloning means in Git is that you want to copy an existing Git repository. What’s a repository?
+
+A Git repository is really just a subdirectory structure containing files that you want to track the versions of. You want to be able to track changes. Now, the repository doesn’t have to be out on a Git server somewhere on the Internet. It might be a local Git repository on the same machine so it can be in the local file system on my machine. It could be remotely available over the network somewhere. It doesn’t matter. Either way, what you’re doing is taking a copy or you are cloning that repository, that subdirectory structure so you can work on it.
+
+In this particular example, I’m going to be cloning from github.com, although that’s not the only choice available, of course. Here in GitHub, I've got a search field up at the top. I’m going to go ahead and look for hello world. Maybe we're interested in some kind of code base that deals with the standard hello world programming example.
+
+So I'm going to pick one of them and click on it to open it up. This one is Hello World for Node.js. So this is a repository that we are looking at here on github.com where it could have additional subdirectories, a number of files. Remember when you work in Linux, files that start with a period are hidden so they won’t just show up with ls. When you’re working with them in your local file system, you could do things like ls -a to view all items, including those subdirectories and files that are hidden. The key here is we’ve got the index.js file. We’ve got a couple of other files, like a README. We've got a column that shows how long ago this was done. So three years ago, five years ago and so on.
+
+And notice over on the left, we are looking at the master branch. You can have subordinate branches where changes are being made, but in this case we're looking at the master. If I click the code button on the right, it gives me various references to this repository if I want to pull it down using HTTPS, which I do, I'll copy that by clicking the copy button. But notice you can also do it using SSH or the GitHub CLI not to be confused with git which we are using at the command line. GitHub is a collection of tools that work with Git, but notice that in their example it's not the git command git but rather it’s gh for GitHub. [Video description begins] The presenter is referring to the code gh repo clone johnpapa/node-hello. [Video description ends]
+
+There’s also a GUI version you can work with called GitHub Desktop. We won't be working with that. We could also choose to download a ZIP file of this repository, but we’re going to go with the HTTPS URL reference to it instead.
+
+And back here in Linux, remember I can verify Git is here by running git --version let’s say. [Video description begins] The output is git version 2.25.1. [Video description ends] And if I want to make sure that I have my global variables set I can run git config --list So my username and my email have been set. To get to the point here, I can run git clone and then I'm just going to paste in the HTTPS URL that points to the Hello World Node.js repository we were just looking at in the web browser on github.com. Now this is a publicly available repository so I don't have to specify any credentials to sign in. Okay, it enumerated or listed or went through all of the objects of which there are 47. It unpacked them 100%. All that should mean is that in my current directory pwd print working directory. I’m in my user home directory.
+
+If I do an ls I have a subdirectory called node-hello. If I go into the node-hello directory with cd and do an ls these are the files that we saw on the github.com website, notably index.js. [Video description begins] He runs the command cd node-hello/. The output is README.md index.js package-lock.json package.json. [Video description ends] Remember, we can view hidden items here with ls -a Oh yeah, right. There’s the stuff that is hidden that starts with the period in the name of the file or the directory. And if I were to cat the index.js these are the statements that set up a little HTTP server that will display the message Hello Node! in this particular case.
+
+Now you might be wondering, do I have to clone a repository, a remote repository into the same local subdirectory name? The answer is no. When you're cloning a repository. I'll just go back up in the history here. You can just specify it as the last parameter to the git clone command.
+
+Let’s say node-hello2 So now if I do an ls I’ve got a node-hello2 directory in here. Of course you want to be careful about where you are creating these subdirectory structures, but you have that kind of control if you need it as well when you clone a Git repository.
+
+Now there’s so much more you can do really. You can run git clone --help to see all of the available options for cloning repositories. [Video description begins] The Git Manual opens up. There are various fields in it including NAME, SYNOPSIS AND DESCRIPTION. [Video description ends] As an example, you can clone a repository using the --bare parameter. All that this means is what you're really downloading is not the entire repo and all of its files, but rather the history related to that project to its changes. So you can't edit it directly then locally because you don't have all the files as part of that repository when you bring it down in bare format.
+
+And back here in the web browser, remember when you're looking at a given repository and you click the Code button, you’ve got the standard three ways to pull that down. Well, we know HTTPS is just a standard URL that normally uses port 443, SSH normally uses port 22 and using the GitHub CLI normally uses port 9418. So you have to think very carefully about firewalls and what ports are allowed and which aren't.
+
+8. Video: Managing a Git Repository (it_oslsca_03_enus_08)
+
+In this video, you will learn how to manage a git repository with .gitignore and work with adding and tagging.
+manage a git repository with .gitignore and work with adding and tagging
+[Video description begins] Topic Title: Managing a Git Repository. Your host for this session is Dan Lachance. [Video description ends]
+In this demo, I’m going to be managing a local Git repository. Remember, what we're really talking about is initializing a subdirectory that will be used for version control, version tracking of files within that Git repository or subdirectory. You can do this remotely on a server if you have access to it, but in this case we'll be doing it locally in our Linux file system. [Video description begins] The cblackwell@Ubuntu2: ~ window is open in Linux console. [Video description ends]
+
+So the first thing I’ll do here is type pwd for print working directory. I'm in my home directory. You don't have to create your repositories in this location, but that’s where I will in this particular case. I’m going to run mkdir myfirstrepo that's what it's called and I'm going to change directory into the myfirstrepo subdirectory. Of course, if I do an ls -a here, there’s nothing in here. It’s an empty newly created subdirectory.
+
+What I’m going to do now is run git init So what I will have done is initialized this as being a Git repository on this local machine. If I run an ls -a now notice I’ve got the hidden .git directory. If I do an ls of the hidden .git subdirectory, here we’ve got some other files like config, description and other subdirectories within it such as branches, hooks, info, objects and refs. So what we’ve just done is initialized a Git repository and at the same time it also created this as what's called a new main branch. You can branch off different parts of the repository when you make changes and want to treat it as a separate, unique entity.
+
+So here in my repository, I'm going to create a file. You could use any tool to do this, whether it's a software development type of tool. I’m just going to run sudo nano here to run the nano text editor to create a file here called hello.js. [Video description begins] The hello.js file is open in GNU nano 4.8 text editor. [Video description ends] All we’re going to do here is we’re going to create a small little HTTP listening server on port 1111. This is all in Node.js so I’ve got a couple of constants I’m creating like http and port where I’m requiring the http library. I’m setting the port number to 1111, then I’m actually running afterwards the createServer method of my http constant.
+
+I’m going to pass an req for request to listener on the port number I've specified and the response. So I'm setting the status code of that to 200. If you’ve worked a lot with HTTP, you'll know that a response code of 200 means everything's fine. I’m just going to have a message here of Hello world! And then we’re going to pass off that message to the web server. Then the server will be up and running on our given port. I’ll use the server.listen statement to do that and I’m going to write to the console.log simply the fact that the HTTP server is now running.
+
+It doesn’t really matter what is in this file. It’s actually irrelevant. It’s not the focal point. This isn’t about Node.js. This is about creating files in Git. The files could be of any type and could contain anything. But anyhow, that's just a quick tour of what that is.
+
+Now we want to make sure that any changes to hello.js get tracked. So we want to run git add and in this case hello.js. Let’s say I create a file here sudo nano let’s call it hello.log and I’ll put in This is sample log text. We’ll just save that out. So we’ve got a little log file here hello.log as well as hello.js. Well I can create a file called .gitignore where I can use pattern matching to tell it which files should be excluded from tracking. For example, here in my repo directory I'm going to run sudo nano and I'm going to create a hidden file. So leading period called .gitignore. In here, I’m just going to put *.log
+
+There are other variations of what you can do, but I want to exclude any logs from being tracked here. So Ctrl X to write that out. Yes. And save it. Okay. So now if we do an ls -a we’ve also got our .gitignore file. Now if a file is currently being tracked, you could stop that after the fact using git rm for get remove. But we’re doing it right away using gitignore before our log files are added to be tracked. Another thing to think about when you're working with a repository are tags. If I run git tag it will return any tags that might be available if any. Now in this repo myfirstrepo there are none, but if I go to change directory ../ I know I've got a repo. Notice that I get the same result.
+
+No tags, but I could add a tag. So git tag -a let’s say v1.0 -m and I’ll put in a description, let’s say “Sample Description”. Enter. Now if I run git tag it returns v1.0. So you can also add some tagging information to add some more descriptive metadata for a given repository when you're working with it at the git command line. If I change directory back into myfirstrepo directory so that other repository I can run git status to see some interesting info. First of all, it tells me the branch I’m on. It says On branch master No commits yet. However, notice it says Changes to be committed and it has a new file by the name of hello.js. But notice that hello.log is not shown here and that’s because of our .gitignore. Because remember if I do an ls there is a hello.log file here.
+
+However, we have chosen to not have it tracked for changes. If I were to run git rm for remove and then specify hello.js it tells me well you want me to remove it, but there are already changes that haven't yet been committed. [Video description begins] The output has three lines. Line one reads: error: the following file has changes staged in the index:. Line two reads: hello.js. Line three reads (use --cached to keep the file, or -f to force removal) [Video description ends] Well, we could use the -f parameter to force the removal. In other words, to force it to be removed from being tracked. So -f at the end of that git rm command. So now if we were to run git status notice that the hello.js file is no longer being tracked. And so as a result it won't be committed if we were to commit the changes to this branch.
+
+9. Video: Branching and Merging a Git Repository (it_oslsca_03_enus_09)
+
+Find out how to work with Git branching and merging.
+work with Git branching and merging
+[Video description begins] Topic Title: Branching and Merging a Git Repository. Your host for this session is Dan Lachance. [Video description ends]
+Alright. In this demo we’re going to focus on how to branch a Git repo and also how to merge it. And when we say repo, we mean a repository, which is essentially a subdirectory structure that will also contain files where you want to track changes to those files.
+
+Let’s start here on my Linux host by typing in git branch --list. Now the first thing it tells me is, well, you are not in a git repository subdirectory and indeed I'm not. If I type pwd for print working directory, I’m just in my user home directory. If I do an ls here, I’ve got a repo directory that I’ve created that I’ve initialized called myfirstrepo. So I’m going to change directory to myfirstrepo, clear the screen, do an ls. Okay. It looks like we’ve got a hello.log file.
+
+If I do an ls -a we’ve also got a .gitignore file and we’ve got a .git hidden directory. If I were to run now git branch --list once again, we get nothing here. Okay, well, let’s go into a different repo called node-hello. [Video description begins] The presenter runs the command cd ../node-hello. [Video description ends] This is a repository I cloned from GitHub so I'll just use the up arrow key.
+
+Let’s run git branch --list Okay. It tells me then I am in the master branch. So we've had any changes committed to it. And we've got just one branch. Now if I do an ls here in the node-hello repo we’ve got some files that this repo consists of. Let's say I want to make some changes to some files in here.
+
+If this is a software code project, then maybe I'm a software developer and I want to be able to make a few changes, maybe fix a few bugs that were discovered within our code, maybe add a new feature that wasn’t there previously. Whatever the case is, I want to make a change. That’s usually the reason that you will branch from the master branch, create a new branch to work on.
+
+For example, I’m going to run git branch but this time I’m not going to list. We already did that. I’m going to create a branch called mynewbranch. Now, if I do an ls for list, nothing has changed here in the file system because think of a branch just being kind of like a pointer, like a shortcut link that points to a different version in time snapshot of the main branch that you created the branch from, and that snapshot is really your changes. If I were to run the git status command, it says that I am on the branch called master, but if I were to run the git checkout command and specify the name of an existing branch, in this case mynewbranch, it says it switched to branch ‘mynewbranch’. So now if I run git status I’m on the mynewbranch branch. Not master anymore. Now this is interesting because git checkout is simply a way for you to switch between your different snapshots as we've called them, of your versions of code of your changes.
+
+So let’s say I create a new file, I’m going to run sudo nano newfile.txt I'll just put some sample text in here and I will close out and save that file. I’m going to run git add and I’ll add newfile.txt so its changes get tracked. Of course if I clear the screen to run git status it knows about this newly tracked file that needs to be committed or saved to it. So to commit this change it says Changes to be committed. In other words, I want to save this snapshot. I would simply run git commit enter. So it takes me into my COMMIT_EDITMSG file. This is normal.
+
+We're going to go ahead and add a new commit message. I'll press Ctrl X to save that file. Okay. We've now saved the commit or we saved our snapshots as one file change one insertion for new file.txt. So now if I run git status we no longer have a reference to a file that needs to be committed. I'm going to run git checkout to go back to the master branch. I'll clear the screen and I'll run git status. Okay. It says it's up to date.
+
+Now what you can do if you've got a couple of different branches with different changes, you can merge their history all together using git merge. For example, git merge I would specify, let’s say mynewbranch and it has a reference here to the one file that really was the one that was added in our branch that we committed and now has been merged back here into master. [Video description begins] There are four lines of code in the output. Line one reads: Fast-forward. Line two reads: newfile.txt | 1 +. Line three reads: 1 file changed, 1 insertion(+). Line four reads: create mode 100644 newfile.txt [Video description ends]
+
+So this gives us a general idea then of how to begin working with branches in Git. The topic gets much, much more involved and deeper if you actually start using it for software development. But here our goal is to have a high level overview of how this works.
+
+10. Video: Managing Git Events to Trigger Git Hooks (it_oslsca_03_enus_10)
+
+In this video, discover how to work with Git hooks.
+work with Git hooks
+[Video description begins] Topic Title: Managing Git Events to Trigger Git Hooks. Your host for this session is Dan Lachance. [Video description ends]
+If you've ever spent some time doing software development and getting components to talk together and capturing certain points of time, then you probably have experience working with hooks. What we're going to do here is talk about how to manage Git events that will trigger Git hooks. Event, of course, simply means when something specific happens and there are many different types of events that we'll go through. We want to capture that point in time and have a script that runs automatically. Think about where this might be useful. [Video description begins] The cblackwell@Ubuntu2: ~ window is open in Linux. The presenter runs the command cd myfirstrepo/. The output reads hello.log [Video description ends]
+
+First, I'm going to go into a repo directory. I'll do an ls. So here we've just got one file. We could add files to it, make sure they get tracked with git add, commit the changes and all of that great stuff. But if you're making changes, let's say to scripts, you're going to run in your production environment or software code that will be compiled, maybe testing. You can automate that with scripts and you can even have that triggered so that after a successful test, it will automatically begin a software build. That's only one possible way to use this. There are plenty of ways when you take a look at the subdirectory structure within a repository, a Git repository.
+
+So ls -a for all items. You'll have a hidden .git directory. And if we change directory into .git clear it and do an ls -a we've got a number of files and directories. The one I'm interested in is the one the directory called hooks. It's automatically here when you initialize a repo directory the very first time with the git init command. It creates this stuff for you. And so if I change directory into hooks, what I can expect are some sample script files such as having a commit message appear whenever you run git commit or you can capture certain events or points in time like right before the commit occurs or before you merge or before you push changes to a remote repository. And notice that all of these example sample files have a .sample file extension so therefore they are ignored by default.
+
+So what we're really talking about is having a way to hook into certain points of time during software development, during that life cycle, to have things automated like testing or compiling that kind of thing. Now we're not here to really focus on software development. That's not the point. The point is to have a general understanding of how Git is used for version control, version tracking of files. One of those is understanding how hooks work.
+
+So let's do an example. First of all, let's use the mv command to move the prepare-commit-msg.sample file to prepare -commit-msg. Basically, I'm removing the .sample file extension because with the sample file extension it just gets ignored. However, now that file that we've removed the .sample extension from will not be ignored.
+
+Let's open it up using sudo nano prepare-commit-msg [Video description begins] The prepare-commit-msg file opens in the GNU nano 4.8 text editor. [Video description ends] Let's go down and add some stuff here just so we can prove that this is working. How about #!/bin/bash which is normally what you would see at the beginning of a shell script to tell it which interpreter to use. And I'm going to echo back "My customized git hook message!" That's all I wanted to do.
+
+So I'm not doing anything fancy like running various tests and so on. Okay, let's go save that file and let's test that that event hook has been captured. [Video description begins] The presenter runs the command cd ../.. [Video description ends] Now, we could do that by changing directory, let's say two levels back to our main repo directory and that was a prepare for commit type of event. So let's run git commit -m for message that will prevent you from having to type in a message when it opens up the message file. Let's say "test commit 1" and let's just go ahead and press enter. Well, this is our initial commit for this repo and there was nothing added.
+
+So why don't we add a new file sudo nano file1.txt We'll just add something in it. Sample text. Close out and save it. Let's run git add file1.txt So of course now if we run git status it knows that there's a new file that needs to be committed. All right, let's just use our up arrow key to go back to our git commit command. We'll change the message to "test commit 2" and press enter. [Video description begins] He runs he command git commit -m "test commit 2". [Video description ends] Well, now that there was something to actually commit, notice what popped up, My customized git hook message!
+
+Now really, you might say that's inconsequential. It's just some text. You're right, it's only text. The point is that we can capture that point in time If you know how to do that and you know how to write shell scripts or how to invoke programs to do various things. The sky is the limit. You could do anything you wanted to, like run testing, compile, send off an email to admins to let them know this change occurred, whatever the case might be. And that's how git hooks work.
+
+11. Video: Course Summary (it_oslsca_03_enus_11)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. Your host for this session is Dan Lachance. [Video description ends]
+So in this course we’ve examined how to use Infrastructure as Code and version control in IT environments. We did this by exploring the importance of CI/CD using Terraform for Infrastructure as Code deployment and installing Git for version control.
+
+We then worked with cloning and managing local and remote Git repos. We worked with branching and merging a Git repo and also how to manage Git events to trigger Git hooks.
+
+In our next course, we're going to be moving on to solve problems related to CPU, memory, storage and network on a Linux host.
+
+Course File-based Resources
+•	Deploying Infrastructure as Code Using Terraform
+Topic Asset
+© 2023 Skillsoft Ireland Limited - All rights reserved.

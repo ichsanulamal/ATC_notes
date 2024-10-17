@@ -30,5 +30,16 @@
 
 ## 3. Scripting, Containers, and Automation
 
+[[Shell Scripting with Bash/index]]
 
+[[Application Containers/index]]
+
+[[Infrastructure as Code and Git/index]]
+
+## 4. Troubleshootong
+
+[[Solving CPU, Memory, Boot, & Performance Issues/index]]
+[[Solving Storage & Network Problems/index]]
+[[Permissions Issues & Restoring the Linux OS/index]]
+[[Troubleshooting with systemd/index]]
 

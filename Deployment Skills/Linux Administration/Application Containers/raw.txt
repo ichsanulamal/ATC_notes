@@ -1,0 +1,667 @@
+CompTIA Linux+: Application Containers
+Application containers are commonly used by both server admins and software developers. Linux technicians must possess skills related to the installation and management of container hosts and Kubernetes clusters. In this course, we will explore the benefits of application containers and find out how they differ from virtual machines. Then we will learn how to install Docker on Linux, discover the Docker container hosting platform, and list common Docker CLI commands. Next, we will create a container overlay network and manage containerized applications, create a container registry, and create a container image from a dockerfile. Finally, we will manage a Kubernetes container cluster in the cloud using the kubectl command. This course can be used to prepare learners for the Linux+ XK0-005 certification exam.
+Table of Contents
+    1. Video: Course Overview (it_oslsca_02_enus_01)
+
+    2. Video: Application Containers (it_oslsca_02_enus_02)
+
+    3. Video: Installing Docker on Linux (it_oslsca_02_enus_03)
+
+    4. Video: Using the Docker CLI (it_oslsca_02_enus_04)
+
+    5. Video: Configuring a Container Overlay Network (it_oslsca_02_enus_05)
+
+    6. Video: Managing Application Containers Using Docker (it_oslsca_02_enus_06)
+
+    7. Video: Creating and Using a Cloud-based Container Registry (it_oslsca_02_enus_07)
+
+    8. Video: Dockerfiles (it_oslsca_02_enus_08)
+
+    9. Video: Working with Dockerfiles (it_oslsca_02_enus_09)
+
+    10. Video: Kubernetes Container Orchestration (it_oslsca_02_enus_10)
+
+    11. Video: Deploying a Cloud-based Kubernetes Cluster (it_oslsca_02_enus_11)
+
+    12. Video: Managing Kubernetes With kubectl (it_oslsca_02_enus_12)
+
+    13. Video: Course Summary (it_oslsca_02_enus_13)
+
+1. Video: Course Overview (it_oslsca_02_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Dan Lachance. [Video description ends]
+Hi, I'm Dan Lachance. Application containers are commonly used both by server admins and software developers. Linux technicians must possess skills related to the installation and management of application container hosts and Kubernetes clusters. In this course, I will first cover the benefits of application containers and how they differ from virtual machines. I will then install Docker on Linux and discuss the Docker container hosting platform and then I'll list common Docker CLI commands.
+
+Next, I will create a container overlay network and manage containerized applications followed by creating a container registry in the cloud and then creating a container image from a dockerfile. Lastly, I will manage a Kubernetes container cluster in the cloud using the kubectl command. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+
+2. Video: Application Containers (it_oslsca_02_enus_02)
+
+After completing this video, you will be able to describe how application containers differ from virtual machines.
+describe how application containers differ from virtual machines
+[Video description begins] Topic title: Application Containers. Your host for this session is Dan Lachance. [Video description ends]
+If you've already been working in IT for a while, you most certainly have heard about application containers. We're going to take a few minutes here to define exactly what they are, why they're used so much, and how they differ from virtual machines. So, what is this? An application container is what you could call a logical application isolation boundary, whatever that means. What it really means is that an application runs in a container. A container is the logical boundary, and all of the components that the app requires are stored within the app container. You just need a host, an operating system that is capable of running that application container.
+
+Now, that's as opposed to actually installing app files within a host operating system. That doesn't happen in this case, the files are contained within the application container. An application container might be an entire application with one container or for larger apps, you might have multiple containers working together where each container is a focused function, a microservice as they call it. Maybe one application container component for a web app is focused on uploading content from users, another is presenting the web interface, another might be for printing functions, and so on. And of course, there can be intercommunication over the network between application containers, whether they're running on the same host or not.
+
+In a larger environment, meaning that you have a very busy containerized application, you might even deploy it into a Kubernetes cluster. We'll talk about that later. So, microservices, we mentioned this, what we're really talking about is having focused or specialized app functionality within a single application container. Modularizing apps this way really makes it a lot easier overall to make changes to and test and update a specific application container without affecting the entire app and bringing the whole thing down. So, a single microservice then could be one app container, and this allows for what's called application component decoupling. It means that there's not a dependency necessarily on everything running in the same container at once, nor is there a requirement for everything to be up and running at the same time.
+
+Software developers will often use application containers in conjunction with message queues or storage queues, such as in the cloud, which is a centralized location where different application components can exchange messages with one another, and if one component is down, it can't receive the message, it will retrieve it when it is up and running. Here we have a diagram of how application containers kind of fit into the overall picture when they're running on an application container host. So, at the bottom of the diagram, we have the host operating system. It doesn't have to be Linux, it could be any flavor of Linux or Unix, it could be the macOS, it could be a Windows client, a Windows Server running on-prem running in the cloud, physical server, virtual machine, you get the point, it doesn't matter. What matters is that we have an application container engine running on that host OS.
+
+One of the more common ones you've probably heard about or you already have experience with would be the Docker Engine. Now, having the Docker Engine installed means you've got software that knows how to allocate resources to load up and run application containers. We have a number of application containers shown in our diagram labeled APP A, all the way through to, and including APP G. So, all of the files required for each app are contained within that application container. That's the logical boundary that we referenced earlier. However, and this is really up to the host admin along with the software developer, in some cases, you might have an application running in a container that talks to binaries or library files on the host OS.
+
+But usually, the binaries and the libraries along with all the software files, the config files for that software, even binaries to load HTTP web server stacks, all of that is normally contained within the application container. Now, if you don't need a web server because that's not the nature of the app, of course, that wouldn't be in the container, but whatever is needed is in the container. That's the point here. What's interesting is that the application container shows up simply as a running process in the host operating system. So, when you have an application container, an app running, it doesn't touch the host operating system file system. You can configure it such that the file system in the container is available in the host OS, kind of like mapping a drive letter or setting a Linux mount point but generally speaking, it doesn't really talk to the underlying host OS very much.
+
+An application container, when it's running, is based on what's called a container image. The container image you can think of as being the application container in a dormant state. When it's up and running and active, it's called a running container as opposed to a container image. The container image, of course, contains all of the software and settings for running that container, and as was mentioned, perhaps even an HTTP web server stack and whatnot. One way to think about this is to say that a container is just a runtime instance of an image, and that's correct. So, to be a little more specific about what's inside an application container, what do we have? Well, it could be scripts of any kind, binary files that execute code.
+
+The container has its own file system, as was mentioned, that can even be made available in the underlying host. That can also present some security risks if the host is compromised, but nonetheless, it is possible. Then the container can contain app-specific libraries, as we've mentioned. So, in Linux, that's usually library files that might end with .so, or in Windows, libraries that might end with DLL. It could be any type of file, any type of components required by the app. There might be a runtime environment with an interactive Command Prompt, whether it's Linux-based, or Python, or a web server stack. Of course, there would then be configuration files software uses which controls its behavior, maybe even some utilities or software tools maybe to diagnose problems with whatever's running in the app container. So, it sounds similar in concept at least to a virtual machine.
+
+The difference being that there's no operating system files, at least not an entire operating system within an application container. We've already indirectly talked about application container benefits, but let's spell it out, application portability across container hosts. Because everything is self-contained within the app container, you can move it around to different hosts that have some kind of a container engine, like the Docker Engine installed, and you're ready to go. A note about this, let's say, that you've got the Docker Engine installed on the Windows platform. Well, as you might guess, it's pretty easy to run Windows-based application containers on that Windows underlying host OS. But what if you have a Linux-based application container but you're running the Docker Engine on Windows?
+
+How does that work? There are two options, on your Windows Docker host, you might configure Microsoft Hyper-V basically to run things that require Linux components in the host OS to run on a virtual machine, or on Windows, you could install the Windows Subsystem for Linux (WSL), or Whistle, but it is something to be aware of. Another benefit is how incredibly quickly application containers fire up because they don't need to start an entire operating system like a virtual machine would. Instead, they just use the underlying OS that's already up and running. So, you can imagine how quickly app containers are available.
+
+We've mentioned briefly too that if a software developer needs to make a code change to the codebase, or change a script or a config file, or whatnot within an application container, or maybe apply updates to software in that container, or test any changes made to code or configurations in the container, the software developer, they can simply do that against that single application container. If that container is one part of a larger overall app that uses multiple function-specific containers, then they won't be affecting the other functionality of the app. That's very attractive when it comes to uptime and the best possible experience for clients using the app.
+
+3. Video: Installing Docker on Linux (it_oslsca_02_enus_03)
+
+In this video, find out how to install Docker on a Linux host.
+install Docker on a Linux host
+[Video description begins] Topic title: Installing Docker on Linux. Your host for this session is Dan Lachance. [Video description ends]
+In this demo, I'm going to be installing the Docker Engine on Linux. The Docker Engine, of course, is required if you want to be able to run Docker containers, application containers, and you can run the Docker Engine on a variety of platforms. It doesn't have to be Linux. However, here I will be installing it on Ubuntu Linux and we'll just make sure it's up and running, once we get it installed. Docker can also run within a physical server environment or a virtual machine. It makes no difference at all. So, the first thing I'll do here is run sudo apt install docker.io.
+
+[Video description begins] A terminal window appears with the heading cblackwell@Ubuntu1:~. It displays the following command: sudo apt install docker.io. [Video description ends]
+
+It asks if I want to continue. It's going to take about 293 megabytes of additional disk space. That's no problem.
+
+I'll type in the letter y for yes and press Enter to get the installation started. OK, once that's done, I'll begin just by running sudo docker to make sure that the Docker CLI, the command line interface is installed. It returns the next level commands that I would run after the docker keyword, so we know that the Docker CLI is available. It was installed along with the Docker Engine. I'm going to run sudo service docker status, OK. 
+
+[Video description begins] The command reads: sudo docker. [Video description ends]
+
+[Video description begins] The following command is highlighted: sudo service docker status. [Video description ends]
+
+It looks like the Docker daemon is running in the background. It says active and running. That's good. It means we're ready to go with working with application containers. If I were to run sudo docker images, it would show any local container images that I might have available on this host where we've just installed the Docker Engine, of course, there is nothing available locally.
+
+[Video description begins] The command reads: sudo docker images. [Video description ends] 
+
+Here in my web browser, I've navigated to hub.docker.com.
+
+[Video description begins] A dockerhub page appears. It contains a search bar along with the following tabs: Explore, Pricing, Sign In, and Register. It contains the following fields underneath Get Started Today for Free: Username, Email, and Password. [Video description ends]
+
+I could Register a free account here. But I can also search through some publicly available container images. I'm going to search for one I know is here called alpine. It says A minimal Docker image based on Alpine Linux and so on.
+
+[Video description begins] The alpine option is selected in the search bar. it displays the following options: alpine, alpinelinux/docker-cli, alpinelinux/alpine-gitlab-ci, and so on. [Video description ends]
+
+So, this is a DOCKER OFFICIAL IMAGE, so we know it's safe. And if I click on it to open it up, I get more details about it, including the command that would be used to download that container image to my Docker host. It's telling me simply to issue the docker pull commands followed by the name of the container image which is alpine. Now you might wonder, how on earth does it know to grab that from this location on the Internet? Docker is hard-coded.
+
+[Video description begins] The alpine option is selected. It contains a search bar on the right. It contains the following sections: Overview and Tags. The Overview section is now active. It contains the following headers: Quick reference, Supported tags and respective Dockerfile links, Recent Tags, About Official Images, and so on. [Video description ends]
+
+If you don't specify a container image repository, it will assume you mean Docker Hub. Well, that makes sense. So therefore, if I were to run sudo docker pull alpine, as long as I have a valid Internet connection, that's all it's going to take to bring that down.
+
+[Video description begins] The terminal window appears again. The command now reads: sudo docker pull alpine. [Video description ends]
+
+It's very small and lightweight. The size of application containers can vary wildly, it just depends on what the app consists of, what it does, how many files there are, how big the files are, and whatnot. So it says it downloaded the alpine container image with a tag of :latest. So, latest version, let's clear the screen, and let's just run sudo docker images.
+
+[Video description begins] The command again reads: sudo docker images. [Video description ends]
+
+OK, notice before we had nothing, but now, of course, it's showing that we have the alpine container image available.
+
+Well, we just downloaded it, so that makes sense. I'm going to run sudo docker run because I want to actually run the container from the container image that we just downloaded. I'll use the -int command line parameters for docker run, which means I want to run this in interactive mode, and have a terminal into the container. You'll see what I mean here and then I'll give it the name of the container image, which is alpine.
+
+[Video description begins] The command reads: sudo docker run -it alpine. [Video description ends]
+
+Now, because we asked for an interactive terminal, notice our Command Prompt has changed. We are actually in a Command Prompt within our alpine container which is now running. Containers load very quickly because they don't contain an entire OS, it's just using the OS that's already running on the underlying Docker host. So, if I type ls right now, this is not happening on my Linux machine.
+
+This is happening within the running Alpine container. Containers have their own file systems. What those file systems contain will vary, but they do have their own file systems. Some of them won't interact in this way like we've gone in with the Command Prompt, but others will. If I want to get out of this, I can type exit. Well, actually, let's run ls first just to prove that we get a different listing because now we're not in the Alpine container anymore. We're back in our underlying Linux host, and so, when I type ls, of course, I get a totally different list of files and directories than we had previously within the Alpine container.
+
+What I wanted to do was run sudo docker ps which will show us any containers that are currently running.
+
+[Video description begins] The command now reads: sudo docker ps. [Video description ends]
+
+Of course, there are none because we exited out of the Alpine container. But if I run that previous command with a -a, I'll see all containers that were running.
+
+
+[Video description begins] The command now reads: sudo docker ps -a. [Video description ends]
+
+ It doesn't have to be running right now, and it says here under STATUS that apparently I Exited that alpine container about 38 seconds ago. So, that gives us the bare bones basics on how to get the Docker Engine up and running by installing it on Linux, and verifying that the CLI is installed, and also verifying that we can run a container.
+
+4. Video: Using the Docker CLI (it_oslsca_02_enus_04)
+
+Learn how to list common Docker CLI commands.
+list common Docker CLI commands
+[Video description begins] Topic title: Using the Docker CLI. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, the focus is going to be on the Docker CLI or command line interface. This is going to be important because this is how you interact with the Docker daemon with the Docker Engine that you would have installed on your Linux host. So, being familiar with the syntax on how to work with container images and so on, is important. And the first thing we'll do is just run sudo service docker status just to verify that indeed, it is showing us active and running.
+
+[Video description begins] A terminal window appears with the heading cblackwell@Ubuntu1:~. It displays the following command: sudo service docker status. [Video description ends]
+
+OK, so we had to install it. Now it's up and running. If we were just to issue sudo docker all by itself, notice it returns back the next level commands that we would issue after the word docker at the command line.
+
+So, we know that the CLI was installed along with the Docker Engine. Let's pick on one of these commands. Let's say rmi. Remove one or more images. That, of course, means container images. So, if we were to run sudo docker rmi and just press Enter, it comes back and says, well, it requires at least one argument.
+
+[Video description begins] The command reads: sudo docker rmi. [Video description ends]
+
+But you can get further help by adding --help after your docker syntax. Let's try that. sudo docker rmi --help.
+
+[Video description begins] The command now reads: sudo docker rmi --help. [Video description ends]
+
+OK, so there's not really a whole lot to this docker command, just options which happens to be -f, lowercase f, or --force to Force removal of the image and not ask for confirmation, and then the --no-prune option, to not delete untagged parents.
+
+Of course, we then specify the name of the container IMAGE or images if we specify more than one on the command line. So, knowing how to interpret this is going to be important to learn how to use Docker. If you don't have a lot of experience with the Docker CLI, I would recommend setting up a virtual machine, running Linux, install Docker on it, and experiment. Have a sandbox. Another important command here is going to be sudo docker version.
+
+[Video description begins] The command reads: sudo docker version. [Video description ends]
+
+This gives us the details on things like the Docker Engine, the API version if you're a programmer and want to hook into some of the Docker APIs. If I scroll back up a little bit, the first part of our output from docker version is the Client info what version of the CLI we're running.
+
+So, the Version string is reported here. Again, it's normally the same as the Docker Engine.
+
+[Video description begins] The command reads: sudo docker images. [Video description ends]
+
+Now if I run sudo docker images, actually notice what happens if I omit the sudo and I'm not logged in as root, it results in permission denied types of messages. 
+
+[Video description begins] The command now reads: docker images. [Video description ends]
+
+So, sudo docker images will show any container images I might have locally stored on this Docker host. I've already pulled one down from Docker Hub, it's called alpine.
+
+[Video description begins] The command reads: sudo docker images. [Video description ends]
+
+ Now, you can use the sudo docker pull command to pull down a container image from a repository. If you don't specify the repository, it's assumed you're pulling it down from Docker Hub. For example, let's bring down one that I know is there a container image I know exists called caddy.
+
+[Video description begins] The command reads: sudo docker pull caddy. [Video description ends]
+
+It's just a tiny web server stack, so given that we have an Internet connection, it's going to bring it down.
+
+Let's clear the screen. Let's once again run sudo docker images. So, we had alpine shown already. Now we have the caddy container image shown and the TAG where the version is the latest version. The unique IMAGE ID is shown, the creation date, and the SIZE. These are very small container images. And remember that Docker containers do not contain the entire operating system because it just uses the underlying OS of the Docker host. They load up quickly, and as a result, they're much smaller than an equivalent virtual machine would be. So, if I want to run a container based on the caddy container image, I can do that with the sudo docker run command.
+
+I'm going to use the -p because what I want to do is take my local port 80 and map that to port 80 running within the container, so 80:80. Not every container has a web server stack, of course, but caddy does. And then, of course, I'll tell it the name of the container image, which is caddy, and it returns information so I know then that it's running.
+
+[Video description begins] The command reads: sudo docker run -p 80:80 caddy. [Video description ends]
+
+ I could press Ctrl+C to stop that. And, of course, if I run sudo docker ps with no command line parameters, nothing's currently running.
+
+[Video description begins] The command reads: sudo docker ps. [Video description ends]
+
+But if I add a -a to that command, it'll show me any containers that were running in the past, such as caddy. So, we had that up and running about 33 seconds ago, it says. We had the alpine container up and running about 2 days ago.
+
+[Video description begins] The command reads: sudo docker ps -a. [Video description ends] 
+
+So, if you're not already familiar with the Docker CLI, it can be important to run sudo docker, and then just kind of scroll back up through the output to take a look at some of the things that you can do, such as working with Docker container images or Docker container overlay networks that allows inter Docker host communication which is normally used by Docker Swarm which is a way to have a cluster of machines working together to support containerized applications.
+
+[Video description begins] The command reads: sudo docker. [Video description ends]
+
+So, we also have a swarm keyword for that down at the bottom. But notice, those fall under the heading and the help here of Management Commands. Down below, if we just go under Commands, then we've got things like running docker build to Build an image from a Dockerfile. We'll take a look at that later.
+
+You can run the docker cp command to copy file system objects between containers and the local filesystem on the Docker host. This is actually possible. Or you might use the docker exec command to run a specific command within a container, and if that container is running Linux, and it's got a Bash Shell, you could even exec bash to get a Command Prompt. So, that's just a quick little sample of some of the things you can do with the Docker CLI.
+
+5. Video: Configuring a Container Overlay Network (it_oslsca_02_enus_05)
+
+During this video, discover how to configure a container overlay network.
+configure a container overlay network
+[Video description begins] Topic title: Configuring a Container Overlay Network. Your host for this session is Dan Lachance. [Video description ends]
+You can use a Docker container overlay network as a way to create a higher-level network that interconnects Docker hosts. So, it's a distributed network linking Docker hosts together. Normally, this is done when you're working with Docker Swarm. Docker Swarm is kind of like having a cluster of Docker machines working together to run containerized application. Establishing a Docker container overlay network doesn't mean that your Docker hosts have to be on the same underlying subnet. They can be split up on different networks that are interconnected by routers. It really makes no difference. Now while you can specify customized details for your overlay network, when you work with Docker Swarm, when you set up a Swarm manager that manages other nodes in the cluster, it will automatically have a default container overlay network created.
+
+So, let's take a look at how that works. So, the first thing to consider is which one of your Docker hosts will be the manager node that will manage the other nodes. So, I've gone to that server where I'm going to issue the sudo docker swarm init command.
+
+[Video description begins] A terminal window appears with the heading cblackwell@Ubuntu1:~. It displays the following command: sudo docker swarm init. [Video description ends]
+
+So, I'm initializing a Docker Swarm cluster. OK, so it says, Swarm initialized: current node and it's now a manager. It says To add a worker node or the other nodes to get managed to the swarm, you need to run the following command. So, what I would do is copy this command to other Docker hosts that I want to be part of this Docker Swarm. So, on a server called Ubuntu2, I'm going to go ahead and paste in that specific command. Now when I paste it, of course, there's no sudo prefix in front of it, so, of course, it's going to say permission denied.
+
+[Video description begins] The command now reads: docker swarm join --token SWMTKN-1-1 3dbic5wu031zx8rylmzjsny7sdu9ro6hhq3k3o5rt20eatyni-8unyfee3h74ww17vdp1jgkvbh 10.0.0.9:2377 Got permission denied while trying to connect to the Docker daemon socket at unix: / / / var/run/docker.sock: Post "http:/ /%2Fvar%2Frun%2Fdocker.sock/v1.24/swarm/join": dial unix /var/run/docker.sock: connect: permission denied. [Video description ends]
+
+But I'm going to use my Up arrow key, go to the beginning of the command, and add the sudo prefix.
+
+[Video description begins] The command reads: sudo docker swarm join --token SWMTKN-1-1 3dbic5wu031zx8rylmzjsny7sdu9ro6hhq3k3o5rt20eatyni-8unyfee3h74ww17vdp1jgkvbh 10.0.0.9:2377 This node joined a swarm as a worker. [Video description ends]
+
+OK, and just like that it says, This node joined a swarm as a worker. Now in order for these nodes to talk together, some ports need to be opened, like TCP port 2377, TCP and UDP ports 7946, and UDP 4789. So, you might have to just firewall rules or security group rules such as if you're using virtual machines in the cloud to allow for this communication. If I switch back to the swarm manager node, I would then issue commands such as sudo docker node ls, list the nodes that are part of this Docker Swarm, and notice both of them are shown here, the one we're at which is the manager Ubuntu1, and the worker node we just added from the other machine, that's called Ubuntu2.
+
+[Video description begins] The command reads: sudo docker node ls. [Video description ends]
+
+Now, if we run sudo docker network ls, list networks, notice that we've got the overlay driver here shown here for Docker Swarm where we have a network ID that was generated and is shown here in the leftmost column, we've got our default overlay network that was created for communication among those Docker Swarm nodes.
+
+[Video description begins] The command reads: sudo docker network ls. [Video description ends]
+
+Now, here on the manager, I'm going to go ahead and run the sudo docker service create command. I want to create a Docker service that will run in my Swarm, --name. Let's call it caddy because it will be based on the caddy container image which is a tiny web server I've already downloaded and I have that container image available here on this host. -p, I want to map port 80 on this local Docker machine colon to port 80 which I know the web server stack is listening on within the container's configuration and caddy is the actual name of the image so I'll put that in at the end, Enter.
+
+[Video description begins] The command reads: sudo docker service create --name caddy -p 80:80 caddy. [Video description ends]
+
+OK, we get a message back that 1 out of 1 is running and that the Service has converged. So, if I were to run commands like sudo docker service, we're talking about a Swarm cluster service, ps, though it will list what's running. But which one? caddy, caddy. That's what we called it. Technically that one is now showing as running on Ubuntu1.
+
+[Video description begins] The command reads: sudo docker service ps caddy. [Video description ends]
+
+This communication is happening over our overlay network. So, to verify our web app is running, if I were to run the curl command and just point to the localhost IP 127.0.0.1:80 for port 80, it returns back our default Caddy web page. Now what's really interesting here, and this is because of the underlying overlay network on my second worker node in the cluster.
+
+[Video description begins] The command reads: curl 127.0.0.1:80. [Video description ends] 
+
+If I do the exact same thing, meaning if I run curl 127.0.0.1: port 80, we still get it reported back, we get the HTML web page. So, one of the cool things about an overlay network with the Docker Swarm is that they're all listening on any published services initialized in the Swarm, even though they might not be a locally running that container like Ubuntu2 is not. Because remember, if we go back to our manager node for the Docker Swarm and run sudo docker service ps caddy, remember it's reporting back that it's technically running on the Ubuntu1 node. The last thing, we'll do here is run sudo docker network inspect. Well, actually before we do that, let's do docker network ls.
+
+[Video description begins] The command reads: sudo docker network ls. [Video description ends]
+
+Remember, the NAME column shows the names we're going to be interested in poking in and looking at the ingress default overlay network. Of course, notice you've got the other standard bridged networks that allow the Docker hosts to talk to the real underlying network.
+
+Let's focus on the ingress network. What that means is I'm going to run sudo docker network inspect ingress. Let's pipe that to more. Here, we've got the details like the Name, the Id, when it was Created, the Scope it applies to which is swarm, it's using the overlay driver, IPv6 has not been enabled for that overlay network, but notice that the Subnet range is shown here insider notation along with the Gateway IP because it is like having an actual network there.
+
+[Video description begins] The command reads: sudo docker network inspect ingress | more. [Video description ends]
+
+ And notice it's making a reference to Containers that will utilize the ingress overlay network. So, there's our caddy swarm service that we deployed. So, if you really want to define your own network, you can. But often the first thing to do, especially if you're working with Docker Swarm, is to stick with the default ingress network unless needs dictate otherwise.
+
+6. Video: Managing Application Containers Using Docker (it_oslsca_02_enus_06)
+
+Find out how to download, run, push, connect to, and update application containers.
+download, run, push, connect to, and update application containers
+[Video description begins] Topic title: Managing Application Containers Using Docker. Your host for this session is Dan Lachance. [Video description ends]
+If you're going to be working a lot with Docker containers, one consideration is potentially signing up on Docker Hub. That's at hub.docker.com with a free account. You'll have access to more container images than you otherwise would if you don't have an account.
+
+You'll also have the option of creating a repository or a collection of container images.
+
+[Video description begins] A Docker Hub page appears. It contains a search bar along with the following tabs: Explore, Repositories, Organizations, Help, Upgrade, and so on. It contains a list of highlighted repositories underneath user7272. The names of the repositories are: pubwebservers, docker-app10, docker-app1, privatetest72, publictest72, and so on. [Video description ends]
+
+However, of course, you can just search Docker Hub for anything that you might need. For example, if I search mysql, there's an official mysql DOCKER OFFICIAL IMAGE and if we click to open up the details, as you might guess, to get that container image down on your local Docker host, you would run docker pull and then the name of the container image here, which is simply called mysql. 
+
+[Video description begins] The dockerhub page now displays the heading Explore Docker's Container Image. It contains various results underneath mysql such as: mysql, mariadb, percona, and so on. [Video description ends]
+
+[Video description begins] The mysql option is selected. It contains a search bar on the right. It contains the following sections: Overview and Tags. The Overview section is now active. It contains the following headers: Quick reference, Supported tags and respective Dockerfile links, Recent Tags, About Official Images, and so on. [Video description ends]
+
+Now we're not specifying a repository or we're pulling this down from Docker Hub as that is assumed as a default unless you specify otherwise. Let's go ahead and pull down that docker container image on our Docker host. So here on my server, Ubuntu1, if I run sudo service docker status, it's showing as active and running which is great.
+
+[Video description begins] A terminal window appears with the heading cblackwell@Ubuntu1:~. It displays the following command: sudo service docker status. [Video description ends]
+
+And if I run sudo docker images, it shows any existing container images I have on this machine.
+
+[Video description begins] The command reads: sudo docker images. [Video description ends] 
+
+I've already downloaded two public images from Docker Hub. One is called caddy, one is called alpine but we do not have the MySQL container image here yet, so we know to bring that down, we simply run sudo docker pull and in this case, it's simply called mysql. Couldn't be easier than that.
+
+[Video description begins] The command reads: sudo docker pull mysql. [Video description ends]
+
+It assumes you're pulling it from Docker Hub and before you know it, it will have been downloaded. We can verify this with sudo docker images and now mysql shows. It's larger than the other container images that we downloaded, which is why it took a little bit longer to bring down.
+
+An important part of managing containers is to get them up and running from a given container image. So, my command will be sudo docker run. Say I want to use a name here called mysqltest1, I'm giving a name that I want to give to my running container -e these are all lowercase.
+
+This is where I can set the MYSQL_ROOT_PASSWORD variable which is all uppercase here or directive equal to whatever I want the password to be. And I'll just specify as the last parameter that I want this to load from the mysql local container image. Or I could specify the version also if we've got multiple versions, we don't.
+
+But notice the version tag is shown here as the word latest.
+
+[Video description begins] The command reads: sudo docker run --name mysqltest1 -e MYSQL_ROOT_PASSWORD=Pa$$w0rdABC123 mysql:latest. [Video description ends]
+
+OK. And then finally, down below it says that it's ready for connections on the standard mysql listening port of 3306 on this host. So you could use whatever tools you normally use, like the MySQL Workbench GUI tool to make a connection to this. It's a fully functional MySQL database running within an app container. Here I've opened up another Command Prompt on that same server because when you load up a container, if you don't tell it to run in the background, as a daemon with lowercase d, it takes control of your Command Prompt.
+
+So here, from this other login terminal, if I run sudo docker ps, notice that mysql is up and running as well as caddy.
+
+[Video description begins] The command reads: sudo docker ps. [Video description ends]
+
+ So I can run sudo docker stop and we named our mysql container mysqltest1.
+
+[Video description begins] The command reads: sudo docker stop mysqltest1. [Video description ends]
+
+OK, let's take a look now sudo docker ps. OK, that one's down.
+
+Let's bring the other one down sudo docker stop and I'll just go ahead and copy the name here and paste it in.
+
+[Video description begins] The command reads: sudo docker stop ^C. [Video description ends]
+
+ And if we clear the screen and once again sudo docker ps, there are none running. OK, let's execute this command sudo docker run -itd so interactive terminal and detach, so it'll run in the background and we want to do that for alpine. Notice, OK actually if we don't put in the d, we get an interactive terminal and we are now placed into the alpine Linux Command Prompt environment where if I type ls, this is happening in the container, so I'll type exit.
+
+[Video description begins] The command reads: sudo docker run -it alpine. [Video description ends]
+
+Let's use our Up arrow key to bring up that previous command. But what we'll add to docker run in addition to the -i and t is a d to run a detached mode. OK, now we have our Command Prompt back.
+
+[Video description begins] The command reads: sudo docker run -itd alpine. [Video description ends]
+
+It didn't automatically take us into the alpine Command Prompt then if we run an sudo docker ps, notice that the alpine container is running.
+
+Now because we didn't specify a name, it comes up with a random name, in this case naughty_allen, but that stems from the alpine container image. So we could run sudo. So to interact with that container, we could run sudo docker exec to execute -it, interactive terminal naughty_allen
+
+and I could tell it what I want to execute, such as /bin/sh the shell and it notice it puts us right into the shell. 
+
+[Video description begins] The command reads: sudo docker exec -it naughty_allen /bin/sh. [Video description ends]
+
+So in other words, you don't have to connect initially when you fire up or run the docker container, you can connect to it or exec whatever you need within it after the fact.
+
+7. Video: Creating and Using a Cloud-based Container Registry (it_oslsca_02_enus_07)
+
+During this video, you will learn how to create an Azure container registry and push a container image to it.
+create an Azure container registry and push a container image to it
+[Video description begins] Topic title: Creating and Using a Cloud-based Container Registry. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, I will be creating a cloud-based container registry and then what we'll do is we'll upload or we will push a container image from our local Docker host into our container registry. I'm signed in to the Microsoft Azure portal where I already have an account.
+
+[Video description begins] A Microsoft Azure page displays with the heading Microsoft Azure. It contains a search bar on the top. The left pane appears with various options such as: Create a resource, Home, Dashboard, All services, All Resources, SQL database, App Services, and so on. The working pane consists of two sections namely, Azure services and Resources. The Azure services list various options such as: Create a resource, Virtual machines, Resources groups, and so on. The Resource section contains 2 subsections: Recent and Favorite. The Recent resources contain the following columns: Name, Type, and Last Viewed. [Video description ends] 
+
+In here, I'll click the Create a resource button, and in the search bar, I will search for azure container and upper pops azure container registry.
+
+[Video description begins] A page displays with the heading: Create a resource. The left pane contains the following options: Get Started, Recently created, AI + Machine Learning, Analytics, Blockchain, and so on. It contains a search bar. There are two columns in the working panes: Popular Azure services and Popular Marketplace products. The Azure services column contains the following options: Virtual machines, Function App, Key Vault, Data Factory, and so on. The Marketplace column contains the following options with the icons: Windows Server 2019 Datacenter, Windows 11 Pro, version 21H2, Ubuntu Server 22.04 LTS, and so on. [Video description ends]
+
+So I'm going to select Container Registry from Microsoft and then I'll click Create. 
+
+[Video description begins] The page now appears with the heading Marketplace. The left pane contains various options: Get Started, Service Providers, Management, My Marketplace, Categories, and so on. The main pane contains a search bar along with the list of highlighted items: Container Registry, Docker Registry: Highly Scalable Server on Ubuntu, JFrog Container Registry ARM Template, and so on. [Video description ends]
+
+[Video description begins] A corresponding page called Container Registry appears. It contains a search bar along with a Create button. Below, it contains the following sections: Overview, Plans, Usage Information + Support, and Ratings + Review. [Video description ends]
+
+Now, why would we go through this procedure? When you start working with Docker for a while, you're going up with quite a few customized container images, and so you might want a way to organize them and store them in a central location that's reachable on the network by other admins or developers that might want to access those customized container images.
+
+So, let's continue with this here in the Azure cloud. So I'll tie this to a Resource group, I'll call it stdcontainerregistry172.
+
+[Video description begins] The page now appears with the heading Create container Registry. It contains the following sections: Basics, Networking, Encryption, Tags, and Review + create. The Basics section is now highlighted. It displays the following details: Project and Instance. The Project details contain 2 fields: Subscription and Resource Group. The Instance details contain the following fields: Registry name, Location, Availability zones, and SKU. [Video description ends]
+
+It's going to add the .azurecr.io DNS suffix by default where azurecr stands for Azure Container Registry.
+
+For the Location, I'll leave it on East US, I'll click Next for Networking. Because I'm using a Standard SKU, a lot of these options aren't available and that's fine.
+
+[Video description begins] The Networking section contains 2 Connectivity configurations: Public access (all networks) and Private access (Recommended). [Video description ends]
+
+[Video description begins] The Encryption section highlights 2 Customer-Managed Key options: Enabled and Disabled. The Tags section contains 3 columns: Name, Value, and Resource. [Video description ends]
+
+I'm not going to add Tags. Let's get to Review + create and let's Create our Azure Container Registry. That should only take a few moments and once it's complete, it says Your deployment is complete.
+
+We can click Go to resource to open the properties of that container registry, but in the future we could also go to the All resources view which is available in our left-hand navigator.
+
+[Video description begins] A page labelled: Microsoft.ContainerRegistry | Overview displays on the screen. The resource menu appears on the left, with the following options: Overview, Inputs, Outputs, and template. The working pane contains a command bar with the following tabs: Delete, Cancel, Redeploy, and Refresh. The main pane consists of the following header: Your deployment is complete. A button of Go to Resource is also displayed. [Video description ends]
+
+[Video description begins] The page called All resources is now active. It contains a command bar with the following tabs: Create, Manage view, Refresh, Export to CSV, Open query, Assign Tags, and Delete. Below, it contains a table with the following column headers: Name, Type, Resource group, Location, Subscription, and Tags. [Video description ends]
+
+And bear in mind, that can be collapsed or opened. In the All resources view, we could search for any part of the name and then there's our container registry, I could click to open up its properties and there we go. The primary thing I'm interested in identifying here first of all, is whether or not we have any repositories, of course, we don't have any, we've just created the registry.
+
+[Video description begins] A page labeled stdcontainerregistry172 appears on the screen. It contains a pane with various elements: Overview, Activity log, Access control(IAM), Tags, Quick start, Settings, Services, and so on. The main pane contains 2 tabs: Move and Delete. Below, it contains a list of Essentials such as: Resource group, Login server, Location, Creation date, and so on. [Video description ends]
+
+[Video description begins] The Services element is now active. It contains the following sub-elements: Repositories, Webhooks, Geo-replications, Tasks, and so on. The main pane contains 2 tabs: Refresh and Manage Deleted Repositories. It further contains 2 columns: Repositories and Cache Rule. [Video description ends]
+
+However, to access this registry over on the left, I'm going to scroll up and click Quick start.
+
+Here we've got a step by step list of instructions on how to work with this container registry. In step 1, it says Install Docker whether it's on the Mac, Windows, or Linux platforms. Well, we've already got Docker installed on a Linux host. This we can verify on the Linux host in many ways, including just running sudo docker.
+
+[Video description begins] The Quick start element is now highlighted from the left. The main pane displays the following steps underneath Instructions for Getting Started: Install Docker, Run the "hello-world" base image, Login to your container registry, Push to your registry, Pull from your registry. [Video description ends] 
+
+[Video description begins] A terminal window appears with the heading cblackwell@Ubuntu1:~. It displays the following command: sudo docker. [Video description ends]
+
+There you go.
+
+It returns back to CLI and if I run sudo service docker status, it shows as being active and running.
+
+[Video description begins] The command reads: sudo service docker status. [Video description ends]
+
+So, back in the Azure portal, that's step number 1 taken care of. Step number 2, Run the "hello-world" base image. But we don't have to do that. Step number 3, Login to your container registry. This one is going to be important. Notice the syntax docker login and the example here even includes the specific name of our container registry.
+
+I'm going to go ahead and select that and copy it, but I'm going to click Access keys over on the left under Settings because I want to Enable the Admin user. The Username then becomes the name of our registry, and then we've got two possible passwords. We can use either one. They're both valid. There are two because you can rotate one to change it periodically for security reasons while the other would remain valid.
+
+[Video description begins] The Microsoft azure page stdcontainerregistry172 | Access keys. It contains the following fields: Registry name, Login server, Admin user, Username. Below, it contains the following columns: Name, Password, and Regenerate. [Video description ends]
+
+So, back on our Docker host, I'm going to run sudo and then I'll paste in our docker login command, Enter.
+
+[Video description begins] The terminal window appears again. It displays the following command: sudo docker login stdcontainerregistry172.azurecr.io. [Video description ends]
+
+It wants a Username, well the Username is simply the name of our registry. Well, the Username is the name of our registry, that in and the Password is available back here in the portal. We can choose either one, so I'll copy one of them and I'll paste it back here. OK, login succeeded. What does this mean. Well, what it means is we can begin to work with container images and populate repositories in the registry.
+
+If we go back to the Quick start here in the portal for our container registry, in order to push container images to the registry, maybe you've got some customized container images. First thing you have to do is change the prefix with the registry login URI. So, notice for example, this is done with the docker tag command, as per what we're being told in step 4, docker tag, you refer to the current name of the container image you have on your host.
+
+Let's say it's called hello-world and when you tag it, you're basically renaming it. What you're adding as the prefix is the DNS name of the container registry, followed by a slash and then the name you want to call it. In this case, they're just calling it hello-world again. After you've run docker tag to do that, then you can simply issue the docker push command with the new name, and because the new name contains as a prefix the location or identity of the Azure Container Registry, it knows where to go.
+
+Let's try this out. Back here on my docker host, I'm going to run sudo docker images to see what we've got. OK.
+
+[Video description begins] The command reads: sudo docker images. [Video description ends]
+
+Let's say I want to push the alpine local container image up to my repository, so I need to do a sudo docker tag. It's currently called alpine.
+
+After that I'll specify the DNS name of my container registry followed by a slash and let's say I'm going to call it my-alpine once it's up there in the container registry.
+
+[Video description begins] The command reads: sudo docker tag alpinestdcontainerregistry172.azurecr.io/my-alpine. [Video description ends]
+
+So now if I do an sudo docker images, we've got not only the original alpine container image here available locally, but also our essentially renamed or retagged version which we can push up to the container registry using sudo docker push and then we simply reference the newly tagged name of our container image.
+
+[Video description begins] The command reads: sudo docker pushstdcontainerregistry172.azurecr.io/my-alpine. [Video description ends]
+
+Now normally, what you would do is perhaps customize an image or build it from scratch using a dockerfile, whatever the case might be. But once you've deemed it as being valuable, you can push it up to your repository in this way. Now because this is so tiny, it doesn't take very long. Let's go check our work in the web browser in the Azure portal.
+
+To back here in the portal, if I scroll down in the left-hand navigator, remember how previously we went to repositories but there was nothing there. Notice what shows up now, my-alpine, and if I click on it to open it up, the only version we have currently is the latest version it shows here.
+
+8. Video: Dockerfiles (it_oslsca_02_enus_08)
+
+Upon completion of this video, you will be able to recall key concepts related to dockerfiles and container images.
+recall key concepts related to dockerfiles and container images
+[Video description begins] Topic title: Dockerfiles. Your host for this session is Dan Lachance. [Video description ends]
+Managing Docker application containers means that you might be in a situation where you have to work with dockerfiles. What is a dockerfile? All that a dockerfile really is a file that's used to build Docker container images. Now remember, when you run an application container, that container is based on a container image that it runs from. That container image has all the application files and settings, and so on.
+
+A dockerfile is literally just a text file. However, it has to be structured with the proper syntax. It has to use the correct directives with the correct values, and the dockerfile then is used to build a new container image. When you work with dockerfiles, there are a few fine details you must be aware of.
+
+One of them is that the name of the file is literally one word altogether, dockerfile. This is where you will put in your syntax. You'll have specific directives and we'll take a look at some of those soon with values to control how a new container image gets built. So the ultimate end result of working with the dockerfile is that you will have created a new container image from the instructions in the dockerfile.
+
+So you can use the Docker CLI, the Docker command line interface to manage every aspect of Docker and containers and container images. The Docker CLI gets installed when you install the Docker Engine. So if you've got the Docker Engine installed on Windows or on Linux on that host, you'll be able to run Docker CLI commands. In Linux, you might have to use sudo as a prefix to run them with elevated permissions. Anyways, we can use the docker build syntax with -f for the file and specify the path, the name of the dockerfile that we want to build a container image from.
+
+Within the dockerfile, there are some syntactical things you should be aware of. For example, when you work with the dockerfile, you might use a backslash as an escape character, meaning it has special meaning that spans multiple lines, or you can use a backtick to do that. Sometimes you'll have a very long expression and to make it more readable, instead of having one really long line in the dockerfile that you would have to scroll over to look at, it might be better to split it up.
+
+The FROM keyword, this one's very important because when you define a dockerfile, you can use an existing container base image as a starting point. Maybe it's a vanilla Linux image or Windows with MySQL or whatever the case it might be. Then you'll have other specific keywords like COPY, which as you might guess, will copy folders and/or files from your dockerfile working environment into the container file system, so they'll be included within the application container.
+
+The ADD keyword is similar, except it has the additional capability for you to specify URLs to pull files from that you want included within your container image. Remember the result of working with the dockerfile is that you end up with a new container image. You might also be interested in the notion of working with the .dockerignore file. Now in Linux of course, a leading dot means it's a hidden file. Normally, this is a file that you would put in the same directory where your dockerfile is.
+
+However, you don't have to do this. This is 100% optional. Well, what does dockerignore do? Well, we know that a Docker container image contains files because the Docker application container has its own file system.
+
+You can interact directly with it when you run the container or you might have it available in the underlying host OS. But what's important here with dockerignore is, as you might guess, it allows you to specify which files or directories to exclude from being added to a Docker container image.
+
+So, if we look at the syntax of the .dockerignore file within this file, it's just a text file, much like a shell script in Linux, you could use a pound symbol or a hashtag. If you want to add comments, you can use an asterisk as a wildcard for one or more characters, you can use a question mark for a single wildcard character, you can use open and close square brackets for a range of characters, you can invert the logic by putting an exclamation mark, which is an exception or not.
+
+So, you can use this when you're putting together your file matching patterns for dockerignore. If we were to take a look at how to build and run a container image, here we've got a sample of what you might have within a dockerfile. So, it starts with FROM and then it says ubuntu:latest. That is our starting image. Either that container image resides locally or if you don't specify a repository URL, it'll assume it can get it from Docker Hub. If you're doing this on a Docker host, then you can use the RUN keyword to run commands within your container image like apt-get update to update your package repositories.
+
+apt-get install and -y to tell it yes, so it won't ask you. You can install whatever packages you want because maybe the Ubuntu latest base container image doesn't have Python or the tools that you need. You might then use RUN to actually install something. You might have a file you want to add into your container image such as hello.py.
+
+It's a Python script and you can tell it where you want it to go within your container file system such as in /home/ and then call it hello.py. You might set a working directory for when that container image is up and running. So once you've got your dockerfile, you can then build a container image from it.
+
+Syntactically using the Docker CLI, that just means using docker build -t where the t means tag and then I give the name I want to use for my new resultant container image. I want it to be called "mycontainerimage:1.0". So, mycontainerimage is the image name of course, 1.0 is the tag. If you don't put a tag in there, it will default to the word latest.
+
+So then after that on the same machine, notice the last part of the syntax for docker build is where the dockerfile is. If it's in the current directory, we can get away with just putting in a dot because that means current directory. Otherwise, you could put in the full path and file name for the dockerfile. The result should be that when you run the docker images command, you will see your new container image "mycontainerimage:1.0" listed among other container images you might have on that localhost.
+
+Then you could run the container from the container image docker run -p that's a p, which means port. What you're doing is specifying first the local port on the docker host and how that should map to a port within the container. Not every app container is going to have a network service with a listening port. Of course not, but if it does, we could specify that port mapping.
+
+Here we're just specifying port 5000 for both and then of course, we have to tell it the name of the container image and the tag that we want to run. So in our example, that's just mycontainerimage:1.0. After which, you could run docker ps to get a list of running docker containers. So, that gives us a sense of how we might customize docker container images. Maybe to have a golden reference container image for technicians with maybe network analytic tools within it, or a golden reference image with all the tools that software developers might need.
+
+9. Video: Working with Dockerfiles (it_oslsca_02_enus_09)
+
+Discover how to create a container image from a dockerfile.
+create a container image from a dockerfile
+[Video description begins] Topic title: Working with Dockerfiles. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, I'm going to be working with a dockerfile. A dockerfile is a text file that's literally named dockerfile, all one word, no spaces. What is it for? A dockerfile contains the instructions that you can use to build your own container image. Of course, it might refer to an existing container image as a source starting point, but beyond that, you can specify commands you want to run, files you want to be injected into the container image, and so on. Let's take a look at this. Here on my machine, what I'm going to do is run sudo nano dockerfile to create a brand-new dockerfile. In it, I'm going to add a number of keywords with values.
+
+[Video description begins] A terminal window appears with the heading cblackwell@Ubuntu1:~. It displays the following command: sudo nano dockerfile. [Video description ends]
+
+I'll start with FROM. So, this means from which source container image would you like to base your container image. I'm going to reach out to Docker Hub, which is implied unless we change the nomenclature or the reference of the name of the container image and its prefixed with some other repository. So, FROM ubuntu: I want the latest version of that from Docker Hub. You can also add the MAINTAINER keyword, and maybe I'll supply an email address.
+
+[Video description begins] A dockerfile called GNU nano 4.8 appears. It contains the following lines. Line 1 reads: FROM ubuntu:latest. Line 2 reads: MAINTAINER cblackwell@quick24x7.com [Video description ends]
+
+I can add comments in here just like I could for a shell script with a hashtag or pound symbol. So, maybe I'll put here Install dependencies and I'm going to use the RUN word to run this within my new custom container image. I want to RUN apt update to update package repositories and if that succeeds, I'll put in the double ampersand. What we want after that is to run apt install -y tzdata.
+
+The time zone data package is one of those things that you need to have for the Apache 2 web server to work correctly. On the next line, I'll use the RUN keyword again. These keywords are in uppercase letters, of course, and I'll run apt install apache2 -y for yes.
+
+[Video description begins] It contains the following lines. Line 1 reads: #Install dependencies. Line 2 reads: RUN apt update && apt install -y tzdata. Line 3 reads: RUN apt install apache2 -y. [Video description ends]
+
+In my current directory and we'll look at this file in a moment, I already have a sample index.html file that I want to inject as the default web page in my container image where Apache will be installed. So, COPY, then index.html, so it's going to be in the same relative directory as the dockerfile. I want to put that in my container image in the default location for Apache2 which is /var/www/html/, and I'll call it index.html. On another line, I'll add CMD, I want to run a command, and in square brackets and in double quotes, I want to run "apachectl", and in double quotes, "-D", I want this to be running, and then comma, and then in quotes, "FOREGROUND". close the square brackets, so you can run commands here.
+
+[Video description begins] The following lines are now added. Line 1 reads: COPY index.html /var/www/html/index.html. Line 2 reads: CMD ["apachect1", "-D", "FOREGROUND"]. [Video description ends]
+
+All I'm doing here is ensuring that my Apache daemon will be running. So, let's get out of this and save the file, and let's take a look using nano at the index.html file I have here.
+
+[Video description begins] The terminal window again appears with the heading cblackwell@Ubuntu1:~. It displays the following command: sudo nano index.html. [Video description ends]
+
+OK, so we've got a sample web page. All it really does is set heading 2 and it says, This is Codey's sample web page. Let's get out and save that. So, we've got our dockerfile in the current directory. We've got any files that we want to copy into it in the same directory. They don't have to be in the same directory, but the way we wrote our dockerfile, it does. So, now what I'm going to do is run sudo docker images.
+
+Let's just see what we've got on this localhost.
+
+[Video description begins] The command reads: sudo docker images. [Video description ends]
+
+All right, we've got mysql, caddy, alpine, and some customized prefix for some other container registry running in the Microsoft Azure cloud. OK, sudo docker build. The build part of the syntax is used to create a new container image from the instructions in a dockerfile, -t for tag. I want to call this myapache2 . In other words, the dockerfile literally called dockerfile, all one word is in the current directory.
+
+[Video description begins] The command now reads: sudo docker build -t myapache2 .. [Video description ends]
+
+We can see we've got some references to some of the stuff that we specified in our dockerfile, including the actual installation of the software packages for Apache, and it's copying the index.html file into the location we specified. And it looks like the Apache daemon is Running.
+
+Looks like it built our container image and successfully tagged it. Let's take a look. The results here is that if we run sudo docker images, we should have a new image here and we do, a container image called myapache2. Well, but does it work? Why don't we find out? sudo docker run dash detached, lowercase d -p for port, it's lowercase p, I want to map port 80 on my localhost colon to port 80 because I know there's a web server stack listening on port 80 by default in the container and it's called myapache2. We can even say :latest if we want to specify the version.
+
+[Video description begins] The command reads: sudo docker run -d -p80:80 myapache2:latest. [Video description ends] Now here I have an error. Looks like port 80 is already in use on this host, let's see, sudo service apache2 status. [Video description begins] The command reads: sudo service apache2 status. [Video description ends]
+
+Well no, it doesn't appear that we have a web server running here. But what other containers are running? sudo docker ps. Looks like we've got one called alpine that's running.
+
+[Video description begins] The command reads: sudo docker ps. [Video description ends]
+
+[Video description begins] The command reads: sudo docker stop naughty_allen. [Video description ends]
+
+So, let's run sudo docker stop and we'll have to refer to it not by the image name, but in this case, let's say by the randomly generated name naughty_allen, in this case. And if we once again, run sudo docker ps, all right, it's not running. Let's try again to run our new custom container image, have it as a running container. Well, we got the message again. Well, what's interesting is this is a manager node in a Docker Swarm cluster. So, if we do an sudo docker service ls or list, it looks like we've got the caddy Docker service up and running.
+
+[Video description begins] The command reads: sudo docker service ls. [Video description ends]
+
+So, let's run sudo docker service rm for remove caddy.
+
+[Video description begins] The command reads: sudo docker service rm caddy. [Video description ends]
+
+So now if we go back and do an sudo docker service ls, the caddy container is not running in the cluster. Well, the caddy container image has a web server stack. That's why port 80 was showing up as being in use. OK, let's go back to running our custom container image.
+
+[Video description begins] The command reads: sudo docker run -d -p80:80 myapache2:latest. [Video description ends]
+
+This time no errors, everything looks good. Now, that's running in the container. We don't have an Apache web server running directly in the OS, although we are mapping port 80 in the OS. So, these are for free runs, the curl command http://, even our local IP 127.0.0.1: 80, port 80.
+
+[Video description begins] The command reads: curl http://127.0.0.1:80. [Video description ends]
+
+It returns back the Codey sample web page. So we know that we have successfully built our container image from the dockerfile instructions.
+
+10. Video: Kubernetes Container Orchestration (it_oslsca_02_enus_10)
+
+After completing this video, you will be able to outline the benefits of using Kubernetes or container cluster management.
+outline the benefits of using Kubernetes or container cluster management
+[Video description begins] Topic title: Kubernetes Container Orchestration. Your host for this session is Dan Lachance. [Video description ends]
+A discussion of Docker application containers is not complete unless we cover Kubernetes as well. Kubernetes is open-source software, anybody can choose to run this even on-premises. It doesn't have to be something deployed in the cloud. What is Kubernetes? Well, from a simple perspective, it's a cluster of nodes, a cluster of virtual machines that are used to support containerized applications. More large scale applications that might consist of multiple containers where that application is busy. It might be something that isn't user front end facing like a busy web app.
+
+It could simply be something like a data analytics engine that does big data number crunching for example. The uses are endless, but you can deploy Kubernetes on-premises or in the cloud as a managed service. Now, the reason deploying this in the cloud has become pretty popular is because it really makes it much easier than doing everything yourself by installing the Kubernetes software and then configuring it because it can get quite involved. But when you've got Kubernetes running, it really facilitates the management of your containerized application or applications. So the deployment of those containers through something called pods. We'll talk about that a bit later, the scaling, which can also be an automated configuration. So let's say that you've got a Kubernetes cluster running application containers crunching big data.
+
+Well, if there's more of a data feed that needs to be analyzed, autoscaling can add additional worker nodes, fire up the appropriate application containers and get to work on that data analysis. So, Kubernetes is a way to coordinate multiple worker nodes, virtual machines that can talk over the network to work together with a single common goal to run an application of some kind. Some of the benefits of Kubernetes would include autoscaling. We've mentioned that when the app gets very busy, you get to define exactly what that means. It could be number of concurrent connections, amount of ingested data. It could be based on performance metrics like network traffic, CPU utilization, memory utilization, or any combination thereof, and more. Kubernetes also supports load balancing. Load balancing of course, means that when we do get a lot of requests for an app, whether it's from automated services or from actual user requests, when things get too busy and can no longer be handled by the deployed application containers, other ones can be deployed to handle the increased workload.
+
+Desired state management, such as with autohealing. We can ensure, for example, that the desired state of our Kubernetes cluster is always maintained at having four virtual machines running, and if any of them fail, another one will be launched in its place hence, autohealing. And the nature of containers unto themselves means that software developers can update containerized apps without downtime for the entire app if it's a multi-container application. Pictured on the screen, we've got a screenshot of deploying or creating a Kubernetes cluster in the Microsoft Azure public cloud. And as we've mentioned, setting up a Kubernetes cluster from scratch on-premises takes more time and is much more involved than what you would see such as here for example, deploying it in the cloud as a managed service. So, here we select the Kubernetes version that we want to use. We configure the node pool and the node size which determines the underlying horsepower for each virtual machine.
+
+So, in terms of RAM and CPU, we determine if we want to use manual or automated scaling. We can set the Node count range that we want to have. That's our desired state. So, the idea is that we have kind of a wizard feel to go through and configure our Kubernetes cluster and of course, we can get very detailed and manage it and configure it further after the fact when we run this in the cloud. Now, I mentioned earlier Kubernetes pods, what is this? A Kubernetes pod is an object you can deploy into the Kubernetes cluster, but what is the pod itself? The pod has the definition where it can run one or more containers from specified container images. You can have one pod in your cluster, you can have multiple pods deployed. It really depends on what you're trying to accomplish and how the apps are structured in terms of how many app containers they consist of and how busy the workload is. Now, one way to deploy a pod is using a YAML app config file. Now, you might configure this on a cluster service node and then have it deployed on worker nodes shown in the right-hand part of the diagram.
+
+The worker nodes communicate over the network with other nodes in the cluster service node using a process called kubelet spelled "kubelet". So, a worker node is just a container host that can run containerized applications. So, the kubelet process then allows talking to the cluster service node. Now, the cluster service node essentially maintains the configuration for the cluster. Remember we talked about autohealing. This is where the configuration would exist for determining that we need to have a desired state of four nodes and if we don't, then launch another one if one has failed. Kubernetes deployment begins with creating the cluster. Now, there are a number of ways that you can do this. Most of them are command-line based, but some are actually GUI based, normally through a web interface or, of course, that might be presented to you in the cloud. Depending on what you want to do and which commands you want to issue will determine what you might need to install.
+
+Such as on a Linux host, you might install the kubelet, kubeadm, and kubectl packages. For example, you could define a configuration for a cluster using kubectl, kubectl config set-cluster. Let's say, we want to call it cluster1 --server equals and I could point to the localhost when I'm running this command if it's going to be the cluster master node, and point to and specify the default listening port of 8087. After which I could run the kubectl config get-clusters command to see how many clusters I have deployed. After the cluster exists in step 2, we can then deploy a containerized app or multiple apps in the cluster. One way you might do that is using kubectl apply -f and then give it the name of the yml file where you've defined the pod information that you want deployed into the cluster. So, Kubernetes then is a cluster container orchestration environment where you can manage the cluster nodes centrally.
+
+11. Video: Deploying a Cloud-based Kubernetes Cluster (it_oslsca_02_enus_11)
+
+In this video, you will learn how to deploy a Kubernetes cluster in the cloud.
+deploy a Kubernetes cluster in the cloud
+[Video description begins] Topic title: Deploying a Cloud-based Kubernetes Cluster. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, I'll be deploying a cloud-based Kubernetes cluster. Deploying anything in the cloud as a managed service means that you don't have control of the underlying virtual machines and all of the details that go along with that.
+
+[Video description begins] A Microsoft Azure page displays with the heading Microsoft Azure. It contains a search bar on the top. The working pane consists of two sections namely, Azure services and Resources. The Azure services list various options such as: Create a resource, Virtual machines, Resources groups, and so on. The Resource section contains 2 subsections: Recent and Favorite. The Recent resources contain the following columns: Name, Type, and Last Viewed. [Video description ends]
+
+Sometimes that's a good thing because it means it masks the complexity of the underlying infrastructure where it might not be necessary for you to completely control that. There are certainly times when you must, but when you don't have to, these managed services are a blessing. They make things very easy and that's what we're going to do here with Kubernetes. So, here in the Azure portal, I'm going to click Create a resource, and I'm going to search for kubernetes, and I'm going to select Azure Kubernetes Service, otherwise just abbreviated to AKS.
+
+[Video description begins] A page displays with the heading: Create a resource. The left pane contains the following options: Get Started, Recently created, AI + Machine Learning, Analytics, Blockchain, and so on. It contains a search bar. There are two columns in the working panes: Popular Azure services and Popular Marketplace products. The Azure services column contains the following options: Virtual machines, Function App, Key Vault, Data Factory, and so on. The Marketplace column contains the following options with the icons: Windows Server 2019 Datacenter, Windows 11 Pro, version 21H2, Ubuntu Server 22.04 LTS, and so on. [Video description ends]
+
+[Video description begins] The page now appears with the heading Marketplace. The left pane contains various options: Get Started, Service Providers, Management, My Marketplace, Categories, and so on. The main pane contains a search bar along with the list of highlighted items: Azure Kubernetes Service (AKS), AKS Base Image, Kubernetes - Azure Arc, Kubernetes Fleet Manager, and so on. [Video description ends]
+
+So, Azure Kubernetes Service, Create.
+
+[Video description begins] A corresponding page called Azure Kubernetes Service (AKS) appears. It contains a search bar along with a Create button. Below, it contains the following sections: Overview, Plans, Usage Information + Support, and Ratings + Review. [Video description ends]
+
+So, we'll have to deploy this into a Resource group. We can choose a Cluster preset configuration, I'll just leave it on Standard. For the name, I'm going to call it mykubernetescluster172. It'll be deployed in the East US Region.
+
+[Video description begins] The page now appears with the heading Create Kubernetes cluster. It contains the following sections: Basics, Node pools, Access, Networking, Integrations, Advanced, Tags, and Review + create. The Basics section is now highlighted. It displays the following details: Project and Cluster. The Project details contains 2 fields: Subscription and Resource Group. The Instance details contains the following fields: Cluster preset configuration, Kubernetes cluster names, Region, Availability zones, AKS pricing tier, and so on. Below, it contains a header called Primary node pool. It contains the following fields: Node size, Scale method, and Node count range. [Video description ends]
+
+One of the important things here is determining the version of Kubernetes that you would like to use. Depending on what kind of workloads you need to run in the Kubernetes cluster in terms of application containers might dictate that you need a specific minimal version of Kubernetes. I'll leave the default selection. And for the Primary node, down below, these are the underlying nodes or virtual machine nodes. I can set the size.
+
+I can click Change size link if I want to have more individual virtual machine horsepower like CPUs, RAM, but I'll leave it as it is. I can always change it after. The scaling method here is set to Autoscale. So, for the Node count range, I'm going to go ahead and bump that up so that we have from 1 to 2. Naturally, if you're going to be doing something very intensive like massive data analytics then you can increase the Node count, but I'll leave it at this for this example, and I'll click Review + create. It's validating my selections. Validation has passed so I'll go ahead and click Create to create the Kubernetes cluster. And after a minute or two, it says, Your deployment is complete. So, we could choose Go to resource to view its properties.
+
+[Video description begins] A page labelled: microsoft.aks-20230724151521 | Overview displays on the screen. The resource menu appears on the left, with the following options: Overview, Inputs, Outputs, and template. The working pane contains a command bar with the following tabs: Delete, Cancel, Redeploy, and Refresh. The main pane consists of the following header: Your deployment is complete. The buttons of Go to Resource and Connect to cluster are also displayed. [Video description ends]
+
+We also have a Connect to cluster button. You can do all of these things and much more at any point after the fact.
+
+For instance, if I were to go to the All resources view, among the other resources we've deployed in our cloud subscription, if I search for kubernetes, we also have a number of resources here shown for Kubernetes, you've got a Load balancer, a Virtual machine scale set, a Route table, a Virtual network, and, of course, the Kubernetes service itself, which, in this case, is called mykubernetescluster172. If I go into the Overview of it, I can Start, Stop, Delete the cluster, I can also choose to Connect to the cluster. 
+
+[Video description begins] The page called All resources is now active. It contains a command bar with the following tabs: Create, Manage view, Refresh, Export to CSV, Open query, Assign Tags, and Delete. Below, it contains a table with the following column headers: Name, Type, Resource group, Location, Subscription, and Tags. [Video description ends]
+
+[Video description begins] A corresponding slide called mykubernetescluster172 appears. The left pane contains the following options: Overview, Activity log, Access control (IAM), Tags, Diagnose and solve problems, Microsoft Defender for Cloud, Kubernetes resources, Settings, and so on. The main pane contains a toolbar with the following tabs: Create, Connect, Start, Stop, Delete, Refresh, Open in mobile, and Give feedback. Below, it contains a list of Essentials such as: Resource group, Status, Location, Subscription, Subscription ID, and so on. It further contains the following section: Get started, Properties, Monitoring, Capabilities, Recommendations, and Tutorials. [Video description ends]
+
+When I click that, it shows me how I can do it using the Cloud shell, which is available with this icon here in the portal up at the top to the right of the Search field. It's like a built-in Command Prompt environment accessible within this cloud GUI. So, it shows you how to Set the cluster subscription, and how to gain access to the cluster credentials.
+
+[Video description begins] A right pane called Connect to mykubernetescluster172 appears. It contains 2 sections: Cloud shell and Azure CLI. The Cloud shell section contains the following headers: Set cluster context, Sample commands, and Useful links. [Video description ends] 
+
+And then, of course, a number of sample commands which are using the kubectl, kubectl command line prefix which is standard when it comes to managing a Kubernetes deployment. Let's launch the Cloud Shell icon here. First time you do it, it's going to provision some storage for use when you're in the Cloud Shell command line environment in case you need to have persistent storage for things like scripts and so on. So, I'll just click Create storage and after a minute, it's initialized. So, we're in our Cloud Shell. Now, we could actually also have established a new Kubernetes cluster here from the command line, we could have done this. We could have run az aks for Azure Kubernetes Service create dash dash, specify the resource group, let's say, hq --name, let's call it myakscluster178 --node-count of 2, and we could tell it because it's going to be using Linux underneath the hood --generate-ssh-keys.
+
+So, let's go ahead and actually do this.
+
+[Video description begins] A CloudShell window appears. The command reads: az aks create --resource -group hq --name myakscluster178 --node-count 2 --generate-ssh-keys. [Video description ends]
+
+It won't take very long before we get some returned JSON formatted output which tells us that our cluster has been deployed and we did this using the command line. That's why the prefix was az, that stands for Azure. So, here at the command line, in Cloud Shell, I could run az aks as we saw in the instructions, get-credentials to get the cluster credentials, --resource-group is hq, that's the resource group I deployed my cluster into, and --name. The name of my cluster is myakscluster178.
+
+Looks like I had a typo when I created it, but we'll stick with the name here since it's already deployed.
+
+[Video description begins] The command now reads: az aks get-credentials --resource-group hq --name myakscluster178. [Video description ends]
+
+OK, so let's merged that into my config file for kube, which is the command line tool used to manage this. So, at this point, I could just use the standard kubectl command set. This is part of Cloud Shell here on a Linux host, this is something you might have to install, but at any rate if I just run get nodes, it will return the fact that I've got 2 nodes available, 2 virtual machines available within my node pool. Remember we set the node count parameter to a value of 2 when we deployed this at the command line.
+
+[Video description begins] The command reads: kubectl get nodes. [Video description ends] 
+
+12. Video: Managing Kubernetes With kubectl (it_oslsca_02_enus_12)
+
+Find out how to to interact with a Kubernetes cluster using the kubectl command.
+to interact with a Kubernetes cluster using the kubectl command
+[Video description begins] Topic title: Managing Kubernetes With kubectl. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, we'll do some basic Kubernetes management with the kubectl command spelled kubectl.
+
+[Video description begins] A Microsoft Azure page displays with the heading Microsoft Azure. It contains a search bar on the top. The left pane appears with various options such as: Create a resource, Home, Dashboard, All services, All Resources, SQL database, App Services, and so on. The working pane consists of two sections namely, Azure services and Resources. The Azure services list various options such as: Create a resource, Virtual machines, Resources groups, and so on. The Resource section contains 2 subsections: Recent and Favorite. The Recent resources contain the following columns: Name, Type, and Last Viewed. [Video description ends]
+
+First thing we'll do here is we'll take a look at any Kubernetes clusters that we might already have deployed in the Microsoft Azure cloud. Of course, Kubernetes is not tied to Microsoft directly. You can install a Kubernetes server yourself on-premises on the Linux platform. However, most public cloud providers have made it very easy to deploy this in their cloud environments as compared to setting everything up manually yourself. So, if I go to the All resources view here in the Microsoft Azure portal, and if I search for what might be in the name, like Kubernetes, I have a number of resources that show up here.
+
+[Video description begins] The page called All resources is now active. It contains a command bar with the following tabs: Create, Manage view, Refresh, Export to CSV, Open query, Assign Tags, and Delete. Below, it contains a table with the following column headers: Name, Type, Resource group, Location, Subscription, and Tags. [Video description ends]
+
+Of course, I've got the actual Kubernetes cluster service object itself, one is called myakscluster178. There's a little typo in the name, but that doesn't matter. And I've got another one called mykubernetescluster172. We also have all of the supporting other resources that were created along with creating the cluster service, like a Managed Identity if you need to give permissions to the cluster to other stuff here in the cloud, Load balancers, and so on. 
+
+[Video description begins] A corresponding slide called mykubernetescluster172 appears. The left pane contains the following options: Overview, Activity log, Access control (IAM), Tags, Diagnose and solve problems, Microsoft Defender for Cloud, Kubernetes resources, Settings, and so on. The main pane contains a toolbar with the following tabs: Create, Connect, Start, Stop, Delete, Refresh, Open in mobile, and Give feedback. Below, it contains a list of Essentials such as: Resource group, Status, Location, Subscription, Subscription ID, and so on. It further contains the following section: Get started, Properties, Monitoring, Capabilities, Recommendations, and Tutorials. [Video description ends]
+
+Of course, if we click on a given Kubernetes cluster, in the Overview page, we can click the Connect button over on the right to get an idea of how we might use the Cloud Shell built here into the Azure portal, and how we would issue commands to start working with things like getting any deployments in all namespaces in the cluster.
+
+[Video description begins] A right pane called Connect to mykubernetescluster172 appears. It contains 2 sections: Cloud shell and Azure CLI. The Cloud shell section contains the following headers: Set cluster context, Sample commands, and Useful links. [Video description ends]
+
+Let's go ahead and open up the Cloud Shell by clicking the icon to the right of the Search bar at the top. This gives you access to Microsoft Azure command line tools as well as basic Kubernetes command line management tools that are already preinstalled. 
+
+[Video description begins] A CloudShell window appears. The command reads: az aks get-credentials --resource -group hq --name myakscluster178. [Video description ends]
+
+The first thing I'll do here in Cloud Shell is make sure I have an authenticated connection to one of my clusters, and I can do that with az which stands for Azure, aks which stands for Azure Kubernetes Service, get-credentials --resource-group hq for headquarters is the resource group into which I have previously deployed my Kubernetes cluster and I'm going to pick on a specific cluster by its name using the --name parameter and Enter. So, what it's going to do is merge that as what's called the current context, so I have an authenticated management connection for my cluster.
+
+So, I'll clear the screen and at this point, I can use the kubectl command to do things like return a list of nodes in the cluster.
+
+[Video description begins] The command reads: kubectl get nodes. [Video description ends]
+
+So, I have two active nodes that are ready within this cluster. I'm going to use the built-in nano text editor to create a file called app1.yaml which stands for yet another markup language. What I'm doing here is I am defining what I want to deploy into my Kubernetes cluster.
+
+[Video description begins] The command now reads: nano app1.yaml. [Video description ends]
+
+So, I've got the apiVersion keyword followed by a colon, a space, and v1. Notice, the V is capitalized in the word Version. For the kind of deployment, so kind: I have Pod with a capital P, remember a pod is a deployment unit that you can work with in Kubernetes that can reference one or more containers. Then for metadata: on the next line, I have name: pod1. Under spec: I have containers: then - name: I want to call it app1, and the image I want to use.
+
+So, image:. is caddy:latest. Now, what am I referring to here? I can be referring to a container image in an Azure Container Registry, or I can just pull it from things like docker.hub. I'm going to press Ctrl+X, save the modify buffer, and I'll write it out to my app.yaml file. So, we're at a Linux Command Prompt, which is part of Cloud Shell. Here, it looks like we're set to running a Bash environment. OK, well, that's very familiar to us. Now what I want to do is run kubectl apply -f for file app1.yaml. I want to apply that configuration into my Kubernetes cluster.
+
+[Video description begins] The command now highlights: kubectl apply -f app1.yaml. [Video description ends]
+
+Notice, it says that pod1 has been created.
+
+So, if I were to run kubectl get pods --all-namespaces, you've got a lot of built-in default pods, but here's the one that we've created called pod1 in the default namespace. I can also run command such as kubectl get pods --show-labels, OK.
+
+[Video description begins] The command now highlights: kubectl get pods --all-namespaces. [Video description ends]
+
+[Video description begins] The command now reads: kubectl get pods --show-labels. [Video description ends]
+
+Well, this is a bit more of a smaller listing. We see that pod1 has a STATUS of Running. If I do an ls here, I've got a file called file1 and if I cat it to show us the contents, it just says sample text.
+
+[Video description begins] The command now reads: ls. [Video description ends] 
+
+
+[Video description begins] The command reads: cat file1.txt. [Video description ends]
+
+The point is this I can use kubectl to get that into running container which is part of a pod. So, what I mean by that is I can run kubectl cp for copy ./file1.txt pod1:/ -c, lowercase c because within pod1, I want to specify a container called app1.
+
+[Video description begins] The command now reads: kubectl cp ./file1.txt pod1:/ -c app1. [Video description ends]
+
+So there are plenty of things that we can do when we want to run containerized applications in a Kubernetes cluster. You'll do this often for very large-scale busy apps that might be used for very busy websites or might be used for large-scale data analytics.
+
+13. Video: Course Summary (it_oslsca_02_enus_13)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary [Video description ends]
+So in this course, we've examined how to deploy and manage containerized applications on the Docker platform. We did this by exploring how to install Docker on Linux, how to work with the Docker CLI, and how to configure a container overlay network, and manage app containers. Followed by creating and using a cloud-based container registry and using and working with a Dockerfile.
+
+And finally, working with Kubernetes container orchestration, and deploying a cloud-based Kubernetes cluster, and managing Kubernetes with kubectl. In our next course, we'll move on to use Infrastructure as Code and version control in IT environments.
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

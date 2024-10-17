@@ -1,0 +1,728 @@
+CompTIA Linux+: Shell Scripting with Bash
+Linux shell scripts can be used to automate and schedule repetitive tasks. The proper management of scripts involves an understanding of how to work with script components such as variables, parameters, functions, redirection, as well as conditional and looping constructs. In this course, we'll begin with an overview of Linux shell scripting, including covering common commands used in scripting such as tee, awk, sed, grep and egrep. We will then discuss script comparison operators, how to pipe command output to other commands and how to use input and output redirection. Next, we'll cover how to use various conditional statements such as "if", and how to use various looping constructs such as "for" and "while". Then, we'll cover how to manage Linux environment and shell script variables followed by working with array variables. Lastly, we'll create and run Linux shell scripts followed by scheduling and troubleshooting scripts. This course can be used to prepare to the Linux+ XK0-005 certification exam.
+Table of Contents
+    1. Video: Course Overview (it_oslsca_01_enus_01)
+
+    2. Video: Linux Shell Scripts (it_oslsca_01_enus_02)
+
+    3. Video: Shell Script Comparison, Piping, and Redirection Operators (it_oslsca_01_enus_03)
+
+    4. Video: Shell Script Looping Constructs (it_oslsca_01_enus_04)
+
+    5. Video: Managing Linux Environment and Shell Script Variables (it_oslsca_01_enus_05)
+
+    6. Video: Writing and Running a Simple Shell Script (it_oslsca_01_enus_06)
+
+    7. Video: Deploying a Shell Script to AWS Virtual Machines (it_oslsca_01_enus_07)
+
+    8. Video: Parameterizing Shell Scripts (it_oslsca_01_enus_08)
+
+    9. Video: Working With Array Variables (it_oslsca_01_enus_09)
+
+    10. Video: Creating a Shell Script Function (it_oslsca_01_enus_10)
+
+    11. Video: Writing and Running a Backup Shell Script (it_oslsca_01_enus_11)
+
+    12. Video: Scheduling a Backup Shell Script (it_oslsca_01_enus_12)
+
+    13. Video: Writing and Running a "For" Looping Shell Script (it_oslsca_01_enus_13)
+
+    14. Video: Writing and Running a "While" Looping Shell Script (it_oslsca_01_enus_14)
+
+    15. Video: Troubleshooting Shell Scripts (it_oslsca_01_enus_15)
+
+    16. Video: Course Summary (it_oslsca_01_enus_16)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_oslsca_01_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Dan Lachance. [Video description ends]
+Linux shell scripts can be used to automate and schedule repetitive tasks. The proper management of scripts involves an understanding of how to work with script components such as variables, parameters, functions, redirection, as well as conditional and looping constructs.
+
+In this course, I will begin with an overview of Linux shell scripting, including covering common commands used in scripting such as tee, awk, sed, grep, and egrep. I will then discuss script comparison operators, how to pipe command output to other commands, and how to use input and output redirection.
+
+Next, I will cover how to use various conditional statements such as “if” and how to use various looping constructs such as “for” and “while”. I will then cover how to manage Linux environment and shell script variables, followed by working with array variables.
+
+Lastly, I will create and run Linux shell scripts, followed by scheduling and troubleshooting scripts. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+
+2. Video: Linux Shell Scripts (it_oslsca_01_enus_02)
+
+After completing this video, you will be able to describe how to automate tasks using shell scripts with commands such as tee, awk, sed, find, grep, and egrep.
+describe how to automate tasks using shell scripts with commands such as tee, awk, sed, find, grep, and egrep
+[Video description begins] Topic title: Linux Shell Scripts. Your host for this session is Dan Lachance. [Video description ends]
+Managing Linux hosts means that you must have a strong grasp of how to work with Linux shell scripts, whether it's creating them or whether it's taking existing scripts and running them. So let’s go through a few things here.
+
+First of all, the Linux shell script, what we're talking about is a text file with a number of commands that can be executed, which allows for automation of those commands just by calling the name of the script, and you can also schedule scripts using cron.
+
+In addition to that, we should be aware that the specific syntax that we use to write expressions within the shell script will vary depending on the shell that will be used. And we’ve talked about shells already, such as a standard shell or sh, a Bash shell, a C shell, Korn shell, and so on. Normally shell scripts will have a .sh file extension, but that's not a requirement.
+
+The first line within a shell script should be what they call a shebang line, this defines the shell that will be used. For example, we would start with a # or a # symbol, a number sign, whatever you want to call it, followed by an ! and then the path to the binary to launch the shell, such as /bin/bash or if you're just using a standard C shell instead, your shebang line would look like a #!/bin/csh.
+
+It’s very important to define this because there are some subtle differences with syntax and how variables are handled between different types of shells. So to make sure that your script runs successfully for the shell it was written for, make sure you define the shell that should be used to run it on the first line within your script.
+
+The next thing to think about is the content within the script itself. What can we put in a shell script? You can put any valid Linux commands that you would normally type at the command line, which includes working with variables. You can even reference other scripts that you want to spawn from a script that's currently running.
+
+In order for a shell script to run the execute permission and the read permission must be set. One way to do this, for example is to use chmod +rx and then the name of the script file. In this particular example, we are enabling, read and execute for everybody. Otherwise, you could set it just for the owning user, the owning group or other.
+
+Within a shell script, you can choose to define functions. A function is a block of code that you want to reference perhaps multiple times, simply by calling the name of the function. In this example, to create a function in a script, or you could even do this at the command line. We would begin with the function keyword, followed by the name that we want to use for the function.
+
+In this case, I’m calling my function show_ipinfo, that’s followed by an (). This function doesn't have any arguments that will be passed to it. Then I’ve got an { and notice at the bottom I’ve got a } within which I have the definition of whatever it is the function should do. We aren’t as concerned about all of the commands within the function in this example more than we are about the construct.
+
+So whatever the commands are within the show_ipinfo function, when we want to call that function, whether at the command line in the shell or within a script, we can simply call upon show_ipinfo. And you can imagine if that might be invoked multiple times, it’s quicker just to call that function on one line by referring to its name, then referring to all of the code or all of the statements within the function.
+
+Pictured on the screen, we’ve got a screenshot at the Linux command line of actually running the show_ipinfo function. Remember, you can define functions right at the command line, and they will be resident in memory for the duration of your login session. At any rate, the resultant output of that function is shown on the screen, and then my command prompt is then given back.
+
+Well, you can use any valid Linux commands within shell scripts. It’s worth taking a few moments to quickly talk about filtering with grep, grep -i means I want to do a case insensitive line match, and in " " here, I have a ^ followed by the word toronto. And then after that, I’m referring to /budgets/*.xls. In other words, I would look for any lines beginning with the text toronto it has to be at the beginning of the line for any of the xls files within the budgets directory, very powerful command. So line starting with toronto; case insensitive.
+
+In the next example, grep "costcenter.*344", this means that we want to return lines that contain costcenter followed by 344, with anything in between costcenter and 344. You can also use the egrep line filtering tool, here in ' after the word egrep, we have a ^, a Y, and { 2, } and ', and then we are referring to the airports.txt file, what does that mean? It means that we want lines returned that start that’s what the ^ means must be at the beginning of the line, has to start with two occurrences of a Y. So you can use regular expression notation like this when you want to do filtering.
+
+In our next example, once again, we are using egrep, and in ', we have a Y notice the lack of a leading ^. Then after that, we have got within {1,2}, and then we close our ′, and we are doing that against a file called airports.txt. This means that we want to return lines within the airports.txt file that contain either a single Y or YYs together.
+
+Now if you’re wondering what’s the difference really between grep and egrep, not really too much, one of the big differences is that with egrep, you don't have to escape special characters, characters that have special meaning like you would with grep.
+
+And then we’ve got the tee spelled t-e-e and find commands that you might use in a script. Let’s start by talking about an example. Let’s say we’re using the list block command lsblk to list scsi devices, so --scsi. So what we could do optionally instead of having that output on the screen is use the output redirection symbol, the > sign and write it out to a file somewhere, and that’s fine. However, it writes output to the file only, not to the screen, which would normally occur if you weren't using the output redirection symbol.
+
+Consider our next example, it’s the same at the beginning lsblk --scsi. But instead of output redirection, we are piping using a vertical bar | to the tee command and then specifying a file to output to. The difference here is that we are doing two things, that’s what the tee command does for output. It will write the output to the screen and, in this case, to our named file.
+
+Then we have the find command to search for content where we're specifying a / for the root of the file system, it’s recursive by nature -name, and then we’ve got a wild card filter here looking for xls files -user cblackwell, so the owning user must also be cblackwell and then we’re using output redirection to write that to a file called cblackwell_files.txt.
+
+And then we’ve got something interesting, we’ve got 2> sign which captures any error output that might result from the command. You could write that to a file, but here it’s being discarded by writing it to /dev/null, find those files owned by that user, and suppress errors from the display.
+
+The sed command s-e-d, this can use regular expression type of syntax to do a multitude of things, here we have sed -e, and in ' ' we have got s/toronto/vancouver/, and then we're referring to a text file somewhere. What this means the s means that we want to substitute, in this case, the word toronto with vancouver in that named file, kind of like a search and replace.
+
+In the next example, we’ve got awk spelled a-w-k in ' ', we have NR>1, and then we’re referring to locations.txt. All that this means is we would like to remove the first line header from the output. In our next awk example in ' ' and within {}, we have print $1, $3, then we have FS=, OFS=, and then customers.txt. What does that mean? It means we want to set the field input and output separators, so FS Field Separators or OFS Output Field Separators. We want to set the Field Separators to a , and extract only columns 1 and 3. Well, from where? From the customers.txt file.
+
+Finally, we've got a simple example of a very basic bash shell script where we've got our shebang line, which is referring to our bash binary. We're just clearing the screen and then echoing back some text. You can read in input from the user with the read command and store it in a variable. In this case, I’m storing it in a variable called firstname, and then we can echo back literal text in addition to the result of commands.
+
+Notice that the hostname command here is within ``, those are not ' '. When you want to work with the resultant output of a Linux command and store it in a variable or have it concatenated with literal text, you can enclose it in `` symbols.
+
+And then of course, to refer to a variable like firstname, we would use the $ prefix in front of the variable name. In the next line, I’m just echoing back the date again. Notice the date command is enclosed within `` symbols because we want the result of that command displayed, not the text date, literally. So that gives us an idea then of what to think about when it comes to working with shell scripts.
+
+3. Video: Shell Script Comparison, Piping, and Redirection Operators (it_oslsca_01_enus_03)
+
+Upon completion of this video, you will be able to describe how to use comparison and redirection operators in a shell script.
+describe how to use comparison and redirection operators in a shell script
+[Video description begins] Topic title: Shell Script Comparison, Piping, and Redirection Operators. Your host for this session is Dan Lachance. [Video description ends]
+Let's take a few minutes to talk about shell script commands in the sense of talking about things like comparison operators, talking about piping from one command, and taking the output and handing it off to another. And then, of course, talking about redirection.
+
+Let's start with comparison, specifically the if statement. Every language has an if statement, and it's always important to know how to use it to test a condition. [Video description begins] The shell script editor displays. [Video description ends] In our syntax example here, we have if test $USER = "root". So we're testing the value of the $USER variable to see whether or not it contains the text root. Bear in mind here and we have a comment within a script if you want to comment, precede the line with a # or # symbol.
+
+Here we have a comment stating the $USER is simply a built-in environment variable contained the current logged in users username. So we have our if statement, following that we have a then statement, where we can then determine what we want to do if the statement evaluates to being true if the user is root in this case. So what we're doing is simply echoing back, "Welcome root!".
+
+We have an else block, so what if it's not root? Well, we're just going to echo Welcome and then whatever the $ username variable contains, and you end the if block with the word if backwards. That's kind of a common theme, when it comes to Linux shell scripting, so fi. Now that's great if you're just testing for one thing, but there are times when you need to test a variable or test something for a multitude of possible values.
+
+And that's where you might want to use the case construct for that type of comparison. Consider this example where we are creating a simple menu system within our script, and then we're testing the value what the user enters in using the case construct. [Video description begins] A series of code displays on the shell script editor. [Video description ends] So we've got a bunch of echo statements echoing back some text like a title at the top that says "MENU SYSTEM".
+
+And then we echo back two menu options, 1 for "Quit", 2 to "Show IP Address" and then we are echoing "Enter Selection:". You can read user input, whatever they type in, and store it in a variable with the name is up to you. So I'm calling my variable choice. Then I can test for multiple possibilities within the choice variable using the case, so case $choice in.
+
+And the first value I want to test is a value of 1. So I just put in a 1 on the next line followed by a ) and what I want to execute if the user types 1, which is quit. So that will run the exit command to exit the script, which is followed by ;;. On the next line, what if the choice variable contains 2? So we have 2) in this case, to show the ip address, the ip a command is being executed again, followed by ;;.
+
+But what if the user typed in something other than 1 or 2? So the next thing we have in our case statement is an *, a wild card, followed by a ), and then we're just echoing back, "I don't know". Much like the if statement block starts with if and ends with fi, the word if backwards. So too, is the case here with the case construct, it starts with case c-a-s-e, and it ends at the bottom with the word case backwards esac. So that's another way to test for values.
+
+And then we've got piping. So we've got a comment here that says cmd1, then we've got a vertical bar or a | symbol you can usually get that on your keyboard by shifting your tilde key towards the upper left of your keyboard. So cmd1 | cmd2 | cmd3. What we would be doing in that example is taking whatever the output of cmd1 is feeding it into cmd2 for further processing, and then whatever the output of cmd2 is, we are furthermore piping it again to something else in cmd3.
+
+So you can pipe numerous times maybe to filter output, to pare it down to what you need, that type of thing. In this example, we're creating a variable called DGW_VAR, Default Gateway Variable is what that stands for. It will equal the result of running a Linux expression which is enclosed in `` not ' ' big difference.
+
+The `` remember means that we want the result of that expression to be written into the variable, not the literal text for the expression itself. What are we doing? Well, we're writing the ip route show command piping it to grep the line filter, looking for the word default, and then we're piping that to the translator tr command to substitute spaces and squeeze them down and replace it with a : as a delimiter.
+
+Then we can pipe that to the cut command because now we've got a standard delimiter, and we can cut out f3 where the delimiter is a full :. Now that just happens to be an example with multiple pipes in it. There are so many variations on how this could be used when it comes to piping. So then we can echo back our variable.
+
+And remember, when you echo back a variable, whether at the command line or whether in a shell script, put a $ in front of the variable name. [Video description begins] A line of code displays on the screen. Code reads: echo $DGW_VAR [Video description ends] So this would show the IP address of the machine's default gateway.
+
+So with command redirection, whether at the command line or in a shell script, you can use the < symbol to input data from a source like a file. You could output the result of a command to something such as a file, or you might redirect erroneous output to /dev/null. And if you want to append to a file, you can use the >> sign. That's handy when you want to keep a running log of some kind of activity.
+
+So as an example of how you might use appending, here we've got a function called backup that's being declared. So function backup, { and then we have our code within the { } for our function definition. [Video description begins] The shell script editor displays a series of codes. [Video description ends] Now, what’s this function doing? It’s just an example, but it’s using the tar command to create a backup where the backup name will use variables that were defined elsewhere like, $year-$month-$day.
+
+And what’s important here is the >> sign. What we're doing is taking the resultant output of the tar command notice at the beginning of the tar command to the left here. Part of the command line parameters is a lowercase v, which means verbose. We want screen output of what's being backed up. That listing of files being backed up will be appended to /var/log to a file called backup_log- whatever the date variable returns _var.log.
+
+That’s not really the point here, the point is that we are appending to a file, every time this function is executed, it will keep a running list it will keep adding to the backup log, not overwriting it, which is > sign or the output redirection symbol would do. You would call the backup function simply by typing in backup, such as within a script or at the command line if you’ve defined the function in the current session at the command line.
+
+4. Video: Shell Script Looping Constructs (it_oslsca_01_enus_04)
+
+After completing this video, you will be able to outline how to use looping constructs in a shell script.
+outline how to use looping constructs in a shell script
+[Video description begins] Topic title: Shell Script Looping Constructs. Your host for this session is Dan Lachance. [Video description ends]
+When you're working with shell scripts and Linux, it's important to have an understanding of looping constructs. So what we're talking about is repeating statements within a loop. So having multiple passes, multiple iterations of the same code, executing numerous times. How many times really depends on the type of loop that you're working with and whether or not it tests any conditions. So therefore, there are various types of looping structures that we will talk about here.
+
+The first type is the standard for loop, f-o-r, for. So in our sample here, we've got a simple example in a shell script, where we're starting with the shebang line at the top. Always important to define the shell that should be used to run [Video description begins] The shell scripts editor displays with a list of code. [Video description ends] the following commands. Here, our shebang line at the top is referring to /bin/bash. Then we're clearing the screen ;.
+
+Next statement we are running, let totalsize=0. What we're doing is setting the value of a variable that we are calling totalsize, we're setting it to 0. Then a ; and the same type of thing where we're setting the value initially to 0 of a variable that we are calling currentsize. Then the for loop initial construct, we have the word for. Then we have the letter i, then in then /web files/*.htm. What does that mean? First of all, the letter i is the name of a placeholder variable. It could be bananas for all we care.
+
+It just happens to be i, in this case, it's up to the creator of the script because what we're doing after the word in, is we are processing all .htm files in the /webfiles directory. Let's say we've got three of them the first time through this for loop, the variable i, our placeholder variable, will contain the details for the first htm file.
+
+The second time through the for loop, the variable i will now contain information for the second htm file in the webfiles directory, and so on. So after your initial for statement, you then have a do done block within which you put the code that you want to execute each time through the loop. So within our do done block, the next line is let currentsize, there's that variable again = and then in ``, we have an ls -l statement where we are doing a long listing of the current file name, which we reference as $i.
+
+Now we have a $ in front of the i here because we're calling upon its value, and then we're piping that to the translate command tr and squeezing all of the multiple spaces that might exist between information, to single spaces, and then we're piping that to cut and cutting out f5 where the delimiter is a space, all of that is in `` because we want the result of that command to be written into the currentsize variable.
+
+What that really means is I just want column 5 or f5, which is the size of the file. I want that to be in the currentsize variable. In the next line, we are letting the totalsize variable = what it currently might already equal, so $, totalsize + what we've just determined is the current file size in the line above. So $currentsize. So $totalsize is a variable whose value keeps increasing as we loop through our do, done block for all the htm files in the webfiles folder.
+
+And finally, at the end, outside of the do done block, we have an echo where we're echoing back some text, and we're piping to the tee command, so we have stuff that shows up on the screen. Our echo statement will appear on the screen, and it will also be written to the html file results file.
+
+That's just one of many, many possible examples of how to work with a for loop. The key here is to watch for the variables. When you're declaring your variable within the for loop, there's no $, but when you call upon its value within the loop, use a $. [Video description begins] The instructor highlights the i and $i in the list of codes displayed in the editor. [Video description ends]
+
+Next, we've got a while true loop. So it's another type of loop where we want to keep the loop running until a given condition is false. So notice at the top we have while, and then we have a do, done block. [Video description begins] He highlights the code while, do, and done in the list of codes displayed in the editor. [Video description ends] In this particular example, the while statement at the top simply says, while true. While true is always true, so that means that we're going to go through this loop at least once.
+
+But you could test any condition, it doesn't have to be while true, it could be while $user = root or something like that, it could be anything. Within our do, done block, we have the statements that we want executed each time or each iteration through the loop.
+
+In this case, clear the screen ; echo, which gives us a blank line and then echo "UTILITY MENU", and then use echo statements to show menu options 1 and 2, under which we then echo "Enter choice:" and then we read selection read is a keyword to read user input selection happens to be the name of the variable that we are creating to store whatever the user types in.
+
+And then, we do a case statement against $selection to see if they've typed in 1, in which case it would appear we are running a function called show_ipinfo, we don't see that function definition here. And number 2, we're just clearing the screen and exit.
+
+Notice after the closing of the case construct, which is the word case backwards, e-s-a-c, we have a read statement with the word junk. It's just another read statement that waits for user input, and I happen to be calling the variable junk because we're not really going to do anything with that value.
+
+It's just a way to pause the script until the user presses a key. So that's another way you might write a loop. We also have an until loop so we can test the condition after the word until we have a do and done block with the commands within it. So this will run the loop until the condition is true.
+
+Now, when you're in a loop, there are times given a certain situation or condition where you might want to break out of the loop. To leave the loop, you might test a condition with the 'if' statement somewhere in the loop.
+
+Imagine this example, we've got a while loop with the do, done block within the do, done block, which executes at every iteration through the loop, we've got a bunch of commands. We might have an if statement where we test a condition.
+
+So if the condition is true, whatever that condition is, then and the key here is that we're using the break keyword within the if construct. Break means I want to break completely out of the while loop. And if this is within a script of course, then it would simply continue on in the script after the end of the done block.
+
+There are also some other common looping statements that we need to be aware of, one of which is continue. Sometimes you might test a condition, maybe it's with an if statement it doesn't have to be, where you want to stop the current loop iteration and then start the next iteration of the loop, so you're not breaking out of the loop, you're breaking out of the current iteration of the loop, you still want to continue with the next pass.
+
+And then, we have the select keyword which shell script authors will normally use when they create menu systems. You don't have to use that, but it is a command option. So these are some of the finer points then of working with looping constructs normally within a shell script.
+
+5. Video: Managing Linux Environment and Shell Script Variables (it_oslsca_01_enus_05)
+
+Upon completion of this video, you will be able to view and manage environment and shell script variables, exported variables, and work with script exit codes.
+view and manage environment and shell script variables, exported variables, and work with script exit codes
+[Video description begins] Topic title: Managing Linux Environment and Shell Script Variables. Your host for this session is Dan Lachance. [Video description ends]
+All right, in this demo, we’re going to take a look at the Linux environment and shell script variables. Now, we've taken a quick peek at this already, but we're going to kind of review that and add a few extra things. [Video description begins] The Ubuntu Linux terminal screen displays. [Video description ends] So the first thing we’ll do here in Linux is type in env, which stands for Environment. And this returns, of course, a list of all of our environment variable names.
+
+And after the = sign, we have the value stored within that environment variable. For example, we’ve got the USER environment variable which contains a value of whoever I'm logged in as, which right now is cblackwell. And of course, the PATH variable, which is very important, and all of its constituents.
+
+Notice that each part or each entry in the overall PATH variable is separated with a full :. If we want to display back the contents of a variable, we can use echo with a $ and then the name of the variable. Now if I type in echo $user in lowercase letters, we get nothing. And the reason for this is because when you reference variable names, you might guess it is case-sensitive.
+
+So if we echo back $USER where the user is in uppercase letters, well then it works, it returns back our current user name of cblackwell in the same way that echo $PATH where the path is in uppercase letters works fine, but in lowercase letters, we get zero. Okay, so that’s important to start with. [Video description begins] The presenter types clear and executes it to clear the screen and then proceeds with the next line of script. [Video description ends]
+
+We know that we can initialize variables at the command line or within a script, for that matter, simply by typing it in such as city= and in " ", I’ll put in Zurich. So we’ve created a city variable that will only exist while this current shell session is active. And the city variable was defined in lowercase letters, and it contains a text string of Zurich. If we echo back $city, we get Zurich returned back.
+
+Now, depending on the type of shell you are using, whether it's a Korn shell, a C shell, a Bash shell will really determine exactly what the syntax is to work with variables. Here for user cblackwell, if I were to cat /etc/passwd and grep it for cblackwell, notice that the shell that is used when that user signs in, which is what I’m doing right now, already is /bin/bash.
+
+So we're focusing on how a Bash shell handles these variables. Now, let's say I want to store the current date in a variable. Now if I just run date, it returns the date and time. So I want all of that stored in a variable at the time that the command executes. If I were to create a variable, let’s say called currentdate, and if I were to say =date, when we echo back currentdate, it returns back the text string date.
+
+Okay, so it literally interpret that as being the value. What we can do instead is go back up to our declaration of currentdate= and we can enclose whatever the command is, in this case, date within ``. This is usually your tilde key on your keyboard in the upper left of your keyboard on at least a US layout, those are not single quotes.
+
+Now you can add command line parameters and get as complex as you want to. Here we’ll keep it simple. The difference now is that when we echo back $currentdate, it returns back the date and time, which reflect when that was written into the currentdate variable.
+
+It doesn’t have to be dates or times, it could be any valid Linux command or running of a script or doing anything, but it's important to know how to do this both at the command line and certainly for writing scripts. If I were to type in set and | that to more, the set command will show me all of my variables, including my user-defined variables.
+
+So not only will it show the standard environment variables like PATH and USER, but it will also show function declarations which we can call upon here in the shell and also our user-defined variables here. I'll press q to quit out of that. [Video description begins] He types clear and executes it to clear the screen and then proceeds with the next line of script. [Video description ends] Now let’s create a variable here called scriptvar=, and let’s just have it say, "Hello world!".
+
+So at the command line here, if we echo $scriptvar, it returns, Hello world!. I’ve got a script here, already created called export_var_script.sh. [Video description begins] He types a line of script. The script reads: nano export_var_script.sh [Video description ends] In it, I’ve got my shebang line at the top, where I’m instructing Linux to use /bin/bash to run the rest of the script. [Video description begins] The Nano text editor displays a series of scripts. [Video description ends] I’m clearing the screen, I’m echoing back scriptvar, which we just declared at the command line, and then just echoing back a blank line.
+
+So let’s think about what’s happening here, we’ve got a variable whose value is assigned outside of this script, and then when the script is running, we are calling upon it. What will the result be? Well again, if we echo $scriptvar, here it is, Hello world!. Let’s just do it sudo chmod and add read and execute for our script. [Video description begins] The presenter opens the Ubuntu Linux terminal screen, clears the screen, and then proceeds with the next line of script. [Video description ends] Let’s run our script with ./, and then we’ll refer to the name of it.
+
+We get nothing, how can we get nothing? Because the default nature of working with variables in bash is that they only exist in the scope where they are declared. What we can do then, either when we are initially creating the variable or after the fact, in this case, after the fact, is we can export the variable. If I export the variable, so export scriptvar.
+
+Hey well, apparently, it did something, let’s just echo scriptvar here to make sure it works at the bash shell. It does, there’s Hello world! let’s go back up and run our script yet again. This time it works. And you might recall, if we nano back into that script, we are not declaring the value of the scriptvar variable within this script, it’s been declared outside of it. [Video description begins] The Nano text editor displays again with a series of script. [Video description ends]
+
+Now this can be important in this type of situation, but also it's important when you have one script calling another script which might, in turn, call yet another script. Exporting variables makes those variable values visible in child instances of shells. And so that can be very important in some cases.
+
+Now the other thing we have to think about are exit codes. [Video description begins] The Ubuntu Linux terminal screen displays, and the presenter types clear and executes it, to clear the screen. [Video description ends] Whenever we run a Linux command or whenever we run a script or commands within a script. For example, let’s say I run the hostname command. Okay, well it worked, and it returned whatever the hostname is of this machine. If I were to echo $?, this will return the exit code of the most recent command that was executed.
+
+Notice that it’s returning 0. 0 is good when you get an exit code of 0 for any command, it means that it executed correctly. If I were to enter a non-existent command, let’s say thehostname, it says command not found. If we echo back $?, we get a non-zero value, it returns 127. Why is that important?
+
+Well, because this is a way, maybe within a script, within an if statement, or a case statement or something like that, we can test whether something was successful or not. So 127 in a Bash shell environment specifically means that a command is not found. So whether you’re at the command line or in a script, you can echo back the value of $? to test the return value of the last command that executed and take appropriate action.
+
+6. Video: Writing and Running a Simple Shell Script (it_oslsca_01_enus_06)
+
+After completing this video, you will be able to create and run a simple shell script .
+create and run a simple shell script
+[Video description begins] Topic title: Writing and Running a Simple Shell Script. Your host for this session is Dan Lachance. [Video description ends]
+We're going to take a few minutes in this demo to focus on writing and running a simple shell script. Now the first consideration is what is it that you need that shell script to do? Shell scripts are used for automation. You can just lump a bunch of commands within a shell script file or more than one, and then invoke the name of the shell script, and it runs all the commands in it.
+
+You might even schedule it with cron. So once you've determined what you need the script to do, the second thing is to determine the shell that it will use. [Video description begins] The Ubuntu Linux terminal screen displays. [Video description ends] I've already got a shell script created here, which I’m going to open up with the nano text editor. It’s called script1.sh, you don’t have to use the .sh file extension for shell scripts.
+
+It's done commonly, but it's certainly not a requirement for it to work properly. Within a shell script, the first line should always be what they call the shebang line. [Video description begins] The Nano text editor displays a series of script. [Video description ends] The shebang line starts with the # symbol, followed by an !, and then the full path to the shell binary, in this case, I’m telling it I want to go into /bin where the bash binary is to start a Bash shell.
+
+Now, even though it looks like this is a commented line because it starts with a # symbol, it’s actually used to determine which shell should be used to run the following commands. It can make the difference between your script running correctly versus not on numerous Linux hosts. If you don’t put in the shebang line, it's just going to use the shell that's currently running the default shell.
+
+So you definitely want to make sure you point it to a C shell, a Korn shell, or, for example, here, a Bash shell, it matters. Now, shell scripts can do millions of different things, and they can get very long and very complicated. Here we have just a very simple example. For readability, you could have every separate command on a separate line.
+
+But also, if you really want to save space on the screen, you might also just put a ; between various separate Linux commands and put them on the same line like I've done here. So I’m clearing the screen, and I’m using the let keyword to initialize a variable called totalsize to a value of 0.
+
+I'm also using the let keyword to initialize a variable that I’m calling currentsize to an initial value of 0. [Video description begins] The presenter describes a line of script on the editor. The script reads: clear; let totalsize=0; let currentsize=0 [Video description ends] Then I've got a for loop. What I'm doing is looping through a subdirectory in the current location, and you could hardcode the full path here, but I haven't.
+
+I’m looking in webfiles for any files that end with .htm because what I'm looking to do here is to gather the size of only the htm files and then display the totalsize. Now of course, there are other ways to do this in Linux already, this is just an example.
+
+So I’m using a for loop for i. i is the name of my placeholder variable, I can use any name that I choose. So for i in webfile/*.htm, and we know that with a for loop, whatever you want to execute each pass through the loop needs to be contained within the do, done block.
+
+So what I’m doing first is I’m resetting the currentsize variable to = the return result of the command here that I’ve placed within ``. ls -l so long listing of $i, first time through the loop $i is going to point to the first htm file in the webfiles folder. What I’m doing is piping that to the translate command, and I’m using -s to squeeze together spaces.
+
+Basically, if I've got one space between different pieces of information, sometimes maybe two spaces, three more, I just want a consistent one space between each field or each column because then when I pipe it to cut, I can easily determine what field number 5 is -f5 where the delimiter -d is just a space.
+
+f5 contains the size of the file, and that’s what I’m trying to stuff into the currentsize variable for the current htm file we’re processing as part of this for loop. Next, I am letting the totalsize variable = whatever it currently is as a value. So $totalsize+ I’m adding to it the value in the currentsize variable.
+
+This way, each time through the loop, the totalsize variable is being increased by whatever the size of the current htm file happens to be. [Video description begins] He describes the two lines of script within do, done block. The script in first line reads: let currentsize=`ls -l $i | tr -s " " | cut -f5 -d " "`; The script in second line reads: let totalsize=$totalsize+$currentsize [Video description ends]
+
+Once the loop is completed, so once we’ve processed all of the htm files in the listed directory, then we have an echo statement that will say The total space used is, and then we’ll display what’s in our $totalsize variable followed by the word bytes that’s being piped to tee because not only do we want that echoed on the screen, but we also want it echoed to a file in the current directory that we’re going to create called html_file_results.txt.
+
+So again, a shell script can do millions upon millions of things, this is just an example for us to focus on. So I'm going to get out of here. The other thing that you need to make sure that you do is run chmod against the file to make sure that the appropriate parties have read and execute. [Video description begins] The presenter opens the Ubuntu Linux terminal screen and clears the editor. [Video description ends]
+
+So if I want everyone to have read and execute, so the owning user, the owning group, and everyone else, I could say +rx for read and execute and then, of course, give it the name of the file in question, script1.sh. If I do a long listing of script1.sh the text is green here in Ubuntu Linux at least, which implies it is executable.
+
+And notice the presence of read and execute for the owning user, the owning group, and of course for everybody else. Now, because the current directory is not in my path variable to run the script, I could either use the full path to it or, because it's in the current directory ./ and then the name of it.
+
+And if we press Enter, it runs the script and says the total space used is 39 bytes. If I actually do an ls of webfiles because I do have a subdirectory called webfiles here, otherwise the script wouldn’t work. It contains three files, actually, let’s do a long listing of webfiles, there’s file1, file2, and file3.
+
+So what it's done is tallied up the size, which is shown here in column five. Column one is the permissions, column two is the hard link reference, column three is the owning user, column four is the owning group, and then, of course, we’ve got over here column five, where the numeric values are.
+
+So we now have a general sense of how to work with the shell script and how to think about which binary will be used to process the commands in the script.
+
+7. Video: Deploying a Shell Script to AWS Virtual Machines (it_oslsca_01_enus_07)
+
+Upon completion of this video, you will be able to use an AWS Systems Manager run command to execute a shell script on a virtual machine.
+use an AWS Systems Manager run command to execute a shell script on a virtual machine
+[Video description begins] Topic title: Deploying a Shell Script to AWS Virtual Machines. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, I will be deploying a script to an AWS virtual machine running Linux. [Video description begins] The AWS Management Console web page, with Console Home page displays. [Video description ends] Now, this is really interesting, so the cloud is very convenient in that it’s very quick to deploy virtual machines running pretty much anything. We’re just going to be running Barebones Ubuntu Linux.
+
+But the cool thing about this is as we are deploying the virtual machine, we can choose to have commands or an entire script execute, which you might do for post deployment tasks like making sure package repositories are up-to-date or installing packages or modifying config files, whatever it is.
+
+Of course, you can also deploy scripts to virtual machines after the fact, but in this case, we'll be doing it during deployment or what they call an AWS, the launching of a virtual machine. Here I’ve signed in to the AWS Management Console as I already have an AWS account. In the search bar, I’m going to search for ec2 and click on it because EC2 is where I go when I want to work with virtual machine Instances, we currently don’t have any.
+
+If I go to the Instances view on the left, notice in the upper right this is for the N. Virginia US East region, we don’t have any virtual machines. Now, if I were to click on US West (Oregon), I might get some virtual machines shown there. If some were deployed in that region, there are none.
+
+So the first thing I would consider is where I want this virtual machine deployed. I want it deployed in US East and I’m going to click the Launch instance button. [Video description begins] The presenter clicks the Launch instances button present on the top-right corner of the page [Video description ends] I want to call this Ubuntu3, and down below, I can specify the OS Image. [Video description begins] The Launch an instance page displays. The presenter types Ubuntu3 in the Name field under the Name and tags heading. [Video description ends]
+
+Now I can also search through the catalog because instead of just Barebones Linux, maybe I want Linux with Docker pre-installed or with Squid pre-installed or an entire LAMP stack. LAMP stands for Linux, Apache, MySQL, and PHP or Python, maybe you want all that stuff pre-installed.
+
+In this case, I just want standard Ubuntu Linux. So I’m going to select Ubuntu down below. [Video description begins] He selects the Ubuntu image from the Quick Start tab provided under the Application and OS Images (Amazon Machine Image). [Video description ends] It then tells me that’s Ubuntu Server 22.04. That’s fine, it’s going to be 64-bit. [Video description begins] He points towards the description provided under Amazon Machine Image (AMI). [Video description ends] The Instance type here in the AWS cloud is very important because it determines the underlying horsepower.
+
+So when you think about what kind of workloads that this virtual machine will accommodate, you need to think about how much CPU power it will need, how much Ram or Memory, so you can adjust the Instance type, as you might guess, in the cloud, if you choose a much more powerful Instance type to run your virtual machine, you’ll be paying more for every minute it’s running.
+
+In AWS, we also have to specify a Key pair, which is used to authenticate to the virtual machine. [Video description begins] He selects KeyPair1 from the drop-down list provided in the Key pair name field under the heading Key pair (login). [Video description ends] The private part of that key pair you would store locally on your admin station, and the public key is stored with the VM in the AWS cloud.
+
+But you need the private part of that key pair to authenticate. Down below, we’ve also got Network settings for the virtual machine. We could specify a security group to control what traffic is allowed or not allowed to the virtual machine.
+
+It’s defaulted because it’s Linux to Allow SSH traffic from Anywhere. But of course, you could change that, for example, I’ll choose My IP as it’s currently seen out on the internet. That would be the IP of the machine I’m sitting at right now actually doing this. We could always change that after the fact.
+
+We can configure the storage for the virtual machine. But what we've not yet seen is where we specify a script or commands to be run. That’s because it’s down under Advanced details. So I need to drill down into Advanced details to see it.
+
+So let’s do that, let’s scroll down, what I’m interested in here all the way towards the bottom is the User data field. So I can choose a file, I can upload a file that might already have script commands in it, or I can type them in here. So I’ll choose to type them in here.
+
+So perhaps after this virtual machine is deployed, I want to run an sudo apt update to update package repositories, and then I want to install apache2, install docker.io for running containerized apps. And then maybe I'll write to the system log using the logger command, and it’ll say "Test msg from AWS...". Okay, so let’s go ahead and click the Launch instance in the bottom right.
+
+And then what we'll do is we'll ssh into it afterwards to make sure that these things that we’ve specified in the user data field have actually executed, Launch instance. Okay, it has successfully launched, I have a link with the unique ID assigned to that instance which I can click on.
+
+Here in the properties of the Instance, there’s a Public IPv4 address which I will copy. Now when you deploy that in the cloud if it didn’t automatically assign a Public IPv4, it’s no big deal. You can just go over here, under the left, under Network & Security, you can go to Elastic IPs, you can allocate an IP, then select it and associate it with your virtual machine. [Video description begins] He selects the Allocate Elastic IP address button on the top-right corner of the webpage. [Video description ends]
+
+But either way, I now have the IP that I can use in PuTTY to make a connection. Here in PuTTY, I’ve created an entry called AWS Ubuntu3, and I’ve pasted in [Video description begins] The PuTTY Configuration dialog box appears on the screen. [Video description ends] the public IP, but I need to specify my private key portion over here on the left under Connection, I’ll go into SSH, Auth, where I’ll then select the Private key file for my KeyPair and then I’ll go back to Session and Save that, and I’ll click Open.
+
+Because it’s the first time I’m connecting over SSH, it asks if I trust the unique fingerprint of the server, I do, I’ll choose Accept. The default username is set to ubuntu, and because I had [Video description begins] The PuTTY Security Alert dialog box appears with a detailed message. [Video description ends] the private key and the related public key stored server side through public key authentication, I am now in. [Video description begins] The PuTTY terminal screen displays with a command line "login as:" [Video description ends]
+
+So now that I’m signed into my AWS Ubuntu Linux Instance, if I were to run, for example, sudo service apache2 status, of course, it’s up and running, it was installed as part of our script. [Video description begins] The Ubuntu Linux terminal screen displays. [Video description ends] If I were to run sudo, let’s say cat of /var/log/syslog. And if we grep well, why don’t we just grep AWS, that was part of what we coded in to our user data.
+
+There's the test message from AWS. And when you’re working with Instances in Amazon Web Services, if you were to select it, or be in the properties of it doesn’t matter, either way if you go to Actions, Instance settings, you’ll be able to scroll down and choose Edit user data. [Video description begins] First, the Instance details | EC2 Management webpage displays. He selects the Actions button on the top-right corner of the page and as mentioned, he selects the Edit user data option. And then the Edit user data page displays. [Video description ends]
+
+You won't actually be able to edit it if the instance is running, but this at least lets you see what was set to occur. The default behavior is that it only runs this once when you initially launch your virtual machine.
+
+8. Video: Parameterizing Shell Scripts (it_oslsca_01_enus_08)
+
+After completing this video, you will be able to parameterize a shell script.
+parameterize a shell script
+[Video description begins] Topic title: Parameterizing Shell Scripts. Your host for this session is Dan Lachance. [Video description ends]
+Let's talk about how to parameterize a shell script. Parameterizing means that we want to write our script so that, as opposed to simply calling it by name at the command line, we can pass command line parameters and values to alter the behavior of the script.
+
+As you might guess, the script has to be written to accommodate this fact, but that's exactly what we're going to take a look at, right now. [Video description begins] The Ubuntu Linux terminal screen displays. [Video description ends] I’m going to begin by using nano to open up a script I already have here called script2.sh.
+
+This is our first basic example, so the first line of the script, as it always should be, is the shebang line, pointing to the shell interpreter, in this case, #!/bin/bash. [Video description begins] The Nano text editor displays a series of scripts. [Video description ends] Next, in my script, I’m simply clearing the screen and using echo to provide a blank line.
+
+Then I’m echoing back some literal text in " " that says, "This script is called, and after the ", I’ve got a space, and I’ve got $0. Well, I know that variable names are usually prefixed with a $ when you want to extract their values, what’s this? $0 simply evaluates to the name of the script, in this case, script2.sh.
+
+I've then got another blank echo line and then another echo statement that says "The value of parameter 1 is " and outside of those, " I’ve got a space and $1. Well if $0, is the script name that was specified on the command line, the next thing that might have been specified is a parameter, parameter 1, that’s what $1 is.
+
+And we've done the same type of thing to extract the second command line parameter $2. Now of course, in this script, we aren’t checking to see if anything’s missing or anything extravagant like that. We’re keeping it simple, let’s just test out this construct. So Ctrl+x out of that. [Video description begins] The Ubuntu Linux terminal screen displays again. [Video description ends]
+
+As always, chmod and make sure the appropriate parties have read and execute to the script. [Video description begins] He types a line of script, and after it is executed, he clears the screen by typing clear and executing it. Script reads: chmod +rx script2.sh [Video description ends] And then if we just call ./ in this case script2.sh. So it says this script is called, and then it’s got ./script2.sh, that’s the $0.
+
+But notice that we didn't specify any further command line options. And so, for the other statements showing the value of parameter 1, the value of parameter 2, there’s nothing after the literal text. However, let’s say we ran ./script2.sh, and let’s say I’ll put in a parameter, I’m calling John, no dash just the text John.
+
+Well then, when I run the script, it clears the screen $0, the name of the script is returned, and parameter 1’s value, which we specified on the command line as John, is now shown. Oh I see how this works? So if I put Doe as the next parameter, it returns those items. [Video description begins] In the terminal screen, the value of parameter 2 is updated to Doe. [Video description ends]
+
+All we’re proving thus far is that okay, I can capture what's passed on the command line in my script. What you do with it from there is entirely up to you. Do an if statement, do a case statement, take some kind of action, call a function, who knows? It could be anything. But I’d like to take a look at a little bit more of a complex example.
+
+So let’s nano script3.sh. So as usual, I've got the shebang line at the top, but after that line, I've got a while statement, so I've got a loop. [Video description begins] The Ubuntu Linux terminal screen displays a series of scripts. [Video description ends] After a while, I have getopts as in g-e-t-o-p-t-s and in " I’m specifying :h:o:".
+
+In other words, while there were command line options passed on the command line. Now, in this case, it means -h or -o. And what I'm doing is storing that information in an option variable. Now, there's a note here that I've added to my script that says the leading colon here in the " " after getopts will simply suppress any error messages if any unknown options are passed on the command line like -x.
+
+Our script is coded right now to accept -h and -o. Now this is a while loop, so after the condition we’ve got to do, done block within which we’ve got to have our code, whatever logic it is that we want to execute. In this case, all that we're doing is using a case statement which ends with esac. That's the ending part of that block, the word case backwards.
+
+And what I’m doing is I’m looking at the variable options, so case $ and in {}, I have the word option then in, and the first thing I’m testing for is h. What does that mean? Well, that ties to up above here, what we're looking for on the command line after the script name is -h, kind of like when you’re typing in some Linux commands, and you put in a command line parameter.
+
+We’re writing our script to accept -h. In my example, let’s assume the nature of -h is that we want the name of a host to be supplied. After h ) I’ve got an echo statement that simply says supplied hostname is and the way that we use a placeholder built-in variable to grab the value after -h is we use $OPTARG as an optional argument, that’s in uppercase.
+
+Now you know how a case statement works at the end of each item, you’ve got a ;; and then we’re on to the next one. [Video description begins] He describes the script on the terminal screen. Script reads: h ) echo "Supplied host name is: " $OPTARG;; [Video description ends] So when -o is passed on the command line, that's from up above, we're testing for that.
+
+And in the nature of this script, let's say that means operation. It says Supplied operation is:, and then it's going to return the value provided after -o. So how do we grab that item? We just use the exact same placeholder variable we did from above $OPTARG in uppercase letters. [Video description begins] He describes the next line of script on the terminal screen. Script reads: o ) echo "Supplied operation is: " $OPTARG;; [Video description ends]
+
+On the command line, whoever’s running the script, if they use -h but don’t provide a value for it or -o and don’t provide a value for it, then we've got our catch all down here for that specific situation. * ) echo "You must supply values for specified parameters", and then, of course, at the end of that ;;.
+
+Well, this is interesting, so we’re going to test out running this script with -h, -o with and without values to see what it does, will it work? Well, there’s only one way to find out. [Video description begins] The Ubuntu Linux terminal screen displays again, and he clears the screen by typing clear. [Video description ends]
+
+So again, chmod, let’s say I want everyone to have read and execute on script3.sh. So if I just run ./script3.sh with no parameters, we get nothing, there’s no error thrown or anything like that. Okay, what if I put -x as a command line parameter? Now we didn’t code -x in any way. Well, our catch all kicks in, it says, well, you must supply values for specified parameters.
+
+Okay, well what if I do? host1, we’re getting the same thing. Now we can get more extravagant with our error capturing. But let’s test this out using, let’s say, -h with nothing, you must supply values for specified parameters. Okay, how about host1? All right, that worked, it says Supplied hostname is: host1.
+
+If we run script3 and add to that previous command -o for operation, let's say I'll put in a value of ping. It now says the Supplied hostname is: host1 and the Supplied operation is: ping. Now again, if you know how to capture this information within your script, you can take off and run with that and do whatever it is you need to do.
+
+Maybe actually ping that host or do whatever it is that the nature of the script calls for. What’s important is to have a sense of how we can check to see what was passed as command line parameters on the command line when calling a script.
+
+9. Video: Working With Array Variables (it_oslsca_01_enus_09)
+
+Upon completion of this video, you will be able to manage array variables.
+manage array variables
+[Video description begins] Topic title: Working With Array Variables. Your host for this session is Dan Lachance. [Video description ends]
+In this demo, we're going to be working with array variables. So when it comes to working in a Linux shell or also within a script, we know that a variable is a storage location in memory that can store a value, whether it's numeric or date and time string, whatever the case might be.
+
+Well, an array variable means that we have a collection of the same types of items. Example, if we want to store cost centric codes so a multitude of them, we can store them not in separate variables but within an array variable which would contain all of them, each stored in a different element, starting with numbering at zero.
+
+First element in an array is item zero, the next is number one, and so on. [Video description begins] The Ubuntu Linux terminal screen displays. [Video description ends] Let’s see how this works syntactically in a Bash shell here in Linux. The first thing I’m going to do is I’m going to create an array variable right at the command line.
+
+Let's say I want to store colors in an array variable so colors. Now remember that arrays start counting at zero, that’s the first element or the first item in the array, they don’t start at zero. So I can use the [ ] notation and put in the array subscript number or the element number, in this case 0.
+
+And to set its value, I would simply say = and then determine whatever it is I want to be stored in that variable, let’s say red, surrounded by " ". I'll use the up arrow key to bring that up again because then I can populate the next element in the array, let’s say with the color of blue, that would be colors, and within [1], that's the second array element.
+
+Now that's how we can populate an array variable, at least individual elements in a variable at the command line but what about displaying it back? Well, we know how to do that with variables. We know we have to use the echo command. We know that variables must be prefixed with a $ when you want to display back their value.
+
+But this is where the notation will change a little bit with an array variable in the Bash shell. You need to use an { then refer to the name of the array variable, in this case colors. If I want to display back element 0, I would put that within [ ]. Then I would close with a }. If I press Enter, it returns red as expected.
+
+And of course, if I use the up arrow key to go back to that previous command, let’s change the 0 to a 1, of course it’s going to return blue. Okay, so we know how to manually populate array elements, we also know how to manually display them back. Now with larger arrays, with numerous elements, you’re going to want to use some kind of a looping structure to loop through them, and we’ll take a look at that shortly.
+
+And this isn't about memorizing syntax. As a Linux technician, many times, you'll be working with existing scripts that might use this type of notation. So what's really important is being able to recognize what you're seeing for what it is. Being able to look at these kinds of statements and say, oh, that's an array, and oh, I understand what's happening.
+
+If you can memorize it, that's great too. But the key is having an understanding of what's happening. Let's further knowledge here. If I were to type echo ${colors[@]}, now what does that mean? When I press Enter, it returns back all of the elements in the array at once, so it returns red and blue.
+
+What's interesting, too, is if I use the up arrow key once again to bring up that previous command, if I put a # symbol, a # symbol right in front of the name of the array, so right in front of colors, it’s the only thing I’ve changed, and press Enter. It returns the number of elements in the array. In this case, we’ve got 2 elements, item 0 and item 1.
+
+You could even do the following: I’ll use the up arrow key to bring up that same command, all I will change is the @ symbol within the [ ], let’s say to 1. Now I still have the # or the # symbol in front of the name of the array. What this is going to do is count how many characters there are in element 1 within the colors array, remember that, that is the word blue, b-l-u-e, so of course, that’s four characters.
+
+Sometimes you will need to know these types of things. We can also replace values within an array. Here I’m using echo ${colors, and within [ ], I have an @ symbol, which of course, means all of the elements in the array. Then I have /blue/green}.
+
+All that this means is within the colors array. I want to seek out blue and replace it with green, Enter. It returns back everything in the array, which now shows as red green if I actually use my up arrow key to go back in our history where we displayed the entire array.
+
+Notice that it only did it for that echo command output. Red and blue are actually still stored in the array. And if you think about it, we didn’t set the value of the array because we were just using the echo command.
+
+But of course, we know how we can manually change values within an array. I’m going to clear the screen and do an ls. I’ve got a sample file here called stockvalues.txt. If I cat stockvalues.txt, it’s got one, two, three, four items the numeric values. So what we're talking about is how do we populate an array from a file? There are numerous ways to do that.
+
+Probably the easiest way is to create your variable. So let’s say stockvaluesvar= and in ( ) and within ` I would simply run cat stockvalues.txt close the `), Enter. And we know how to display back an array variable echo ${stockvaluesvar and within [ ] after that, we have an @ symbol }, Enter.
+
+So now we've loaded the contents of a file, or it could be the result of running some kind of a command in Linux it could be anything into an array. What I could also do is use a looping structure to go through each item. For example, for individualstockvalue, that’s a long variable name, but I’m trying to be clear in what I’m demonstrating in $stockvaluesvar, and within [ ], we’ve got an @ symbol, of course, remember that when you're dealing with array variables, though, the whole thing for the variable name needs to be enclosed within { }.
+
+Okay, so I'm writing a for loop where my placeholder variable, as we loop through all of the stock values in the array, our placeholder variable will be individual stockvalue, Enter. I’m not finish the loop, of course, now I’m going to type in do. All right, what do you want to do within the for loop?
+
+How about we simply echo back the individualstockvalue variable so each time through the loop, it’s going to point to the next element in the array variable. We type in, done and Enter. And notice that it looped through with our for loop construct each individual element or item within the array and returned it back because we referred to our placeholder variable, individualstockvalue.
+
+10. Video: Creating a Shell Script Function (it_oslsca_01_enus_10)
+
+After completing this video, you will be able to work with shell script functions.
+work with shell script functions
+[Video description begins] Topic title: Creating a Shell Script Function. Your host for this session is Dan Lachance. [Video description ends]
+In this demo, we're going to focus on how to create a shell script function. Now a function is a collection of commands or expressions that you want to be able to execute by invoking the name of the function.
+
+Well, doesn’t that sound like the purpose of a shell script? Well, it's close to it, but the difference is that a shell script can contain numerous function definitions that you can call upon as required. Actually, you can also define a function just at the command prompt if you really want to. [Video description begins] The Ubuntu Linux terminal screen displays. [Video description ends]
+
+Imagine this, I'm going to create a function using the function keyword here in a Bash shell. So I want to call the function general_details(). If you get more complex with your use of functions in Linux, you can create them so they accept arguments where you can pass values to the function, but here there are none.
+
+But I still have to put in the (), Enter. { the definition of what your function does, and it could be anything must exist within the { }. So we’ve got an {, Enter, we will make this simple. Let's say we just want to do clear. We want to run the hostname command and the id command pressing Enter after each of those and then Enter.
+
+And then, on the last line, I close the function definition with a }. We’ve just defined a function called general_details. Now, the function won't exist when we end this shell session unless we put it in a startup file. However, to call that function, all I have to do on the command line is simply refer to the name of the function general_details.
+
+I don’t have to use the open and close parentheses. It worked, it cleared the screen, it returned the hostname, and it ran the id command, which shows the user I'm logged in as and all the group memberships. So the function worked.
+
+Now often, Linux techies will go ahead and create their own function definitions to serve their own specific needs within a shell script, you might even put it in a shell script that you call upon from other scripts when you want to use the function, so you don’t have to keep copying the function definition into each shell script.
+
+You'd have them centralized, kind of like in shell script libraries containing functions that you call upon. But in this case, let's just go ahead and use the nano command, and we’re going to open up an existing file I’ve already created called functiontest.sh. Of course, you can call this script whatever you want, it doesn’t have to end with .sh.
+
+Now remember that the first line of every script should always be the shebang line. [Video description begins] The Nano text editor displays a series of codes. [Video description ends] Point to the shell interpreter that you’ve written the script for so it runs the commands correctly.
+
+And down below, I’ve defined a function called show_ipinfo, so I’ve got the (). As we know, when you declare a function, you’ve got to have an { and a }, and then you do whatever stuff is you want to do within it.
+
+All I’m doing here is creating a variable called IP_VAR, which is going to use the ifconfig command | that to grep looking for the text inet | that to translate squeeze one or more spaces and replace it with a : so we have a common delimiter | that to cut. And f3 will be the IP address information where the delimiter -d is a :.
+
+Now notice all of that is enclosed within ``, because I want the result of that command stored in the IP_VAR variable, right? I don’t want to store the actual text of the command of the variable, that’s not the point at all. We're doing the same type of thing for the next line.
+
+We’re making a variable for the DEFAULT GATEWAY, DGW_VAR=, and then in ``, we have the appropriate command to extract the default gateway address. [Video description begins] The presenter describes the lines of script written in between the open and close braces. Script in first line reads: IP_VAR= `ifconfig | grep "inet" | tr -s " " ":" | cut -f3 -d ":"`; Script in second line reads: DGW_VAR= `ip route show | grep "default" | tr -s " " ":" | cut -f3 -d ":" [Video description ends]
+
+Then we are using the echo command to echo back the IP ADDRESSES and referring to our IP_VAR variable. Of course, with the $ prefix to show the value of that variable. Same with the default gateway. They were just catting etc/resolv.conf and grepping for nameserver and then piping it to grep again with -v to exclude any items that have a # or comment, so we want to show the DNS servers.
+
+That’s just the definition of the function. Down below, we’re then actually calling the function, so it actually executes. You might call the function from somewhere else, depending on where the function was defined. But let's go ahead and run this script. [Video description begins] He saves the function, and then again, an empty Ubuntu Linux terminal displays. [Video description ends]
+
+Of course, you’re going to have to make sure you run chmod against that and make sure that you add, read and execute, let’s say, for everybody. And then, you can run the script ./functiontest.sh. And it worked. It says IP ADDRESSES, it’s give me my IPs, including my or at least part of my IPv6 address, my DEFAULT GATEWAY, nameserver.
+
+The point isn’t really what the function is doing because that could be a million different things, the point is the overall construct. So for anything that you’ll be scripting that is repetitive in nature and is more than just one or two lines, you might consider building a function for it and then simply calling upon that function when you need those commands executed.
+
+And finally, the last thing I’ll just mention here is that you can also export a function definition. If I run export -f, let’s say our general_details function, which you might recall we defined here at the command line, if I want that to be available, let's say within a script where it's not been defined, then exporting the function just kind of like exporting variables is required.
+
+Let’s go back to using nano, I’m going to call this exportedfunction.sh. [Video description begins] The Nano text editor displays a series of codes. [Video description ends] All I’m going to do is refer to general_details, that’s it. Close and save that file, run chmode against it, make sure read and execute is set. [Video description begins] He goes back to the Ubuntu Linux terminal screen and enters a line of script. Script reads: chmod +rx export [Video description ends]
+
+And ./exportedfunction.sh. And it worked, it returned back the hostname. It ran the id command cleared the screen. So this is going to be important the scope of functions and where they are visible and usable, kind of like variables, is an important concept to understand when you are working with scripting in Linux.
+
+11. Video: Writing and Running a Backup Shell Script (it_oslsca_01_enus_11)
+
+Upon completion of this video, you will be able to create and run a shell script that uses the tar command to create a backup archive.
+create and run a shell script that uses the tar command to create a backup archive
+[Video description begins] Topic title: Writing and Running a Backup Shell Script. Your host for this session is Dan Lachance. [Video description ends]
+One common use of Linux shell scripts is for technicians to create backup scripts. So in order to backup important files, whether its user home directories, data directory, shared files, whatever the case might be, you can automate the backup by creating a script.
+
+You can invoke the script manually, or you might schedule it with cron, which we'll see in another demo. But let's focus on the backup script side of things now. Now there are no rules as to how exactly this is done, it really depends on your specific need. [Video description begins] The Ubuntu Linux terminal screen displays. [Video description ends]
+
+Here in Linux, I’m going to run nano, and I’m going to open up a backup script I already have prepared, it’s called backup.sh. [Video description begins] The presenter presses Enter and the Nano text editor displays. [Video description ends] Now notice here, down at the bottom, it says [File ‘backup.sh’ is unwritable].
+
+So what’s going on here? roll x. [Video description begins] He goes back to the Ubuntu Linux terminal screen. [Video description ends] Let’s do a long listing of backup.sh. [Video description begins] The script is executed, and the following text is displayed on the screen. Text reads: -rwsr-xr-x 1 root cblackwell 479 Jul 19 19:14 backup.sh* [Video description ends]
+
+What’s been done here is the special user ID bit has been enabled. That's what the lowercase s implies here, that there's an x in there for execute, so the owner, which is root has read, write, execute. And the lowercase s also means that whoever invokes this script, when they invoke it, it will run with the permissions of the root.
+
+So the invoker of the script themselves might not have access to the locations that are being backed up in the file system, but root would. However, it also means that when I edit that script, I’m going to have to use sudo, I have to be in the sudoers file to be able to modify this particular script. You don't have to do that for a shell script.
+
+The only thing you really have to do is make sure read and execute is enabled for the appropriate people running the script. But if that script needs to talk to restricted file system locations, either you grant permissions to the people running the script to those locations, or you run the script as root by enabling the special user ID bit.
+
+By the way, before we do that, the way we would do that set those permissions on that backup script file, we could use chmod. I could use 4755 and then the name of the file, the first 4 here, what that means is that we are setting the user ID bit. The group ID bit would have a value of 2. The sticky bit would have a value of 1,
+
+as you might recall. The 7 here means read, write, execute for the owner, root. The 5 means read and execute for the owning group, which here is cblackwell, and the last 5 here is read and execute for everybody else. That’s already been done, so let’s go back to sudo nano, get into that backup script. [Video description begins] He opens the nano text editor. [Video description ends]
+
+So there's more than just actually writing the script then, isn't there? You have to consider the permissions, what the script is doing, what you're going to do to elevate those permissions. There are so many ways to do it, but that's the reality. It's more than just writing the syntax in the script. Now let's focus on that part of it.
+
+So the first line is a shebang line pointing to the shell interpreter, got it. In this case, the bash shell. The way I've written this script, I've decided to use variables to put together the name of the backup file so that the name of the backup file will include some date information.
+
+So I’m setting up some variables here, the day variable will = and then within `` symbols, some of the result of the command written to the variable I have date + and in “%d”, which will return the day part of the date only, I don’t want the whole date. I just want the day stored in the day variable.
+
+And I've done the same type of thing for my year variable in terms of having the `` running the date command and telling it what portion of the date I would like to extract, in this case, %Y will return just the year part of the date. I've done the same type of thing for month where I’m referring to %m to extract just the month from the full date.
+
+And I’ve decided to create a function to do this. Of course, that means that I could call upon that function multiple times or whatever the case might be. So my function is called full_backup, and we know how a function is structured. We’ve got the { and the }.
+
+You don’t have to use a function for this. If you want to be able to call it by name, which is what I want, then sure make a function of it. All my function is doing is using the tar command with -c for create, z for compress, v verbose, file, and then the backup file I want to create will be called full_backup-.
+
+And notice here, all I’m doing is referring to my year variable that I’ve defined above -$month variable I’ve defined above, and another - and my $day variable that I’ve defined above. And then I’m adding .tar.gz as an extension. Now what am I backing up? I want to be able to back up everything under /home.
+
+Any error messages that might pop up because we did ask for verbose -v. Any error messages that might pop up, I want them discarded, so 2> sign for redirection /dev/null. And then after that, I have a >> sign append, I want to append what's been backed up and what not to a file called so full_backup_log-$date_var.log.
+
+So I’ll have a running list in that log of backups. Okay, now what I’m doing is creating a weekday variable because I only want to back things up on a particular day of the week. In my particular example, it doesn't have to be this way. So weekday = and within ``, I’ve got date piping that to the translate command tr -s.
+
+So I want to make sure that I substitute any spaces with just single occurrences of spaces, if there’s more than one space between some things, pipe that to cut -f1 is what I want to cut out where the delimiter is a space. In other words, I want the weekday. Then I’m testing what day of the week it is case $weekday in.
+
+If it’s a Wednesday, then I want to do a full_backup, and then I want to echo "BACKUP WAS SUCCESSFUL", then ;;. Then I've got a listing here that says if it's a Monday or that's the pipe here in this context, Tuesday or Friday or Thursday or whatever the case might be, );; we’re doing nothing.
+
+And then, I close my case block with the word case backwards. There are so many ways to do this. So let’s see what happens if we try to run this, let’s get out of here, clear the screen. [Video description begins] He goes back to the Ubuntu Linux terminal screen and clears it by typing clear and executing it. [Video description ends]
+
+Notice if I do an ls, we don’t have any backup files yet. I think our file names would start with the word full. Also, notice if I run the date, it’s Thu. Okay, so if I run ./backup.sh, we get nothing, well, that’s because it’s Thursday right now, but in our script, we're testing for Wednesday. Well, why don't we change that just to see if it works. If it’s Thu, T-h-u capital T-h-u, I'll just modify the other days of the week, and we’ll save that out to our script. Let’s run our script again.
+
+Okay, this time it says backup was successful because it actually is Thursday, and that’s what our script is looking for so, if I do an ls, we’ve got our full backup and notice it’s very nicely put in the year, the month, the day .tar.gz. Although it looks like we have a little problem here with our backup log, it’s full_backup_log- nothing.
+
+Let’s open up our script, oh it looks like it’s referring to something that doesn’t exist, date_var. Well, actually, let's just remove that. We don't want that because we could have many different dates within our backup log, so we’ll write that out. Let’s just remove any files that start with full. So just run our script again, backup was successful. Okay, now it's a little bit neater.
+
+We’ve got our compressed backup of the home directory. Let’s take a look at the backup log. [Video description begins] He types the script cat full_backup and executes it. [Video description ends] That’s what we wanted it give me a list of everything that it backed up because remember, we did a tar backup using the -v for verbose. It gave me a list of everything it backed up under home. So there you go, that’s an example of how you might work with a backup shell script.
+
+12. Video: Scheduling a Backup Shell Script (it_oslsca_01_enus_12)
+
+After completing this video, you will be able to use CRON to run a backup script on a schedule.
+use CRON to run a backup script on a schedule
+[Video description begins] Topic title: Scheduling a Backup Shell Script. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, the focus will be on how to schedule a backup script. [Video description begins] The Ubuntu Linux terminal screen displays. [Video description ends] First of all, let's take a look at what we've got for a backup script. If I do an ls in my home directory, I’ve got a backup script file here called backup.sh. [Video description begins] Once the script is executed, a list of different shell scripts gets displayed. [Video description ends]
+
+The reason here in Ubuntu Linux, it’s got a red background, it’s because if we do an ll of that backup script file, it's got the special user id bit set. [Video description begins] The script is executed, and the following text is displayed on the screen. Text reads: rwsr-xr-x 1 root cblackwell 469 Jul 20 12:26 backup.sh* [Video description ends]
+
+That's the lowercase s, the s is lowercase because there's also an execute permission there, if there weren’t, it would be a capital. [Video description begins] He highlights the letter s on the text displayed on the screen. [Video description ends] But the special user ID bit means, as long as a user has read and execute to the directory and this file backup.sh, when they run that script instead of running with their permissions, the invoker permissions, the script will run with the owning user permissions.
+
+That’s the purpose of the special user ID bit, and you might recall, okay. And if we just go into that with the sudo nano and take a quick peek at the script, it's just setting up some variables. [Video description begins] The Ubuntu Linux terminal screen displays with a list of variables and commands. [Video description ends]
+
+It’s using the tar command to do basically a backup of /home, and that only happens on certain days. Now in this example, we're going to remove the logic at the bottom here that tests which weekday it is because we’re going to determine that when we schedule it as a cron job.
+
+Okay, so we’ve pared down our script, let’s go out and save that. [Video description begins] He deletes the case command. [Video description ends] What we could do is change the directory to /etc/. [Video description begins] He opens Ubuntu Linux terminal screen. [Video description ends] Let’s do an ls of things that start with cron.
+
+Okay, we’ve got some interesting subdirectories here, such as cron.daily, which has a number of scripts here for backing things up daily or performing any type of task daily, it doesn’t have to be backups. We’ve got nothing in cron.hourly, so this machine is not doing anything hourly, at least not here, it could be set in a user crontab which is what we’ll look at after.
+
+We’ve got a cron.monthly directory, nothing in it, and cron.weekly. Okay, so if we wanted to, we could configure this at the system level as a scheduled cron job, but we can also run crontab -e for edit, to edit our own individual user crontab for the user we’re currently signed in as. [Video description begins] He clears the screen by executing the clear command. And then executes the next script. [Video description ends]
+
+That’s how I’m going to do this. It says no crontab for cblackwell, that’s the user I’m signed in as using an empty one, and then we can choose the editor that we want to use to create our cron file. I’m going to use nano, so I’ll choose number 1 and press Enter. [Video description begins] The nano text editor displays. [Video description ends]
+
+Lots of comments here that explain how to use this. But let's say I want to do a backup every day at midnight. Well, notice here in the comment above it’s got minute, hour, day of month, month, and day of week, and then the command, okay. For the minute, an hour of 0 means midnight, where 12 would be noon, 12 pm.
+
+I want this to happen at midnight. Which day of the month? * for every day of the month, otherwise I could put in the value. Which month? Every month, I want this backup to occur. Which day of the week? I want this backup to happen only on Saturdays at midnight, so I’ll put in 6, which means Saturday.
+
+Finally, the last parameter, as you know, is the command. Whether it's just commands to run, maybe separated with ; or in this case, a reference to a script. So I’ll give it the full path, the name of the script /home/cblackwell/backup.sh. Now, you need to have made sure that you've tested your backup script manually at the command line to make sure it itself works properly.
+
+Okay, Ctrl+X and our crontab is now set to go, which means our backup script is scheduled to run. [Video description begins] He opens Ubuntu Linux terminal screen. [Video description ends] Let’s go ahead and just run our backup script ./backup.sh, I'm in my user home directory where that script exists.
+
+There are no backup files. Well, this is why we said it's going to be very important to make sure you test this manually before you try to schedule it and add that layer of complexity when you’re troubleshooting why nothing happened. All right, well, there’s a good reason for this. Let’s go back into it, nano backup.sh.
+
+The reason it's not working is because we have a function definition here for the backup called full_backup. [Video description begins] The nano text editor displays. [Video description ends] But we’re never calling the name of the function. Remember, we removed the test of the week date. All right, let’s get rid of that week date line, let’s just call the function full_backup.
+
+So now, if we run our script once again, do an ls, now it’s working, we’ve got our backup compressed file, and we’ve got a backup_log. Okay, so we know that it works manually. So assuming our syntax is correct in our crontab, which it is, our backup script will be executed when we scheduled it for midnight on Saturdays.
+
+The last thing to think about is looking at the man page for the structure of the crontab file so you know exactly how the syntax works. I’m going to type man 5 crontab, this means I don't want help with the crontab command, but the 5 means I want help on the format of the configuration file for crontab.
+
+This is always going to be important. For example, further down in the man page, it talks about the fields such as the day of the week. [Video description begins] The man page screen displays detailed information about the crontab and its description. [Video description ends]
+
+Now you might say well, does the day of the week, Sundays that start at 1, is it 1-6, 0 to set like what is it? You’ll find that on the man page, it tells us right here clear as a bell. 0 or 7 is Sunday, or you can use the names. We know here that we can use an *.
+
+You can use ranges of numbers such as 0-4 if you want to include, for example, those days of the weeks or those months or wherever you've listed that item. Or if you want to specify something to run every two hours, you could just use under the hours column in your crontab file, */2.
+
+So there are a lot of interesting ways to schedule things. And if you can't memorize every possible syntactical combination because crontab scheduling isn't something you do all the time, just go into the man page, to find out what the details are.
+
+13. Video: Writing and Running a "For" Looping Shell Script (it_oslsca_01_enus_13)
+
+Upon completion of this video, you will be able to create and run a shell script that uses For looping.
+create and run a shell script that uses For looping
+[Video description begins] Topic title: Writing and Running a "For" Looping Shell Script. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, we’re going to take a look at a couple of variations of how to work with a for looping construct. Now, whether you're using a for loop at the command line or within a script really makes no difference at all syntactically.
+
+So let's start with the basic example at the command line. I’m going to start with for and then ((i=1; i<5; i++)). What I’m doing is establishing a counter variable that I’ve chosen to call i. I could have called it pineapple, it doesn’t matter. So I’m going to initialize that with the value of 1. I want the loop to continue while i<5, and I’m incrementing i by 1, i++ each time through the loop, Enter.
+
+Now a for looping construct has a do and then a done block. Your code goes within those two statements. So do, why don’t we just echo back $i to prove it’s working, and then on another line done, Enter.
+
+Notice it went through the loop. It started by echoing back i, which started off with the value of 1. The next time through the loop, it was incremented by 1, so 2, 3, 4. It didn’t do 5 because our condition was not i≤5, it was i<5.
+
+Okay, that’s a simple standard, hard-coded way to start with a for loop. But what you can also do is something like this for i in and maybe I want to do 5 through to and including 10. So 5..10 within { }, do, echo $i I’m just echoing back the i variable, you could do anything you wanted to do really, put in a done.
+
+Notice here it started at 5, and it kept incrementing automatically by one unless you tell it otherwise 5, 6, 7, 8, 9, 10. It even included 10 because we didn’t have a statement that said <10. Now we could modify that previous example, and instead of just 5..10.
+
+So we got our starting and our ending value, but after the 10, I might add another .. and say I want the increment to be 2. Notice now, we started at 5, incremented by 2 to 7. Then the next time through the loop, incremented by 2, once again to 9.
+
+And then after that, we’d be beyond 10, so it stopped. Next, consider this example, so we’ve got our construct once again of a for loop, where we’ve got a range 5 to 10 with an increment of 2. And in our loop we start within the do block by echoing $i.
+
+So right away, no matter what, we’re going to get a 5 for sure. So it displayed 5 down in the output below. Then we’re doing a test if test $i that’s our counter variable, if it =9, then we want to break out of the loop.
+
+And then our closing fi, which is if backwards and then done. But wait a minute, it’s supposed to break out when the value of the i variable =9, yet it’s printing 9. Well, what you have to watch out for with this type of thing is the placement of things like echo statements.
+
+The echo statement is being executed before we test $i. What if we put our echo statement after it, so we have the same construct, except what I’ve done is moved the echo $i from right after do to after our if test. That way, it gets a chance to test to see if i has a value of 9, and if it does, it breaks out of the loop and notice the output now only includes 5 and 7.
+
+The placement of your executable statements within your for loop blocks is critical. Now we have worked with arrays already, but you might have an array populated with something that you want to process as part of your for loop, consider this example.
+
+I’m going to create a variable called IPs, and it will =( and " let’s start with one IP address " space. The second array element again will be enclosed in " ", it will simply be just another IP address. So we can manually populate arrays in this way or read it from a file, or whatever the case might be, I’ll close the ).
+
+Let’s just make sure our array variable is working, okay. So I’m going to echo it back, echo ${IPs and the name of the variable remember is case sensitive, and in [ ] we’ll put an @ symbol, which means all array elements are to be returned }, Enter. There’s the two IPs. Okay, let’s build that into a loop.
+
+Let’s say we did this for i, or I can change that variable name, why not change it for host_ip? That's going to be my placeholder variable each time through the loop in well, in what? Well, within all of the elements in the array ${IPs[@]}.
+
+So if we've got two IP addresses within that array, the loop is going to run twice. If we’ve got 1000 IPs in the array, the loop will run 1000 times. And then we’ve got our do block, we’ll start with the word do. What do you want to do? I want to ping, let’s say -c 2, that means count only 2 ping packets, otherwise, it’s endless.
+
+And I want to ping $host_ip because that’s our temporary placeholder variable each time through the loop as we process each array element. Perfect, and then we’ll do a done. Okay, it’s already trying to PING the first IP. Of course, if firewalls are blocking PING traffic or all ICMP traffic, you won't get a response.
+
+So there might be a bit of a delay with this particular example. And now it's automatically moved on to the second example. And in the same way, if it's not up and running or if it’s firewalled in some way, it’ll eventually time out, but it will only have transmitted to ping echo requests.
+
+Now there are endless examples of working with for loops to process the results of Linux commands to read in the contents of files and maybe read in a file and populate an array, and then, of course, we know how to work with arrays, But we want to be able to establish when we should be using a for loop, whether at the command line or within a shell script.
+
+14. Video: Writing and Running a "While" Looping Shell Script (it_oslsca_01_enus_14)
+
+Upon completion of this video, you will be able to create and run a shell script that uses While looping.
+create and run a shell script that uses While looping
+[Video description begins] Topic title: Writing and Running a "While" Looping Shell Script. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, we’ll take a look at how to work with a while loop, whether you're using it at the command line or within a shell script. The syntax doesn't even change. So let's focus here on the command line, even though it doesn't make a difference if it's in a script or not. [Video description begins] The Ubuntu Linux terminal screen displays. [Video description ends]
+
+I’m going to start by creating a variable called i, and I’m going to set its value to 1, and I’m going to write a while loop so the statement will look like this, I’ll use while followed by a space, and then within [ ], I’ve got my condition to keep the loop running. So while $i is < or = 6, -le is the < or = operator. [Video description begins] The presenter enters a few lines of script. The script in the first line reads: while [$i -le 6] [Video description ends]
+
+What do we want to do? So I’ve got a do and a done block. I’m going to start by echoing the current value of $i, this time through the loop. But then we don't have a way up in our expression where we are incrementing i each time through the loop.
+
+So I can do that by saying i=$(( $i so whatever its current value is. The first time through the loop, that will be 1, and we’re going to add 1 to it. So then it would be a value of 2. Then we hit the done part of the block and go back up to the top and test our condition, which means it would be two.
+
+It would still be < or = 6. So i is being incremented each time through the loop, and we’re echoing back the value, which is why the output here includes 1, 2, 3, 4, 5, 6. Now, then we have the concept of an endless loop which can be useful until a certain signal is received.
+
+For example, I’ve got a file here already created called menu.sh, little simple menu system, so I’ve got my shebang statement at the top. [Video description begins] He types the script nano menu.sh and executes it. The nano text editor displays. [Video description ends] I’ve got a function definition here for show_ipinfo. And then here’s my while loop.
+
+Look at the construct at the top, it simply says, while true, while true is always true. So this is one of many ways to create an endless while loop. Then you have your do block, and within the do block, we're just clearing the screen, echoing a simple utility menu, asking the user to enter their choice and reading what they type in with the read keyword and putting that in a variable called selection, which we then test with the case block.
+
+If it’s 1, then we run our show_ipinfo function. If it’s 2 to list logged on users, we just run the who command. And if it’s 3, we clear the screen, and we exit. So we have our open and closing case statement, then I have a read statement with the word junk. Junk is just the name of the variable, it could be anything.
+
+This is just a way to pause the screen output, for example, if the user types 1 to show _ipinfo, we want to give them the chance to see it before it goes back up to the top of the do loop and clears the screen on them. Same with number 2, let’s test this out. So I’ll save it.
+
+Make sure that change mode is used to make sure read and execute are set for that file, and let’s run it ./menu.sh. [Video description begins] First, the presenter changes the mode by executing the following script. Script reads: chmod +rx menu.sh And then runs the next script ./menu.sh [Video description ends]
+
+Okay, that’s kind of cool here’s our UTILITY MENU where we can press number 1 to Show IP Info, which is going to run our little function. Okay, it’s returning some basic IP stuff. The read junk statement is what's causing the pause here. There are many ways to do that, that’s just a simple way, Enter, back to the menu.
+
+We’re still going on through the loop, we haven’t pressed 3 yet. Number 2 - List Logged On Users, it just ran the who command. So who’s logged in and from where? Press Enter. And if I press 3, we’re out. So sometimes you'll just want a while loop for that kind of purpose, such as displaying a little menu system, a customized utility menu.
+
+As another example, let's take a look at another while true loop. So we've got while true, we've got our starting do statement and our ending done statement. So our executable block where we're doing a few things, really the only difference here is what we're doing within the block.
+
+We're using the read statement and Linux to read user input. -p for prompt Enter hours worked followed by hourly wage or enter - 1 to quit, all of that’s in " ". Now we have two things, we want the user to enter, on the same line but separated by space. We want the hours, number of hours worked, and then the hourly wage.
+
+Now, the way that we're setting up this loop is that if we want to exit, we type in -1, it could be anything. So we have an if statement, if within [ $hours, which is the first parameter -eq equals -1 ], then break. Now break works to get out of a for loop, it also works to get out of a while loop, and then we have our closing fi to close off the if statement construct.
+
+So if they don't want to exit and they've entered in an hourly wage and hours worked, we'll calculate what the pay is. So we’re creating a pay variable which =$(( hours * wage those are the variables up above for the read statement )), and then we just go back the $pay variable. Then we have our done statement, so it says, Enter hours worked followed by hourly wage or -1 to quit.
+
+Okay, let’s say it’s 40 hours worked space at $30 an hour, so 40 30 on the same line, Enter. It returns back 1200 as the pay, indeed, that is the correct math, and it’s still asking us enter hours worked because we have a while true loop.
+
+However, we can simply type -1 in this case to quit. It's just another variation on how to handle a loop where you need it to keep asking something, or you need it to keep doing something.
+
+15. Video: Troubleshooting Shell Scripts (it_oslsca_01_enus_15)
+
+Upon completion of this video, you will be able to debug and solve problems with shell scripts.
+debug and solve problems with shell scripts
+[Video description begins] Topic title: Troubleshooting Shell Scripts. Your host for this session is Dan Lachance. [Video description ends]
+When you’re writing shell scripts, attention to detail is necessary because some of the syntax can be very unforgiving. Those details will vary between shells, so there are some different syntax rules for variable handling and quotes and so on, from a C shell to a Korn shell to a Bash shell and whatnot.
+
+One of the first things we have to think about with the shell script is where to run it from if I do an ls. [Video description begins] The Ubuntu Linux terminal screen displays. [Video description ends] In my current directory, I have all kinds of shell scripts.
+
+For example, there’s one called menu. Now because I’m in the subdirectory within it and I know that, I could type ./menu.sh, and it runs. [Video description begins] The Utility Menu displays on the terminal screen with three options. 1 for Show IP Info; 2 for List Logged On Users, and 3 for Quit, and there is a statement that says Enter choice: . [Video description ends]
+
+Okay, well let me just press 3 to quit out of that. If I do a long listing for menu.sh, it’s working it allows me to run it because I am currently signed in as user cblackwell, as evidenced by typing id, I’m user cblackwell. [Video description begins] Details list of IDs and related details are displayed on the screen, and the presenter highlights the cblackwell user ID. [Video description ends]
+
+cblackwell is the owning user of menu.sh and therefore has read, write, and execute permissions. [Video description begins] He highlights the text rwx displayed on the terminal screen. [Video description ends] Let’s change those permissions. First of all, let’s run sudo chown, let’s say to root for menu.sh.
+
+Okay, if we do an ll of menu.sh, route is now the owner, and therefore route would have read, write, execute. [Video description begins] He highlights the rwx and then rwxr-x in the text displayed on the screen. [Video description ends] But of course, there’s other permissions for others here, let’s remove those. sudo chmod g-rwx for menu.sh.
+
+Let’s do an ll. Okay, group permissions are gone. sudo chmod o for other -rx because that’s what they have read and execute. And let’s do an ll of that. Okay, only route has permissions to this file. However, as we know from the id command, we’re not logged in as root. We’re logged in as cblackwell. If I simply run ./menu.sh, we get a permission denied.
+
+Well, that makes perfect sense, cblackwell doesn’t have read and execute, root does. Another interesting thing to consider is to set the special user ID bit. Let’s run sudo chmod 750 for menu.sh. Let’s do an ll of that. So now read and execute has been turned on for the cblackwell group. When I type id, I’m logged in as cblackwell.
+
+But my primary group is also a group of the same name, that’s what Linux does. That can be changed, that just happens to be the default behavior. So I wonder what would happen now if I run ./menu.sh. It runs, well of course it will, because in this particular case, the user I'm logged in with is a member of this group, and the group has read and execute permissions.
+
+So it works, if we were to remove the permissions, sudo chmod at least execute -x. Well, let’s do it this way, actually, g-x for menu.sh we ll it so read is there, execute is not for the cblackwell group. If we try to run ./menu.sh, we get a permission denied. You need the correct permissions.
+
+So if we correct it sudo chmod g+x because that’s what’s missing, and then go ahead and try to run that again, it works fine. Now that's just to run the script itself. What if the script is doing something beyond the privileges of the user invoking it, and that’s back to our special user ID bit.
+
+Currently, when we do a long listing of menu.sh, the only user has read, write, execute, the group has read, execute. We’re going to change that sudo 4750 menu.sh. The leading 4 is the numeric value for the special user ID bit, 2 would be for the group bit, 1 would be for the sticky bit. So we’re just setting the special user ID bit.
+
+The 7 of course, is read, write, execute for 2 and 1. The 5 is just for 1, read and execute, and then 0, which is nothing for everyone else. I suppose we should probably do that with chmod, shouldn’t we, yes.
+
+So if I do a long listing, the background color changes to red, and we've got a lowercase s where the owner execute permission normally shows. Lowercase s means there’s also execute set there, otherwise it would be a capital S.
+
+We’re not going to see in this particular example, but of course, we can still just go ahead and run that script, it runs fine, but if that script was doing stuff that only the owner, in this case, root is allowed to do. It would work because even though we’re invoking it as cblackwell because the special user ID bit is set, it will run as user root.
+
+The other common thing to watch out for, and let’s just go ahead and nano functiontest.sh, is that when you declare a function, you don’t call it anywhere. [Video description begins] The nano text editor displays. [Video description ends] In other words, you don’t refer to it, if you don’t, it won’t run.
+
+And when you refer to it, if there are no parameters, you just refer to it by its name, you don’t need the ( ). Now, while we're in here, it's always crucial when you're troubleshooting shell scripts to make sure you’ve got your shebang line correct. If you’re pointing to the incorrect shell, but the script was written for something different, a different type of command interpreter, it can yield unexpected results depending on the nature of the code within the script, so watch out for that type of thing.
+
+Let's also not forget about variable scope. So if I go into a script I have called export_var_script, all it’s doing is echoing back a variable called $scriptvar. [Video description begins] In the Ubuntu Linux terminal, he types the following script and executes it, the nano text editor displays. The script reads: nano export_var_script.sh [Video description ends]
+
+Okay, if I echo back $scriptvar here at the command prompt, there’s nothing. Let’s run that script, we get nothing. Okay, that’s fine, it wasn’t defined anywhere. Let’s write some data into the scriptvar variable scriptvar="Testing 1 2 3". Here at the command prompt, if we echo $scriptvar, it returns Testing 1 2 3.
+
+Let’s run our script, it doesn’t return it even though our script is referring to the correct variable name. Remember the scope of variables there are only in the current shell where you define them same with functions.
+
+You can export them to solve this problem. If I were just to say export scriptvar, if I echo it here at the command prompt, it still returns the data. But if I run the script now, it also returns the data. So watch out for variable and function scope when you're trying to refer to them in different shells.
+
+And of course, naturally, always watch out for the syntax of the code you're typing in, making sure you put a $ in front of variables when you want to use them or `` surrounding commands whose result you want stored in a variable.
+
+16. Video: Course Summary (it_oslsca_01_enus_16)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. Your host for this session is Dan Lachance. [Video description ends]
+So in this course, we’ve examined how to use a variety of Linux commands and expressions to create shell scripts. We did this by exploring how to work with shell script comparison, piping, and redirection operators, as well as working with conditional and looping constructs, and environment and shell script variables.
+
+We also created a simple shell script, we deployed a script to an AWS Linux virtual machine, we parameterized a script, and we also worked with array variables. Following that, we worked with creating a shell script function and writing, or running, and scheduling a backup shell script.
+
+And lastly, we worked with writing and running "for" and "while" looping shell scripts and we worked with troubleshooting shell scripts. In our next course, we will move on to deploy and manage containerized applications on the Docker platform in Linux.
+
+Course File-based Resources
+•	Writing and Running a Simple Shell Script
+Topic Asset
+
+•	Parameterizing Shell Scripts
+Topic Asset
+
+•	Working With Array Variables
+Topic Asset
+
+•	Creating a Shell Script Function
+Topic Asset
+
+•	Writing and Running a Backup Shell Script
+Topic Asset
+
+•	Writing and Running a "While" Looping Shell Script
+Topic Asset
+© 2023 Skillsoft Ireland Limited - All rights reserved.
