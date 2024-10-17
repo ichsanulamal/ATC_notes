@@ -20,3 +20,15 @@
 
 [[Security Threats & Cryptography/index]]
 
+[[Authentication & Authorization/index]]
+
+[[Firewalls & Monitoring/index]]
+
+[[Securing Linux/index]]
+
+[[Managing SELinux/index]]
+
+## 3. Scripting, Containers, and Automation
+
+
+

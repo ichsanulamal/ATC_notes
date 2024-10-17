@@ -1,0 +1,247 @@
+CompTIA Linux+: Managing SELinux
+Security-enhanced Linux (SELinux) is a mandatory access control (MAC) solution where the Linux OS controls access to Linux resources such as files and network sockets. SELinux can be used to secure sensitive Linux stations. In this course we will begin by covering SELinux terminology and components and see how it controls resource access in Linux. You will then see how to install SELinux on Ubuntu Linux. Finally, you will learn to configure and manage SELinux security contexts including mapping Linux users to SELinux users to limit permissions. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+Table of Contents
+    1. Video: Course Overview (it_oslsec_05_enus_01)
+
+    2. Video: Security-Enhanced Linux (SELinux) (it_oslsec_05_enus_02)
+
+    3. Video: Enabling SELinux on Ubuntu (it_oslsec_05_enus_03)
+
+    4. Video: Configure SELinux (it_oslsec_05_enus_04)
+
+    5. Video: Managing SELinux Users (it_oslsec_05_enus_05)
+
+    6. Video: Managing the Apache Process and Files (it_oslsec_05_enus_06)
+
+    7. Video: Exploring AppArmor (it_oslsec_05_enus_07)
+
+    8. Video: Course Summary (it_oslsec_05_enus_08)
+
+1. Video: Course Overview (it_oslsec_05_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Dan Lachance. [Video description ends]
+
+Hi, I’m Dan Lachance. SELinux is a mandatory access control or MAC, m-a-c solution, where the Linux OS controls access to Linux resources such as files and network sockets.
+SELinux can be used to secure sensitive Linux stations. In this course, I'll start by covering SELinux terminology and components and how it controls resource access in Linux.
+
+I will then install SELinux on Ubuntu Linux and then next I will configure and manage SELinux security contexts, including mapping Linux users to SELinux users to limit permissions.
+
+Lastly, I will ensure the Apache web server can access files through SELinux and I will explore AppArmor.
+
+This course can be used to prepare for the Linux+ XK0-005 certification exam.
+
+2. Video: Security-Enhanced Linux (SELinux) (it_oslsec_05_enus_02)
+
+In this video, you will learn how to recognize when to use Security-Enhanced Linux (SELinux) and it's components such as labels, states, and policies.
+
+recognize when to use Security-Enhanced Linux (SELinux) and it's components such as labels, states, and policies
+[Video description begins] Topic title: Security-enhanced Linux (SELinux). Your host for this session is Dan Lachance. [Video description ends]
+
+Let's take a few minutes to talk about SELinux. SE stands for security-enhanced. So, security-enhanced Linux is either built into the Linux kernel and all you have to do is enable it and restart Linux, or with some distributions, you’ll have to actually install it first before you can begin working with it.
+What we’re talking about with SELinux is a mandatory access control or MAC, m-a-c, type of access control system. What this means is that the operating system controls which users have access to, which resources. It's based on things like the security context. So, how resources like network sockets and services and file system objects are labeled so that we can control access to those types of resources.
+
+So in some highly secured environments, SELinux might be an option for hosts running sensitive systems or hosts storing sensitive data. Of course, there are other things that we should be doing as well, standard Linux hardening and encrypting data at rest and whatnot. SELinux has a couple of modes in which you can run.
+
+One of those modes is disabled. Of course, that means SELinux is not running at all, it’s just Linux as usual. We also have a permissive mode. Permissive means that SELinux is active, but it's not actively enforcing configurations. In other words, we are only monitoring activity on the host. Enforcing, of course, means that you are actually using SELinux and, it is controlling access to resources, so it restricts activity.
+
+Here we have some examples of SELinux command line expressions. For example, sestatus will show us whether or not SELinux is enabled or disabled or the mode that we're running in, whether it’s permissive or enforcing. The getenforce command will tell us whether SELinux is enabled.
+
+To actively configure SELinux, you might run commands such as setenforce, and here we’re passing it a value of 0. That means that we want to put SELinux into permissive mode. After that we’ve got a ; and init space 6 which enters runlevel 6 which means we are rebooting that Linux host. After which, SELinux will be running in permissive mode.
+
+And then, we have this notion of SELinux confined users, as they’re called. When you’re configuring SELinux, you have to consider the fact that existing Linux users can be mapped to SELinux users through an SELinux policy. And once you've done that, then, you can control which resources those users can access based on SELinux policies. Another important concept here, is the SELinux context.
+
+This really deals with security labels that get applied to resources, like running processes or daemons or files in the file system. And this is important because in order for us to properly limit access to these resources, they have to be flagged or labeled in a certain manner. And so that’s what we mean when we talk about context within SELinux.
+
+You can view the context of running processes in Linux using commands like ps, which we would normally use to view running processes. We would pass it aux so we can view all running processes, not just those tied to the user session, but notice what's been added to the parameters is a capital Z. That means we also want to display the SELinux context for each and every running process.
+
+You can do the same type of thing with files in the file system. What you could do is you could issue the ls command, so the standard list command, but you could pass it a -Z. So along with the normal file information that you see with ls, you would also see the label or the SELinux context associated with those files.
+
+Of course, this has to match user context, how users are configured. The matchup is what gives them access to resources in addition to standard permissions. So you can view user context if you're logged in with a given user account by typing id, which we can normally use to view information about our user account, but we would pass it the -Z command. Again that'll show us the user context.
+
+So now that we know what the SELinux context is, we can actually make a change to it. For example, for files using the chcon command, change context. So you might change the content type for files that you might add to your web server directory. You might set the content type as being httpd_ sys-content_t that’s a built-in content type specifically for web server files.
+
+As you might guess, that would be tied in with a running web server daemon like the apache2 daemon to limit which files it can talk to in the file system. So if the Apache web server daemon were ever compromised, and SELinux is configured properly, the compromised web server can only do so much. It's very limited in its movements.
+
+You can also use other commands such as to view file context by using semanage, security-enhanced manage fcontext -l You can also add and set file context using other commands like semanage fcontext -a -t and then specify the type such as httpd_sys _content_t and then in single quotes, you can put in the location in the file system where you want that set. In other words, where you want those files relabeled.
+
+So ‘/sites/www and then in parentheses (/.*)?’ So all files in and under that location. So SELinux then is a mandatory access control mechanism where the Linux kernel is really what controls which resources are accessible by users.
+
+3. Video: Enabling SELinux on Ubuntu (it_oslsec_05_enus_03)
+
+Find out how to enable SELinux and check it's status.
+enable SELinux and check it's status
+[Video description begins] Topic title: Enabling SELinux on Ubuntu. Your host for this session is Dan Lachance [Video description ends]
+
+In this demonstration, I will be enabling SELinux on Ubuntu Linux. [Video description begins] A blank Ubuntu page is displayed. [Video description ends] SELinux of course, as we know stands for security-enhanced Linux. It is a mechanism by which the operating system is a mandatory access control type of authorization solution. Where, things get labeled, things like files, other resources like network sockets and services. They get flagged in a certain way in a certain context to determine what access is granted to users or devices.
+Now, with some Linux distributions, SELinux is automatically enabled, with others, it’s available, but it’s not set to enforce. And yet with again, other Linux distributions, you're going to have to go ahead and install it.
+
+In the case of Ubuntu Linux, the first thing I’ll have to do is run sudo service apparmor stop The reason for this is because AppArmor is yet another type of security solution similar in a loosely conceptual way to SELinux. However, we're going to go ahead and stop that and we're going to disable it. So I'm going to run sudo systemctl disable apparmor Okay, now we can start to think about SELinux.
+
+What we’re going to have to do here in Ubuntu, is we’re going to have to start by installing some packages. So sudo apt update Let's make sure our package repositories and the software available on them is up-to-date, after which time we can run sudo apt install policycoreutils selinux-utils and selinux-basics.
+
+Okay, so these are the packages I’m going to need to effectively work with SELinux on this host. So I'm going to go ahead and press enter. And when prompted, I'll type in a letter y for yes, to continue the installation. Once that’s done, I can run commands like sudo sestatus.
+
+What’s the status of security-enhanced Linux? Well, currently it's disabled, which makes sense of course, because all we've done is installed, we haven’t turned anything on. In the same way, If I run sudo getenforce it returns disabled.
+
+If I were to run sudo cat /etc/selinux/config we’ll pipe that to more. This is a config file, of course, as you might guess, for controlling the behavior of SELinux. Notice here, SELinux is set to permissive [Video description begins] The host points to a line of command that says: SELINUX = permissive. The word SELINUX is in uppercase. [Video description ends] and of course our description above states that permissive means that SELinux is monitoring and prints warnings, but it doesn't enforce any types of restrictions. [Video description begins] He highlights a message that reads: permissive - SELinux prints warnings instead of enforcing. [Video description ends]
+
+Of course we could change that, but we can also change the state of SELinux. Now you would think that we’d be able to run sudo setenforce space 1 to turn on enforcement mode. However, it says, well that’s great, I’d like to do it, but, SELinux is disabled. Therefore, we’re going to have to first run sudo selinux-activate. At the bottom it says: SELinux is activated, you may need to reboot now. It added a boot menu entry, perfect. [Video description begins] The host refers to the following entry: Adding boot menu entry for UEFI Firmware Settings . . . [Video description ends]
+
+So now if I were to run sudo sestatus it still says disabled. If I were to run sudo getenforce still says disabled. So you always need to make sure that you are rebooting when you make this kind of a change. I’m going to do that by running sudo init 6 to enter runlevel 6, which means to reboot the host. Okay, so now that I've rebooted and signed back in, why don’t we run sudo sestatus once again?
+
+And notice of course, now it shows that SELinux has a status of enabled. We’ve got a file system mount at /sys/fs/selinux It’s got the default SELinux policy loaded. The current mode we are running in is permissive. However, now that we’re in this state where we’ve activated SELinux and rebooted, if we were to run sudo setenforce 1 we don't get a message this time that says SELinux is disabled.
+
+So why don’t we go ahead and run sudo getenforce It now says enforcing. If I were to run sudo cat /etc/selinux/config pipe it to more. Remember that file we looked at before? So if we want to make sure that we have SELinux running in enforcing mode all the time, we can go ahead and make that change here with the SELINUX= directive. And of course, we would reboot.
+
+But I must warn you, don’t set SELinux to enforcing yet. We've got a couple of other videos where we'll take [Video description begins] He highlights the word permissive from the line of command that reads: SELINUX= permissive [Video description ends] a look at how to properly configure SELinux.
+
+If you don’t set it up correctly with the user mapping between Linux and SELinux, and if you don’t set the contexts correctly, such as for the file system and for running processes, you could end up locking yourself out of your system, such as being unable to ssh into your server while local logins would work at the server itself. But at this point we have a general sense of at least how to get SELinux up and running on Ubuntu Linux.
+
+4. Video: Configure SELinux (it_oslsec_05_enus_04)
+
+During this video, discover how to configure SELinux.
+configure SELinux
+[Video description begins] Topic title: Configure SELinux. Your host for this session is Dan Lachance . [Video description ends]
+
+In this demonstration, we’ll take a look at some basic SELinux configuration. SELinux is an enormous topic that is a course unto itself. But here we'll just poke around a little bit with the config file and viewing things like contexts with the focus on file contexts.
+
+Let's start by running sudo nano and let's take a look at the /etc/selinux/config file [Video description begins] The content of a file titled /etc/selinux/config is shown. There are several options including Help, Exit, Write Out, Read File, etc. at the bottom of the screen. [Video description ends] Notice currently SELinux is set for permissive mode. Essentially this means, it will be monitoring for SELinux security issues but it will not enforce it.
+So we could change that value in that config file to enforcing and reboot to enter enforcing mode or we could do it temporarily here at the command line. First things first, let’s run sudo getenforce and what it should return is Permissive But what we can do is run sudo setenforce and give it a value of 1 to turn on enforcing mode.
+
+When we do that and then, check getenforce it now returns that we are in enforcing mode.
+
+Now, you want to be careful with this. What I mean by that, is you want to make sure for instance, that you’ve mapped Linux users to SELinux users to allow things like ssh remote logins to work once you are in enforcing mode. We’ll focus on how to work with SELinux user mappings and whatnot in another video.
+
+As an example, if I were to try to open up a new ssh session for user cblackwell, I’m just using the PuTTY tool to do that remotely, it prompts me for my password, well, that means the ssh daemon is working server side, so there’s no SELinux issues with that. But despite the fact that I entered in the credentials correctly, it did not let me into that session. And that's because there's not been a user mapping yet between SELinux and that regular Linux user.
+
+Again, we'll do that in another demo, but it's important to understand. So I’m going to run sudo setenforce 0 to go back to permissive mode. If we take a look at that with getenforce we're back in permissive mode. Let's talk about context. When I type id -Z for my current login user, it’ll return information about my user as related to SELinux my role, with an _r and type, _t
+
+Currently, it's all just unconfined. And then I've got permissions levels. [Video description begins] The host points to the command: unconfined_u : unconfined_r: unconfined_t: and permission levels s0 -s0 : c0 . c1023 [Video description ends] Well, we can also view the same type of information for running processes.
+
+Let’s say I run ps -aux which we would normally do to view all running processes, even those not tied to this user terminal or any terminal and add a capital Z to it. So now, we are getting all of these different types of users, roles and file types or just types for each running process. [Video description begins] After the host runs the command, a page containing information regarding a number of users appear. He points to a user information as an example. [Video description ends]
+
+So let’s do that again, except let’s pipe the results to the grep line filtering tool, looking for the word apache. So we've got a number of instances here, [Video description begins] The host runs the command:ps -auxZ | grep apache [Video description ends] but what's important is noticing that now we don't have unconfined listings, we’ve got system_u, system_r of course those are abbreviated.
+
+And for the type, we have httpd_t Interestingly, if I were to change directory to var/www/html which is the default website directory, let’s say we did a ls -Z. Notice the index.html file which is the default web page served up by Apache, has a file system type set to httpd_sys_content_t These types are used to correlate things like files with processes to determine if processes are allowed to read or to write files.
+
+As an example, let's say I wanted to have a website directory on the root here called site1 And why don't we also run sudo touch to create a file in there, let’s say called index.html [Video description begins] He runs the commands: /var/www/html$ sudo mkdir /sitel and /var/www/html$ sudo touch /sitel/index.html [Video description ends] If we go into site1 and if we do a ls -Z notice that the type here is not set correctly for the Apache web server to be able to access this file. [Video description begins] The host points to a segment in a line of code that reads: etc_runtime_t [Video description ends]
+
+Of course, you could reconfigure your web server to point to this directory as the web root, but what we can do here is run sudo chcon for change context. So I could do even this: -R for recursive -t for type and I want this let’s say to be set to httpd_sys_content_t that’s the type, I want that applicable in the current directory.
+
+Now, if I run ls -Z once again, notice that the type has been successfully changed, [Video description begins] He points to a segment in a line of code that reads: httpd_sys_content_t [Video description ends] which means that the Apache process then would have access to work with this file.
+
+So you can use the ls -Z command to check the context of any location. Here I’ve done it for /etc/ssh/ And here I’ve got the types shown as etc_t So the -Z then is the common thread to view context for the id command, the ps command and the ls command.
+
+5. Video: Managing SELinux Users (it_oslsec_05_enus_05)
+
+Learn how to map Linux users to SELinux users.
+map Linux users to SELinux users
+[Video description begins] Topic title: Managing SELinux Users. Your host for this session is Dan Lachance . [Video description ends]
+
+In this demonstration, I will be managing SELinux users. So the way that it works with SELinux is that regular user accounts in Linux get mapped to SELinux users and then of course, we'll be able to access resources that might otherwise be restricted by SELinux. Let’s start here by running getenforce.
+So here it's showing that we are in permissive mode. So we are not enforcing SELinux policies. Now I currently have a ssh session I’m already logged in as user cblackwell. Let’s try to open up another ssh session for that same user, just to see if it works or not. Because remember, if we do run sudo sestatus SELinux is enabled, it’s just we’re running in permissive mode.
+
+Okay, so I’m going to log in here in this second session as user cblackwell, this is happening over ssh. [Video description begins] The host opens a new window named 192.168.2.156 - PuTTY. The window displays information such as system load, memory usage, users logged in and so on. [Video description ends] And we're in and everything is great. Okay, let's exit out of that.
+
+Now, what I’d like to do is I’d like to run sudo setenforce 1 And what that means is we are now running in enforcing mode. Okay, so naturally my current session is still valid, I can still type things in here and it’s active. But let’s start a new ssh session once again for user cblackwell.
+
+Okay, [Video description begins] He runs a ls command and it displays information such as bin, boot, lost+found, shared_files and so on. [Video description ends] cblackwell, put in the password and it just kicked me right out, it failed. [Video description begins] The host opens the PuTTY window and enters the username cblackwell and the password. [Video description ends] Well, the reason for that is that, cblackwell has not yet been mapped to a SELinux user.
+
+And so, of course, everything is denied in that sense. So let’s run sudo semanage user -l This is going to show me SELinux users. So notice for example, the built-in staff SELinux user account. It’s called staff_u You notice the MLS/ level is set to s0, which is considered the least sensitive of the multiple levels that you can assign.
+
+We won't be going into detail with that, but what we will be doing, is mapping user cblackwell to staff_u Before we do that, let's see if that's already been done. sudo semanage this time we’re going to put in the word login as support to user. Okay, so it looks like I've got the root Linux account mapped to the unconfined_u in SELinux.
+
+But there’s no listing here for cblackwell. So we’re going to do that. I’m going to run sudo semanage login -a I want to add a mapping between a Linux user and a SELinux user. If you want to delete them, you could use --delete But here we’ll use -a to add and -s and the user is staff_u we just looked at that. That’s the SELinux user and I want that mapped to the Linux user called cblackwell, enter.
+
+So now if we use our up arrow key to go back to sudo semanage login -l notice cblackwell is now shown being mapped to staff_u. Now if we run sudo getenforce you might recall that we are currently in enforcing mode. Previously, cblackwell could not start a new remote ssh session and the reason was because it wasn’t mapped to a SELinux user that could do stuff.
+
+Now, that has been changed, let’s try it. Okay, once again, we are trying to ssh into our host with the username cblackwell, put in the password and this time we are in. Again if we run sudo getenforce we’re not permissive mode here, we are in enforcing mode. So when you work with SELinux, it’s always important to understand contexts, the various modes of SELinux and also how to map SELinux users to regular Linux users.
+
+So the last thing I’m going to do is I’m going to remove user cblackwell from being mapped to that SELinux account. We can do that here with sudo semanage login --delete in lowercase letters, -s and the SELinux account was called staff_u and the local Linux account was called cblackwell.
+
+So we go ahead and type that in and press enter. Okay so now, if we check our work, we can run sudo semanage login -l Notice that cblackwell is no longer there. Remember, we can run sudo semanage user -l to view just the SELinux users. And one thing to think about is that the unconfined_u has much less restrictions placed on it than for instance, the staff_u account would.
+
+6. Video: Managing the Apache Process and Files (it_oslsec_05_enus_06)
+
+In this video, find out how to ensure the Apache process can access files when SELinux is in enforcing mode.
+ensure the Apache process can access files when SELinux is in enforcing mode
+[Video description begins] Topic title: Managing the Apache Process and Files. Your host for this session is Dan Lachance . [Video description ends]
+
+In this demo, we’re going to take a peek at how you can manage a process and the files that it needs access to, when SELinux is in enforcing mode. So let's examine this a little bit.
+The first thing that we’re going to do is, we’re going to run ps -aux which normally shows us all running processes, even those not tied to our user session or any user terminal, but we’re going to add the capital Z. You might recall the capital Z is a parameter for a number of commands that will show you context information for whatever it is the root command is doing, which in this case is ps, showing us processes. I’m going to pipe that to grep, we’re looking for apache2.
+
+Now, the reason we’re very interested here, is because notice that the apache2 process is set to a type of httpd_t What that means, is that process will be able to talk to anything such as in the file system that's flagged with the content type that starts with httpd has something else and then ends with t, that’s the link.
+
+So if, for example, we were to do a ls -Z /usr/sbin why don't we look at the binary that actually starts the Apache web server daemon? So there it is, it’s the apache2 file. And notice its type here is set to httpd_exec_t Well, you might say well, that one has exec in it and the process doesn’t have exec. That’s okay, as long as it’s httpd something t.
+
+In the same way, if we were to do a ls -Z of /var/www/html the default document root for the Apache web server, the default sample web page index.html, is set to httpd_sys_content_t So therefore, the web server can serve that stuff up. Okay, well, let’s verify that that’s correct. If I run getenforce we are in permissive mode. Let’s switch that right now. sudo setenforce 1 and let’s run getenforce again. Okay, now we’re in enforcing mode and if we run sudo service apache2 status, it’s active and running. So let’s see if we can pull up the default web page.
+
+For that, we’ll need our IP, so ip space a. Here it is: 192.168.2.156. Let’s hit that in a web browser. Okay, so we get the standard Apache2 default web page. The default listening port is 80, everything looks fine.
+
+Okay, [Video description begins] The host opens the default welcome page titled Apache2 Ubuntu Default Page. The page displays a welcome message and a section titled Configuration Overview. A message is displayed under the configuration overview with a box with lines of code underneath it. [Video description ends] so back here in Linux, let’s run sudo mkdir and on the root make a directory called /mysite
+
+If I change directory into /mysite in here, I can create an html file. So I'll run sudo nano index.html and we’ll just put in some very basic html using tags. [Video description begins] A new window titled GNU nano 6.2 is open. It displays a few html tags and also has options such as help, write out, execute, replace etc., towards the bottom. [Video description ends] The page basically is going to say sample web page.
+
+Okay, let's go and let's save that file. Let’s go ahead and run sudo nano /etc/apache2/sites-enabled And I’m going to refer to my config file in there to open it up. Within that config file, I want to make sure that I’ve changed the document route to reflect our new location which in this case is just /mysite So that’s been done, the virtual host is set to listen on port 80, all is good.
+
+Let’s get out of there, and I’m going to run sudo service apache2 restart or picks up the change. I’ll just run sudo setenforce 0 and then getenforce so it should return permissive mode. So then when we refresh our web browser, it’s showing the sample web page. [Video description begins] After the host runs the commands, a webpage titled 192.168.2.156 opens. The page displays the message: Sample web page... [Video description ends] But, what will happen if we switch SELinux to enforcing mode? Let’s find out.
+
+So back here in Linux, sudo setenforce 1 we’ll do a getenforce now we’re in enforcing mode. Let’s go back to the browser. And when we do a refresh, it now says: forbidden, you don’t have permission to access this resource. Really the Apache web server doesn’t have permission to access that resource to load up our index html.
+
+The reason for this, if we change directory into /mysite and do a ls -Z is because the file types here are set to default_t They don’t match httpd something t. So let’s do a ls -Z of whatever’s in the /mysite directory which is our index.html. So let’s do a ls -Z for the /mysite directory, there’s the index.html but notice the type: default_t. Well, when we’re in enforcing mode, whatever process needs to talk to that there's got to be some kind of a match up and there’s not here, that’s not an httpd file type.
+
+So the way we solve this, is by running sudo chcon That means change context. I’m going to use the standard context-type used for Apache web files, which is, system_u:object_r for the role, :httpd_sys_content_t and then : s 0 for the permission class, that’s the least restrictive. We have to tell it the subject. Here, it’s going to be /mysite Don’t make the mistake here of only pointing to the index html or something like that, because while the Apache server technically would be able to see the file, it wouldn’t be able to get into the sub-directory where the file exists.
+
+So once we’ve done that, there is now going to be a matchup between the Apache process, which we viewed with the ps command earlier, [Video description begins] The host runs the command /mysite$ ps -auxZ | grep apache2 [Video description ends] which is a type of httpd_t and now, files that has to serve up and directories, httpd_sys_content_t Why don’t we just go back to the browser and refresh our page?
+
+Oh, before we do that, let's just make sure we know what mode we're in. Okay, so we are in enforcing mode, which is how we want to test this. Okay, and just like that, it is now working. [Video description begins] The host goes back to the web page titled 192.168.2.156 and clicks on the refresh button multiple times. The web page displays the message: Sample web page... [Video description ends] Now the Apache process is allowed, according to SELinux, to talk to our /mysite directory to serve-up the content there in our custom web server directory.
+
+7. Video: Exploring AppArmor (it_oslsec_05_enus_07)
+
+Discover how to view AppArmor settings.
+view AppArmor settings
+[Video description begins] Topic title: Exploring AppArmor. Your host for this session is Dan Lachance . [Video description ends]
+
+In this demonstration, we’re going to take a look at AppArmor. Some distributions of Linux, notably, names like SUSE Linux, Ubuntu Linux use AppArmor, which is similar to SELinux in concept. In the sense that it’s a mandatory access control or a MAC type of solution. So it is an actual kernel security module.
+Its purpose, kind of like SELinux, is to limit the capabilities of processes such as to which files they can access in the file system, as an example. On Ubuntu Linux which should have AppArmor installed automatically, you should be able to run sudo apparmor_status Notice that armor is spelled a-r-m-o-r.
+
+When I press enter, what I’m getting a list of, are numerous profiles that are loaded to control the behavior of processes in regards to AppArmor. [Video description begins] The screen displays several profiles such as /usr/bin/man, /usr/sbin/chronyd, /usr/sbin/tcpdump and so on. [Video description ends]
+
+You’ll notice too at the bottom of the output it talks about complain mode. What is this? Well, just like SELinux can run in a number of modes like permissive mode for monitoring, versus enforcing mode to actually actively restrict things,
+
+AppArmor has two modes: the complain mode and we see that referenced here, is kind of like permissive in SELinux. It's more of a monitoring and logging kind of mode. It doesn't actively restrict stuff, but the other mode that AppArmor has, is called enforcement.
+
+Of course, that’s very much like SELinux enforcing mode. So it’s telling us we’ve got 0 profiles that are in complain mode, 2 processes with profiles defined, 2 processes are in enforce mode and they’re shown here, it’s referencing chronyd. You might recall that chronyd is related to working with the Network Time Protocol or NTP, basically network synchronization between hosts.
+
+However, in a highly secure environment, what you might choose to do, is put all of the profiles into enforce mode. You can do that with sudo aa that’s AppArmor, -enforce And what you would do then is refer to /etc/apparmor.d/ and you would just put in an asterisk to reference all of the files, all the profiles in that location.
+
+Now if you get: command not found, like I did, you probably need to run sudo apt install apparmor-utils enter. It asks: do you want to continue? Of course, I'll type in y for yes. And if we clear the screen and just use our up arrow key to go back to our aa-enforce command, this time it works.
+
+So notice it’s got a bunch of references here to setting specific profiles to enforce mode so that, if we were to clear the screen and run sudo apparmor_status once again, up at the top it talks about 30 profiles being loaded and 30 profiles being in enforce mode.
+
+Now normally before you go into enforce mode, you'll often configure things in complain mode and watch the activity for a while, just to make sure that there aren’t incompatibilities or that you won't break anything when you're in such a restrictive state. So as you might imagine, I could run sudo aa-complain instead of enforce, reference the profiles, I’m just referencing all of them with the asterisk in the apparmor.d directory.
+
+And if we clear the screen, and if we check [Video description begins] The hosts points to a segment in a line of code that reads: /etc/apparmor.d/* [Video description ends] the AppArmor status once again, what we’re going to notice if we scroll back up, at the top we've got 30 profiles loaded, but now only 15 are in enforce mode and 15 are in complain mode.
+
+Of course, the individual profiles are actually shown. So I’m going to change directory to /etc/appamor.d Clear the screen, let’s do a ls. Let’s say we just want to make sure that usr.sbin.tcpdump is in enforce mode and not complain mode. What we could do is run sudo aa-enforce and then refer to the profile.
+
+So /etc/apparmor.d/ and then refer to that file name. And then it returns that it has set that item to enforce mode. So let’s take a look at it, sudo nano and we’ll refer to that file name. You normally wouldn't change a lot of these defaults, at least not very often. It can get quite involved. You normally wouldn't change a lot of these settings, [Video description begins] A page titled GNU nano 4.8 is opened and displays several settings such as capability net_raw, capability setuid, network raw and so on. [Video description ends] the defaults are usually sufficient. But you can, it can get quite involved.
+
+But the reason that we’re going in here is just to point out that, if you wanted to use AppArmor to protect your Linux hosts and you've got custom apps, then, you would have to generate a custom profile for that application for it to run correctly when AppArmor is enabled. However, if you don't want AppArmor to start automatically because it is a kernel security module, you could run sudo systemctl disable apparmor and at this point upon reboot, AppArmor will no longer be active.
+
+8. Video: Course Summary (it_oslsec_05_enus_08)
+
+In this video, discover how to summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. Your host for this session is Dan Lachance . [Video description ends]
+
+So in this course, we’ve examined how to determine when and how to use SELinux and AppArmor to secure Linux hosts.
+
+We did this by exploring how to install and configure SELinux on Ubuntu Linux and how to manage confined users.
+We then took a look at how to configure the Apache web server to ensure it can access files when SELinux is active, and we explored AppArmor.
+
+In our next course, we'll move on to use a variety of Linux commands and expressions to create shell scripts.
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

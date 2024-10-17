@@ -1,0 +1,501 @@
+CompTIA Linux+: Firewalls & Monitoring
+There are various Linux firewall options to control inbound and outbound traffic for Linux hosts. Proxy servers, intrusion detection system (IDS) and intrusion prevention system (IPS) solutions, and security information and event management (SIEM) monitoring solutions all play a part in securing the Linux ecosystem. In this course, you will explore IP forwarding and various types of firewalls, including those available in the Linux OS. Then you will learn how to configure firewall settings using iptables and Uncomplicated Firewall (UFW) and you will discover when and how to use forward and reverse proxy servers. Next, you will investigate IDS/IPS, configure the Snort IDS, and find out how honeypots and honeynets can be used to monitor malicious activity. Finally, you will examine how SIEM and security orchestration, automation, and response (SOAR) solutions can be used to detect and remediate security incidents. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+Table of Contents
+    1. Video: Course Overview (it_oslsec_03_enus_01)
+
+    2. Video: Firewall Types (it_oslsec_03_enus_02)
+
+    3. Video: Linux Firewall Solutions and IP Forwarding (it_oslsec_03_enus_03)
+
+    4. Video: Configuring a Linux Firewall With iptables (it_oslsec_03_enus_04)
+
+    5. Video: Configuring a Linux Firewall With UFW (it_oslsec_03_enus_05)
+
+    6. Video: Proxy Servers (it_oslsec_03_enus_06)
+
+    7. Video: Deploying the Squid Proxy Server (it_oslsec_03_enus_07)
+
+    8. Video: Intrusion Detection and Prevention (it_oslsec_03_enus_08)
+
+    9. Video: Configuring the Snort IDS (it_oslsec_03_enus_09)
+
+    10. Video: Honeypots and Honeynets (it_oslsec_03_enus_10)
+
+    11. Video: Security Information and Event Management (SIEM) (it_oslsec_03_enus_11)
+
+    12. Video: Security Orchestration, Automation, and Response (SOAR) (it_oslsec_03_enus_12)
+
+    13. Video: Course Summary (it_oslsec_03_enus_13)
+
+1. Video: Course Overview (it_oslsec_03_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Dan Lachance. [Video description ends]
+Hi, I'm Dan Lachance. There are various Linux firewall options to control inbound and outbound traffic for Linux hosts. Proxy servers, IDS and IPS solutions, and SIEM monitoring solutions, all play a part in securing the Linux ecosystem.
+
+In this course, I will begin by discussing IP forwarding and various types of firewalls, including those available in the Linux OS. I will then configure firewall settings using iptables and UFW, the uncomplicated firewall, followed by discussing when and how to use forward and reverse proxy servers. Next, I will discuss IDS and IPS solutions and configure the Snort IDS, followed by covering how honeypots and honeynets can be used to monitor malicious activity.
+
+Lastly, I will cover how SIEM and SOAR solutions can be used to detect and to remediate security incidents. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+
+2. Video: Firewall Types (it_oslsec_03_enus_02)
+
+After completing this video, you will be able to recognize the different types of firewalls, including the web application firewall (WAF), their placement, such as in the demilitarized zone (DMZ), and when they should be used.
+recognize the different types of firewalls, including the web application firewall (WAF), their placement, such as in the demilitarized zone (DMZ), and when they should be used
+[Video description begins] Topic title: Firewall Types. Your host for this session is Dan Lachance. [Video description ends]
+Most IT technicians are familiar with firewalls, whether it relates to the use of them or configuring and deploying them. We're going to focus here on different types of firewalls and how they might be deployed in a network environment. Following that, later on we'll do a few demos configuring some firewall packet filtering rules in Linux.
+
+So the first thing we'll do here is simply mention that a firewall at its simplest level is simply a device or a piece of software that's configured to control traffic into and out of either entire networks or individual hosts. And certainly for the utmost in security, you can combine network-based firewall such as at the network perimeter in addition to having a firewall solution installed on every single computing device where possible, even including smartphones and tablets.
+
+So as a result, a firewall can come into general forms. It's either a dedicated hardware appliance. So at the enterprise level, this would definitely be the case, and you would have many different types of firewall solutions available within that appliance, such as packet filtering, packet content inspection, proxy server features, and so on. And you could do the exact same thing, but instead with software that you install within an OS, such as in the Linux OS.
+
+Depending on the type of firewall solution you're using, it might require two network interfaces, whether they are physical network interfaces where one is connected to an internal private network and the other is a public-facing network interface. Those could also be virtual network interfaces on a virtual machine as well, depending on what your environment consists of, because the term firewall is quite general, it's quite a large umbrella and it can mean a lot of different solutions.
+
+Firewall functionality really does determine the OSI or Open Systems Interconnect model level that it maps to. We'll talk more about that later, but it's common to see literature that refers to a layer 4 firewall versus a layer 7 firewall, so we want to attach some meaning to those terms. Now, firewalls, and specifically packet filtering firewalls, which we'll talk about, are either stateful or stateless. Let's start with stateless. A stateless firewall looks at each individual packet that comes into the firewall and treats it as separate and independent from other packets.
+
+And with some protocols like UDP, that might make sense. There's no session that gets established before transmitting data. But with other transport protocols like TCP, there is a session that gets established, after which data packets are sent and acknowledged before the session is torn down.
+
+And so to get a true picture of what's actually happening, sometimes you need a firewall that can understand that there could be numerous packets within a given session. That would be a stateful firewall. Most modern firewalls that support packet filtering are stateful. So, common firewall types, packet filtering that is the most common. Essentially a packet filtering firewall consists of rules that determine what traffic is allowed or denied coming into the firewall, leaving the firewall, or perhaps even being routed through the firewall.
+
+This is what is often referred to as a layer 4 firewall, layer 4 being the transport layer of the OSI model. Then we've got content filtering firewalls, often referred to as layer 7 firewalls or deep packet inspection firewalls, because they can look not only at the packet headers, which is what a packet filtering firewall does, but they can look beyond that, also into the packet data, the packet payload to actually see what's happening. Maybe details about an HTTP request and whatnot. Another firewall type, a proxy server.
+
+The word proxy in the English language of course means on behalf of. For now, we'll just say a proxy server is designed to go out and fetch content from the Internet for a user when they request it, instead of the user directly connecting to the Internet. As always, there's more to it than that. We'll get to that after. We also have Network Address Translation or NAT, sometimes called Port Address Translation or PAT depending on exactly how it's configured and how it functions. But in a general sense, imagine even on a home-based network you've got a Wi-Fi router that allows all connected Wi-Fi clients out to the Internet.
+
+Well that's happening using normally a single public IP address. So, when the packets go past that Wi-Fi router, or could be an enterprise-class router in a corporate network, it assumes the identity or the public IP of the public interface of that connected device. Now, that's considered to be a form of a firewall because normally a NAT firewall or a NAT router will not accept inbound connections initiated from the outside or the public network. Back to packet filtering firewalls.
+
+Here we've got a diagram that illustrates the headers in a standard HTTP packet, starting with the Ethernet header, which will contain source and destination MAC addresses or hardware addresses. This header applies to layer 2 of the OSI model, the data link layer, and there are some firewall solutions that focus solely on this. Think about a wireless network that uses MAC address filtering to determine which clients are allowed or not allowed to connect based on their hardware address.
+
+The hardware address identifies that network interface card and there is software that will allow you to set your MAC address to appear to be anything. The next header you would find in a standard HTTP packet would be an IP header, Internet Protocol which contains among other fields, the source and destination IP address. This applies to layer 3 of the OSI model, the network layer.
+
+The next thing you would find is a header that is either TCP or UDP based. Well, if it's an HTTP transmission, it's going to be TCP based. TCP is connection-oriented. A session has to be established where UDP just transmits packets, no session set up, and there's no acknowledgment that the recipient received the transmission.
+
+UDP has less overhead, but it's less careful than TCP, either way, whether you're talking TCP or UDP, the addresses that come to mind are port addresses, like a web server listening on port 80 or a Linux host listening on port 22 for SSH remote management connections. This would apply to layer 4 of the OSI model, the transport layer, so a layer 4 firewall then can look at port addresses, IP addresses, MAC addresses to determine whether traffic should or should not be allowed.
+
+If we're talking about an HTTP transmission, which we are here, then the next header would be an HTTP protocol header, and depending on what exactly is happening, we'll determine which OSI layers it might apply to layers 5 through 7, such as whether we're using HTTPS, whether data is compressed or not, and so on. And then below that you would have the packet payload data. So, a layer 7 firewall like a packet filtering or deep content inspection firewall has the ability to look not only at the packet headers, which are primarily informative addressing types of header information, but also at the payload to make a decision as to whether the traffic should be allowed or not.
+
+So, all of these headers then potentially can be examined in addition to the packet payload data to allow or to deny traffic. When it comes to placement of a packet filtering firewall, it really depends on your environment. In our diagram in the bottom left, we've got an internal network, but in our diagram, we also have two firewalls, one connected directly to the internal network and the other connected to the Internet, as well as to something called a demilitarized zone or a DMZ or screened subnet. There are many terms for it.
+
+Any public-facing service that should be reachable from the Internet should be placed in the screened subnet and so the perimeter firewall connected to the Internet would allow traffic from the Internet only to those hosts and not to be forwarded onto the internal firewall. Now we have a web application firewall, a WAF. This is a layer 7 type of firewall that is specific to web apps.
+
+It protects them from common types of web attacks. What might those be? Well, common web attacks would include denial-of-service (DoS) and distributed denial-of-service or DDoS attacks where distributed means we've got a number of host devices under malicious actor control that are commanded to attack a host or a network.
+
+Web application firewalls can also protect against sensitive data leakage, prevent connections from bots mimicking humans, malicious URLs and HTTP requests, various types of injection attacks like SQL injection, directory traversal attacks, buffer overflow attacks to name but just a few. So, it's important to have a sense of these general types of firewalls.
+
+3. Video: Linux Firewall Solutions and IP Forwarding (it_oslsec_03_enus_03)
+
+Upon completion of this video, you will be able to recall various Linux firewall solutions including firewalld, iptables, nftables, and Uncomplicated Firewall (UFW).
+recall various Linux firewall solutions including firewalld, iptables, nftables, and Uncomplicated Firewall (UFW)
+[Video description begins] Topic title: Linux Firewall Solutions and IP Forwarding. Your host for this session is Dan Lachance. [Video description ends] Let's take a few minutes to discuss some common Linux firewall solutions that you will either find already preinstalled in your Linux distro or that you can quickly and easily install and get up and running. So, some Linux firewall solutions, their software firewalls are built directly into the OS.
+That's going to vary slightly depending on which distribution of Linux you're using, and of course which version of it. There's always the option of installing a software firewall solution, whether it's free and open-source, or whether it's a paid solution, whether it runs on the host, or whether it's a network firewall solution such as a dedicated firewall appliance.
+
+Some of the more common Linux firewalls at the software level that you should at least be aware of include iptables, nftables, firewalld, which is designed to work in conjunction with nftables as we'll discuss further, and the uncomplicated firewall or ufw. Let's start by taking a brief look at iptables. Specifically, we'll look at some syntax examples. Our first example is iptables -A. We want to add something to the INPUT chain for traffic coming in.
+
+Now, you might also look at traffic leaving a machine that has iptables running, or if it's got multiple network interfaces with IP forwarding enabled, maybe you're interested in determining what traffic you are allowing to be forwarded through the firewall device running iptables. Next in our syntax, we have -i for interface, in this case, traffic coming into eth1 on the firewall device, and then we can specify from a source -s. Here we're specifying an entire IP address range using CIDR notation and -j for jump to a specific type of action, in this case DROP.
+
+So we're dropping packets that come from that specific network. The next example we have of iptables is just looking at a protocol -p of icmp and the jump action is to ACCEPT that type of traffic. Our third example, the protocol is tcp with the destination port or --dport of 80 that we are choosing to ACCEPT. So, standard web server traffic.
+
+Of course, you could also choose to DROP any type of traffic. Maybe you choose to DROP icmp based traffic. You don't want traceroute traffic, you don't want ping traffic or anything being able to get to that machine and a response being sent back out. You can also run iptables -L to list rules.
+
+Now, some modern Linux distros won't have iptables built in, so you could always run, if it's a Debian-based distribution, apt install iptables, and you could also choose to install iptables-persistent because the commands above are only good in the current session, they won't persist through a reboot. Now there are many ways to do that, including using the iptables-persistent tool where you could run iptables-save afterwards and use upward redirection to store that in /etc/iptables/rules.v4 Next we've got nftables. This one was designed to supersede iptables. An example of its syntax might be nft add rule ip6 filter input tcp dport {http, https} accept.
+
+[Video description begins] A slide labeled iptables appears. It contains various lines of codes. Line 1 reads: iptables -A INPUT -i ethl -s 10.0.0.0/8 -j DROP. Line 2 reads: iptables -A INPUT -i ethl -p icmp -j ACCEPT. Line 3 reads: iptables -A OUTPUT -p tcp --dport 80 -j ACCEPT. Line 4 reads: iptables -A OUTPUT -i eth0 -p icmp -j DROP. Line 5 reads: iptables -L. Line 6 reads: apt install iptables-persistent. Line 7 reads: iptables-save > /etc/iptables/rules.v4. [Video description ends] 
+
+In other words, we want to allow IPv6 traffic destined for http or https. We mentioned earlier that the firewalld firewall solution is designed to work with nftables. It is actually a front-end management tool for it, and if it's not installed, you could install it for example on a Debian-based distro with sudo app install firewalld. You'll find firewalld is pretty at common and some Linux distributions like Red Hat Enterprise Linux, CentOS, Fedora, and SUSE Linux.
+
+Syntactically when it comes to rules, you might issue commands such as sudo firewall-cmd-zone=public, so you've got different types of zones that are defined. -add-service=http to allow that traffic from the public zone. And then we've got the uncomplicated firewall, or just ufw for short.
+
+And again, this might automatically be installed with some Linux distributions. Modern Ubuntu Linux distributions have this built in. Otherwise, you could install it with sudo apt install ufw. You could set it to start. You would have to make sure the service is started. There are many ways to do that, including sudo systemctl start ufw. When it comes to the syntax for working with firewall rules, you might run sudo ufw default deny incoming to block all incoming traffic, and then you might choose to then allow something specific such as with sudo ufw allow ssh.
+
+The purpose here is not necessarily to memorize the syntax for all these various Linux-based firewall solutions. However, we should be able to look at a given firewall rule syntax and determine if it makes sense or not, but it's going to be important for a Linux technician to be aware of various common Linux firewall utilities.
+
+4. Video: Configuring a Linux Firewall With iptables (it_oslsec_03_enus_04)
+
+Find out how to configure iptables Linux network firewall settings.
+configure iptables Linux network firewall settings
+[Video description begins] Topic title: Configuring a Linux Firewall With iptables. Your host for this session is Dan Lachance. [Video description ends]
+In this demo, I'm going to be configuring a Linux packet filtering firewall using iptables.  iptables has been around for quite a while and it was the standard for having a built-in packet filtering firewall in Linux, but over time in different distributions that has been changed a little bit to include other tools such as the uncomplicated firewall or UFW.
+
+Nonetheless, it's important as a Linux technician to understand how to work with iptables. Let's get started. First thing I'll do is run sudo iptables -L -v for verbose and -n for numeric.
+
+[Video description begins] A terminal window appears with the heading cblackwell@Ubuntu1: ~. The following command is now highlighted: sudo iptables -L -v -n. [Video description ends]
+
+The numeric part means that any IP address information important number will be shown with your numeric values as opposed to a textual equivalent.
+
+For example, displaying 22 instead of SSH. So here we've got the INPUT chain with no configurations. As you might guess, this means traffic coming into a given interface on this host. A true firewall is going to have more than one network interface, so two or more, and so we can define what kind of traffic is allowed coming in through a particular interface. Forwarding means going through the firewall, and OUTPUT of course, means leaving the firewall through a given interface.
+
+But we don't have anything here yet. So I'm going to run sudo iptables -A. So I want to add to the INPUT chain. Now, -interface.
+
+[Video description begins] The following command reads: sudo iptables -A INPUT -i. [Video description ends]
+
+Now if you don't know what your interfaces are, of course you could always simply run ip a.
+
+[Video description begins] The following command is added: ip a. [Video description ends]
+
+Our interface here is called eth0, so let's start that again.
+
+sudo iptables -A INPUT, those are in caps, -i eth0 is our interface -p. Let's say I want to specify a protocol of icmp and I want to jump to the ACCEPT action, so -j and the word ACCEPT in uppercase letters, Enter. If we use our Up arrow key to go back to our listing command with the -L for iptables. Notice now in the INPUT chain, it shows that we are accepting the protocol of icmp coming in through interface eth0 out any interface. So we have an * under out.
+
+[Video description begins] The command reads: sudo iptables -A INPUT -i eth0 -p icmp -j ACCEPT. [Video description ends]
+
+[Video description begins] The following command is now highlighted: sudo iptables -L -v -n. [Video description ends]
+
+
+We didn't specify a source or a destination, so they're set to the defaults for IPv4 of 0.0.0.0/0. Now if we do an ip a of this host, it's got a private IP address of 10.0.0.8. Let's try to ping it from another host on that same network since icmp traffic should now be allowed. OK, I'm on a different host and if I type ip a, this one has an IP address of 10.0.0.4.
+
+So if I ping 10.0.0.8, of course, we get the 64-byte reply from that host because we just created an iptables rule that will allow that traffic. So I'll press Ctrl+C and it'll clear the screen. Let's go back to our original host. So, back on our original host. Now they both happen to have the same name in the Command Prompt, but they are different machines on that subnet.
+
+[Video description begins] The command reads: ping 10.0.0.8. [Video description ends]
+
+OK, I'm going to now run sudo iptables -A INPUT -i eth0 interface, and once again, let's specify -p of icmp. But this time I would like to run -j lowercase j for jump, and the action I want to jump to is DROP.
+
+[Video description begins] The command reads: sudo iptables -A INPUT -i eth0 -p icmp -j DROP. [Video description ends]
+
+So I want to DROP icmp traffic down, not accept it. If we use our Up arrow key to go back to our listing command, notice that we added the DROP but the ACCEPT command is still there.
+
+[Video description begins] The following command is now highlighted: sudo iptables -L -v -n. [Video description ends] 
+
+So, what we could do is run sudo iptables -D for delete, INPUT for the INPUT chain, -i for eth0 -p for icmp, and -j, and then ACCEPT, Enter. If we clear the screen and once again do our listing, notice now the only rule shown here is the DROP rule.
+
+[Video description begins] The command reads: sudo iptables -D INPUT -i eth0 -p icmp -j ACCEPT. [Video description ends]
+
+ [Video description begins] The following command reads: sudo iptables -L -v -n. [Video description ends]
+
+And if we flip back to our other Linux server which has a different IP address, and once again if we ping 10.0.0.8, this time we are not getting a reply, naturally because we told iptables in the INPUT chain on that interface to DROP any icmp packets. I'll press Ctrl+C to stop that and let's return back to our original host.
+
+[Video description begins] The command reads: ping 10.0.0.8. [Video description ends]
+
+As another example, I can run sudo iptables, but this time I'm interested in specifying a specific port number that I want to accept, so -A INPUT -i eth0 -p. Let's say tcp is a protocol this time and --dport for destination port of 80. It's a standard HTTP web server traffic and we'll run -j ACCEPT.
+
+[Video description begins] The command reads: sudo iptables -A INPUT -i eth0 -p tcp --dport 80 -j ACCEPT. [Video description ends]
+
+And if we list our rules again, we've now got an ACCEPT rule in the INPUT chain for that interface destined for port 80. So if we had a web server stack running on this host, we would now be allowing traffic from anywhere to the web server running on this machine.
+
+[Video description begins] The following command reads: sudo iptables -L -v -n. [Video description ends] 
+
+5. Video: Configuring a Linux Firewall With UFW (it_oslsec_03_enus_05)
+
+In this video, you will learn how to configure UFW in Linux.
+configure UFW in Linux
+[Video description begins] Topic title: Configuring a Linux Firewall With UFW. Your host for this session is Dan Lachance. [Video description ends]
+In this demo, we're going to take a look at how to work with the uncomplicated firewall, otherwise just called UFW in Linux. So, UFW seems to have become more and more common in many Linux distributions, thus replacing some of the older type of packet filtering firewall standards like iptables. However, iptables, even on newer Linux distros that don't use it, can still be installed as a package of course. But let's focus on UFW.
+
+First thing I'd like to do here is run sudo ufw status.
+
+[Video description begins] A terminal window appears with the heading cblackwell@Ubuntu1: ~. The following command is now highlighted: sudo ufw status. [Video description ends]
+
+I'm using a newer version of Ubuntu Linux which includes uncomplicated firewall by default, it's automatically there. So currently, the state is being returned as being inactive. So in other words, the entire packet filtering firewall is down.
+
+I can run sudo ufw enable.
+
+[Video description begins] The command reads: sudo ufw enable. [Video description ends]
+
+I get a message stating that that may disrupt existing connections over ssh like the one I'm using right now. Should we still proceed? I'll type in yes or y. OK, it says the Firewall is active and enabled on system startup. Now I knew there were no configurations that would block my ssh connection, so we're safe.
+
+So if we use our Up arrow key and go back up to sudo ufw status, now it shows as being active. If I were to run sudo ufw app list, this will give me a listing of any standard apps, in this case, OpenSSH, which of course, uses port 22 that are allowed through the firewall.
+
+[Video description begins] The command reads: sudo ufw app list. [Video description ends]
+
+ I could also run sudo ufw status verbose. This just gives me some settings such as the default being deny for incoming traffic, allowing outgoing traffic, and we've disabled routing through the firewall.
+
+[Video description begins] The command reads: sudo ufw status verbose. [Video description ends] 
+
+Now if I were to run sudo ufw allow Apache, it comes back and says it Could not find a profile matching 'Apache'. Well, that's because it's not installed. If I were to actually install that, let's say sudo apt install apache2 and I'll choose yes to continue the operation.
+
+[Video description begins] The command reads: sudo ufw allow Apache. [Video description ends]
+
+[Video description begins] The command reads: sudo apt install apache2. [Video description ends]
+
+When you install some packages, you get additional capabilities when it comes to app names that you can enable for the uncomplicated firewall. For example, if we use the Up arrow key to go back up to sudo ufw allow Apache, now it works.
+
+[Video description begins] The command again reads: sudo ufw allow Apache. [Video description ends]
+
+So therefore, if we were to run sudo ufw app list, not only do we have OpenSSH as we did previously, but now we've got a couple of entries here for the Apache web server. Now of course, you can do it by port number, you don't have to rely on these named lists.
+
+[Video description begins] The command reads: sudo ufw app list. [Video description ends] 
+
+If I were to do sudo ufw allow, and if we've got an LDAP server perhaps listening on port 389, and then I could specify that we want to allow that item and it says Rule added. So of course, if we take a look at our app list, we have the original app list, but we do not see our newly added custom rule for just a port number.
+
+[Video description begins] The command reads: sudo ufw allow 389. [Video description ends] 
+
+And if I were to do an sudo ufw status, let's say numbered so we have line numbers next to the rules.
+
+[Video description begins] The command reads: sudo ufw status numbered. [Video description ends]
+
+The new rules I've added here will show here. So we've got some variations on Apache for IPv4 and IPv6 where the Action is to ALLOW IN from Anywhere. And we've also got our port 389 rule that we added by port number for IPv4 which doesn't list anything after the port number. And v6 of course means for IPv6 to allow that type of traffic.
+
+You can also run commands such as sudo ufw allow. Now what if I want to add a specific port number but also specify the protocol or the transport mechanism? Let's say we're doing remote log forwarding in Linux, which normally uses, at least by default, port 514. Well, but over TCP or UDP, well, it really depends how you've configured it.
+
+So we can get specific and say we want this over UDP.
+
+[Video description begins] The command reads: sudo ufw allow 514/udp. [Video description ends]
+
+Enter, notice again by default, it adds a rule for IPv4 and v6. So if we go back to sudo ufw status numbered, we've now got our 514 rules.
+
+[Video description begins] The command reads: sudo ufw status numbered. [Video description ends]
+
+The other good thing about having these numbered is that you can also delete any of these firewall rules given the number. For example, if I want to remove the 514 UDP rule for IPv6, I could do that with sudo ufw delete. Now what rule number is that? Well, according to our output, it's rule number 6.
+
+[Video description begins] The command reads: sudo ufw delete 6. [Video description ends]
+
+We'll just put that in. Proceed, yes. And if we take a look again at our Status of our rules numbered, the 514 port number rule for IPv6 has been removed from the list. You can also allow or deny from specific IP addresses or ranges, for example, sudo ufw allow from and I could specify a specific range from which I would like to allow connections.
+
+I can use CIDR notation with the slash and the number of bits in the mask if I choose, I could also specify individual IPs, and instead of allowing from I could also deny from, so it says Rule added and so once again, if I go back to sudo ufw status numbered. We've now got our rule here that allows access to Anywhere from our listed subnet range.
+
+[Video description begins] The command reads: sudo ufw allow from 199.126.34.0/24. [Video description ends]
+
+So, this gives us an idea then of how we might work with the uncomplicated firewall to determine what traffic is allowed into a given Linux host.
+
+6. Video: Proxy Servers (it_oslsec_03_enus_06)
+
+After completing this video, you will be able to outline the role played by forward and reverse proxy servers.
+outline the role played by forward and reverse proxy servers
+[Video description begins] Topic title: Proxy Servers. Your host for this session is Dan Lachance. [Video description ends]
+One type of firewall solution is a proxy server. A proxy server is either a hardware or a software firewall type of solution. So much like a packet filtering firewall, it might be built into a dedicated firewall or security type of appliance, or it could be software that you install and configure on a host operating system.
+
+There are two primary types of proxy solutions. There's a forward proxy and a reverse proxy, so let's go through and discuss what this means. With proxy servers, we have a solution that applies to OSI layer 7, the application layer. This is because a proxy server can look beyond standard packet headers, like a layer 4 packet filtering firewall does. As a result, it can look deep into the packet, into the payload, and might even require things like authentication. Packet filtering firewalls don't even have an option for authentication.
+
+If an incoming packet meets the firewall rule to allow the traffic, then it's allowed. There's no way to prompt for authentication, at least not directly within the layer 4 packet filtering firewall solution. Proxy servers can require authentication so they can inspect packet headers and payload. Proxy servers are configured with two or more network interfaces. But what's interesting about a proxy server is IP routing between those interfaces must be disabled, unlike with most other firewall solutions like a NAT router or a packet filtering firewall. Why is this?
+
+This is because IP routing occurs at layer 3 of the OSI model, and there's no authentication checks. With the proxy server, just because someone can get an IP address on the network and might be able to route through a device with two network interfaces, we don't want to allow traffic solely based on that and also not solely based on layer 4 packet filtering rules. We might want to require user authentication, and let's not forget the purpose of a proxy is to go out and fetch content, at least a forward proxy on behalf of a user. We don't want the user routing through the device and connecting directly to something on the Internet and retrieving it. That's why IP routing between interfaces must be disabled.
+
+The most common use of a proxy server by far is to cache, is to fetch content that uses request out on the Internet and give it back to them internally, and optionally even cache it on the proxy server itself to speed up subsequent requests for that same content. What we're really describing there is a forward or a transparent proxy. Now, forward and transparent proxies are not necessarily the same thing.
+
+Most modern day implementations of a forward proxy are transparent proxy configs. Let's explain that, on the left, we've got internal clients on our internal network and they would be configured at the IP level with their default gateway pointing to the proxy's private interface IP. That means anything they do going out of the local area network is going through the proxy. So we don't have to configure proxy server settings on the internal clients. That's why this type of solution where the clients point to the proxy's private IP is the default gateway, is called a transparent proxy.
+
+So, internal clients then would request Internet content, that naturally gets sent to the proxy server. Now, depending on how the proxy server is configured we'll determine whether users have to authenticate or maybe accept a terms of use document, much like you would in a public Wi-Fi hotspot, that may or may not be required. There might even be time of day restrictions. So, you have to sign in and then only within certain times of the day can you get to certain types of content. Maybe that's a proxy policy that's been enabled on the server.
+
+But whatever the case is, the user requests Internet content, the proxy server on behalf of the user, hence the word proxy, goes out to the Internet, gets that content whether it's FTP based, HTTP based, and then feeds it back to the internal client. And as we know, it might cache it on the proxy server. Naturally, if it's caching content, you have to think about disk space and aging timers on how long you want to keep that cached content. So we know then that a proxy server might require user login.
+
+It certainly can require it. Unlike a packet filtering firewall or an app router, it can enforce date and time restrictions when accessing content through the proxy, and proxies can also use allow or deny URL lists that can either be downloaded standard lists or that can be configured and managed by the admin or a hybrid of both, but that's forward proxying. We also have reverse proxies. What's this? We have the same type of diagram here, except the notation is very important.
+
+On the left, we do not have internal clients on an internal network on the left instead here we have external Internet clients, and the external clients are going to request a connection to some kind of a service. The most common example by far is connecting to something over HTTP like a website.
+
+So, the external clients on the left just make a regular HTTP or HTTPS connection to a website, and instead of connecting directly to that website, there might be a proxy server in place that is listening on a given port number for those requests and when it gets it from the Internet clients, it will then forward it internally to a back-end HTTP server where it really exists. What we're doing here is protecting the true identity and direct connections to that back-end HTTP server. This might also be coupled in with a load balancing solution to distribute incoming client requests during peak workloads to a multitude of back-end servers configured for the same site. So, it's a reverse proxy. Again, it might actually cache content that Internet clients request for subsequent similar requests to speed up those transactions.
+
+As with all firewalls, placement on the network is important. In this example, we're talking about a reverse proxy. On the left, we have our internal network with our hosts and an internal firewall. That firewall might be configured with NAT to allow outbound traffic, but not to allow inbound traffic from the Internet to the internal network.
+
+That might always be disallowed, but instead, the firewall might allow inbound traffic from the Internet into the screened subnet to access web services, SMTP mail servers, DNS servers, whatever
+
+the case is that we want to make publicly available, but instead of allowing direct connections from Internet clients to those services, we might configure a reverse proxy to get those requests from Internet clients and send them off to the true back-end www.smtp or DNS servers to name but just a few types. The reverse proxy could actually be built into the firewall, or it could be a separate host in the screened subnet that performs reverse proxy tasks, and so this gives us a sense of the purpose of a forward and a reverse proxy firewall type of solution.
+
+7. Video: Deploying the Squid Proxy Server (it_oslsec_03_enus_07)
+
+During this video, discover how to install the Squid proxy server on Linux.
+install the Squid proxy server on Linux
+[Video description begins] Topic title: Deploying the Squid Proxy Server. Your host for this session is Dan Lachance. [Video description ends]
+In this demo, I'm going to be deploying the Squid proxy server. So, Squid is a free and open-source proxy solution that you can run on a Linux host. So, we're going to go ahead and take a look at exactly how to do this. Now, the thing to bear in mind is that when you're deploying Squid in a production environment as opposed to just testing, then you might want to make sure you have at least two network interfaces configured for your server, whether they be physical NICs or virtual network interface cards, whatever the case might be. Because remember, normally a Squid proxy takes internal client requests and goes out on behalf of those requests to fetch content for those clients. That's the classic definition of a forward proxy.
+
+So, here in Ubuntu Linux, we're going to begin by running sudo apt update to make sure our package repositories are up to date so that we'll definitely know for sure what is available for software that can be installed. After which we can then run sudo apt install squid.
+
+[Video description begins] A terminal window appears with the heading cblackwell@Ubuntu1: ~. The following command is now highlighted: sudo apt update. [Video description ends]
+
+[Video description begins] The command reads: sudo apt install squid. [Video description ends]
+
+I'm then asked if I would like to continue. Of course, I will type in y for yes, and I'll press Enter. The next thing I'll do is take a look at the Squid configuration file. So, to do that, I'll run sudo nano. I'll use my nano text editor to open up /etc/squid/squid.conf.
+
+[Video description begins] The command is now added: sudo nano /etc/squid/squid.conf. [Video description ends]
+
+There's a reference at the top here for where to go for documentation. This is always critical unless we do this every day and assuming things never change or get updated. It would be fine to memorize exactly how to configure every aspect of everything. It's just not reality.
+
+So, always take a look at the documentation links when you get stuck or you need to configure a product in a particular way. As we scroll down through this, you'll see exactly why I say this because there are so many configuration options for the Squid proxy. Within the squid.conf file, you will find a section where it has a number of settings for http_access. Now, if you're using the nano editor, which I am, you can press Ctrl+W and you can tell it to search for something like http_access as opposed to looking for it manually. I'll press Ctrl+C for cancel. Notice here that one of the default settings is that http_access is set to allow for the localhost for the Squid proxy server itself, but not for the localnet. And you can modify what localnet means by adding your own internal IP network ranges.
+
+Of course, notice that that HTTP access on our localnet line is actually commented out, and down below http_access deny all is also enabled, so that's the default. It's kind of a pessimistic approach by default where things are blocked. If you search the squid.conf file for http_port, notice that the default listening port for the proxy is 3128. So, depending on how clients are connecting, they'll have to be configured with the appropriate port number. Or if you're testing it at the command line, let's say, even using the Linux curl command, this is going to be important to know, you can change it. That just happens to be the default setting. And if I were to search for acl localnet, this is where we've got those localnet definitions that were showing down below in the access rules where we said you could make a modification here to specifically add your internal IP address ranges that are in use.
+
+What's here automatically are the standard private IP address ranges that aren't routable on the Internet, but certainly, you can make changes here as appropriate. So, if you're already using something in the 192.168 range, you're already good to go. Machines on that type of network prefix will be able to go through the proxy server. I'm going to press Ctrl+X to get out of there. I'm not going to save any changes, but it's also important to remember that you have to enable your firewall to allow traffic destined for port 3128.
+
+One way to do that here in Ubuntu Linux where the uncomplicated firewall, ufw is here by default used to run sudo ufw allow and in single quotes, I'll put in 'Squid' because I've installed Squid, it knows what I'm talking about. So, if I do a sudo ufw app list, notice Squid is showing here as traffic that is allowed to go through our ufw firewall. 
+
+[Video description begins] The command reads: sudo ufw allow 'Squid'. [Video description ends]
+
+[Video description begins] The next command reads: sudo ufw app list. [Video description ends]
+
+Let's have a little bit of configuration fun. We're going to configure this Ubuntu desktop client machine which is on the same subnet as our Squid proxy. So, as we know, it means it should be allowed to go through the proxy without doing anything. And on the server as long as our Squid service is running. So, sudo service squid status, here it is, active and running.
+
+[Video description begins] The command reads: sudo service squid status. [Video description ends]
+
+We know it's listening on port 3128 by default. That's all we need for our internal clients. So, back to the client, why don't we go ahead and configure Firefox here to use our proxy?
+
+So, I'll open up Firefox. I'm going to click on the right here and go all the way down to Settings, and I'll search for proxy, and I'll click the Settings button.
+
+[Video description begins] A drop-down appears on the right with various options such as: New tab, Bookmarks, Passwords, Print, Settings, More tools, and so on. [Video description ends]
+
+[Video description begins] The Settings page is now highlighted. The left pane contains the following options: General, Home, Search, Privacy & Security, Sync, More from Mozilla, Extensions & Themes, and Firefox Support. The General option is active it contains the following sub-options: Startup, Import Browser Data, and Tabs. [Video description ends]
+
+[Video description begins] A dialog box appears with the heading Connection Settings. It contains various options underneath Configure Proxy Access to the Internet: No proxy, Auto-detect proxy settings for this network, Use system proxy settings, Manual proxy configuration, Automatic proxy configuration URL, and so on. [Video description ends]
+
+So, currently, there's no proxy. Let's pop in the IP address of our Squid proxy.
+
+[Video description begins] The Manual proxy configuration option is now active. It contains the following sub-options: HTTP Proxy, HTTPS Proxy, and SOCKS Host. [Video description ends]
+
+I know what it is here 192.168.2.156. If we just go back here to the server and do an ip a, indeed, it's 192.168.2.156, and while we're here in our Ubuntu desktop client, let's just pop into a Terminal window.
+
+[Video description begins] The terminal window appears with the heading cblackwell@Ubuntudesktop1:~. The following command reads: ip a. [Video description ends]
+
+If we type in ip a again, we're on the same subnet here 192.168.2.40, so 24-bit mask. We're on the 192.168.2 network. OK, so let me put in an incorrect port first of all, just so we have a way to easily prove that the Squid proxy is working.
+
+So, I've popped in Port 3127. I know it's really listening on port 3128. Let's see what happens. OK, so we've got a Manual proxy configuration here pointing to the proxy server's IP, but the wrong port. So, if we try to do something like go to Google, it says The proxy server is refusing connections. Now we can configure authentication for the proxy as well. We didn't do that. But the reason that this is failing, as I'm sure you will guess, is because we're pointing to the wrong port number. So, let's go correct that in our Firefox settings, we know that the Squid proxy is actually listening on Port 3128. OK, let's set that.
+
+Let's try to go to Google again and after a moment and I may have to refresh the web page or exit the browser and come back in. But now the Google page pops up because, of course, we are now pointing to the correct proxy server port. What we're doing is protecting clients so they don't have a direct connection to the Internet. Everything out on the Internet looks like it's coming from the proxy server. So, this is a standard forward proxy configuration. It's not a transparent proxy configuration, is it? Because we had to configure the proxy server identity. A transparent proxy means it's the default gateway IP, so that's not the case here, but nonetheless, the Squid proxy is working.
+
+8. Video: Intrusion Detection and Prevention (it_oslsec_03_enus_08)
+
+Upon completion of this video, you will be able to describe how intrusion detection system (IDS) and intrusion prevention system (IPS) solutions address security issues.
+describe how intrusion detection system (IDS) and intrusion prevention system (IPS) solutions address security issues
+[Video description begins] Topic title: Intrusion Detection and Prevention. Your host for this session is Dan Lachance. [Video description ends]
+An important part of managing security in a Linux environment is having the ability to detect intrusions. This means that we have to have a solution that can ingest large volumes of data that might include log information from hosts. It might include network traffic patterns, but not only does that data need to be ingested, it needs to be properly analyzed. So, network traffic, host, and application logs. With the analysis of these vast amounts of data, we need a solution that can filter out the noise. In other words, how can we easily reduce false positives? A false positive means that you've got an alarm that has been set when really there is nothing wrong. So, we want to reduce false positives. The purpose of detecting intrusions is to be able to seek out potential indicators of compromise.
+
+Has a network or a host been compromised? But in order to determine that, we also have to have a sense of what's normal. If you have a normal baseline of performance activity in the amount of traffic and type of traffic on a network, you have a starting point at least when you perform analysis of those data sources to determine if anything looks suspicious or abnormal. You can enable intrusion detection at a couple of different levels, including at the host level. A host-based intrusion detection system can do things like scan for, detect, and perhaps even eradicate phishing email messages or malware.
+
+It can examine removable media, maybe even prevent the use of removable media in certain conditions, it can also limit physical access to components such as equipment locked up in a server rack like server-based hosts, and a host-based intrusion detection solution might also have the ability to detect software vulnerabilities. In other words, missing updates or weak security configurations. But that's at the host level. At the network level, when we talk about intrusion detection, we're talking about things such as unauthorized access to the network in the first place. Malicious actors actively scanning the network as part of their reconnaissance to determine which hosts are up and running and which services they're running. Network-based intrusion detection might also detect that we've got rogue wireless access points or APs, and this could be something as innocent as an employee bringing in a wireless router and plugging it in, maybe to extend their ability to work from specific locations.
+
+Of course, a rogue AP might also have been placed, for example, behind a flower pot in the reception area, and plugged into a network jack that's active, which might allow a malicious actor access to that network after hours and without even being within the office location. An intrusion detection system is called an IDS. A host-based intrusion detection system is called an HIDS or HIDS and that might include the capabilities such as monitoring files for integrity. In other words, determining if they were changed and if so, was it done in an authorized manner, or app and user behavior analytics to determine something that looks suspicious or abnormal, which means you'll need a baseline of normal activity. Then we've got network-based intrusion detection systems.
+
+This is called a NIDS. This includes sensors. Sensors can be physical, small hardware appliances that have network connectors or they might connect wirelessly, or both that you place strategically around the network where there is traffic flow that you want to check looking for anomalies. You might even perform network traffic analysis remotely through these centers or locally on a Linux host using tools like tcpdump or Wireshark. Just be aware that in a network-switched environment, you're really only seeing your own network traffic for the most part unless the switch port has been configured otherwise. And for wireless networks, there are actually solutions designed specifically for those looking for security issues.
+
+These are called wireless intrusion detection systems, or WIDS. But an IDS is designed not only to seek out and detect these anomalies and potential security issues but also to log the fact that they've been detected, perhaps generate an alert in the dashboard or send out a notification through email or SMS text to admins so they can do something about it. Naturally, that's got to be configured carefully so that we don't get too many of these alarms, which results in alert fatigue for security admins. After that we've got an intrusion prevention system, an IPS. This is an extension beyond a host or network-based intrusion detection system.
+
+But what's different about intrusion prevention is that the solution has the ability to take steps to block attacks when they're detected. And that could come in a multitude of solutions, including blocking IP addresses dynamically or IP address ranges, blocking DNS domain names, even enabling blackhole routing when there is an excess of abnormal traffic that we just want to discard before it gets to its intended target. Pictured on the screen, we've got an example screenshot of a sample snort configuration. Snort is a free and open-source intrusion detection solution, and it runs on a multitude of platforms. You can run it on Windows, the macOS, and many many Linux variants. Here it's running on Linux in our screenshot and what's happened here is the admin has opened up the /etc/snort/rules/local.rules file. Now you can download hundreds of community-based rule files which look for standard types of attacks.
+
+We know that there are always new types of network attacks out there and so these rule files for snort are always updated. So, if you're going to be using snort, it's in your best interest to keep track of any updates and bring them down and apply them to look for the latest types of threats. But at any rate, in this example, we've got an alert, so the alert keyword is being used, looking at the ICMP protocol, Internet Control Message Protocol, things like ping or traceroute will use that from any location going to the home network on any port. And if we detect any types of IP traffic at all, which is essentially what we're doing here in parentheses we have a message that will display saying testing ICMP. We can also give a unique ID and a revision number and set the classtype and this is what gets logged.
+
+It helps with filtering or using front-end interfaces that are designed to look for this format for snort rules. The other thing to think about is placement. So, with intrusion detection and prevention, we've mentioned sensors and that they need to be strategically placed around the network so they see the amount of traffic and the type of traffic flow that you need to monitor. With the network-based intrusion detection system, we might have a sensor, whether it's hardware or software-based linked to a network switch shown at the bottom. With the network-based intrusion detection system, we might have a hardware or a software-based sensor connected to a network switch shown at the bottom of our diagram.
+
+Now that switch port where it's connected would be configured to copy all switch port traffic because remember, with the standard Ethernet switch, you're only seeing your own traffic. That's the nature of how switching works. So, if we've got an attacker, let's say shown in the upper right, trying to get to a target shown in the bottom left, they might come in through the Internet, through an exterior firewall. They might compromise a host on the DMZ or screened subnet, from which then they might be able to connect through the interior firewall to gain access to the switch. But if we're watching at that level, for that type of activity, for example, it would be abnormal perhaps to see traffic at a certain time of day from a DMZ host coming into the network, that might generate an alert. If it's an intrusion prevention system, we might even have it configured to block that traffic. So, an important part of managing Linux security is to monitor looking for suspicious activity and in some cases take steps to mitigate that activity.
+
+9. Video: Configuring the Snort IDS (it_oslsec_03_enus_09)
+
+Learn how to install and configure the Snort IDS tool.
+install and configure the Snort IDS tool
+[Video description begins] Topic title: Configuring the Snort IDS. Your host for this session is Dan Lachance. [Video description ends]
+In this demo, I'm going to be installing and configuring the Snort IDS. IDS, of course, is intrusion detection system, and Snort is a free open-source solution for just that. It'll run on multiple platforms, but, of course, we're going to focus on having it run on our Linux host. The purpose of an IDS is to detect suspicious activity and report on it, either send alarms to admins or log it. And if you have IPS capabilities also, intrusion prevention system, then you can also configure mitigating actions when suspicious activity is detected, such as blocking certain IP ranges. We're just going to do a basic configuration in Snort to make sure that we can capture some kind of traffic and at least write a message to the console, which in turn also gets logged.
+
+OK, so the first thing I'm going to do is I'm going to run sudo apt update to make sure my repository listings for software packages is up to date.
+
+[Video description begins] A terminal window appears with the heading cblackwell@Ubuntu1: ~. The following command is now highlighted: sudo apt update. [Video description ends]
+
+OK, and once that's been done, I'll run sudo apt install snort, press Enter. And what it asks, Do you want to continue?
+
+[Video description begins] The command reads: sudo apt install snort. [Video description ends]
+
+
+I will type in the letter y for yes and press Enter. OK, so it asks me to configure Snort a little bit. It talks about using the CIDR form notation for network ranges, which uses the slash at the end of the network address with the number of bits in the mask, or if you want to just use one single IP, you can go ahead and do that followed by /32. But maybe, for example, you want to detect traffic coming from a certain network range or going to it, well, you could then use the CIDR notation for that. I'll just press Enter to accept that and it then asks what's the Address range for your local network.
+
+Well, in my case, it's 192.168.2.0 with not a 16-bit mask but rather a 24-bit mask which means the first three octets, in my case, that's 192.168.2. Identify the network. OK, I'll just use the arrow key to go down to OK and I'll press Enter. I can always change that later anyway. All it's doing is establishing a value for the home network variable. Now that we've got that installed, let's go in and take a look at the config file. Let's look at a couple of things actually. Let's start by changing directory into, /etc/snort. And in here, if we do an ls, we've got a couple of config files, but we also have a rules directory.
+
+[Video description begins] The command reads: cd /etc/snort. [Video description ends] 
+
+You see that here. If I change directory into rules and do an ls, here we've got all kinds of standard rule files for different types of suspicious activity that your Snort IDS will look for, whether it's for specific viruses with certain behaviors or signatures, certain types of web attacks, whether it's suspicious activity related to the attempted exploitation of MySQL databases, or if you want your IDS to detect any activity on the network related to pornography, there is a file that will detect that as well, and you can update these locally. You can download various types of rule files from the Snort community. For example, in a browser, if I navigate to snort.org/downloads, from here, I can scroll down to the Rules section of that web page, where I can download a compressed tar archive of the latest rule files. However, if you've updated your repositories when you installed Snort, you will have the latest version of those.
+
+However, after you have Snort installed and running for a while, you might want to come back here and take a peek to see if there are any new rule files that you would like to include, and now you know where to put them.
+
+[Video description begins] The page called Snort Rules and IDS Software Download appears. It contains a search box along with the following tabs: Documents, Downloads, Products, Community, and so on. Below, it contains the following sections: Rules, Community, Registered, and Subscription. [Video description ends]
+
+Let's take a look at one of them just for fun, like the community-bot.rules where a bot is basically a zombie computer that's been infected and is now under the control of a malicious actor. So I'm going to clear the screen. Let's cat the community-bot.rules file. Let's pipe that to more.
+
+[Video description begins] The terminal window appears with the heading cblackwell@Ubuntu2: /etc/ snort/rules. The following command is now highlighted: cat community-bot.rules | more. [Video description ends]
+
+So, notice we have a number of alerts here looking for the tcp protocol from our HOME network, any port going to EXTERNAL networks. Now, these are variables.
+
+Notice the dollar sign prefix that we can configure within our Snort conf file. But think about what happens when you have an infected machine or a bot. It talks on the internal network in a direction going outward. If all your firewalls are doing is focusing on watching what's coming in but not what's going out, that's a problem. And so, intrusion detection systems of course, not only watch what's happening on the network are coming in, but what's leaving hosts in case they're infected. So, we have specific messages that are generated when certain types of traffic are detected. Notice what it's doing is looking for an established TCP connection. That's the value of flow, and the separator here is colon. But then it's checking to see if there's any content in that transmission, like where it's trying to go and make a connection. So, we've got numerous entries that look for this type of thing.
+
+Let's quit out of that one. Let's take a look at one more. I'll just do an ls. Why don't we cat the mysql.rules file? Pipe that to more and as we go further down, this one's quite short compared to some of the other ones, but we have MySQL root login attempts, so notice the flow here has a value of an established TCP connection to the server, and it's actually looking inside the packet for a specific sequence within the HTTP content. Now, we can also create our own rule files, certainly, just for fun. Why don't we run sudo nano, we're already in the rules directory. The file must be called local.rules. 
+
+[Video description begins] The command now reads: cat mysql.rules | more. [Video description ends]
+
+[Video description begins] The command reads: sudo nano local.rules. [Video description ends]
+
+If you call it something else, like banana.rules, for example, it won't get picked up by Snort automatically.
+
+So, in here, I've already got a couple of examples here. The first is an alert rule for ICMP traffic, so commands like traceroute and ping from other hosts would trigger this from any location, any port going to any device on my home network. So, I'm going to generate a message that's going to say Testing ICMP. I've got an ID assigned to it, a revision value, and the classtype has been set to icmp-event. Now these things like the classtype become very important when you start using other front-end tools to sort through, search, or analyze all of this Snort data. Remember, think beyond what we're doing on a localhost. You might use Snort on numerous Linux hosts, but then that data might be ingested by a SIEM solution elsewhere that analyzes it looking for suspicious activity, or just takes the alerts generated from these Snort hosts and then presents them in some kind of dashboard visualization.
+
+At any rate, our second rule here is simply looking to see if Telnet is being used. So instead of ICMP, it's checking tcp from anywhere going to somewhere on our HOME network. That's a variable port 23 and it'll say Telnet connection attempt. So, let's go ahead and press Ctrl+X to save out of that. We can test the syntax in our Snort config files by running sudo snort -T for test, -i for interface. My interface on my Snort host is called ens33. I know this, -c for the config files /etc/snort/snort.conf, and Enter.
+
+[Video description begins] The command reads: sudo snort -T -i ens33 -c /etc/snort/snort.conf. [Video description ends]
+
+So, it says, Snort successfully validated the configuration, Snort exiting. That's great. All we're going to do is change that snort -T for testing to A.
+
+We'll add the word console to write out messages to the console, and we'll leave the rest as it is.
+
+[Video description begins] The command reads: sudo snort -A console -i ens33 -c /etc/snort/snort.conf. [Video description ends]
+
+If I press Enter, it'll load the rule files and look right away. It says Testing ICMP. So, it looks like there's some host at 192.168.2.40 that's sending ICMP traffic to this host at 192.168.2.156. That is in fact correct. Here I'm at a different host on the network running Ubuntu desktop where I've got a Terminal window and I am pinging 192.168.2.156. If I do an ip a, of course, this is indeed 192.168.2.40, so that gives us a basic idea then of how the Snort components work together and how to load it up on a Linux host.
+
+10. Video: Honeypots and Honeynets (it_oslsec_03_enus_10)
+
+After completing this video, you will be able to recognize where honeypots and honeynets can be used to monitor malicious traffic.
+recognize where honeypots and honeynets can be used to monitor malicious traffic
+[Video description begins] Topic title: Honeypots and Honeynets. Your host for this session is Dan Lachance. [Video description ends]
+Yet another important aspect of managing security in any environment, including Linux, is having an understanding of the concepts of honeypots and honeynets. What is the purpose here? The purpose is to set something up so that it mimics a production network or an individual system or production data that might have some kind of value and it appears to be legitimate, at least from the attacker's perspective.
+
+However, a honeypot, or an entire network of honeypots, is intentionally configured to look vulnerable so that it attracts the attention of attackers. This is normally done number 1, to steer attackers away from real production environments. But not only that, it's also a great way for security technicians to track, monitor, and learn about attacker techniques.
+
+When a technician creates a honeypot, they'll often configure numerous vulnerabilities, including intentionally making sure that the host and software components have missing patches, that weak passwords might be used, that some resources like databases and files in the file system are not secured properly with permissions, and even some default configuration settings left intact, which many attackers will look for, for services like older web server stacks that might be vulnerable to common things like directory traversal techniques.
+
+So, the benefits of deploying and managing honeypots and honeynets would include early incident detection. Depending on how it's placed network-wise, attackers might try to break into something in your honeynet before they actually try to get further inside of the network to do it against real production systems.
+
+And these of course, when I say these, I mean honeypots or an entire collection of honeypots on a honeynet are non-critical IT systems because they are intentionally set up to look vulnerable. So we know the benefit also is that technicians can learn about attack patterns, attack vectors, or entry points. How did the attackers get into the system anyhow? In some cases, they might even be able to trace attacker identities. But it's not all flowers and rainbows.
+
+There is a potential downside to working with honeypots and honeynets, one of which is potential legal liabilities. If one of your honeypot systems gets compromised and perhaps gets used to attack another third party. Or maybe to somehow allow an attacker into your network which you might not have planned for, from a compromised honeypot, which could leave to sensitive disclosure of data that you are liable for that could be a problem.
+
+So, conducting illegal activities through compromised hosts like attackers creating a botnet out of your vulnerable systems. The other thing to think about is cost. How much do these honeynet and honeypot products cost? Well, you can actually purchase dedicated hardware appliances that have a web interface that are very simple to enable, very quick, and easy to get this up and running. There are also some open-source solutions to do the same thing.
+
+So, whether you doing this on-premises or in the cloud, cost should be a consideration. Other configuration things to consider with honeypots and honeynets often, whether it's a specific hardware appliance or a software open-source solution, you'll often get to select which specific OS version you would like to have enabled on the honeypot, because that's what attackers will see. You can also determine which specific network services should appear to be running on them, like an HTTP web server, a DNS server, FTP, and so on.
+
+Often you'll also be able to use your own or let the solution generate fake data files that might look attractive to attackers. And of course, you always want to make sure that you configure log forwarding from your honeypot devices to a centralized secured solution like a SIEM solution, security information, and event management running elsewhere. Because if the honeypot device itself is compromised, that means the logs can be compromised and so they are not to be trusted. So, common honeypot features. We know some of this already.
+
+Things like log forwarding, generation of activity reports within a given timeframe. Some honeypot solutions will even have the ability to record attacks and progress and allow technicians to replay that activity to get a sense of exactly what happened. Some honeypot solutions, besides having the appearance of web apps running, can also let you configure specific vulnerabilities within web apps.
+
+Some honeypot solutions can correlate attackers or attack patterns with the known list of attacker groups. And honeypots don't have to be just server-side. There are also client-side honeypot solutions out there, such as configuring intentionally vulnerable web browsers to test connectivity to malicious websites. So, there's that side of it as well. In some cases, honeypots can also be configured to detect and collect malware and then submit it for analysis, such as to virustotal.com.
+
+So, whether you're using Windows, the macOS, Linux, or any type of device, having a honeypot solution can help you determine if attackers are or are not targeting devices on your network.
+
+11. Video: Security Information and Event Management (SIEM) (it_oslsec_03_enus_11)
+
+Upon completion of this video, you will be able to outline how a SIEM solution serves as a central ingestion point for security analysis.
+outline how a SIEM solution serves as a central ingestion point for security analysis
+[Video description begins] Topic title: Security Information and Event Management (SIEM). Your host for this session is Dan Lachance. [Video description ends]
+Besides firewall solutions like packet filtering firewalls, virus scanners, proxy servers, and so on, another consideration is to carefully monitor your environment for potential security incidents. That's where security information and event management, otherwise called SIEM or sometimes also called SIEM, comes in as being very important. So, SIEM solutions are all about threat detection and security incident management. As you might guess, in order for this to work properly within an organization, it must ingest all relevant data from hosts, from apps, from networks, so that it can have a wide scope of what it's looking through, seeking potential security issues.
+
+And, of course, it's fully configurable. What's a security issue in one organization might be absolute normal performance, let's say on the network in another organization, and this is something that we must consider when deploying or managing a SIEM solution. We then have security orchestration, automation, and response, and this is always just called SOAR. SOAR for short. Where SIEM is more on the data ingestion and analysis looking for threats, so threat hunting, SOAR solutions are more on the incident response side of things, whether those responses are partially or fully automated. You can have playbooks that completely respond to certain types of security incidents to mitigate or eradicate them or it might require some admin involvement, hence partially or fully automated.
+
+So, SOAR solutions then remediate security threats and works in conjunction with a SIEM solution. Honestly, in this day and age, most enterprise-class SIEM solutions already have a SOAR component built into them, whether on-premises or whether it's in the cloud. Now, speaking of in the cloud, here we've got a screenshot of Microsoft Defender. This is in the Microsoft Azure cloud with Cloud SIEM integration. What's happening in this screenshot is that the technician is adding data sources. Microsoft Defender is a threat-hunting solution for cloud services such as for web apps running in Microsoft Azure, but certainly not limited to that.
+
+But what we can do is have Microsoft Defender alerts in the cloud forwarded off to a SIEM solution you might already be running elsewhere, whether elsewhere means in the cloud or on-prem. Maybe you've installed Splunk Enterprise, let's say on some Linux hosts on-prem as a SIEM solution, and you want to forward this cloud data originating from Microsoft Defender to that on-prem solution, you can most certainly do that. Interoperability between dissimilar systems for data sharing and threat hunting, whether on-premises or in the cloud is absolutely paramount in this day and age. Microsoft Sentinel is a cloud-based SIEM and SOAR solution, so it's one of those solutions that includes both of those capabilities, threat hunting, and incident management. If you're using the Microsoft Azure cloud, you might choose to use Microsoft Sentinel, which would require you to create an Azure workspace.
+
+It's part of the configuration that you can't miss when you're configuring Microsoft Sentinel in the cloud. And when you are configuring Microsoft Sentinel, you can configure data collection based on user activities such as sign-in activity or specific devices or apps such as web apps that you might have created and are running in the cloud, or it could be any app, even a commercial off the shelf app that you provide to your users in the cloud environment. So, all of that type of data can be fed into Microsoft Sentinel from within Azure or from other clouds, Google Cloud, or Amazon Web Services. You can even have data collectors installed and running on on-premises servers that forward their data to the cloud for Microsoft Sentinel data ingestion and analysis. You can configure security alert notifications and remember that Sentinel is both a SIEM and a SOAR solution, both in one, and so security incidents that get detected might trigger a playbook which automatically remediates the problem by taking specific types of actions that you can control, or it might submit a ticket to some kind of a security help desk ticketing system.
+
+Pictured on the screen, we've got an example of Microsoft Sentinel data connectors. Here we can gather or ingest data from Akamai Security appliances, from Amazon Web Services, and hundreds of other potential data sources. So, here we have the Splunk SIEM solution shown in our screenshot.
+
+When you navigate to the Splunk website, you'll be able to go to the Products link at the top which has been done here in this screenshot, where you can select the platform such as Splunk Cloud Platform which is a cloud-hosted or a cloud-managed solution that you can subscribe to where the Splunk data ingestion is already set up and running in a virtual machine server in the cloud. What you need to do is point your data sources to the URL in the cloud, or if you need complete control and flexibility, you could download license, and run Splunk Enterprise on-premises, or you could even use a hybrid of both if you so choose. So, in this day and age of cybersecurity incidents and reporting in the media, it has never been more important to have a centralized way to gather information looking for threats.
+
+12. Video: Security Orchestration, Automation, and Response (SOAR) (it_oslsec_03_enus_12)
+
+After completing this video, you will be able to describe how a SOAR solution serves as a method of automating security incident remediation.
+describe how a SOAR solution serves as a method of automating security incident remediation
+[Video description begins] Topic title: Security Orchestration, Automation, and Response (SOAR). Your host for this session is Dan Lachance. [Video description ends]
+When it comes to Security Incident Detection and Response, with the focus on the response side of things, that's where SOAR solutions come in. SOAR spelled SOAR. We know that a SIEM solution can serve as a centralized data ingestion point, whether it's on-premises, or whether it's in the cloud, you can configure various types of data connectors so that you can have a variety of data sources that you're ingesting data from. You might even configure Linux syslog forwarding to forward logs to this centralized SIEM solution. You could configure Mac and Windows devices, any type of smartphone, any type of tablet, any type of application or hardware appliance that supports log forwarding in any way you can have sent to a centralized SIEM solution for ingestion and threat hunting.
+
+Now what we're interested in doing with a SOAR solution is determining what the incident response will be. We need to filter out all of the noise, all of the irrelevant data to determine what really is a security threat and what really needs to be responded to. So identifying suspicious activity and taking mitigation actions to make sure that we can either eradicate or contain the security threat. Most SOAR solutions support something called the Security Content Automation Protocol or SCAP for short. SCAP has many benefits, one of which is the keeping up to date with cybersecurity changes. You could subscribe to SCAP feeds to make sure that your list of threats matches the latest known threats.
+
+Kind of like keeping your malware definitions up to date on a device. But what you can do is you can use an automated SCAP solution which is usually built into a SOAR solution to compare the inventory of your network hosts, your devices, your network security, appliance configurations, you can have those compared against baselines that either are standard baselines that are supplied by the product or that you configure. This way you can determine any non-compliant devices from a security standpoint. So, a security policy, compliance, or violation can be presented via alerts, via GUI dashboards, and not only that, when we have a SCAP type of solution, again normally built into a SOAR solution which could be coupled with a SIEM solution.
+
+We can even automate the management of those discovered vulnerabilities or those non-compliant devices. We can actively reconfigure them to bring them into compliance, whether it's making changes to Linux conf files or Windows registry changes, disabling components, applying patches, whatever the case might be. The way that SCAP works is it uses Content Automation Protocol or SCAP content modules, and each of these modules will have a specific security slant to it, such as the American Federal Desktop Core Configuration Standard for security. The SCAP scanner component is an engine that is designed to compare inventoried security configurations for your environment against these content modules.
+
+Now when we're scanning for security threats and taking possible action against those discovered threats, we have to have an understanding of what a true and false security indicator is. A false positive, for example, might be something such as there is malware on the system when really there is no malware. Maybe it's temporary files generated by installing an app that triggers this. We want to weed these out. False positives are a waste of time because we certainly don't want anyone to take time manually to investigate this and basically bark up a tree that doesn't exist. Then we have a true positive, such as a network distributed denial-of-service or DDoS attack is currently in progress. Now a true positive means that it's true. It's positive. It is actually happening.
+
+That's when we want to take action. And that's what SOAR is all about, automated action based on these types of threats. But other possibilities include a false negative. As an example, the downloaded file is free from malware, no worries here. When in fact the downloaded file might actually be infected. It might use some kind of obfuscation methods to prevent detection. False negatives are not good because it's saying there's no problem when in fact, there is. Then we have a true negative, an example of which would be network traffic volume looks normal, no problem here. So, this would mean then that activity on the network is determined to be acceptable, maybe in comparison to a baseline, and it truly is.
+
+So, it's true, but there's not a problem. So, from that aspect, it's negative. If it were a problem, it would be a true positive. We know that a security information and event management or SIEM solution ingests data related to activity from a multitude of sources. It analyzes that data and often uses machine learning. It can even correlate current events to past events to detect potential threats and even generate real-time security alerts. But a SIEM solution unto itself is not really designed to handle incident response. That's where security orchestration, automation, and response, or SOAR comes in. Normally, this is built into an enterprise-class SIEM solution to automate incident response.
+
+That's often done using what's called a playbook. Now, SOAR incident response can be fully automated, or in some cases, it might need minimal admin intervention perhaps to proceed. But pictured on the screen, we've got an example of a sample SOAR playbook. So, at the start on the left, it's like a flowchart. We might have what is deemed as being a suspicious email, so we need to investigate further. Therefore, our automated solution needs to parse and evaluate the email and check, does it contain a URL or an attachment. If no, you might optionally send an email to notify the user that there's no problem, or simply don't do anything if there's no problem. And that's the end of that part of the logic branch of the playbook. But what if it does contain one or more URLs or file attachments? Well, the decision branch in your playbook then will go down to yes, whether it contains attachments or URLs.
+
+If it's file attachments, maybe compute a hash of the file to compare against non-malicious file attachments, or just generate the hash and send it to VirusTotal online and let it determine if it's a malicious file. If it is a malicious attachment, then delete the email message, and maybe notify the user. What about a URL? We could also send the URL to an online service to determine if it's malicious, and if it is malicious, then we can delete the email, maybe even copy it to an admin mailbox for further analysis, and send an email notification to the user. Now this type of thing can lend itself nicely to automation, but it's only one possible example out of millions and millions of possible actions that might be taken to automate incident response for security threats.
+
+13. Video: Course Summary (it_oslsec_03_enus_13)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary [Video description ends]
+So, in this course, we've examined how to select, configure, and manage firewall and IDS solutions, as well as how to monitor for security incidents. We did this by exploring firewall types, Linux firewall solutions and IP forwarding, and configuring a Linux firewall with iptables and UFW. We deployed the Squid proxy server, we covered IDS and IPS solutions and we configured the Snort IDS. We then discussed honeypots and honeynets, SIEM, and SOAR solutions. In our next course, we'll move on to harden Linux from the boot process all the way through to managing advanced file system security.
+
+© 2024 Skillsoft Ireland Limited - All rights reserved.
