@@ -1,3 +1,4 @@
+## 1. System Management
 
 [[Installation & File System Navigation/index]]
 
@@ -11,5 +12,11 @@
 
 [[Network Services/index]]
 
+[[Software Management/index]]
+
 [[Shells, Variables, & Configuration Files/index]]
+
+## 2. Security
+
+[[Security Threats & Cryptography/index]]
 
