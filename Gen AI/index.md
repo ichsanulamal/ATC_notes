@@ -6,3 +6,7 @@
 
 [[AI ML Essentials/index]]
 
+
+
+[[Gen AI TQ/index]]
+
