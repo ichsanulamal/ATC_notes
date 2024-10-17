@@ -1,3 +1,5 @@
+# Final Exam The Snowflake Data Platform
+
 You want to unload data from Snowflake to Google Cloud Storage. Which task must you perform on the storage integration object?
 
 Delegate authentication responsibility to Snowflake identity

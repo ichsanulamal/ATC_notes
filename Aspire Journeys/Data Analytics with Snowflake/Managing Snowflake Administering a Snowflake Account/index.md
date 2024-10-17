@@ -1,3 +1,5 @@
+# Managing Snowflake Administering a Snowflake Account
+
 Which query can you use to restore a modified parameter to its original value?
 
 A.	ALTER ACCOUNT UNSET DATE_OUTPUT_FORMAT;

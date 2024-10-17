@@ -1,3 +1,5 @@
+# Handling Anomalies
+
 ### Sources of Data Anomalies
 
 In the video, data anomalies are defined as observations that deviate from the expected behavior or norms in a dataset. These can also be referred to as "outliers" or "exceptions." Several key sources of data anomalies include:

@@ -1,3 +1,5 @@
+# Improving Your Reading Speed and Comprehension
+
 **Video: Improving Your Reading Speed and Comprehension**
 
 Most people read letter by letter and word by word, which is inefficient. This course covers bad habits that hinder efficient reading and offers tips to enhance speed and comprehension.

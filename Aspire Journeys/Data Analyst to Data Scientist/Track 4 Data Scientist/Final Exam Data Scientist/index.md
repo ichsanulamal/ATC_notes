@@ -1,3 +1,5 @@
+# Final Exam Data Scientist
+
 Examine the Python code.
 
 
@@ -312,14 +314,14 @@ df = pd.DataFrame(data, columns = ['EMPID', 'Gender',
 'dept'] )
 df.hist()
 
-# show plot
+> show plot
 plt.show()
 
 Option 2
 
 data.hist()
 
-# show plot
+> show plot
 plt.show(data,’EMPID’,’gender’,’AGE’,’Salary’)
 
 Option 3

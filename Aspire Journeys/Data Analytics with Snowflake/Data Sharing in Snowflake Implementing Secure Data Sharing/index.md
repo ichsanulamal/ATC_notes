@@ -1,3 +1,5 @@
+# Data Sharing in Snowflake Implementing Secure Data Sharing
+
 Which is a valid query to set up a replica of a database in a target Snowflake account?
 
 B.ALTER DATABASE PROVIDERDB 
