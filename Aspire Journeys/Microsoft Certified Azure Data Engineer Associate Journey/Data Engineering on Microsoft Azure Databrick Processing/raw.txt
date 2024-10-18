@@ -1,0 +1,1201 @@
+Data Engineering on Microsoft Azure: Databrick Processing
+When working with big data there needs to be a mechanism to process and transform this data quickly and efficiently. Azure Databricks is a service that provides the latest version of Apache Spark that provides functionality processing data from Azure Storage. In this course, you will learn about the types of processing that can be performed with Azure Databricks such as stream, batch, image and parallel processing. Next, you'll learn how to create an Azure Databricks workspace using an Apache Spark cluster, run jobs in the Azure Databricks Workspace jobs using a service principal and query data in SQL server using an Azure Databricks notebook. Next, you'll learn how to retrieve data from an Azure Blob Storage using Azure Databricks and the Azure Key Vault, implement a Cosmos DB service endpoint for Azure Databricks, and extract, transform, and load data using Azure Databricks. Finally, you'll learn how to stream data into Azure Databricks by using Event Hubs and perform sentiment analysis for steam data by making use of Azure Databricks. This course is one in a collection that prepares learners for the Microsoft Data Engineering on Microsoft Azure (DP-203) exam.
+Table of Contents
+    1. Video: Course Overview (it_cldema_15_enus_01)
+
+    2. Video: Azure Databricks Processing (it_cldema_15_enus_02)
+
+    3. Video: Creating an Azure Databricks Workspace (it_cldema_15_enus_03)
+
+    4. Video: Running Azure Databricks Workspace Jobs (it_cldema_15_enus_04)
+
+    5. Video: Querying SQL Server (it_cldema_15_enus_05)
+
+    6. Video: Failed Batch Loads (it_cldema_15_enus_06)
+
+    7. Video: Implementing Cosmos DB Endpoints (it_cldema_15_enus_07)
+
+    8. Video: Extracting, Transforming, and Loading Data (it_cldema_15_enus_08)
+
+    9. Video: Performing Sentiment Analysis (it_cldema_15_enus_09)
+
+    10. Video: Debugging Spark Job (it_cldema_15_enus_10)
+
+    11. Video: Course Summary (it_cldema_15_enus_11)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_cldema_15_enus_01)
+
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. [Video description ends]
+
+[Video description begins] Your host for this session is Bill Brooks. He is a Senior Software Developer. [Video description ends]
+Hi, I'm Bill Brooks. I've held various positions in the software field for over 20 years, including computer engineering technology instructor, software developer, software architect and team lead.
+
+I have extensive experience with the Microsoft development stack and as a cloud developer, primarily in the Microsoft Azure environment.
+
+I'm a strong proponent of the agile approach to development and have been both a PO and a Scrum master. I hold a bachelors degree in mathematics from Concordia University in Edmonton. And a computer engineering technology diploma from NAIT. When working with big Data, there needs to be a mechanism to process and transform this data quickly and efficiently. Azure Databricks is a service that provides the latest version of Apache Spark. That provides functionality processing data from Azure Storage. In this course, I'll cover the types of processing that can be performed with Azure databricks such as stream, batch, image and parallel processing.
+
+Next, I'll create an Azure Databricks workspace using an Apache spark cluster. Run jobs in the Azure Databricks workspace using a service principal and query data in SQL Server using an Azure Databricks notebook. I'll then discuss how to retrieve data from an Azure blob storage using Azure Databricks and the Azure key Vault. Implement a Cosmos DB service endpoint for Azure databricks and extract, transform and load data using Azure Databricks.
+
+Finally, we will perform sentiment analysis for stream data by making use of Azure Databricks. This course is one in a collection that prepares learners for the Microsoft Data Engineering on Microsoft Azure DP 203 exam.
+
+2. Video: Azure Databricks Processing (it_cldema_15_enus_02)
+
+996dda31-1871-48cc-9f44-ca275bdeaf4f
+describe the types of available processing when using Azure Databricks such as stream, batch, image and parallel processing
+[Video description begins] Topic title: Azure Databricks Processing. Your host for this session is Bill Brooks. [Video description ends]
+In this video, we're going to look at Azure Databricks processing. Databricks is a data analytics platform that lets you build data pipelines and perform all types of analytics on the data. It's optimized for running in Microsoft Azure. And as we'll see, it supports both batch and stream processing. Databricks takes advantage of parallel processing, which improves performance by making better use of resources. It does this by processing different workloads using parallel threads that run at the same time, saving processing time. Parallel processing requires parallel workloads. Parallel workloads are workloads that are not interdependent. So for example, imagine processing two streams of data, one coming from thermostat A and another from thermostat B.
+
+If the processing for Thermostat A and thermostat B are not dependent on one another. Then they can be processed entirely separately and are parallel workloads.
+
+The two streams can be processed at the same time by two separate processes. If however, the processing involves looking at both thermostat A and thermostat B data in certain time frames to determine aggregates. Then the two workloads would be dependent and not parallel. This would not lend well to parallel processing. Azure Databricks offers a few methods for parallel processing. The first one is called parallel collection enumeration. When enumerating a sequence such as an array of data values, a special keyword specifies that the enumeration can be run in parallel.
+
+This can be faster than enumerating in sequence, since multiple threads can be processed at once. In Databricks using parallel collection enumeration allows only as many simultaneous threads to run as there are cores defined for the data brick instance, and this is a limit. Furthermore, running in parallel is actually up to the spark scheduler. Which for various reasons may opt not to run certain threads in parallel. Therefore you don't have direct control over the parallel processing with this call. Another option is invoking the Fair scheduler pool.
+
+This generally works faster than the parallel collection enumeration call, because the thread count or number of elements run in parallel is not limited by the number of data brick cores. Furthermore, Spark always runs these pools in parallel.
+
+So this makes a fair scheduler pool method a more predictable form of parallel processing. Databricks can process images as workloads as well. It can read an image file in as a data frame. When it does, the image data frame is broken down into the following properties. The origin or URI for the image. The width and height of the image in pixels. The end channels or number of color channels. The mode which informs the format of the image data. And finally, the data itself in binary format. Image processing can be useful for displaying images in databricks or for doing analysis of the image data itself, such as looking for image patterns. Next, we'll look at how Databricks manages batch processing. Batch processing is used to prepare big data for analysis.
+
+Large chunks of data, called batches, are read in and processed. Batch data is generally high latency since the processing has to work through large chunks of data, so batch processing is best used to prepare data for offline analytics. Or other scenarios that don't require real time or new real time processing. Azure Databricks supports several languages for batch processing. Including Python, Scala and Spark SQL, making it flexible to work with. Under the hood, Databricks runs batch processes on spark clusters. A spark cluster is a processing unit. There runs batch processes on one or more processing nodes in a cluster, taking advantage of parallel processing if possible. Because batch processing is a long running process, it doesn't run continually. The spark cluster often gets activated only when there's a new batch to process.
+
+And then has a timeout where it shuts down until the next batch process starts. Star clusters can autoscale as larger and smaller batch processes are encountered. Databricks batch processing can integrate with Azure Active Directory for identity and access management. And databricks batch processing can integrate with many Azure services as both inputs and outputs. Such as Azure blob storage and Azure Synapse analytics. The next type of processing databricks can do is stream processing. Which processes incoming messages with minimal latency. Unlike batch processing, this is new real time processing. Where the processing takes place on a small amount of data.
+
+Typically, as it streams into the system. It's often used to detect real time patterns in the streaming data. Or to transform the data real time before it's stored in the system. Databricks dream processing includes the ability to program both imperatively, meaning you write code to tell the process what to do. Or declaratively meaning that you describe what you want done, but not how to do it step by step. Most programmers are more familiar with imperative programming, which is what you're doing when you write algorithms in a language like C sharp with explicit control flow. On the other hand, SQL statements are an example of declarative programming. You're not telling SQL Server step-by-step what to do.
+
+But rather, you're describing via the SQL statement what you wish to achieve. Databricks Stream processing supports many different languages such as C sharp, Python And Scala for imperative programming. And Spark SQL for declarative programming. Several Azure stream inputs are supported by Databricks, including event hub for receiving messages. Data Lake for reading blob files. An IOT hub for receiving streaming data directly from physical devices. Some features of Databricks stream processing are handling of any input format with custom code. In other words, you must parse the incoming data and understand the format. But Databricks gives you the programming environment to be able to do that. Databricks can handle out-of-order and late events.
+
+Every piece of data in a data stream has a timestamp associated with it that tells when that data arrived in the system. Sometimes it's important that the data be processed in order. Or that the processing waits until all the data is in. For example, imagine your stream processing calculates a rolling hourly average of temperature from an IOT thermostat on the fly. You would have to wait and collect an hours worth of data before calculating the average. It would also need to verify the data didn't come in late, say you reading just before the end of an hour was delayed and didn't come into the system until just after the hour. Then it would be in the wrong sample if out of order wasn't taken into account and beyond, this databricks has temporal functionality that allows for aggregates like the one I just described, where time windows are important for processing the data.
+
+3. Video: Creating an Azure Databricks Workspace (it_cldema_15_enus_03)
+
+b1e03709-2462-4f0e-aea0-46f7fe907629
+create an Azure Databricks workspace using an Apache Spark cluster
+[Video description begins] Topic title: Creating an Azure Databricks Workspace. Your host for this session is Bill Brooks. [Video description ends]
+In this video I'm going to show you how to instantiate an Azure Databricks workspace. Starting Apache Spark cluster on a workspace. And create a notebook to run code on that cluster.
+
+[Video description begins] A Microsoft Azure page displays with the heading Microsoft Azure. It contains a search bar on the top. The working pane consists of Four sections namely, Azure services, Recent resources, Navigate, and Tools. The Azure services list various options such as: Create a resource, Subscriptions, Azure Active Directory, Azure Synapse Analytics, and App Services. The Recent resources contain the following subsections: Name, Type, and Last Viewed. The Navigate section contains options: Subscriptions, Resource groups, All resources, and Dashboard. The Tools sections consist of the following options: Microsoft Learn, Azure Monitor, Security Center, and Cost Management. He selects the Create a resource option from section 1. [Video description ends]
+
+So I'm in Azure and on my homepage at the top left I'm going to click create a resource.And on the new window. In the search box I'm going to type Azure Databricks. And select Azure databricks.
+
+[Video description begins] A page displays with the heading: New. It contains a search bar. There are two columns in the working panes. The heading of the columns are: Azure Marketplace and Popular. The Azure Marketplace contains various options such as: Get started, Analytics, Compute, Identity, and so on. The Popular column contains the following options with the icons: Windows Server 2016 Datacenter, Web App, SQL Database, Function App, and so on. [Video description ends]
+
+[Video description begins] He selects the Azure Databricks option from the search bar. [Video description ends]
+
+Now on the Azure Databricks window, click create at the top.
+
+[Video description begins] The page titled Azure Databricks appears on the screen. The working pane consists of the create button. Underneath the Create button, it contains the Command Bar. The Command bar contains the following options: Overview, Plans, Usage Information + Support, and Reviews. He clicks on the Create button. [Video description ends]
+
+So now we're on the Create in Azure Databricks Workspace page.
+
+[Video description begins] A page displays with the heading: Create an Azure Databricks workspace. It contains a command bar with the following options: Basics, Networking, Tags, Review+create. [Video description ends]
+
+And I'm on the Basics tab, which is the farthest tab to left at the top.
+
+[Video description begins] The Basics option is highlighted from the command bar. It contains 2 sections: Project Details and Instance Details. The Project details consist of the following options: Subscription and Resource group. The Instance details consist of the following options: Workspace name, Region, and Pricing tier. [Video description ends]
+
+An under project details. It's already filled in my subscription 'cause there's only one, but you can choose your subscription.
+
+I'm going to choose my resource group or you can choose to create a new one. Another instance details I need to give it a workspace name,so I'm going to keep this simple and just call it databricks and just to keep unique, I'm just going to. Give it some numbers afterwards. 
+
+[Video description begins] The Review + create option is now highlighted. It contains 3 sections: Summary, Basics, Networking. [Video description ends]
+
+And I'm going to leave it in the region Canada Central, which is where I am, and I'm going to leave the standard pricing tour on Now I'm going to click review and create. and validation succeeded, so I'm going to click create at the bottom left. OK, my deployment is complete, so in the center of the screen. I'm going to click go to resource.
+
+[Video description begins] A page labelled: it_cldema_databricks2256|Overview displays on the screen. The resource menu appears on the left, with the following options: Overview, Inputs, Outputs, and template. The working pane contains a command bar with the following tabs: Delete, Cancel, Redeploy, and Refresh. The main pane consists of the following header: Your deployment is complete. A button of Go to Resource is also displayed. [Video description ends]
+
+And it takes me to my databricks instance. OK, so now I'm in my Azure Databricks service instance and I'm on the overview on the left menu.
+
+The very top option and on the right I see my overview and if I Scroll down a bit I see a Big Blue button with a red icon above it and it says launch Workspace. So I'm going to click on that.
+
+[Video description begins] A page with the heading: databricks2256 displays on the screen. It contains the project pane with the following options: Overview, Activity log, Access control (IAM), and Tags. The working pane contains the corresponding information of the selected option, Overview. A Launch Workspace icon is also there. [Video description ends]
+
+OK, so now I'm in Azure Databricks. Now the first thing I need to do before I do anything is start an Apache Spark cluster. Because that's what all my code is going to run on. So I'm going to go to the left menu. And 6th button from the top is clusters and I'm going to click on that.
+
+[Video description begins] A page labelled Microsoft Azure| Databricks appears on the screen. The Navigation pane appears on the left. It contains the following tabs: Home, Workspace, Recents, Data, Clusters, Jobs, Model, and Search. The Working pane contains 3 large icons: Explore the Quickstart Tutorial, Import & Explore Data, and Create a Blank Notebook. It consists of 3 sections: Common Tasks, Recents, and Documentation. He selects the Clusters tab from the navigation pane. [Video description ends]
+
+And on the right hand side I see my cluster screen and at the top left of that there's a blue button that says create cluster. So I'm going to click on that.
+
+[Video description begins] A working pane labelled Clusters appears on the screen. It contains a command bar contains the following: All-Purpose Clusters, Job Clusters, and Pools. It further contains a table with the following headers: Name, State, Modes, Runtime, Driver, worker, Creator, and Actions. [Video description ends]
+
+So now I have a new cluster screen and there's many options here.
+
+[Video description begins] A working pane labelled New Cluster underneath Create Cluster displays on the screen. It contains the following tabs: Cluster Name, Cluster Mode: Standard, Pool: Name, Databricks Runtime Version: Runtime 8.0(Scala 2.12, Spark 3.1.1 ), Worker Type: Standard_DS3_v2, and Driver Type: Same as worker. He enters demo-cluster in the Cluster Name. [Video description ends]
+
+Now I'll show you what I'm going to run. I'm going to run a very simple option.
+
+First, I need a cluster name. So I'm just going to call it demo Dash cluster. Cluster mode can be standard, in which case you choose the runtime version and several other options. I'm going to simplify this by pulling down cluster mode and choosing single node. And the reason I can do this is because we don't have a lot of requirements here, so we don't need a lot of nodes to run this. We just need a single node.
+
+[Video description begins] He highlights the Cluster Mode. A drop-down appears with the following options: High Concurrency, Standard, and Single Node. He selects the Single Node option. He even highlights various options for the Node type and selects some other options as well. [Video description ends]
+
+For pool under in cluster node, I'm going to leave it at none because that's what I have for single node. Because it's a single node, so there's no pool. Databricks runtime version. I'm going to leave it at the default, but I'll pull it down here and you can see that you can run a lot of previous versions of Spark and Scala.
+
+And autopilot options is important Terminate after 120 minutes of inactivity. This is important because clusters are expensive. They cost and so you don't want them running all the time, so this will turn it off after two hours. And node type.
+
+There are several different node types for optimizing memory, optimizing storage and compute. We're just going to choose a general purpose because we're not doing anything complicated. So at the top there's a blue button that says create cluster, so I'll click create cluster. Now it's important to note that clusters take a few minutes to start up. That's not unusual.
+
+So I'm going to leave this running and I'm going to pausing come back when it's done.
+
+[Video description begins] A page titled demo-cluster appears on the screen. It consists of a toolbar on the top, with the following options: Edit, Clone, Restart, Terminate, and Delete. It also contains a command bar with the following tabs: Configuration, Notebooks, Libraries, Event Log, Speak UI, Driver Logs, Metrics, Apps, and Special Cluster UI-Master. The main pane consists of the following options: Cluster Mode, Databricks Runtime Version, Autopilot Options, and Node Type. [Video description ends]
+
+OK, so the cluster is started up and the way you can tell when a cluster is started is in the top left of the cluster screen. There's a green circle, which means running.
+
+Otherwise, there's a green animation there that tells you that it's still starting up. So on the left options, if I go back down to clusters and I click on that. And I can see my demo cluster in this table.
+
+[Video description begins] He again selects the Cluster option from the navigation bar. It contains a command bar with the following tab: All- Payment Clusters, Job Clusters, and Pools. The main pane consists of a table with the following headers: Name, State, Nodes, runtime, Driver, Worker, Creator, and Actions. The table displays the demo-cluster is running. [Video description ends]
+
+And it has a green circle in the left, so it's running. So now I can create a notebook to run code against this cluster. So on the left I'm going to click home, which is a second button from the top. So I see my workspace on the right and under users I see my user and if I click the little carrot beside my name. I can choose from the menu create.
+
+[Video description begins] A workspace pane appears on the left. It displays the name of the user: bill.brooks@llwinc.com. A drop box appears with the following options: Create, Clone, Import, Export, Permissions, and Copy Link Address. He highlights the Create option which further shares the following sub-options: Notebook, Library, Folder, and MLflow Experiment. [Video description ends]
+
+
+[Video description begins] A drop box appears with the heading Create Notebook. It contains 3 sections: Name, Default Language, Cluster. He adds Name as demo-notebook, Default Language as Python, and Cluster as demo-cluster. [Video description ends]
+
+
+And I can create a notebook, so I'll click create notebook and I get to create notebookpop up. I can give it a name, so I'm just going to call this demo Dash notebook. I can give it a default language so you can see it can be Python.
+
+When I look at this pull down menu, Python Scala, SQL, R I'm just going to leave it Python for now. And the cluster automatically chooses demo cluster because that's only cluster running. But if you had other clusters, you could pull down this menu and choose the cluster you want to run it on. So on the bottom right of create notebook, I'm going to click create. And now on the screen at the top left it says demo notebook and in brackets it says Python. So I know I'm running Python script. Now I have a command window.
+
+[Video description begins] A new page demo-notebook(Python) opens. He highlights a command window 1 of the notebook. [Video description ends]
+
+Which is grey and I can enter code in there and then I can hit shift enter to run it. So in conclusion, I've shown you how to create an Azure Databricks workspace, start in Apache Spark cluster. And then create a notebook that's tide to that cluster.
+
+4. Video: Running Azure Databricks Workspace Jobs (it_cldema_15_enus_04)
+
+e8be6a2b-938e-4b38-9ff2-1895fb6d143c
+run jobs in the Azure Databricks Workspace jobs using a service principal
+[Video description begins] Topic title: Running Azure Databricks Workspace Jobs. Your host for this session is Bill Brooks. [Video description ends]
+When you create a job in Databricks, by default it runs under the identity of whoever created it. There can be issues with this long term. For example, what if the person who created the job leaves the company and their identity in Azure is removed? This is going to affect the databricks job. Therefore, it's common to make a service account, the owner of the job. A service account is a created identity that's not associated with any user. Its sole purpose is to be the owner of the job. In this video, I'm going to show you how to set up a service account and make it the owner of a job in databricks. So I'm in Azure and my first step is going to be to create the service account. I do that in Azure Active Directory, so in the top left of my screen I'm going to click Azure Active Directory.
+
+[Video description begins] A Home- Microsoft Azure page displays the heading Microsoft Azure. It contains a search bar on the top. The working pane consists of Four sections namely, Azure services, Recent resources, Navigate, and Tools. The Azure services list various options such as: Create a resource, Subscriptions, Azure Active Directory, Azure Synapse Analytics, and App Services. The Recent resources contain the following subsections: Name, Type, and Last Viewed. The Navigate section contains options: Subscriptions, Resource groups, All resources, and Dashboard. The Tools sections consist of the following options: Microsoft Learn, Azure Monitor, Security Center, and Cost Management. He selects the Azure Active Directory option from the section Azure services. [Video description ends]
+
+And on the menu on the left of Azure Active Directory.
+
+[Video description begins] A page labeled LLW Consulting Inc.|Overview appears on the screen. It contains a resource menu on the left. The menu contains the following elements: Overview, Getting started, Preview features, and Diagnose and solve problems. It further contains a Manage section with various elements. The working pane contains the command bar with the following tabs: switch tenant, Delete tenant, Create a tenant, What's new, Preview features, and Got feedback?. The working pane with a heading: LLW Consulting Inc. It further contains a search bar and 2 boxes with the following headers: Tenant information and Azure AD Connect. He selects the App registrations element from the Manage section of the resource menu. [Video description ends]
+
+I'm going to go under the manage section and under the manage section I'm going to click app registrations.
+
+Now on the right at the top, I'm going to click new registration, which is on the left hand side.
+
+[Video description begins] A page labeled LLW Consulting Inc.|App registrations displays on the screen. It contains a command bar with the following tabs: New registration, Endpoints, Troubleshooting, Download, Preview features, Got feedback?. It contains a working pane with the following sections: All applications, Owned applications, and Deleted applications(Preview). He highlights the New registration tab. [Video description ends]
+
+Now on the register and application window I'm going to give it a name of demo - reg. And click register at the bottom left.
+
+[Video description begins] A Screen titled Register an application appears. It contains an edit box with the heading: Name. It also contains a list of Supported account types. [Video description ends]
+
+So now I've created my registration. Now if you're following along with me as I go, I'm going to tell you what information you should copy to use later. So in this demo registration I'm going to need two pieces of information from the overview. I need the application ID. Which I'll copy. And I need my directory or tenant ID, which I'll copy.
+
+[Video description begins] A demo-reg- Microsoft Azure page displays the heading demo- reg. It contains a resource menu with various elements: Overview, Quickstart, Integration assistant, and so on. It consists of a command bar with the following tabs: Delete, Endpoints, and Private features. He selects the Overview element from the menu. The main pane contains its corresponding information. He highlights the application ID and tenant ID. [Video description ends]
+
+Now a third thing we need to do with the registration, is in the options on the left. Under manage, there's a certificates and secrets. I'm going to click on that. And we need to create a client secret.
+
+[Video description begins] He selects the Certificates & secrets element from the resource menu. The working pane contains its subsequent information. [Video description ends]
+
+So if I Scroll down on certificates and secrets, I get to clients secrets, and there's a button that says new client secret. I'm going to click that. And then on the add a client secret window that pops up, I'm going to click add at the bottom left.
+
+[Video description begins] The working pane now contains a heading: Add a client secret. It contains a Description edit box, with the following options: In 1 year, In 2 years, and Never. It further contains 2 buttons: Add and Cancel. At the bottom, it contains a table with the following headers: Description, Expires, Value, and ID. [Video description ends]
+
+This creates a new client secret on the registration. And in the client secrets list, the third column from the left is value and I'm going to copy that value to clipboard.
+
+[Video description begins] He highlights the information that appears in the working pane of demo-reg. [Video description ends]
+
+And I'm going to store that as secret. We'll need that later. So this app registration is our service account. Now at the top left I'm going to click home. And the next step is to create our databricks instance.
+
+[Video description begins] The Home page of Microsoft Azure again appears on the screen. He selects a Create a resource element from section 1, Azure services. [Video description ends]
+
+So on the top left of my home page, I'm going to click create a resource. And on the new page in the search box, I'm going to type Azure Databricks.
+
+[Video description begins] A page displays with the heading: New. It contains a search bar. There are two columns in the working panes. The heading of the columns are: Azure Marketplace and Popular. The Azure Marketplace contains various options such as: Get started, Analytics, Compute, Identity, and so on. The Popular column contains the following options with the icons: Windows Server 2016 Datacenter, Web App, Sql Database, Function App, and so on. [Video description ends]
+
+And choose Azure databricks.Now in the Azure databricks window, I'm going to click create.
+
+[Video description begins] The page titled Azure Databricks appears on the screen. The working pane consists of the create button. Underneath the Create button, it contains the Command Bar. The command bar contains the following options: Overview, Plans, Usage Information + Support, and Reviews. He clicks on the Create button. [Video description ends]
+
+So I'm on the create an Azure Databricks workspace window. I'm on the Basics tab which is on the far left.
+
+[Video description begins] A page displays with the heading: Create an Azure Databricks workspace. It contains a command bar with the following tabs: Basics, Networking, Tags, Review+create. He highlights the basics tab. [Video description ends]
+
+And under project details, there is a subscription to choose now. It's already chosen mine cause it's the first one.
+
+[Video description begins] The Basics option contains 2 sections: Project Details and Instance Details. The Project details consist of the following options: Subscription and Resource group. The Instance details consist of the following options: Workspace name, Region, and Pricing tier. [Video description ends]
+
+And then resource group. It can either create a new resource group to put it in, or it can choose an existing one. I'll choose an existing one. Then under instance details, it needs a workspace name. So I'm just going to call this databricks2466 just to keep it unique and Region Canada Central is fine. Now this is important pricing tier, you need to choose Trial (Premium - 14 - Days) because you cannot do this demo unless you're on the trial or the premium. So we'll choose trial. And then at the bottom left I'll click review and create. So validation succeeded. So at the bottom left I'll click create.
+
+[Video description begins] A Review+create tab appears on the screen. The main pane consists of a description of the Summary. It further contains information about: Basics and Networking. [Video description ends]
+
+OK, so that's deployed. So I'm going to go to the top left and click home and then on my homepage under recent resources, I see my new Databricks instance databricks2466. So I'm going to click on it. And now it takes me to the databricks overview, and if I Scroll down on the overview, I can click launch Workspace.
+
+[Video description begins] A page labeled with a heading: it_cldema_databricks2466|Overview. The resource menu contains the following tabs: Overview, Inputs, Outputs, and Template. The working pane now contains a message: Your deployment is complete along with its corresponding information. [Video description ends]
+
+[Video description begins] A page labeled databricks2466 appears on the screen. It contains a resource menu with various elements: Overview, Activity log, Access control(IAM), tags, and so on. The working pane contains corresponding information about the selected element, Overview. It also contains an icon with 2 buttons: Launch Workspace and Upgrade to premium. [Video description ends]
+
+So here we are in the Azure Databricks workspace. And the next piece of information that we need is what's called the personal access token.
+
+[Video description begins] A page labeled Microsoft Azure| Databricks appears on the screen. The Navigation pane appears on the left. It contains the following tabs: Home, Workspace, Recents, Data, Clusters, Jobs, Model, and Search. The Working pane contains 3 large icons: Explore the Quickstart Tutorial, Import & Explore Data, and Create a Blank Notebook. It consists of 3 sections: Common Tasks, Recents, and Documentation. He selects the databricks2466 tab which appears on the top right of the screen. [Video description ends]
+
+It allows us to talk to Azure Databricks. So in the top right of my screen, I'm going to click my user and under that there's an option called user settings. I'll click on that.
+
+[Video description begins] A drop down appears under the databricks2466 tab. It contains the following options: User Settings, Admin Console, Manage Account, and Log Out. He selects the option namely, User Settings . [Video description ends]
+
+[Video description begins] A User Settings option is active now. It contains a command bar with the following tabs: Access Tokens, Git Integration, and Notebook Settings. The working pane contains a button, namely: Generate New Token. It further contains a table with the following heading: Comment, Creation, and Expiration. [Video description ends]
+
+And on user settings, to the left is a generate new token button, I'll click on that. Now I get a generate new token popup and there's a comment, What's this token for? I'm just going to type in demo. And on the bottom right, I'll click generate.
+
+[Video description begins] A pop-out box labeled Generate New Token appears on the screen. It contains 2 sections: Comment: demo and Lifetime(days): 90. He highlights the created token no: dapi83b59bbad68c56881b2fb6e529f8d3d1. [Video description ends]
+
+Now I get a generate new token pop up and it's created a new token as showing in the screen. Now I'm going to copy that token and if you're following along to the same thing and I'm going to save it as a databricks personal access token, because we'll need that later. Now I'm going to click done on the generate new token popup. So the next thing we need to do, we've now created the service account in the form of an app registration in Azure Active Directory and we have this personal access token for databricks. Now what we need to do is we need to register that service account or application registration with databricks. The way we're going to do that is with an API call. Now you can make an API call in several different ways, but the way I'm going to do it in this demonstration is by using a useful program called Postman, which I have up right here. And I have some curl statements saved in files and I'm going to use them here in Postman.
+
+[Video description begins] A page labeled postman appears on the screen. It contains a toolbar with the following options: File, Edit, View, and Help. A command bar contains the following tabs: New, Import, Runner, My Workspace, and Invite. A left sidebar contains the following tabs: History, Collections, and APIs. The working pane contains the following tab: Launchpad and its corresponding information. He selects the import tab from the command bar. [Video description ends]
+
+So at the top left of Postman, I'm going to click import and I get an import popup. And it's on the far left tab which is file.
+
+[Video description begins] A pop-up box labelled Import appears on the screen. It contains a command bar with the following tabs: File, Folder, Link, Raw text, and Code repository(New). The main pane contains Upload files button. [Video description ends] And in the middle of the file tab is an upload files button, I'm going to click that. And I'm going to go to My files. And I have a file called add service account to databricks,so I'm going to double click on that and that imports my API call.
+
+[Video description begins]A drop-out box appears with a heading: Open. He highlights lists of files from the selected folder. [Video description ends] 
+
+So at the bottom right of the import popup I'll click import. And now on the right hand side of Postman, I now have a tab which is a post tab.
+
+[Video description begins] A Postman page again appears on the screen. The main pane contains the sections: Launchpad and POST. The Post section is highlighted with the following URL: https://<per-workspace-url>/api/2.0/preview/scim/v2/ServicePrincipals. It further contains a command bar with various tabs: Params, Authorization, Headers, and so on. It contains a table with the following headers: KEY, VALUE, and DESCRIPTION. [Video description ends]
+
+And it's my request. In the URL portion of my request. I have to fill in the per - workspace - URL. To get that, let's go back to Azure for a moment. And on the overview of Databricks, there is a URL and that's what we need, so I'm going to copy that. Now I'm going to go back to Postman. And in the URL section of my request on the right, I have to place that URL here. I have to replace the Https portion as well. The next thing I need to do in the tabs below the URL, third from the left is headers. I'll click on that. And under headers, there is a header called authorization. And it has in triangle brackets it says bearer <personal-access-token> That's where we put that personal access token that we got from databricks. So that's why we stored that, so I'm going to Copy that and paste it here. Remember to leave the space between the word bearer and the token.
+
+[Video description begins] The URL now reads: https://adb-166087136681471.11azuredatabricks.net/api/2.0/preview/scim/v2/ServicePrincipals. He highlights the Headers tab and a table underneath. He selects the Authorization column and change the value: Bearer dapi83b59bbad68c56881b2fb6e529f8d3d1 [Video description ends]
+
+Now I'm going to go to the tab beside headers on the right, which is body. And there's a few things to fill out in the body. First on Line 5 is applicationID, that's the application ID of our app registration in Azure Active Directory that we stored earlier.
+
+[Video description begins] The Body tab is active now. It contains various lines of code from lines 1 to 12. He highlights Line 5:"applicationId":"<application-id>",. [Video description ends]
+
+So I'm going to retrieve that and paste it here. The next one is DisplayName. I'm going to call this demo - service account. And what this does is it also allows cluster create you see on Line 9. So it allows this identity to create clusters in databricks.
+
+[Video description begins] He highlights the next set of codes. Line 5 reads:"applicationId":"2324370e-1e98-4870-80a6-bceaf1aa9a1",. Line 6 reads: "displayName":"demo-service-account",. Line 7 reads:"entitlements":[. Line 8 reads:{. Line 9 reads:"value":"allow-cluster-create",. Line 10 reads:}. Line 11 reads:]. Line 12 reads:}. [Video description ends]
+
+So at the top right of the request, I'm going to click send. OK, so at the bottom it says 201 created in the results. So that was successful. So the next step we're going to do is create a key vault to store the secret. Remember, when we created the app registration in Azure Active Directory, we created a client secret. We need to store that safely and the way to do that is a key vault.
+
+So we're going to jump back to Azure for a moment. And I'm going to click home at the top left of Azure. And then at the top left of my home page I'm going to click create a resource.
+
+[Video description begins] The Home- Microsoft Azure page again appears with the heading Microsoft Azure. It contains a search bar on the top. He selects the Create a resource from Azure Services section. [Video description ends]
+
+And on the new window I'm going to type key vault. And I'm going to choose key vault. On the key vault window, I'll click create.And then I'm on the basics tab of create key vault.
+
+[Video description begins] A page heading Key Vault appears on the screen. It contains the Key vault Icon along with a Create button. [Video description ends]
+
+ [Video description begins] A page labeled Create key vault opens. A command bar appears with the following tabs: Basics, Access policy, Networking, Tags, and Review+create. He highlights the Basics tab, the main pane displays its corresponding information. [Video description ends]
+
+So it chooses my subscription. I need a resource group. I'll choose the existing one.
+
+[Video description begins] The Basics tab contains 2 sections: Project Details and Instance Details. The Project details consist of the following options: Subscription and Resource group. The Instance details consist of the following options: Workspace name, Region, and Pricing tier. [Video description ends]
+
+Under instance details, I need a key vault name, so I'll just call this keyvault2466. I will put it in the same region as everything else I have, which is Canada Central. And pricing to your standard is fine. At the bottom left, I'll click review and create. And then at the bottom left, I'll click create. OK, so that's complete. So I'm going to click go to resource under Your deployment is complete.
+
+[Video description begins] A page labeled: keyvault2466|Overview displays on the screen. The resource menu appears on the left, with the following options: Overview, Inputs, Outputs, and template. The working pane contains a command bar with the following tabs: Delete, Cancel, Redeploy, and Refresh. The main pane consists of the following header: Your deployment is complete. A button for Go to Resource is also displayed. [Video description ends]
+
+And it takes me to my key vault. Now the next thing we're going to do is store the client secret for Azure Active Directory app registration in this key vault.
+
+So on the left menu under settings, I'll click on secrets.
+
+[Video description begins] A page labeled keyvault2466|Secrets appears on the screen. He selects the Secrets element, from the Settings option of the resource menu. It contains a command bar with the following tabs: Generate/Import, Refresh, Restore Backup, and Manage deleted secrets. The main pane contains a table of 4 columns. The headers are as follows: Name, Type, Status, and Expiration Date. He selects the Generate/Import tab from the command bar. [Video description ends]
+
+And on the secrets window on the right, at the top left there is a Generate/Import button. Click that. Now I'm on a create a secret window.
+
+[Video description begins] A page labeled Create a secret appears on the screen. It contains the following sections: Upload Options, Name, Value, Content type(optional), Set activation date?, Set expiration date?, and Enabled? He highlights all the sections one by one. [Video description ends]
+
+Upload options I'm going to leave it as manual. Name is the name of our secret, so I'm going to call this demo-Secret. And if you're following along, save this name because we're going to need it later. The value is going to be the client secret that we generated and stored back when we created the app registration. That's value, and then I'm going to click create at the bottom left. So that creates a secret in my key vault that is storing my client secret for my service account or otherwise called an app registration. So now the next step we're going to do is we're going to tie this key Vault to databricks, and then we were going to do that is with something called a secret scope which databricks has. So I'll go back to home at the top left. And under recent resource is on my homepage. I'll click my databricks again. And under Databricks on the right of the overview, I'm going to copy the URL.
+
+[Video description begins] The page labeled databricks2466 appears again on the screen. He highlights the URL displays on the working pane. [Video description ends]
+
+And I'm going to open a new browser tab. Because we're going to go to a UI that you need to type the URL into.
+
+So I'm going to use the root URL of the databricks. Then at the end of the URL, I add /#secrets/createScope and hit enter.
+
+[Video description begins] A page labeled New Tab appears on the screen. He enters the following URL: https://adb-166087136681471.11.azuredatabricks.net/#secrets/createScope. [Video description ends]
+
+And this takes me to a create secret scope window in databricks. This is in my instance of databricks. So I'm going to create this secret scope, which ties that key vault to databricks. The first thing it needs is a scope name, so I'm going to call this demo-scope.
+
+[Video description begins] A page titled Databricks with the heading Create Secret Scope. It contains various sections including: Scope Name, Manage Principal. He enters: demo-scope in the Scope Name. He highlights the sections under the heading: Azure Key Vault.It contains the following sections: section 1 is DNS Name and section 2: Resource. [Video description ends]
+
+And I'm going to save that and if you're following along, save that name because you're going to need it later. Manage principal creator is fine. Now you need two pieces of information for your Azure key vault. You need a DNS name, so if I go back to Azure for a moment and I click home at the top left. And then under recent rescources I click my key vault. Now if I go down to settings on the menu on the left, and I go to properties. I want to copy two pieces of information at first, then I'll start off with this Vault URI which is 4th from the top. I'll copy that and if I go back to my create secret scope in databricks, that's a DNS name. So I'll paste that.
+
+Now if I go back to Azure, the next thing I want to copy is the next value down, which is resource ID. So I'll copy that. Then I go back to my create secret scope databricks window and that is a resource ID and I paste that in.
+
+[Video description begins] A page labeled keyvault2466|Properties appears on the screen. He highlights the URL from the working pane. He again opens the Create Secret Scope page. He enters the following URL in the DNS Name: http://keyvault2466.vault.azure.net. He enters the URL into Resource ID as well. [Video description ends]
+
+Now at the top right I'll click create. So I get a pop-up window that says the secret scope named demo Scope has been added, so that's great.
+
+[Video description begins] A pop-out box appears with the message: The secret scope named demo-scope has been added. [Video description ends]
+
+I'll click OK on that. So the next step is to grant my service account or app registration access to the secret scope that we just created. So that's another API call, so I'm going to go back to Postman. I'm going to close the request that we've already used. And at the top left I'm going to click Import. And under file I'm going to click upload files. And I have another file here called Read Access to Secret Scope.curl. I'm going to click that and click open at the bottom right. Now at the bottom right of the import window, click import. So now let's fill in the request again. So in the URL of the request on the right hand side again I need to fill in the URL of the workspace. So I will just quickly grab that, going back to Azure.
+
+And if I click home at the top left and in recent resources I go to my databricks. And on the overview, I copied the URL. Now back to postman, I will replace the beginning of this URL with that URL.
+
+[Video description begins] The page titled Postman appears again on the screen. He clicks on the Import tab from the top navigation bar. A drop-out box labeled Import appears on the screen and he clicks on upload files. He enters the URL in the POST tab: https://adb-166087136681471.11.azuredatabricks.net/api/2.0/secerts/acls/put. [Video description ends]
+
+Now under headers below the URL, third from the left. I click on that and under authorization, again I need to fill in the personal Access Token,that we created earlier for Databricks. And then beside headers, I'll click the tab body. An we need to fill in the scope name in the application ID which are in lines two and three in the code window in the middle of the screen.
+
+[Video description begins] He selects the headers tab from the command bar of the working pane. He further highlights the Authorization folder. [Video description ends]
+
+[Video description begins] He selects the body tab from the command bar. He highlights lines 1-5 from the working pane. Line 1 reads:{. Line 2 reads:"scope":"<scope-name>",. Line 3 reads:"principal":"application-id>",. Line 4 reads:"permission":"READ",. Line 5 reads:}. [Video description ends]
+
+So the scope name is, I asked you to save that but it is demo-scope. That's the secret scope that we created. The principal is our app registration Azure Active Directory, the application ID. So I will get that. And paste it in and at the top right I'll click send on the request.
+
+[Video description begins] Line 2 now reads:"scope":"demo-scope",. Line 3 now reads:"principal":"2324370e-1e98-4870-80a6-bceaaf1aab9a1",. [Video description ends] So at the bottom the result is 200 OK. So that's fine.
+
+So now let's go back to Databricks. And I'm going back to the Databricks workspace. And what I'm going to do now is create a new notebook. So I'm going to click workspace. And I'm going to click users under Workspace. And an interesting thing is you will see that there's me, which is bill.brooks. And there's another user, which is a big gooed basically. And this big number is actually the application ID of the app registration that we created in Azure Active Directory.
+
+[Video description begins] He selects the Workspace option from the navigation bar of User Settings. A pane appears with the heading Workspace along with 2 options: Shared and Users. He selects the User option. It contains the following elements: bill.brooks@llwinc.com and 2324370e-1e98-4870-80a6-bceaaf1aab9a1. [Video description ends]
+
+So that is now a new user that we've created under Databricks. So I'm going to create a notebook under that new user, so I'm going to click on the create beside it. Choose create and click notebook.
+
+[Video description begins] A Create Notebook pop-out box appears with the following elements: Name, Default Language, and Cluster. [Video description ends]
+
+Now I get the create notebook popup and it needs a name. So I'm just going to call it demo-notebook. Default language, Python, that's fine. We're not going to select a cluster because the cluster will be auto generated when the job runs that we create. So I'll click create at the bottom right.
+
+So that creates a new notebook. Now I'm just going to leave that for now.
+
+[Video description begins] A demo-notebook(Python) appears on the screen. A box appears with the heading Cmd 1. [Video description ends]
+
+Now the next step is to create a job. So on the menu on the left I'm going to go down to jobs. Click on that and at the top left of the jobs window on the right is a create job button.
+
+[Video description begins] The page titled Jobs appears on the screen. It contains a Create job button on the top. It also consists of a table with the following headers: Name, Job ID, Created by, Task, Cluster, Schedule, Last Run, and Action. [Video description ends]
+
+So click create job. Now under task on the job screen,it says select notebook, I'll click on that. And I get a select notebook pop-up. I'll click users and I'll choose my user, which is actually my app registration. And then I will choose my demo-notebook. And I'll click confirm at the bottom right.
+
+[Video description begins] A Job/ Create tab is active now. He highlights the Task box and Select Notebook options. [Video description ends]
+
+[Video description begins] A Select Notebook pop-up appears. He selects the Users option, further selects the demo-notebook. [Video description ends]
+
+Now at the top of the screen I will click create. Oh, I need to give it a job name so we'll call it demo-job. And I'll click create. And I've successfully created the job. Now there's some configuration we need to do on the cluster that's associated with this demo-job.
+
+So now on our demo-job screen, Under task, Under cluster, there's an edit button to the right of the cluster details. Click that and I get a popup window that says Configure new cluster. If I scroll to the bottom, there is an advanced options section. If I open that. There are tabs for spark, tags, Logging, Init Scripts.
+
+[Video description begins] A pop-up box labeled Configure New Cluster appears. He highlights the Advanced Options. It creates the following tabs: Spark, Tags, Logging, and Init Scripts. [Video description ends]
+
+On the Spark tab on the left, under that, there's a spark config section. I'm going to fill in that spark config section. And we're going to have to fill in some blanks here. Now, if you're following along with this, you should have access to a file called SparkConfig.txt and it will have this contents in it. So there's a lot of information that has to do with the cluster configuring itself, and we need to give it some of the secret information that we've been collecting as we did this. So on the line that says fs.azure.account.oauth2.client.id etc., we need to fill in the secret scope name.
+
+And if you recall that was demo-scope. We need our application ID, that's our app registration application ID. So fill that in. And then on the next line. We have in <secret-scope-name> So that was demo-scope. And we need the secret name, that's the name of the secret in the key vault. And we called that demo-secret. And the last piece of information we need to fill in here on the very last line is in <directory-id> So this is the tenant ID. Another piece of information we stored about our Azure Active Directory app registration.
+
+[Video description begins] The Spark tag is active now. It contains 2 sections: Spark Configuration and Environment variables. He highlights various information in both sections. [Video description ends]
+
+And then at the bottom right, I'll click confirm. So with that, we've completely configured the job to run under the application registration we created. The very last step we have is to set that service account to actually be the owner of this job. So on the left menu I'm going to click jobs. And on the job screen we can see in the table our demo-job.
+
+[Video description begins] The page labelled Jobs is again active. It contains a folder name demo-job in the table. [Video description ends]
+
+And if I click on demo-job, and then I have two tabs at the top of the demo-job screen.
+
+One is runs that it's currently on and the other is configuration. So click on configuration and then if I scroll to the bottom of configuration, is a section called permissions. Who has access, so I can add my user under that there's a section called add users and groups and there's a pull down menu. I'll pull that down and I can choose my demo-service-account.
+
+[Video description begins] A demo-job page appears on the screen. It contains 2 tabs: Runs and Configuration. He highlights the configuration tab and selects the Permissions option, Add users, and groups option. [Video description ends]
+
+And I can say Is owner, is the option beside it to the right. And beside that to the right and click add. And it's warning me in red above, the job must have exactly one owner. And currently Bill Brooks, myself, is the owner, so I'll hit the X beside myself and remove myself from the list. Then if I scroll to the top, at the demo job screen I can click save. So that is all there is to it. Now every time this job is run, it will not run under me, who created the job. But instead it will run under the service account associated with the app registration.
+
+5. Video: Querying SQL Server (it_cldema_15_enus_05)
+
+60018d52-e3f0-403e-881d-680b77d79832
+query data in SQL server using an Azure Databricks notebook
+[Video description begins] Topic title: Querying SQL Server. Your host for this session is Bill Brooks. [Video description ends]
+In this video, I'm going to demonstrate how to read data from a SQL database using an Azure Databricks notebook. So I'm in Azure here on my homepage. There are two resources that you're going to need for this. The first one is databricks. So I have an Azure databricks instance called databricks2466, and the other one is a SQL database. So I'm going to step you through creating the SQL database resource. So on the top left, I'm going to click Create a resource,and on the New page, I'm going to type sql database, and choose SQL Database.
+
+[Video description begins] A Home- Microsoft Azure page displays with the heading Microsoft Azure. It contains a search bar on the top. The working pane consists of Four sections namely, Azure services, Recent resources, Navigate, and Tools. The Azure services list various options such as: Create a resource, Subscriptions, Azure Active Directory, Azure Synapse Analytics, and App Services. The Recent resources contain the following subsections: Name, Type, and Last Viewed. The Navigate section contains the following options: Subscriptions, Resource groups, All resources, and Dashboard. The Tools sections consist of the following options: Microsoft Learn, Azure Monitor, Security Center, and Cost Management. [Video description ends]
+
+[Video description begins] A page displays with the heading: New. It contains a search bar. There are two columns in the working panes. The headings of the columns are: Azure Marketplace and Popular. The Azure Marketplace contains various options such as: Get started, Analytics, Compute, Identity, and so on. The Popular column contains the following options with the icons: Windows Server 2016 Datacenter, Web App, SQL Database, Function App, and so on. He enters theSQL database in the search bar. [Video description ends]
+
+On the SQL Database window, I'll click Create, and on the Create SQL Database screen,
+
+[Video description begins] A SQL Database tab is active now. The working pane contains a SQL Icon on the top left. It consists of a Create button, underneath it contains a command bar with several options: Overview, Plans, Usage Information +Support, and Reviews. [Video description ends]
+
+I'm on the Basics tab, which is a far left. You need to choose a Subscription.
+
+[Video description begins] A page appears with the heading Create SQL Database. It contains a command bar with the following tabs: Basics, Networking, Additional settings, Tags, Review+Create. He highlights the Basics tab, which further contains 2 sections: Project details, Database details. The Section, Project details contains Subscription and Resource group. The Database details contain Database name, Server, What to use SQL elastic pool, and Compute + storage. [Video description ends]
+
+It already chooses my default one, and you need to choose a resource group or create a new one. So I'm choosing the one I already have. Under Database details, I have to choose a Database name. So I'm just going to call this sqldb2466, and then I need a SQL Server to run this database on. Now if you have one existing, you can choose it. I don't have this SQL Server setup, so I'm going to Create new,and I get a blade on the right called New server.
+
+[Video description begins] A right pane appears with the heading: New server. It contains various sections such as: Server name, Server admin login, Password, Confirm password, and Location. [Video description ends]
+
+ So it needs a Server name, so I'm just going to call it sqlserver2466. Server admin login, so this is my sysadmin user. I'm going to call my user bbrooks26, and give it a password. Confirm that password, and then the last thing is Location and I always choose Canada Central since that's what everything else is in that I have in my resource group at the bottom left of the blade I'll click OK, and then at the bottom left of the Create SQL Database screen,
+
+I'll click Review and Create, and then I'll click Create.
+
+So that's going to take a few minutes to deploy, so I'm just going to pause and come back. OK, so that deployment is complete. So now I'm going to click Home at the top left of my screen,and in my Recent resource is, I'm going to click my Resource group, and in my resource group, if I Scroll down. At the bottom, I have sqldb2466 and sqlserver2466.
+
+[Video description begins] A page appears with the heading Microsoft.SQLDatabase.newDatabaseNewServer_487b3c98ea4e44d3b63cc|Overview. The left pane consists of the elements: Overview, Inputs, Outputs, and Template. He highlights the Overview element from the pane. The working pane contains a command with the following tabs: Delete, Cancel, Redeploy, and Refresh. The working pane displays a message: Your deployment is complete. [Video description ends]
+
+[Video description begins] The Home- Microsoft Azure page again displays with the heading Microsoft Azure. He highlights the Recent resources section and selects it_cldema from the Name subsection. [Video description ends]
+
+
+[Video description begins] An it_cldema page displays on the screen. The resource menu appears with various elements such as: Overview, Activity log, Access control(IAM), Tags, Events, and so on. It contains a command bar along with several sections: Add, Edit columns, Delete resource group, and so on. He highlights the table of databases in the working pane. [Video description ends]
+
+So we're going to be dealing primarily with the database.
+
+The server is what the database runs on, so I'm going to click the SQL database instance, and that takes me to the overview. Now the first thing we're going to do is set the firewall.
+
+[Video description begins] A page labeled sqldb2466(sqlserver2466/sqldb2466) appears on the screen. The working pane contains a command bar with the following tabs: Copy, Restore, Export, Set server firewall, Delete, Connect with, and Feedback. He selects the Set server firewall tab. [Video description ends]
+
+So that we can talk to this SQL database effectively. So at the top of the overview, 4th button from the left of the main menu, there's a Set server firewall button I'm going to click that, and this sets Firewall settings, not just for this database, but for the whole server.
+
+So at the very top, there's an Add client IP button, third from the left, I'm going to click on that, and what that does is if I go down the screen to where there are IP Rules, and it says Rule names, Start IP, and End IP. There's a table, it's added the client IP or the IP of this instance to that rule list. So that way we can actually log in and use the database from Azure.
+
+[Video description begins] A page labeled Firewall settings displays. It contains a command bar with the following buttons: Save, Discard and Add client IP. He highlights the Add client IP from the command bar. He further highlights a table with the headings: Rule name, Start IP, and End IP from the working pane. [Video description ends]
+
+So at the top left, I'm going to click Save, and I get a Success popup, so I'll click OK and then at the top of my screen I'm going to click my sqldb2466 to backup. Back to the overview.
+
+[Video description begins] The page with the headingsqldb2466(sqlserver2466/sqldb2466)appears again on the screen. He highlights the Query editor(preview)from the resource menu. [Video description ends]
+
+Now what we're going to do is log in and create a table that we can read from databricks. So on the menu on the left. I'm going to go to Query editor. Click on that, and on the right-hand side, I get a login screen.
+
+So I'm going to log in as my sysadmin bbrooks26 and I enter my password,and I hit OK below the password box, and now we're in the Query editor. So on the right-hand side, I have a query edit box.
+
+[Video description begins] A page labeledsqldb2466(sqlserver2466/sqldb2466)| Query editor (preview) appears. The working pane contains a SQL icon along with the following sections: Login and Password. [Video description ends]
+
+[Video description begins] A right pane appears with the heading Query 1. It contains an edit box with the following command bar: Run, Cancel query, Save query, Export data as, Show only Editor. [Video description ends]
+
+I'm going to run a create Table script. So on line 1, it says CREATE TABLE people. From line 2 to 5 I have my fields defined. So line 3, his first_name, which is of varchar 50, and online 4 his last_name varchar 50. So very simple table with the first name and the last name for people.
+
+So at the top left of the Query editor, I'm going to click Run,
+and if I look at the Results at the bottom, that was successful. So now I'm going to insert some records into that table. So I'm going to replace the create table code with an INSERT INTO. So on line 1, INSERT INTO people. In the query editor on Line 2, it's going to be entering first_name and last_name as the fields and the values starting on Line 4 to line 7, are Bob Smith, Donna Lewis, Stephen Price, and Karen Black.
+
+[Video description begins] The edit box appears with the following lines of code. Line 1 reads: CREATE TABLE people. Line 2 reads:(. Line 3 reads: first_name varchar(50). Line 4 reads: last_name varchar(50). Line 5 reads:). He highlights the output in the console pane. The output reads: Query succeded:Affected rows:0. [Video description ends]
+
+
+So at the top left above my Query editor window, I'm going to click Run, and that says Query succeeded and it put in four rows. So now we have a table called people that has some contents. So our goal here is to read that from a databricks workspace. So I'm going to click home at the top left of my screen.
+
+[Video description begins] He highlights another set of codes from lines 1 to 7. Line 1 reads: INSERT INTO people. Line 2 reads:(first_name,last_name). Line 3 reads: values. Line 4 reads:('Bob','Smith'),. Line 5 reads:('Donna','Lewis'),.Line 6 reads:('Stephen','Price'),. Line 7 reads:('Karen','Black'). [Video description ends]
+
+
+ [Video description begins] A drop-up box appears on the screen with the following message: portal.azure.com says. [Video description ends]
+
+It asked me if I wanted to save my changes. I just, Hit the record through the changes away because I have them saved elsewhere. Now I'm going to open my databricks workspace so I'm on my homepage of Azure. Under Recent resource is I'm going to click databricks2466.
+
+[Video description begins] The Home- Microsoft Azure page displays underneath the heading Microsoft Azure. He highlights the Recent resources section. He selects databricks2466 from the Name subsection. [Video description ends]
+
+It takes me to the overview page, and I'll Scroll down in the overview page until I get to the Launch Workspace Blue button. So I'll click that.
+
+[Video description begins] A page labeled databricks2466 appears on the screen. It contains a resource menu with various elements: Overview, Activity log, Access control(IAM), tags, and so on. The working pane contains corresponding information about the selected element, Overview. It also contains an icon with 2 buttons: Launch Workspace and Upgrade to premium. [Video description ends]
+
+So now I'm logged into Azure Databricks. Now the first thing I want to do is start a new cluster because I need a cluster in order to run my notebook. So on the left menu, 6 button down from the top is clusters. I'll click on that,and on the right, I get a big Clusters menu and it has nothing in the Clusters table, but at the top left, it has a Create Cluster button I'll click that,and now I get a New Cluster window. So it's asking me for a Cluster Name.
+
+[Video description begins] A page labeled Microsoft Azure| Databricks appears on the screen. The Navigation pane appears on the left. It contains the following tabs: Home, Workspace, Recents, Data, Clusters, Jobs, Model, and Search. The Working pane contains 3 large icons: Explore the Quickstart Tutorial, Import & Explore Data, and Create a Blank Notebook. It consists of 3 sections: Common Tasks, Recents, and Documentation. He selects the Clusters tab from the navigation bar. [Video description ends]
+
+ [Video description begins] A page titled Clusters appears on the screen. It contains the command bar with the following elements: All-Purpose Clusters, Job Clusters, Pools, and Cluster Policies. The All-Purpose Clusters element is selected. It contains a Create Cluster button on the top right. It also contains a table with the following sections: Name, State, Nodes, Runtime, Driver, Worker, Creator, and Actions. [Video description ends] 
+
+So I'm just going to call it demo-cluster. Cluster Mode, I'm going to change that to Single Node. Because this is a very simple run, so we only need a single node, we'll keep it simple, and Databricks Runtime Version, I'll just leave it at default. [Video description begins] A New Cluster tab is active now. It contains various sections in the main pane. He adds required data in the following sections: Cluster Name, Cluster Mode, Pool, Databricks Runtime Version, and so on. [Video description ends] and everything else I'll leave at default.
+
+So at the top of the new Cluster page, I'll click Create cluster. So at the top left of my demo cluster page is currently a spinning green animation. Which tells me that it's starting up the cluster. This can take several minutes, so I'm going to pause and come back when it's done. OK, so our cluster has started, and we know that because there is a solid green circle to the left of the name of my cluster at the top of the screen.
+
+So now what I can do is I can create a notebook and run it under this cluster.
+
+[Video description begins] A demo-cluster page appears on the screen. It contains a command bar with the following elements: Configuration, Notebooks, Libraries, Event Log, Spark UI, Driver Logs, Metrics, Apps and Spark Cluster UI-Master. The Configuration element is highlighted and it consists of the following options: Policy, Cluster Node, Databricks runtime Version, Autopilot Options, Node Type. It also contains another section named, Advanced Options. He further selects the Azure Databricks option from the left navigation pane. [Video description ends]
+
+So I'm going to click the databricks button at the very top of the left menu, and that takes me to the main Azure Databricks page, and under common tasks at the bottom left of the screen, I'm going to click New Notebook.
+
+[Video description begins] The Microsoft Azure| Databricks page appears on the screen. The Working pane contains 3 large icons: Explore the Quickstart Tutorial, Import & Explore Data, and Create a Blank Notebook. It consists of 3 sections: Common Tasks, Recents, and Documentation. He selects the New Notebook sub-section underneath the heading Common Tasks. [Video description ends]
+
+So this brings up a Create Notebook pop up and I can give it a Name. So I'm just going to keep it simple, call it demo-notebook and Default Language is Python, that's fine and he notice it automatically chooses the cluster I created because it's the only one I have. So at the bottom right of the Create Notebook popup, I'll click Create, and now I have my notebook. 
+
+[Video description begins] A Create Notebook tab appears on the screen. He highlights the following sections underneath the corresponding heading: Name, Default Language, and Cluster. [Video description ends]
+
+I see at the top left it says Detached so pull that down and choose demo-cluster, and it says, Are you sure you want to clear the notebook state? Yes.
+
+[Video description begins] A demo-notebook(Python) appears on the screen. A box appears with the heading Cmd 1. [Video description ends]
+
+I'll hit Confirm at the bottom right. There now we're connected to demo-cluster. So now I can add Code to the code window in the center of the screen, and connect to SQL database. So here is the code, and it's very simple. We're creating a URL which is going to be a connection string that's going to connect us to the database. So we need a few pieces of information here.
+
+[Video description begins] He highlights various lines of codes in Cmd 1. Line1 reads: host ="". Line 2 reads: database = "". Line3 reads: user = ''. Line 4 reads: password = ''. Line 5 reads: url ="jdbc:sqlserver://{0}:1433;database={1};user={2};password={3}".format(host,database,user,password). Line 7 reads: df= spark.read.jdbc(url=url, table ='people'). Line8 reads: display(df) . [Video description ends]
+
+On line 1 is host.So if I go back to Azure for a moment and I'm going to click Home at the top left of Azure, and under Recent resources, I'm going to go to my resource group,and under my resource group, I will find the SQL Server, sqlserver2466 and I'm going to click that. Now on the left under settings there is property so choose Properties,and the server name is on the properties page. Is sqlserver2466.database.windows.net. 
+
+[Video description begins] The page labeled databricks2466 appears again on the screen. [Video description ends]
+
+[Video description begins] A tab Sqlserver2466|Properties is now active. It contains a resource menu with various elements: Quick start, Failover groups, Properties, Locks, and so on. He highlights the Properties element. The main pane contains the following sections: Status, Server name, Location, Server admin login, Active Directory admin, Resource group, and Subscription ID. [Video description ends]
+
+
+ So I'll copy that and then we're going to go back to databricks and paste that for host on line 1, in the code window.
+
+[Video description begins] The demo-notebook(Python) appears again on the screen. Line 1 now reads: host ="Sqlserver2466.database.windows.net". [Video description ends]
+
+On line 2 of the code window, it's asking for the database.
+
+So if I go back to Azure, and I click Home at the top left of Azure, and if I look under Recent resources, I don't even actually have to go to it. My SQL database is called sqldb2466. I can see that, so if I go back to Databricks on line 2 SQL enter, sqldb2466.
+
+[Video description begins] Line 2 now reads: database = "sqldb2466". [Video description ends]
+
+Now lines 3 and 4, or for credentials. This is going to be my sysadmin login, so user online 3 is bbrooks26 for me, and line 4 is my password, and line 5 will create a URL which will use all of those pieces of information. On-line 7, we're going to use the spark object, and we're going to read,using that URL and specifying the table of people, and then on line 8, we're going to display that data frame.
+
+[Video description begins] Line 3 reads: user'bbrooks26'=. Line 4 reads: password='!qazXsw2#edc'. [Video description ends] 
+
+So I'm going to hit shift enter and let's see how this goes. Now we're getting an error here, a SQLServerException. That's basically saying that the firewall of the database is blocking the IP address. Which is 20.48.147.194. So that would be the IP address that Databricks is trying to talk on, so we're going to put in a firewall rule. There are several ways you can open this up. There are options in the firewall to open up to all Azure resources or you can open up to specific IP's. So for this case, why don't we go and add this IP address to the rules of our firewall?
+
+So I've copied that IP address, I'm going to go back to Azure, and I'm going to go to my SQL database, sqldb2466 under Recent resources, and at the top of the screen, 4th button from the left I'm going to click Set server firewall. Now if I go down in the firewall settings down to the rules,which is the table that starts with Rule name, Start IP, End IP.
+
+[Video description begins] A page labeledsqldb2466(sqlserver2466/sqldb2466) appears agai on screen. It contains a resource menu with various elements: Overview, Tags, Quick start, Power Automatic(Preview), and so on. He highlights the Overview element and the working pane contains its corresponding information. It also contains a command bar with the following options: Copy, Restore, Export, Set server firewall, Delete, Connect with, and Feedback. He selects the Set server firewall option from the command bar. [Video description ends]
+
+ [Video description begins] The page labeled Firewall settings displays again. He highlights a table with the headings: Rule name, Start IP, and End IP from the working pane. [Video description ends]
+
+I'm going to enter a Rule name. Under Rule name, I'm going to give it a name of databricks, and the Start IP is going to be the IP address that, it's having an issue within the End IP is the same IP address,and at the top left of the screen, I'll click Save. So I get a Success popup, so I'm going to click OK,
+
+[Video description begins] The Rule name reads: databricks. The Start IP reads: 20.48.147.194. and the End IP address reads: 20.48.147.194. [Video description ends]
+
+ [Video description begins] A message pop- up on the screen: Success!. [Video description ends]
+
+and now I'll go back to Databricks and let's try to run this again. I'll put focus on the code window and then I'll click shift enter. So that's done the job, now it's run and you can see. That we have the data, first_name, and last_name, Bob Smith,Donna Lewis, Stephen Price, and Karen Black.
+
+[Video description begins] He highlights the table and the desired results displayed on the console pane. [Video description ends] 
+
+6. Video: Failed Batch Loads (it_cldema_15_enus_06)
+
+d1dbfc43-9af0-4266-ac8d-a514285ca9bb
+validate and handle failed batch loads
+[Video description begins] Topic title: Failed Batch Loads. Your host for this session is Bill Brooks. [Video description ends]
+A batch load flow contains 3 main steps. In the preparation step, the environment is spooled up. This might be a spark cluster spool up in the case of databricks for example. Optionally, other processing can take place as part of the prep. Such as the batch data being collected invalidated. Then the actual processing takes place. This varies greatly depending on application. Perhaps is generating aggregates for offline analysis that subsequently stored to a sync database. All of this work would be part of the processing. The completion step then cleans up anything that needs to be taken care of after the processing.
+
+And the environment is typically turn down. When troubleshooting a batch load flow, it's important to understand these three steps and how each one might fail in different ways. On preparation failure, the batch flow run will be aborted.
+
+For this reason, the preparation step should include any tasks that must succeed for processing to take place. The examples I gave were spooling up the environment, reading input data, and validating the data for processing. If the environment spool up fails, there's no point continuing, so the process is aborted. You might want to consider, however, whether to perform data load and validation in the preparation step, because if any of the validation fails this step, then the entire process is aborted and that may not be what you want. Depending on whether a data validation may indicate part of the batch can still be processed. When the preparation fails, you should be aware that it may waste resources. For instance, if a spark cluster environment is spooled up and then the preparation fails.
+
+It may continue running for some time, wasting resources and costing money. For this reason, preparation fails, should be an exception. That doesn't happen very often. If these are happening all the time, you should reconsider how you set up your batch flow load.
+
+Next, we have failure during processing. This can be due to logic failure. For example, your code results in an array overrun in certain conditions. It can be caused by I/O failures. If you're uploading data during your processing. Or I/O failures during downloading. As you write data to a sink.
+
+And batch processes typically have a maximum time elapsed setting. Which is the maximum time a batch process will be allowed to run before it times out. You should consider all of these possible failure points when troubleshooting your batch process.
+
+And finally, your batch process could fail in the completion step.
+
+You should carefully consider how you clean up in the completion step. Because if you don't clean up properly, resources could be left in a bad state, such as a database connection being left open. In some flows, it may be impossible to guarantee all resources or left in a good state. Even if completion fails. But your logic should try. For example, if your completion logic closes a database connection. And that close fails.
+
+Does your logic then leave the spark cluster running or does it log the database connection failure and then attempt to shut down the cluster? Completion failures are notoriously difficult to detect because it may look like your batch load flow is working just fine.
+
+If you look for instance, at what's showing up in your sync database, you might only know something's wrong. If you look at the logs, so log monitoring is important. Speaking of logs, when troubleshooting log files are going to tell you the most about what's happening with your batch loads.
+
+So make sure you're logging appropriately in your code. Most batch load systems will have several log files for the different steps in the flow. Make sure you know where to look for them. The log should be monitored regularly, ideally by an automated notification system that tells you when something is wrong with the load. Microsoft Azure allows you to consolidate these logs in an Azure blob storage account in its batch load flow service. Which is a convenient way to keep all the logs in one place.
+
+7. Video: Implementing Cosmos DB Endpoints (it_cldema_15_enus_07)
+
+db79d1a2-67ee-4004-958f-bcefb4758f29
+implement a Cosmos DB service endpoint for Azure Databricks
+[Video description begins] Topic title: Implementing Cosmos DB Endpoints. Your host for this session is Bill Brooks. [Video description ends]
+In this video, I'm going to demonstrate how to configure a Cosmos DB endpoint in Databricks. So the first thing we need is a virtual network that contains both our data bricks in our Cosmos DB.
+
+[Video description begins] A Home- Microsoft Azure page displays with the heading Microsoft Azure. It contains a search bar on the top. The working pane consists of three sections namely, Azure services, Recent resources, and Navigate. The Azure services list various options such as: Create a resource, Subscriptions, Azure Active Directory, Azure Synapse Analytics, and App Services. The Recent resources contain the following subsections: Name, Type, and Last Viewed. The Navigate section contains options: Subscriptions, Resource groups, All resources, and Dashboard. [Video description ends]
+
+So, in Azure on the top left of my homepage I'm going to click create a resource. And on the new page I'm going to type virtual network in the search box.
+
+[Video description begins] A page displays with the heading: New. It contains a search bar. There are two columns in the working panes. The headings of the columns are: Azure Marketplace and Popular. The Azure Marketplace contains various options such as: Get started, Analytics, Compute, Identity, and so on. The Popular column contains the following options with the icons: Windows Server 2016 Datacenter, Web App, SQL Database, Function App, and so on. He enters Virtual Network in the search bar. [Video description ends]
+
+And I'm going to choose virtual network and on the virtual network page, I'll click Create.
+
+[Video description begins] A page labeled Virtual Network appears on the screen. The working pane contains the Virtual Network icon. It contains a Create button along with the icon. [Video description ends]
+
+So it takes me to a create virtual network page and I'm on the Basics tab on the left. So under project details, I choose the subscription. It's already got my subscription in there and I can either create a new resource group or choose one I already have.
+
+[Video description begins] A page appears with the heading Create Virtual Network . It contains a command bar with the following tabs: Basics, ID Addresses, Security, Tags, Review+Create. He highlights the Basics tab, which contains 2 sections: Project details, Instance details. The Section, Project details contains Subscription and Resource group. The Instance details contain Name, Region. [Video description ends]
+
+So I choose the one I have. And under instance details I need to give it a name. So I'm going to call this virtualnetwork2255. And I'm going to choose my standard region that I always use, which is Canada Central for these. And then at the bottom left I'm going to click review and create.
+
+[Video description begins] He adds the following data in both sections. In section one the Subscription tab reads: Pay-As-You-Go and the Resource group tab reads: it_cldema. The second section includes Name Tab : Virtualnetwork2255 and Region Tab :(Canada) Canada Central. [Video description ends]
+
+Now it says validation passed at the top of the screen. So now I'm going to click create at the bottom. OK, my deployment is complete.
+
+[Video description begins] The Review+create tab is active now. He displays the following message in the working pane: Validation Passed. [Video description ends]
+
+So in the middle of the screen I'm going to click go to resource and it will take me to the overview of my virtual network. Now I need to add an address space for databricks.
+
+[Video description begins] A page labeled Microsoft.VirtualNetwork-20210324095412|Overview appears on the screen. It contains a Resource menu on the left with the following elements: Overview, Inputs, Outputs, and Template. It contains a command bar in the working pane with the following tabs: Delete, Cancel, Redeploy, and Refresh. The following message displays in the working pane along with a Go to resource button. [Video description ends]
+
+ [Video description begins] A page with the heading virtualnetwork2255 appears. It contains the resource bar with various elements: Overview, Tags, Activity log, and so on, It further contains few more elements in the Settings section such as: Address space, Subnets, and Firewall. The working pane contains the command bar with the following options: Refresh, Move, And Delete. [Video description ends]
+
+So in the options on the left under settings, the first option is address space. I'm going to click on that. And then I'm going to add an additional address range. There's a default 10.1.0.0/16 so right under that on the right hand side,
+
+I'm going to enter 10.180.0.0/16. That will be my range for Databricks. And at the bottom I will click save.
+
+[Video description begins] A virtualnetwork2255|Address space page appears on the screen. The main pane contains a table with the following headers: Address space, Address range, and Address count. [Video description ends]
+
+Now we're going to create a databricks instance and connect it to this virtual network. So I'm going to click home at the top left and on the home page, I'll click create a resource at the top left.
+
+[Video description begins] The Home- Microsoft Azure page displays again the heading Microsoft Azure. He selects the Create a resource element from the Azure services section. [Video description ends]
+
+And on the new screen in the search box, I'll type Azure databricks.And choose Azure databricks. Now in the Azure databricks screen, I'll click create.
+
+[Video description begins] The page displays with the heading: New. It contains a search bar. He enters Azure databricks in the search bar.[Video description ends]
+
+[Video description begins] A page labeled Azure Databricks appears on the screen. The working pane contains a databricks icon along with a Create button. [Video description ends]
+
+Now I'm on the create an Azure Databricks workspace screen. I'm on the basics tab.
+
+[Video description begins] A page titled Create an Azure Databricks workspace appears on the screen. It contains a command bar with the following tabs: Basics, Networking, Tags, Review+Create. He highlights the Basics tab, it contains 2 sections: Project details, Database details. The Section, Project details contains Subscription and Resource group. The Instance details contain Workspace name, Region, and Pricing Tier. [Video description ends]
+
+And under project details, I choose a subscription. It's already chosen it for me. I choose a resource group. Under instance details, I'll give it a name and I'll just call it databricks2255. And I'll leave the rest defaulted, and at the bottom of the screen I'll click next networking.
+
+Now I'm on the networking tab and the second option in networking tab is deploy Azure Databricks workspace in your own virtual network.
+
+[Video description begins] He highlights the Networking tab from the command bar. It further contains the list of deploying databricks. It also contains the following options as well: Virtual Network, Public Subnet Name, Public subnet CIDR Range, Private Subnet Name, and Private subnet CIDR Range. [Video description ends]
+
+I'll click yes for that. Now it asked me for the virtual network. So I'll choose my virtual network. And now I need to fill in details about the public subnet and private subnet. And we're going to split the IP addresses on the address range we chose in the virtual network between these. So the first thing is a public subnet name. I'm just going to keep it simple. It's called public-subnet. Public subnet CIDR range is going to be 10.180.0.0/18. The private subnet name, I will just leave this private-subnet. Private subnet CIDR range is 10.180.64.0/18. Now at the bottom left I'm going to click review and create. So validation is succeeded. So at the bottom of the screen, I will click create. Now it's going to take a little while to deploy databricks, so I'm just going to pause and come back when it's done. OK, deployment is complete.
+
+[Video description begins] A page appears with the heading it_cldema_databricks2255|Overview. The left pane consists of the elements: Overview, Inputs, Outputs, and Template. He highlights the Overview element from the pane. The working pane contains a command with the following tabs: Delete, Cancel, Redeploy, and Refresh. The working pane displays a message: Your deployment is complete. [Video description ends]
+
+So now we're going to add a Cosmos DB endpoint on our virtual network. So I'm going to click home at the top left. And in my recent resources on the home page. I'm going to open up my virtual network virtualnetwork2255.
+
+[Video description begins] The Home- Microsoft Azure page again displays with the heading Microsoft Azure. He highlights the Recent resources section and selects virtualnetwork2255 from the Name subsection. [Video description ends]
+
+And on the left options under settings I'm going to click the third one down, which is subnets.
+
+[Video description begins] The page with the heading virtualnetwork2255 appears again. It contains the resource menu with various elements: Overview, Tags, Activity log, and so on, It further contains few more elements in the Settings section such as: Address space, Subnets, and Firewall. The working pane contains the command bar with the following options: Refresh, Move, And Delete. He selects the Subnets option. [Video description ends]
+
+Now you'll see that, I now have a default subnet and also public-subnet and private-subnet and you can see those are delegated to databricks.
+
+[Video description begins] A page labeled virtualnetwork2255| Subnets appears on the screen. It contains a command bar with the following tabs: Subnet, Gateway subnet, Refresh, Manage users and Delete. The working pane contains a table with the following headers: Name, IPv4, IPv6(many available), Delegated to, and Security group. He highlights the lists of subnets in the table: default, private-subnet, and public-subnet. [Video description ends]
+
+[Video description begins] A drop-out box appears with the heading public-subnet. It contains the following section of information: Name, Subnet address range, NAT gateway, Network security group, Route table. [Video description ends]
+
+So I'm going to click in the table on the right on public-subnet. And I get a blade on the right that's called public subnet and if I Scroll down, there is a section called service endpoints, and there's a pull down menu called services. So pull that down. And the one I want to choose is Microsoft Azure Cosmos DB from that pull down
+
+. [Video description begins] The public-subnet box contains the Services option underneath SERVICE ENDPOINTS appears. It contains several options in a pull-down menu box such as: Microsoft.AzureCosmosDB, Microsoft.KeyVault, Microsoft.ServicesBus, and so on. He selects Microsoft.AzureCosmosDB option. [Video description ends]
+
+And then at the bottom left I'll click save. So that creates my endpoint for Cosmos DB In the virtual network. Now I need to create the actual Cosmos DB account. So I'll click home at the top left. And at the top left of my homepage, I will click create a resource.
+
+[Video description begins] The Home- Microsoft Azure page displays again the heading Microsoft Azure. He selects the Create a resource element from the Azure services section. [Video description ends]
+
+And on the new page I'll type Cosmos DB.
+
+[Video description begins] The page with the heading: New displays again. It contains a search bar. He enters AzureCosmosDBin the search bar. [Video description ends]
+
+And I'll choose Azure Cosmos DB. And then on the Azure Cosmos DB page, I'll click create.
+
+[Video description begins] A page labeled AzureCosmosDB appears on the screen. The working pane contains AzureCosmosDB icon. It contains a Create button along with the icon [Video description ends]
+
+And now I'm on the create Azure Cosmos DB account page, on the basics tab. So under project details I choose a subscription. I choose a resource group. Under instance details I have to give it an account name, so I'm just going to call it Cosmosdb2255. And I'm going to place it in Canada Central under location. And the rest I'll leave default, and at the bottom I'll click next networking.
+
+[Video description begins] A page titled Create Azure Cosmos DB Account appears on the screen. It contains a command bar with the following tabs: Basics, Networking, Backup Policy, Encryption, Tags, Review+Create. He highlights the Basics tab, which contains two sections: Project details, Instance details. The Section, Project details contains Subscription and Resource group. The Instance details contain Account name, API, Location, Capacity mode, and Apply free Tier Discount. [Video description ends]
+
+Now I'm on the networking tab. And under network connectivity, I can choose a connectivity method. So I'm going to choose public endpoint (selected networks). And then if I Scroll down to the bottom, there's a section called virtual network and there's a pull down so I can choose my virtual network, VirtualNetwork2255. And subnet I'm going to pull down the menu and choose my public-subnet.
+
+[Video description begins] The Networking tab is selected. He highlights the connectivity methods: All networks, Public endpoint (selected networks), and Private endpoint. He selects the Public endpoint method, which further displays the Configure Firewall option and Virtual Network option. [Video description ends]
+
+And then at the bottom left I'm going to click review and create. So validation is successful. So at the bottom I'll click create.
+
+[Video description begins] The page labeled Create Azure Cosmos DB Account appears on the screen. It contains a command bar with the following tabs: Basics, Networking, Backup Policy, Encryption, Tags, Review+Create. He highlights the Review+Create tab, which displays the following message: Validation Success. [Video description ends]
+
+And now I'm just going to pause and wait for this deployment to complete. OK, so the deployment is complete. So in the middle of the screen I'm going to click go to resource.
+
+[Video description begins] A page appears with the heading Microsoft.Azure.CosmosDB-20210327101142|Overview. The left pane consists of the elements: Overview, Inputs, Outputs, and Template. He highlights the Overview element from the pane. The working pane contains a command with the following tabs: Delete, Cancel, Redeploy, and Refresh. The working pane displays a message: Your deployment is complete. [Video description ends]
+
+And that takes me to my Azure Cosmos DB account. And the first thing I'm going to do is set the firewall. So on the options on the left under settings, the 5th down is firewall and virtual network, so click on that. And what I want to do is add my current IP. So part of the way down the screen, there's a section that has IP addresses and there's an option in blue to say add my current IP. So I'm going to click on that.
+
+[Video description begins] A page with heading cosmosdb2255|Quick Start displays on the screen. It contains the resource menu with various elements: Overview, Tags, Quickstart, Data Explorer. The resource menu further contains the Settings section with the following elements: Features, Replicate data globally, Default consistency, Backup & Restore, and Firewall and virtual networks. He selects the Firewall and virtual network element. [Video description ends]
+
+ [Video description begins] A page with heading cosmosdb2255|Firewall and virtual networks displays on the screen. The main pane contains the corresponding information about the Firewall and virtual networks. He highlights the Firewall settings from the main pane. The header IP(Single IPv4 or CIDR range is selected. [Video description ends] And at the bottom left I'll click save.
+
+That allows me to interact with my Cosmos DB through Azure by using tools such as a data Explorer. OK, so it said that, that is successful. So on the left menu I'm going to choose Data Explorer.
+
+[Video description begins] He selects the Data Explorer option from the resource menu. It corresponding information displays in the working pane. [Video description ends]
+
+And on the right hand side, I have the Data Explorer. And at the top left of that area there's a section called New Container and I'm going to pull that down.
+
+[Video description begins] A page labelled cosmosdb2255| Data Explorer appears on the screen. The working pane with the heading New Explorer displays. It consists of a Resource menu with the following SQL API options: DATA and NOTEBOOKS. The main pane of the New Explorer displays the following heading: Welcome to Cosmos DB. It contains the following 3 large icons: Start with Sample, New Container, and New Notebook. [Video description ends]
+
+And I'm going to Choose new container. And I get a blade on the right called Add Container. The first thing it asked for is a database ID, so I'm just going to call this demo. And if I Scroll down, it also asks for container ID, so I'm also going to call that demo.
+
+[Video description begins] The drop-out box appears with the heading Add Container. It contains various sections such as: Database id, Throughput(autoscale), Container id, and so on. [Video description ends]
+
+And then at the bottom left I'll click OK. Oh, and there's one thing I forgot, you also have to enter a partition key. This is required. So I'm going to use the default which is /event_underscoreID. So this is a key that has to be in all of your records and it's used for partitioning. So at the bottom left I'll click OK. OK, so that has been created.
+
+So on the left hand side of the data Explorer, you can see that under data, there's now a database called demo and if I open that up, it contains a container called demo and if I open that up, there's an option for items I'm going to click on that. And on the right hand side, I get an item view.
+
+[Video description begins] He highlights the sections underneath the resource menu of the Data Explorer. The Data option contains a folder namely, Demo. It further contains the following options: Items, Settings. He selects the Items option, the working pane contains its corresponding information. [Video description ends]
+
+And at the top of the screen, there's an option for New Item. I'm going to click on that. And in the code window on the right, it shows me the new item. So it creates a default item. I'm going to change this slightly, it's just a json object. On line 2, I'm going to change ID to event_id as the property name. And as the value I'm going to just give it the value 1. It's a unique identifier. And then comma and I create a new line 3. And on line 3, I'm going to create my own field called message. And that message is going to say the following, If you can read this you have retrieved data from CosmosDB.
+
+[Video description begins] The code window on the right, displays the following lines. Line 2 reads:"event_id":"1",. Line 3 reads:"message":"if you can read this you have retrieved data CosmosDB!",. [Video description ends]
+
+Now at the top of the screen, I'm going to click save on the main menu. So that saved that json Object as a record in my demo container in the demo database, and that's what we're going to read from Databricks. So the next step is to go to databricks and actually read this. So I'm going to click home at the top left. In my recent resources on my homepage, I'll click databricks2255.
+
+[Video description begins] The Home- Microsoft Azure page displays the heading Microsoft Azure. He highlights the Recent resources section. He selects databricks2255 from the Name subsection. [Video description ends]
+
+And now I'm on the overview of Databricks. So on the right hand side, if I Scroll down I see a blue button called launch Workspace. I'll click that.
+
+[Video description begins] A page labeled databricks2255 appears on the screen. It contains a resource menu with various elements: Overview, Activity log, Access control(IAM), tags, and so on. The working pane contains corresponding information about the selected element, Overview. It also contains an icon with a button, Launch Workspace. He clicks the same. [Video description ends]
+
+So now I'm signed into Databricks. So the first step here is to create a cluster so that we can run some code. So in the menu on the left, 6 button down I'm going to click clusters.
+
+[Video description begins] A page labeled Microsoft Azure| Databricks appears on the screen. The Navigation pane appears on the left. It contains the following tabs: Home, Workspace, Recents, Data, Clusters, Jobs, Model, and Search. The Working pane contains 3 large icons: Explore the Quickstart Tutorial, Import & Explore Data, and Create a Blank Notebook. It also consists of 3 sections: Common Tasks, Recents, and Documentation. He selects the Clusters tab from the navigation bar. [Video description ends]
+
+And then on the clusters table on the right hand side above it, I'm going to click Create Cluster.
+
+[Video description begins] A page titled Clusters appears on the screen. It contains the command with the following elements: All-Purpose Clusters, Job Clusters, Pools, and Cluster Policies. The All-Purpose Clusters element is selected. It contains a Create Cluster button on the top right. It contains a table with the following sections: Name, State, Nodes, Runtime, Driver, Worker, Creator, and Actions. [Video description ends]
+
+Now I'm on the new cluster window. It's asking me for a cluster name, so I'm just going to call it demo-cluster. Cluster mode I'm going to set to Single Node just to keep it simple. And under Databricks runtime version, I'm going to pull this down. And I'm going to choose 6.4.
+
+This is important because we're going to be using a library that relies on Scala 2.11 and does not work with 2.12. So you need to choose this runtime. On top of the screen,I'll click create cluster.
+
+[Video description begins] A New Cluster tab is active now. It contains various sections in the main pane. He adds required data in the following sections: Cluster Name, Cluster Mode, Pool, Databricks Runtime Version, and so on. He highlights each section one by one. [Video description ends]
+
+So this will take a few minutes, so I'm just going to pause and wait for that to complete. OK, so our cluster is live. So the next thing we're going to do is create a notebook. So I'm going to click the databricks button at the very top of the left menu.
+
+[Video description begins] A demo-cluster page appears on the screen. It contains a command bar with the following elements: Configuration, Notebooks, Libraries, Event Log, Spark UI, Driver Logs, Metrics, Apps, and Spark Cluster UI-Master. The configuration element is highlighted. [Video description ends]
+
+And on the main Azure Databricks page, under common tasks, I'm going to click New Notebook. And I get a create notebook pop up.
+
+[Video description begins] A Create Notebook pop-up box appears. It contains three sections: Name, Default Language, Cluster. [Video description ends]
+
+And I will give it a name and I'm just going to call it demo-notebook. Default language is Python, that's fine. And our demo-cluster to cluster, so I'll click create. At the top left it looks like it's still detached, so I'm just going to choose my demo-cluster at the top left. I get a popup window, click confirm. So now at the top left it shows, I'm connected to my demo-cluster.
+
+[Video description begins] A demo-notebook(Python) appears on the screen. A box appears with the heading Cmd 1. [Video description ends]
+
+So now I'm going to run some code to talk to Cosmos DB.
+
+Now remember, they're on the same virtual network. And there's an endpoint, so demo-notebook should be able to talk to Cosmos DB. So the first thing we're going to do, is create some configuration for a connection. So in the code window I've placed the following. On line 1, it says 'connection =' and it starts a Json object. Line 2 says endpoint, this is the endpoint for your Cosmos DB. So let's go back to Azure for a moment and I'll click home at the top left of my Azure screen. And under recent resources, I'm going to choose my Cosmosdb2255. And on the overview of my Cosmos account on the right hand side, there's a URI and I will copy that. Then I'm going to go back to my notebook and on line 2 of the code window, I'm going to paste that URL as the endpoint.
+
+[Video description begins] The code window displays the following lines of code. Line 1 reads: connection ={. Line 2 reads:"Endpoint":"http://cosmosdb2255.documents.azure.com:443/",. [Video description ends]
+
+Now online 3, it asks for a master key, again that's your cosmos DB key.
+
+So if I go back to Azure and I'm still on my Cosmos DB account overview. On the left hand side I'm going to Scroll down to settings and I'm going to click keys.
+
+[Video description begins] The page labelled cosmosdb2255 again appears on the screen. It consist a resource menu on the left. It consists of the section settings, which further contains various elements such as: Features, Default consistency, Keys, and so on. The working pane consists of 2 options: Read write Keys, Read only Keys. He highlights the Read write keys option, with the following keys: URI, PRIMARY KEY, SECONDARY KEY, PRIMARY CONNECTION STRING, and SECONDARY CONNECTION STRING. [Video description ends]
+
+Now on the right. There are some keys and I can copy the primary key, so I'll just copy that to clipboard. Then I go back to my notebook in Databricks, and on line 3, In the code window I'm going to paste that key as my master key.
+
+[Video description begins] The code window appears again. Line 3 reads: "MasterKey":"Bj84WMAVf9LGjZXXajkQcDF0x3NsAmanXkLPoKXa4Wo2hk494M18KzlqG2huLPXQ0M6frDRxOVOUOgqbTuevdw==",. [Video description ends]
+
+Now on line 4, that's database, this is a database name and I don't have to go back for that. because I remember it's simply called demo. And on Line 5 is collection, that's our container that we created in the database and we also called that demo. So on line 5, I'll fill in demo. Line 6 is fine as a query_custom. This is, the query is going to use to get data from that collection. Collection and container are the same thing, So it's going to get that from the container, SELECT * FROM c. That's the query that's going to run, so it's going to get everything.
+
+[Video description begins] Line 4 reads: "Database":"demo",. Line 5 reads: "Collection":"demo",. Line 6 reads:"query_custom":"SELECT *FROM c". Line 7 reads: }. [Video description ends]
+
+So I'm going to hit shift enter to run this. Now it's complete.
+
+Now I didn't do anything really, all it's done is created this connection variable, that has this information. The next step is to actually get the data from Cosmos DB. So in the next code window below the first one, I'm going to paste the following on line 1 data = spark.read.format("com.microsoft.azure.cosmosdb.spark").options (**connection).load() So this takes that connection detail. And it connects to Cosmos and it actually loads data into a data frame called data. And then line 2, data.createOrReplaceTempview("cosmosdata") This takes a data frame data and it creates a temporary view out of it that we can query using SQL statements. [Video description begins] He highlights the codes and its details in Code Window 2. [Video description ends] Now before we run this, we actually need a special library. Because this ("com.microsoft.azure.cosmosdb.spark") on line 1 is referring to a specific library, So I'm going to leave this notebook for a moment and on the left hand menu I'm going to go back to clusters. And under clusters I'm going to click on my demo-cluster.
+
+[Video description begins] The page titled Clusters appears again on the screen. He highlights the demo-cluster file from the table which appears in the working pane. [Video description ends]
+
+An on my demo cluster page at the top, third from the left is a libraries option, so I'm going to click libraries. And on the libraries page underneath, there's an install new button.
+
+[Video description begins] The demo-cluster page appears again on the screen. He selects the Libraries from the command bar. The working pane also contains an Install New button. [Video description ends]
+
+I'm going to click that. And I get an install library popup. And by default the library source is upload and the library type is jar. So I'm going to upload a jar file,
+that is a library that allows us to use spark to connect to Cosmos DB. So it says drop jar here.
+
+[Video description begins] A pop-up box appears with the heading Install Library. It contains a Library Source toolbar with the following options: Upload, DBFS/ADLS, PyPI, Maven, CRAN, and Workspace. He highlights the Upload option from the Library Source toolbar. It further contains a Library Type toolbar with the following options: Jar, Python Egg, Python Whl. He highlights the Jar option. [Video description ends]
+
+ So I'm going to open a File Explorer. And I'm going to go to my file. It's Azure Cosmos DB Spark and it has a bunch of numbers jar. I'm going to drag this and drop it here and let it load. And then at the bottom right I'm going to click install. So in the libraries table, it says status installing. And it's got a little icon showing it's installing and now we have a solid green circle, so it's installed. So now I can go back to my notebook, so on the left menu I'm going to click Workspace third from the top.
+
+[Video description begins] The demo-cluster page appears again on the screen. He selects the Libraries from the command bar. The working pane contains a table with the following headings: Name, Type, Status, and Source. He highlights the cluster file that appears in the table. [Video description ends]
+
+[Video description begins] A Workspace pane appears with the Users heading. He highlights the demo-notebook option. [Video description ends]
+
+And I see my demo-notebook, so I'm going to click double click on that. So now just for good measure I'm going to rerun the first code. So I click on the 1st code window at the top and hit shift enter. That sets the connection object. And then in the second code window, I'm going to click and hit shift enter. And that runs a spark job, which actually gets the data frame and then creates a temporary view.
+
+[Video description begins] The demo-notebook(Python) appears again on the screen. He highlights the codes in Code Window 1, Code Window 2, and Code Window 3. [Video description ends]
+
+So now I should be able to use a SQL statement to query the data from Cosmos DB. So here's that statement, On line 1, I say %SQL. This just says that I'm going to be using SQL . And on line 2, select cosmosdata.message from cosmosdata. If you go back to the previous code window on line 2, Cosmos data was the name we gave to the temporary view. So we're querying that temporary view and getting the message that I put in that record. So I'm going to hit shift enter on that. And on the results you can see the message, If you can read this you have retrieved data from CosmosDB! so we're successful.
+
+[Video description begins] He highlights the Output message in the Code Window 3: If you can read this you have retrieved data deom CosmosDB!. [Video description ends]
+
+8. Video: Extracting, Transforming, and Loading Data (it_cldema_15_enus_08)
+
+8a1d165d-0b57-4089-8ad8-6bf957c2f346
+extract, transform, and load data using Azure Databricks
+[Video description begins] Topic title: Extracting, Transforming, and Loading Data. Your host for this session is Bill Brooks. [Video description ends]
+In this video I'm going to show you how to perform an extract transform, load pipeline or an ETL using Azure Databricks. And ETL pipeline is useful when the transforms that you have are static and they're known before the data is queried. So in Azure I have some resources already set up. The ones we're going to use today are a databricks instance. Mine is called data bricks 2255 and a storage account. Mine is called storage 2426.
+
+[Video description begins] A Home- Microsoft Azure page displays with the heading Microsoft Azure. It contains a search bar on the top. The working pane consists of Two sections namely, Azure services, Recent resources. The Azure services list various options such as: Create a resource, Subscriptions, Azure Active Directory, Azure Synapse Analytics, and App Services. The Recent resources contain the following subsections: Name, Type, and Last Viewed. He selects the storage 2426 option from the Name subsection. [Video description ends]
+
+So let me show you how the storage account is set up.
+
+I'll click on that. And under the overview of the storage account I'm going to click containers.
+
+[Video description begins] A storage2426 page appears on the screen. The resource menu appears on the left with the following sections: Overview, Activity log, Tags, Diagnose and solve problems, Access Control (IAM), Data migration, Events, and Storage Explorer(preview). He highlights the Overview section, the working pane contains its corresponding information. It further contains 4 boxes at the bottom of the pane, namely: Containers, File share, Tables, and Queues. [Video description ends]
+
+And under containers I have two containers set up, source and target. So we're going to extract from the source and then we're going to do our transform and then we're going to load into the target.
+
+[Video description begins] The Containers tab is now active. It contains a table with the following headings: Name, Last modified, Public access level, and Lease state. He highlights the list of containers which includes: source and target. [Video description ends]
+
+Now in a real life scenario, these would be in different databases typically, but we're just going to simplifed here as two containers. Now if I click on source.
+
+[Video description begins] The Source Container tab is now active. He highlights the blob name: us-500.csv underneath the table. [Video description ends]
+
+I have one blob called us-500.csv I'll click on that. And on the details of that CSV on the right. I'll click the 4th tab from the left edit. And we have 500 records.
+
+[Video description begins] The right pane appears with the headingus-500.csv . It contains a command bar with the following tabs: Save, Discard, Download, Refresh, and Delete. It consists of a toolbar with the following sections: Overview, Versions, Snapshots, Edit, Generate SAS. He highlights the Edit section with several records. [Video description ends]
+
+And if I click the preview button at the bottom. You'll see it has a lot of columns. And if I scroll to the right. There's a state column.
+
+Now what are transform is going to be today is we're going to filter this to only the state of Illinois? And we're going to only show a subset of the columns only the details of the company and its address.
+
+[Video description begins] The Edit tab now contains several columns. He highlights the column with the heading: %22state%22 column. [Video description ends]
+
+So if I back up by going to the top left and clicking storage 2426. And then in my containers I click target. I just want to show that my target is currently empty.
+
+[Video description begins] The page appears with the heading target. It contains a table with no results. [Video description ends]
+
+So now I'm going to click home at the top left. And under recent resources, I'm going to click Databricks 2255.
+
+[Video description begins] The Home- Microsoft Azure page again displays with the heading Microsoft Azure. He highlights the Recent resources section and selects databricks2255 from the Name subsection. [Video description ends]
+
+And that takes me to my overview my databricks. So if I Scroll down, I'm going to click on launch Workspace.
+
+[Video description begins] A page labeled databricks2255 appears on the screen. It contains a resource menu with various elements: Overview, Activity log, Access control(IAM), tags, and so on. The working pane contains corresponding information about the selected element, Overview. It also contains an icon with a button, Launch Workspace. He clicks the same. [Video description ends]
+
+So I'm signed into databricks. And I have a cluster already running. I'll just show it to you quickly. So if I go to the left menu 6 button from the top, I click clusters.
+
+[Video description begins] A page labeled Microsoft Azure| Databricks appears on the screen. The Navigation pane appears on the left. It contains the following tabs: Home, Workspace, Recents, Data, Clusters, Jobs, Model, and Search. The Working pane contains 3 large icons: Explore the Quickstart Tutorial, Import & Explore Data, and Create a Blank Notebook. It also consists of 3 sections: Common Tasks, Recents, and Documentation. He selects the Clusters tab from the navigation bar. [Video description ends]
+
+And I have a cluster called demo Dash cluster. It's a very simple setup, If I click on it.
+
+[Video description begins] A page titled Clusters appears on the screen. It contains the command with the following elements: All-Purpose Clusters, Job Clusters, Pools, and Cluster Policies. The All-Purpose Clusters element is selected. It contains a Create Cluster button on the top right. It contains a table with the following sections: Name, State, Nodes, Runtime, Driver, Worker, Creator, and Actions. He highlights the demo-cluster from the mentioned table. [Video description ends]
+
+It's a single node cluster. And it's running Databricks runtime version 6.4. Now we're going to create a notebook and use it against this cluster.
+
+[Video description begins] A demo-cluster page appears on the screen. It contains a command bar with the following elements: Configuration, Notebooks, Libraries, Event Log, Spark UI, Driver Logs, Metrics, Apps, and Spark Cluster UI-Master. He highlights the Configuration element with the following types: Cluster Mode, Databricks Runtime Version, Autopilot Options, and Node Type. He clicks the Databricks tab from the navigation pane. [Video description ends]
+
+So I'm going to click the Databricks icon at the very top of the left menu. And then on the right hand side under common tasks I'm going to click new notebook.
+
+[Video description begins] The page labeled Microsoft Azure| Databricks appears again with the heading Azure Databricks. The Navigation pane appears on the left. The Working pane contains 3 large icons: Explore the Quickstart Tutorial, Import & Explore Data, and Create a Blank Notebook. It also consists of 3 sections: Common Tasks, Recents, and Documentation. He selects the New Notebook option, underneath the Common Tasks section. [Video description ends]
+
+And I get to create notebook popup window. So I have to give it a name so we'll just call this demo Dash notebook. Default language is Python. And cluster is demo cluster and on the bottom right I'll click Create.
+
+[Video description begins] A Create Notebook pop-out box appears with the following sections: Name, Default Language, and Cluster. [Video description ends]
+
+
+So now we have our notebook on the screen. And I have a code window in Gray and so the first thing I'm going to do is do the extract. So here's the code for the extract and let me step you through it. Line one is setting up authentication to talk to the storage account.
+
+[Video description begins] A demo-notebook(Python) appears on the screen. He highlights several lines of code in Code Window 1 labeled as Cmd 1. [Video description ends]
+
+It needs a key to talk to the storage account. Nowth e first argument of this spark.Conf.set is fs.azure.account.key.storage2426.blob.core.windows.net. Note that the name of the storage account is in here storage 246 between key and blob. So just fill in the name of your storage account. If you have a different account. The second argument is the key for that account. Now here it's blank, so I have to go and get it, so I'll go back to Azure. And on Azure the top left I'll click home. And then under recent rescources, I'll click my storage account storage 2426. So now in the menu on the left, I'm going to go down to settings and I'm going to click access keys. And on the right under access keys I have a button called show keys. I'm going to click that.
+
+And that shows me all of the keys an under key one I'm going to click the copy to clipboard on the right side of the key.
+
+[Video description begins] The storage2426 page appears again on the screen. He selects the Access keys tab from the Resource menu underneath the Settings section. The working pane contains the following subsections: Storage account name, key1, key 2, and key 3. He highlights the key1 option . [Video description ends]
+
+So that copy is a key for me. Now if I go back to my demo notebook in Databricks on line 1, I'm going to paste that key. In the second argument of spark.conf.set So that will configure the key.
+
+[Video description begins] A demo-notebook(Python) appears again on the screen. He copies and highlight the code in Cmd 1. [Video description ends]
+
+Line 3 is the actual read, so DF stands for data frame and it's just a variable I'm creating to store the data when it comes in as a data frame. So DF equals spark.read.option and this option sets the header to true. Which just tells it that my CSV has headers for the columns and then.option inferschema True tells it to try to determine the schema based on the contents of the fields.
+
+And then.csv, and then it points to the CSV we want to load. There is a specific format to this string, It goes WASBS colon, forward slash , forward slash and then the name of the container inside my storage account at the name of the storage account .blob.core.windows.net. So that takes it to the container that you want to talk to and then forward slash and what's in the container. So in this case the CSV is inside that source container. So that will read our data into a dataframe called DF. On line 5, I say display DF so that will display the contents of that data frame. So I'm going to click on the code window and then hit shift enter to run it. So it's complete, and if we take a look. There is a table in the results.
+
+[Video description begins] He highlights all the updated codes in the code window that appears in the demo-notebook. [Video description ends] 
+
+And if I click on it, I can Scroll down. And there's 500 records, and if I scroll to the right and I look at the state column.
+
+We only want the rows that are in state Illinois, so that's IL. So now that we have the data in a data frame, we can do a transform on it.
+
+[Video description begins] A table appears with the following headers: first_name, last_name, company_name, address, city, country, state, zip, phone1, phone2, and email. He highlights the list of rows in the dataframe and the state column. [Video description ends]
+
+So we'll go to the next code window underneath that one. Click on it. And here is the data we're going to run. This is our transform line 1. I'm creating a new dataframe which is a transform dataframe. I'm calling that DFF. DFF equals the original df.where, so we're doing a where clause. State equals equals IL.Select and this is where it selects the columns we want to keep. Company name, Address, City and state. So of all the columns, those are the only ones we're interested in, and we're only going to get the records where state is equal to capital I, capital L. Line 2 I display our transformed data frame.
+
+[Video description begins] He highlights the various codes in lines 1 and 2 in the code window labeled Cmd 2. Line 1 reads:. dff = df.where("state=='IL'").select("company_name","address","city","state). Line 2 reads: display(dff). [Video description ends]
+
+So let me click on this code and then I'm going to hit shift enter. And now let's run it. So now you see that we only have the four columns.
+
+[Video description begins] A table now appears with the following headers: company_name, address, city, state. He highlights various rows of the table. [Video description ends]
+
+And if I scroll the table in the results, they're all Illinois State. So that's the E in the T. We've extracted that all of the data we've transformed it to what we want. And now we're going to load it into the target. So let's go to the next code Window, Command 3. And this is what we're going to run, It's a single line. DFF, that's our transformed data frame .write, so we're writing it as a CSV. option header true. So that's just stating that it has column headers .mode append. That means that anything that was written before will not be destroyed. It will just write a new file and it will keep the historical data .CSV and then here, It points to where to write it too.
+
+And this is in the same format as the read. WASBS colon forward slash forward slash the name of the container which is target. At the name of the storage which is storage 2426. .blob.core.windows.net/ and I give it to CSV. This time I append Dash MoD to the name US-500-mod.csv So click on the code window and let me hit shift enter. And it says that it's completed running that. So let's go back to Azure and take a look at our target now. So in Azure I'll click Storage 2426 at the top left to go to my overview. And on my storage overview on the right I'll click containers. And then in the container list on the right I'll click target. And you see that now my target has data in it. Now there will be a CSV in the root and that will be empty.
+
+[Video description begins] He highlights the code in the Code window labeled Cmd 3. [Video description ends]
+
+ [Video description begins] The page appears with the heading called target. It contains a table with the following headers: Name, Modified, Access tier, Blob type, Size and Lease state. He highlights a file named: us-500-mod.csv. [Video description ends]
+
+This file you see the size is 0 bytes. The data itself is actually in a folder called US 500 mod.csv If I open that up, there are several blobs. One is a blob of when it started, and you can so you can see the time it started. And then when it was committed.
+
+[Video description begins] He highlights the list of several blobs, presented in the form of a table underneath the header target. [Video description ends]
+
+And the committed has some information that tells you where the data is. If I open it up. So I clicked on the committed file, and on the details on the right, Force have from the left. I'll click edit.
+
+[Video description begins] A right pane appears with the following title: us-500-mod.csv/_committed_3165391032082684317. It contains a command bar with the following headers: Save, Discard, Download, Refresh, Delete, and Change tier. It consists of the following sections: Overview, Versions, Snapshots, Edit, Generate SAS. [Video description ends]
+
+And you can see that there is a Jason Object on line one. And it tells you the name Of the file that it added.
+
+[Video description begins] He highlights the Edit section, it further displays the edit box with several codes. [Video description ends]
+
+So the actual data is in a file that starts with the word part, so on the left it's called Part 0000 TID etc etc. So I click on that. And on the block details on the right, I'll click edit. And you can see that I have on line one company name, address, City and state. And if you look at each row, the state is actually Illinois.
+
+[Video description begins] A right pane appears which titles: us-500-mod.csv/part-00000-tid-3165391032082684317. He highlights the edit section, it further displays several lines of code. [Video description ends]
+
+So we've loaded the transformed information.
+
+9. Video: Performing Sentiment Analysis (it_cldema_15_enus_09)
+
+4e38b039-c180-4542-a866-312ffdab3739
+perform sentiment analysis for steam data by making use of Azure Databricks
+[Video description begins] Topic title: Performing Sentiment Analysis. Your host for this session is Bill Brooks. [Video description ends]
+In this video, I'm going to demonstrate how to perform sentiment analysis on data using Databricks and a text analytics service in Azure.
+
+Now this is just one example of using external analysis services in databricks, so I'm in Azure and the resources that I'm going to need are a databricks account and under recent resource as you can see, I have a databricksbb, which is my Azure Databricks service. And you're also going to need a text analytics service, which is a cognitive service, and that's also under my recent resources, mine is called textanalyticsbb. But let me quickly walk you through how you would create your own. So in the top left of my home screen, I'm going to click create a resource.
+
+[Video description begins] A Home- Microsoft Azure page displays with the heading Microsoft Azure. It contains a search bar on the top. The working pane consists of three sections namely, Azure services, Recent resources, and Navigate. The Azure services list various options such as: Create a resource, Subscriptions, Azure Active Directory, Azure Synapse Analytics, and App Services. The Recent resources contain the following subsections: Name, Type, and Last Viewed. The Navigate section contains options: Subscriptions, Resource groups, All resources, and Dashboard. He selects the Create a resource option from the Recent resources section. [Video description ends]
+
+[Video description begins] A page displays with the heading: New. It contains a search bar. There are two columns in the working panes. The headings of the columns are: Azure Marketplace and Popular. The Azure Marketplace contains various options such as: Get started, Analytics, Compute, Identity, and so on. The Popular column contains the following options with the icons: Windows Server 2016 Datacenter, Web App, SQL Database, Function App, and so on. He enters Text Analytics in the search bar. [Video description ends]
+
+Then on the new screen in the search window, I'm going to type text analytics. And I'll choose text analytics from the dropdown. And on the text analytics screen, I'll click create.
+
+[Video description begins] A page labeled Text Analytics appears on the screen. The working pane contains the Text Analytics icon. It contains a Create button along with the icon. [Video description ends]
+
+And creating this is really simple. I'm on the Basics tab of Create Text Analytics. And under project details I choose a subscription. It's already chosen my subscription because it's the only one. And I can either create a new resource group or choose one that I have. So I'm going to choose the one I have.
+
+And then under instance details you choose your region. And you give it a unique name, and then you choose your pricing tier.
+
+[Video description begins] A page appears with the heading Create Text Analytics. It contains a command bar with the following tabs: Basics, Virtual network, Security, Tags, Review+Create. He highlights the Basics tab, which contains 2 sections: Project details, Instance details. The Section, Project details contains Subscription and Resource group. The Instance details contain Name, Region, Pricing tier. [Video description ends]
+
+There's a free tier if you want to use that, I've already used that in my instance, I'm not allowed to use it twice. So for this example, I'll just choose one. And then you can click review and create. And then when validation passes, you can click create at the bottom left. Now I've already created one, so I'm not going to do that. So in the top left I'm going to click home.
+
+[Video description begins] The Review+create tab is active now. It displays a Validation Passed message in the working pane. [Video description ends]
+
+And another resource that we're going to need is a storage account. I also have one of those set up, so under recent resources on my homepage.
+
+[Video description begins] The Home- Microsoft Azure page displays again the heading Microsoft Azure. He selects the blobbb element from the Recent resources section. [Video description ends]
+
+I have blobbb, so let me open that for minute and show you what I have set up.
+
+[Video description begins] A page called blobbb appears on the screen. The resource menu contains various elements: Overview, Activity log, Tags, Data migration, and so on. It contains a command bar with the following tabs: Open in Explorer, Move, Refresh, Delete, and Feedback. The main pane 4 boxes with the following headers: Containers, File Shares, Tables, Queues. Currently, he selects the Containers heading. [Video description ends]
+
+So in my storage account, on overview on the right I'll click containers.
+
+[Video description begins] A page with the heading blobbb|Containers appears on the screen. The main pane contains a table with the following headers: Name, Last modified, Public access level, and Lease state. He highlights the demo container from the mentioned table. [Video description ends]
+
+And under containers I have a single container called demo, so I'll click on that. And in demo I have a single blob sentiment.csv. If I click that,
+
+[Video description begins] The demo tab is active now. It contains a resource pane with the following elements: Overview, Diagnose and solve problems, Access Control(IAM), Shared access signature, Access policy, Properties, and Metadata. It contains a table with the list Blobs along with the following headers: Name, Modified, Access tier, Blob type, Size, and Lease state. [Video description ends]
+
+and on the details for sentiment.csv on the right, I'll click the 4th tab from the left Edit.
+
+[Video description begins] A right pane appears with a heading: sentiment.csv. It contains a toolbar with the following headers: Save, Discard, Download, Refresh, and Delete. It contains a command bar with the following tabs: Overview, Versions, Snapshots, Edit, Generate SAS. He highlights the Edit Tab and the lines of code in the edit box. [Video description ends]
+
+And I get an edit window. And on line 1, I have the name of the single field which is message. And lines 2 through 5 on my messages. So you could think of these. These might be text messages and what sentiment analysis does. It's just one of many text analytics you can use, and this one analyzes a text and gives an idea whether it's a positive or negative sentiment.
+
+[Video description begins] Line 1 reads: message. Line 2 reads: I love to use Azure for all of my data needs. Line 3 reads: Today has not been my best day. Line 4 reads: I'm looking forward to the start of the new semester. Line 5 reads: My cable provider is really making me mad. [Video description ends]
+
+So you'd expect on line 2, I love to use Azure for all of my data needs should be a fairly positive sentiment. Line 3 today has not been the best day. That's probably a negative sentiment. Line 4 I'm looking forward to the start of the new semester. That sounds positive, so it could be a positive sentiment.
+
+And line 5, my cable provider is really making me mad that sounds very negative, so that's a negative sentiment. So we're going to run this through the analytics and see what it says. So I'm going to click home at the top left again. And now under recent resources, I'm going to click my databricks instance databricksbb. And on the overview on the right, I'll Scroll down and I'll click launch Workspace.
+
+[Video description begins] A page labeled databricksbb appears on the screen. It contains a resource menu with various elements: Overview, Activity log, Access control(IAM), tags, and so on. The working pane contains corresponding information about the selected element, Overview. It also contains an icon with a button, Launch Workspace. He clicks the same. [Video description ends]
+
+So I'm in the workspace on the far left Menu, 6 button from the top. I'm going to click clusters.
+
+[Video description begins] A page labeled Microsoft Azure| Databricks appears on the screen. The Navigation pane appears on the left. It contains the following tabs: Home, Workspace, Recents, Data, Clusters, Jobs, Model, and Search. The Working pane contains 3 large icons: Explore the Quickstart Tutorial, Import & Explore Data, and Create a Blank Notebook. It also consists of 3 sections: Common Tasks, Recents, and Documentation. He selects the Clusters tab from the navigation bar. [Video description ends]
+
+And on the clusters page I have one cluster running called test cluster.
+
+[Video description begins] A page titled Clusters appears on the screen. It contains the command with the following elements: All-Purpose Clusters, Job Clusters, Pools, and Cluster Policies. The All-Purpose Clusters element is selected. It contains a Create Cluster button on the top right. It contains a table with the following sections: Name, State, Nodes, Runtime, Driver, Worker, Creator, and Actions. He highlights the test-cluster from the mentioned table. [Video description ends]
+
+I'm going to click on it and just show you what I have set up, so you can set up something similar. So on the test cluster page, cluster mode is single node because it's very simple. Databricks runtime version, I just chose the default and that's 8.0 and I left everything else default.
+
+[Video description begins] A test-cluster page appears on the screen. It contains a command bar with the following elements: Configuration, Notebooks, Libraries, Event Log, Spark UI, Driver Logs, Metrics, Apps, and Spark Cluster UI-Master. He highlights the Configuration element with the following types: Cluster Mode, Databricks Runtime Version, Autopilot Options, and Node Type. [Video description ends]
+
+So it's a very simple single node cluster.Now I'm going to create a new notebook. So on the left hand menu I'm going to click the very top button. And it takes me back to the home page. And on the left, under common tasks I'm going to click new notebook. Now I get a create notebook popup. And I'll give this a name.
+
+[Video description begins] The page labeled Microsoft Azure| Databricks appears again with the heading Azure Databricks. The Navigation pane appears on the left. The Working pane contains three large icons: Explore the Quickstart Tutorial, Import & Explore Data, and Create a Blank Notebook. It also consists of three sections: Common Tasks, Recents, and Documentation. He selects the New Notebook option, underneath the Common Tasks section. [Video description ends] 
+
+I'll just call it demo-notebook. Default language is going to be Scala and the cluster is my test-cluster, so I'll click create at the bottom right.
+
+[Video description begins] A Create Notebook pop-out box appears with the following sections: Name, Default Language, and Cluster. He enters the details in the mentioned sections: Name: demo-notebook, Default Language: Scala, Cluster: test cluster. [Video description ends]
+
+So here's my demo-notebook at the top left. I verify that it says test cluster and that is running as it's got a green circle beside it. And I have a code window. So in the first code window I'm going to place the code to get started and I'll step you through it. So this code actually calls the API of the text analytics.
+
+[Video description begins] A demo-notebook(Scala) appears on the screen. He highlights several lines of code in Code Window 1 labeled as Cmd 1. Line 1 reads: import org.apache.http.client.methods.HttpPost;. Line 2 reads: import org.apache.http.entity.ContentType;. Line 3 reads: import org.apache.http.entity.StingEntity;. Line 4 reads: import org.apache.http.impl.client.HttpClientBuilder;. Line 5 reads: import com.google.gson.Gson. [Video description ends]
+
+I'm going to skip over the imports because these are just the imports that we need for the various calls we make.
+
+On line 7 and 8, I create a couple of classes that help me to consume the response that I get back from the text analytics API. So on line 7, I have a class sentiment. And that consists of a documents property which is an array of sentiment documents. It also has an errors array which we're going to not be using in this demo. On line 8, is a class called sentiment documents which sentiment uses. It's the array type. And it has an ID, which is a string and a score, which is a double.
+
+[Video description begins] The next set of codes are as follows. Line 7 reads: case class Sentiment(documents: Array [SentimentDocuments], errors: Array[Any]). Line 8 reads: case class SentimentDocuments(id:String, score:Double). [Video description ends]
+
+That score will be our sentiment score. So carrying on, on lines 10 and 11, I set up a couple of variables. Line 10 is called textAnalyticsAccount. So that is the name of our text analytics instance. So if I go back to Azure, and I click home in the top left.
+
+You'll see under recent resources in my text analytics instance and it's called textanalyticsbb.
+
+[Video description begins] The Home- Microsoft Azure page displays again the heading Microsoft Azure. He copies testanalyticsbb element from the Recent resources section. [Video description ends]
+
+So going back to databricks, that's what I'm going to fill in on line 10.
+
+[Video description begins] Line 10 reads: val testAnalyticsAccount = "testanalyticsbb". [Video description ends]
+
+Line 11 is text analytics key. That's the secret key or the access key that I need to access my text analytics. So I'm going to go back to Azure. Under recent resources on my homepage, I'm going to click textanalyticsbb, my Text analytics instance. On the left menu, under resource management, I'm going to click the second option Keys and Endpoint.
+
+[Video description begins] A page labeled testanalyticsbb|Quick start. It contains a resource menu with various sections: Overview, Tags, Quick start, Identity, Keys and Endpoint, and so on. [Video description ends]
+
+Now on the right hand side, I'm going to click show keys. So now I can see my keys and I'm going to copy key 1. So on the right hand side I'm going to click the copy to Clipboard Button.
+
+[Video description begins] He highlights the Keys and Endpoint section from the resource menu. The working pane contains its corresponding information. He highlights the button labeled Show keys and the KEY 1 option from the working pane. [Video description ends]
+
+Now I'm going to go back to Databricks. And on line 11, I'm going to add that key as textanalyticskey. So those are the credentials essentially for talking to the text analytics API.
+
+[Video description begins] The demo-notebook(Scala) appears again on the screen. Line 11 reads: valtestanalyticsKey = "2603 e6314db84670979b76e8eb81c003". [Video description ends]
+
+On Line 13, I create a user defined function. Now a user defined function can be used in a data frame to specify the values of a column. And you'll see how we do that later on. My user defined function is called asSentiment. And, it accepts as an argument a string called content and that will be the string in a cell of a column.
+
+[Video description begins] Line 13 reads: valasSentiment = udf ((content: String) =>{. [Video description ends]
+
+Starting on Line 15, we set up a post request because we're talking to an API, so we're going to do post to that API. On Line 16, I'm setting up a Json object which is going to be the body of my post request. In curly brackets and all of the double quotes inside the string have a backward slash, but they're just double quotes. So, {"documents" So it's a property called documents. And that property is an array of other Json objects, and I just have one object in the array. It has an ID, a text and language. The language is hard coded to be EN, which sends for English, to tell what language is looking at.
+
+The ID is just a unique ID and the text is a text you wanted to analyze. I said ID and text both to content in my format. So it's going to replace the %S as in my string with the value content. On Line 17, I create an entity. It's a string entity. With my json object, so it turns it from a string to an entity. And a URL encodes it. On 18, I set up my post. I create a new HTTP post object. And I give it the URL to post to and my URL looks like this https:// and then the name of my textanalyticsaccount. So this is where I'm going to do my formatting, %S and on the far right of this line you see I'm formatting with textanalyticsaccount. So that %S will be replaced by my account name from line 10. ".cognitiveservices.azure.com/text/analytics/v2.1/sentiment", that is the end point that we need to call to get this sentiment toward.
+
+On line 19, I set that entity on the post to be the body of the post. On Line 20, I set a header. And it has to be called "Ocp-Apim-Subscription-Key". And that's my textanalyticskey from line 11. And then on line 21, I set the content type to be application/json.
+
+[Video description begins] He highlights the codes from lines 15 to 21. [Video description ends] So that sets up my post call. Starting at line 23, I send the post request. Line 24, I use the HttpClientBuilder object and I call create.create().build() and that creates a HTTP client I call client. On line 25, I call up client.execute and I send my post object which is from line 18, which is an HttpPost and it sends me back the response. [Video description begins] Line 23 reads: // send the post request. Line 24 reads: valclient = HttpClientBuilder.create().build();. Line 25 reads: valresponse = client.execute(post). [Video description ends] Then starting at line 27, I turned that response into a sentiment object. On line 28, I do a scala.io.Source.fromInputStream(response.getEntity.getContent). So that essentially gets the content which is an input stream. And then it goes .getlines.mkString that turns that content into a string.
+
+So at the end of this big line, what I get is a response string which I call response string. That will be in Json. Line 29, I create a new gson object which will help me translate from Json to an object. On line 30, I do that translation gson.fromJson, and I give that call the response string, which is the Json in string form. And I say classOf[sentiment]. If I scroll back up to line 7, that's the class I defined, which represents what you get back from this call.
+
+[Video description begins] He highlights the similar pattern of codes from lines 27 to 33. [Video description ends]
+
+It's an array of sentiment documents. Finally on Line 32, I get the value that I want to return for this cell. The object that I've created ".documents(0)" so get the first document because we're only asking for one, so it will return one..score, that's the score of the sentiment document, so that will give us our actual sentiment value.
+
+[Video description begins] He highlights the code on line 32: obj.documents(0).score. [Video description ends] 
+
+So what this UDF for user defined function does is every time it's called with the string which is represented by a cell in a column, it will return what the column value should be as the score on line 32. So I'm going to hit shift enter and run this. And it tells me that it's complete. So now we move on to the next part, which is actually getting our data from our blob and then running the sentiment on it.
+
+[Video description begins] He highlights the output after running the commands. [Video description ends]
+
+So I'm going to place this in the second command window. And lines 1 through 4, We have to fill in some blanks here. This is the configuration line. One is your blob account, so if I go back to Azure for a moment and I click home at the top left. And in my recent resources my Blob account is called blobbb. So going back to databricks, I'm going to fill that in on line 1. Line 2 says blobContainer. If you recall our container name inside our account was called demo. So on line 2, we're filling demo.
+
+Line 3 is our blobFile. If you recall, you could look it up in the blob storage, but if you recall it was called sentiment.csv. Line 4 we need the blobKey. That's the access key to access the account, so let's go back to Azure. And I'll click on blobbb, under recent rescources, And on the left, under settings I click access keys and on the right I'm going to click show keys. OK, So now we can see our keys and under key one
+
+I'm going to click the copy to clipboard on the right hand side. And then I'm going to go back to Databricks and on line 4, I'm going to paste that key as blobKey.
+
+[Video description begins] A second code window appears with the name, Cmd 2. He highlights several lines of codes such as: Line 1 reads: val blobAccount ="blobbb". Line 2 reads: val blobContainer="demo". Line 3 reads: val blobFile ="sentiment.csv". [Video description ends]
+
+Now to step through the code on Line 6, what we're doing is we're setting up the access key to access the Blob account. So we go spark.sparkContext.hadoopConfiguration.set And the configuration name is "fs.azure.account.key." and then the name of the Blob account which you see we're doing in the .format(blobAccount) ".blob.core.windows.net" and the value for that configuration is the blob key.
+
+So that gives it the blob key or the access key to access the Blob account. On line 8, we're doing all the work, so I get a data frame by going spark.read.option("header", "true"). What that tells it is just that in our Csv our headers are going to be our columnheaders. .csv and then for the Csv argument, I give it the URL of the Blob which is a standard format for blobs "wasbs://" the name of the blob container, "@" the name of the Blob account. .blob.core.windows.net/ and the name of the Blob file. So those three pieces of information are in my format here. So the %S is replaced by the blobContainer, blobAccount and blobFile. And then I add a column using .widthColumn
+
+And the column name is sentiment and the value, for the value I call my UDF,which is asSentiment as you recall. And for the argument, I give it the 'message, so it's single quote message. That's how you specify the column on the current data frame. So every value in that column it will call this asSentiment. And return a value.
+
+[Video description begins] He highlights various sets of codes from lines 6 to 8. [Video description ends] 
+
+And then on line 10, I display that data frame, so let's run that.
+
+[Video description begins] Line 10 reads: display(df). [Video description ends]
+
+I'll hit shift enter. And here's our results. So we get a table. We have the messages on the left and then the other column is sentiment which has been created.
+
+[Video description begins] He highlights the output which reflects with the table. The table includes the heading such as message and sentiment. He highlights all four columns of the table. [Video description ends]
+
+So let's see what sentiments are gifts. So for, I love to use Azure for all my data needs. It gives us 0.964 with a bunch of other numbers, so we'll just go to the first few digits. This is a value from zero to 1, 0 being the most negative sentiment, 1 being the most positive, so it thinks it's very positive. .96 out of 1. Now let's look at the next one.
+
+Today has not been the best day. This only gets a .21 out of 1. This is not a very positive sentiment, it's more on the negative side. Line 3, I'm looking forward to the start of the new semester. This gets an even higher sentiment than the first line. It gets a .97. And finally line 4, My cable provider is really making me mad, only gets a 0.01, so that's very negative. So what you can obviously use this for is if you are collecting, say, messages for a business, you can get the sentiment of those messages and you can quickly find the positive messages versus a negative messages. So perhaps as a business you could respond appropriately to the negative messages that you're getting. Now the last note I want to make is the code that I've showed you is not necessarily designed for performance. Really, what I've designed this code for is brevity so that it's easy to understand and it's short. In a production environment, the Text analytics API can actually accept several messages at once. And the way we're doing it with the UDF, we're only calling it with one message at a time. So that's maybe not the most efficient, and it can be done in a more efficient manner.
+
+10. Video: Debugging Spark Job (it_cldema_15_enus_10)
+
+a7e7550d-9995-447d-9bd6-3be25aeca054
+debug Spark Jobs running on HDInsight
+[Video description begins] Topic title: Debugging Spark Job. Your host for this session is Bill Brooks. [Video description ends]
+In this video, I'm going to demonstrate some options that you have for debugging your runs in an Azure HDInsight Spark cluster. So I'm on my Azure homepage and under recent resources I have an HDInsight cluster already set up called hdinsight2255.
+
+[Video description begins] A Home- Microsoft Azure page displays with the heading Microsoft Azure. It contains a search bar on the top. The working pane consists of Two sections namely, Azure services, Recent resources. The Azure services list various options such as: Create a resource, Subscriptions, Azure Active Directory, Azure Synapse Analytics, and App Services. The Recent resources contain the following subsections: Name, Type, and Last Viewed. [Video description ends]
+
+Let me step you through creating your own HDInsight cluster. So at the top left of my homepage or create a resource. On the new page, in the search box, I'll type hdinsight and choose Azure HDInsight and then on the Azure HDInsight page, I'll click create. 
+
+[Video description begins] A page displays with the heading: New. It contains a search bar. There are two columns in the working panes. The headings of the columns are: Azure Marketplace and Popular. The Azure Marketplace contains various options such as: Get started, Analytics, Compute, Identity, and so on. The Popular column contains the following options with the icons: Windows Server 2016 Datacenter, Web App, SQL Database, Function App, and so on. He enters HdInsight in the search bar. [Video description ends]
+
+
+
+[Video description begins] A page labeled Azure HDInsight appears on the screen. The working pane contains the Azure HDInsight icon. It contains a Create button along with the icon. [Video description ends]
+
+[Video description begins] A page appears with the heading Create HDInsight cluster . It contains a command bar with the following tabs: Basics, ID Addresses, Security+networking, Configuration+pricing, Tags, Review+Create. He highlights the Basics tab, which contain 2 sections: Project details, Instance details. The Section, Project details contains Subscription and Resource group. The Cluster details contains subsections: Cluster name, Region, Cluster type. It also contains a section with the following header: Cluster credentials. [Video description ends]
+
+And now I'm on the create HDInsight cluster page and among the Basics tab on the left. So under the Basics tab under project details I need to choose a subscription and it's already chosen mine. And I need to choose a resource group. So you would choose a resource group or create a new one. Under Cluster details give it a unique Cluster name. And you can choose a Region.
+
+And under Cluster type to the right of Cluster type, click select Cluster type. And you get a blade on the right hand side called select Cluster type. Click the select button to the right of Spark. Then under Cluster credentials you need to set up your admin login.
+
+[Video description begins] A right pane appears with a heading Select cluster type. It contains various types of clusters such as: Hadoop, Spark, Kafka, HBase, Interactive Query, and so on. Each section contains a select box on the right. [Video description ends]
+
+So you'd choose a Cluster login username or you could just use admin. You'd enter a cluster login password and then confirm it. After doing that, you scroll to the top and click the 4th tab from the left called Configuration + pricing. On this tab you need to setup your node configuration. So under node configuration there's a table that has the term Node type at the top left and it has three node types. Head node, Zookeeper node and Worker node.
+
+[Video description begins] The Confirguration+Pricing tab is now active. The working pane consists of a table with the following headers: Node type, Node size, Number of worker node, Estimated cost. It contains the types of nodes such as: Head node, Zookeeper node, and Worker node. [Video description ends]
+
+Now you can figure this in whichever way you would like an order to run that. For this demonstration, I choose the smallest node sizes with the fewest course.
+
+And under Worker node you can change the number of worker nodes and I changed it to 1. Then you would hit review and create and you would be able to create your cluster. Now I'm going to click home at the top left and go back to my homepage. And then I'm going to click under recent resources on my HDInsight cluster called hdinsight2255. Now I'm on my overview page of my HDInsight cluster. And on the right hand side, if I scroll down I see a row of buttons, they start with Ambari home and they end with Yarn. The third from the left is Jupyter notebook. 
+
+[Video description begins] The Home- Microsoft Azure page displays with the heading Microsoft Azure. He selects the hdinsight2255 option from the recent resources section. [Video description ends]
+
+[Video description begins] A hdinsight2255 tab is active now. It contains a resource menu with the following elements: Overview, Activity log, Access control(IAM), Tags, and Diagnose and solve problems. It consists of the command bar with the following options: Move, Delete, Refresh. The working pane contains 2 sections: Overview, Get started. He highlights various dashboards: Ambari home, Ambari views, Zeppelin notebook, Jupyter notebook, Spark history server and Yarn. [Video description ends]
+
+So I'm going to click on that now and that takes me to Jupyter notebooks.
+
+[Video description begins] A page with the heading jupyter appears on the screen. It contains 3 sections: Files, Running, Clusters. The Files section consists of the following notebooks: PySpark, Scala, and Untitled.ipynb. [Video description ends]
+
+And at the top right I'm going to click new. And under notebooks, I'm going to choose PySpark. This creates a new notebook for me.
+
+[Video description begins] A pop-up box appears with the following sections underneath the new tab. Text Files, Folder, Terminal, Notebook. The notebook section contains the following options: PySpark, PySpark3, and Spark. [Video description ends]
+
+So now I have a notebook on the screen, I have a code window. And in the code window I'm going to type something very trivial.
+
+[Video description begins] A new page appears with the heading 'jupyter Untitled 1'. It contains a toolbar with the following tabs: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The working pane consist of code window. [Video description ends]
+
+I'm just type print ("Hello world"). This is just a trivial notebook to test with. So on the main menu there is a run cell button and I'm going to click it. OK. So it is run and we see the output which is Hello world.
+
+Now I'm going to go back to Azure and on my overview of my HDInsight cluster,
+
+[Video description begins] He highlights the mentioned code in the notebook. Line 1 reads: print("Hello world"). He highlights the output message as well. [Video description ends]
+
+I'm going to show you how you can get details about that Jupyter notebook that just ran for debugging purposes. So on the far right of the row of buttons, I'm going to click Yarn.
+
+[Video description begins] The hdinsight2255 tab appears again on the screen. He clicks on the Yarn option from the working pane. [Video description ends]
+
+And this opens up the Hadoop all applications screen. Which gives you information about all the applications that have run. And the one that I just ran should be the very top one, and I see from the start time that it is. And if I scroll to the right, you see, it's got a lot of information about the allocated memory, CPU cores etc. I was running for this,on the far left I have an application link under ID. So I can click on the ID of the application.
+
+[Video description begins] A page with a heading hadoop- All Applications appears on the screen. It contains a table with 2 sections: Cluster Metrics and Scheduler Metrics. The Cluster Metrics table consists of various headings: Apps Submitted, Containers running, VCores total, and so on. The Scheduler Metrics consist of various sections such as: User, Name, Application Type, Queue, and so on. He highlights several Ids in the table. [Video description ends]
+
+
+Note that the Jupyter notebook always runs as remotesparkmagics under Name. So anyway, I'm going to click the link on the left and this takes me to a specific application page for the Jupyter notebook I just ran.
+
+And it has a bunch of information, there is a section called Application Overview. Below that is Application Metrics and it tells me some information about Attempts and Containers and Resource Allocation. And at the very bottom there's a table with my application attempt in it. And on the right hand side, there's a link that says logs. I click on that, I get a log screen and there are a series of links that take me to different logs.
+
+[Video description begins] A page titled Application: application _1616948970786_0006 appears on the screen. It contains two sections Application Overview and Application Metrics. The Application Overview contains various specifications such as: User, Application type, Queue, Started, Elapsed, and so on. The Application Metrics contains the following specifications: Total Resources Preempted, Total Number of Non-AM Containers Preempted, Resource Preempted from Current Attempt, Number of Non-AM Containers Preempted from Current Attempt, and Aggregate Resource Allocation. He highlights the mentioned table with the following headers: Attempt ID, Started, Node, Logs, Blacklisted Nodes. [Video description ends]
+
+
+[Video description begins] A Logs for container_1616948970786_0006_01_000001 appears on the screen. He highlights the series of list of logs displayed in the main pane. .
+
+[Video description ends] So for instance, the second from the bottom is standard error. So I can click that and I can see details about the spark instance running. So you can get information here from these logs for debugging purposes. Now, if I hit the back button on my web browser and then I hit it again, I'm back in the application page for my application. 
+
+[Video description begins] A page titled Logs for container_16 appears on the screen. He highlights the details in the working pane. [Video description ends] 
+
+So if I scroll to the top and in this section called Application Overview, there is about 2/3 of the way down in that section. A tracking URL and it's got a link beside it that says Application Masters. So I'm going to click on the ApplicationMaster link. This takes me to the Spark UI, which has a lot of useful information. First off at the top, there are several tabs we are on the leftmost tab, called Jobs. And this is my Spark Job information, it tells me the total uptime of the information. Its 3.7 minutes and if I click on event timeline, a link on the page. It shows me a useful timeline of my job running.
+
+[Video description begins] A page titled remotesparkmagics-Spark Jobs appears with the heading Spark Jobs(?). It consists a command bar on the top with the following tabs: Jobs, Stages, Storage, Environment and Executors. He select the jobs tab. The main pane contains the following information: User: livy, Total Uptime: 3.7 min, Scheduling Mode: FIFO. [Video description ends]
+
+So it tells me when the executor driver started and it tells me when the executor was added.
+
+[Video description begins] He highlights the Event Timeline in the main pane of the Spark Jobs(?) tab. [Video description ends]
+
+And presumably it's still running because the job actually runs for sometime after it gives a result. You can also get information about stages so jobs can have several stages in them.
+
+This one will probably only have one stage but in the options at the top. The main menu, second from the left click stages. And actually there are no stages to this, 'cause it's just a print Hello world. But there might be normally several stages that you can see details about.
+
+[Video description begins] The Stages tab is active now. It displays with a heading, Stages for All Jobs. Currently, the page contains no stages. [Video description ends]
+
+On the far right button on the main menu is Executers. If I click on that, I get all sorts of resource information about the Executers that ran my job. So there's lots of good information here that you can use for debugging. Now if I go back to Azure, back to my overview of my HDInsight cluster. Another useful link is Spark History Server, which is the 2nd button from the right in the row of buttons.
+
+[Video description begins] The Executors tab is now active. It contains all sorts of resource information such as: Summary, Executor, and so on. [Video description ends]
+
+[Video description begins] The hdinsight2255 tab appears again on the screen. He clicks on the Spark history Server option from the working pane. [Video description ends]
+
+[Video description begins] A page with the title History Server appears again on the screen. It contains a table with the following headers: App ID, App Name, Started, Completed, Duration, Spark User, Last Updated, Event Log and Azure tool kit. He highlights the table contains the list of applications.[Video description ends]
+
+I click on that, you get a list of the applications that have run with links to them. And if I click on the links, I get more information about the jobs, just as we've seen before. So in conclusion, an Azure HDInsight Spark cluster offers many ways so you can debug your spark jobs via the Yarn and Spark History server links on the overview of the cluster instance in Azure.
+
+[Video description begins] The Spark Jobs table appears again. It contains a table named Completed Job. The table contains the following headers: Job Id(Job Group), Description, Submitted, Duration, Stages: Succeeded/Total, Tasks(for all stages): Succeeded /Total. [Video description ends]
+
+11. Video: Course Summary (it_cldema_15_enus_11)
+
+d472a211-c2ef-4488-940f-6455f492e457
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. [Video description ends]
+So in this course we've examined Azure databricks processing types and features. We did this by exploring available processing types when using Azure Databricks. Creating Azure Databricks using an Apache spark cluster. Running jobs in the Azure Databricks workspace.
+
+Querying data in SQL Server and handling failed batch loads. Implementing a Cosmos DB service endpoint. Using Azure Databricks to extract, transform and load data. And performing sentiment analysis and debugging spark jobs. In our next course, we'll move on to Azure Stream Analytics.
+
+Course File-based Resources
+•	Running Azure Databricks Workspace Jobs
+
+•	Querying SQL Server
+
+•	Implementing Cosmos DB Endpoints
+
+•	Extracting, Transforming, and Loading Data
+
+•	Performing Sentiment Analysis
+© 2023 Skillsoft Ireland Limited - All rights reserved.

@@ -1,0 +1,614 @@
+Data Engineering on Microsoft Azure: Databricks
+When working with big data, there needs to be a mechanism to process and transform this data quickly and efficiently. Azure Databricks is a service that provides the latest version of Apache Spark, which provides functionality for machine learning and data warehousing. In this course, you'll learn about the features of Azure Databricks such as clusters, notebooks, and jobs. Next, you'll learn about autoscaling local storage when configuring clusters. Next, you'll explore how to create, manage, and configure Azure Databricks clusters, as well as how to create, open, use, and delete notebooks. Finally, you'll learn how to create, open, use, and delete jobs. This course is one in a collection that prepares learners for the Microsoft Data Engineering on Microsoft Azure (DP-203) exam.
+Table of Contents
+    1. Video: Course Overview (it_cldema_14_enus_01)
+
+    2. Video: Azure Databricks (it_cldema_14_enus_02)
+
+    3. Video: Azure Databricks Clusters (it_cldema_14_enus_03)
+
+    4. Video: Capturing Stream Data Using Azure Event Hub (it_cldema_14_enus_04)
+
+    5. Video: Azure Databricks Notebooks (it_cldema_14_enus_05)
+
+    6. Video: Working with Azure Databricks Workbooks (it_cldema_14_enus_06)
+
+    7. Video: Azure Databricks Jobs (it_cldema_14_enus_07)
+
+    8. Video: Working with Azure Databricks Jobs (it_cldema_14_enus_08)
+
+    9. Video: Azure Databricks Autoscaling (it_cldema_14_enus_09)
+
+    10. Video: Azure Databricks Structured Streaming (it_cldema_14_enus_10)
+
+    11. Video: Course Summary (it_cldema_14_enus_11)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_cldema_14_enus_01)
+
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. [Video description ends]
+Hi, I'm Bill Brooks. I've held various positions in the software field for over 20 years, including Computer Engineering Technology instructor, software developer, software architect, and team lead.
+
+[Video description begins] Your host for this session is Bill Brooks. He is a Senior Software Developer. [Video description ends]
+
+I have Extensive experience with the Microsoft development stack and as a cloud developer, primarily in the Microsoft Azure environment. I'm a Strong proponent of the Agile approach to development and have been both a PO and a Scrum Master. I hold a Bachelor's degree in mathematics from Concordia University in Edmonton and a Computer Engineering Technology diploma from NAIT. When working with Big data, there needs to be a mechanism to process and transform this data quickly and efficiently. Azure Databricks is a service that provides the latest version of Apache Spark that provides functionality for machine learning and data warehousing.
+
+In this course, I'll discuss the features of Azure Databricks such as Clusters, Notebooks, and jobs. Next, we'll learn about autoscaling local storage when configuring clusters. I'll then cover how to create, manage and configure Azure Databricks Clusters and how to create, open, use and delete Notebooks. Finally, I'll Create, open, use and delete jobs. This course is one in a collection that prepares learners for the Microsoft Data Engineering on Microsoft Azure DP-203 Exam.
+
+2. Video: Azure Databricks (it_cldema_14_enus_02)
+
+af7f1591-4968-4701-b326-72a353b5aa30
+describe the features of Azure Databricks
+[Video description begins] Topic title: Azure Databricks. Your host for this session is Bill Brooks. [Video description ends]
+In this video, I'm going to go over the features of Azure Databricks. Databricks is a managed service in Azure that's deployable through the Azure Marketplace and allows you to run applications in a Serverless Spark-based workspace. This is very useful for data pipelines and big data analytics. You can manage a Databricks workspace via UI that's accessible in Azure. Additionally, if you want to automate Databricks management, you can do so via the Databricks REST APIs. Databricks allows you to write Notebooks which run on Spark clusters, which you configure. It supports such common languages as Scala, Python, R, and SQL.
+
+Databricks is designed to integrate with many common Azure services used in big data storage and analytics such as Synapse Analytics and Azure blob storage. For reporting and dashboards, it also Integrates with Microsoft Power BI. Databricks is designed to use the Role-based security compatible with Azure Active Directory just like other first party services in Azure. This means that it can be integrated from an authentication and authorization standpoint. In the same manner, as other services in your Azure ecosystem. In other words, users won't have to learn new credentials in order to log into the Databricks workspace. They'll use the same user credentials they use for other Azure services as part of a single sign-on experience. There are two environments in Azure Databricks. So far I've mentioned the Databricks Workspace.
+
+The Workspace allows you to create Notebooks for collaboration with other data professionals. It also allows you to configure Spark clusters to run automated jobs. This empowers you to create data pipelines that ingest incoming data, transform the data, and load it into a destination data lake. The other environment is Databricks SQL Analytics, which allows you to run SQL queries on your data lake for analysis. And to generate reports and dashboards you can control access to your dashboards so you can share them with others. In summary, you can think of the Workspace as the environment in which to manage your data in a data workflow from ingress to storage in a data lake. You can think of SQL analytics as the environment for querying that data in the data lake for post workflow, analytics and visualizations. Let's look at the Workspace environment in a little more detail.
+
+In the workspace, you manage Spark clusters for all your processing. You can configure the Spark cluster details based on the memory and processing requirements that you have, and then Databricks allocates a Spark cluster in a serverless fashion, meaning the hardware under the hood is managed for you in the Azure cloud. In the Workspace, you can create data workflows as jobs which run code such as that in Notebooks. Jobs can be scheduled for automation. Permissions to Databricks Notebooks can be managed via access control lists, which enable Notebook authors to share their Notebooks and collaborate with other data experts via shared Notebooks. The Databricks Workspace contains many concepts and libraries.
+
+Spark SQL is a T-SQL type language that let's you query data in a structured manner. Data transformations can be done easily and intuitively via Spark SQL. There is a concept of a DataFrame, which means a collection of data records. You can think of a DataFrame as a table in a traditional database. In Notebook logic and Databricks, you can extract DataFrames from data sources, manipulate DataFrames programmatically via languages such as Scala, Python or Spark SQL and then load the DataFrames to a sink, such as a data lake, there are Workspace Libraries for managing Streaming data as well, for example, memory streams can be created from many different possible data sources and then transformed and written out, or visualize with charts. Databricks is a layer on top of Apache Spark in the cloud, and the heart of Apache Spark is the Spark Core API. All core Spark functionality is exposed via this API. It natively supports languages such as R, Python, SQL, Scala and Java.
+
+The SQL Analytics environment on the other hand, exposes manage SQL endpoints for querying your data once it's been through the data workflow of the Workspace environment. These endpoints scale for concurrent users and latency. Databricks integrates with many different data stores that you can query with these endpoints, such as Synapse Analytics, Cosmos DB, Azure Data Lake and Azure Blob storage. With SQL Analytics you can schedule queries to run on a regular basis, and scheduled queries can have alerts and monitoring configured on them. So if a property in a result set goes out of normal, the system can notify users about it. This is a great tool to actively monitor your data and SQL Analytics has rich dashboard visualization. You can manage permissions to these dashboards, which enables sharing and collaboration around data results.
+
+3. Video: Azure Databricks Clusters (it_cldema_14_enus_03)
+
+3bf83466-b6d3-46b5-8e08-f79037799b3c
+describe the features and concepts of Azure Databricks clusters
+[Video description begins] Topic title: Azure Databricks Clusters. Your host for this session is Bill Brooks. [Video description ends]
+All the code in an Azure Databricks workspace runs on a cluster. So what exactly is a Databricks cluster? It's a Configured computational resource. Under the hood, it's an Apache Spark cluster, which is a platform for running Apache Spark. Apache Spark clusters are optimized for handling Big data processing in parallel for high performance. In the context of Databricks, a Databricks cluster can run one or more workloads. These workloads can be in the form of Notebooks which are coded processes as well as Jobs which are scheduled processes. It may be written as Notebooks, but can also be another forms such as Java JAR files. Databricks clusters are designed for performance processing of Big data and as such can be configured to enable the use of graphics processing units or GPUs for data processing. GPU enabled instances are naturally fast because graphics processing units designed for Processing graphics for applications such as real time games are by nature powerful and therefore ideal for processing Big data quickly.
+
+There are two Cluster Types in Databricks. All-purpose clusters are not dedicated to any one process. Users can manually start, stop, and restart an All-purpose cluster. You can also call underlying REST APIs to automate the creation and management of All-purpose clusters. They are Used for collaborative analysis. For example, if a data scientist is creating a Notebook to collaborate with colleagues, she can spool up in All-purpose cluster and choose it as a cluster for her Notebook to run on. Or she can choose an existing cluster. Several Notebooks can be run on a single cluster. The only consideration is the resource is needed to run the multiple Notebooks. When Notebooks are shut down or deleted an All-purpose cluster is not destroyed. In other words, its life cycle is independent from the processes that are assigned to it.
+
+Then there are Job clusters. A Job cluster is not managed manually. Instead, it's scheduled as part of a job. Its life cycle is equivalent to the Jobs life cycle. In other words, when the job starts, the cluster starts and when the job completes, the cluster terminates. Where All-purpose clusters can be restarted hence reused. Job clusters cannot be restarted. They're not usable once the job they are associated with is complete. Job clusters help guarantee dedicated resource for important scheduled jobs. In the following slides, we're going to look at Cluster Management. We'll discuss Cluster preemption, which is when the cluster scheduler decides to preempt or avoid a cluster from running, Cluster pools which help reduce time for cluster start-up and scaling, Initialization scripts which set up a cluster environment prior to running code, and a special type of cluster called the single node cluster.
+
+Databricks has a cluster scheduler that is responsible for determining jobs fair access to the cluster resources. The scheduler has the ability to preempt clusters, meaning to interrupt the cluster to allow other clusters to run. The scheduler uses preemption to try to give processes their fair share of the processing time. How it works is affected by several Spark settings, which must be set before a cluster is launched. There's a setting to enable or disable preemption altogether. Paired with this is a fair share Threshold setting. Which can be between 0 and 1, 0 disables preemption, whereas a setting of 1 will tell the scheduler to be aggressive when enforcing preemption for fair sharing. Effective settings are usually somewhere in between. There's also a preemption timeout. This is a number of seconds that a process has to be starved for resources before the scheduler will consider preemption to give it processor time. This, like the preemption threshold, needs to be set on a case-by-case basis, but it's typically between 1 and 100 seconds.
+
+Finally, there is an interval, which is how often the scheduler will look at the processes to consider preemption. This should logically be set to something less than the preemption timeout. In other words, the scheduler should be checking more often than resource starved processes need the schedulers attention. Our next topic is Cluster Pools. Cluster Pools allow cluster affective auto-scaling by managing a pool of ready-to-go cluster instances or nodes that can be used by any clusters associated with the pool.
+
+A cluster requires more or fewer nodes as it scales in or out to manage job load, auto-scaling requires more cluster nodes, and spooling up new cluster nodes is time and resource consuming. So keeping a pool of nodes provides compute power without the spool up cost. When a cluster has to scale, it requests new nodes from the pool that it belongs to. If it can get nodes from the pool then it can quickly scale. However, if there are not enough nodes in the pool, it will spool up new ones, which is slower when the cluster no longer needs the nodes, it will release them back to the pool to be reused by any clusters in the pool. This shares the compute nodes across the clusters in the pool. One of the nice things about Cluster Pools is that each compute node only accumulates costs when it's running. Now when it's idle in the pool, this means the cost will be scaled up or down along with the clusters conserving cost.
+
+Next, we have Initialization Scripts. Initialization Scripts run when a cluster instances spooled up, there meant to get the cluster into an expected state. Configuring required libraries on the cluster is a perfect example of what Initialization Scripts are for. There are two types. There's the Global script which is run for all clusters in the workspace. It's great for standardizing all clusters. For instance, you can guarantee that all clusters are running a common set of libraries, or that they're all secured in a standard fashion. Only administrators can set up Global Initialization Scripts, which makes sense since they affect all clusters in the workspace. Global Initialization Scripts are always run before the next type, which is a Cluster-scoped Initialization Script. These are scripts only relevant to one cluster.
+
+These applied to both All-purpose clusters used to run ad-hoc processes and job clusters for job instances. Because the scope of these is the cluster access control can be set up to allow only certain people to modify the script. You need to be cautious when combining Global and Cluster-scoped Initialization Scripts, since they can have conflicts. For example, a new cluster might have the Global Script run to apply certain libraries and then its Cluster-scoped Script might apply other libraries that conflict with the global ones, resulting in a broken cluster.
+
+Clusters typically scale their nodes when required, but there is a special cluster type called Single Node. Single Node Clusters are not meant for large processes. They're good for small ad-hoc processes that don't require a lot of processing power. Single node clusters shouldn't have multiple processes run on them because they don't offer process isolation of any kind. In other words, the processes have to share resources, and there's likely to be resource conflicts. Some other limitations of single node clusters are that they are not allowed to use GPU processing for performance. They also can't be upgraded to a standard cluster. If you want a standard cluster, you'll need to spool up a completely different cluster and where standard clusters can scale their nodes to accommodate processes. The single node cluster will only run as many parallel processing threads as there are physical cores on the cluster. In summary, single node clusters are not for heavy or collaborative work, they're not meant for production environments. Instead they're convenient if you're doing ad-hoc experimental work and want to save money and spool up time, they may also be useful for certain types of tests.
+
+As a final topic, Databricks clusters allow you to associate a Docker image with a cluster. Since container technology, like Docker is popular for scalable, manageable cloud processing, this is a boon. Some best practices are to use a base build image for your Docker image that was created by Databricks to avoid any integration issues and also utilizes initialization scripts to prepare your image when the cluster starts up.
+
+4. Video: Capturing Stream Data Using Azure Event Hub (it_cldema_14_enus_04)
+
+b023e1fe-9cf9-4eaf-b662-6cc77136a671
+capture stream data using Event Hub
+[Video description begins] Topic title: Capturing Stream Data Using Azure Event Hub. Your host for this session is Bill Brooks. [Video description ends]
+In this video, I'm going to demonstrate how to send Event Hub data to store. Now I'm in my Azure Main page, and under Recent resources I have the two resources that we're going to need for this. First is an Event Hubs Namespace and mine is called eventhubsbb,
+
+[Video description begins] A Microsoft Azure homepage displays with a search bar on the top. The working pane constitutes 3 sections namely, Azure services, Recent resources, and Navigate. The Azure services contain various options such as, Create a resource, Resource groups, Subscriptions, Azure Active Directory, and App Services. The Recent resources include a table with the following column headers: Name, Type, Last viewed. It lists down various files including, storagebb26, it_cldema, eventhubsbb, and Pay-As-You-Go. [Video description ends]
+
+and the other one is a storage account and mine is called storagebb26. Now, I've already got mine created, but let me show you how you create these to start off. So at the top left I'm going to click Create a resource.
+
+[Video description begins] A page opens with the heading New. It contains a drop-down search bar. There are two columns in the working pane: Azure Marketplace and Popular. Each column lists various options. He selects the Storage account option from the search bar. [Video description ends]
+
+And we'll start by creating the storage account. So on the New page in the search box, type storage account, and choose Storage account from the drop-down and on the storage account page, click Create.
+
+[Video description begins] The Storage Account page opens. It contains a Create button. Underneath the Create button, it displays the command bar with the following options: Overview, Plus, Usage Information+Support, and Reviews. [Video description ends]
+
+Now I'm on the Create storage account page on the Basics tab and under Project
+
+[Video description begins] The Create storage account page appears. It contains various tabs namely, Basics, Networking, Advanced, and Review+create. Currently, the Basics tab is opened. It contains two sections: Project details and Instance details. [Video description ends]
+
+details. I need to choose a Subscription. It's already chosen it for me and I need to choose a Resource group or create a new one.
+
+So I'm just going to choose the one I already have, under Instance details,
+
+[Video description begins] The Project details section of the Basics tab includes two drop-down fields: Subscription and Resource group. [Video description ends]
+
+you need to put in a storage account name which is unique. So this could just be storage5454 or something that makes it unique.
+
+[Video description begins] The Instance details tab contains the following drop-down fields: Storage account name, Location, Account kind, Replication. Also two radio button options namely, Standard and Premium beside the Performance field. The bottom of the page includes a button called Review+create. [Video description ends]
+
+Choose your Location, and then click Review + create at the bottom left and at the top of the Create storage account pages as Validation passed and then click Create at the bottom left.
+
+[Video description begins] The Review+create tab opens. A message flashes at the top of the page saying Validation passed. [Video description ends]
+
+So that's how you create the storage account. I'm going to click Home at the top left, go back to my home page.
+
+And I will show you how to create the Event Hub Namespace. Click Create a resource at the top left and on the New page, in the search box, type in event hub. Then from the drop-down list choose Event Hubs.
+
+[Video description begins] He returns to the Microsoft Azure homepage. He selects the Create a resource option. The New page opens. He selects the Event Hubs option from the drop-down menu. [Video description ends]
+
+And on the Event Hubs page, click Create.
+
+[Video description begins] Next, the Event Hubs page opens. He clicks the Create button. [Video description ends]
+
+Now I'm on the Create Namespace page on the Basics tab,
+
+[Video description begins] A page appears titled Create Namespace. It contains multiple tabs namely, Basics Features, Tags, Review+create. The Basics tab contains two sections: Project details and Instance details. The Project details section further includes two drop-down fields: Subscription and Resource group. And a button named Create new underneath the Resource group field. [Video description ends]
+
+under PROJECT DETAILS, you need a Subscription. Mine iss already chosen and under Resource group,
+
+you create a new one or you choose one. So I'll choose the one I already have. Under INSTANCE DETAILS, You need to give it a Namespace name which has to be unique.
+
+[Video description begins] The Instance details tab contains the following drop-down fields: Namespace name, Location, Pricing tier(View full pricing details), and Throughout Units. At the bottom of the page, there is a button called Review+create. [Video description ends]
+
+Choose your Location and then at the bottom left, click Review + create. I must have missed something and go back to Basics and I didn't choose a Pricing tier, so I've clicked back to the Basics tab and under INSTANCE DETAILS you need to choose a Pricing tier. For this you can choose the Standard.
+
+You can't use the Basic because Basic won't let us do what we're about to do. And at the bottom left, click Review + create. And now it says Validation succeeded at the top, so at the bottom left and click Create and create your namespace.
+
+[Video description begins] The Review+create tab opens. A message flashes at the top of the page saying Validation succeeded. [Video description ends]
+
+Now I'm going to click Home at the top left, so I'm going to take you to my Storage account. So under Recent resources on my home page, I'll click Storage account,
+
+[Video description begins] He returns to the Microsoft Azure homepage and selects the storagebb26 item from the given table. The storagebb26 page opens. The left Navigation pane displays the following options: Overview, Activity log, Tags, Access Control(IAM), and Events. It also contains a section named Settings which further contains multiple options. The working pane of the page includes the command bar which displays options such as, Open in Explorer, Move, Refresh, and Feedback. Below the command bar, the page displays various elements under the heading Essentials. [Video description ends]
+
+on the Overview of my storage account, I'm going to scroll down on the right and click Containers and you can see that under Containers,
+
+[Video description begins] The main pane of the page also contains 4 tiles namely, Containers, File shares, Tables, and Queues. [Video description ends]
+
+I have one container called eventhub-data.
+
+[Video description begins] The storagebb26 | Containers page opens. It displays a table carrying a single container file named eventhub-data. Also, the command bar of the page shows the following options: Container, Change access level, Restore containers, and Delete. [Video description ends]
+
+If you don't have a container and you're following along, just click the + Container button at the top left of the screen and create the container. So now I'm going to click Home again at the top left. Under Recent resources on my home page, I'm going to go to my Event Hubs Namespace which is called eventhubsbb.
+
+[Video description begins] He selects the eventhubsbb namespace file from the table, given on the Microsoft Azure homepage. [Video description ends]
+
+And on the left-hand menu, if I scroll down,
+
+under Entities, I'm going to click Event Hubs. Then on the right-hand side I have an empty list of Event Hubs for my namespace at the top left I'm going to click the + Event Hub button.
+
+[Video description begins] The eventhubsbb page opens. The Navigation bar displays three sections Settings, Entities, and Monitoring. The Entities section displays two options: Event Hubs and Schema Registry. The main pane of the page contains two buttons in the command bar namely, +Event Hub and Refresh. Below the command bar, it displays a table with the following column header names: Name, Status, Message Retention, and Partition Count. [Video description ends]
+
+And now I'm on the Create Event Hub page.
+
+[Video description begins] The Create Event Hub page appears. It displays a text field labelled Name. Also three buttons namely, Partition Count, Message Retention, and Capture. the Capture button has On and Off modes. [Video description ends]
+
+It's asking me for a Name, so I'm just going to call this Event Hub demohub. And down below it says Capture. You want to set that to On.
+
+This is going to capture what's coming into the Event Hub, and it's going to write it to your storage.
+
+[Video description begins] He selects the On mode under the Capture button. The following elements appear underneath: a Time Window (minutes) set button, a Size Window (MB) set button, and a pull-down menu button named Capture Provider. [Video description ends]
+
+So if I scroll down, there is a pull-down menu called Capture Provider. I wanted to say Azure Storage Account and then there's Azure Storage Container,
+
+[Video description begins] The Capture Provider option contains two text fields: Azure Storage container and Storage Account. Also, it includes a button beside the first field named Select Container. The bottom of the page contains two more fields namely, Sample Capture file name formats and Capture file name format. [Video description ends]
+
+I'm going to click the Select Container button to the right of that
+
+[Video description begins] The Storage accounts page opens. It contains a table which lists 3 storage accounts. [Video description ends]
+
+and it gives me a list of storage accounts. I'm going to choose my storagebb26 and it shows me the containers in that storage account on the right-hand side and I'll choose my container eventhub-data and click Select at the bottom left of that plate.
+
+[Video description begins] The sub-page opens named Containers. It also contains a table which shows the eventhub-data file under it. [Video description ends]
+
+So now I've chosen the container to write the data into. Now if I scroll down, there's also a Sample Capture file name formats,
+
+[Video description begins] He returns to the Create Event Hub page. The bottom of the page contains two more fields namely, Sample Capture file name formats and Capture file name format. The Capture file name format displays the following entry: {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. [Video description ends]
+
+and you could change this if you wanted to, but I'm just going to leave it as a default. But it starts with the Namespace and then it's the EventHub name and then the partitionid because Event Hubs have more than one partition and then the Year, Month, Day, Hour, Minute and Second. So it creates a folder path for each file that it writes. So it shows below that in example, it's going to look something like eventhubsbb/demohub/0 which is a partition /2021/04/19/22 etc, etc. Write down to the second.
+
+So I'm going to click Create at the bottom. So now I'm back to my Event Hubs Namespace screen and on the right-hand side, I have on my list of Event Hubs, demohub.
+
+[Video description begins] The eventhubsbb | Event Hubs page appears. The Resource menu displays various options. The main pane contains a file named demohub listed within its table. [Video description ends]
+
+So what we're going to do now is we're going to go back to storage, so I'm going to click Home at the top left under my Recent resources, I'll click my storage account storagebb26. On the Overview, in the right, I'll scroll down and I'll click Containers.
+
+[Video description begins] He returns to the storagebb26 page. He selects the Containers tile. [Video description ends]
+
+Then under Containers, I'm going to click eventhub-data. I'll be refreshing this because this is where our data should appear when it comes from the Event Hub.
+
+So now what we need to do is write data to the Event Hub.
+
+[Video description begins] A page titled eventhub-data opens. The main pane of the page displays a table with the following column header names: Name, Modified, Access tier, Blob type, Size and Lease state. Currently, it is not showing any listed file. [Video description ends]
+
+So I'm going to open up Visual Studio and I have a project here that's very simple that writes some events to the Event Hub.
+
+[Video description begins] The Visual Studio interface opens. It displays various programs under the Programs tab. Currently, the namespace EventHubWriter program pane is opened. It displays multiple lines of code. [Video description ends]
+
+In the code in the left-hand side here, you'll see that on line 13, it's looking for a string that's called eventHubName. On line 14, there's a string that's called connectionString, so these are the details of our Event Hub that we need to fill in. So eventHubName was called demohub,
+
+so I'm just going to fill that in on line 13.
+
+[Video description begins] Line 13 reads: const String eventHubName = "demohub";. Line 14 reads: const string connectionString = "";. [Video description ends]
+
+In the connectionString is the connectionString of your Event Hub Namespace.
+
+[Video description begins] Line 16 reads: var producer = new EventHubProducerClient(connectionString, eventHubName);. [Video description ends]
+
+So if I go back to Azure for a moment, and I click Home at the top left, and under my Recent resources, I'll click on my Event Hubs Namespace, then on the menu on the left under Settings, I'm going to click Shared access policies. And on the right-hand side it has one policy by default called RootManageSharedAccessKey.
+
+[Video description begins] The eventhubsbb page appears. The Resource menu displays the following options underneath Settings section: Shared access policies, Scale, Geo-Recovery, Networking, and Locks. He selects the Shared access policies option. The table in the working pane displays a file named RootManageSharedAccessKey. [Video description ends]
+
+I'm going to click on that and a blade comes out on the right-hand side that says SAS Policy: RootManagerSharedAccessKey and it has a
+
+[Video description begins] A box appears called SAS Policy: RootManageSharedAccessKey. It displays 3 check boxes including, Manage, Send, and Listen. Also various text fields such as, Primary key, Secondary key, Connection string - primary key, and so on. Each field contains a Copy to clipboard icon on the right side. [Video description ends]
+
+list of keys and connection strings, so there's one called Connection string-primary key. I'm going to copy that by clicking the little Copy to clipboard icon to the right. Now I'm going to go back to Visual Studio.
+
+[Video description begins] He copies the code given underneath the Connection string - primary key field and moves to the Visual Studio. [Video description ends]
+
+And on line 14, I will paste that connection string as the string called connectionString.
+
+[Video description begins] He edits the code given in Line 14 by pasting the copied code within the given double quotation marks. [Video description ends]
+
+So briefly here with this code does on line 16,
+
+it creates what's called an EventHubProducerClient using that eventHubName and connectionString, which gives us access to the Event Hub. On line 18, we have a while (true) which is just an endless loop.
+
+[Video description begins] Line 18 reads: while(true). [Video description ends]
+
+On line 21 and 22, we set up an event.
+
+[Video description begins] Line 21 reads: var eventBody new BinaryData("This is an event body");. Line 22 reads: var eventData new EventData(eventBody);. [Video description ends]
+
+On line 24, we call producer.SendAsync and we give it a list of events and we just give it the one event and we should actually be doing a .wait here.
+
+So I'm going to fill that in as well. I've just noticed. Since it's an Async call.
+
+[Video description begins] Line 24 reads: producer.SendAsync(newList<EventData> {eventData}).Wait();. [Video description ends]
+
+Line 26, is a Thread.Sleep and awaits 200 milliseconds.
+
+[Video description begins] Line 26 reads: Thread.Sleep(200);. [Video description ends]
+
+So what we're doing is we're just endlessly sending some events that just say this is an event body every 200 milliseconds.
+
+So I'm going to hit F5 and run this. So that is now running, so I'm going to go back to Azure, and in Azure I'm going to click Home at the top left. Under my Recent resources, I'm going to click my Storage account. And on the right on the Overview of my Storage account, I'm going to scroll down and hit Containers.
+
+[Video description begins] The storagebb26 page opens. He selects the Container tile. [Video description ends]
+
+And in the Container list, I'll click eventhub-data.
+
+[Video description begins] The storagebb26 | Containers page opens. He selects the container file named eventhub-data. [Video description ends]
+
+And now you see that there's a folder and it's the name of my Event Hub Namespace, eventhubsbb.
+
+[Video description begins] The eventhub-data page opens. It displays a table that lists a folder called eventhubsbb. He clicks the folder. [Video description ends]
+
+So I'm just going to click that folder. And under that is a demohub, I'm going to click that, and under that is 0, that is the partition number. I'll click that and then 2021 is the year, I'll click that, and it's 04 is the month, I'll click that. And then we have the day 19th click that. In the hour is 22, 31 and we keep going down, and we eventually get an avro file.
+
+[Video description begins] The table displays a file named 21.avro. Below the command bar, the following path name is displayed: Location: eventhub-data/eventhubsbb/demonhub/0/2021/04/19/22/31. [Video description ends]
+
+Now a lot of Azure tools, such as data factory etc. can read avro files. So if you can get your data from Event Hub into avro files like this, then you can feed these avro files into a data pipeline and you can do more with it. So I'm going to click on this avro file and it opens it up in a blade on the right-hand side.
+
+[Video description begins] A blade appears on the right side of the page. It contains various tabs such as: Overview, Versions, Snapshots, Edit, Generate SAS. He selects the Edit tab which displays the editor pane. [Video description ends]
+
+And I'm going to click the Edit tab fourth from the left. And if we take a look at the contents, it's in a avro format, so it's difficult to read, but on line 3 we see the words, This is an event body. So we have an avro file which is storing these events, so we've successfully fed the Event Hub data to the storage. So in conclusion, you can use this technique to capture data at the Event Hub, and write it to a storage account so that you can use it for data pipelines downstream.
+
+5. Video: Azure Databricks Notebooks (it_cldema_14_enus_05)
+
+0dbc20ea-cc0f-41c2-9e1e-bf8c32a04672
+describe notebooks and how they can be used with Azure Databricks
+[Video description begins] Topic title: Azure Databricks Notebooks. Your host for this session is Bill Brooks. [Video description ends]
+In this video, we're going to look at Azure Databricks Notebooks, which are Documents not just for running code, but also creating presentations which can include text as well as visuals, and are key to professional collaboration using Databricks. To get started, let's breakdown what goes into a Notebook from a code perspective. First off, a Notebook is not just one code source. A Notebook can contain multiple code cells. In fact, although an individual cell is limited to a maximum of 16 megabytes of code and output, there is no logical limit to the number of code cells in a Notebook.
+
+Notebook code cells support many languages such as Scala, Python, R, and SQL. The code in one cell is limited to a single language. But different cells in a Notebook can use different languages. This is one of the strengths of Databricks Notebooks for collaboration. You can include many different elements in different languages in one cohesive Notebook. There are many Libraries for connecting to external resources, which gives you a flexible environment for data flows that extract data from one source and load it into another.
+
+And Notebooks are also versioned, so you can always rollback your Notebook by going back in the version history. As mentioned, Databricks Notebooks offer advanced visuals as well as code. The standard data component in a Notebook is the DataFrame, which is a memory representation of a database table structure with the display function you can easily show a data frame represented as a table. There are also options to change the output from a table to one of many plot types such as bar graphs, line graphs, pie charts, etc.
+
+On top of the standard plot types are more complex visualizations for machine learning. For aspects such as residual plots and decision trees, and there's functionality to make colors consistent for a chart's visual presentation. Series set consistency will ensure that the same item will be represented by the same color in different series on the chart, as long as the value sets of the series are the same. If you have different value sets in series but still want to maintain color consistency for values, then you would set global color consistency for the plot.
+
+One big strength of Notebooks is the ability to share them. You can do this by publishing them to dashboards. Dashboards are displays that can be created directly from a Notebook and then customized. You can generate several different dashboards from a single Notebook if presenting certain data from the Notebook separately makes sense, and by sharing the link you can share the dashboard with others. Dashboards are not real time displays, but you can update them on a schedule, which means the data does not get too stale. And like Notebooks, dashboards can be versioned.
+
+So you always have historical versions of the dashboard to fall back on if need be. Here are some of the reasons why data professionals love using Notebooks. They are quick to code. The interface is simple and you can write the code directly into the interface without any complicated integration. Notebooks in the dashboards derived from them are excellent for collaboration, which is a big part of data analysis. Notebooks put the focus on data. Everything in a Notebook can derive from data either read from a source or embedded in the Notebook. Notebook serve as a natural way to document data results.
+
+You can easily scale when needed using a scalable cluster, so there's a natural easy progression from small scale proof of concept to a larger scale production datasets. And because it's all online, you have global access to your Notebooks, dashboards and data, as does anybody you want to share them with. So in summary, Notebooks are more than simply a place to run your code. There is also a platform for presentation and collaboration with others. They focus on data. And since Databricks brings Notebooks to the cloud, they can literally be accessed from anywhere in the world.
+
+6. Video: Working with Azure Databricks Workbooks (it_cldema_14_enus_06)
+
+7a27e8ee-5569-4505-8c45-e60d1e461d4c
+create, open, use, and delete notebooks
+[Video description begins] Topic title: Working with Azure Databricks Workbooks. Your host for this session is Bill Brooks. [Video description ends]
+In this video, I'm going to demonstrate how to manage and run an Azure Databricks notebook.
+
+[Video description begins] A Microsoft Azure homepage opens. The content pane displays two sections, namely: Azure services and Recent resources. The Azure services section contains various options such as: Create a resource, Resource groups, Azure Active Directory, and App Services. The Recent resources section comprises a table with the following column headers: Name, Type, and Last viewed. It lists multiple entries including databricks_bb, storagebb26, and Demo. [Video description ends]
+
+I'm also going to show you some of the advanced features of notebooks such as comments and versioning, so I'm on my homepage of Azure and under Recent resources, if you follow along, you're going to have to create an Azure Databricks service. I've already created one. But I'll show you how to set one up real quick.
+
+So if I go to Create a resource at the top left on the New page,
+
+[Video description begins] A subsequent page opens. It includes a search bar at the top. It also contains two columns with the header: Azure Marketplace and Popular. Each column lists related options. [Video description ends]
+
+I'm going to type in, in the search box azure databricks.
+
+[Video description begins] A drop-down list appears. It contains the following options: Unravel for Azure Databricks and Azure HDInsight, Unravel for Azure Databricks, and Azure Databricks. [Video description ends]
+
+And from the dropdown I'll choose Azure Databricks and on the Azure
+
+[Video description begins] A new page with the header Azure Databricks appears. The following breadcrumb displays above the page header: Home > New>. The page contains a Create button and four tabs, namely: Overview, Plans, Usage Information + Support, and Reviews. [Video description ends]
+
+Databricks screen I'll click Create.
+
+[Video description begins] Another page with the header Create an Azure Databricks workspace opens. The following breadcrumb displays above the page header: Home > New > Azure Databricks >. The page contains five tabs, namely: Basics, Networking, Advanced, Tags, and Review + create. Currently, the Basics tab is active. [Video description ends]
+
+That takes me to the Create an Azure Databricks workspace page and among the Basics tab.
+
+[Video description begins] The Basics tab includes two segments named Project Details and Instance Details. The Project Details segment contains two drop-down options labeled as: Subscription and Resource group. It also has a Create new button. The Instance Details segment comprises a field named Workspace name, and two drop-down options labeled Region and Pricing Tier. [Video description ends]
+
+So you'll need to choose a Subscription.
+
+And then choose a Resource group or Create a new Resource group.
+
+[Video description begins] As he clicks on the drop-down, an option named it_cldema appears. He selects this option. [Video description ends]
+
+Under Instance Details, you'll have to create a Workspace name and it has to be unique. So it might be databricks3344, for instance. Choose a Region, and you can leave the Pricing Tier as Standard and then at the bottom left click Review and create.
+
+[Video description begins] The Review + create tab is active now. It includes a notification. It reads: Validation Succeeded. [Video description ends]
+
+And if you get a Validation Succeeded at the top of the screen in the green bar. Then click Create at the bottom left. So that's how you create your Azure Databricks instance. So I'm going to click Home at the top left.
+
+[Video description begins] The Microsoft Azure homepage opens again. [Video description ends]
+
+That takes me back to my homepage and under Recent resources is I'm going to click my databricks instance.
+
+[Video description begins] A new section named databricks_bb displays. The left pane includes various options such as: Overview, Activity log, and Tags. [Video description ends]
+
+So that takes me to the Overview page of my Azure Databricks Service. So on the right hand side on Overview, I'm going to scroll down and click Launch Workspace.
+
+[Video description begins] As he clicks on a button labeled Launch Workspace, a new page titled Azure Databricks opens. The left navigation pane contains multiple options such as: Workspace, Data, Clusters, and Models. The working pane includes three options at the top, namely: Explore the Quickstart Tutorial, Import & Explore Data, and Create a Blank Notebook. It also has three columns with the headers: Common Tasks, Recents, and Documentation. [Video description ends]
+
+So now I'm signed into my workspace. So what I'm going to do is create a new notebook. Now, before I do that, I just want to mention I have a cluster running here. So if I go to the left menu. And six button from the top, I'll click Clusters and in the Cluster
+
+[Video description begins] The Clusters section appears. It includes the following tabs: All-purpose Clusters, Job Clusters, and Pools. Currently, the All-purpose Clusters tab is active. It comprises a table with an entry named demo-cluster. Some of the column headers are: Name, State, Nodes, and Creator. There is a button above the table labeled as: Create Cluster. [Video description ends]
+
+table on the right hand side you'll see I have a one called demo-cluster.
+
+Now I created just a single node Cluster, so let me show you how you create that. I'll click the Create Cluster button at the top above the table.
+
+[Video description begins] A new section titled Create Cluster New Cluster opens. It includes a field for Cluster Name. It also contains various drop-down options such as: Cluster mode, Pool, and Databricks Runtime Version. There are two buttons at the top named Cancel and Create Cluster. [Video description ends]
+
+And on the New Cluster window I'm just going to type in a Cluster Name so you can give it any name. And for Cluster Mode, just choose Single Node and
+
+[Video description begins] A drop-down with the following options appears: High Concurrency, Standard, and Single Node. [Video description ends]
+
+leave everything else default. And at the top, click Create Cluster, so that's how you create the cluster and clusters take several minutes to spool up. I click on Clusters again in the left menu.
+
+[Video description begins] The Clusters section appears again. [Video description ends]
+
+And on the right I see the cluster table. You'll know your cluster is ready to go when the State is Running and to the left of the Name is a green circle. OK, so in the left menu, third from the top, I'm going to click Workspace and I get a blade pop up to the right
+
+[Video description begins] A menu appears. It contains two drop-down options, namely: Shared and Users. [Video description ends]
+
+that's called Workspace. And there's a section called Users. I'm going to expand that, and under Users I see myself,
+
+[Video description begins] Another menu appears. It includes a drop-down option labeled bill.brooks@IIwinc.com. [Video description ends]
+
+so I'm going to click on myself.
+
+And you'll see that under myself I have Trash now will look at trash later when we delete our notebook. But if I go back to Users to the left, I'm going to click the little carrot beside my name.
+
+[Video description begins] A drop-down list with the following options appears: Create, Clone, Import, Export, Permissions, and Copy Link Address. [Video description ends]
+
+And I get a pull down options and I will choose Create at the top and I will click Notebook which is a first option.
+
+[Video description begins] A pop-up window titled Create Notebook displays. It includes a field for Name and two drop-down options. [Video description ends]
+
+So now I'm going to Create Notebook window. I need to give it a Name, so I'm just going to call it demo-notebook. Default Language is Python. I'm just going to leave it as default.
+
+You can choose a different language, but I'll just leave it as Python. And for Cluster it has my demo-cluster by default chosen so on the bottom right of this window I'll click Create.
+
+[Video description begins] A new section called demo-notebook (Python) opens. [Video description ends]
+
+And so it creates my notebook at the top left it says demo-notebook. In brackets it says Python so I know what language it is. If I click on Python, I can Change the Default Language.
+
+I get a pop-up window that says Change Default Language. And I can choose it, but as you'll see, we can actually choose the language in the notebook itself in every command box. So the first thing I'm going to show you is actually overriding the Python language and instead using Markdown. If you're not familiar with Markdown, it's a way to format text. And it's really good for visuals and presentations. So my notebook starts off by default with the command box called Cmd1 at the top left and it's a great command box and I'm going to paste some code in here and this is Markdown so on line 1 %md, which means this is Markdown, so that will override Python if I didn't put a percentage line like that then it would run this as if it were Python, but instead I'm telling you it's Markdown.
+
+[Video description begins] Line 2 reads: # # People Table. Line 3 reads: ---. Line 5 reads: | First Name | Last Name |. Line 6 reads: | - | - |. Line 7 reads: |Bob|Barker|. Line 8 reads: |Larry| Smith. Line 9 reads: |Vanessa|Young|. Line 10 reads: |Alice|Jones|. [Video description ends]
+
+Line 2, I give it a header. Headers are done with hashtags to the left. So two hashtags means this is a Level 2 header. Line 3 is just three dashes and that will leave a solid horizontal line and line 5 through 10 is a format of a table in Markdown, so I have a table with two columns. So one is First Name and one is Last Name. So if I click away from this command box. You will actually see the results of the Markdown, so you can see that I have a header says people table next line and then a formatted table. So that's a really easy way to make nice formatted text and displays.
+
+Now I'll leave that command block and I can create another one if I go to the bottom of this command block and there's a little plus circle that appears, and if I hover over it, it says insert a new cell so I can click that and I get a new command cell or command block. Now in this one I'm going to paste some actual Python.
+
+So I won't have to override the language. So on line 1, I have import pandas as pa. That's just a special library that simplifies my code.
+
+[Video description begins] Line 3 reads: df = pa.read_csv ('https://people.sc.fsu.edu/~jburkardt/data/csv/homes.csv'). Line 4 reads: display (df). Line 5 reads: pl = df.plot(). Line 6 reads: display(pl). [Video description ends]
+
+In this case, line 3, I created dataframe and I actually loaded in from a CSV and it's a free demo CSV that you can use for testing that's online. So the pa which is my pandas instance I say .read_csv and in round brackets and in single quotes I give it the URL to the CSV and it's called homes.csv. Line 4 I display that dataframe line 5 I plot that dataframe. So I want to show you that we can look at the data in two different ways with two different outputs.
+
+One is going to be a table from line 4. Line 5 is going to create a plot, and line 6 is displaying the plot so we can run this by clicking Shift+Enter. And as you can see in the results, there's actually 2 results.
+
+[Video description begins] A table called Spark Jobs appears. Some of the column headers are: Sell, "List", "Living" and "Taxes". [Video description ends]
+
+There is a table which shows all the data from that CSV, and then if I scroll down, it actually created the plot. So if you're collaborating on a notebook, you can actually place information in here and you can comment on the notebook. Let me show you how that works. So at the top right of the screen there are some buttons, the third from the left looks like a little comment bubble, and if I hover over it, it says View and add comments to this notebook. So I'm going to click that. And below the button in yellow it says select some code from the notebook to start commenting. So let's say I had a comment on my command, section 2, line 3. Which is actually reading the CSV, so I'm going to highlight that.
+
+[Video description begins] He highlights the following command: df = pa.read_csv ('https://people.sc.fsu.edu/~jburkardt/data/csv/homes.csv'). [Video description ends]
+
+And then you notice beside command two to the right there appears a little comment bubble and if I click that now I can add a comment. I get a pop-up box that has my name at the top and it has a text box that I can enter a comment. So I might ask whoever is created, let's say somebody else has created this notebook. I might ask, where can I find more information like this? And I'll click Comment at the bottom left. And now that comment is associated with that line.
+
+So you can collaborate and add comments on these as you go and it will show the comments from different people. Another nice thing about notebooks is that they are versioned, so again at the top right. The rightmost button two buttons to the right from the comment button. If I hover over that, it says view revision history for this notebook. If I click on that. Then on the right hand side of the screen I get all of the revisions of this notebook. So for instance, there's been 1, 2, 3, 4, 5 revisions, including the one we're looking at right now, which is at the top.
+
+If I go right back to the first one, it tells me what the date and the time were and if I click on it. I get an option to Restore this revision. And it shows me on the left what it look like and you can see that it was just an empty command cell, so I don't actually want to go back to that. But the point being, is I can restore to any revision I want. So the last thing I'm going to show you here is how you get rid of a notebook. So on the left menu, third button from the top, I'm going to click Workspace.
+
+In the Workspace, blade pops out to the right and I can see my Users, which is just me and that's expanded to show my demo-notebook and Trash. So if I click the little arrow beside demo-notebook.
+
+[Video description begins] A drop-down list with the following options appears: Clone, Rename, Move, Move to Trash, Export, Permissions, Copy File Path, and Open in New Tab. [Video description ends]
+
+I can choose Move to Trash. And I get a pop-up this is, Are you sure you want to move demo-notebook to the Trash? I'm going to click Confirm and move to Trash. Now my notebook is still there and it will be deleted after so many days, but it's in the Trash. So if I go back to my workspace, blade and Trash is still open.
+
+If I click the arrow beside Trash I can choose Empty Trash and it says, Are you sure you want to permanently delete all items in the Trash? And it tells you that they will automatically be deleted after 30 days. At the bottom right I'm going to click Confirm and Delete.
+
+[Video description begins] A new message appears. It reads: Empty trash Successful. [Video description ends]
+
+So in conclusion, Azure Databricks notebooks are a flexible way to generate content and also collaborate with others.
+
+7. Video: Azure Databricks Jobs (it_cldema_14_enus_07)
+
+928f943b-ce7a-4884-b766-5d1231801db2
+describe the features and concepts of Azure Databricks jobs
+[Video description begins] Topic title: Azure Databricks Jobs. Your host for this session is Bill Brooks. [Video description ends]
+In this video, I'm going to examine Azure Databricks Jobs. Jobs are different from standalone notebooks in Databricks, in that, they're meant to be Non-interactive where you might spool up a regular notebook to manually run some queries to share the results of colleagues. A job is a form of automation meant to run in the background. A data pipeline is a good use case for a job. Jobs are typically Scheduled to run. They can be run ad-hoc via a manual intervention of someone clicking a button. Although that's not their main use case, a job is really some executable task that's scheduled to run with particular parameters. So, for example, a notebook can be turned into a job simply by creating a job, which is a schedule and assigning the notebook as its task to run.
+
+So, if you're already comfortable coding notebooks, you don't have to learn any new programming skills to create jobs. You can use the same programming platform. Every time a Job Runs, it creates an artifact in Databricks called a job run, which can be identified by a unique ID. There's a display to visualize job run history for up to 60 days for troubleshooting purposes. If you dig into the job run it contains details such as links to logs for further detailed troubleshooting, and you can export the results of the job run history and in this way maintain job run history for longer than the standard 60 days if required. Jobs can run on three different types of clusters. You can configure your job to use a New job cluster, a New job cluster offers an isolated environment for your job, so it's ideal for jobs that are important enough that they shouldn't be affected by other processes.
+
+The cluster starts and ends with your job once your job is done, the cluster ends and the next time the job runs, if it has a recurring schedule, it will spool up another New job cluster. You can also configure your job to use a Terminated cluster. That's been stopped. You would do this to reuse the cluster for job runs. This only works if your job has restart permission for the terminated cluster. And, finally you can run your job on an All-purpose cluster. This should be used for simpler, less essential tasks because an All-purpose cluster is not isolated like a New job cluster, other jobs and even ad-hoc notebooks can run on All-Purpose Clusters. An ideal use for All-Purpose Clusters is scheduling a job to update data on a dashboard. Because it's not resource heavy and not a critical failure if the update fails.
+
+So, let's discuss Job Configuration. Jobs can be configured with Alerts. You can give a list of email addresses to send alert messages to on the events of the job starting, the job succeeding, and the job failing. You can optionally be alerted about jobs skipped by the job scheduler as well, and you can also configure the maximum allowed Concurrent or parallel runs of the job. This is useful if you want to schedule job runs to overlap or if you have a reason to run parallel runs with different inputs. Any runs that exceed the maximum parallel runs will be skipped. We've talked a lot about jobs. What about configuring the tasks that the job runs? Your tasks will likely need certain libraries. These can be attached to the job within the task code, you can use the following parameters which will be filled in at runtime, job_id or the unique identifier of the job, run_id or the unique identifier for the job run, start_date which is the date the run started, start_time or the time the run started, and finally the task_retry_count, this tells you how many times a job run has been retried.
+
+The first run will be 0 and it will increase on every retry run. You can also set the timeout on the job or how long the tasks will be allowed to run before the run is aborted and you can set the number of retries. If a job reaches its timeout, it will retry this number of times before giving up. There are some job limitations that you should be aware of. You can run a Maximum of 5000 jobs per workspace per hour. You can run a Maximum of 1000 jobs concurrently or in parallel per workspace at any given time. Databricks has a Minimum of 10 seconds between job runs, triggered subsequently by a schedule, even if the schedule is set to a smaller time span, a jobs output can never be larger than 20 megabytes and a single cell within the notebook of a running job can never output more than 8 megabytes.
+
+8. Video: Working with Azure Databricks Jobs (it_cldema_14_enus_08)
+
+063a8087-ebfd-4b26-97e8-feeb78cf7de5
+create, open, use, and delete Azure Databricks jobs
+[Video description begins] Topic title: Working with Azure Databricks Jobs. Your host for this session is Bill Brooks. [Video description ends]
+In this video, I'm going to demonstrate the use of jobs in Azure Databricks. Jobs allow tasks such as Notebooks to be run on a schedule with no interaction.
+
+[Video description begins] A Microsoft Azure homepage displays with a search bar on the top. The working pane constitutes 3 sections namely, Azure services, Recent resources, and Navigate. The Azure services contain various options such as, Create a resource, Resource groups, Subscriptions, Azure Active Directory, and App Services. The Recent resources option includes a table with the following column headers: Name, Type, Last viewed. It lists down various files including, databricks_bb, it_cldema, Demo, and Pay-As-You-Go. [Video description ends]
+
+And this is useful for things like data pipelines which run regularly, so I'm on my home page in Azure and I have an Azure Databricks service instance set up under my Recent resources, so I'm going to click on that.
+
+[Video description begins] The databricks_bb page opens. The Resource menu includes various options namely, Overview, Activity log, Access Control(IAM), and Tags. The main page contains a button labelled Workspace. [Video description ends]
+
+And now in the overview of my Databricks service on the right, I'm going to scroll down and click Launch Workspace.
+
+[Video description begins] He clicks the Launch Workspace button. A new page titled Microsoft Azure | Databricks opens. The left pane contains multiple options such as: Home, Workspace, Records, Data, Clusters, Jobs, and Models. The working pane includes three options at the top, namely: Explore the Quickstart Tutorial, Import & Explore Data, and Create a Blank Notebook. It also has three columns with the headers: Common Tasks, Recents, and Documentation. [Video description ends]
+
+OK, so now here I am in the workspace and I've already set up a notebook, so I'm going to show that to you. So on the third button down on the left, I'm going to click Workspace. And under Workspace, I'll click Users, under Users, I'll click my user and under my user, I have demo-notebook and I'm going to click on that.
+
+[Video description begins] He selects the Workspace option. It opens a menu which further contains a sub-menu. He selects the User option and then selects the demo-notebook sub-option. [Video description ends]
+
+Now the screen is showing my notebook and in the command cell I have 6 lines and they're all print lines, so this is very simple.
+
+[Video description begins] A subsequent page opens. It contains multiple lines of code. [Video description ends]
+
+Basically, I've set this up so that we can see some parameters that are sent in from the job. So, on line 1, I say demoParameter that's the name of one of the parameters I'm going to send in. Line 2 is printing
+
+[Video description begins] Line 1 reads: print ("demoParameter: "). [Video description ends]
+
+dbutils.widgets.get ("demoParameter").
+
+[Video description begins] Line 2 reads: print (dbutils.widgets.get ("demoParameter: ")). [Video description ends]
+
+So, that actually reads the parameter value. Line 3 is just a carriage return. Line 4, prints, Job run startDate. Line 5 again uses dbutils.widgets.get
+
+[Video description begins] Line 3 reads: print ("\n "). [Video description ends]
+
+[Video description begins] Line 4 reads: print ("Job run start date:"). [Video description ends]
+
+and it gets us what's called a start date and then line 6 is
+
+[Video description begins] Line 5 reads: print (dbutils.widgets.get ("startDate ")). [Video description ends]
+
+just another carriage return.
+
+[Video description begins] Line 6 reads: print ("\n "). [Video description ends]
+
+So what we're going to do is set up a job and the job is going to run this notebook on a regular basis. So, in the menu on the left, third from the bottom, I'm going to click Jobs and now on the right I get a table which is my Jobs table and right now it's empty. But at the top left, I'm going to click
+
+[Video description begins] The Jobs page opens within the Microsoft Azure | Databricks page. It contains a button named Create Job. Below the button, it displays an empty table with the following column headers: Name, Job ID, Created By, Task, Cluster, and Schedule [Video description ends]
+
+the button it says Create Job.
+
+Now I'm on the Job / create window and I'm on the tab Configuration and under that is Schedule Type. Now there's two schedule types.
+
+[Video description begins] The Jobs/Create page opens. It has a text field and two buttons named Cancel and Create beside the text field. Also, it contains two tabs: Runs and Configurations. Currently, the Configuration tab is opened. It includes two radio button options under the heading Schedule Type. The names of the buttons are Manual(Paused) and Scheduled. [Video description ends]
+
+Manual is a paused job that you can run manually by clicking a button. Scheduled means that the job is active and is going to be running on a schedule. Now we want to run it on the schedule, so I'm going to click Scheduled. Now under that, we have a section called Schedule.
+
+[Video description begins] He selects the Scheduled radio button. The following fields get active underneath the Scheduled radio button: A section named Schedule which further contains a few pull down menu fields labelled Every and at, a check box named Show Cron Syntax, a section named Task which contains pull-down menu fields under the heading Type and Cluster. The Task section also contains a field named Clusters which further includes two buttons: Add and Advanced options. [Video description ends]
+
+There are some pull-down menus here that allow you to choose a certain schedule, and under that is a checkbox that says Show Cron Syntax. I'm not going to explain Cron here other than to say that it's a way to describe schedules. If I click on it, you can see an example Cron string just above it in the text box. So, I'm going to uncheck Cron again and use the wizard instead. So, right now by default, it says every day at 18:52, so that's 6:52 PM UTC. You'll notice if you pull down the drop-down where it says UTC, you can choose different time zones. I'm going to leave it as is and instead of every day I'm going to pull down the drop-down on Day and I'm going to choose Minute so my schedule is Every Minute now underneath Schedule, we have a section called Task and the first part under Task is Type. And there's different things you can run as Task.
+
+You can run Notebook if I pull down the drop-down for type, you'll see Notebook, JAR, Spark Submit, and Python. We're just going to leave it a Notebook, and beside that, it says Select Notebook. I'll click the little folder to the right of that and I get a Select Notebook window pop-up. On the left,
+
+[Video description begins] The Type field contains two pull-down menus. He selects Notebook in the first menu and clicks the second pull-down menu named Select Notebook. The Select Notebook box appears. It displays two options in the left pane: Shared and Users. [Video description ends]
+
+I'm going to choose Users and in the middle, I'm going to choose my user which is bill.brooks. And on the right, I'm going to choose demo-notebook. Then at the bottom right, I'll click Confirm. So, it's going to run my demo-notebook. So, now we have to set up the cluster, under Type, is Cluster. We can allow it to create a new cluster, but instead, I have a cluster running. So, if I open the drop-down, I see Existing All-Purpose Clusters and I'm I have a cluster that called demo-cluster, so I'll choose that. Under Cluster,
+
+[Video description begins] He clicks the Cluster pull-down menu field. A menu opens with the following options: New Job Cluster, demo-cluster. He selects the demo-cluster option. [Video description ends]
+
+is Parameters and under Parameters is a link that says Add. So I'm going to click that and I get Key box on the left and a Value box on the right.
+
+[Video description begins] The Parameters field opens two more fields under it: Key and Value. [Video description ends]
+
+So you can do key value pairs here. The parameters that we had in the Notebook were demoParameter, and capitalization is important here, so it's demo capital Parameter, I just chose to call it that.
+
+This parameter could be called anything as long as it matches with what's in my Notebook, and I'm going to type in here, This is my demoParameter value, that is the value I'm going to give it, so we should see that when it runs, now, I'm going to click Add again under Parameters. And remember, we also had a startDate, so I'm going to create a parameter called startDate with a capital D, and the value will be a token that is filled in by Databricks. Databricks has some tokens that you
+
+[Video description begins] He clicks the Add button shown underneath the Parameters tab. It further adds the Key and Value fields on the page. [Video description ends]
+
+can use that will get filled in here and one of them is {{start_date}}. All these tokens start and end with two curly brackets. And you can look up in the Databricks documentation what they are but start_date is one of them, so it will actually get the start date when the job is running. So, now, what I'm going to do is I'm going to save this. So I'll go back to the top and I'll click Create.
+
+Or it says job must have a name of course, so I'll call it, demo-job, and I'll click Create. So, Successfully created job, it says in the right in green. So, since it's Scheduled it should just automatically run. Now notice I have two tabs, Configuration and Runs, so I'm going to click Runs and now I'm on the Runs page and it has Active Runs and it has Completed Runs and there are Refresh buttons on the right-hand side so far under Active Runs, I'll click Refresh.
+
+[Video description begins] He opens the Runs tab. It displays two sections: Active Runs and Completed Runs. Each section contains a table with the common column header names. The names of the column headers are Run, Start time, Launched, Spark, and Status. Also, each section contains a Refresh button. [Video description ends]
+
+And I have to wait a few seconds for it to run. There it goes. So now I have a record in the table under Active Runs. And it's running right now. If I click, there we go, I didn't even have to click Refresh. Under that, under Completed Runs, it's now complete, so now there is a record in that table on the far left I can click, View Details under Run.
+
+And now I'm on the details page for that particular run and if I scroll
+
+[Video description begins] He clicks the View Details text link given within the table. A subsequent page opens. It contains two sections: Run 1 of demo-job and Output. The first section displays the details. The second section displays the editor pane with multiple lines of code. [Video description ends]
+
+down I see output and it shows my code and it also shows the output. So here's the output of those prints demoParameter: This is my demoParameter value, so it got that value from the Job and Job run start date is 2021-04-21. That's today that's April 21st, 2021. So in conclusion, a Job allows you to run your Notebook as a scheduled task. And you can also send parameters to your Notebook to affect the outcome.
+
+9. Video: Azure Databricks Autoscaling (it_cldema_14_enus_09)
+
+df9a82c4-6db5-4dfd-b58b-d9c0244e6046
+describe the concept of autoscaling local storage when configuring clusters
+[Video description begins] Topic title: Azure Databricks Autoscaling. Your host for this session is Bill Brooks. [Video description ends]
+In this video, we're going to look at a specific issue with Databricks jobs and local storage. Jobs usually have to scale to handle changing data conditions. Think of a data pipeline, a typical data pipeline might have to handle much more data flow at certain times than at others. As time goes on, the data flow may permanently increase as well. Jobs use local cluster storage to perform tasks such as data transformations, but a clusters local storage is set at creation.
+
+So how can you predict the local storage for a job will require when the jobs local storage needs naturally need to scale? Setting maximum local storage to take future scaling into consideration is wasteful. The answer is Local Storage Autoscaling. Autoscaling is enabled automatically when you create a cluster. This feature monitors the disk space it's being used by the virtual machines that are running your job.
+
+If a virtual machine in the cluster is running out of disk space. Databricks automatically adds another managed disk to that virtual machine. There's a limit per virtual machine of 5 terabytes of disk space, additional to the local storage internal to the virtual machine itself. After this limit the virtual machine can't scale disk space any further. Now that we've discussed scaling out of disk space, what about scaling in or detaching managed disks so that they are no longer required? For instance, say your data flow decreases and your job requires less disk space.
+
+It's worth noting that Managed disks cost money to run, so there's incentive in minimizing wasted manage disk space the way that it works is at disks are detached only when the cluster stops running. As long as your clusters running, even if the disk space is not being used, it will still be dedicated. There are a few ways you can limit manage disk usage. You can configure your clusters to use GPU, and you can also enable automatic termination on your clusters.
+
+So how does enabling GPU on a cluster improve managed disk use? Well first, a quick description of GPU cluster instances. They are designed for a high performance jobs as GPU processors are high performing processors, ideal for number crunching. The first virtual machine instance of any cluster stays running for the length of the job. So managed disks on this instance will be in use for the length of the job. GPU instances will be more efficient in this case simply because they'll complete the job faster.
+
+Detaching the managed disk faster when the job completes. This is the benefit of GPU instances for managed disks. Additionally, you can also enable spot instances for your cluster. With spot instances, any additional virtual machine instances that are spawned will be deallocated as long as they're no longer needed. This combination of on-demand and spot instances will deallocate managed disks quicker than without spot instances where all instances stay allocated until the end of the job.
+
+Spot instances scale in and out as needed and therefore so did their manage disk instances. Finally, you can save managed disk usage by setting Automatic Termination on your cluster. The drive here is at idle clusters cost money, so you don't want to keep them around longer than you have to without automatic termination, it's possible to spawn a cluster and then leave it running indefinitely with auto termination set, your cluster terminates after a set number of minutes of inactivity on the cluster.
+
+This naturally limits managed disk inactivity, since any managed disks are detached when the cluster is terminated. The default cluster auto termination time is 120 minutes or two hours, although that's configurable. By default, high concurrency clusters or clusters that are designed to run several tasks in parallel are set to not automatically terminate.
+
+This is because such clusters are often used for continual jobs, such as streaming pipelines. Automatic termination is useful in scenarios such as a data scientist starting a cluster to perform some experimental analysis and forgetting to terminate the cluster afterward. Or several data scientists using the same cluster for their Notebooks where nobody is directly responsible for terminating the cluster appropriately.
+
+10. Video: Azure Databricks Structured Streaming (it_cldema_14_enus_10)
+
+91d97687-9ad9-4da0-84f2-cc8b0aba8db9
+describe how to configure checkpoints and watermarking during stream processing
+[Video description begins] Topic title: Azure Databricks Structured Streaming. Your host for this session is Bill Brooks. [Video description ends]
+Azure Databricks can be used for more than just processing static data from a database. It's also capable of managing streaming data at production quality. It does this through the Apache Spark Structured Streaming API. This Structured Streaming API is a robust stream processing solution. In this video, we're going to deep dive into how structured streaming works in Azure Databricks.
+
+Production quality streaming needs to be fault tolerant. This Structured Streaming API supports this with the checkpointLocation option in a query. This option accepts a file path to store query state information. Then if the query is run and fails the queries previous state can be read from the file path and the query can rerun where it left off.
+
+So this enables stateful retries of queries which ensures consistency and fault tolerance. There are some specific job configurations to use when using stateful queries with retry. A query is triggered to retry at its previous state when the job fails. The job relies on a new cluster each retry, so set your job to always use a new cluster. Set your job to retry on failure, otherwise your query will not be able to continue on failure. This functionality works with Spark 2.1 or higher, so make sure you using an appropriate Spark version.
+
+And operations should be aware when jobs are failing, so you should consider configuring alerts and notifications so the appropriate people are emailed on job failure. Don't set a schedule on your job. Once Streaming Jobs are started, they run indefinitely and don't need to be scheduled. Your job should have no timeout since this will interrupt your stream query.
+
+You should set the job to have only one maximum concurrent run streaming data for a single run needs to run sequentially and set Unlimited retries. This allows the query to be recovered even if several retries are required. This might happen, for example, if there's a transient failure, such as a temporary network issue. There are a few details that need to be maintained between query failures or checkpoints. In order for a query to continue where it left off after a failure, the number of sources or the type of the source for the stream shouldn't change.
+
+In other words, the from part of your stream query needs to be querying data from the same stream source or sources. Likewise, the output or sink cannot change when the queries rerun, it must be outputting to the same type of sink and the same number of sinks, and finally certain stateful operations in the query can't change between retries. Some examples are grouped by details and aggregate details. All of these details are part of the state that stored to file before the query is retried, so that data is expected to stay consistent between retries in order for the query to be idempotent.
+
+Meaning given the same inputs, the query always returns the same output. Next, in our conversation of structured streams is Watermarks. A Watermark manages late arriving in out of order data in the stream. Stateful or aggregate operations on the stream are affected by late arriving data which may be out of order. That is, data with an older timestamp that arrives in the stream at a later date. This can happen often in streaming. For instance, if data is being read from real world devices, the device being disrupted for a short time may result in no data events for several seconds.
+
+Followed by a stream of late events sent when the device catches up. Now let's say you were calculating an average value every minute for that stream and the device sent data delayed by 30 seconds. Some of that data should have been in your minute average, but wasn't due to it arriving late.
+
+However, your minute average calculations can't wait around forever for old data to arrive, or they would never be calculated. A Watermark defines how long your aggregate should wait around for late data. If late data comes in within the Watermark time delay. Your aggregates will recalculate, otherwise the late data will be ignored by the aggregate. The aggregate value will not be output to the result stream until the wait time is complete, meaning a Watermark introduces a delay between the input and output of the stream.
+
+In other words, if you're minute average calculation as a Watermark, telling it to accept data as late as two minutes, then the average will be written to the output only after two minutes has elapsed. You add a Watermark to a query with the operations Watermark, which accepts a unique name for the Watermark. And the time delay, such as one hour.
+
+Watermarks can be combined in a query. For example, you might want to combine two input streams. Perhaps you want to join values from 2 streams on timestamp in the first stream, data can be delayed by up to an hour, and in the second stream which runs slower, data can be delayed up to two hours. You can create a join in your query specifying a Watermark of one hour for the first stream and two hours for the second. By default, the join will wait for the slowest stream, so joined output events. In the stream will be delayed by two hours. This is the safest Watermark delay strategy, because waiting for the slowest stream means stream events are not likely to be dropped.
+
+But if you want faster processing, you can set the system to track by the fastest stream or the stream that only accepts data late by one hour. This means the overall latency will be one hour instead of two, but data in the slower stream is likely to be dropped more aggressively.
+
+11. Video: Course Summary (it_cldema_14_enus_11)
+
+507622bc-d17e-4221-aeb1-c23543265f62
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary [Video description ends]
+So in this course we've examined the features of Azure Databricks Clusters, Notebooks, and jobs. We did this by exploring Azure Databricks and Databricks Cluster features, Capturing stream data using Azure Event Hub, working with Azure Databricks Notebooks and Azure Databricks jobs, and Autoscaling with Azure Data bricks and structured streaming.
+
+In our next course, we'll move on to describe Azure Databricks processing types and features.
+
+Course File-based Resources
+•	Capturing Stream Data Using Azure Event Hub
+
+•	Working with Azure Databricks Workbooks
+
+•	Working with Azure Databricks Jobs
+© 2023 Skillsoft Ireland Limited - All rights reserved.
