@@ -1,0 +1,479 @@
+Getting Started with MLOps
+MLOps is the integration of machine learning (ML) with DevOps, focusing on streamlining the end-to-end machine learning life cycle. It emphasizes collaboration, automation, and reproducibility to deliver reliable and scalable machine learning solutions. By implementing MLOps practices, organizations can efficiently manage and govern their machine learning workflows, leading to faster development cycles, better model performance, and enhanced collaboration among data scientists and engineers. In this course, you will delve into the theoretical aspects of MLOps and understand what sets it apart from traditional software development. You will explore the factors that affect ML models in production and gain insights into the challenges and considerations of deploying machine learning solutions. Next, you will see how the Machine Learning Canvas can help you understand the components of ML development. You will then explore the end-to-end machine learning workflow, covering stages from data preparation to model deployment. Finally, you will look at the different stages in MLOps maturity in your organization, levels 0, 1, and 2. You will learn how organizations evolve in their MLOps journey and the key characteristics of each maturity level.
+Table of Contents
+    1. Video: Course Overview (it_mliopsdj_01_enus_01)
+
+    2. Video: Introducing MLOps (it_mliopsdj_01_enus_02)
+
+    3. Video: What's Different About MLOps? (it_mliopsdj_01_enus_03)
+
+    4. Video: Factors Affecting Machine Learning (ML) Models in Production (it_mliopsdj_01_enus_04)
+
+    5. Video: Solving Machine Learning Problems (it_mliopsdj_01_enus_05)
+
+    6. Video: The Machine Learning Canvas (it_mliopsdj_01_enus_06)
+
+    7. Video: End-to-end Machine Learning Workflow (it_mliopsdj_01_enus_07)
+
+    8. Video: ML Workflow Architectural Patterns (it_mliopsdj_01_enus_08)
+
+    9. Video: Stages in MLOps Maturity Level 0 (it_mliopsdj_01_enus_09)
+
+    10. Video: Stages in MLOps Maturity Level 1 and 2 (it_mliopsdj_01_enus_10)
+
+    11. Video: Course Summary (it_mliopsdj_01_enus_11)
+
+1. Video: Course Overview (it_mliopsdj_01_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Janani Ravi. [Video description ends]
+Hi, and welcome to this course- Getting started with MLOps. My name is Janani Ravi, and I'll be your instructor for this course. MLOps is the integration of machine learning with DevOps, focusing on streamlining the end-to-end machine learning life cycle. It emphasizes collaboration, automation and reproducibility to deliver reliable and scalable machine learning solutions.
+
+You will start this course off by exploring the theoretical aspects of MLOps, you’ll understand what sets machine learning apart from traditional software development and thus makes MLOps very different from DevOps. You’ll explore the factors that affect ML models and productions, you will gain insights into the challenges and considerations when deploying machine learning solutions.
+
+You will learn how code plus data needed to train models create unique challenges for MLOps not encountered in traditional software development. Next, you'll learn about essential concepts in the machine learning workflow. You’ll be introduced to the Machine Learning Canvas that will help you understand the key components involved in machine learning development and help you structure your ML projects.
+
+You will learn the different architectural patterns that you can use to build your ML project and understand the use cases for each architecture. Finally, you’ll explore the different stages in MLOps maturity in organizations, levels 0, 1, and 2. You will learn how organizations evolve in their MLOps journey and the key characteristics of each maturity level.
+
+This knowledge will provide you with a clear roadmap to understand and implement MLOps best practices. In conclusion, this course will build a strong foundation for your understanding of MLOps equipping you with valuable insights and practical knowledge to succeed in the world of ML operations.
+
+2. Video: Introducing MLOps (it_mliopsdj_01_enus_02)
+
+After completing this video, you will be able to provide an overview of DevOps and MLOps.
+provide an overview of DevOps and MLOps
+[Video description begins] Topic title: Introducing MLOps. Your host for this session is Janani Ravi. [Video description ends]
+Anytime you're building and deploying software, you're always looking for ways to make the development and release of your products more streamlined, more efficient, so you can get your releases out to your customers quickly.
+
+A few years ago, you'd hear all about DevOps and how it really improved the quality of your released software. DevOps essentially is a set of practices that aims to combine software developments and IT operations to improve the efficiency, quality, and speed of software development.
+
+Today, it’s quite possible that you’re in traditional software development, but it's also equally likely that you're building software that has to do with building and training machine learning models. Model development is not exactly the same as software development. In fact, you'll see me talk about a bunch of differences between machine learning and traditional software development in just a bit.
+
+However, the principle remains the same. You want to be able to develop and release your models as quickly as possible. In fact, this is even more important in the field of machine learning, where models degrade as soon as they're deployed to production. Models always need to be trained on the latest and greatest data. And it's this fact that makes MLOps so important.
+
+MLOps stands for Machine Learning Operations, and these refer to practices and techniques used to streamline and automate the deployment, management, and monitoring of machine learning models. If you've worked with machine learning models, you know that a large part of machine learning is similar to software development. You work with software, you use software to train models, you use software to tune models, and you use software to deploy models. This means that there is overlap between the traditional field of DevOps and machine learning operations.
+
+However, because of this additional dimension of using data to train ML models, MLOps is so much more than traditional DevOps. MLOps can be thought of as DevOps++ or machine learning+DevOps. Now the objective of MLOps or machine learning operations, is to productionize machine learning systems by bridging the gap between development and operations. So you might develop and prototype your model, but how do you get it to production? That’s where MLOps comes in.
+
+In order to understand why MLOps is so important, we need to take a step back and talk about software development and the traditional techniques that were originally used in software development 20, maybe 30 years ago. 30 years ago, it was hard to develop software, because we did not have so much stuff out there.
+
+There weren't libraries and systems that we could reuse and integrate into our code. This meant that traditional software development had long cycles. You'd spend a long time planning what you were to build, designing what you were to build, and then the build and release phases altogether could take months or even years. This was completely common. As you might imagine, there were a lot of limitations to the traditional approach, which is why the Agile methodology caught on about 15 or 20 years ago.
+
+The Agile development methodology emphasizes flexibility, collaboration and iterative software development. No longer could you have long cycles. The idea was, you prototype and build something and release something quickly, get feedback from your customers, and iteratively make improvements to your software, so your customers are always getting exactly what they need at that point in time, not what they needed 2 or 3 years ago.
+
+The Agile methodology for software development was a major improvement over traditional methods, and the use of Agile directly led to the integration of the DevOps workflow. DevOps stems from the Agile methodology. DevOps includes teams working together across the entire product cycle. It's not that one team does its work, and then the next team does its work and so on. All teams are involved from the very beginning. DevOps emphasizes the roles of developers, testers, release engineers and IT operations, all working together collaboratively and iteratively through the entire life cycle of your product.
+
+So even the testing team or the IT operations team are involved in early stages of the product so that they know completely what's expected of them. The term DevOps refers to the collaboration and integration of development, testing, deployment, and monitoring processes, breaking down the silos between different teams. And this is really only possible if you have good automated tools to enable a feedback loop where software improvements are incorporated in your code, tested quickly, and released faster to customers.
+
+DevOps is not just about the automation, the automation enables DevOps. Let’s talk about some key components of a DevOps culture- collaboration, visibility and alignment. All teams responsible for a product- developers, testers, the IT teams, should share their processes, priorities and concerns with each other and share them often and early.
+
+Working together makes them better positioned to align on goals. The DevOps culture emphasizes ownership and accountability. Teams take ownership and become involved in other life cycle phases, not just the ones central to their roles. Developers become more accountable to the quality of their product, and also the performance and stability of the changes that they make. This emphasis on flexibility and collaboration and the use of automated tools, results in shorter release cycles.
+
+When you imbibe the DevOps culture, the DevOps teams remain agile by releasing software in very short cycles, incorporating changes and iteratively improving the product. And finally, another important principle- continuous learning and improvement.
+
+High performing DevOps teams establish a growth mindset. They fail fast and incorporate what they’ve learned into their processes, so that they build better products and features in the future. It’s a hard challenge for any team to adopt the DevOps mindset, because teams may be entrenched in silos and old ways of working. With DevOps, you need to foster the collaborative DevOps culture.
+
+Culture flows from the top. DevOps encourages continuous learning by promoting experimentation and risk taking in development. DevOps also promotes flexibility and fluidity across teams working on the entire product life cycle by adopting the Agile methodology. DevOps wouldn’t exist without Agile. So what are some of the practices that you'd implement when you adopt the DevOps culture?
+
+First is continuous integration. This is the practice of automating the integration of code changes into a software project. It allows developers to frequently merge code changes into a central repository, where builds and tests are executed in an automated manner. Continuous integration allows DevOps teams address bugs quickly, improving software quality. Continuous delivery expands upon continuous integration by automatically deploying code changes to a testing or a production environment.
+
+As soon as your code is tested, it will be released into the environment where then real-world testing can take place. Here, automated builds, tests and deployments are orchestrated as one release workflow. Automation is a key DevOps practice because it enables teams to move much more quickly through the process of developing and deploying high-quality software.
+
+Automation might imply that simply pushing code to a remote repository, triggers build and integration tests, and can even release the product to a test environment. Another important practice is Infrastructure as Code. This allows you to quickly and consistently provision, configure, and manage infrastructure so that your releases can take place in a timely manner.
+
+Your infrastructure definitions should be actual code. Something that uses source control, undergoes code reviews, tests, etc. It's important that your software is deployed as microservices. This is an architectural technique where an application is built as a collection of smaller services that can be deployed and operated independently from each other.
+
+Each microservice has its own code and own processes and communicates with other services through an API. And finally, a last key practice is the use of monitoring services. DevOps teams monitor the entire development life cycle from planning, development, integration, testing, deployment, all the way through to operations. Any degradation in the product is quickly identified and fixed.
+
+As we discussed, a key practice in DevOps is CI/CD, or Continuous Integration and Continuous Deployment. Let’s understand what that means by breaking out this visual overview. [Video description begins] The slide displays a visual overview of CI/CD in DevOps in the form of a flowchart. The flowchart has the following elements: application code, source, build, test and deploy. Three arrows from left to right with the following tags are there at the bottom of the flowchart: continuous integration, continuous delivery and continuous deployment. Manual intervention to deploy and automatic deployment are mentioned on the second and the third arrows respectively. [Video description ends] If you have teams collaborating on application development, it's quite likely that your developers are all writing code, which is then pushed to a centralized repository.
+
+So you integrate code with the centralized repository, and this usually tends to be a Git repository. That's one of the most widely used version control systems. With continuous integration, as soon as your code is pushed to the centralized repository, an automated code build will build your code to ensure that you haven't introduced any bugs with your build cycle. Once the code is built, you might want to add automated testing. Automated test execution involves running unit tests as well as integration tests to verify the integrity of your code. This is a key to continuous deployment.
+
+These tests will check to see that you haven't inadvertently introduced bugs in your software. It's quite possible that in certain teams automation ends here, so there is automated build and testing, but deployment might require manual intervention.
+
+But if you want to take CI/CD one step further, you'll automate your deployment process as well. Once the gamut of unit tests, integration tests, end-to-end tests, everything has run through, you’ll push to staging and production in an automated manner. This is automated deployments, all a part of the complete CI/CD pipeline.
+
+Now that you've understood basic DevOps principles and practices, let’s talk about MLOps. MLOps is all about incorporating these DevOps practices in the building and training, and deployment of your machine learning models. MLOps tends to be much harder than DevOps because DevOps focuses only on code, and code is written in a carefully controlled environment.
+
+Machine learning however, needs data with which the model is trained, and this data comes from the real world. There is no controlling the data that you use to train your model, especially if you want your model to reliably mimic the real world. This constant evolution of data in the real world, makes it much harder to implement MLOps as compared with DevOps. With MLOps, you face all of the challenges that you do in DevOps plus much more.
+
+3. Video: What's Different About MLOps? (it_mliopsdj_01_enus_03)
+
+Upon completion of this video, you will be able to outline how MLOps works.
+outline how MLOps works
+[Video description begins] Topic title: What's Different About MLOps? Your host for this session is Janani Ravi. [Video description ends]
+In the previous video we discussed that MLOps is essentially applying DevOps principles and practices to building and training machine learning models. However, we did mention that MLOps was much more challenging than DevOps because machine learning models need to train on data.
+
+Data comes from the real world and is constantly evolving and is not really produced in a controlled environment. With this in mind, let's talk about what makes MLOps so very different from DevOps, even though they follow the same principles and practices.
+
+DevOps has been around for a while and it's a well-established set of practices to ensure continuous releases of your products to your customers. A large number of organizations have adopted the DevOps philosophy and its practices, so DevOps is a well-understood and well-applied in the workplace today. However, the same is not true of MLOps.
+
+MLOps has not reached the same level of maturity as DevOps. Most of the models that people are working on today, still remain in the prototyping and testing phase. A vast majority of these models have not been deployed to production, which means that MLOps practices are only being slowly adopted around the world.
+
+If you think about machine learning infrastructure and workflows, it's very, very complex. These extend beyond the production of artifacts to include data collection, data preparation, validation, the types of hardware resources involved can be very specialized and require additional management.
+
+You need to monitor the quality of data flowing through the model, the quality of your predictions, everything. This means the MLOps landscape is complex, which is why MLOps adoption is still at a very nascent stage. With this picture in mind, let's talk about the inputs into a machine learning model. [Video description begins] The slide displays a diagram representing the flow of inputs into a machine learning model. The diagram has elements such as data, code, training process and model. Data and code are the inputs into the training process, and model is the output. [Video description ends] A machine learning model starts with an algorithm which is then trained by feeding it some data.
+
+Now the algorithm itself is represented in code. Which means, that for machine learning, the inputs are both data and code. Data and code both come together, the code learns from the data, and the code is trained on the data. Once the training process is complete, what you get is a model. A machine learning model is a package or an artifact that is the output of a training process. And it is this artifact that is deployed to production and used for predictions.
+
+This artifact needs both of the inputs that we had specified earlier. There is code that actually learns from data. Both inputs are essential in the training process of a model. Now, the two inputs that you feed into the training process of a machine learning model have very different characteristics.
+
+Code is known and predictable. Code is traditional software, and we are familiar with traditional software because we have worked with it for several decades. Traditional software codifies actions as explicit rules. You develop your machine learning models using code that is usually tweaked and tuned to be performant, efficient and predictable. This code comes from a controlled environment. You as a developer have complete control over this code. Since it comes from a controlled environment, the way the code evolves is also predictable and easy to manage.
+
+However, the second input into the training process of a machine learning model, the characteristics of data are very different from that of code. Data is always unknown and unpredictable because data is sourced from the real world. You're training your model to mimic the real world, which means the model's code is trained on data which comes from the real world. It's impossible to anticipate what the properties of your data will be, how it will change and evolve, and when it will change and evolve.
+
+Imagine you’re training a model for fraud detection, What kind of fraud might arise- whether it's credit card fraud, banking fraud? It's absolutely unknown. Even though code is all about defining rules that operate on inputs, machine learning does not codify explicitly. Instead, the rules in machine learning are indirectly set by capturing patterns that exist in the data. And we know that this data is unknown and unpredictable. And this divergence between data and code, is the real challenge in machine learning operations.
+
+The two inputs to your machine learning model evolve along separate paths. Data might evolve in a certain way, code will evolve in a completely different way. The divergence in the evolution of code and data makes MLOps challenging and kind of fun as well. MLOps attempts to automate and productionize systems which have inputs that evolve in very different ways. And you should know that engineers and organizations have lots of experience developing traditional software.
+
+They have experience with DevOps methodologies. DevOps only has to deal with known and predictable code, but machine learning code is a very small part of the entire machine learning workflow and the ecosystem around machine learning. And this little visualization here makes things very stark. Notice that ML code is a very small fraction of machine learning systems. The surrounding system is comprised of many more complex moving parts.
+
+There are things that are part of the machine learning workflow- data collection, data verification, feature extraction, then we have the ML code, but then we have configuration, monitoring, resource management, serving infrastructure, and so on and so forth. Any system, whether it's a machine learning system or a traditional software system, has dependencies.
+
+And if you were to measure the cost of these dependencies, the fact of the matter is, data dependencies cost more than code dependencies. And an important thing to remember about machine learning models is that they consume data that has been produced by other systems and really you may not have control over those other systems. This data consumed by your machine learning model, may change in qualitative or quantitative ways over time. The behavior of the data itself might change.
+
+Now, the training data for your model may come from a variety of different sources, and this is what makes data dependencies harder to track down. Your models may depend on legacy sources of data, and these legacy sources provide little benefit, but at some point they may suddenly be removed, and that’s when your model may breakdown.
+
+Now your machine learning model is only as good as the data used to train the model. It’s quite possible, that you have a bunch of features bundled together in your training data, you have very useful features that live alongside features that have little value. You may also have features that are highly correlated to one another.
+
+All of these are likely to affect the performance of your model, and it's very hard to detect such correlations and dependencies. Setting up good automation and operational infrastructure for your model, involves understanding these dependencies that exist. Now, if you think about code, there are a number of static compilers that exist for code analysis to understand what libraries or packages code depends on.
+
+There are fewer tools that exist for analysis of data dependencies. Everything that we've discussed so far about data and its role in machine learning models comes down to this fact. Data management is critical for building robust, scalable ML models. If you think about traditional software development, your software improves over time as you let it go out in production and fix any bugs that arise. However, that's not true with your model.
+
+Your model actually decays over time and may degrade in quality. That’s because data in the real world changes over time, and this new data in the world might be different from the training data that you've used to train your model. In such situations, your model no longer represents the real world. This is referred to as model decay.
+
+ML systems typically do not have regular release cycles. They have to be constantly trained and updated. New data is needed to retrain this model, so the model once again represents the state of the world as it exists today. And this retraining may need to be constant, you may need to push out a new version of the model every day.
+
+When you train a machine learning model, you're likely to have made some assumptions about the real world. You may assume that there are certain features that are significant. You may assume that other features are irrelevant.
+
+You'll of course, test all of these, but there may be some assumptions that are implicit. Once your model has been deployed, it's quite possible that you get new information which changes the assumptions that you made during model training.
+
+These changing assumptions might mean that it's not enough to just retrain your model, you might have to change the entire algorithm or architecture of your model. You might need an entirely new model. You might have set-up your machine learning workflow and then, have realized that the model objective has changed.
+
+Evolving business objectives might change the problem that you're solving, and this scenario once again, might require an entirely new algorithm and new model and maybe even new data. Training machine learning models is a dynamic and evolving process. Static models deployed to production will not stand the test of time and data management is critical for ML models.
+
+4. Video: Factors Affecting Machine Learning (ML) Models in Production (it_mliopsdj_01_enus_04)
+
+After completing this video, you will be able to identify the features of MLOps.
+identify the features of MLOps
+[Video description begins] Topic title: Factors Affecting Machine Learning (ML) Models in Production. Your host for this session is Janani Ravi. [Video description ends]
+We’ve discussed the fact that machine learning models deployed to production, degrade almost immediately unless they are constantly trained with new data. Let's discuss the various factors that affect our machine learning models in production. The first, of course, is data quality.
+
+Since machine learning models are built on data, they are sensitive to the semantics, amount, and completeness of the incoming data. ML models are often referred to as garbage in, garbage out. A machine learning model is only as good as the data that you use to train the model.
+
+The second factor affecting your ML model in production, is model decay. The performance of ML models in production, degenerate over time because of changes in the real-life data, and these changes will have likely not been seen during the training process of the model.
+
+Essentially, data in the real world has changed and evolved over time, and these changes were not present in your training data that you use to train the model. A third factor that affects your ML model deployed to production is locality. When you transfer your models to new business customers, it's quite possible that your model may not do well for these new use cases. Your models are likely to have been trained with users that have different demographics and these models may not work correctly according to the quality metrics for new customers.
+
+Everything that we've discussed so far about machine learning systems makes one thing very clear: it’s not a single field. MLOps is actually a combination of machine learning + DevOps, we already knew that. But it also involves data engineering.
+
+If you were to represent all of these fields using a Venn diagram, you can see that MLOps lies at the intersection of machine learning, DevOps and data engineering. Given all of this, it shouldn't be surprising to you that there are several challenges that you face when you look to deploy machine learning models in production.
+
+The first challenge is of data quality and consistency. ML models heavily rely on the quality and consistency of the data that they’re trained on. In a production environment, ensuring that the input data matches the distribution and quality of the training data, can be challenging.
+
+Data inconsistencies, missing values, outliers, all of this can affect model performance. The second challenge that you may need to tackle in model deployment is scalability. ML models may need to process large volumes of data in real time or handle concurrent requests from multiple users. You need to ensure that the infrastructure on which your model is deployed can scale-up to handle such demands, and this can be a complex task.
+
+In traditional software development, you worry about versioning and managing code. With machine learning systems, you have to worry about versioning both your model as well as your data, in addition to versioning your code.
+
+As models evolve over time, managing different versions of models, tracking changes, and rolling out updates seamlessly, while ensuring backward compatibility can be quite a challenge. Efficient versioning, model storage, and deployment strategies are critical. Monitoring machine learning models to ensure that their performance meets your requirements is crucial, even more crucial than monitoring of traditional software.
+
+You’re likely to encounter a number of issues such as model degradation, data drift, or changes in the input distribution, and these need to be detected and addressed promptly. You'll also face challenges that are similar to challenges that you'll encounter in software deployment, such as managing the deployment, environment and infrastructure.
+
+Now, this environment may have its own set of constraints, such as limited resources, security requirements or compliance regulations. A wrinkle that you’ll have to deal with not present in traditional software development, is the interpretability and explainability of your model. You need to understand and interpret the decisions made by models because these are crucial for building trust compliance and for debugging your models.
+
+Many models, especially neural network models tend to be black boxes, and providing interpretability techniques for these can be challenging. Another challenge that ML systems share with software development systems, have to do with maintenance and updates.
+
+Now these are more difficult for ML models because models are not static, they need to be constantly retrained, you need to handle feature changes and manage the overall model life cycle. Another aspect of ML systems that's much harder to deal with than traditional software, is that of reproducibility.
+
+Ensuring reproducibility in production is important for debugging, auditing, and maintaining the consistencies of your model. Tracking and managing dependencies, keeping track of model configurations, all of these are important challenges that need to be overcome. Everything that we've discussed so far just drives home the fact that machine learning systems are different from software systems, though they share many commonalities.
+
+ML teams are very different from software teams. They are usually made up of data scientists and researchers, who may not have much experience in software development. Machine learning is all about experimentation. And as with any experiment, it's important for you to understand what worked and what did not.
+
+Tracking machine learning parameters, metrics, and the model itself is supremely important. Development of a machine learning model, is not a path of continuous improvement. It's very iterative and there'll often be setbacks. All software needs to be tested, but testing models goes beyond just testing the software.
+
+ML model testing is much more involved. You need to have data validation test, data integrity test, model quality tests, and so much more. Even when you're working with traditional software, automated deployment require a pipeline.
+
+However, with models, you need much more. You need an additional pipeline for automatic retraining and deployment of your models. So as new data comes in, your model is automatically retrained.
+
+This is separate from the pipeline that pushes out a new version of your model in the case of code changes. So either code or data changes, both of these should have automated deployment. And finally, the last most important detail to keep in mind when you deploy ML models to production- models degrade due to code as well as data.
+
+In fact, as soon as you deploy your model to production, it starts degrading in quality. A deployed model is already out-of-date. Now machine learning and other software systems are similar, in that we need continuous integration of source control, unit testing, integration testing, and continuous delivery of the software module or package.
+
+However, with machine learning, there are a few notable differences. The first has to do with CI or continuous integration. This is no longer only about testing and validating code and components, but also about testing and validating data, data schemas and your model itself. Continuous delivery is no longer about a single software package or a service or even a suite of microservices, it’s a system as a whole- a machine learning training pipeline that should automatically deploy another service or model prediction service.
+
+Traditional software development includes continuous integration and continuous delivery, but there is a third component for machine learning models, that is continuous training or CT. This is a new property unique to ML Systems that's concerned with automatically retraining and serving models as soon as new data comes in.
+
+5. Video: Solving Machine Learning Problems (it_mliopsdj_01_enus_05)
+
+Upon completion of this video, you will be able to recognize the challenges of MLOps.
+recognize the challenges of MLOps
+[Video description begins] Topic title: Solving Machine Learning Problems. Your host for this session is Janani Ravi. [Video description ends]
+Before we dive deeper into machine learning operations, let's talk about how you would approach and solve your machine learning problems. We’ll walk through this step-by-step. Now, the very first step is of course, to understand the business use case. What is it that you’re trying to solve? Here, ML system development is no different from software development, you start by studying the business problem and requirements.
+
+However, there is an important question that you need to ask at this stage, which you may not ask with traditional software solutions- How expensive are wrong predictions? Remember, machine learning outputs are all about probability, the predictions are all probabilistic.
+
+You need to know the downside of your models getting things wrong. This may actually be an important factor in determining whether you use machine learning at all. ML systems are probabilistic in nature, and they are very hard to use when there is absolutely no room for error.
+
+So make sure your business use case has a certain tolerance for errors before you decide to build an ML system to solve for that use case. Any time you are looking to solve a business use case or meet a business objective, you don't start with the technology or the solution. [Video description begins] The slide displays an illustration on how AI/ML can be implemented. The top portion of the illustration has elements that shows the input into the workflow and its output. Under the workflow, there are various other elements that represents number of tasks, decisions and jobs. [Video description ends]
+
+You don’t start off by saying, “I’m going to use AI/ML here”. You start off by figuring out what exactly you want to solve. So you study the business problem and requirements, and next, you figure out the workflow for your solution.
+
+Initially, you’ll define the high-level workflow, and then you’ll determine whether it makes sense to use AI and ML. Once the decision is made to use AI/ML, then you’ll figure out how you’re going to implement AI/ML within this workflow. Now, AI/ML is not the entire workflow. Remember, you're solving a business objective, so you need to identify the concrete process that will be powered by machine learning and you identify the inputs and outputs to that process.
+
+You’ll have a bunch of moving parts to your system, many of these will involve traditional software and there’ll be a few processes in between where you can deploy your machine learning model. Once you’ve identified the workflow where you’ll use AI/ML, make sure you break down that process into tasks that can be executed and automated. It's quite possible that machine learning models will not fit into all of these tasks and will be used for only specific tasks here.
+
+You may have to evaluate each of these tasks in turn, and identify which of these tasks can use machine learning and for each such task, make sure you quantify the return on investment of using machine learning. Remember, machine learning is not cheap. It's not just the training process, but the data collection, the data validation, everything can be quite resource-intensive and also expensive. The business needs to ensure that investing in AI/ML for that particular task, will give them good payoffs.
+
+All of these steps that I have discussed, needs to be structured and broken down so you can discuss them clearly and completely with your team. And this can be done using something called the Machine Learning Canvas. The Machine Learning Canvas was first suggested by Louis Dorard and it helps structure the machine learning project and identify core requirements for that project. This is a great tool to use to specify both the vision for the machine learning system, and the specifics and the implementation details of the system that you're about to build.
+
+This canvas structures the ML project and helps connect the business goal to the machine learning task that we are about to implement. And it does this by answering the question: What do we want to achieve for the end users of the machine learning system? It ensures that you’re not building ML for the sake of ML, but you’re building ML to meet an end use or goal.
+
+6. Video: The Machine Learning Canvas (it_mliopsdj_01_enus_06)
+
+After completing this video, you will be able to outline the use of the machine learning canvas.
+outline the use of the machine learning canvas
+[Video description begins] Topic title: The Machine Learning Canvas. Your host for this session is Janani Ravi. [Video description ends]
+Here is what the Machine Learning Canvas looks like and you can see that it has many different components- a total of ten components. [Video description begins] The slide displays a Machine Learning Canvas. It has the following 10 components: prediction task, offline evaluation, decisions, making predictions, value proposition, live monitoring, data collection, building models, data sources and features. [Video description ends]
+
+At the very center, is the value proposition building block, which describes products or services that create some value for customers. And this is what we’ll discuss first. The value proposition is the most crucial block in the whole canvas and here we should try and answer three important questions.
+
+The first question is: What is the problem? What objective are we serving by building this ML system? How is it helping the end user? The second question that we should answer here is: Why is what we are building important? What is the value proposition for the user? How is it going to improve our customers’ lives? And finally, the third question you should answer is: Who is the end user? Is there a persona who is likely to use our system and benefit from it? What are those personas?
+
+Once we’ve convinced ourselves that we have a solid value proposition and the ML system that we are about to build is going to help meet our business objectives, we can turn our attention to another component in the canvas. And that is, what data we are going to use. What are the sources of our data? Before you dive into building your ML model, you need to identify and clarify all available and possible data sources that you'll use.
+
+Now, organizations have been collecting data for years, so it's a good idea to look to internal sources to find training data for your model. These can include warehouses, REST APIs, files, spreadsheets, all available within your org. It’s also possible that your organization has tie-ups with other organizations or other data providers, so you may look to external sources for your data as well. External sources may include web scraping, the output of other ML systems or open-source datasets. You also need to identify the hidden costs of machine learning applications.
+
+You need to estimate how much it's going to cost to store all of this data. Data storage in a redundant manner is not cheap. If you're looking to external sources for data, it's quite possible that the data exists, but you'll have to purchase it. This will add to your hidden costs of ML applications, make sure you take this into account. When you’re sourcing your data for ML, it’s quite possible that data is available, but not easily accessible.
+
+Make sure you explore tools and processes to make data accessible from other systems that hold data. Once you've identified data sources, that is, where you’re going to get your data from, you need to turn your attention to how you’re going to collect this data. Data collection- Here are some questions that you might ask yourself when you think about this component of the ML canvas.
+
+You might want to think about how expensive it is to get new data, because this might completely change your return on investment on your ML system. Now, if you're getting new data, it's quite possible that you want the new data to be labeled. It's important to consider how you'll accomplish this labeling process. Data labeling is a time-consuming and expensive process, though programmatic solutions do exist.
+
+This is the right time to ask these questions and explore the different techniques used for labeling. You need to have an idea about whether you're planning to label data manually or use automated systems. And if you're using an automated system, are you going to rely on it completely or is Human-in-the-loop (HITL) needed?
+
+HITL involves using human labelers to monitor and manage the output of a programmatic labeling process. Another detail to nail down at this point is- what is the update rate for new data? How often are you going to collect new data that's needed to retrain your model? This will determine how up-to-date your model is. You figured out your data sources, you collected your data, now, you need to turn your attention to the feature engineering that you may require.
+
+Feature engineering determines how your data will be represented when you feed it into your machine learning model. Here is where you identify the important aspects of your input data and this might require domain experts. Domain experts can help identify the important and relevant features in your data, you may also want to apply statistical and other techniques to identify significant features.
+
+You also need to determine here, how you plan to extract features from your raw data. Feature engineering may require additional pre-processing of your data, and you may need to bring together data from disparate sources to get new features. Once you know what kind of data and what kind of features you have available, you need to turn your attention to what kind of machine learning model you're going to build. What is the prediction task it’s going to perform?
+
+Here, there are many details to consider. Is your model going to be a supervised learning model or unsupervised model? Supervised learning techniques such as regression and classification, need labeled data, while unsupervised techniques such as clustering and recommendation systems do not need labeled data. Here is where you clarify the input to your model.
+
+This of course, depends on the data. Is the input going to be text, images? Is it going to be numeric input? What's going to be the output of your model? What kind of predictions will your model make? Will it predict classes or categories? Will it predict continuous values? Will it make recommendations? Will it cluster and group the data? Next, how complex do you want your model to be? Is it going to be a single model or is it going to be an ensemble, where we combine the output of several models? Is it going to be a deep learning model? How many layers in our neural network?
+
+For each type of model, you need to know the complexity cost. How much will it cost to train your model and use it for inference? The making predictions block, is separate from the prediction task because this has to do with when we make a prediction on new inputs. This is where you’ll answer questions like- When should new predictions be made available? Now, in certain situations, new predictions are made each time the user opens the app, such as in the case of recommendations.
+
+New predictions may be made on request or new predictions may be made on a schedule. How will those predictions be available to the user? Are they made on the fly? Will they be real-time for each data point passed in, or will you pass in a batch of input data and get predictions for the entire batch? What's the computation cost for inference? You of course have some computation cost for training the model, but that's separate from what you need for inference.
+
+There might be some pre-processing that you need to perform in the inference phase as well. And finally, is there a Human-in-the-loop support to making predictions? Is there going to be a Human-in-the-loop or HITL support for predictions? Is somebody monitoring the output of the model and ensuring that your model is consistent and unbiased? Another block to consider is the decisions. Once you've got the predictions from your machine learning model, how will these predictions be used to make decisions?
+
+If it's a recommendation system that you're looking to build, how will the user of your system, actually choose recommended products? If you're classifying emails into spam and ham, how will your spam messages be filtered? These are decisions based on model predictions.
+
+Once you have a prediction, you need to have a clear idea of how these decisions manifest themselves in your product. And also, this is where you need to think of hidden costs to these decisions. If you’re employing a Human-in-the-loop to verify the output of your model, such as in the case of fraud transactions, well, that’s a hidden cost. The next block you should consider is about building models.
+
+Here is where you'll answer questions about how often your model might need to be retrained. This has to do with how important it is that your model is up-to-date with the latest training data. Your model might need to be retrained every week, every month, every hour, for every prediction, anything is possible. Model retraining comes at a cost- there’s a cost of monitoring your model and observing when it needs to be retrained, there’s the cost of the resources that you’ll use to train your model. You need to identify and understand these before model deployment.
+
+Next, you need to think about how long it's going to take to retrain your model. If retraining takes a long time, then it's probably not a good idea to retrain your model every hour. If your model is useful, there will be more demand for your model's prediction and it needs to scale. This is where you think about scaling your model as well, and this is where you think about how to evolve and update the tech stack supporting your model. Before you actually train your model and deploy it to production, you should set up the evaluation metrics that you'll use to see whether your model meets your expectations. You should do this offline.
+
+This is where you know that the use of machine learning has been a success for your product. You need to specify domain metrics that justify the use of ML. What is the revenue bump that you get from deploying the model as opposed to not using it? In addition to domain metrics, you also need to specify technical metrics that you use to evaluate the model. For example, for regression models, you might choose an R2 score threshold, for classification models you might choose accuracy, precision or recall.
+
+In addition to these metrics, think about the impact of what your model gets wrong. Explore the impact of false positives and false negatives as output of your model. And finally, identify what test data and the quantum of test data that you need to evaluate the model and have confidence in the model's predictions. And finally, we come to the last block here in this canvas- live monitoring and evaluation of your model. This is after model deployment.
+
+Your model should be evaluated and you need to make sure that your model needs both the model metrics as well as the business metrics that you've defined. You may want to perform A/B testing. Deploy a product with the model without a model, and see how the model improves your business overall. Also, track value creation. For example, if you're building a spam filter, use a metric to track how effective that spam filter is. Just like with any system that you develop, developing and deploying ML models is all about trade-offs.
+
+Now, when should you deploy your models to production? Let's say you deploy your model very early, so you train your model and quickly get it to production. Well, this will accelerate the learning process of your model, because it will learn more by working on more new production data. But there is a potential downside here.
+
+Deploying your model earlier when it's still not fully baked could damage the reputation of your organization because of the bad predictions that the model makes. This of course, leads us to the other side of the question- maybe you should deploy later?
+
+This will allow the model to improve its performance in-house before people in the real world get their hands on this model. Well, the downside is also obvious. Deploying later will slow down the learning process for your model that it will gain from making real-world predictions. A sweet spot is somewhere in between. Make sure your model is well-tested so it doesn't damage your brand or your reputation, but you still deploy early enough so you can iteratively improve upon your model.
+
+7. Video: End-to-end Machine Learning Workflow (it_mliopsdj_01_enus_07)
+
+Upon completion of this video, you will be able to outline the ML workflow.
+outline the ML workflow
+[Video description begins] Topic title: End-to-end Machine Learning Workflow. Your host for this session is Janani Ravi. [Video description ends]
+Hopefully, all of you have experienced building and training machine learning models, even if they're very basic ones. You know that building a machine learning model is a sequence of steps, and these steps are put together to form the machine learning workflow.
+
+Any time you’re looking to build ML-based software, this software includes three main artifacts. The first of these artifacts is the data. This is the data that you collect from a variety of different sources which you clean preprocess and then use to train your ML model.
+
+Working with data involves using data engineering, performing data acquisition and data preparation. The second artifact in an ML system, is the model. You train a model by feeding in your machine learning algorithm represented in code with the data that you use for training. Building models involves ML model engineering. This involves training your machine learning model and serving these models for predictions. And then there is yet another artifact, and that is code.
+
+Now code here refers to not just the code for your machine learning algorithm that trains on data, but also the code for your product into which you integrate your ML system. Your ML system has to have a final business use case, and that involves the ML system being part of some kind of product. Now when you work with code, this involves code engineering where you integrate the ML model into your final product.
+
+Now that you understand the three components that make up an ML system, let’s look at a high-level visualization of the machine learning workflow. [Video description begins] A visualization of the machine learning workflow is displayed on the screen in the form of a flowchart. The flowchart has many elements, namely: exploration & validation, wrangling (cleaning), monitoring & logging, data, test, model evaluation, model, build & integration testing, and so on. [Video description ends]
+
+As you might imagine, the machine learning workflow is complex and involves a number of moving parts. Let’s get a quick overview of what these moving parts are, before we look at each of them in some detail. [Video description begins] The top left of the chart contains a cloud that is processing various types of data. This connects to a tile labelled Exploration & Validation which flows to another labelled Wrangling (Cleaning). A dotted line connects these to each other. Wrangling flows down to a box titled DATA which is divided into two phases: TRAIN and TEST which are subdivided into various models. These contain code and params for integration testing and deployment. Finally, there is Monitoring & Logging of feedback that flows back to Wrangling, exploration and so forth. [Video description ends]
+
+The very first bit here is the data pipeline. This is the initial data engineering step in any data science workflow. This is where we acquire and prepare the data that we want analyzed. The data pipeline involves ingesting the data, exploring, validating the data, cleaning the data, and then splitting the data.
+
+Next, we have the ML model pipeline. [Video description begins] The middle portion of the flowchart depicting the model pipeline is highlighted, and it has elements like model engineering, model evaluation, model packaging and model. [Video description ends] This is the core of the machine learning workflow. This is where we choose the machine learning algorithm that we want to use and train it on the input data, evaluate the model, package it and then serve it for prediction.
+
+The third component in this workflow is the software code pipeline. [Video description begins] The highlighted bottom left portion of the flowchart has the following elements: code, build & integration testing and deployment dev production. These elements are further connected to another element called monitoring & logging which is situated at the top right corner. [Video description ends] This refers to the pipeline that represents your product and this is the product into which you’re integrating your machine learning model. When you look at the end-to-end machine learning workflow from data to model integration into your software product, you can see that it's made up of three components corresponding to the three artifacts of the ML system.
+
+Let's talk about each of these components in a little more detail, starting with the data pipeline. Now, typically you will use data integrated from a variety of different sources, and these sources are all likely to have data in different formats. Data acquisition might sound simple, but it turns out to be a very expensive and time-consuming phase- you need the right data in the right format to train your machine learning model.
+
+Once you have the data, you need to understand this data and this requires data exploration and validation. You might perform data profiling to obtain information about the content and structure of the data, and the output of this phase is basically statistical summaries and descriptive summaries of your data.
+
+Data in the real world is usually error-ridden and corrupt. Which means, you need to have an intense data cleaning, data wrangling phase. This is where you fix the inconsistencies and errors in your data, perform missing value imputation, perform outlier detection, and so on. Once you have clean data, you might want to label your data. This is when you're running a supervised learning model. We've discussed earlier that data labeling can be manual or programmatic, but this process is again time-consuming, error-prone, and expensive. So it requires a lot of attention.
+
+Once you've labeled your data, you'll split your data. You'll keep aside some portion of your data to validate and evaluate your model. The rest you'll use for training. Once you've completed the data engineering steps that make up your data pipeline, you'll move on and look at your model pipeline. This is where you'll train and evaluate your model. Now, this involves a number of different operations, the first of these will be model training.
+
+This is where you feed in your process data into an ML algorithm, to train an ML model. This might involve a lot of experimentation, feature engineering and hyperparameter tuning. Once you have a trained model, you will evaluate the model based on predetermined metrics. This is where you ensure that your model meets the original codified objectives before you serve it for prediction.
+
+Next, you will test your model. This is where you'll check to see that your model produces results that are acceptable to you and is not prone to biases and errors. Once you've tested your model, your model is ready for deployment and you move on to the next phase- model packaging. This is where you export the final model into a specific serialized format.
+
+The serialized format will describe your model, contain your model’s trained parameters, and this is what you’ll serve for prediction. The final step involves integrating your model with your software product. Now, the software product is going to have an entirely different pipeline of its own. It will have its own CI/CD operations, for example. So part of code engineering in your ML system, involves model serving.
+
+This is where you set up your model in a production environment for predictions. Model performance monitoring is the process of observing your model's performance based on live and previously unseen data. Performance monitoring is important to determine when your model might need to be retrained. And a third aspect in your software pipeline is model performance logging. Make sure that every inference from your model, results in a log record.
+
+8. Video: ML Workflow Architectural Patterns (it_mliopsdj_01_enus_08)
+
+After completing this video, you will be able to recognize ML architectural patterns.
+recognize ML architectural patterns
+[Video description begins] Topic title: ML Workflow Architectural Patterns. Your host for this session is Janani Ravi. [Video description ends]
+At this point, you have a good understanding of what the end-to-end machine learning workflow will look like from data acquisition to integrating the machine learning system in your product. Now, operating on a machine learning model can take on several architectural styles. And in this video we'll discuss four different architectural patterns classified along two dimensions.
+
+So now we’ll classify our architectural patterns based on ML model training and ML model prediction. For each of these dimensions, we’ll discuss two subdimensions, so we'll have two ways of performing machine learning model training and two ways of performing machine learning model prediction. There's another third dimension that we'll not be discussing in this video, and that's the model type, the kind of model that you're building- whether it's a supervised learning technique or unsupervised model, a reinforcement learning model, a deep learning model, and so on.
+
+Let’s talk about model training first and there are two different ways in which you can perform model training. The first of these is offline learning, also referred to as batch or static learning. This is where the model is trained on a set of collected data and this data lives in a file system or a database somewhere. With offline learning, the data for training the model has already been collected- it’s historical data.
+
+Once you've trained your model and deployed it to production, it's quite possible that your model will degrade and become stale very quickly. This is model decay and this is something that you need to monitor for carefully. Another way to train your model is to use online learning or dynamic learning. This is where the model is regularly retrained as new data arrives for predictions. So as streams of data come in, we use those streams to retrain our model. Your model is constantly kept up-to-date with the new data and is less likely to decay and degrade.
+
+Now that we've understood the two ways to perform model training, let's move on to discuss model prediction. And there are two ways for your model to perform prediction as well. The first of these is batch predictions. Once you've deployed your model, your model accepts as input, a batch of records and it will perform predictions on the entire batch in one go and save out the results somewhere. This is usually when your model makes a set of predictions based on historical input data.
+
+Batch predictions are sufficient for data that is not time-dependent or not real-time, when it’s not critical to obtain real-time predictions as an output. Now of course, at some point you may want real-time or online predictions or on-demand predictions. This is where predictions are generated in real-time using the input data that is available at the time the request was made. Based on the two dimensions model training, model predictions, and the subcategories within each of these dimensions, you can classify your ML systems into four different architectural patterns.
+
+The four possible architectural patterns based on these dimensions are displayed right here on this grid. This is a two by two, I’ll break this down and we’ll walk through this step-by-step. First, let's take a look at the dimensions along the rows and columns. Along the rows, we have the two kinds of model prediction- on-demand or real-time and batch, and along the columns we have the two categories of model learning, how your model is trained- either offline or online. If your model training occurs in an offline manner, well, that’s referred to as static learning, because it learns from data stored in a file system or database somewhere. If your model training is done using online methods, that's referred to as dynamic learning and that's the axis you see at the bottom.
+
+Now, if your model gives you real-time predictions on your data, well, that’s real-time analysis. Or if your model gives you batch predictions, that's usually on historical data. The first architectural pattern that we’ll discuss is the forecast workflow. Forecast workflows are widely spread in academic research or data science education. This is where you train your model on offline data and make batch predictions.
+
+This is something that you'd use to experiment with machine learning algorithms. You'll take an available dataset, train the model, make predictions on historical data, and evaluate the model. The second architectural pattern here is the web service. This is where your model has been trained offline on historical data, but it gives you on-demand, real-time predictions.
+
+This is the most common deployment architecture. The inference of this architectural pattern runs in near real-time and it usually handles a single record at a time, instead of making predictions on a batch of data. The web service architecture generally uses microservices to deploy your model. [Video description begins] A flowchart is displayed on the screen. There are various elements, and these are divided into two phases- Training phase (offline learning) and Prediction phase (Production environment). Under the training phase, there are several sub-elements, namely: model builder, feature extraction and training data. The prediction phase has elements such as ML model, feature extraction, REST API. The Client is connected to these. Between the two main phases is a small box labelled ML model and this deploys to the Prediction phase. [Video description ends] The training pipeline of the model is denoted on the left. The output of the training pipeline is a model artifact that is then deployed behind a REST API and clients hit the REST API to get predictions.
+
+The training phase involves offline learning, the prediction phase involves real-time predictions. Now, if your model is trained online, that is it uses new data that streams in to retrain the model, and it makes predictions in real-time, that architectural pattern is called real-time analysis or online learning. This is by far the most dynamic way to embed machine learning into a production system. This is also referred to as real-time streaming analytics.
+
+Now, the term online learning tends to be a little confusing. It’s actually incremental learning, because your model is learning on new data as it arrives. Here is a big picture overview of how you might deploy models for real-time analysis. You'll initially train your machine learning model [Video description begins] The slide displays a flowchart to represent an overview of model deployment for real-time analysis. The flowchart has several shapes and figures to denote various stages such as: train ML model, deploy in production, and so on. [Video description ends] using offline data, evaluate that model, and deploy it to production. But once it's in production, it’s constantly being trained on the new data that streams in and then you retrain your model and redeploy your model in a near continuous manner.
+
+And finally, we have the last architectural pattern that is an even more sophisticated version of online or incremental learning, and that is automated machine learning. This allows you to train models with minimal effort and without machine learning expertise. All you need to do is provide the data, the AutoML system will choose the right machine learning algorithm and architecture, configure the algorithm, and train on your data. Instead of explicitly updating the model, we execute the entire model training pipeline in production that creates new models almost on the fly.
+
+This is the most experimental and cutting edge architecture, still not widely used in production at the time of this recording. Once you've trained your model, you need to serialize your model artifact and save it out to disk somewhere. And there are several different model serialization formats that you can choose from.
+
+Serialization formats are divided into two broad categories. There are language-agnostic exchange formats, where the model and all the necessary code are bundled as one package. This package can be compiled on nearly any platform as a standalone model. If you trained your model using a specific framework, there are vendor-specific exchange formats, that you can use to serialize your model.
+
+For example, scikit-learn will save models as pickled Python objects, TensorFlow will save models as .pb files, PyTorch uses its own proprietary script storing models as .pt files. Once you have your package model, you need to serve your model for inference and there are several serving patterns that you can choose from. Model serving patterns specify how an ML model is integrated into your product or service.
+
+Here, we'll quickly discuss five different patterns that you can use to put an ML model into production. The first of these patterns is model as a service. [Video description begins] The pattern displayed on the screen has various elements and icons to represent model as a service. The icon of a mobile is given on the left and it is connected by left and right pointing arrows to a box with web app written on it. The arrows have an icon of a cloud between them. This box is in turn connected to another box with web service ML model written on it by left and right point arrows. [Video description ends] This is where you wrap a machine learning model as an independent microservice that you deploy behind a web API.
+
+Any application that wants to use the model will hit the API and get predictions from the model. The second serving pattern is the model as a dependency pattern. [Video description begins] Another pattern is displayed on the screen. This pattern has a box with the word application written on top. The words input, ML model and prediction are written at bottom of this box and are connected by right pointing arrows. [Video description ends] A package machine learning model is considered to be a dependency within your software application.
+
+For example, your app might depend on some kind of jar or library, in exactly the same way it can depend on your model as well. The third serving pattern is the precompute serving pattern and this is usually used with the forecast ML architectural style. [Video description begins] The third pattern displayed on the screen has several icons and boxes, namely: data batch, ML model, DB and ML model serving. [Video description ends] With the precompute pattern, we have an already trained machine learning model and we've pre-computed predictions for an incoming batch of data.
+
+The resulting predictions are stored in a database somewhere, and when you ask for those predictions, they are retrieved from the database. The fourth serving pattern is the model on-demand pattern that treats the model as a dependency that is available at runtime. [Video description begins] The slide displays the fourth pattern. This pattern has elements such as prediction service, event channel and event processor. [Video description ends]
+
+So it's not a direct dependency in the code, it's a runtime dependency. Model on-demand involves using a message broker as a buffering system between the prediction service and the actual model. And the last serving pattern that we discuss here is federated learning, also known as hybrid serving. [Video description begins] The pattern displayed on the screen is in the form of a flowchart and has several elements and icons, namely: shared ML model, aggregated changes, cloud, and so on. [Video description ends]
+
+Now, this is a much more complicated pattern. With federated learning, there is one shared model that lives on the server, which sets the initial model for each user. In addition to the shared model, there is a unique model for each user which are trained on that user's likes and dislikes. These user models generally live on the user's device and once in a while these devices will send their already trained model data to the server and the server model will be adjusted, so the trends of the entire user community are captured.
+
+If you want to learn more about ML workflow, architectural patterns and serving patterns, I suggest you head over to MLOps.org. There is a whole bunch of information related to MLOps there, including everything that we just discussed.
+
+9. Video: Stages in MLOps Maturity Level 0 (it_mliopsdj_01_enus_09)
+
+Upon completion of this video, you will be able to outline level 0 of ML pipelines.
+outline level 0 of ML pipelines
+[Video description begins] Topic title: Stages in MLOps Maturity Level 0. Your host for this session is Janani Ravi. [Video description ends]
+Let's say you are developing an ML system within an organization, it's highly unlikely that you'll go directly to automating the entire end-to-end workflow. You’ll start by prototyping and developing your model, once it’s ready for deployment to production, you might automate the processes one by one.
+
+Now we’ve already seen what an end-to-end machine learning workflow looks like. If you have a fully automated ML pipeline, all of these steps would be automated. You’d have CI/CD for each pipeline here in this end-to-end workflow. As you can see here, and as we’ve discussed previously in this learning path, there are several steps involved in training a machine learning model and integrating that into your product or service. The maturity of the machine learning process in your organization, is determined by the level of automation that exists in these steps.
+
+If every step is completely automated, that is a mature organization and that is a mature MLOps process. That is referred to as stage 3. It’s pretty obvious that no organization will jump directly to stage 3. Levels of maturity have to be achieved in an iterative and step-by-step manner. But one thing is clear- the greater the automation, the greater the velocity of training and deploying your models.
+
+Your models are likely to be the most up-to-date and give you the best results, if your entire pipeline is automated. With this in mind, let’s talk about the three levels of MLOps maturity. Starting with the most common level where no automation is involved, it’s a completely manual process.
+
+Then we have an ML pipeline automation with continuous training that is new data comes in, your model is retrained and redeployed. And finally a completely automated process. This is where you have CI/CD, continuous integration, continuous delivery automation, with automated build, test and deployment steps.
+
+Any organization working with machine learning, is likely to start at MLOps level 0. This is where the entire process is manual, nothing is automated. Here is what a high-level overview of MLOps level 0 looks like. [Video description begins] The slide displays an overview of MLOps level 0 in the form of a flowchart. There are many icons and elements in the flowchart, namely: offline data, data extraction and analysis, model training, trained model, model serving, prediction service, and so on. [Video description ends]
+
+This likely means that your organization have teams with data scientists and ML researchers. They are capable of building high-quality, state-of-the-art models, but their process for building and deploying ML models is manual, they haven’t really automated that workflow. This is the very basic level of maturity-level 0.
+
+Let’s look at this workflow here. We are working with offline data, there is data extraction analysis, the data preparation model training and model evaluation and validation steps, are entirely manual. Once we have the trained model, we register with some model registry and serve it in production. All of these are likely done by hand. Let's discuss the characteristics of the ML workflow at the level 0 maturity stage.
+
+Every step in the ML pipeline is likely manual, maybe script-driven, but it's interactive and obviously requires human intervention. This can include data analysis, preparation, model training, and validation. Moving from one step to another, is likely a manual transition. Now, in this phase, machine learning teams and the Ops teams may work in silos.
+
+There is likely a disconnect between the data scientists and engineers who create the model and the engineers who serve the model in production. The Ops team is likely not involved in the development process, and the development team is likely not involved in the operational process. This of course means, that your releases are infrequent and often ad hoc, they can’t be streamlined and regular.
+
+The process assumes that your data science team manages just a few models that don't change frequently. If there are very few changes to the model code and data, continuous integration is not a must. So every change will not trigger the redeployment of a model. Since the model is not constantly being retrained, new versions of the model are not deployed frequently.
+
+Which means, continuous delivery is not really used, model deployment is likely manual with human intervention. MLOps level 0 is also characterized by minimal performance monitoring. The process doesn't track or log the model predictions and actions, that are required to detect model performance degradation and other drifts. It’s pretty clear that MLOps level 0 is okay for a model that serves as a prototype for a few users, this is clearly not scalable.
+
+Level 0 can work only if models are rarely updated or retrained. These situations you can’t really rely on the quality of the model. Infrequent updates of the model may lead to concept drift, where models fail to adapt to change. The data in the real world has changed, the relationships in the real world have changed, but the model hasn’t adapted. This is concept drift. When you are at MLOps level 0 of maturity, your model deployments tend to be brittle and easy to get wrong, which is why manual intervention becomes crucial, and that of course, is time-consuming and expensive.
+
+10. Video: Stages in MLOps Maturity Level 1 and 2 (it_mliopsdj_01_enus_10)
+
+After completing this video, you will be able to outline level 1 and 2 of ML pipelines.
+outline level 1 and 2 of ML pipelines
+[Video description begins] Topic title: Stages in MLOps Maturity Level 1 and 2. Your host for this session is Janani Ravi. [Video description ends]
+In the previous video we discussed the three stages of maturity for MLOps pipelines. There was level 0 where the entire workflow was manual with nothing automated, there is level 1 where we include some automation with continuous training of models, and there is level 2 where the entire workflow is automated with CI/CD.
+
+In this video, we’ll discuss MLOps level 1, where the machine learning pipeline is automated, but your software code pipelines may not be. When an organization is at MLOps level 1 maturity, the goal is to perform continuous training of the model by automating the machine learning pipeline. This lets you achieve continuous delivery of the model prediction service.
+
+However, the automation is not complete, in that the testing and deployment pipelines are not automated. Now this visualization that gives you a high-level overview of MLOps level 1, is rather large. So I've split it across two screens. [Video description begins] An overview of MLOps level 1 is displayed on the screen in the form of a flowchart. The flowchart has three main sections: Data analysis, Model analysis and Pipeline deployment. The Data analysis contains offline extracts, the Model analysis contains an Orchestrated experiment with phases such as data validation, and finally, these lead towards the Source code, Source repository and ultimately - Pipeline deployment. [Video description ends] So this is the first screen which focuses on the machine learning pipeline. This is the part that's not automated. This is where you’ll train, test, evaluate, and deploy your model.
+
+However, this second part is automated. Model training and serving, uses [Video description begins] The screen displays the automated part of the MLOps level 1 flowchart. The flowchart has the following elements: feature store, data extraction, data preparation, model training, model registry, CD: Model serving, trigger, and so on. [Video description ends] an automated pipeline. We automate the process of using new data to retrain models in production.
+
+We have automated data and model validation steps as well as pipeline triggers and metadata management. Let's understand the characteristics of MLOps level 1- ML pipeline automation. Observe that the environment that you use for your ML model is the same across your experiment phase, development phase, and test phase.
+
+There is some level of orchestration in the steps of your ML experiment. The transition between steps may be automated, which allows you to rapidly iterate on your experiments. [Video description begins] The orchestrated experiment portion of the MLOps level 1 flowchart, featuring elements like data validation, model training, model evaluation, and so on is highlighted. [Video description ends]
+
+However, it's important to realize that these steps are not fully automated, and the tests you run on your model are also not integrated. However, the code for the models is not ad hoc, there is modularized code for the different components that make up your pipeline. It's quite possible that your exploratory data analysis code still lives within notebooks. However, the source code for the different components of your ML workflow should be modularized.
+
+It's important to decouple the execution environment from the custom code runtime, and make code reproducible between your development and production environments. Since this is still level 1 maturity, the pipeline that's used in development environment is the same one that's used in production. [Video description begins] An element named Pipeline deployment of the MLOps level 1 flowchart is highlighted. [Video description ends]
+
+So the same pipeline you see here in development, is the one used in production. [Video description begins] The automated pipeline segment of the MLOps level 1 flowchart, featuring elements like data extraction, data preparation, model evaluation, and so on is highlighted. [Video description ends] With MLOps level 1, your model delivery process is completely automated. [Video description begins] A few elements of the MLOps level 1 flowchart, namely: model registry, trained model and CD: Model serving are highlighted along with the automated pipeline segment. [Video description ends] Your ML pipeline in production continuously delivers prediction services to new models that are trained on new data.
+
+The model deployment step which serves the trained and validated model as a prediction service for online predictions, is automated. Since the entire pipeline is deployed to production, all preprocessing and validation steps become part of the prediction service. Once you have continuous training in this form, your model can automatically be trained in production using new data triggered with pipeline triggers.
+
+You can choose to retrain your model on a schedule, on the availability of new training data, on model performance degradation, or when there are significant changes to the data distributions. [Video description begins] Elements named trigger, performance monitoring and prediction service of the MLOps level 1 flowchart is highlighted. [Video description ends]
+
+So with level 1 maturity, your model pipeline and deployment is automated, but the rest of your code isn't. Let's look at some of the components of this automated pipeline. Data validation is where you determine whether you should retrain the model or stop the execution of the pipeline. This stage is automatically run if the pipeline detects data schema skews or data value skews. Data schema skews are considered anomalies in the input data, data value skews are significant changes in the statistical properties of data, which means that your data patterns are changing.
+
+Model validation occurs after you've successfully trained the model on new data. You'll evaluate and validate your model before you promote it to production. This is where you’ll compute evaluation metrics for your model, and you'll make sure that the performance of the model is consistent across the different kinds of data that you might feed into the model. The feature store here is an optional additional component for a level 1 ML pipeline. This is just a centralized repository, where you standardize the definition storage and access of features for training and serving your data.
+
+A feature store allows your data scientists to discover and reuse available feature sets, to train their model rather than recreate those features. The ML metadata store is used to store information about each execution of the pipeline. This is needed to help with data and artifacts lineage.
+
+This helps you with model reproducibility, comparisons, and allows you to debug errors in your model. And we've previously discussed model retraining triggers. You can choose to trigger retraining based on a schedule, when new data is available, if the performance of your model has degraded significantly, or if the data has changed significantly.
+
+There are still challenges that you'll encounter in the level 1 maturity stage. The first of these is that there is manual deployment of new pipeline implementations. If you change the pipeline in any way-the steps, the code, you'll have to manually deploy these changes. Also, if you’re only going to deploy a few implementations of your ML model, it’s quite possible that your testing is manual as well. Because model code changes are not part of the automated pipeline, it’s very hard to manage if your model implementations change frequently.
+
+If your data changes, that’s fine, that portion is automated, but code changes are not. As an organization, if you’re used to working with machine learning models and you have a mature machine learning system, it’s quite possible that you have a mature MLOps process as well. We discussed the three levels of automation and three levels of maturity in your MLOps pipelines.
+
+In this video, we’ll discuss the third and last level- a fully automated pipeline. This is where you have continuous integration and continuous delivery for your model code as well as for your model data. So you have an automated build, test and deployment process. As you might imagine, this is the highest level of maturity, and allows you to build the most robust ML pipelines. [Video description begins] The screen displays a flowchart of the CI/CD pipeline automation in MLOps level 2. The flowchart has elements such as data analysis, model analysis, source code, CI: build, test, & package pipeline components, packages, and so on. [Video description ends] Testing and deployment of your pipeline is completely automated using CI/CD. Any time you make code or other implementation changes to your model, that is fully automated as well. You have continuous integration as well as continuous deployment.
+
+This CI/CD is in addition to continuous training that we had in level 1. Model training and serving is also automated. We continue to have the feature store, the data validation, model validation, the metadata store, everything. In MLOps level 2, development and experimentation is much easier, as the complete experiment is orchestrated. There is no manual transmission between the steps of the experiment, everything flows smoothly in an automated manner from one step in the workflow to the next.
+
+Any time you make a change to the code or the implementation of your model, this will trigger a build and it will run tests using continuous integration. That means all changes are automatically tested using unit tests and maybe even integration tests. Continuous delivery will deploy artifacts to the target environment.
+
+So you'll have separate development, staging, and production environments, and then you'll have your artifacts move between these. All of the features and continuous training that was present in MLOps level 1, is also present here in level 2. Level 2 includes all of the goodness of level 1 and also an automated code pipeline.
+
+11. Video: Course Summary (it_mliopsdj_01_enus_11)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. Your host for this session is Janani Ravi. [Video description ends]
+You have now reached the end of this course: Getting started with MLOps. MLOps, short for machine learning operations, is a set of practices and principles that focus on streamlining and optimizing the end-to-end machine learning life cycle. It encompasses the integration of machine learning with DevOps, aiming to bring collaboration, automation, and reproducibility to machine learning projects.
+
+MLOps covers various aspects, including model development, training, deployment, monitoring, and maintenance, with the goal of delivering reliable and scalable machine learning solutions. The MLOps approach is becoming increasingly important as more businesses and industries adopt machine learning to gain insights, make data-driven decisions, and create innovative solutions. We started this course off by understanding what exactly MLOps is all about.
+
+We discussed that unlike traditional software development, MLOps deals with the complexities of machine learning models and their continuous evolution. We explored distinctive aspects of MLOps and how it addresses the challenges of deploying and monitoring machine learning models in the real world.
+
+We discuss factors affecting ML models in production, and the importance of robust monitoring and version control to ensure the model's reliability. We saw that machine learning uses both code and data as inputs, and both of these evolve along different paths, making models harder to deal with the traditional software.
+
+Next, we learned about essential tools and frameworks to implement MLOps principles effectively. The Machine Learning Canvas provided a structured approach to conceptualizing machine learning projects, enabling stakeholders to define project goals, success criteria and potential risks. We explored the end-to-end machine learning workflow covering stages from data collection and pre-processing, to model training and deployment.
+
+We also understood machine learning architectural patterns and the two ways to train models-online and offline, and the two ways in which models can be used to perform predictions- real-time and batch. Finally, we explored the stages in MLOps maturity in organizations- Levels 0, 1 and 2. At maturity level 0, data scientists manually manage their models without a formal deployment process, leading to challenges in reproducibility and collaboration.
+
+Maturity level 1 introduces version control, and automated model deployment, ensuring consistent model performance across different environments. At level 2, organizations adopt advanced practices such as continuous integration, continuous delivery and automated testing, achieving a highly mature and efficient MLOps workflow.
+
+In conclusion, this course has provided you with a foundational understanding of MLOps, its unique challenges, and tools to implement best practices in deployment. By mastering theoretical concepts and exploring different MLOps maturity levels, we are now ready to move on to practical MLOps with MLflow in the learning path coming up ahead.
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.
