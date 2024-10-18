@@ -1,0 +1,385 @@
+MLOps with Data Version Control: CI/CD Using Continuous Machine Learning
+Continuous integration and continuous deployment (CI/CD) are crucial in machine learning operations (MLOps) as they automate the integration of ML models into software development. Continuous machine learning (CML) refers to an ML model's ability to learn continuously from a stream of data. In this course, you will build a complete Data Version Control (DVC) machine learning pipeline in preparation for continuous machine learning. You will modularize your machine learning workflow using DVC pipelines, configure DVC remote storage on Google Drive, and set up authentication for DVC to access Google Drive. Next, you will configure CI/CD through CML and use the open-source CML framework to implement CI/CD within your machine learning project. Finally, you will see how for every git push to your remote repository, a CI/CD pipeline will execute your experiment and generate a CML report with model metrics for every GitHub commit. At the end of this course, you will be able to use DVC’s integration with CML to build CI/CD pipelines.
+Table of Contents
+    1. Video: Course Overview (it_mlodvcdj_06_enus_01)
+
+    2. Video: Continuous Machine Learning (CML) (it_mlodvcdj_06_enus_02)
+
+    3. Video: Configuring Google Drive as DVC Remote Storage (it_mlodvcdj_06_enus_03)
+
+    4. Video: Authorizing DVC to Use Google Drive (it_mlodvcdj_06_enus_04)
+
+    5. Video: Creating DVC Pipeline (it_mlodvcdj_06_enus_05)
+
+    6. Video: Configuring a CML Workflow for CI/CD (it_mlodvcdj_06_enus_06)
+
+    7. Video: Triggering CI/CD with Git Push (it_mlodvcdj_06_enus_07)
+
+    8. Video: Viewing Metric and Plot Comparisons with CML Reports (it_mlodvcdj_06_enus_08)
+
+    9. Video: Course Summary (it_mlodvcdj_06_enus_09)
+
+1. Video: Course Overview (it_mlodvcdj_06_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Presented by: Janani Ravi. [Video description ends]
+Hi and welcome to this course on performing CI/CD using continuous machine learning.
+
+My name is Janani Ravi and I'll be your instructor for today. Continuous integration and continuous deployment, CI/CD are crucial in MLOps as they automate the integration of machine learning models into software development, ensuring rapid and consistent model updates through testing and smooth deployment cycles.
+
+Continuous machine learning, CML refers to an AI ML model’s ability to learn continuously from a stream of data. It also refers to an open source machine learning library that we use for continuous integration and continuous delivery. In this course you will build a complete DVC machine learning pipeline in preparation for continuous machine learning.
+
+You will modularize your machine learning workflow using DVC pipelines, adding stages for data processing, model training, and prediction. You will configure DVC remote storage on Google Drive and set up authentication to be able to have DVC access Google Drive.
+
+Next, you will configure Continuous Integration and Continuous Delivery through Continuous Machine Learning, CML. You will use the open-source CML framework to implement CI/CD within your machine learning project. You will learn how CML leverages GitHub Actions to orchestrate sequences of tasks to be executed on every push to your remote repository.
+
+Finally, you will see how for every git push to your remote repository, a CI/CD pipeline will execute your experiment and generate a CML report with model metrics with each GitHub commit. At the end of this course, you will have a complete understanding of how you can use DVC's integration with CML to build CI/CD pipelines.
+
+2. Video: Continuous Machine Learning (CML) (it_mlodvcdj_06_enus_02)
+
+After completing this video, you will be able to outline key concepts of CML.
+outline key concepts of CML
+[Video description begins] Topic title: Continuous Machine Learning (CML). Presented by: Janani Ravi. [Video description ends]
+So far we've used DVC to log and track the metrics, parameters, artifacts, and data that we use in our machine learning workflow. We've also used DVC to build machine learning pipelines. We've created the different stages in our pipelines and executed pipelines using DVC repro. The next step here is to set up our pipelines for continuous integration and continuous delivery. CI/CD will allow any changes that we make to our pipeline to automatically re-execute the pipeline, generate reports, and maybe deploy the model somewhere. And this is where we'll use CML.
+
+CML stands for continuous machine learning and this allows us to set up CI/CD for our machine learning pipelines. CML is an open-source tool for implementing continuous integration and continuous delivery for our machine learning projects.
+
+We can use CML to automate parts of our development workflow, including model training and evaluation, comparing ML experiments across project history and monitoring changing datasets. CML is a standalone project from Iterative AI. You can use CML standalone for continuous machine learning, or you can use CML in conjunction with DVC.
+
+In the demo that follows, we'll see how you can use CML and DVC together. But first, let’s talk about what exactly CML helps us accomplish. CML automatically trains and evaluates models when you make some kind of change to Git. CML can run a workflow in response to pull or merge requests that you send to Git. Your CML workflow can be configured to trigger on any Git related action.
+
+CML can embed a report from the results of training your model. It can include plots, metrics, differences, and other comparisons. CML is not a standalone tool. It's deeply integrated with Git. It leverages the GitHub Actions, CI/CD platform on GitHub hosted repositories or the equivalent platforms that are available on other remote repositories such as GitLab or Bitbucket. Each of these hosted repositories support the concept of workflows, and CML leverages each of these workflows to actually set up continuous machine learning for your pipelines.
+
+CML is very intuitive and straightforward, and there isn't much conceptual theory that I need to cover about CML. In order to work with CML, you need to understand how GitHub Actions or the equivalent platform on other hosted repositories work.
+
+Since we are working with GitHub, I'll speak about GitHub Actions here in this video. So what exactly is GitHub Actions? This is a continuous integration and continuous delivery platform that allows you to automate your build, test, and deployment pipeline. GitHub Actions is a very powerful and flexible automation platform that allows you to define our custom workflows and automate various tasks directly within the GitHub repository.
+
+A GitHub workflow is just a configurable set of automated tasks that are triggered based on a specific event that occurs in your repository. You can construct workflows that build test every pull or push request to your repo. Workflows are event driven, which means they execute in response to specific events occurring in your GitHub repository. You don't need to provision or deploy any infrastructure in order to use GitHub Actions.
+
+GitHub automatically does this for you. It provides virtual machines that can run your workflows or if you want more control over how your workflow is run, you can self-host runners in your own data centers or in a cloud platform of your choice.
+
+Let's visually understand the basic components that make up GitHub Actions. Notice we have an event and then we have two runners where each runner is executing a single job. An event refers to a specific activity in a repository that triggers a workflow run. For example, this activity can be when someone creates a pull request, opens a GitHub issue, or commits something to a repository. An event is not the only way to trigger a workflow.
+
+It's also possible to trigger a workflow to run on a schedule by posting to a rest API, or you can manually trigger a workflow. Now, what exactly is this workflow? It's a configurable automated process that will run one or more jobs. A workflow comprises of at least one job that will be executed, but you can have multiple jobs run in sequence or in parallel.
+
+Workflows are defined using a YAML file that is checked into your GitHub repository. Every job that's executed in your workflow runs within its own virtual machine runner. These are runners that are provisioned by GitHub and you can configure GitHub to use your own runners on your data centers or on a cloud platform. Jobs can also be configured to run within a container if you need a more isolated environment for that particular job.
+
+Every job is made up of one or more steps and these steps are executed in sequence. A single step either runs a series of commands that make up a script or it executes an action. A script is something that you define. You can set up a script file and have that be executed within your workflow, or you can specify the commands that make up your script right within your workflow definition file.
+
+An action is a reusable extension that you can use to simplify your workflow. GitHub Actions has an extensive marketplace of pre-built actions that you can use within your workflow. Actions are just reusable units of code that perform specific tasks.
+
+You'll see when we set up our continuous machine learning workflow, we’ll use the CML and DVC actions that are available in order to set up and execute our ML pipeline.
+
+3. Video: Configuring Google Drive as DVC Remote Storage (it_mlodvcdj_06_enus_03)
+
+During this video, you will learn how to set up Google Drive as Data Version Control (DVC) remote storage.
+set up Google Drive as Data Version Control (DVC) remote storage
+[Video description begins] Topic title: Configuring Google Drive as DVC Remote Storage. Presented by: Janani Ravi. [Video description ends]
+In this demo, we’ll see how we can use CML or continuous machine learning to implement continuous integration and delivery for our ML workflows.
+
+Just like DVC that we are working with so far and MLEM, CML is a product that is developed by iterative.ai. It’s an open source CLI tool meant for CI/CD and the MLOps workflow. CML is a separate tool meant for the automation of your machine learning workflows. But CML also has great integration with DVC.
+
+In this demo, we’ll use DVC pipelines to manage our machine learning workflow, but we'll automate the submission and training of our model using CML, continuous machine learning. The end result here is going to be pretty exciting. CML will help train and evaluate our models and then at the end it will generate a visual report with the results and metrics automatically on every pull request you make to your GitHub repository.
+
+For this demo too, we’ll work within our virtual environment. Make sure you activate your DVC venv. Let’s create a new folder for our project. [Video description begins] The Command prompt of the Ubuntu Linux virtual machine displays on the screen. Janani types the first command to activate DVC venv. It reads: source dvc_venv/bin/activate [Video description ends] I’ve called this folder dvc_cml_holiday_package_prediction. [Video description begins] The command reads: mkdir dvc_cml_holiday_package_prediction [Video description ends] We are going to be training a classification model to predict whether a certain individual will take up a holiday package or not with a company.
+
+We’ll be using both DVC and CML. Let’s cd into this folder. This is going to be our workspace, our project folder, and our current working directory. [Video description begins] The command reads: cd dvc_cml_holiday_package_prediction [Video description ends] I've created a remote repository on GitHub for this project as well. Notice it has the same name, dvc_cml_holiday_package_prediction. [Video description begins] She opens GitHub repository workspace in the browser to display the name of the GitHub repository. [Video description ends] Now we follow the usual set of steps to initialize our Git repository and the DVC project. git init will initialize the Git repository in the current folder, dvc init will set up all of the directories and files that DVC needs to operate.
+
+We also need to ensure that the right username and email address is configured for our Git repository. The username is loonytest and the email address is of course loony.test.001@gmail.com. [Video description begins] The command for initializing user name reads: git config --global user.name "loonytest". The command for initializing email reads: git config --global user.email "loony.test.001@gmail.com" [Video description ends] Your username and password will of course be different here. Now initializing DVC would have added a few files to be tracked by Git. git status will show us those files. [Video description begins] She highlights the 3 files. File 1 reads: .dvc/.gitignore File 2 reads: .dvc/config File 3 reads: .dvcignore [Video description ends]
+
+These are the usual three files that we commit to set up our project. So let's go ahead and commit these to our local repositories. [Video description begins] The command reads: git commit -m "Initialized DVC for holiday package prediction" [Video description ends] We’ve Initialized DVC for holiday package prediction. git commit will of course commit to our local repository and we can check the status of all of our commits so far using git log. There has been just one commit to our newly created repo.
+
+Now let's go ahead and configure the origin for this repository. [Video description begins] The command reads: git remote add origin https://github.com/loonytest/dvc_cml_holiday_package_prediction.git [Video description ends] We’ll set it to our dvc_cml_holiday_package_prediction repo that we set up just a few minutes ago. The current branch that we are working in is the main branch, so make sure you name it as such. And with this done you can go ahead and run the git push command to push all of our local changes to the remote repository. git push -u origin main. One thing I always do when [Video description begins] The command reads: git branch -M main The push command reads: git push -u origin main [Video description ends] I push to origin is to head over to GitHub and check that all of the changes are indeed present here. The changes have been pushed successfully.
+
+We can go on with setting up our DVC project. Now for this project where we’ll set up our ML pipeline using CI/CD, I'm going to store all of my DVC data on Google Drive. We already know how to store data on Amazon S3, on Azure Cloud Storage, this time around, we'll work with Google Drive as the remote storage for DVC.
+
+Now here I am, logged into the Google Drive account for loony.test.001@gmail.com. I’m going to Create a New folder here in Google Drive and this folder is called dvc_cml_holiday_package_prediction_folder. You can see the folder has been successfully created and if you click through you see that the folder is completely empty to start off with. There is absolutely no data here.
+
+We'll soon populate this Google Drive folder with the data that we track using DVC. Now, in order to configure our Google Drive as the remote storage for our DVC, we need to copy over the ID of this Google Drive folder.
+
+So here in the URL, make sure you copy the last bit of the URL that is the ID for this location on Google Drive. Back to the terminal window, let’s add this Google Drive folder as a remote. I use dvc remote add --default. That’s the same as the -d flag. The name of the remote is myremote, and the URL to the drive folder is gdrive, :// and then the ID of the drive folder that we just copied over from the browser. [Video description begins] The command reads: dvc remote add --default myremote \gdrive:// 1jlhVG16Na8xRnlet5SMysplUI2t-fELX [Video description ends]
+
+It's easy to get this ID wrong. Make sure you copied it over carefully. When you use Google Drive as your remote storage on DVC, there is another property that you need to set the gdrive_ acknowledge_abuse property. [Video description begins] The command reads: dvc remote modify myremote gdrive_acknowledge_abuse true [Video description ends] This is what you set to acknowledge the risk of downloading potentially abusive files from this drive folder.
+
+This property set to true simply means that you understand and you acknowledge these risks and you’re aware of them. Having configured a Google Drive folder as our remote storage for DVC, let’s confirm that these changes are present in the dvc/config file and you can see the default remote, myremote. [Video description begins] The command reads: cat .dvc/config [Video description ends]
+
+The gdrive URL that this remote points to and the property gdrive_acknowledge_abuse = true. [Video description begins] The URL command reads: url = gdrive://1jlhVG16Na8xRnlet5SMysplUI2t-fELX The next command reads: gdrive_acknowledge_abuse = true [Video description ends] This dvc/config file has clearly been modified, so let’s add it to git, so that Git tracks this file. [Video description begins] The command reads: git add .dvc/config [Video description ends]
+
+We want to make sure we commit it next time we perform a commit, a git status will confirm that Git is successfully now tracking this dvc/config file. That's the only change we have locally.
+
+4. Video: Authorizing DVC to Use Google Drive (it_mlodvcdj_06_enus_04)
+
+Discover how to authorize DVC to use Google Drive.
+authorize DVC to use Google Drive
+[Video description begins] Topic title: Authorizing DVC to Use Google Drive. Presented by: Janani Ravi. [Video description ends]
+Before we set up CI/CD for our machine learning workflow, we need to set up our DVC pipeline to run our experiment.
+
+Here in this current working directory, I've added all of the code and data files that we'll use when we build up this machine learning pipeline. [Video description begins] Janani enters the command that reads: ls -l [Video description ends] clean_and_split.py will perform data cleaning and split the data into training and test. preprocess_train and evaluate as its name suggests, will perform all three actions.
+
+So we’ll keep our pipeline simple with just two stages clean_and_split [Video description begins] The command reads: preprocess_train_evaluate.py [Video description ends] and preprocess_train_evaluate. The data that we’ll use to train our model is in the data folder. We'll look at the data in just a bit and the requirements that our model needs to run, all of the Python libraries is present in requirements.txt. This requirements.txt file is basically identical to what we had in the previous demo scikit-learn, Pandas, NumPy, Matplotlib, YAML, and so on.
+
+Let's go ahead and install all of these requirements within the virtual environment that we are working in. [Video description begins] The command reads: pip install -r requirements.txt [Video description ends] In addition to these requirements, there is one more package that we need to explicitly install and that is the dvc_gdrive package. This is what will allow DVC to integrate [Video description begins] The command reads: pip install dvc_gdrive [Video description ends] and use Google Drive as remote storage for its data and artifacts.
+
+The data that we're going to use to train our model is present in the data subfolder. It’s the holiday_package_data.csv file. You can see that we have a number of features for different customers.
+
+The kind of contact the salespeople had with the customer, the DurationOf the Pitch, the Gender, the MonthlyIncome, and so on. [Video description begins] The other type of information includes CityTier, NumberOfPersonVisiting, Passport, OwnCar, Designation, and so on. [Video description ends] And we’ll use all of this to predict ProdTaken true or false, whether a product was actually purchased by the customer. The product here is a holiday_sales_package. Let's add this data to be tracked by DVC. Now there is a data subfolder which then contains the CSV file with our data.
+
+I'm going to add this entire data directory and have it be tracked by DVC rather than just adding the CSV file. Since we're tracking the entire directory rather than a single file, notice that the metafile created is data.dvc. This is the metafile tracking this data folder. Let’s run an ls -l and you’ll see the metafile right here in the current working directory data.dvc to track the data directory
+
+Let’s take a quick look at the structure of this metafile. I’ll run a cat command on data.dvc and you can see that it contains all of the usual entries. Now because this file tracks a folder that is a directory and not a single file, notice the md5 hash has a .dir suffix at the very end. You can see the nfiles property set to 1. [Video description begins] The outs reads: md5: d14867da6f9747bfab32a7e3d307ba14.dir [Video description ends] That directory currently has just 1 file.
+
+Let’s push this data that we have to remote storage using a dvc push. If you're wondering how DVC will authenticate itself to Google Drive, well, that's a great question. Observe this URL here. [Video description begins] She highlights the url on the screen. [Video description ends] DVC has noticed that it does not have the credentials to access Google Drive, which is why it pops up this URL asking you to authenticate yourself.
+
+I'll copy this URL over and paste it in a browser window. It will bring up my account asking me to authenticate myself and ensure that DVC can actually access my Google account. [Video description begins] She selects the Loony Test account. She clicks on the Select all checkbox. [Video description ends] Go ahead and give DVC these permissions. Click on the Continue button.
+
+And once this authentication and authorization is done, DVC can access Google Drive and push data to Google Drive. [Video description begins] She moves to Google Drive. Under the folder named dvc_cml_holiday_package_prediction, is now populated. [Video description ends] Observe that we've successfully pushed our files to Google Drive and our data is now present here in this drive folder. Our Authentication was successful. When we perform this dvc push and authenticated ourselves to Google Drive, our Google Drive credentials were actually cached on our local machine. So the next time you perform dvc push, you won’t have to reauthenticate yourself.
+
+If you’re using a macOS machine, your credentials will be present in your local cache and your cache directory will be under your home directory library caches and within that you should find a folder called pydrive2fs. [Video description begins] The command reads: ls -l /Users/loonycorn/Library/Caches/pydrive2fs [Video description ends] Here are the typical locations of the cache for various operating systems.
+
+For macOS, it’s ~ that’s the home directory /Library/Caches. For Linux, it’s ~/ .cache. That's typically where the cache is. And on Windows the cache is defined in the environment variable %CSIDL_LOCAL_APPDATA%.
+
+If you want to learn more about using Google Drive to store your DVC data and its credential storage, this is the URL that you should visit on dvc.org remote-storage google-drive as an option. [Video description begins] The Google drive credential storage url reads: https://dvc.org/doc/user-guide/data-management/remote-storage/google-drive [Video description ends] If you look under this pydrive2fs directory, you should find another subfolder and within this subfolder there is a default.json file that contains your credentials. [Video description begins] The command reads: cat /Users/loonycorn/Library/Caches/pydrive2fs/710796635688-iivsgbgsb6uv1fap6635dhvuei09o66c.apps.googleusercontent.com/default.json [Video description ends]
+
+So I’m going to look at this default.json file. I’ll run a cat command and my access credentials for the Google Drive folder that I set up is available right here.
+
+I suggest you copy this access token over and save it safely. We are going to be needing it in just a bit. When we set up our CI/CD pipeline with CML, CML will need access to Google Drive in order to retrieve the data from Google Drive to train our model as a part of the CI/CD pipeline. CML will authenticate and authorize itself to Google Drive using these credentials. Now that we've completed the configuration of our remote storage, let's add whatever files we modified to git and commit them to our local repository as well as to the remote. [Video description begins] The command reads: git add data.dvc .gitignore [Video description ends]
+
+We pushed data to DVC, so we have the data.dvc file, there is a .gitignore file asking us to ignore whatever is in the data subfolder. Let’s add requirements.txt that’s useful to set up the environment. Let's quickly run a git status to make sure we have all of the files that we need. The DVC related files are all in green indicating that Git is tracking them but are two Python files are in red indicating that they remain untracked. Well, we haven't looked at that code yet.
+
+We haven’t added the stages to our ML pipeline. I’m going to leave that as is. Let's commit the data tracking related changes to git. [Video description begins] The command reads: git commit -m "Adding data to DVC" [Video description ends] We’ve already dvc pushed our data, so adding data to DVC is my commit message. I'll now quickly push all of these changes to origin as well.
+
+Once the push goes through successfully, let's do our usual thing. [Video description begins] The command reads: git push -u origin main [Video description ends] I'm going to head over to GitHub on my remote repository and confirm that the changes are indeed present here. A quick refresh shows me that yes indeed, my commits have been pushed successfully.
+
+We can now move on to the next step in setting up our pipeline.
+
+5. Video: Creating DVC Pipeline (it_mlodvcdj_06_enus_05)
+
+In this video, find out how to create a DVC pipeline.
+create a DVC pipeline
+[Video description begins] Topic title: Creating DVC Pipeline. Presented by: Janani Ravi. [Video description ends]
+We are now all set up to actually look at training our machine learning model, and we'll do so within a DVC pipeline.
+
+I'm now going to show you the code for the very first stage of our pipeline where we clean_and_split our data. Here is the code for that clean_and_split.py. This code, as you know, is in the current working directory. Our main project folder. We have the import statements on lines 1 through 5 and on line 7,
+
+I've defined a function called clean_and_split. [Video description begins] The code on line 1 reads: import sys The code on line 2 reads: import os The code on line 4 reads: import pandas as pd The code on line 5 reads: from sklearn. model_selection import train_test_split The code on line 7 reads: def clean_and_split (input_data_folder) [Video description ends] This takes as an input argument the data folder where the input data is stored. Observe that we only take the name of the folder where the data lives. We already know the name of the file. On line 8 I use pandas to read the holiday_package_data.csv file from the input_data_folder. Now there’s [Video description begins] The code on line 8 reads: package_sale_data = pd.read_csv (f'{input_data_folder}/holiday_package_data.csv') [Video description ends] a little bit of data cleaning that we need to perform. First, I’m going to drop the column which has the CustomerID.
+
+The CustomerID does not have any predictive power, so that’s a feature that we won’t be using to train our ML model. Next, the gender column in our dataset has Male and Female. Female is separated as Fe Male. I’m simply going to change that to Female so that it’s a single word. This I do on line 11. That's really [Video description begins] The code on line 11 reads: package_sale_data. replace('Fe Male' "Female" inplace = True) [Video description ends] the only little bit of data cleaning that this data set needs.
+
+Next on lines 13 and 14, I extract the X features that we'll use to train the model and the y values or the target, which is what our model will try and predict. [Video description begins] The code on line 13 reads: X = package_sale_data.drop (columns = ['ProdTaken ']) The code on line 14 reads: y = package_sale_data ['ProdTaken'] [Video description ends] The target here is the ProdTaken column, whether a product was taken up by a particular customer or not. We then split the data using train_test_split. This is on line 16, so we now have the training as well as the test data along with the corresponding labels. [Video description begins] The code on line 16 reads: X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=123) [Video description ends]
+
+Now this training and test data and the labels need to be stored out to an output folder. I'm going to create a new folder called split_data to save all of these four files. [Video description begins] The code on line 19 reads: data_path = 'split_data' [Video description ends] I use os.makedirs to create the split_data subfolder in my current working directory. If this folder already exists, that’s fine. exist_ ok = True and on lines 22 through 25.
+
+I call to_csv on all of the data frames that we have and write out the train and test features as well as the train and test labels. Down below is the main entry point of this python code. We invoke this python file by specifying the input_data_folder, specifying where data lives for training.
+
+The input_data_folder is available in sys.argv[1]. We extract that and invoke the clean_and_split function on line 35. [Video description begins] The code on line 33 reads: input_data_folder = sys.argv[1] The code on line 35 reads: clean_and_split (input_data_folder) [Video description ends] Now that we know what the code looks like, let's add clean_and_split as a stage to our machine learning pipeline. I use dvc stage add. The name of the stage is clean_and_split. The dependencies of this stage include the python file where the code actually exists -d clean_and_split.py.
+
+Another dependency is the data that we use to train the model -d data and an output produced by this stage is in the split_data folder, -o split_data. And finally, the last line contains the command that we’ll run for this particular stage, python clean_and_split.py and pass in the input_data_folder which is simply data. Go ahead and add this stage. This will generate a dvc.yaml file in the current working directory with the clean_and_split stage. We have just one stage so far.
+
+The command run the dependencies of the stage which includes data and the python code itself and the output from the stage which will be written out to split_data. Let’s make sure that our pipeline code functions fine by running dvc repro, which will run the single stage in our pipeline. The pipeline seems to have run through successfully and the dvc.lock file has been created.
+
+Let's ensure that the outputs that we expected the stage of the pipeline to produce are indeed present. I’ll do an ls -l in the split_data folder and you can see that there are four files that have been written out here. We've successfully added the first stage in our pipeline. Let's take a look at the code for the second stage of our pipeline.
+
+The second stage will perform three operations on the data, preprocess the data so it can be fed into an ML model, train a machine learning model, a classifier with this data, and then finally evaluate the data and write out metrics. Since the focus of this demo is on continuous machine learning, I kept the pipeline fairly simple. Our pipeline has just two stages, but technically if you were to be writing production grade code, you would actually split your pipeline into many more stages.
+
+Preprocessing, training, and evaluation might all have been separate stages. The simpler pipeline that we have here is more than sufficient for our purposes. I’ve defined a function here called preprocess_train_evaluate. This accepts as an input argument the name of the folder that contains [Video description begins] The code on line 18 reads: def preprocess_train_evaluate (input_data_folder) [Video description ends] the training and evaluation data. That is the input_data_folder. On lines 21 through 24. I read in the training and test data along with the training and test labels from the input_data_folder.
+
+This input_data_folder will be the split_data directory that was generated by the clean_and_split stage. Once we've read in the data, we'll preprocess this data so that it's in the numeric form that our machine learning model expects. The numeric features in our data include Age, DurationOfPitch and MonthlyIncome.
+
+I've specified these in the numeric features list on lines 28 through 32. [Video description begins] The code on line 27 reads: # Processing The code on line 28 reads: numeric_features = [ The code on line 29 reads: 'Age', The code on line 30 reads: 'Duration0fPitch', The code on line 31 reads: 'MonthlyIncome' [Video description ends] I've then instantiated a pipeline to transform this numeric data by standardizing it using the StandardScalar. My numeric_transformer is instantiated on lines 33 through 38. [Video description begins] The code on line 33 reads: numeric transformer = Pipeline ( The code on line 34 reads: steps = [ The code on line 35 reads: ('imputer', SimpleImputer (strategy = 'median')), The code on line 36 reads: (scaler, standardscaler(7) [Video description ends] The first step in this numeric_transformer pipeline is to use an imputer, which will fill in missing values using the median of that column. Next, we apply the StandardScalar, which will standardize the values, subtract the mean and divide by the standard deviation.
+
+Next, I have a list of categorical_features in my data defined on lines 39 through 46. We'll transform the categorical data using the categorical_transformer defined as a pipeline on lines 48 through 53. [Video description begins] The code on line 48 reads: categorical_transformer = Pipeline ( The code on line 49 reads: steps = [ The code on line 50 reads: ('imputer', SimpleImputer(strategy = 'most_frequent ' )) The code on line 51 reads: ('encoder', OneHotEncoder (handle_unknown = 'ignore')) [Video description ends] The first step in the categorical transformer pipeline is a SimpleImputer that will fill in missing values with the most_frequent value of that column.
+
+The second step is an encoder that will perform OneHot encoding of the categorical values. The numeric features in our data and the categorical features will be transformed using the ColumnTransformer instantiated on lines 55 through 61. [Video description begins] The code on line 55 reads: preprocessor = ColumnTransformer ( The code on line 56 reads: transformers = [ The code on line 57 reads: ('num_tr' ,numeric_transformer, numeric_features), The code on line 58 reads: ('cat _tr', categorical_transformer, categorical_features) The code on line 60 reads: remainder = SimpleImputer(strategy = 'most_frequent') [Video description ends] The ColumnTransformer contains our numeric_transformer that will act on numeric_features and a categorical_transformer that will act on categorical_features.
+
+This ColumnTransformer preprocessor is what we'll use to preprocess our data before we fit a classification model. Let's scroll down further and take a look at the model that we train. I set up number of estimators as 5 min_samples_ split 2 and min_samples_leaf = 2, and I train a random forest classification model using these hyperparameters. I instantiate the RandomForestClassifier on line 68.
+
+I set up a scikit learn pipeline on line 75 through 77, where we first use the preprocessor to preprocess data and then fit this random forest model as our classification model, after pre-processing is complete. On line 78, we call the fit method to train our model and on line 80 we use the model to make predictions on the test data.
+
+Once we have the model predictions on lines 82 through 85, [Video description begins] the code on line 63 reads: # Fit a model The code on line 64 reads: n_estimators = 5 The code on line 65 reads: min_samples_split = 2 The code on line 66 reads: min_samples_ leaf = 2 The code on line 68 reads: rf_model = RandomForestClassifier( The code on line 69 reads: n_estimators = n_estimators, The code on line 70 reads: min_samples_split = min_samples_split, The code on line 71 reads: min_samples_leaf = min_samples_ leaf, The code on line 72 reads: class_weight = None [Video description ends] I compute the accuracy, precision, recall, and f1_score of the model on the test data. And on lines 87 through 90, I print out the scores to screen. Once we have these metrics on lines 92 and 93, I write the metrics out to the metrics.json file in the current working directory. Next, I plot the confusion matrix for this model. [Video description begins] The code on line 92 reads: with open ( ' metrics.json' , 'w' ) as outfile: The code on line 93 reads: json.dump ( { ' accuracy ' : acc, ' precision ' : prec, ' recall ' : rec, ' f1_score ' : f1 }, outfile) [Video description ends] This is the code on lines 96 through 98. On lines 100 through 103, I write out the predicted values from the model versus the actual labels from the test data set in a CSV file. And finally, on line 105 I save plot.png. [Video description begins] The code on line 95 reads: # Plot it The code on line 96 reads: disp = ConfusionMatrixDisplay. from_estimator( The code on line 97 reads: pipe_rf, X_test, y_test, normalize = 'true' , cmap = plt.cm.Blues The code on line 100 reads: pd.DataFrame ({ The code on line 101 reads: 'predicted': y_pred. squeeze(), The code on line 102 reads: 'actual': y_test.squeeze () The code on line 103 reads: } ) .to_csv('predicted _vs_actual.csv' , index=False) The code on line 105 reads: plt. savefig('plot. png') [Video description ends]
+
+This will be the confusion matrix for the RandomForestClassifier. And down below we have the main entry point for this Python code. We access the input_data_folder, which is a command line argument and I call preprocess train and evaluate by passing this input_data_folder in as an argument. Now that we've seen the code, let’s head over to the terminal window and use dvc stage add to add the second stage of our pipeline.
+
+The stage is called preprocess_train_evaluate specified using the -n flag. We specify dependencies using the -d flag. That is the dependency on the python code itself, the .py file and the split_data folder. The -M flag is used to identify your metrics file using capital M will ensure that metrics.json will not be added to the DVC cache.
+
+And finally on the last line we have the command to actually run python preprocess_train_evaluate split_data passed in as an input argument. Execute this command and this will add a new stage to our DVC pipeline. And if you look at the dvc.yaml, you’ll find that it has been updated with this new stage.
+
+We have the new stage reprocess_train_ evaluate the cmd section deps and metrics. Notice next to metrics.json, we have cache equal to false. Let's quickly run our pipeline to make sure everything is working just fine. I run the dvc repro command. This will only run the second stage that we've added because our data hasn't changed. The clean_and_split stage will not be executed.
+
+Now that we know that our pipeline is working just fine, it's time for us to push all of our data to be tracked by DVC. Here is my dvc push. It will use the credentials that have been cached on my local machine to actually connect to Google Drive and push data to Google Drive. The next step is to commit all of the changes that we’ve made to Git. Let’s run dvc status to make sure that our pipeline and data are all up to date.
+
+Yes, indeed they are. Let's add all of our code files so that they are tracked by Git. git add *.py will have Git track both of the python files that make up the two stages of our pipeline. Let’s add to git gitignore dvc.lock dvc.yaml. In addition to these we have the metrics.json file that would have been generated by running our pipeline and the predicte_vs_actual.csv file written out by the second stage of our pipeline. Run git status to see what Git is tracking.
+
+And a quick glance at my project shows me that all of the files I want to commit to git are now being tracked by git. Go ahead and call the git commit -m command and check in all of the code for the pipeline. All of the commits are present in my local repository. I’m going to call git push -u origin main to push these changes out to GitHub.
+
+At this point in time we have a working pipeline, we’re ready to use CML to add CI/CD to this pipeline and we’ll do that in the next video.
+
+6. Video: Configuring a CML Workflow for CI/CD (it_mlodvcdj_06_enus_06)
+
+Learn how to set up a CML workflow for continuous integration and continuous delivery (CI/CD).
+set up a CML workflow for continuous integration and continuous delivery (CI/CD)
+[Video description begins] Topic title: Configuring a CML Workflow for CI/CD. Presented by: Janani Ravi. [Video description ends]
+We are now ready to set up CI/CD or continuous integration continuous deployment of our machine learning workflow using CML continuous machine learning from Iterative AI.
+
+CML allows us to implement continuous machine learning using GitHub actions. GitHub actions is a powerful and flexible automation platform provided by GitHub. I should tell you though that other Git based version control systems such as GitLab and Bitbucket also offer their own version of GitHub actions, basically an automated workflow for CI/CD. Another thing to note here is that CML is not intrinsically tied to DVC.
+
+You can use data version control without using CML. You can use CML without using DVC. But we've been working with DVC so far. We've seen how useful it is to track the data and artifacts associated with our ML models. Let's see how we can integrate continuous machine learning with DVC.
+
+We've already discussed the fact that CML uses GitHub actions or its equivalent on other version control systems to implement CI/CD, and it does this by using workflows. A workflow is just a configurable set of automated tasks that are triggered based on specific events that occur in your repository, such as a push request, a pull request, or when an issue is created. A workflow is defined in the YAML format and it’s stored in the .github/workflows directory of your repository.
+
+And the first thing that we are about to do in order to setup continuous integration and continuous deployment for the machine learning workflow that we've just set up is to create a GitHub workflow. In our current working directory, we need to create a new folder called .github. This is a hidden folder and this is where our workflow will live.
+
+Once you've created this, create another subfolder called workflows under the .github directory. Now inside this directory I’m going to create a YAML file that contains the specifications of my workflow. This is the workflow that we'll create using GitHub actions.
+
+I’ve created a new file called cml.yaml and this particular workflow will run in an automated manner each time we push some new code or configuration update to our project repository. So if we update anything in dvc_cml_holiday_package_prediction, this workflow will be executed. [Video description begins] The command 1 reads: mkdir .github The command 2 reads: mkdir .github/workflows The command 3 reads: touch .github/workflows/cml.yaml [Video description ends]
+
+Before we look at how this workflow is set up, let's understand what exactly this workflow is going to do. This workflow will be triggered each time we push an update to our remote repository. Now, this push could involve a change to any of the configuration files associated with DVC, the metafiles. It could be a change to our code. It could be a change to our data.
+
+Changing the data would of course change the metafile. This would involve a git push to our remote repository. When a push is detected on this repository, the workflow defined in cml.yaml will execute. This workflow will execute the machine learning pipeline using DVC. It will run dvc repro to run our ML pipeline and generate new results.
+
+A new model will be trained with the new configuration parameters, new data if that exists, our pipeline stages will execute, generate metrics on the test data and these metrics and new visualizations will be associated with our commit to the remote repository. So for every push to remote repository, we'll have a nicely configured commit message showing you the metrics of the new model. This is the CI/CD workflow that we'll set up in the cml.yaml file and here is the file.
+
+I'll walk you through this step by step, just a heads up that this entire YAML specification uses GitHub actions and within GitHub actions we use CML and DVC. The very first line is used to specify the name of the workflow. You can give it any kind of meaningful name.
+
+I’ve called it CML & DVC Holiday Package Prediction. The second line is the on parameter. This is where we specify when this workflow will be triggered on this repository. Here on: [push] means each time we push to our remote repository any changes that we make to our code, that's when this workflow will run, that's when it will be triggered. [Video description begins] The code on line 2 reads: on: [push] [Video description ends]
+
+The next section here is jobs. A job in GitHub actions is just a series of steps in a workflow that is executed on the same runner that is using the same process. Every step in a job is either a Shell script that will be executed or an action that will be run. In our workflow, we have just the one job that's run.
+
+The job is called train-and-report. The train-and-report job will essentially train our machine learning model, generate a report on the test metrics for that model, and we'll attach this model's report to the commit that we make to GitHub. On line 5, I’ve specified a value for runs-on.
+
+This is where we configure how exactly our job will run our train and report job. Here we are saying that our job will run on [Video description begins] The code on line 5 reads: runs-on: ubuntu-latest [Video description ends] the latest version of an Ubuntu Linux runner. This means that the job will execute on a fresh virtual machine hosted by GitHub.
+
+When this workflow is executed, GitHub will provision a virtual machine on which the steps of this job will be executed one after the other. On line 6, we define the steps that are involved in this particular job and there are several steps, as you can see here. This steps specification groups together, all of the steps that is run within the train-and-report job.
+
+Let's start off by looking at the very first step. This step is defined using the uses keyword on line 7, and the entire step comprises lines 7, 8, and 9. [Video description begins] The code on line 7 reads: -uses: actions/setup-node@v1 The code on line 8 reads: with: The code on line 9 reads: node-version: '16' [Video description ends] Essentially what this step says is that using the actions/setup-node@v1, we’ll actually install Node.js version 16 on the Ubuntu machine that has been spun up to run this workflow.
+
+An action is just a custom application on the GitHub actions platform that performs a complex frequently repeated task. Installing Node.js on an Ubuntu machine is a frequently repeated task and it has been packaged as an action that we can use.
+
+After this step is executed we'll have a runner machine running Ubuntu with Node.js version 16 installed. Then the job moves on to the next step in the sequence. This step is defined on lines 10 through 12. [Video description begins] The code on line 10 reads: -uses: actions/checkout@v3 The code on line 11 reads: with: The code on line 12 reads: ref: $ {{ github.event.pull_request. head. sha }} [Video description ends] This step uses the actions/checkout@v3 and this is a standard GitHub action that checks out your repository on to the runner, allowing you to run scripts or other actions against your code.
+
+So essentially this checkout action allows you to run or execute the code that you have on GitHub. The next step, defined on lines 13 through 15 uses another standard GitHub action setup-python@v4. [Video description begins] The code on line 13 reads: -uses: actions/setup-python@v4 The code on line 14 reads: with: The code on line 15 reads: python-version: '3.x' [Video description ends] This step will execute version 4 of the setup Python action.
+
+And all this does is install the latest version of Python 3 on your Ubuntu machine. So far we've used GitHub actions but we haven't used CML or continuous machine learning at all. Well, the next step is where we setup cml. On line 16, we invoke the setup cml action, which is essentially a JavaScript workflow that provides cml commands in your GitHub actions workflow. This action allows users to install cml [Video description begins] The code on line 16 reads: - uses: iterative/setup-cml@v1 [Video description ends] on their Ubuntu runner. The setup cml action is available as a part of GitHub actions and we can invoke this just like other built-in GitHub actions that we've seen earlier.
+
+Just after that on line 17 we setup dvc and that’s also provided as a GitHub action. So at this point we have both cml and dvc installed [Video description begins] The code on line 17 reads: - uses: iterative/setup-dvc@v1 [Video description ends] on our Ubuntu runner. Now I have an important note here about the setup dvc action. Make sure that the dvc version that you’ve specified here, you can see this on line 19 matches the dvc version that you’re running on your local machine. If there is a version mismatch, [Video description begins] The code on line 19 reads: version: '3.7.0' [Video description ends] you might find that your pipeline just doesn't run because they might be parameters in your .dvc file not understood by the version that you're running using GitHub actions or vice versa.
+
+Here I’ve specified dvc version 3.7.0 and here on my terminal window I’m going to run dvc --version. You can see that the version that I'm using is 3.7.0. Let’s go back to our CML workflow and see the rest of the steps. Now that we have CML and DVC both installed, the next steps name is Train model, and in order to train our model, we need access to the data and the data is available on Google Drive.
+
+On line 22, I configure the variable GDRIVE_CREDENTIALS_DATA and point that to a GitHub secret. We'll use [Video description begins] The code on line 22 reads: GDRIVE_CREDENTIALS_DATA: $ { secrets. GDRIVE_CREDENTIALS_DATA } [Video description ends] a GitHub secret to configure our Google Drive credentials so that this workflow can access the Google Drive where DVC has stored data.
+
+This GDRIVE_CREDENTIALS_DATA is a part of the environment within which we'll run our script, and the script that I'm about to run is specified in the run section defined on lines 23 through 26. Within this script we'll run [Video description begins] The code on line 23 reads: run: | The code on line 24 reads: dvc pull data The code on line 25 reads: pip install -r requirements. txt The code on line 26 reads: dvc repro [Video description ends] a bunch of familiar DVC commands to execute our machine learning pipeline. dvc pull data will access the training data that's stored in remote storage that's on Google Drive.
+
+DVC will use the GDRIVE_CREDENTIALS_DATA environment variable to get the credentials to access Google Drive. Once we have the data, we'll make sure that our current environment has all of the requirements needed to run our pipeline. pip install the requirements.txt file that has been checked out from our repository and then we simply run dvc repro. dvc repro will execute our pipeline and generate test metrics, plots, and other details. This Train model step runs a script that executes our pipeline.
+
+The next step here is our final step in the workflow, the Create CML report. This Create CML report, simply executes a script that will generate a report that will be attached to our pull request when we commit to the remote repository. On lines 29 through 44.
+
+I have a bunch of dvc and cml commands to generate that report. [Video description begins] The code on line 29 reads: # Report metrics The code on line30 reads: echo "## Metrics" >> report.md The code on line 31 reads: git fetch --prune The code on line 33 reads: # Compare metrics to main The code on line 34 reads: dvc metrics diff main --md >> report.md The code on line 36 reads: # Publish confusion matrix diff The code on line 37 reads: dvc plots diff --target predicted_vs_actual.csv \ The code on line 38 reads: --template confusion -x actual -y predicted \ The code on line 39 reads: --show-vega main > vega. json The code on line 40 reads: vl2png vega. json -s 1.5 > confusion_plot.png The code on line 41 reads: echo "! [](./confusion_plot.png)" >> report.md The code on line 43 reads: # Create the final report The code on line 44 reads: cml comment create report.md [Video description ends] This entire report will be in the markdown format in the report.md file created on line 30. Notice that we echo Metrics out to report.md. Then we run dvc metrics diff main and we output that to report.md as well. I then call dvc plots diff and use the predicted_vs_actual.csv file that we’ve committed to GitHub and create a confusion matrix and this confusion matrix will be plotted out to a .png image file and this image file will become part of our report.
+
+This is just a series of commands that you see on lines 37 through 41 and finally on line 44, we call cml comment create report.md that will attach this report as a comment to our pull request. Creating the cml report requires the REPO_TOKEN environment variable defined on line 46. This is just a GITHUB_TOKEN that is automatically available when [Video description begins] The code on line 46 reads: REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }} [Video description ends] you run a workflow using GitHub actions.
+
+We don't have to do anything special to configure that.
+
+7. Video: Triggering CI/CD with Git Push (it_mlodvcdj_06_enus_07)
+
+During this video, discover how to run a CI/CD pipeline with Git push.
+run a CI/CD pipeline with Git push
+[Video description begins] Topic title: Triggering CI/CD with Git Push. Presented by: Janani Ravi. [Video description ends]
+Now that we've configured our workflow, it's time for us to see how it works. But first we have to configure the Google Drive credentials here on GitHub.
+
+Here is my GitHub repository. You can see that my entire machine learning pipeline has been committed and pushed to this repository.
+
+In order to configure your credentials, you’ll need to click on the Settings tab of to the top-right of this page and here scroll somewhere in the center of your page and on the left navigation pane, under Secrets and variables, you’ll find a link for Actions. [Video description begins] The other links are Codespaces and Dependabot. [Video description ends] This is where you’ll configure Secrets and variables that can be used by GitHub actions.
+
+Click on this button here that says New repository secret and make sure you call your repository secret GDRIVE_CREDENTIALS_DATA. This is the environment variable that our CML workflow references in order to get the credentials to access our data on Google Drive.
+
+And if you remember we copied over the access token that was cached locally on our machine and that said, please keep this aside because we'll need this later. Well, paste in the access token here, this is what will allow our GitHub actions workflow to successfully access Google Drive. Click on the Add secret button and the secret has been configured [Video description begins] Janani pastes the access token under the Secret* field. [Video description ends] for this repository. Once this is done on the left navigation pane under the Actions section, click on General.
+
+This is where you specify what permissions your Actions have. Now you can accept all of the default permissions that exist here except that here in Workflow permissions give your workflow Read as well as write permissions.
+
+These are permissions granted to the GitHub token while running workflows in this repository. And if you remember the Create CML report step in our Job uses this GitHub token to actually create a report that is attached with a pull request. That requires Read as well as write permissions for our Workflow on our repo. Make sure you make this change. Click on the Save button so that your Workflow permissions are updated.
+
+Once we push our workflow to GitHub, the workflow will be available under this Actions tab. You can see that the Actions tab is currently empty. We have no GitHub Actions configured at this point in time. [Video description begins] She clicks on the Actions tab to view the current GitHub actions. [Video description ends] Now comes the exciting stuff. I’m going to commit this CML YAML workflow to my local repository and push it to GitHub. This will actually cause that workflow to be executed.
+
+Remember, the workflow is executed on push to your repo. Let’s git add everything in our .github folder. We have just the one file there. [Video description begins] The command reads: git add .github/. [Video description ends] If you look at git status, we have .github/workflows/cml.yaml. This is what I'm going to commit. I’m going to commit this to the local repository first, Added the CML workflow file and I'm going to use git push to push this to my remote GitHub repository. As soon as you hit git push.
+
+Let's switch over to GitHub and see this workflow in action. If you hit refresh here on this page, you'll find that a new action has been setup. The name of the action is CML & DVC Holiday Package Prediction. And since this Action was configured to be executed on push, you can see this Action has been queued up to be executed. We’ve Added the CML workflow file that was our commit.
+
+Let’s click through and you can see our train- and-report job is currently in progress. Click through and let’s watch it run. The first thing that this workflow will do is provision a virtual machine with the latest version of Ubuntu. While that’s being setup, let’s take a look at the Workflow file. [Video description begins] She clicks on the Workflow file from the left navigation pane under Run details section. [Video description ends] This is the cml.yaml file that we’ve just pushed to GitHub.
+
+We’ve just walked through this file step-by-step and understood what each step does in our job. Let's go back to looking at where exactly our job has progressed to. You can see that every step in the job is now a separate section. [Video description begins] She clicks on train-and-report tab from the left navigation pane under Jobs section. [Video description ends] The first few steps have been executed successfully. We’ve Set up the job. We’ve setup and installed node version 16. We’ve checked out the repository. We’ve installed python, the latest version of python 3.
+
+The setup CML action also seems to have run through successfully. The setup CML uses Node.js, which is why we need it to install node on our Ubuntu machine. After setup CML the next step was to setup dvc and that seems to have run through fine as well. Remember the DVC version should match the DVC version you're using on your local machine. These are all standard actions that were executed.
+
+Now is where we run our custom script within this job. This is the Train model script that will pull the data, setup our ML pipeline environment and run dvc repro to execute the pipeline that seems to have run through just fine as well. And here we are on the last step here Create CML report. This shouldn't take very long. And in a few seconds you will find that the entire pipeline will have run through successfully.
+
+Let's look at some of the commands that we ran within this workflow, within the Train model step. This is where we access the data and train our model. Notice that Run dvc pull data was successfully executed. You can see the execution here. You can see that our pipeline was executed. The stage clean_and_split was executed. preprocess_train and evaluate did not change, so that stage was skipped.
+
+Next, let’s take a look at the step where we generated the CML report. What exactly is the CML report? This is the report associated with the commit that we made to this repository. And if you click on this link here, you'll be able to view the report. Here is the comment that our pipeline automatically added to the commit. [Video description begins] The highlighted part reads: 1 comment on commit 6a79344 [Video description ends]
+
+Observe that there are two confusion matrices side by side. This essentially is the diff of the confusion matrix that was already submitted to GitHub with the confusion matrix that the current commit generated. Any time you change your model and commit the change to GitHub, you'll get a diff of the confusion matrix for the new model as compared with the model that has been submitted to GitHub earlier.
+
+We haven't really changed our model here. We only added the workflow file. That's why these two confusion matrices are exactly the same. Let's go back to our main repository code. If you click on the Code tab, you can see this new commit that has Added the CML workflow file. [Video description begins] The new commit reads: .github/workflows [Video description ends] When we made this commit, our workflow automatically trained our model and then attached this comment with the commit. [Video description begins] She clicks on the 4 commits link located just above the code section to open the Commits page. [Video description ends]
+
+If you see we have 4 Commits so far. If you click on Commits, you can see the latest Commit here on top. Added CML workflow file. Click through to the comment and you can see the comparison of the two confusion matrices. [Video description begins] She clicks on the comment symbol. [Video description ends]
+
+This is the CML report that our workflow automatically attached with the Commit.
+
+8. Video: Viewing Metric and Plot Comparisons with CML Reports (it_mlodvcdj_06_enus_08)
+
+Find out how to view performance reports with every Git push.
+view performance reports with every Git push
+[Video description begins] Topic title: Viewing Metric and Plot Comparisons with CML Reports. Presented by: Janani Ravi. [Video description ends]
+Now that we know that our CI/CD pipeline is working successfully, let's tweak our code a little bit and trigger the pipeline once again.
+
+Here I am with my preprocess_train_evaluate.py code open. What I'm going to do now is tweak the model just a wee little bit. I'll change the code. We'll commit to GitHub and we'll watch the pipeline run. Previously we had the number of estimators in our RandomForest model set to 5. I’m going to change this to 50. [Video description begins] The code on line 64 reads: n_estimators = 50 [Video description ends] Hopefully this will be a better model than the one that we have previously pushed to GitHub.
+
+Having updated our file, let's go back to the terminal window [Video description begins] The command reads: git add preprocess_train_evaluate.py [Video description ends] and add preprocess_train_evaluate.py to git so that it tracks it. Let’s call git commit to change the number of estimators to 50 and let’s push the change that we've made locally to our remote repository. [Video description begins] The commit command reads: git commit -m "Change n_estimators = 50" The push command reads: git push -u origin main [Video description ends] This will trigger an execution of our CI/CD pipeline that uses CML. Let’s go back to Actions and you’ll find that our pipeline is running once again. Observe the new commit Changing n_estimators = 50. [Video description begins] Janani heads over to the GitHub repository and clicks on Actions tab onthe top. She checks the workflow that now states Changing n_estimators = 50. [Video description ends]
+
+This is our second workflow run. Click through and let’s take a look at this train-and-report job. Many of the steps to provision a VM, install Ubuntu, setup Node.js all of those have run through already and in a few minutes you’ll find that the entire pipeline runs through. Let’s take a look at Train model dvc repro would have figured out the change in our pipeline and would have re-executed the pipeline.
+
+Notice that the stage clean _and_split data was rerun, as was the stage preprocess_train_ evaluate. The Accuracy, Precision, Recall, and F1 Score of [Video description begins] The code on line 94 reads: > python clean_and_split.py data The code on line 98 reads: > python preprocess_train_evaluate.py split_data [Video description ends] the new model would have been logged out to metrics.json. Next stage is the Create CML report. This is the report that will be attached with this commit. [Video description begins] She clicks on Create CML report. Under it, the link on line 27 reads: https://github.com/loonytest/dvc_cml_holiday _package_prediction/commit/deac21fefe39a9c1d6d1122c7e2f9d86476d8 ddb#commitcomment -123263148 [Video description ends]
+
+Let's open this report up in a new tab and let's take a look. And now the report looks a little different. We have a section for Metrics as well. Now, this Metrics section exists in this CML report because the metrics for the new model that we just trained are different from the model that was already committed to GitHub previously. [Video description begins] The columns in the table under Metrics tab are path, Metric, main, workspace, and Change. [Video description ends]
+
+Observe we have the difference between the metrics for accuracy, f1_score, precision, and recall. There is another column called Change showing how these metrics have changed with this new commit. So our pipeline was rerun and the new metrics and the new differences have been logged out with this commit. Let’s track the f1_score. It was previously 0.56, with the new model, it’s 0.6. So a slight improvement. In addition to the Metric differences, we also have the two confusion matrices, the previous one for the previous model on the left and the new one for the new model on the right.
+
+I have to admit that the colors in the confusion matrices are rather subtle, so you can't really see the difference that clearly. But the differences do exist. We now have a new model committed to our repository along with the CML report. The really cool thing about GitHub is it shows you the differences between your previous commit and the current commit.
+
+You can see the number of estimators has changed and along with this difference, we also have a nice CML report giving us the latest metrics and the differences between the previous model and the current model. Now let's do this once again. I'm going to go back to my code and change the model yet again. This time around, we'll have our model train using 200 estimators, not 50. And we’ll also set the class_weight to balanced. [Video description begins] The code on line 72 reads: class_weight = 'balanced' [Video description ends]
+
+Hopefully this should be a far better model than the ones that we trained previously. Make sure you save the changes to this file. Let's now add this file once again to be tracked by git. Running git commit will allow us to commit changes to our local repository and we’ll run a git push, push these changes out to GitHub and we know that as soon as you perform the push our CML workflow will be triggered and our pipeline will be executed and we'll have a nice comment along with our Commit, our CML report.
+
+Let’s head over to the Actions tab where this new commit would have triggered the workflow yet again. Changing n_estimators to be = 200. Let's click through to this workflow run. Here is our train-and-report job that’s currently executing. [Video description begins] She clicks on train-and-report tab. [Video description ends] Let's click through and watch it in action. Executing this workflow is rather quick.
+
+The whole thing takes only about 3 or 4 minutes end-to-end, and in a few minutes you should have the CML report generated along with our commit. Let's take a look at Train model, which is where we executed our machine learning pipeline. Somewhere here at the bottom you’ll find the test metrics logged out to screen.
+
+You can see that the F1 Score of this model is 0.729, which is a great improvement over the previous models that we had. Under Create CML report. We have the link that will allow us to go directly to our commit and here is our CML report with our new model.
+
+Our f1_score is now 0.729 as opposed to 0.56 for the original model. And you can see here that there is a definite difference in the colors between the cells of the confusion matrix. The new model is clearly better. And here you see the difference in the code. Originally n_estimators was 50.
+
+We've now upgraded it so that we have 200 estimators for our model and this is how easy it is to use CML and DVC for continuous integration and continuous delivery of your model.
+
+With every Commit, we rerun our model and get the metrics from the model attached to the Commit.
+
+9. Video: Course Summary (it_mlodvcdj_06_enus_09)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. Presented by: Janani Ravi. [Video description ends]
+You have now reached the end of this course performing CI/CD using continuous machine learning. And indeed, you’ve also reached the end of this learning path on Data Version Control.
+
+We started this course off by setting up a DVC machine learning pipeline.
+
+As we have discussed in previous courses, pipelines allow you to modularize your machine learning workflow into logical stages. We then configured a remote storage location for this pipeline on Google Drive. This involved setting up the authentication for DVC to be able to access our drive folder.
+
+Next, we explored how to perform CI/CD, continuous integration continuous delivery or deployment using CML, continuous machine learning. CML is an open source tool for implementing CI/CD in machine learning projects.
+
+It’s built upon GitHub actions, which is a CI/CD platform that, as the name suggests, allows one to perform individual actions and to generate a result. We understood the various components of GitHub actions and how it allows us to run a sequence of steps to complete a task.
+
+CML is a tool that is separate from but closely integrated with DVC. We configured a GitHub actions file noting the layout and individual steps in it. We installed CML and DVC using GitHub actions and ran scripts to execute our pipeline on VMs provisioned on GitHub.
+
+We then ran the CI/CD pipeline to train our model and generated a CML report showing model metrics for every commit we made to GitHub. We also modified the model parameters and tried to improve the model's performance. At the end of this course, we have a solid and comprehensive understanding of DVC and we understand the nitty gritty of using it with Git for machine learning model versioning.
+
+We are now fully ready to tackle real world use cases of machine learning model and data versioning. That's it from me for today. Thank you for listening.
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

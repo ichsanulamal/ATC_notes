@@ -1,0 +1,1306 @@
+MLOps with Data Version Control: Working with Pipelines & DVCLive
+Data Version Control (DVC) pipelines enable the construction of end-to-end data processing workflows, connecting data and code stages while maintaining version control. DVCLive is a Python library for logging machine learning metrics in simple file formats and is fully compatible with DVC. In this course, you will configure and employ pipelines in DVC and modularize and coordinate each step, while leveraging the dvc.yaml file for stage management and the dvc.lock file for project consistency. Next, you will dive into practical DVC utilization with Jupyter notebooks. You will track model parameters, metrics, and artifacts via Python code's log statements using DVCLive. Then you will explore the user-friendly Iterative Studio interface. Finally, you will leverage DVCLive for comprehensive model experimentation. By pushing experiment files to DVC and employing Git branches, you will manage parallel developments. You will pull requests to streamline merging experiment branches and register model artifacts with the Iterative Studio registry. This course will equip you with the foundational knowledge of DVC and enable you to automate the tracking of model metrics and parameters with DVCLive.
+Table of Contents
+    1. Video: Course Overview (it_mlodvcdj_02_enus_01)
+
+    2. Video: Setting up a Machine Learning (ML) Pipeline Stage (it_mlodvcdj_02_enus_02)
+
+    3. Video: Adding a Stage to a Data Version Control (DVC) Pipeline (it_mlodvcdj_02_enus_03)
+
+    4. Video: Using the dvc.lock File (it_mlodvcdj_02_enus_04)
+
+    5. Video: Executing a DVC Pipeline (it_mlodvcdj_02_enus_05)
+
+    6. Video: Setting up a DVC Project for Regression Analysis (it_mlodvcdj_02_enus_06)
+
+    7. Video: Setting up Iterative Studio and DVCLive (it_mlodvcdj_02_enus_07)
+
+    8. Video: Setting up Data for Visualizing and Tracking Using DVC (it_mlodvcdj_02_enus_08)
+
+    9. Video: Logging Plots Using DVCLive (it_mlodvcdj_02_enus_09)
+
+    10. Video: Logging and Tracking Images Using DVCLive (it_mlodvcdj_02_enus_10)
+
+    11. Video: Tracking Experiments with DVCLive (it_mlodvcdj_02_enus_11)
+
+    12. Video: Pushing Experiment Files to DVC (it_mlodvcdj_02_enus_12)
+
+    13. Video: Committing a Pull Request to Merge Experiment Details (it_mlodvcdj_02_enus_13)
+
+    14. Video: Running and Tracking a kNN Regression Experiment with DVC (it_mlodvcdj_02_enus_14)
+
+    15. Video: Tracking Model Artifacts (it_mlodvcdj_02_enus_15)
+
+    16. Video: Registering Models with the Studio Registry (it_mlodvcdj_02_enus_16)
+
+    17. Video: Course Summary (it_mlodvcdj_02_enus_17)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_mlodvcdj_02_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Janani Ravi. [Video description ends]
+Hi, and welcome to this course on working with pipelines and DVCLive. My name is Janani Ravi, and I'll be your instructor for today. DVC pipelines is a feature of DVC that enables the construction of end-to-end data processing workflows, connecting data and code stages while maintaining version control. DVCLive is a Python library for logging machine learning metrics and other metadata in simple file formats fully compatible with DVC. In this course, you will learn to configure and employ pipelines in DVC, gaining the ability to meticulously track different stages of your machine learning workflows.
+
+You will modularize and coordinate each step, encompassing data handling, training, and prediction, while leveraging the dvc.yaml file for stage management and the dvc.lock file for project consistency. Next, you will dive into practical DVC utilization using Jupyter notebooks. Harnessing the power of DVCLive, you will effortlessly track model parameters, metrics, and artifacts via Python code's log statements. You will explore the user-friendly iterative studio interface for efficient management of metrics and parameters, complemented by visualizations of your model details.
+
+Finally, you will master the art of leveraging DVCLive for comprehensive model experimentation. By pushing experiment files to DVC and employing Git branches, you will manage parallel developments. You will learn how pull requests streamline merging experiment branches, and discover the strategic separation and coordination potential these branches offer. You will also explore registering model artifacts with the Iterative Studio registry through DVCLive. In conclusion, this course will equip you with the foundational knowledge of DVC, while enabling you to seamlessly automate the tracking of model metrics and parameters with the power of DVCLive.
+
+2. Video: Setting up a Machine Learning (ML) Pipeline Stage (it_mlodvcdj_02_enus_02)
+
+During this video, you will learn how to set up an ML pipeline stage.
+set up an ML pipeline stage
+[Video description begins] Topic title: Setting up a Machine Learning (ML) Pipeline Stage. Your host for this session is Janani Ravi. [Video description ends]
+At this point, you have a solid foundation in how data modeling and versioning works on DVC. But the way we've tracked our model so far, well, that's not how you would do it in the real world. In the real world, you train your model using a pipeline, and a pipeline would comprise of various steps in your machine learning workflow. So far, we've seen how you can use DVC to track the data that you used to train your model, track the serialized model artifact. We saw that the data and the model was stored and tracked by DVC, while the rest of the code files, as well as the meta files that you used to reference your data, and model were all tracked using Git.
+
+In this demo, I'm going to give you a very quick overview of how machine learning pipelines work with DVC.
+
+[Video description begins] A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: ML Pipelines in DVC. The second line reads: Codify the machine learning workflow using DVC, every step in the workflow is a stage in the pipeline. [Video description ends]
+
+We'll work with ML pipelines in much more detail towards the end of this learning path. And you can think of this demo as a teaser to the larger exploration of ML pipelines that we will do once you are more familiar and comfortable with DVC as a whole. So, what exactly are ML pipelines in DVC? Now you know that the machine learning workflow comprises of a number of different steps. You need to clean and preprocess your data, then train your model, and then use the serialised model for prediction. These are the basic steps. ML pipelines in DVC allow you to codify this machine learning workflow using DVC. Every step in your machine learning workflow will be a stage in the DVC ML pipeline.
+
+Just like you version and track your data and artifacts in DVC, DVC pipelines are versioned and tracked using Git and this allows you to better organize your projects and reproduce complete complex workflows. Essentially with ML pipelines, you can capture either a simple extract, transform, load ETL workflow, organize your entire machine learning project, or build a complex directed acyclic graph pipeline. And in this little overview of pipelines, I will also introduce to you the dvc.yaml file, a configuration file used in DVC projects which allows you to define and manage DVC pipelines and their dependencies. Now one little heads up before we get started with ML pipelines in DVC.
+
+With all of the Git checkout operations that we performed in this repo, our repo is not in a completely clean state where we can start creating and configuring our ML pipeline right away.
+
+[Video description begins] The panel now displays the following text in the first line: Clean up Git repo. The second line reads: Get the repo to a state where we can create the ML pipeline. [Video description ends]
+
+So, here I am going to run a bunch of Git commands to get the repository in a state where I can start building the ML pipeline. So, the first thing that we will do here is a bunch of little Git cleanup work. With all of this context in mind, let's pick up where we left off. We are still within the dvc_insurance_charges_prediction project, and I'm going to run a git status to see the current state of untracked files and any other modification that you may have in your local repository.
+
+[Video description begins] A Terminal window appears. The following command is added: git status. [Video description ends]
+
+Now here, after all of the commands that we performed in the previous part of this demo, I get a status that says HEAD detached at v2.0. Now, this is a state that you might get in when you use git checkout.
+
+Now, previously we checked-out v2.0 from our remote repository and sometime after we did that, we did a git checkout of the insurance.csv.dvc file for version 1.0, and that is what has led us to this detached HEAD state. Let's first understand what this means. Detached HEAD refers to a specific state in which you are no longer working on a Git branch but instead have checked-out a specific commit directly. Now this is what we have done.
+
+[Video description begins] The panel reappears. It displays the following text in the first line: HEAD detached. The second line reads: No longer working on a branch but have checked out a specific commit directly. [Video description ends]
+
+We've used git checkout and checked out a specific commit, identified by the tag v2.0. This state is called detached because your HEAD pointer, which is a reference to the latest commit in the currently checked out branch, is no longer associated with any branch.
+
+Now, this detached HEAD state is not inherently bad, however, it does mean that any new commits that you make will not belong to any branch, and if you switch to a different branch, you may lose a reference to the commits made while in the detached state. I wanted to show you that this particular state was possible so you don't get worried if you ever encounter this when you are working with Git and DVC. Now let's see how you can recover from the state. Now there are several techniques that you can use to recover from the state, but the easiest of all is to ensure that you are working on a branch, and the way you can ensure this is by checking out a particular branch or switching to a branch. We are familiar with the git checkout command. I am going to use git checkout to checkout the main branch
+
+[Video description begins] The next command added reads: git checkout main. [Video description ends] and this will ensure that now I am working on the main branch of my repository.
+
+I no longer have a detached HEAD, instead, I'm on the main branch. Now that we've fixed this little issue that arose, let's run a git status to see the current state of our local repository and you can see that there are two files here which have been modified but are not staged for commit. Before we move on to working with ML pipelines in DVC, I want a clean slate. 
+
+[Video description begins] The following command is added again: git status. [Video description ends]
+
+I don't want any modified files locally. So, what I'm going to do is run git restore to restore these files. Git restore is used to restore files in your working directory, staging area, or both. Now, let's break down this command. Notice I specify the --source flag and I set it to main. This option specifies that the source from which the file will be restored is the latest version available on the main branch. The --staged option restores the specified file to the staging area, also known as the git index.
+
+If changes were made to the file and staged before running git restore, this will unstage those changes, effectively bringing the file back to the state it has on the main branch, which is what we want. Now, this --staged flag is only needed if we have staged our file for commit and this is done when we use git add. We haven't done that so these files are not staged, but it doesn't hurt to have that flag in there. And finally, we have the worktree flag that I have specified which restores the specified file to the working directory. If changes were made to the file and not staged, this flag will override those changes with the version from the main branch, which is what we want. We have changes in these files that are not staged, that is not tracked by Git for commit, I just want this file to be restored to what was there in the main branch.
+
+[Video description begins] The command reads: git restore --source=main --staged --worktree insurance.csv.dvc. [Video description ends]
+
+So, let's go ahead and run this command. I'm going to run the same command for the metrics.json file as well. So, it is the same git restore command for metrics.json.
+
+[Video description begins] The next command reads: git restore --source=main --staged --worktree metrics.json. [Video description ends]
+
+Now, both of these files match what we have in the main branch. So, let's run a git status and make sure that our current working directory is up to date with main and it is.
+
+[Video description begins] The following command is added: git status. [Video description ends]
+  
+We can confirm this by running another git checkout operation, git checkout main will ensure that we are already on main and our branch is up to date. Let's cleanup the data track by DVC as well. So, I'm going to run a dvc checkout and this immediately causes me problems. 
+
+[Video description begins] The next command added reads: git checkout main. [Video description ends]
+
+dvc checkout looks at the model.pkl file that I have last added to DVC that's in the cache and it tries to bring that model.pkl file in my current working directory. But unfortunately but it seems like the model.pkl file has changed and these changes haven't been added and committed to DVC.
+
+[Video description begins] The next command reads: dvc checkout. [Video description ends]
+
+DVC is warning us that this file is unsafe and if you overwrite this file, whatever changes you had in the artifact will be lost. Well, in our case, here we don't really care about this. So, what I'm going to do is force remove the model.pkl file that I have in my current working directory.
+
+[Video description begins] The next command reads: rm -rf model.pkl. [Video description ends]
+
+Once I have done this, I no longer have a local changed copy of the model. So, when I run dvc checkout, whatever model.pkl file is present in the cache will be moved into my current workspace.
+
+[Video description begins] The next command reads: dvc checkout. [Video description ends]
+
+And there is no model.pkl file that it needs to override for this. Our cleanup work is steadily marching ahead here. Now if you run dvc checkout, everything will be fine. Everything is up to date as far as DVC is concerned in our current workspace.
+
+I will quickly run the wc -l command to make sure that the insurance.csv file has updated records. There are 1339 records in this CSV file. Things look good, I have the updated data.
+
+[Video description begins] The command reads: wc -l insurance.csv. [Video description ends]
+
+Our model artifact, the model.pkl file is going to be at the output of the training stage in our pipeline. So, we won't directly track the model artifact as though it were data. Previously, in this demo, we treated the model artifact exactly as though it were data we DVC added the model artifact and had DVC track it. Now this will be tracked as an output of a stage in our model pipeline. So, I'm going to explicitly call dvc remove and remove the .dvc metafile associated with the model.pkl file. [Video description begins] The next command reads: dvc remove model.pkl.dvc. [Video description ends] This command will essentially ask DVC to no longer track this model.pkl artifact.
+
+Don't worry, we will track the serialised artifact soon enough, but in a slightly different way using our ML pipeline. Let's quickly run a git status to see the current status of our workspace. You can see that the model.pkl.dvc file has been deleted and the .gitignore file in the current working directory has been modified. The change in the .gitignore file is that it no longer ignores the model.pkl serialised artifact.
+
+[Video description begins] The following command is added: git status. [Video description ends] 
+
+[Video description begins] The following command is added: cat .gitignore. [Video description ends] It only ignores the data file insurance.csv. This is totally fine. Remember this is part of the cleanup before we actually build our ML pipeline. I'm also going to forcibly remove this model.pkl serialised artifact. [Video description begins] The next command reads: rm -rf model.pkl. [Video description ends] It will be regenerated when we actually run training in our pipeline.
+
+At this point, the current status of the repository is where we want it to be.
+
+[Video description begins] The next command reads: git add .. [Video description ends]
+
+I'm going to git add all of the modified files so that they are staged to be committed. Let's run git status and you can see that we have the .gitignore file and the model.pkl.dvc deletion. These are the changes I'm going to commit to my local repository and push to remote. First let's do a dvc push.
+
+[Video description begins] The following command is added: git status. [Video description ends] 
+
+[Video description begins] The following command is added: dvc push. [Video description ends]
+
+This will tell DVC that we no longer want this model.pkl file to be tracked. We've gotten rid of the serialised artifact anyway, it will tell DVC to ignore it. So, everything is up to date. Let's do a git commit to our local repository. We have removed the model.pkl file from DVC tracking and that's my commit message.
+
+[Video description begins] The following command is added: git commit -m "Removing model.pkl file from DVC tracking". [Video description ends]
+
+And let's push out all of these changes to our remote repository as well using git push -u origin main.
+
+[Video description begins] The following command is added: git push -u origin main. [Video description ends]
+
+Our repository is now in a clean state. We are ready to move on to creating and configuring our ML pipeline.
+
+3. Video: Adding a Stage to a Data Version Control (DVC) Pipeline (it_mlodvcdj_02_enus_03)
+
+In this video, find out how to add a stage to an ML pipeline.
+add a stage to an ML pipeline
+[Video description begins] Topic title: Adding a Stage to a Data Version Control (DVC) Pipeline. Your host for this session is Janani Ravi. [Video description ends]
+Machine learning pipelines are essentially workflows with a number of different steps that are performed in a certain order. We first have data cleaning, you might have preprocessing, then you might train your model and then maybe tune your model using hyperparameter tuning, and finally, you will deploy your model for prediction. Each step in your machine learning workflow is a pipeline stage on DVC. Stages represent processing steps and they combine together to form your entire pipeline. A stage in a DVC pipeline can be thought of as a processing step in your machine learning workflow. Every step needs some input, it will perform some kind of processing on that input and then produces output. And DVC allows you to track all of the stages in your pipeline using a configuration file, the dvc.yaml file. What I'm going to do now is add one stage to my pipeline. You will see how DVC configures and stores information about this particular stage.
+
+[Video description begins] A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: Stage. The second line reads: A processing step in your ML workflow where each step needs input, does processing, produces output. [Video description ends]
+
+Now in order to add a stage you need to invoke the dvc stage add command and there are a number of flags that you can use with this command to specify the different configuration options for this stage. The first flag here is the -n flag. This is what you'll use to specify the name of the stage. The stage that I am adding to my pipeline is the train stage where we'll actually train our model. We are working with the same insurance charges prediction code as before and the train.py file is unchanged from what we saw previously.
+
+Now every pipeline stage requires some inputs to actually execute or run. These inputs are the dependencies for that particular stage and dependencies are specified using the -d flag. Now this train stage depends on the training code. If the training code changes, the stage will have to be re-executed which is why I have the -d train.py indicating that the code in that Python file is a dependency for this train stage. Another dependency for this stage is the data that we used to train our model and that is the second -d flag here, the -d insurance.csv indicates to DVC that this insurance.csv file is a dependency for the train stage because if the data in insurance.csv changes, well, training will have to be rerun.
+
+A stage needs to specify the dependencies that it will use to perform processing. It also needs to specify what outputs it will generate, and that is using the -o flag. The output of this stage is the model.pkl file. After training the model, the model is serialized out as an artifact and that's this model.pkl file. Use the -o flag to specify any outputs that a particular stage might have. Now, this stage also produces metrics for the model, and we usually specify metrics using the -M flag. When you use the M instead of the m, this tells DVC that this metrics.json should not be cached. So, it will add another property indicating that metrics.json should not be stored in cache.
+
+We can commit it to Git if we want to. And finally, the very last line of dvc stage add is where we specify the command that needs to run when this stage is executed. The command that we will run is python train.py with train as an input argument.
+
+[Video description begins] A Terminal window appears. The command in the first line reads: dvc stage add -n train -d train.py -d insurance.csv \. The next line reads: -o model.pkl -M metrics.json \. The third line reads: python train.py train. [Video description ends]
+
+While executing the pipeline, this is the command that DVC will run python train.py with train as an input argument. Let's run this command and take a look at this output printed out by DVC. Notice it says that Added stage 'train' in 'dvc.yaml'. Now the train stage makes sense, but what is this dvc.yaml file? Well, this is the configuration file that we will use to manage our ML pipeline. This dvc.yaml file typically resides in the root directory of a DVC project.
+
+It uses YAML, yet another markup language which means it's a human-readable file. This contains the definition of your DVC pipelines and each pipeline is represented as a series of stages. Each stage specifies the command to execute and the input and the output that that stage needs and produces respectively. Now, if you run an ls -l command in your current working directory, you will see that a new file has been created, dvc.yaml.
+
+[Video description begins] The following command is added: ls -l. [Video description ends]
+
+All of the other files here in this directory are familiar to you and there's of course, the hidden folder, the .dvc folder which you can't see with an ls -l. Let's run a git status to see if there are any previously track files that have been modified.
+
+[Video description begins] The command reads: git status. [Video description ends]
+
+Notice the .gitignore file in our current working directory has changed. And of course, we have the new dvc.yaml configuration file. Let's look at the .gitignore and then we'll take a look at the dvc.yaml. The .gitignore file has changed because it's now haven't run our pipeline to produced the serialized artifact. And we previously deleted the model.pkl file that existed earlier.
+
+[Video description begins] The next command reads: cat .gitignore. [Video description ends]
+
+ However when we added a stage to our pipeline, we indicated that the model.pkl file is going to be the output of that stage and that's why its present here in gitignore. With that said, it's time for us to actually look at the dvc.yaml file to see how exactly a stage has been defined. Here you can see that we have a new section called stages. It's within this section where we'll have all of the stages in our pipeline. Now, we have just one stage, the train stage that's defined on line 2. And within the train stage, we have a number of configuration settings for that stage.
+
+Now, there are a variety of different fields that are valid config properties for a stage. There are 4 different fields that I've defined for this particular stage, the command, the deps, outs, and metrics. Let's understand each of these in turn starting with the command field. The command field is the only required field in a stage specification. This basically defines one or more shell commands to execute when the stage is actually run in your pipeline. The value corresponding to this command field can either be a single value or a list of values. Commands are executed sequentially until all are finished or one of them fails. The only command that we execute for this stage is by running the Python code in train.py passing in train as an input argument. Next, we have the deps field. This is a list of dependency paths relative to our current working directory.
+
+The two dependencies for this stage include the insurance.csv file which contains the training data and the train.py file which contains the actual code for training. If any of these change, this stage will have to be re-executed. The outs field contains a list of output paths for the outputs generated when we execute the stage. There's just one value here. The only output of the stage is the model.pkl file, the artifact of our serialized model. Output paths are also relative to the current working directory. The metrics field contains a list of metrics files and optionally whether or not this metrics file is cached. Because we use the -M flag while specifying metrics.json, cache is set to false. Before we move on from this dvc.yaml file, this contains not just the stages in your ML pipeline, but other configuration associated with your machine learning project. It can contain inputs for the parameters you used to train your model, plots that you wish to visualise as a part of your project. Any artifacts that you wish to log with DVC, and so on.
+
+[Video description begins] A page titled dvc.yaml appears. The left navigation pane contains the header: FOLDERS. Below, various folders and directories appear like projects, dvc, .dvc, dvc.yaml, and so on. The main pane contains various lines of code. Line 1 reads: stages:. Line 2 reads: train:. Line 3 reads: cmd: python train.py train. Line 4 reads: deps:. Line 5 reads: - insurance.csv. Line 6 reads: - train.py. Line 7 reads: outs:. Line 8 reads: - model.pkl. Line 9 reads: metrics:. Line 10 reads: - metrics.json:. Line 11 reads: cache: false. [Video description ends] 
+
+We'll see the use of the dvc.yaml for these other configuration settings in the next demo that follows. We've added a single stage to our pipeline. Let's see the list of stages in our pipeline by running dvc stage list and there is exactly one.
+
+[Video description begins] The Terminal window reappears. The following command is added: dvc stage list. [Video description ends]
+
+ You can see the name of the stage, its outputs and the reports that it generates. At this point, we actually have a pipeline. All it does is train a model, but that one stage exists. How do you run this pipeline? Well, you use the dvc repro command. This is the command to reproduce a DVC pipeline. When you run this command, DVC examines the defined pipeline stages in the dvc.yaml file and determines which stages need to be executed based on the current state of the pipeline and its dependencies.
+
+DVC will only execute those stages where dependencies have been modified.
+
+[Video description begins] The following command is added: dvc repro. [Video description ends]
+
+It will not execute those stages which are up to date. When we run dvc repro for the very first time, our single stage is executed. Notice the metrics are displayed on to screen. And there is another interesting detail here. There is a lock file that's generated, the dvc.lock file. This lock file is interesting and requires a bit of explanation, I will get to that in a bit, but let me show you that DVC will not rerun stages if the stages are up to date in their execution. When I run DVC repro once again, notice that this time around it skips the train stage. It finds that whatever outputs had to be generated by the train stage, they are all up to date, no dependencies have changed and that stage is not rerun.
+
+4. Video: Using the dvc.lock File (it_mlodvcdj_02_enus_04)
+
+Discover how to use the dvc.lock file.
+use the dvc.lock file
+[Video description begins] Topic title: Using the dvc.lock File. Your host for this session is Janani Ravi. [Video description ends]
+In the previous video, when we ran the DVC pipeline for the very first time using DVC repro, this is the DVC repro command at the top of the screen. We saw that the train stage was executed, a bunch of metrics were printed out to screen and then we have the message that says Generating lock file 'dvc.lock' updating this lock file. Now, what is this DVC lock and why is it important? The dvc.lock file is a file that is automatically generated by DVC when you execute your pipeline in DVC using a command such as dvc repro.
+
+[Video description begins] A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: dvc.lock. The second line reads: Captures the current state of the pipeline. [Video description ends]
+
+Now, this file is located within your main working directory, right parallel to the dvc.yaml file. The dvc.lock file serves as a mechanism to track the current state of execution of your pipeline. It keeps track of the versions of your data and artifact files that make up the dependencies and outputs of the different stages of your pipeline, captures this at a specific point in time when the pipeline was last run. And it's this file that allows the dvc repro command to know what stage needs to be re-executed.
+
+It looks at the information in this dvc.lock file. But what exactly is this information in dvc.lock? Well, let's take a look. The dvc.lock file is in the YAML format, which means it is human-readable. Observe that we have a section for stages in this dvc.lock and within that we have a definition for the train stage. Now, within this train stage, it specifies what command was run for the stage.
+
+[Video description begins] A page titled dvc.lock appears. The left navigation pane contains the header: FOLDERS. It further contains various folders and directories like projects, dvc, .dvc, dvc.lock, and so on. The main pane contains various lines of code. Line 4 reads: cmd: python train.py train. [Video description ends]
+
+Now, so far, it's exactly like the DVC YAML file, but here is where the differences are. Notice the deps field and within the deps field, there are two dependencies for the stage, the insurance.csv file, and the train.py file.
+
+For every stage in your machine learning pipeline, the dvc.lock file captures the hashes associated with each dependency and it's this hash that allows your pipeline to know if any dependency has been modified. Both the hash as well as the sizes of the dependency are present. You can see this on lines 8 and 9 and lines 12 and 13. If there is any change to insurance.csv or train.py, this hash will change.
+
+When you execute your pipeline, DVC repro will actually compare the new hash for your files with the hash that's present in dvc.lock and that's how it will determine what stage needs to be rerun. Now, turn your attention to the outs field. Here we know the outputs of this particular train stage, metrics.json and model.pkl. The hash values and the sizes of these outputs are captured here in dvc.lock.
+
+[Video description begins] Line 5 reads: deps:. Line 6 reads: - path: insurance.csv. Line 7 reads: hash: md5. Line 8 reads: md5: d5364d06246fb4bfa4cc7d1ee89ebd0d. Line 9 reads: size: 55628. Line 10 reads: - path: train.py. Line 11 reads: hash: md5. Line 12 reads: md5: 773a904f9e9e054d4c147772c61f5ca3. Line 13 reads: size: 3286. [Video description ends] 
+
+These hash values will be used by DVC repro to check whether the stage needs to be rerun because the outputs that will be produced will be different in any way.
+
+[Video description begins] Line 14 reads: outs:. Line 15 reads: - path: metrics.json. Line 16 reads: hash: md5. Line 17 reads: md5: 25b295f2b2dbdf53fe7238781f8bc80d. Line 18 reads: size: 128. Line 19 reads: - path: model.pkl. Line 20 reads: hash: md5. Line 21 reads: md5: 146808022d7b3eacb3c8122cec84b230. Line 22 reads: size: 8530009. [Video description ends]
+
+Thus, dvc.lock serves as a snapshot for the current state of your pipeline and helps DVC determine if your pipeline needs to be re-executed. This dvc.lock file is not meant to be tampered with by hand, it's automatically generated when you use DVC repro to run your pipeline. It's common practice to add this dvc.lock file to Git and commit it to your remote repository so that it can be shared with your team members and other collaborators.
+
+5. Video: Executing a DVC Pipeline (it_mlodvcdj_02_enus_05)
+
+Find out how to execute a DVC pipeline.
+execute a DVC pipeline
+[Video description begins] Topic title: Executing a DVC Pipeline. Your host for this session is Janani Ravi. [Video description ends]
+The pipeline that we have so far has just one stage, it's not really a complete pipeline yet. Let's add yet another stage to our pipeline to make it a little more real world. I use the dvc stage add command as before. The name of the stage is predict as specified by the -n flag.
+
+Now, this stage depends on the train.py file. Remember, our prediction code is in the same train.py file, so that is a dependency for this stage as well. This of course, isn't perfect. It's OK for the purposes of our demo, but later when we build a more complex pipeline towards the end of this learning path, you'll find that I'll have my prediction code separated out from the training code. train.py is a dependency. The insurance.csv file is also a dependency because that's what we'll use to access the test data that we'll use for prediction.
+
+So, both train.py and insurance.csv are dependencies for this stage of the pipeline as well. And finally, what's the command that we'll run to execute this stage? Well, we'll call Python train.py and pass in predict as an input argument.
+
+[Video description begins] A Terminal window appears. The following command is added: dvc stage add -n predict -d train.py -d insurance.csv \. The next line reads: python train.py predict. [Video description ends]
+
+Once again, I'd like to emphasize that when you're building a real-world pipeline, your different stages are likely to be in different code files. Here, for the purposes of our first experience with ML pipelines, I have everything in train.py and I just have the insurance.csv file which contains the train as well as the test data. But the recommendation is keep your code and data for different stages different.
+
+Running this command has updated our dvc.yaml file to add the new stage to that file. Let's quickly take a look at how that file has changed, and here is the updated dvc.yaml file. Now, within the stages section, we have two stages, the train stage defined on lines 2 through 11. We've already seen that in detail.
+
+[Video description begins] A page titled dvc.yaml appears. The left navigation pane contains the header: FOLDERS. It further contains various folders and directories like projects, dvc, .dvc, dvc.lock, dvc.yaml, train.py, and so on. The main pane contains various lines of code. Line 2 reads: train:. Line 3 reads: cmd: python train.py train. Line 4 reads: deps:. Line 5 reads: - insurance.csv. Line 6 reads: - train.py. Line 7 reads: outs:. Line 8 reads: - model.pkl. Line 9 reads: metrics:. Line 10 reads: - metrics.json:. Line 11 reads: cache: false. [Video description ends]
+
+We have this new second predict stage defined on lines 13 through 17.
+
+[Video description begins] Line 13 reads: predict:. Line 14 reads: cmd: python train.py predict. Line 15 reads: deps:. Line16 reads: - insurance.csv. Line 17 reads: - train.py. [Video description ends]
+
+Remember, the command field is the only required field in the definition of a stage.
+
+The command that will be executed for predict is python train.py and we pass in predict as an input argument. Now, this stage has two dependencies, it depends on the data in insurance.csv. That's where we get the test data that our model uses to perform predictions. It also depends on train.py that contains the code for prediction. Now, we can go back and execute our pipeline and we do this by running dvc repro.
+
+[Video description begins] The Terminal window reappears. The following command is added: dvc repro. [Video description ends]
+
+Now, what dvc repro will do here is check what stages exist in the pipeline and compare those with the dvc.lock file. This is how it'll figure out what stages need to be re-executed and what stages can be skipped. dvc repro will notice that nothing has changed in insurance.csv and train.py, and the train stage was previously executed and results are available.
+
+It'll skip this train stage. It'll only run the predict stage. Now, since dvc repro involved the execution of a stage, that is something was changed. The dvc.lock file is also updated to match the current state of our pipeline execution. Let's take a look at this dvc.lock file and you can see that this contains the entry for two stages. We have the train stage defined on lines 3 through 22. We've already seen the details there. If you scroll down below, you'll see the entry for the predict stage as well on lines 24 through 34.
+
+[Video description begins] The page titled dvc.lock appears. The main pane displays several lines of code. [Video description ends]
+
+The structure of the dvc.lock is very similar to the dvc.yaml except for the presence of the hashes. Notice in the predict stage, both dependencies, insurance.csv and train.py, both have an associated hash and size. It's these hash values that dvc lock uses to track whether anything has changed in the dependencies for the predict stage.
+
+The current stage of our pipeline is up to date. If you were to run the dvc repro command once again, dvc repro will look at the dvc.lock file, figure out that the pipeline is up to date, and will not run any stage in your pipeline.
+
+[Video description begins] The Terminal window reappears. The following command is added again: dvc repro. [Video description ends]
+
+The train.py file is a dependency for both stages in our pipeline. I'm now going to head over to train.py and make a small change. Instead of printing out running training to screen, I'm going to print out Executing training. So, it's not a meaningful change to the code, but it's a small change that will change the hash of this Python file. So, instead of running predictions, I'm going to print out 'Executing predictions' to screen.
+
+[Video description begins] A page titled train.py appears. The main pane displays various lines of code. Changes are made in lines 21 and 79. Line 21 reads: print('Executing training'). Line 79 reads: print('Executing predictions'). [Video description ends]
+
+Now, DVC uses the hash values it has computed for all of the dependencies for each stage in your pipeline to determine whether the dependencies have been updated and whether that particular stage needs to be rerun. Now, this little modification that we made to the train.py file did not actually change our code in any meaningful way, but it did change the file itself, which means the hash of the file has also changed. If we were to now try and re-execute the pipeline by running dvc repro, you'll find that this command is smart enough to see what stage needs to be rerun.
+
+[Video description begins] The following command is added again in the Terminal window: dvc repro. [Video description ends]
+
+It does not rerun train even though train.py is a dependency for the train stage because it finds that the outputs of the train stage have been cached and it can simply reuse those cached outputs. But it does run the predict stage. Because the code in train.py was a dependency for predict, there were no cached outputs that it could find and it realized that this stage needs to be rerun. And this essentially is a small glimpse of how pipelines work in DVC. We'll do a much more in-depth example towards the end of this learning path. Now that we made a bunch of changes, let's look at the git status and see what modified files we have that we need to commit to our repository.
+
+[Video description begins] The next command reads: git status. [Video description ends]
+
+The dvc.lock and dvc.yaml files are both untracked.
+
+I'm going to use git add to include those files as a part of our committed files.
+
+[Video description begins] The next command reads: git add .. [Video description ends]
+
+Let's run git status once again, a number of files will now be tracked by Git, so all of these files are in green. Of course, we have the .DS_Store file as well. Well, you can choose to leave those out if you want to, but I'm just going to commit them so that we don't do a bunch of unnecessary operations here. Ideally, you'd add those files to gitignore. Go ahead and commit this new change where we have training and prediction as stages to our local repository. 
+
+[Video description begins] The next command reads: git status. [Video description ends]
+
+[Video description begins] The following command is added: git commit -m "Training and prediction as stages". [Video description ends]
+
+I'm going to create a new tag associated with commit. This is v3.0 where we use 1338 customers and we specify train and predict as stages in an ML pipeline.
+
+[Video description begins] The next command reads: git tag -a "v3.0" -m "model v3.0, 1338 customers, train and predict as stages". [Video description ends]
+
+Let's quickly do a git push -u origin main to get our latest commits to our remote repository, and once this is complete, don't forget to do a separate git push for your tag.
+
+[Video description begins] The next command reads: git push -u origin main. [Video description ends]
+
+Remember, tags are not pushed along with the commits, so git push --tag will ensure that the v3.0 tag is also pushed to our remote repository and we can quickly head over and check that this is indeed the case.
+
+[Video description begins] The next command reads: git push --tag. [Video description ends]
+
+ [Video description begins] The page titled loonytest/dvc_insurance_charges_prediction appears. It contains various tabs below, like Code, Issues, Pull requests, Actions, and so on. The Code tab is active. To the right are various drop-downs labeled Unwatch, Fork, and Star. Under this, there are more drop-downs labeled main, Add file, Code, and so on. Next to the dropdown labeled main, the following 2 buttons are displayed: 1 branch and 3 tags. Below, there is a section containing various items like .dvc, .dvcignore, .gitignore, dvc.lock, and so on. The right pane displays various sections like About, Releases, Packages, and so on. [Video description ends]
+
+There are 3 tags here. We have version 1, version 2, and then, of course, version 3.
+
+[Video description begins] The page displays 2 buttons below: Releases, and Tags. The Tags button is active. It displays a section labeled Tags, containing 3 items: v3.0, v2.0, and v1.0. [Video description ends]
+
+6. Video: Setting up a DVC Project for Regression Analysis (it_mlodvcdj_02_enus_06)
+
+In this video, you will learn how to set up DVC in a Jupyter Notebook.
+set up DVC in a Jupyter Notebook
+[Video description begins] Topic title: Setting up a DVC Project for Regression Analysis. Your host for this session is Janani Ravi. [Video description ends]
+In this demo, we'll build and train a regression model using Jupyter Notebooks. We'll have DVC track the data for this model as well as the serialized model. We'll also register this model with DVC, and we'll do this using a number of new technologies. Rather than manually tracking the model metrics by hand, we'll use DVCLive to automate the tracking of our model metrics, parameters, and logging the artifacts associated with our model.
+
+In addition, we'll visualize all of the information that we store with DVCLive using DVC Studio, also called Iterative Studio. So, there are a number of new technologies that we'll introduce in this demo, but first we'll see how we can run our Jupyter Notebook so that it operates within a virtual environment. Go ahead and activate the virtual environment and let's create a new folder for this demo.
+
+[Video description begins] A Terminal window appears. The following command is added: source dvc_venv/bin/activate. [Video description ends]
+
+ We'll call it dvc_flights_price_prediction, cd into this demo.
+
+[Video description begins] The next command reads: mkdir dvc_flights_price_prediction. [Video description ends]
+
+This is going to be our workspace or our current working directory for this regression model.
+
+[Video description begins] The next command reads: cd dvc_flights_price_prediction. [Video description ends]
+
+In order to run your Jupyter Notebook so that it works within your virtual environment, that is, it uses your virtual environment as a kernel, you'll need to install this library called ipykernel. This will allow Jupyter Notebooks to run within your virtual environment.
+
+[Video description begins] The next command reads: pip install ipykernel. [Video description ends]
+
+ipykernel is a Python package that provides the communication between the Jupyter Notebook or JupyterLab interface and the Python kernel, and it enables you to run Python code interactively and display output within the notebook environment. Before running pip install ipykernel, make sure that you're within the virtual environment that you want to access from your notebook. That is critical before performing these steps. As you can see from the prompt, we are indeed in the dvc_venv, so the steps below will work perfectly. This is extremely important. Go ahead and pip install ipykernel and once that's done, you can run jupyter kernelspec list to see the list of available kernels for Jupyter Notebooks.
+
+[Video description begins] The next command reads: jupyter kernelspec list. [Video description ends]
+
+Now kernelspec list will pick up all of the environments that you can use to run your notebook.
+
+As you can see, there's just one kernel available here that is the python3 kernel. This is the kernel for the base Python environment, but we want to operate within a virtual environment. Now, let's run a command that will make this dvc_venv kernel available to the Jupyter Notebook. This is Python -m ipykernel install --user --name=dvc_venv. This will make the dvc_venv kernel available for the current user.
+
+[Video description begins] The following command is added: python -m ipykernel install --user --name=dvc_venv. [Video description ends]
+
+Once this command runs through successfully, you can see that the kernelspec for this kernel has been installed. So, if you run jupyter kernelspec list now, you should find that the dvc_venv kernel is now available to Jupyter Notebooks.
+
+[Video description begins] The command reads: jupyter kernelspec list. [Video description ends]
+
+It wasn't available before, but it is now available. The fact that the dvc_venv is now available means that we can run our Jupyter Notebook within a virtual environment. Go ahead and start up Jupyter Notebook.
+
+[Video description begins] The next command reads: jupyter notebook. [Video description ends]
+
+Remember, all of these operations have to be performed within the dvc_venv. Once the notebook server is up and running, go ahead and open up a browser window to this notebook server.
+
+[Video description begins] A page titled Jupyter appears. It contains 2 buttons at the top labeled Quit, and Logout. Below, there are 3 tabs: Files, Running, and Clusters. The Files tab is active. It has an empty table. To the left, there is a button labeled Upload, a drop-down labeled New, and a Refresh button. [Video description ends]
+
+Now, let's confirm that we indeed can run our kernel within our virtual environment. If you click on the new drop-down, observe that we have two options for the kernel here. We have the Python 3 that is the base kernel. And we have the dvc_venv that is the kernel within our virtual environment. Make sure you choose dvc_venv when you create a new notebook.
+
+[Video description begins] A drop-down menu appears with options like Python 3 (ipykernel), dvc_venv, mlflow_venv, and so on. [Video description ends]
+
+This is going to be our notebook where we train a regression model, use DVCLive to track metrics and artifacts for our model, and use DVC Studio to visualize our model's metrics and parameters. FlightsPricePrediction is the name of this notebook.
+
+[Video description begins] A page titled 'Untitled - Jupyter Notebook' appears. It contains various tabs below, such as File, Edit, View, Insert, Cell, Kernel, and so on. There is an icon toolbar underneath. Below this, there is an empty code cell. [Video description ends]
+
+ [Video description begins] A dialog box titled Rename Notebook appears. It contains a field labeled Enter a new notebook name. [Video description ends]
+
+Let me just adjust this notebook so that we don't have this header, we don't have the toolbar, and we have line numbers for each code cell.
+
+That'll give us more space to work with. Now, you can change the kernel that you're working in at any point in time by clicking on the Kernel option here, go to Change kernel and then you'll select the kernel that you want. We are already running in the dvc_venv virtual environment and this you can confirm by looking at the top right of your screen. Notice that our current virtual environment is dvc_venv.
+
+[Video description begins] The Kernel tab contains a drop-down with options like Interrupt, Restart, Reconnect, Shutdown, Change kernel, and so on. The Change kernel option further offers 3 options: Python 3 (ipykernel), dvc_venv, andmlflow_venv. [Video description ends]
+
+The next thing for us to do is to create a GitHub repository for our current project. Let's head over to github.com. We've already created a GitHub account and we've logged in. We have our previous repository there for insurance charges prediction. Let's create a new repository.
+
+[Video description begins] A page titled GitHub appears. Below, it displays the header: Dashboard. It has a search bar at the top, along with some icons like the add icon, profile icon, and so on. The navigation pane on the left contains 2 sections: Top Repositories and Recent activity. The main pane has 2 tabs: For you and Following. The For you tab is active. It contains 2 tabs below: Start a new repository and Introduce yourself with a profile README. The right pane displays the header: Latest changes. [Video description ends]
+
+Click on the user profile at the top right of the page and go to Your repositories.
+
+[Video description begins] A pane appears on the right. It contains the header: loonytest. Below, various options appear like Set status, Your profile, Your repositories, Your projects, Your stars, and so on. [Video description ends]
+
+This will take you to a view where you can see all of your repositories.
+
+Here I'm going to click on New repository and give the repository a meaningful name. dvc_flights_price_prediction is what I've called this repository. I've made this a Private repository, but you can choose to make your repository public if you want to.
+
+[Video description begins] A page titled loonytest appears. Below, it contains various tabs like Overview, Repositories, Projects, Stars, and so on. The Repositories tab is active. It contains a search bar below, along with drop-downs labeled Type, Language, and Sort. There is a button labeled New as well. A header appears next. It reads:dvc_insurance_charges_prediction. [Video description ends]
+
+ [Video description begins] The page now displays the header: Create a new repository. Below, it contains various fields, such as Owner, Repository name, Description, and so on. Below the Description field, there are 2 radio buttons available labeled Public and Private, [Video description ends]
+
+Click on the Create repository button and an empty remote repository will have been created for your project.
+
+[Video description begins] The page titled loonytest / dvc_flights_price_prediction appears. It contains various tabs at the top, such as Code, Issues, Pull requests, Actions, Projects, and so on. The Code tab is active. Below, there are 2 boxes labeled Set up GitHub Copilot and Invite collaborators. A section called Quick setup appears next. It contains a URL that reads: https://github.com/loonytest/dvc_flights_price_prediction.git. [Video description ends]
+
+Once this is done, the next step is to head over to our local workspace, which is going to be our Jupyter Notebook. We'll initialize this repository, we'll initialize DVC, and we'll be ready to get started. But first, there is an additional library that I need for all of the analysis that I'm going to do, the seaborn library for visualization. I haven't installed that previously, so I'm going to go ahead and install that right now.
+
+[Video description begins] The Jupyter notebook titled FlightsPricePrediction appears. Below, it contains various empty code cells. Code cell 1 is highlighted. It reads: pip install seaborn. [Video description ends]
+
+Let's initialize our Git workspace and this is done using the git init command.
+
+We can run shell commands from within our notebook by using the exclamation operator, bang git init will actually run this shell command in our current working directory, which happens to be dvc_flights_price_prediction. That's where our notebook is located.
+
+[Video description begins] Code cell 2 reads: !git init. [Video description ends]
+
+This will initialize a local git repo in this workspace or our current working directory. We're going to be using DVC as well as Git, of course, so go ahead and call bang dvc init and this will initialize DVC as well.
+
+[Video description begins] Code cell 3 reads: !dvc init. [Video description ends]
+
+We are now set up with both Git as well as DVC in our current workspace. Before we perform any commits, let's set up the username and e-mail address that's associated with our current user using git config. user.name as before, is "loonytest", and the e-mail address happens to be an e-mail address I've set up "loony.test.001@gmail.com".
+
+[Video description begins] Code cell 4 is highlighted. Line 1 reads: !git config --global user.name "loonytest". Line 2 reads: !git config --global user.email "loony.test.001@gmail.com". [Video description ends]
+
+Once this is done, let's run git status to see what uncommitted files we have in our local repository.
+
+[Video description begins] Code cell 5 is highlighted. Line 1 reads: !git status. [Video description ends]
+
+After having initialized DVC, we can expect to see the three new files there.
+
+The .dvc directory has been created, we have the .gitignore under it, the config file, and the .dvcignore. There are of course, some Untracked files, including this notebook. This notebook is not something that we are going to be committing to Git, at least for this demo. Since we have our initial setup for DVC, let's go ahead and commit this locally. So, I called git commit -m. We've initialized DVC for flights price prediction.
+
+[Video description begins] Code cell 6 is highlighted. Line 1 reads: !git commit -m "Initialized DVC for flights price prediction". [Video description ends]
+
+Now, this commit is a local commit to the local repository I have in my machine. If I run git log, I'll be able to see a single commit there, this is the commit that we just performed.
+
+[Video description begins] Code cell 7 reads: !git log. [Video description ends]
+
+Please note that this commit is only on our local repository. This commit hasn't been pushed to GitHub yet. We haven't wired up the GitHub repository that we created for this project as a remote yet. We'll do that in just a bit.
+
+7. Video: Setting up Iterative Studio and DVCLive (it_mlodvcdj_02_enus_07)
+
+During this video, discover how to set up an Iterative Studio project.
+set up an Iterative Studio project
+[Video description begins] Topic title: Setting up Iterative Studio and DVCLive. Your host for this session is Janani Ravi. [Video description ends]
+In addition to using DVC for versioning our data and our models, we are going to be using two other DVC tools or projects in this demo. The first is Iterative Studio. The Iterative Studio dashboard is a web-based user interface provided by iterative.ai, the company behind DVC or data version control, as well as other technologies such as CML, continuous machine learning.
+
+[Video description begins] A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: Iterative Studio. The second line reads: A visual dashboard used to help improve collaboration on ML projects. [Video description ends]
+
+The Iterative Studio dashboard or the DVC Studio as we'll call it, is a visual dashboard designed to enhance collaboration, reproducibility, and management of your machine learning projects that you track using DVC.
+
+The second tool that we'll be using in this demo as well as in the demos that follow is DVCLive. DVCLive is an open-source library which allows you to monitor the progress of metrics, parameters, and all of the other details that you need to know during the training of machine learning models.
+
+[Video description begins] The panel now displays the following text in the first line: DVCLive. The second line reads: Open-source library for tracking metrics, parameters, plots, and artifacts for ML models. [Video description ends]
+
+Now, DVCLive is built with Git and MLOps principles in mind and it basically automates the tracking of metrics, parameters, model artifacts, and plots associated with your ML models using DVC. We'll set up all of the configuration that we need for DVC Studio or Iterative Studio as well as for DVCLive. We'll first use DVCLive stand-alone and then we'll integrate DVCLive with DVC Studio. Let's get set up with Iterative Studio first. Head over to dvc.org/doc/studio/get-started and here you'll find the documentation that you need to get started with Iterative Studio.
+
+Now, you can read this documentation or you can just follow along with this video.
+
+[Video description begins] A page titled DVC by iterative.ai appears. It contains various tabs at the top, such as Use Cases, Doc, Blog, Course, Support, and so on. The navigation pane on the left contains a search bar and some options below, such as Home, Install, Get Started, Use Cases, User Guide, Studio, and so on. The main pane displays the header: Get Started with Iterative Studio. Below, it has a link labeled Iterative Studio. There is a pane on the right with a section called CONTENT. [Video description ends]
+
+Click on this link here on top and this will take you to the Iterative Studio dashboard and here you'll be asked to Sign In with your Git account. Now, you can use GitHub, GitLab, or Bitbucket.
+
+[Video description begins] A page titled Studio by iterative.ai appears. It contains various tabs at the top, such as Features, Pricing, Enterprise, Docs, and so on. It also contains 2 buttons adjacent to it, labeled Get onboarding support, and Sign In. Below, there is a section: Sign up for free with. It contains 4 options: GitHub, GitLab, Bitbucket, and Email. [Video description ends]
+
+For personal use for prototyping our model, Iterative Studio is absolutely free. Go ahead and click on the Sign In option and choose GitHub as an option because we've set up GitHub as our remote repository. 
+
+[Video description begins] A pop-up titled 'Sign in with' appears. It contains 4 icons below: GitHub, GitLab, Bitbucket, and Email. [Video description ends]
+
+Now, we are already logged into GitHub, so Iterative Studio will simply use our GitHub credentials. Make sure you Authorize Studio to use these credentials and that's all you need to do to log in to Iterative Studio.
+
+[Video description begins] A page titled 'Authorize Iterative Studio' appears. It contains the header: Iterative Studio by Iterative would like permission to. Below, 3 options appear: Verify your GitHub identity (loonytest), Know which resources you can access, and Act on your behalf. A section titled Resources on your account appears next. At the bottom, 2 tabs appear labeled Cancel and Authorize Iterative Studio. [Video description ends]
+
+ You're automatically set up, and here you'll find that a number of example projects are already available for you to work with. So, you can choose to explore these example projects, but we'll be setting up our own project in just a bit.
+
+Each project here is a GitHub repository holding the contents of your DVC workspace.
+
+[Video description begins] A page titled Projects appears within Iterative Studio. It contains 3 tabs at the top, such as Projects, Models, and Settings. The Projects tab is active. There is a search bar and 2 buttons adjacent to it, labeled: Add a project and Talk to an expert. A welcome message appears below followed by 3 project thumbnails labeled example-get-started-experiments, demo-bank-customer-churn, and example-get-started. There is another space labeled Add a project available next to these thumbnails. [Video description ends]
+
+ Once we set up our GitHub repository and we have initialized DVC, we can add that as a project here in Iterative Studio. This page here is the main Projects page for your DVC projects. If you click on the Models tab, that'll take you to all of the models that have been registered with Iterative Studio. Once you've trained your machine learning models, your model artifacts that have been pushed to DVC can be accessed here in the Models page of Iterative Studio. Once the model is available here, you can apply version numbers to the models. You can apply the stage to which that model belongs, whether it's in dev stage, the staging stage, or in prod. And you can use DVC get commands to access these models from your DVC projects and then use these models to make predictions.
+
+Now here's the Models page.
+
+[Video description begins] The Models tab is active now. It contains various drop-downs at the top, such as Last stage assignment, All stages, Any library, and so on. Below, there is a table with several column headers like Model, Repository, Latest version, Description, dev, prod, and stage. It contains various items. [Video description ends]
+
+Let's head over to Settings and take a quick look. If you want Iterative Studio to be able to access the data that you've stored on Cloud Repositories such as Amazon's S3 or Google Cloud Storage Buckets or Azure BLOB Store, here is where you configure credentials for your cloud remotes. We'll see how you can do this later on in this learning path.
+
+[Video description begins] The Settings tab is active now. It contains a button below, labeled Add new credentials. [Video description ends]
+
+Now, let's head back to the main Projects page and add a new project here on Iterative Studio. Click on the button that says Add a project and this will take you to a page where you can select the repository where your project lives. This will be a GitHub repository because remember, we've logged in using our GitHub account, but you'll need to do some additional configuration to get this to work.
+
+Observe that there are no repositories available here. Well, the reason for that is you need to configure Git integration settings in order for Iterative Studio to be able to see the repositories in your GitHub account. Click on the link to do exactly that.
+
+[Video description begins] A page titled Add a project appears. It contains a link below, that reads: Configure Git integrations settings. Below, there is a search bar. [Video description ends]
+
+This will take us to a Profile page where we can configure the Git integration settings. Scroll down to the Git integrations section here on this profile page.
+
+[Video description begins] A page titled Profile appears. Below, it contains the header: Account settings. It contains various sections below, such as Profile, Account, Git integrations, Cloud credentials, Studio Access Token, and Delete account. The Git integrations section displays the item: Github (@loonytest). There are 2 buttons available next to it labeled Configure and Disconnect. The Studio Access Token section contains a button called Generate new token. [Video description ends]
+
+We logged in using our loonytest GitHub account. Go ahead and click on the Configure button right next to that account to set up a Git integration with this GitHub repository. So what exactly is this integration? We are allowing Iterative Studio to access repositories from our GitHub account.
+
+[Video description begins] A page titled Install & Authorize Iterative Studio appears. It displays 2 radio buttons labeled All repositories and Only select repositories. Below, there are 2 sections titled with these permissions and User permissions. At the bottom, 2 tabs appear titled 'Install & Authorize' and 'Cancel'. [Video description ends]
+
+We are going to allow Iterative Studio to access all repositories so that we have to set up this integration just once.
+
+You can also be more restrictive with your permissions and only allow Iterative Studio to access select repositories. All repositories is what I've checked here. I'm going to go ahead and install and authorize Iterative Studio to be able to access all of these repository. Now if you're going to be giving this kind of access, you'll need to authenticate and authorize yourself with GitHub. 
+
+[Video description begins] A page titled Confirm access appears. It displays a field labeled Password and a tab called Confirm. [Video description ends]
+
+Go ahead and confirm and at this point, you'll be able to Add a project and connect Iterative Studio with the GitHub repository that contains your DVC project. Notice My GitHub is available right there and if you expand this, all of your GitHub repos will be listed here. Now, dvc_flights_prediction, that's the name of our current project go ahead and Connect that repository. When Iterative Studio has access to your DVC projects repository, it'll be able to access the DVC YAML file, the .dvc files for your data, for your models, everything, and then be able to display information about your project in a nice visual manner here within Iterative Studio.
+
+[Video description begins] A page titled Project settings appears. It contains 3 sections labeled: Project name, Project directory, and Public access. A tab labeled Create Project appears at the bottom. [Video description ends]
+
+Click on Create Project and this will set up a new project here for flights_price_prediction within Iterative Studio, let's click through and take a look at the project that we've just created. And at this point, there's absolutely nothing here. You see that there's some more work before we can connect DVCLive that we'll run in our notebook with Iterative Studio. We'll get to that in just a bit. I'm just going to close this window and here you can see that it says you Cannot display an empty repository. Well, that's because whatever changes to initialize our DVC project we'd committed locally, we hadn't pushed to GitHub.
+
+[Video description begins] A page titled loonytest/dvc_flights_price_prediction appears. There is a toolbar available below the title bar. It contains the following tabs: Filters, Columns, Plots, Trends, Compare, and Run. Below, the page displays the message: Cannot display an empty repository. [Video description ends]
+
+We need to fix this, and we'll do that by heading back to our Jupyter Notebook. Now, here I'm going to add my dvc_flights_price_prediction GitHub remote repository as an origin for my local repository using git remote add origin.
+
+This sets origin to point to our remote repository where we'll be pushing changes.
+
+[Video description begins] The Jupyter notebook titled 'FlightsPricePrediction' appears. Below, it contains various code cells. Code cell 8 is highlighted. It reads: !git remote add origin https://github.com/loonytest/dvc_flights_price_prediction.git. [Video description ends]
+
+Next, let's rename the current branch that we are working with as the main branch, as is the convention now, and let's push all of our local changes to origin, that is, to our GitHub remote repository using git push -u origin main. Once this is done, our repository in GitHub is no longer empty.
+
+[Video description begins] Code cell 9 is highlighted. It reads: !git branch -M main. [Video description ends]
+
+ [Video description begins] Code cell 10 is highlighted. It reads: !git push -u origin main. [Video description ends]
+
+So let's head back to Iterative Studio and let's hit refresh. Since our repository is no longer empty, we should see the details of our repository right here. Iterative Studio actually detects changes in your repository and whenever it does so, it'll show you this Update project button. Go ahead and click on that button. And in just a bit, you should be able to see the commits that we've made to our remote repository here within Iterative Studio.
+
+Now, our experiments and all of the models that we train will also be available here, but for now, we just see the commits. At this point, we've set up our project on Iterative Studio, so it's time for us to install DVCLive. If you remember, I had said this is the second DVC tool that we are going to be using that'll automate the tracking of parameters, metrics, and artifacts for our model. Using DVCLive is straight forward. All it needs is a pip install of the dvclive Python package and you can do this from within your Jupyter Notebook.
+
+[Video description begins] Code cell 11 is highlighted. It reads: !pip install dvclive. [Video description ends]
+
+Now, once DVCLive has been successfully installed, well, in order for DVCLive to be able to talk to Iterative studio, we'll need to configure a token. This is what brings us back to Iterative Studio.
+
+Click on the account at the top right of your page and select the Profile option. And here on this Profile page, if you scroll down to somewhere near the bottom of the page, you'll find a section called Studio Access Token. This is where you can Generate a new token that we'll configure in our Jupyter Notebook allowing DVCLive to access Iterative Studio. So, generate a new token and Copy this token over. 
+
+[Video description begins] A context menu appears with options like Profile, Your teams, Help, Docs, and so on. [Video description ends]
+
+[Video description begins] The page titled Profile appears. Below, it contains the header: Account settings. It contains various sections such as Profile, Account, Git integrations, Cloud credentials, Studio Access Token, and Delete account. The Studio Access Token section contains a button called Generate new token. [Video description ends]
+
+Back to Jupyter Notebook, we'll run the dvc config --global studio.token command and configure the studio.token parameter with the token that we just generated using Iterative studio.
+
+[Video description begins] Code cell 12 is highlighted. It reads: !dvc config --global studio.token isat_r7slxwNuIU4z2amj6BV0tDn6DfNYBxlnYBkdw4YCIWOKqw9l. [Video description ends]
+
+At this point, when we use the DVCLive Python package in our Jupyter Notebook, well, DVCLive should be able to connect to Iterative Studio and push metrics and parameters to be visualized in Iterative Studio.
+
+8. Video: Setting up Data for Visualizing and Tracking Using DVC (it_mlodvcdj_02_enus_08)
+
+In this video, find out how to visualize data for ML.
+visualize data for ML
+[Video description begins] Topic title: Setting up Data for Visualizing and Tracking Using DVC. Your host for this session is Janani Ravi. [Video description ends]
+Once again, in this demo we'll have our DVC remote storage via folder on our local machine within the tmp directory. We won't be using any kind of cloud storage because our data isn't that huge yet.
+
+[Video description begins] The Jupyter notebook titled: FlightsPricePrediction appears. It contains a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The right top corner displays: dvc_venv. Below, it contains several code cells. [Video description ends]
+
+So let's go ahead and create a tmp directory called dvc_storage_fpp under the /tmp folder.
+
+I do this using the mkdir command and then I add this as a remote storage for DVC using dvc remote add -d. The name of the remote storage is local remote and it points to the tmp storage we just created. I then run dvc remote list to confirm that this has indeed been added as remote storage and you can see that because of the -d, 'localremote' has been set as the default remote for this project.
+
+[Video description begins] Line one of code cell 13 reads: !mkdir/tmp/dvc_storage_fpp. Line 3 reads: !dvc remote add -d localremote /tmp/dvc_storage_fpp. Line 5 reads: !dvc remote list. [Video description ends]
+
+This of course, means that DVC has updated the config file within the .dvc folder. So, let's take a look at the contents of this file. You can see that the remote storage is set to localremote and 'localremote' points to dvc_storage_fpp in our tmp folder.
+
+[Video description begins] Code cell 14 reads: !cat .dvc/config. [Video description ends]
+
+Now that we've configured our remote storage, let's go ahead and add this config file. That's the only file that has changed. Let's run git status to ensure that there are no other changes. That's the only modification.
+
+[Video description begins] Code cell 15 reads: !git add .dvc/config. Code cell 16 reads: !git status. [Video description ends]
+
+So I'll now commit these changes to my local repositories.
+
+I don't like to have modified files sitting around. Now, these changes are in my local.
+
+[Video description begins] Code cell 17 reads: !git commit -m "Added local remote to DVC config". [Video description ends]
+
+Let's push these to remote as well. So let's call git push -u origin main. This will push these local changes to our GitHub repository. So, we are now all in sync with our remote repository.
+
+[Video description begins] Code cell 18 reads: !git push -u origin main. [Video description ends]
+
+At this point, our DVC, DVCLive, and Iterative Studio setup is complete so we can get started with training our regression model. Now this involves a number of Python packages and libraries and that's why we have all of these import statements here.
+
+[Video description begins] Line 1 of code cell 19 reads: import pandas as pd. Line 2 reads: import numpy as np. Line 3 reads: import seaborn as sns. Line 4 reads: import matplotlib.pyplot as plt. Line 6 reads: from sklearn.compose import ColumnTransformer. Line 7 reads: from sklearn.pipeline import Pipeline. Line 8 reads: from sklearn.impute import SimpleImputer. Line 9 reads: from sklearn.preprocessing import StandardScaler, OneHotEncoder. Line 10 reads: from sklearn.model_selection import train_test_split. [Video description ends]
+
+We'll be training the model using scikit-learn. Now the data that we'll use here is some airline data that is present in the data subfolder I have in my current working directory. I've placed this flights_price_data.csv file in this folder and you can see what this data looks like.
+
+[Video description begins] Code cell 20 is displayed. Line 1 reads: airline_price_data = pd.read_csv('data/flights_price_data.csv'). Line 3 reads: airline_price_data.head(). [Video description ends]
+
+We have details such as the airline, the flight number, source_city, departure_time, destination_city, arrival_time, and a number of other details of flights, and all of these flights are based out of India. Every record here in this dataset is the price paid by a customer for a flight ticket on one of these flights. This dataset is freely available on Kaggle and here is where I accessed this data.
+
+[Video description begins] A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: Flight Price Prediction. The second line reads: https://www.kaggle.com/datasets/shubhambathwal/flight-price-prediction. [Video description ends]
+
+Let's take a look at how many records we have in this data. This is a fairly large dataset.
+
+[Video description begins] Code cell 21 reads: airline_price_data.shape. [Video description ends]
+
+You can see that we have a total of about 300,000 records, so 300,0000 tickets with corresponding prices. And we'll use this for flight price prediction.
+
+Now, all of these flights correspond to different airlines operating in India and I'm curious about how many records belong to each of these airlines. So I want to count the number of records, groupby airline, and view the results.
+
+[Video description begins] Code cell 22 reads: airline_price_data['airline'].value_counts().rename_axis('airline').to_frame('counts').reset_index(). [Video description ends]
+
+And you can see that most flights are on Vistara, that's a full service domestic airline. Then there are flights for Indigo, SpiceJet, GO_FIRST, all other airlines operating in India. The same information can be visualized as a bar chart by calling sns.countplot. This is the seaborn countplot and that will give us a distribution of records across the different airlines.
+
+[Video description begins] Code cell 23 reads: sns.countplot(x = 'airline', data = airline_price_data). [Video description ends]
+
+About a 120,000 records are for Vistara. Then we have Air_India at number 2 with about 80,000 records in this dataset. SpiceJet at the bottom with around maybe 9000 records. Now I'm going to write some Python code to represent this information as a list of dictionary objects. So, here is the Python code to do that. So I have the value counts for each airline and I essentially convert it to a list of dictionary objects where each dictionary contains the name of the airline and the counts field in the dictionary contains the number of records we have for that airline. In the next demo, we'll see how you can use DVCLive to log this plot as well as many other plots.
+
+[Video description begins] Code cell 24 is displayed. Line 1 reads: airline_cust_counts = airline_price_data['airline'].value_counts() \. Line 2 reads: .rename_axis('airline').to_frame('counts') \. Line 3 reads: .reset_index().to_dict('records'). Line 5 reads: airline_cust_counts. [Video description ends] 
+
+9. Video: Logging Plots Using DVCLive (it_mlodvcdj_02_enus_09)
+
+Learn how to log plots to DVCLive.
+log plots to DVCLive
+[Video description begins] Topic title: Logging Plots Using DVCLive. Your host for this session is Janani Ravi. [Video description ends]
+Before we write any code here, let's understand what we are going to be doing. We are going to be using DVCLive to track and visualize our plots in DVC. DVCLive will automate this entire process so you do not have to manipulate and change the DVC YAML files by hand to have plots associated with your machine learning workflow. Just a heads up that we are not going to be logging all of these plots to Iterative Studio yet. So, DVCLive will log the plots locally. We will connect to Iterative Studio later on in this demo. In order to have DVCLive log your machine learning parameters, metrics, models, and everything else, you need to have an instance of a Live object which I instantiate on line 3.
+
+[Video description begins] The Jupyter notebook titled: FlightsPricePrediction appears. It contains a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The top right corner displays: dvc_venv. Below, it contains several code cells. [Video description ends] 
+
+You'll invoke methods on this Live instance to log your plots and later on your metrics, parameters, and artifacts. It's common practice to use the with command to work with a live instance because as soon as this with block is complete, it'll call live.end that'll essentially log out everything that you want logged. So, we import the Live class from dvclive on line 1. we instantiate a live object, on line 3, and on lines 4 through 10 we call live.log_plot. We specify a name where the plot metrics will be stored that's on line 5, customer_count_by_airline. The data is in airline_cust_counts. Remember that data is in the dictionary format.
+
+This will be a horizontal bar chart, so on the x axis, we'll have the counts of the airlines. On the y axis, we'll have the airlines. The template that we'll use is the 'bar_horizontal' template. A plot template tells DVC what kind of plot we want to display. bar_horizontal is a supported template. Other templates include scatter, confusion, bar_horizontal, sorted, linear, and so on. And the title of the plot is 'Customer Count by Airline'. When you don't specify a directory as an input argument to a Live object, the default directory where all of this data will be logged is going to be the DVCLive directory.
+
+[Video description begins] Line 1 of code cell 25 reads: from dvclive import Live. Line 3 reads: with Live() as live:. Line 4 reads: live.log_plot(. Line 5 reads: 'customer_count_by_airline',. Line 6 reads: airline_cust_counts,. Line 7 reads: x = 'counts',. Line 8 reads: y = 'airline',. Line 9 reads: template = 'bar_horizontal',. Line 10 reads: title = 'Customer Count by Airline'). [Video description ends]
+
+When you run this bit of code, you'll encounter a warning which says that dvclive cannot connect to Studio without creating a DVC experiment. That's because we haven't added in the parameters to have DVCLive connect to Studio. We'll do that later as we discussed. Having run this code, if you switch over to the current working directory, you'll see the plot details logged in the dvclive subfolder.
+
+[Video description begins] A page appears with the heading: dvc_flights_price_prediction. It displays a toolbar at the top. The left navigation menu contains two sections: Favorites and Tags. The main pane contains data, dvclive, and FlightsPricePrediction.ipynb respectively. [Video description ends]
+
+Observe that we have a dvc.yaml file here that has been auto-generated. There's also a report.html file which will contain all of the data that we've logged using the Live object.
+
+Here the data is just a single chart. Let's take a look at the contents of these files starting with the dvc.yaml file. 
+
+[Video description begins] The dvclive folder is now open. It contains three files and one folder: dvc.yaml, metrics.json, report.html, and plots. [Video description ends]
+
+Now, we know that the dvc.yaml file is a configuration file that Data Version Control uses to define and manage your machine learning workflow. Now, DVC can generate and render plots based on your project's data and this plot information can be stored in the DVC YAML and becomes part of your DVC project. When we instantiated a DVCLive object and called log plot on it, a plot section was generated in this DVC YAML file containing our user-defined plot. Now on line 2, you can see that the plot is defined by a path to the file where the plots values are actually present in the customer_count_by_airline.json file. This JSON file will be present in the plots custom subfolder. I'll leave it to you to explore on your own but essentially it contains the data that we want to visualize in the JSON format, our airline counts. The other details here are the attributes of the plot.
+
+It was created using the bar horizontal template. On the x-axis, we display the counts. On the y-axis, the airlines and the title of the plot is Customer Count by Airline.
+
+[Video description begins] The dvc.yaml file is now open. The left navigation menu displays the title: FOLDERS. It contains the following: dvclive, plots, dvc.yaml, and so on. On the main pane is a terminal window with a set of codes. Line 1 reads: plots:. Line 2 reads: - plots/custom/customer_count_by_airline.json:. Line 3 reads: template: bar_horizontal. Line 4 reads: x: counts. Line 5 reads: y: airline. Line 6 reads: title: Customer Count by Airline. [Video description ends]
+
+The metrics.json file was automatically generated by DVCLive. That's empty. The reports.html file is the HTML file that displays the plot that we have defined. DVC generates plots as static HTML pages that you can view in a web browser. Let's open up reports.html in a web browser and here is the plot that we had logged out using DVCLive. It's a horizontal bar chart airlines on the Y-axis and the counts on the X-axis.
+
+At this point, we've successfully visualized and displayed plots using DVC, using DVCLive to log out our plots. 
+
+[Video description begins] The report.html file is open on the browser. It contains a horizontal bar chart with the title: Customer Count by Airline. [Video description ends]
+
+Now if you call dvc plots show, that will allow you to view the plots in your folder.
+
+[Video description begins] The Jupyter notebook titled: FlightsPricePrediction appears again. Code cell 26 reads: !dvc plots show. [Video description ends]
+
+Notice that an index.html file is created within the dvc plots folder. If you copy this URL and view it in your web browser, you'll be able to see the plots associated with your project. And at this time the only plot that we have is our airline counts plot. Rather than viewing these plots in this very manual way, if you call dvc plots show --open, that will automatically open up the HTML file with your plots.
+
+[Video description begins] The following command is added in the code cell: !dvc plots show --open. [Video description ends]
+
+Running this command will open up a new browser window and there you see our plot, Customer Count by Airline.
+
+Now that we know how to log and visualize plots in DVC using DVCLive, let's visualize many more plots and in order to do that we'll be performing a number of groupby operations. These groupby operations will allow us to view aggregate metrics along different dimensions. We'll look at one example groupby operation here and we'll do similar groupby operations to visualize different metrics. Here I access the airline_price_data, groupby the airline column and compute the mean for all of the other columns in my data, mean(numeric_only = True). I reset the index and let's look at the aggregated information. You can see that this groupby and mean aggregation gives me the mean duration, days_left, and price for each individual airline in my set of records. Now that you know how these groupby aggregations work, let's log a number of different plots. I'll be logging 5 or 6 plots here.
+
+[Video description begins] Line 1 of code cell 30 reads: records_df = airline_price_data.groupby ('airline').mean(numeric_only = True).reset_index(). [Video description ends] 
+
+In order to log and track these plots using DVC, I use DVCLive and for that, I need to instantiate a Live instance and I do this on line one. I use the with command here which will essentially call live.end to basically closeout this live instance after the block of code within the with block has been executed. When I instantiate the Live object on line 1, I do not specify the directory where DVCLive should store its results, which means it'll continue to use the default DVCLive directory. Everything that we had there previously will be overwritten. Just something to keep in mind. On lines 2 through 10, I call live.log_plot and log the plot that we've seen before, Customer Count by Airline.
+
+[Video description begins] Line 1 of the highlighted code cell reads: with Live() as live:. Line 2 reads: live.log_plot(. Line 3 reads: 'customer_count_by_airline',. Line 4 reads: airline_price_data ['airline'].value_counts (). Line 5 reads: .rename_axis ('airline').to_frame ('counts'). Line 6 reads: .reset_index().to_dict('records'),. Line 7 reads: x = 'counts',. Line 8 reads: y = 'airline',. Line 9 reads: template = 'bar_horizontal',. Line 10 reads: title = "Customer Count by Airline"). [Video description ends]
+
+On lines 12 through 19, I log the avg_ticket_price_by_airline. Notice the groupby aggregation, on lines 14 and 15, I groupby('airline') and compute the mean for all of the numeric columns. On the x-axis, I have the price and on the y-axis, I have the airline.
+
+And this is a horizontal bar chart.
+
+[Video description begins] Line 12 reads: live.log_plot(. Line 13 reads: 'avg_ticket_price_by_airline',. Line 14 reads: airline_price_data.groupby('airline').mean(numeric_only =True). Line 15 reads: .reset_index().to_dict('records'),. Line 16 reads: x = 'price',. Line 17 reads: y = 'airline',. Line 18 reads: template = 'bar_horizontal',. Line 19 reads: title = 'Average Ticket Price by Airline'). [Video description ends]
+
+On lines 21 through 28, I have the avg_ticket_price_by_class, again a horizontal bar chart. I'll scroll down a bit and look at the other plots.
+
+[Video description begins] Line 21 reads: live.log_plot(. Line 22 reads: 'avg_ticket_price_by_class',. Line 23 reads: airline_price_data.groupby('class').mean(numeric_only = True). Line 24 reads: .reset_index().to_dict('records'),. Line 25 reads: x = 'price',. Line 26 reads: y = 'class',. Line 27 reads: template = 'bar_horizontal',. Line 28 reads: title = 'Average Ticket Price by Class'). [Video description ends]
+
+
+On lines 30 through 37 I have the 'Average Ticket Price by Number of Stops', where this is the average price based on whether it's a one-stop, two-stop, or a non-stop flight. On lines 39 through 45, I have a different plot which uses the scatter template.
+
+[Video description begins] Line 30 reads: live.log_plot(. Line 31 reads: 'avg_ticket_price_by_stops',. Line 32 reads: airline_price_data.groupby('stops').mean(numeric_only = True). Line 33 reads: .reset_index().to_dict('records'),. Line 34 reads: x = 'price',. Line 35 reads: y = 'stops',. Line 36 reads: template = 'bar_horizontal',. Line 37 reads: title = 'Average Ticket Price by Number of Stops'). [Video description ends]
+
+You can see this on line 44. This plots the duration vs price. That is, that is the length of time to travel from source to destination vs the price of flight.
+
+[Video description begins] Line 39 reads: live.log_plot(. Line 40 reads: 'duration_vs_price',. Line 41 reads: airline_price_data.to_dict('records'),. Line 42 reads: x = 'duration',. Line 43 reads: y = 'price',. Line 44 reads: template = 'scatter',. Line 45 reads: title = 'Duration vs. Price'). [Video description ends]
+
+And on lines 47 through 53, I have another scatter plot days_left_vs_price. So, how many days in advance you buy the ticket vs the price you pay. Again, we only use dvclive to log these plots to our local machine.
+
+[Video description begins] Line 47 reads: live.log_plot(. Line 48 reads: 'days_left_vs_price',. Line 49 reads: airline_price_data.to_dict('records'),. Line 50 reads: x = 'days_left',. Line 51 reads: y = 'price',. Line 52 reads: template = 'scatter',. Line 53 reads: title = 'Days Left vs. Price'). [Video description ends]
+
+We haven't connected to Iterative Studio yet. If you go back and look at the dvclive folder in our current workspace, you'll find that all of the files have been overwritten and they have been updated with these new plots.
+
+[Video description begins] The dvc.yaml file page appears again. [Video description ends]
+
+You can see that the plots section within the dvc.yaml file now has six different plots. For each plot we have the template attribute, we have the x and y values and the plot title. These are what we logged out using DVCLive. If you look at lines 2, 7, 12, 17, 22, and 27, you can see a path to the JSON file that contains the values that have been plotted. All of the paths are under plots custom and then the JSON file depends on the name that we have specified for the plot. If you expand the plot subfolder, you'll find a custom subfolder within it and within that you'll find six different JSON files where every JSON file contains the values that have been plotted. For example, here is the JSON file for the customer_counts_by_airline.
+
+We have a JSON dictionary where every entity in the dictionary contains the airline name and the count of records for that airline, and this is essentially the data that is displayed in the form of a bar chart. Now similarly, we have JSON files for all of the data that we display using plots. Everything that we logged using DVCLive, which happens to be only plots at this point in time, is available in the report.html file by default. We open up this in a browser and here we can see all of the plots that we just logged. I should tell you that because we have a large number of plots here, this file takes a long time to display, but it will, you might have to wait for three or four minutes till all of the plots load successfully. Now, you may have noticed that these scatter plots, days left vs price and duration vs price don't really give us that much information, they are too dense, and they don't give us a pattern.
+
+[Video description begins] A webpage appears with the heading: DVC Plot. It contains different charts with headings such as: Average Ticket Price by Number of Stops, Customer Count by Airline, Average Ticket Price by Class, and More. [Video description ends] 
+
+We can improve upon this. Now, I'm going to do this using a bunch of DVC commands rather than by using DVCLive. Let's just focus on the duration vs price chart. I'm going to groupby('duration') and then compute the mean of all of the numeric columns. And I'm going to write this out to a CSV file. So, rather than plotting every individual value of duration vs the corresponding price, I'm going to compute the average price for every value of duration we have in our data. Now this is written out to a CSV file called duration_vs_price.csv and if you run an ls -l command, you should be able to see this CSV file in your current working directory.
+
+[Video description begins] Line 1 of the highlighted code cell reads: airline_price_data.groupby('duration').mean(numeric_only = True) \. Line 2 reads: .reset_index().to_csv('duration_vs_price.csv', index = False). [Video description ends] 
+
+[Video description begins] Code cell 34 reads: !ls -l. [Video description ends]
+
+You can now create and visualize a plot with this data using a dvc command.
+
+[Video description begins] The highlighted code cell reads: !dvc plots show duration_vs_price.csv --template scatter -x duration -y price --open. [Video description ends]
+
+DVC plots show duration_vs_price.csv that is the file that contains the data. template scatter will display a scatter plot along the X-axis, we want the duration, along the Y-axis we want the price, and --open will open up the report associated with this chart. The HTML file that contains our scatter plot and you can see this right here, and here there is a clear pattern. Longer duration flights tend to cost more. But this falls off after a certain duration. Beyond 20 hours the price falls longer the duration of the flight.
+
+[Video description begins] The DVC Plot webpage appears again. It contains a scatter plot with the title: duration_vs_price.csv. [Video description ends] 
+
+10. Video: Logging and Tracking Images Using DVCLive (it_mlodvcdj_02_enus_10)
+
+During this video, discover how to log and track images in DVCLive.
+log and track images in DVCLive
+[Video description begins] Topic title: Logging and Tracking Images Using DVCLive. Your host for this session is Janani Ravi. [Video description ends]
+We saw that log plots allowed us to track and visualize plots in DVC using DVCLive. We saw that these plots were interactive plots and in the report.html file, we could view these plots and actually hover over the plots to get information. It's also possible to track and visualize these plots as images, and you can track images in DVC using the log image function in DVCLive.
+
+Images can also be cached in your DVC cache and pushed and tracked with DVC using dvc push. Now I'm going to create a new directory called images in my current working directory and I'm going to visualize all of the plots that we saw before and save these out as PNG files starting with the first one here.
+
+[Video description begins] The Jupyter notebook titled: FlightsPricePrediction appears. It contains a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The top right corner displays: dvc_venv. Below, it contains several code cells. [Video description ends]
+
+[Video description begins] The following command is added in code cell 36: !mkdir images. [Video description ends] 
+
+This is a countplot of the number of records for every airline in our dataset. I call plot.savefig and I save out this image as an png file. You can see that this png file is in the images subfolder and is called customer_count_by_airline.png. In a similar manner, I'm going to save out PNG files for avg_ticket_price_by _airline. This is our next plot again saved out to the images subfolder. Saving plots as images allows us to visualize data in formats that are not yet supported by DVC plots.
+
+[Video description begins] Line 1 of code cell 37 reads: sns.countplot(x = 'airline', data = airline_price_data). Line 3 reads: plt.savefig('images/customer_count_by_airline.png'). [Video description ends]
+
+[Video description begins] Line 1 of code cell 38 reads: sns.barplot(x = 'airline', y = 'price', data = airline_price_data). Line 3 reads: plt.savefig('images/avg_ticket_price_by_airline.png'). [Video description ends] 
+
+For example, visualize data in the form of a boxplot. Here is a boxplot of ticket_price_by_class. It's pretty clear here that business class tickets are overall much more expensive than economy class tickets.
+
+[Video description begins] Line 1 of code cell 39 reads: sns.boxplot(x = 'class', y = 'price', data = airline_price_data). Line 3 reads: plt.savefig('images/ticket_price_by_class.png'). [Video description ends]
+
+No surprises there. Let's look at another visualization. Here is a scatterplot of duration by price. Notice the data that we pass in on line 2, we call groupby('duration') and compute the mean of all of the other columns, so we get the average price for each duration. And this is what the scatter plot looks like.
+
+The next image I saved to the images subfolder is another scatter plot, days_left_vs_price. Once again, I groupby('days_left') so I get the average price for each value of days left and you can see a clear trend here. It's pretty clear from the top left corner that if we book with just a few days left for the flight, the ticket prices tend to be more expensive on average.
+
+[Video description begins] Line 1 of code cell 40 reads: sns.scatterplot(x = 'duration', y = 'price',. Line 2 reads: data = airline_price_data.groupby('duration').mean(numeric_only = True)). Line 4 reads: plt.savefig('images/duration_vs_price.png'). [Video description ends]
+
+ [Video description begins] Line 1 of code cell 41 reads: sns.scatterplot(x = 'days_left', y = 'price',. Line 2 reads: data = airline_price_data.groupby('days_left').mean(numeric_only = True)). Line 4 reads: plt.savefig('images/days_left_vs_price.png'). [Video description ends]
+
+Now that I have all of the images that I want to visualize and track using DVC, let's take a look at the images subfolder and here you can see that I have the five different images that I have written out. Now let's use Live to log out these images.
+
+[Video description begins] A page appears with the heading: jupyter. It contains three tabs: Files, Running, and Clusters. The Files tab is open. Below, it displays a table with several column headers like /images, Name, Last Modified, and File size. It contains five .png files. [Video description ends]
+
+We instantiate a Live object on line 1. Once again, it'll write things out by default to the DVCLive folder because we haven't explicitly specified a folder. We log the images using DVC by calling live.log_image. We specify the name of the image file and a reference to where that image file is actually stored in the images subfolder.
+
+Now I should tell you that with this particular code, the way we instantiate Live with the default parameters, these images will be logged to the DVCLive folder. 
+
+[Video description begins] Code cell 42 is highlighted. Line 1 reads: with Live () as live:. Line 3 reads: live.log_image("customer_count_by_airline.png", "images/customer_count_by_airline.png"). Line 4 reads: live.log_image("avg_ticket_price_by_airline.png", "images/avg_ticket_price_by_airline.png"). Line 5 reads: live.log_image("ticket_price_by_class.png", "images/ticket_price_by_class.png"). Line 6 reads: live.log_image("duration_vs_price.png", "images/duration_vs_price.png"). Line 7 reads: live.log_image("days_left_vs_price.png", "images/days_left_vs_price.png"). [Video description ends]
+
+The reference will be added to the dvc.yaml file, but these images will not be tracked as data by DVC. That is, there will be no .dvc file corresponding to these images, and you can't push these images to DVC's remote storage because they are not being tracked by DVC. Also, these images will not be cached in the DVC cache. All this command does is to log out the images as a part of the DVCLive folder, generate a report, and track these images in the dvc.yaml file.
+
+Once again, DVCLive logs all of this locally. It's not tracked by Iterative Studio yet. That's why you see this warning here. Now that we've logged these images using DVCLive, if you now open up the dvc.yaml file, in the plots subsection, you'll see a reference to the images subfolder under the plots folder.
+
+[Video description begins] A page appears with the heading: dvc.yaml. The left navigation menu displays the title: FOLDERS. It contains three folders: dvclive, plots, and images. The images folder is active. [Video description ends]
+
+DVC knows that our plots are in the form of images in this folder. Let's take a look at this plots folder and see whether the images are really present there.
+
+[Video description begins] A page appears with the heading: plots. The left navigation menu contains two sections: Favourites and Tags. The main pane contains a folder with the title: images. [Video description ends]
+
+Within that you'll find an images subfolder and all of the images that we've logged will be present here in this subfolder.
+
+[Video description begins] The images folder is open. It contains five .png files. [Video description ends]
+
+All five images are here. You can open up these images and take a look. All of these are PNG files that we have logged, but like I said, all we've done so far is log these images to the DVCLive folder. We haven't actually got DVC to track these images. There is no .dvc file tracking these images and these images are not present in the DVC cache.
+
+Let me prove that to you by running an ls -R in the .dvc folder. Notice here we have a config file and the tmp subfolder, but there is no cache subfolder. So, these images are not even part of DVC's cache. If we want these files to be tracked, cached, and managed by DVC, we need to pass in an additional parameter to our Live instance and that is cache_images = True. This parameter will cause all of these image files to be tracked by DVC using a .dvc file.
+
+[Video description begins] Code cell 43 reads: ls -R .dvc/. [Video description ends] 
+
+It will also add these images to the DVC cache so that later on when we reference these images, we'll retrieve it from cache. Now, once we've run this, let's run an ls -R that is a recursive look at the dvc cache subfolder.
+
+[Video description begins] Line 1 of code cell 44 reads: with Live(cache_images = True) as live:. Line 3 reads: live.log_image("customer_count_by_airline.png", "images/customer_count_by_airline.png"). Line 4 reads: live.log_image("avg_ticket_price_by_airline.png", "images/avg_ticket_price_by_airline.png"). Line 5 reads: live.log_image("ticket_price_by_class.png", "images/ticket_price_by_class.png"). Line 6 reads: live.log_image("duration_vs_price.png", "images/duration_vs_price.png"). Line 7 reads: live.log_image("days_left_vs_price.png", "images/days_left_vs_price.png"). [Video description ends]
+
+[Video description begins] Code cell 45 reads: ls -R .dvc/cache. [Video description ends]
+
+You can see that the subfolder exists at this point in time. In addition, you can see that we have five different files that are tracked here in this cache. These correspond to the five different images. Now let's ensure that these images are indeed being tracked by DVC and that we know when we have a .dvc file.
+
+If you look under the dvclive folder, you can see an images.dvc file. If you open this up, you'll see a familiar structure in the outs section indicating this is an output of an execution. That is an execution that we use to log out the images. We have the md5 attribute, the size, number of files is 5, and the path is set to the images subfolder under dvclive.
+
+[Video description begins] The page titled images.dvc appears. In the left navigation menu, the images folder is highlighted. The main pane contains a set of commands. [Video description ends]
+
+This is how the five files in our image are being tracked using DVC. In addition, in the dvclive folder you can see a .gitignore file as well, and if you open this up, you can see that this ignores everything under the images path. Thus, we have our image data being tracked by DVC.
+
+If you see six entries here, five of these entries correspond to the actual image files, that is, the .png files and one entry here that corresponds to the suffix .dir, that refers to the images directory as a whole. Our plot images are being tracked by DVC, but they are not present in the remote storage for DVC yet. ls -R for our remote storage returns nothing. It's completely empty.
+
+[Video description begins] Code cell 47 reads: ls -R /tmp/dvc_storage_fpp. [Video description ends]
+
+Well, that shouldn't be surprising. We haven't pushed these images to DVC yet.
+
+A dvc push will accomplish this, and you can see that a total of 6 files have been pushed. These correspond to the five image files that are being tracked and to the directory that contain those files. And now, if you take a look at our remote storage for DVC, you'll find that all of the images that we tracked are available here.
+
+[Video description begins] Code cell 48 reads: !dvc push. [Video description ends]
+
+[Video description begins] Code cell 49 is highlighted. The following command is added again: ls -R /tmp/dvc_storage_fpp. [Video description ends]
+
+11. Video: Tracking Experiments with DVCLive (it_mlodvcdj_02_enus_11)
+
+In this video, you will learn how to track ML experiments using DVCLive.
+track ML experiments using DVCLive
+[Video description begins] Topic title: Tracking Experiments with DVCLive. Your host for this session is Janani Ravi. [Video description ends]
+So far, we've seen how we can use DVCLive to log and visualize plots in DVC. We also saw how we could log and visualize and track images in DVC using DVCLive. We saw that DVCLive creates a subfolder within which it generates an HTML report by default, containing your plots and images. That was just a foretaste of how we can actually use DVCLive in a meaningful way. DVCLive together with Iterative Studio actually allow you to track your ML model runs as experiments. An experiment is just a versioned iteration of ML model development.
+
+[Video description begins] The Jupyter notebook titled 'FlightsPricePrediction' is open. A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: DVC Experiment. The second line reads: Git commits that DVC can find but which don't clutter up your Git history. [Video description ends]
+
+DVC tracks experiments as Git commits that DVC can find, but that don't clutter your Git history or branches. What we'll do next is train a regression model on our airline price data and we'll track this as a DVC Experiment.
+
+Now, before we run any code, I should tell you that I've gotten rid of all of the extra files that were generated from our previous DVCLive runs. I only have the data folder containing my flight price data CSV file, and this notebook. All of the additional folders and files have been deleted, so I have a clean, current working directory. We'll train several regression models for flight price prediction, but the very first one is going to be a simple linear regression model. But before we train that model, we need to preprocess our data, and that's exactly what I'm doing here. On line 4, I extract all of the features that I'm going to use to train my model, the X values.
+
+[Video description begins] Line 4 of code cell 22 reads: X = airline_price_data.drop(columns = ['price', 'flight']). [Video description ends]
+
+So from airline_price_data, I'm going to keep all of the columns except price that is our target variable, and flight because flight contains no specific information, it's just a number assigned to a flight. Next on line 5, I access the target variable or what we are trying to predict with the model.
+
+[Video description begins] Line 5 reads: y = airline_price_data['price']. [Video description ends]
+
+That's just the price of a flight ticket and this I store in the variable y. On lines 7 and 8, I split this data into training data used to train a regression model and test data used to evaluate the regression model.
+
+[Video description begins] Line 7 reads: X_train, X_test, y_train, y_test = train_test_split(. Line 8 reads: X, y, test_size = 0.3, random_state = 144). [Video description ends]
+
+Now, 70% will be used for training, 30% to evaluate the model. On lines 10 through 17, I list out all of the categorical_features because we'll have to preprocess the categorical_features separately from the numeric features. This includes airline, source_city, departure_time, arrival_time, destination_city, stops, and class.
+
+[Video description begins] Line 10 reads: categorical_features = [. Line 11 reads: 'airline',. Line 12 reads: 'source_city',. Line 13 reads: 'departure_time',. Line 14 reads: 'arrival_time',. Line 15 reads: 'destination_city',. Line 16 reads: 'stops', 'class'. Line 17 displays a ]. [Video description ends]
+
+On lines 19 through 26, we construct a pipeline for transforming the categorical data.
+
+This transformation will include one-hot encoding the categorical data.
+
+[Video description begins] Line 19 reads: categorical_transformer = Pipeline(. Line 20 reads: steps = [(. Line 21 reads: 'encoder_cat', OneHotEncoder(. Line 22 reads: handle_unknown = 'ignore',. Line 23 reads: drop = 'first', sparse_output = False). Lines 24 and 26 display a ). Line 25 displays a ]. [Video description ends]
+
+You can see that I use the OneHotEncoder instantiated on line 21. This categorical_transformer will be used within the column transformer used to preprocess our data instantiated on lines 28 through 33.
+
+[Video description begins] Line 28 reads: preprocessor = ColumnTransformer(. Line 29 reads: transformers = [(. Line 30 reads: 'cat_tr', categorical_transformer, categorical_features. Line 31 reads: )],. Line 32 reads: remainder = StandardScaler(). Line 33 displays a ). [Video description ends]
+
+You can see that the column transformer first applies the categorical_transformer on the categorical features. This is on lines 29 through 31, and the remainder of the columns that are numeric columns are standard scaled, using the StandardScalar instantiated on line 32. Standardizing the dataset will center all of the values in the numeric columns around 0. This it does by subtracting the mean of each numeric feature from every value of that feature and then dividing that by the standard deviation of that feature. Once you hit Shift+Enter on this cell, you'll preprocess the data and we can now train a linear regression model.
+
+[Video description begins] Line 3 of code cell 23 reads: lr_model = LinearRegression(). [Video description ends]
+
+I instantiate the model on line 3.
+
+And on line 6, I access all of the parameters of the model that we are about to train using lr_model.get_params. This will give me a dictionary of parameters that I log and track using DVCLive. We instantiate the Pipeline to preprocess our data and fit our regression model on line 9. We train the model on training data on line 11 by calling pipe_lr.fit.
+
+[Video description begins] Line 6 reads: params_reg = lr_model.get_params(). Line 9 reads: pipe_lr = Pipeline(steps = [('preprocessor', prepocessor), ('regressor', lr_model)]). Line 11 reads: pipe_lr.fit(X_train, y_train). [Video description ends]
+
+We then make predictions on the test data on line 13 and then we compute a bunch of statistics on this train model.
+
+[Video description begins] Line 13 reads: y_pred = pipe_lr.predict(X_test). Line 15 reads: training_score = pipe_lr.score(X_train, y_train). Line 16 reads: mean_abs_error = mean_absolute_error(y_test, y_pred). Line 17 reads: root_mean_sq_error = mean_squared_error(y_test, y_pred, squared = False). Line 18 reads: r_sq_score = r2_score(y_test, y_pred). [Video description ends]
+
+We compute the r_sq_score on the training data, the mean_abs_error, the root_mean_sq_error, and the r_sq_score on the test data. Go ahead and train the model using linear regression and once this is done, we are ready to track the metrics, parameters and artifacts associated with this model using DVCLive.
+
+There are a number of details to observe here about how we instantiate the Live object. Observe on line 2, we specify that dir = 'linear_regression'. This means that all of the reports for this model will be tracked within a subfolder called linear_regression, not the default DVCLive folder. The next thing to notice is that I have the variable save_dvc_exp set to True and it is this property that essentially connects DVCLive to Iterative Studio and then saves all of the reports generated by DVCLive as an experiment that can be visualized using Iterative Studio. And it's this save_dvc_exp set to True that will get rid of the warning that we saw previously when we used DVCLive. That warning told us that this was not being tracked by Iterative Studio. Well, that warning will disappear because this will be tracked as an experiment in Iterative Studio. We also have a message associated to this experiment. This is just a description of what the experiment is about.
+
+[Video description begins] Line 2 of code cell 24 reads: dir = 'linear_regression',. Line 3 reads: save_dvc_exp = True,. Line 4 reads: exp_message = 'Flights price prediction with linear regression'. [Video description ends]
+
+'Flights price prediction with linear regression'.
+
+Now so far, we've used this flights_price_data.csv file, but we haven't tracked it using DVC. I'm going to fix that here. I call live.log_artifact to track this data as an artifact in my experiment.
+
+[Video description begins] Line 7 reads: live.log_artifact(. Line 8 reads: 'data/flights_price_data.csv',. Line 9 reads: type = 'dataset',. Line 10 reads: name = 'flightprices',. Line 11 reads: desc = 'Flights price prediction dataset',. Line 12 reads: labels = ['regression', 'prices'],. Line 13 displays a ). [Video description ends]
+
+On line 8, I specify the path to my data. On line 9, I specify the kind of artifact this is. type is equal to 'dataset' will indicate to DVC that this is data that's being tracked. I specify a name for this dataset 'flightprices', a description, and then I also associate some additional labels that will allow me to identify this dataset. I also want to track the parameters of the experiment that I've just run.
+
+[Video description begins] Line 15 reads: for param_name, param_value in params_reg.items():. Line 16 reads: live.log_param(param_name, param_value). [Video description ends]
+
+I iterate over the params_reg dictionary, I extract the param_name and param_value and I use live.log_param to track the parameters of this experiment. For any execution of our ML model, we obviously want to track how exactly that model did.
+
+And this is done via tracking the metrics of the model. I use live.log_metric to track the r2_score on the training as well as the test data, as well as the mean_abs_error and the root_mean_sq_error on the test data. Go ahead and run this cell to track your experiment using DVCLive.
+
+[Video description begins] Line 18 reads: live.log_metric('training_r2_score', training_score). Line 19 reads: live.log_metric('mae', mean_abs_error). Line 20 reads: live.log_metric('rmse', root_mean_sq_error). Line 21 reads: live.log_metric('r2_score', r_sq_score). [Video description ends]
+
+Now you see some warnings here about untracked files. Don't worry about that. We'll explicitly commit the files that we want to to Git a little bit later on. Once this is done, you'll see that we have a linear_regression folder in our current working directory in our workspace.
+
+[Video description begins] The page titled 'dvc_flights_price_prediction' appears. It displays a toolbar at the top. The navigation pane on the left displays 2 sections labeled Favourites and Tags. The main pane displays several folders such as .dvc, .git, data, linear_regression, and so on. [Video description ends]
+
+Let's take a look at the contents of this folder. Inside linear regression, we have a plots subfolder within which we have a metrics subfolder and under here you can see that there are four different CSV files.
+
+[Video description begins] The linear_regression folder is open now. The navigation pane on the left titled FOLDERS displays this collapsible folder. It contains a few folders and files such as plots, metrics, dvc.yaml, metrics.json, and params.yaml. The metrics folder contains 4 files: mae.tsv, r2_score.tsv, rmse.tsv, and training_r2_score.tsv. [Video description ends]
+
+Each CSV file tracks a different metric that we logged using live.log metric. All of the details that we log using DVCLive will be configured in our dvc.yaml file. Notice under the params section, we have a reference to params.yaml. We haven't looked at that file yet, we'll do so in just a bit. This is where we track the parameters that we use to train our model. Next, under the metrics section, we have a reference to the metrics.json file used to track the metrics of the model. This basically is a summary of all of the metrics that we logged. There are some plots from the training run that DVCLive logs, but these are not as interesting for scikit-learn models. We'll look at what they are in just a bit. And finally, we have the artifacts. An artifact is any file or directory that DVC tracks. Now the only artifact that we logged was our data. It's called flightprices.
+
+You can see the path to the data. It's in the data subfolder flights_price_data.csv. That's the name of the file. This artifact has type dataset. It has the description that we had specified and the two labels that we had specified, regression and prices. The metrics.json file simply contains the metrics that we logged out using DVCLive. This is just a quick summary. And the params.yaml file contains the model parameters for this experiment because we instantiated our Live object with save_dvc_exp = True.
+
+[Video description begins] The params.yaml file is open on the main pane. Line 1 reads: copy_X: true. Line 2 reads: fit_intercept: true. Line 3 reads: n_jobs:. Line 4 reads: positive: false. [Video description ends]
+
+This experiment has been pushed to Iterative Studio and if you go to our dvc_flights_price_prediction project, observe that we have an experiment called medal-body. This is the experiment that we just logged to Iterative Studio using DVCLive, but there's no data associated with this experiment.
+
+[Video description begins] The dvc_flights_price_prediction page appears within Iterative Studio. There is a toolbar available below the title bar. It contains the following tabs: Filters, Columns, Plots, Trends, Compare, and Run. A table appears next with several column headers such as Experiment, Created, Message, and CML. Below, several items are listed. [Video description ends] 
+
+We can't see our model metrics, parameters, nothing. Now the reason for this is all of the artifacts and data that we are tracking with DVC hasn't been pushed to DVC yet. Only when it's pushed to DVC will Iterative Studio be able to pick up that data. The details of our experiment have to be pushed to DVC so that Iterative Studio has access to those details.
+
+12. Video: Pushing Experiment Files to DVC (it_mlodvcdj_02_enus_12)
+
+Find out how to push experiment files to DVC and GitHub.
+push experiment files to DVC and GitHub
+[Video description begins] Topic title: Pushing Experiment Files to DVC. Your host for this session is Janani Ravi. [Video description ends]
+Here is where we left off in the previous video. Our experiment has been logged in Iterative Studio, but none of our metrics or the parameters of our model are available here. That's because we haven't pushed our data to DVC. [Video description begins] The dvc_flights_price_prediction page appears within Iterative Studio. There is a toolbar available below the title bar. It contains the following tabs: Filters, Columns, Plots, Trends, Compare, and Run. A table appears next with several column headers such as Experiment, Created, Message, and CML. Below, several items are listed. [Video description ends] We need to do that. So, let's head back to our notebook. One thing to know here is that our experiment details along with metrics and parameters are available here on DVCLive locally.
+
+[Video description begins] The Jupyter notebook titled 'FlightsPricePrediction' is open. Code cell 26 reads: !dvc exp list. [Video description ends]
+
+So, if you run dvc exp list, you'll see one experiment here. This is the medal-body experiment. This is the experiment with the tracking for our linear regression model. Now remember, all of the tracking metrics are available locally and you can view them using dvc exp show.
+
+[Video description begins] Code cell 27 reads: !dvc exp show. [Video description ends]
+
+These are not available in Iterative Studio yet because we haven't pushed our experiment to DVC. However, they are available locally and we can view them locally. Now the details aren't displayed that neatly, but you can see that in the medal-body experiment, the training_r2_score was 0.91, the mean absolute error 4556, the root mean square error 6737.1, and the test r2_score 0.91188. This is the current experiment in our workspace, so these same metrics can be seen in the line for workspace as well. So, the experiment medal-body is the current experiment in our workspace, the experiment that we just tracked. Now, let's run git status to see whether we have any untracked and uncommitted files. Essentially, we haven't tracked anything to do with this experiment.
+
+[Video description begins] Code cell 28 reads: !git status. [Video description ends]
+
+We haven't tracked the data folder, the linear_regression folder, and we haven't tracked this notebook.
+
+This means that in our remote GitHub repository, well, there's nothing there except the initial commit. None of the experiment files or the experiment details have been pushed to Git. They are not even tracked by Git in our local repository. Now I'm going to push the experiment details to DVC. Remember, this is separate from Git, and I'll do this using the dvc exp push command, dvc exp push origin medal-body.
+
+[Video description begins] The terminal window appears. The following command is added: dvc exp push origin medal-body. [Video description ends]
+
+This is the experiment ID and your experiment ID will be different. This is the experiment ID I copied over from the Iterative Studio UI. Now, this will require you to specify your Username and Password for the GitHub account. Go ahead and paste in the token in the password and our experiment has been pushed to DVC. In addition, you can see a message here that says that the experiment medal-body has been pushed to Git remote 'origin'.
+
+Now, this seems to indicate that all of our experiment files should be available in our remote repository on GitHub as well. Let's go over and take a look, and none of the experiment files are actually here. Essentially, we are tracking all of the details associated with an experiment without actually committing those details to our GitHub repository. 
+
+[Video description begins] The page titled 'loonytest / dvc_flights_price_prediction' appears. It contains various tabs below, like Code, Issues, Pull requests, Actions, and so on. The Code tab is active. To the right are various drop-downs labeled Unwatch, Fork, and Star. Below, more drop-downs appear labeled main, Add file, Code, and so on. Next to the dropdown labeled main, the following 2 buttons are displayed: 1 branch and 0 tags. A section appears next. It displays 2 items: .dvc and .dvcignore. [Video description ends]
+
+So, our GitHub repository remains uncluttered till we explicitly choose to commit the experiment details to our remote repository. Before we go back to Iterative Studio, notice one thing here. Observe that we have just the 1 branch in our remote repository. This branch is the main branch representing our main line of development. In the meanwhile, let's head back to Iterative Studio and see whether the experiment details are now available there. Go ahead and click on this Update project button that should appear and there you see it right next to medal-body, you can see all of the metrics, and parameters associated with this experiment.
+
+These metrics are now available on Iterative Studio because we've used dvc push to actually push the experiment details and make them available on DVC. Now that your data is in DVC, that data is also available to Iterative Studio. Notice the data column which says we have about 23 MB of data associated with this experiment. That is our flights_price_data.csv file. Since this is a data file, this will not have been committed to Git and will be tracked and managed by DVC. Now, when we tracked our experiment using DVCLive, it auto-generated some plots associated with our experiment.
+
+[Video description begins] The dvc_flights_price_prediction page appears within Iterative Studio. A tab labeled 'Update project' was available at the top of the page. It was selected. A toolbar is available below the title bar. It contains the following tabs: Filters, Columns, Plots, Trends, Compare, and Run. A table appears next with several column headers such as Experiment, Created, Message, CML, linear_regression/metrics.json, data, and linear_regression/params.yaml. The linear_regression/metrics.json column header contains 4 sub-column heads: mae, rmse, r2_score, and training_r2_score. The data column header contains a sub-column head called flights_price_data. The table displays 3 items with checkboxes next to them. One of the items called medal-body shows a Plots icon next to the checkbox. [Video description ends]
+
+If you select an experiment using this little check box and then click on this plots icon here, you'll be able to view the plots associated with an experiment.
+
+If you can't see the plots yet, that's because this UI is a little strange. You need to do an additional bit of selection. You'll need to click on this little plots icon right next to your experiment and here you'll be able to see the Plots associated with this experiment.
+
+[Video description begins] The Plots page is open within the Iterative Studio. The navigation pane on the left displays 2 collapsible sections labeled Commits and Directories. The main pane displays several graphs. [Video description ends]
+
+But like I said before, with scikit-learn models, the plots are actually not that interesting because we don't have several epochs of training. We only have the plot for the single step of training that is our r2_score on the test data. And here below, we have the r2_score on the training data. Let's now head back to the main page for this project. Now we've trained a linear regression model, and let's say you're happy with this experiment that you've just run and you want to commit all of the details and the files corresponding to this experiment to the main branch of your repository.
+
+Well, all of the experiment details are available on DVC. What we want to do now is essentially commit all of the DVC files that we used to track this experiment to GitHub. At this point, DVC has all of the experiment details.
+
+[Video description begins] A context menu of medal-body appears from a more icon available next to it in the Experiment column. It contains 4 options: Copy name, Copy git SHA, Create branch/pull request, and Delete. [Video description ends]
+
+What I'm going to do is click on the three dots next to my experiment ID and select the option to Create a branch or pull request. Now, before we move ahead, there are two terms here that we need to understand in more detail. The first is the concept of a Git branch. A branch is just a lightweight movable pointer that represents an independent line of development. Now, at this point in time, we just have the one main branch in our GitHub repo. Here now I'm going to create a separate branch to which I'll commit my experiment details.
+
+[Video description begins] A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: Git Branch. The second line reads: An independent line of development in your repository - make changes without affecting other branches. [Video description ends] 
+
+A pull request is just a feature on Git which allows developers to propose changes to be made in a branch of a repository.
+
+[Video description begins] The panel now displays the following text in the first line: Pull Request. The second line reads: Proposal for changes to a repository to be reviewed by others in your team. [Video description ends]
+
+Then you can have another developer on your team, review those changes, and then approve those changes. Once they approve the pull request, then all of the changes associated with that pull request will be committed to GitHub. Now, the option that I'm going to select here is to create a branch to commit the changes associated with this experiment to GitHub and optionally create a pull request to merge the changes committed to that branch with our main branch. This will bring up a dialog and things will become clearer as we actually perform these actions.
+
+[Video description begins] A dialog box titled 'Create branch/pull request from experiment' appears. It displays a field called Branch name and two radio buttons labeled Create a pull request after creating a branch? and Delete the experiment after creating a branch? At the bottom, 2 tabs appear: Cancel and Create branch. [Video description ends]
+
+Now, this dialog here allows you to specify the name of the branch that you want to create in your GitHub remote repository, containing all of the details for this particular experiment.
+
+By default, the Branch name is medal-body-branch. medal-body is our experiment ID. We'll stick with this default. After all of the files associated with this experiment have been committed to the medal-body-branch, I'm going to Create a pull request. This pull request will contain a proposal merging all of the changes that we've pushed to the medal-body-branch on GitHub to another branch available in your repository. I'm going to go ahead and check this and you can see that the Base branch option presents us with a dropdown. Now the only other branch we have is the main branch, so that's the option that I have selected. So, after all of the changes for this experiment have been committed to the medal-body-branch, we'll also have a pull request created which will allow us to merge those changes with the main branch in our GitHub repo.
+
+Now there's another check box there. Delete the experiment after creating a branch? I don't want to do that. I want the experiment to live around after I've created the branch. So, let's leave that unchecked and let's click on Create branch. Now, this, of course, means that Iterative Studio will have to interact with your GitHub remote repository. Now, once those changes have been pushed out to your remote repo, you'll find an Update button appears here in your project. Click on this Update button and here you'll see a new branch has been created and this branch is visible within Iterative Studio.
+
+In addition to the main branch in our GitHub repository, we now have a new branch containing the changes associated with this experiment. That is the medal-body-branch. This branch is visible here on Iterative Studio because it's present on GitHub as well. Let's head over to our GitHub repo and I'm going to refresh this page and there you see it. Instead of 1 branch, we have 2 branches. The second branch is the medal-body-branch. All of the files associated with our experiment for our linear_regression model have been pushed out to this branch.
+
+13. Video: Committing a Pull Request to Merge Experiment Details (it_mlodvcdj_02_enus_13)
+
+Discover how to merge a branch with main in GitHub.
+merge a branch with main in GitHub
+[Video description begins] Topic title: Committing a Pull Request to Merge Experiment Details. Your host for this session is Janani Ravi. [Video description ends]
+Here we are on GitHub and we have 2 branches, our main branch and another branch that we pushed to this remote repository from Iterative Studio.
+
+[Video description begins] The page titled 'loonytest / dvc_flights_price_prediction' appears. It contains various tabs below, like Code, Issues, Pull requests, Actions, and so on. The Code tab is active. To the right are various drop-downs labeled Unwatch, Fork, and Star. Below, more drop-downs appear labeled main, Add file, Code, and so on. Next to the dropdown labeled main, the following 2 buttons are displayed: 2 branches and 0 tags. A section appears next. It displays 2 items: .dvc and .dvcignore. [Video description ends]
+
+So, let's see what the second branch looks like. Click on 2 branches here and you should find a second branch here with your experiment ID as a prefix. medal-body-branch is the name of my branch and here you can see all of the files associated with my experiment.
+
+[Video description begins] The page now displays a search bar and a few options like Overview, Yours, Active, Stale, and All branches. The Overview option is active now. A tab labeled New branch appears next to the set of options. There are 2 sections displayed below: Default branch and Active branches. The Active branches section displays an item called medal-body-branch. [Video description ends]
+
+This branch here contains all of the commits that we have so far in our main branch plus this additional commit where we pushed out the experiment files for Flights price prediction with linear regression.
+
+[Video description begins] The medal-body-branch displays the following files: .dvc, data, linear_regression, and .dvcignore. [Video description ends]
+
+Let's take a look at the .dvc folder. Here you can see we have the tmp directory has been pushed out as well.
+
+[Video description begins] The .dvc file page displays the medal-body-branch drop-down below the tabs toolbar. There is an icon available just before this drop-down. This icon is the portal to the Code page. Below, a message reads: This branch is 1 commit ahead of main. A table appears next with 3 column headers: Name, Last commit message, and Last commit date. It displays 3 items: tmp, .gitignore, and config. [Video description ends]
+
+We have a gitignore file and the config file where we added the local remote to DVC config. Let's take a look at the config file and you'll see that this particular branch contains all of the commits that we pushed out to main. This commit for the remote storage local remote was pushed to main.
+
+[Video description begins] The config file is opened. A navigation pane titled Code appears on the left. It displays the medal-body-branch drop-down at the top along with a plus and a search icon. A search bar appears next followed by these folders: .dvc, tmp, data, and linear_regression. There is also another file called.dvcignore. The tmp folder displays 2 files: .gitignore and config. The config file is open on the main pane. The main pane displays 2 tabs at the top: Code and Blame. The Code tab is active. Below, an editor pane is displayed with a few lines of code. [Video description ends]
+
+This is available in the branch. Essentially, DVC branched the code that we had in main and then added in the additional files associated with the experiment. Let's take a look at the data folder. You can see that we have the .dvc file for flights_price_data in here. This is the file that is actually tracking the data that we used to train our model. Now, the linear_regression folder here is the output of DVCLive. We had explored the contents of this folder on the local file system. It has now been pushed to GitHub.
+
+Let's take a look at the dvc.yaml file and this is the same dvc.yaml that we saw when we explored this on our local machine. We have the params, the metrics, the plots, and the artifacts. That is the data used to train our model. If you look at metrics.json, that gives you the summary metrics for this model, the training and test r2_score, the other metrics, here are the params of the linear_regression model. Again, all of these files we've seen on our local machine. Here is the .dvc file that references our flights_price_data.csv file. This is the DVC meta file that tracks the data that we have pushed to DVC. Next, let's take a look at plots/metrics and you can see the TSV files here for all of the metrics that we logged out using DVCLive. At this point, it's pretty clear that all of the DVC files associated with this experiment have been pushed to this medal-body-branch.
+
+Now, in addition, observe that in the Pull requests tab, we have a notification that there is 1 pull request that's available for us to view. If you remember the checkbox that we had checked in our dialog where we said that we want to create a branch and then also a pull request, well, this is the pull request asking to merge all of the files that we've committed in the medal-body-branch to the main branch of our GitHub repo. When you click through to this, you'll see a comment here which makes it clear that this pull request was generated via iterative-studio. 
+
+[Video description begins] The Pull requests tab is active now. It displays a dropdown called Filters, a search bar, and 3 tabs: Labels, Milestones, and New pull request. A table appears next with several column headers like Open, Closed, Author, Label, Projects, Milestones, Reviews, Assignee, and Sort. All these column headers except for Open and Closed, are provided with a drop-down icon. Below, an option is displayed. It reads: Merge medal-body-branch into main. [Video description ends]
+
+[Video description begins] A page titled Merge medal-body-branch into main #1 appears. Below, the title, a green tab labeled Open appears along with the following message: iterative-studio wants to merge 1 commit into main from medal-body-branch. A command bar appears next with 4 tabs: Conversation, Commits, Checks, and Files changed. The Conversation option is active now. It displays a box titled iterative-studio bot commented 2 minutes ago. It displays a Studio Report. A comment appears next from the studio chatbot, containing 3 options: Require approval from specific reviewers before merging, Continuous integration has not been set up, and This branch has no conflicts with the base branch. The third option has a green checkmark next to it. Below, a tab titled Merge pull request is displayed. On the right pane, various sections are displayed like Reviewers, Assignees, Labels, and so on. [Video description ends]
+
+You can see that this pull request does not require any additional approvals. You can go ahead and merge this pull request. An important thing to note here is that green check mark next to this branch has no conflicts with the base branch. This merge can be performed very easily because there are no conflicts with whatever changes we have in main. So, go ahead and click on the button to Merge pull request.
+
+This will take you to another page where you can confirm the merge.
+
+[Video description begins] A comment from the user appears below on the same page. It displays the title: Merge pull request #1 from loonytest/medal-body-branch. There are 2 tabs provided: Confirm merge and Cancel. [Video description ends]
+
+You can specify additional details as comments if you want to. I'm just going to go with the comment Merge medal-body-branch into main. Let's confirm the merge and essentially our pull request has been closed because the merge was performed successfully. Now, let's head over to the main branch of our repo. Here we are in the main branch and notice all of the details from the medal-body-branch is now available here on main. You can see that the last commit here was by loonytest, Merge pull request #1 from loonytest/medal-body-branch. At this point, all of the details associated with our linear_regression experiment have been committed to this remote repository's main branch on GitHub. Since there have been changes to our GitHub repository, if you head back to Iterative Studio, you should see the Update project button. Click on this button and you can see the change here as well.
+
+[Video description begins] The dvc_flights_price_prediction page appears within Iterative Studio. There is a tab labeled Update project available at the top. A toolbar is displayed below the title bar. It contains the following tabs: Filters, Columns, Plots, Trends, Compare, and Run. A table appears next with several column headers such as Experiment, Created, Message, CML, linear_regression/metrics.json, data, and so on. The linear_regression/metrics.json column header contains 4 sub-column heads: mae, rmse, r2_score, and training_r2_score. [Video description ends]
+
+If you notice, the medal-body-branch has disappeared and those changes have been merged into main. All of the metrics and parameters associated with the medal-body experiment are now available in the HEAD of our main branch. If you think about it, in our local repository, that is on our local machine, we are now one commit behind the mean in the GitHub remote repository.
+
+That's because the remote repository now has the changes for the linear_regression experiment, whereas our local repository has still not synced up with those changes. Now, before we actually perform a git pull and sync up with those changes, we'll need to add a few folders so that they are tracked by Git. The first folder that we'll add to Git to track is the data folder, and I'm also going to add all of the contents of the linear_regression folder. Now, the reason I'm using git add on all of these folders is because I want these folders to be tracked by Git.
+
+[Video description begins] The Jupyter notebook titled 'FlightsPricePrediction' is open. The following code is added in code cell 29: !git add data/. [Video description ends]
+
+[Video description begins] Code cell 30 reads: !git add linear_regression/. [Video description ends] 
+
+If I run a git status right now, you'll see that all of these folders and files within those folders are tracked by Git. So, everything under data and everything under linear_regression is now tracked by Git. If I now do a git pull to get all of the changes from the main branch in our remote repository, those changes will be synced up with whatever changes I have in my local repository. If you try to run a git pull without actually tracking the files that live in your data and linear_regression folders, well, you'll find that there will be merge conflicts and git pull will not work. Notice that git pull is now successful.
+
+[Video description begins] Code cell 31 reads: !git status. [Video description ends]
+
+[Video description begins] Code cell 32 reads: ! git pull. [Video description ends]
+
+The changes in the remote repository were automatically merged with the changes that I had in my local repository. This automatic merge was possible because what I had in my local repository was identical with what I had in the remote repository. At this point, after the git pull command, our local repository is completely In Sync with the main branch of our GitHub repo. Let's quickly run an ls -l to see what files and folders we have in the current working directory. I have the data subfolder with the CSV file and the .dvc file for the data.
+
+[Video description begins] Code cell 33 reads: !ls -l. [Video description ends]
+
+I have the linear_regression subfolder which contains my experiment files. And then, of course, I have the current notebook that we are working on.
+
+14. Video: Running and Tracking a kNN Regression Experiment with DVC (it_mlodvcdj_02_enus_14)
+
+During this video, you will learn how to run and track a k-Nearest Neighbor (kNN) regression model.
+run and track a k-Nearest Neighbor (kNN) regression model
+[Video description begins] Topic title: Running and Tracking a kNN Regression Experiment with DVC. Your host for this session is Janani Ravi. [Video description ends]
+Now, we've already trained a linear regression model. That was our first experiment that we pushed to DVC and we observed on Iterative Studio. I'm now going to train a second regression model, this time using k-nearest neighbors. Once we finish training this model, we'll also push the details of this experiment to DVC and we'll observe these details on Iterative Studio.
+
+Now I instantiate the knn_model on line 3.
+
+[Video description begins] The Jupyter notebook titled 'FlightsPricePrediction' is displayed. Code cell 34 displays several lines of code. Line 3 reads: knn_model = KNeighborsRegressor(). [Video description ends]
+
+I access the parameters of that model that I want to log using DVCLive on line 5. I then instantiate a pipeline that will run the preprocessing steps that we had specified earlier on our training data and then fit the knn_model as a 'regressor'. We call the fit method to train the model on line 10, and then we use the train model for prediction on line 12.
+
+[Video description begins] Line 5 reads: params_reg = knn_model.get_params(). Line 8 reads: pipe_knn = Pipeline(steps = [('preprocessor', prepocessor), ('regressor', knn_model)]). [Video description ends] 
+
+I then compute metrics on this knn_model on lines 14 through 17, the training r_sq_score, the mean_abs_error on the test data, the root_mean_sq_error on the test data, and the r_sq_score on the test data again. Next, on lines 19 through 23, we instantiate a DVCLive object. 
+
+
+[Video description begins] Line 10 reads: pipe_knn.fit(X_train, y_train). Line 12 reads: y_pred = pipe_knn.predict(X_test). Line 14 reads: training_score = pipe_knn.score(X_train, y_train). Line 15 reads: mean_abs_error = mean_absolute_error(y_test, y_pred). Line 16 reads: root_mean_sq_error = mean_squared_error(y_test, y_pred, squared = False). Line 17 reads: r_sq_score = r2_score(y_test, y_pred). [Video description ends]
+
+[Video description begins] Line 19 reads: with Live(. Line 20 reads: dir = 'knn_regression',. Line 21 reads: save_dvc_exp = True,. Line 22 reads: exp_message = 'Flights price prediction with KNN regression'. Line 23 reads: ) as live:. [Video description ends]
+
+Now, the directory where we'll store all of the files related with the knn experiment is the directory called 'knn_regression'.
+
+We tracked our linear regression model in the linear regression directory. We are tracking knn_regression in a different directory. You'll find that this is not really required because the experiment details are already tracked by DVC, but I'm just showing you that you can actually do things this way if you want to. Make sure you set save_dvc_exp = True so that this experiment will be tracked by Iterative Studio.
+
+On lines 25 and 26, I log the parameters of this model using DVCLive and on lines 28 through 31, I log the metrics on the test data for this model.
+
+[Video description begins] Line 25 reads: for param_name, param_value in params_reg.items():. Line 26 reads: live.log_param(param_name, param_value). [Video description ends]
+
+[Video description begins] Line 28 reads: live.log_metric('training_r2_score', training_score). Line 29 reads: live.log_metric('mae', mean_abs_error). Line 30 reads: live.log_metric('rmse', root_mean_sq_error). Line 31 reads: live.log_metric('r2_score', r_sq_score). [Video description ends]
+
+Go ahead and run this code. Now I should tell you that the knn_model takes several minutes to train, so it might be 5-6 minutes before training is complete. Now you might see a warning that says the file repro.dat was committed to Git by mistake.
+
+Now, we haven't explicitly performed this commit. We did it by our DVC. We pushed the DVC experiment, our linear regression experiment, and then using Iterative Studio, we merged the experiment details with the main branch. If this warning annoys you, you can go ahead and use git remove to actually get rid of this temporary file. It shouldn't be in Git, but I'm just going to leave it as is because it's harmless for the purposes of this demo. Once training is complete, let's push the experiment details to DVC.
+
+I always do this via the terminal window because I need to specify my GitHub username and password for the DVC experiment push to work.
+
+[Video description begins] The terminal window appears. The following command is added: dvc exp push origin -A. [Video description ends]
+
+Note that this time I invoked dvc exp push origin, but instead of specifying the name of the experiment, I simply say -A. This will push all of the experiments that I have run locally on my machine to DVC, including the medal-body experiment from earlier. Go ahead and execute this command. Specify your GitHub Username and token right here, and once the push is complete, notice that Experiment medal-body was pushed, but it was already up to date.
+
+In addition, our new experiment for KNN regression was also pushed. This is the experiment with ID noted-glee. I'm curious about how the k-nearest neighbors model performed on our data.
+
+[Video description begins] The dvc_flights_price_prediction page appears within Iterative Studio. There is a tab labeled Update project available at the top. There is a toolbar displayed below the title bar. It contains the following tabs: Filters, Columns, Plots, Trends, Compare, and Run. A table appears next with several column headers such as Experiment, Created, Message, CML, linear_regression/metrics.json, data, and so on. The linear_regression/metrics.json column header contains 4 sub-column heads: mae, rmse, r2_score, and training_r2_score. [Video description ends]
+
+Let's head over to Iterative Studio, click on the Update project button and there you see it, noted-glee.
+
+Now, because the linear regression experiment and the KNN experiment were tracked in different folders, we have different sections here. The first section here is for the metrics of linear regression, but if you scroll over to the right, you'll find the metrics for the knn_model as well. For the knn_model, the r2_score on the test data was 0.97040 and on the training data was 0.98. The parameters of the knn_model are also available here as you scroll over to the right. You can actually configure what columns you view here on this page by clicking on the Columns tab here you can see that there are columns associated with Metrics.
+
+[Video description begins] The Columns tab offers a menu. It displays 4 tabs at the top: Metrics, Models, Files, and Parameters. The Metrics tab is active now. It displays a search bar at the top followed by 2 section headers labeled linear_regression/metrics.json and knn_regression/metrics.json. Both contain the following 4 metrics: mae, rmse, r2_score, and training_r2_score. There are checkboxes provided next to the section headers and the metrics. [Video description ends]
+
+So, there are two sets of metrics, one for the linear regression model, the second for the KNN regression model. The Models tab shows nothing because we haven't logged any model artifacts yet. Files show the one file that we've used to train this model.
+
+[Video description begins] The Files tab is active now. It displays a search bar at the top followed by a collapsible folder called data. It contains a file called flights_price_data.csv. There are checkboxes provided next to both the folder and the file. [Video description ends]
+
+This is the only file that we are tracking with DVC. And Parameters gives us the parameters of the two models that we've trained, the two different experiments.
+
+Let's say you don't really want to view the Parameters of the models that you've trained. You can uncheck these checkboxes and this will ensure that the parameters information is not displayed here on your projects page.
+
+[Video description begins] The Parameters tab is active now. It displays a search bar at the top followed by 2 section headers labeled linear_regression/params.yaml and knn_regression/params.yaml. The linear_regression/params.yaml section contains the following parameters: copy_X, n_jobs, positive, and fit_intercept. The knn_regression/params.yaml section contains the following parameters: p, metric, n_jobs, weights, algorithm, leaf_size, n_neighbors, and metric_params. There are checkboxes provided next to the section headers and the parameters. [Video description ends]
+
+Go ahead and Save the changes that you've made to this particular display and you can see that the parameters are no longer available here. That's the column that's hidden.
+
+Now at this point, if you're happy with the knn_model, you can choose to commit the files associated with the KNN experiment to GitHub and you can merge the changes to the main branch exactly like we did with linear regression. However, I'm going to leave this here. I'm now going to do anything with the knn_model. We saw that we could train a different model and view that experiment on Iterative Studio. I'm now going to move on to train a random forest model. With this random forest model, we'll log the serialized model as an artifact and we'll register it using DVC's Model Registry and view the details here on Iterative Studio.
+
+15. Video: Tracking Model Artifacts (it_mlodvcdj_02_enus_15)
+
+Find out how to log a model as an artifact.
+
+log a model as an artifact
+[Video description begins] Topic title: Tracking Model Artifacts. Your host for this session is Janani Ravi. [Video description ends]
+Machine learning is all about experimentation and here we are using DVC along with Iterative Studio to track the different regression experiments that we perform on our flight_price_prediction data. The KNN model was a good one, but let's say I'm interested in using an ensemble model to perform regression analysis. Here I'm going to train a RandomForestRegressor. The random forest is an ensemble model, meaning it uses a number of different decision trees under the hood trained using the same data but in slightly different ways and the output of the random forest, that is the final prediction is a combination or an aggregation of the individual predictions of the decision trees that make up the ensemble.
+
+Now, here we are going to use DVCLive and Iterative Studio to track this experiment. We are also going to log the model as an artifact. We will have this model tracked by DVC. We'll access this model using dvc get and use it to make predictions. Observe that I have some additional imports here. I import the os package and from the joblib package, I import the dump object. joblib is just a Python package used for fast serialization and deserialization of Python objects, particularly for machine learning models. It's an alternative to using pickle to serialize your model.
+
+[Video description begins] The Jupyter notebook titled 'FlightsPricePrediction' is displayed. Code cell 35 displays several lines of code. Line 1 reads: import os. Line 2 reads: from joblib import dump. [Video description ends]
+
+I instantiate the random forest model on line 6, access the parameters of the model on line 7, set up a Pipeline to pre-process the data, and then fit the random forest model on line 10. I train the model by calling fit on the pipeline on line 12. We make predictions on the test data on line 14, on line 16 through 19.
+
+[Video description begins] Line 6 reads: rf_model = RandomForestRegressor(). Line 7 reads: params_reg = rf_model.get_params(). Line 10 reads: pipe_rf = Pipeline(steps = [('preprocessor', prepocessor), ('regressor', rf_model)]). Line 12 reads: pipe_rf.fit(X_train, y_train). [Video description ends]
+
+We compute metrics on the test and training data. On line 22 is where the code is different.
+
+[Video description begins] Line 14 reads: y_pred = pipe_rf.predict(X_test). Line 16 reads: training_score = pipe_rf.score(X_train, y_train). Line 17 reads: mean_abs_error = mean_absolute_error(y_test, y_pred). Line 18 reads: root_mean_sq_error = mean_squared_error(y_test, y_pred, squared = False). Line 19 reads: r_sq_score = r2_score(y_test, y_pred). [Video description ends]
+
+I create a directory called model_dir under the current working directory and within this model_dir directory is where we'll store out our serialized model using joblib. I construct the model_path using os.path.join. So, this model path will be in the model_dir folder that we just created and the name of the serialized model file is going to be called flight-price-prediction.joblib.
+
+ And on line 26, I use the dump command to serialize the model out to the model_path. Next, we'll use DVCLive to track metrics, parameters, and artifacts for this model. We instantiate a Live object on lines 29 through 33, the directory in which we will store the data for this random forest regression is rf_regression. Make sure that save_dvc_exp is True.
+
+[Video description begins] Line 22 reads: os.makedirs('model_dir', exist_ok = True). Line 23 reads: model_path = os.path.join('model_dir', 'flight-price-prediction.joblib'). [Video description ends]
+
+[Video description begins] Line 26 reads: dump(pipe_rf, model_path). [Video description ends]
+
+ [Video description begins] Line 29 reads: with Live(. Line 30 reads: dir = 'rf_ regression',. Line 31 reads: save_dvc_exp = True,. Line 32 reads: exp_message = 'Flights price prediction with Random Forest regression'. Line 33 reads: ) as live:. [Video description ends]
+
+On lines 35 through 41, I log the data that we used to train this model as an artifact.
+
+[Video description begins] Line 35 reads: live.log_artifact(. Line 36 reads: 'data/flights_price_data.csv',. Line 37 reads: type = 'dataset',. Line 38 reads: name = 'flightprices',. Line 39 reads: desc = 'Flights price prediction dataset',. Line 40 reads: labels = ['regression', 'prices'],. Line 41 displays a ). [Video description ends]
+
+I call live.log_artifact. Notice that type here is equal to dataset. So, this artifact is of type dataset. On lines 43 and 44, I log the parameters for this random forest model. On lines 46 through 52, I log a custom scatter plot which will plot the actual price from the test data and the predicted price from the model, so we can see what the relationship looks like. We log the metrics associated with the training and test data on lines 54 through 57. And on line 59, I call live.log_artifact and log out the serialized model as an artifact to be tracked by DVC. Note that the type of artifact here is model.
+
+[Video description begins] Line 43 reads: for param_name, param_value in params_reg.items():. Line 44 reads: live.log_param(param_name, param_value). [Video description ends] 
+
+[Video description begins] Line 46 reads: live.log_plot(. Line 47 reads: 'predicted_vs_actual_price',. Line 48 reads: pd.DataFrame({'predicted': y_pred, 'actual': y_test}).to_dict('records'),. Line 49 reads: x = 'actual',. Line 50 reads: y = 'predicted',. Line 51 reads: template = 'scatter',. Line 52 reads: title = 'Predicted price vs. Actual price'). [Video description ends] 
+
+
+[Video description begins] Line 54 reads: live.log_metric('training_r2_score', training_score). Line 55 reads: live.log_metric('mae', mean_abs_error). Line 56 reads: live.log_metric('rmse', root_mean_sq_error). Line 57 reads: live.log_metric('r2_score', r_sq_score). Line 59 reads: live.log_artifact(model_path, type = 'model'). [Video description ends]
+
+The previous artifact that we logged our data had type equal to dataset. That's on line 37. DVC treats artifacts of type model differently from artifacts of type dataset. When you specify type is equal to model, this will indicate to DVC that it's a model, and it will make it appear in the studio model registry. After logging this artifact, when we push this experiment to DVC, you will find that this model automatically appears in the studio model registry when we head over to Iterative Studio. Go ahead and train this model. We logged a lot of little useful details with these models experiment. The first of these was a custom plot, predicted versus actual CSV.
+
+[Video description begins] Code cell 36 is highlighted. Line 1 reads: pd.DataFrame({'predicted': y_pred, 'actual': y_test})\. Line 2 reads: .to_csv('predicted_vs_actual_price.csv', index = False). [Video description ends]
+
+I'm curious about what this plot looks like.
+
+So, I'm going to write out the CSV file that contains the data for this plot to my current working directory, and then I'm going to use dvc plots show to actually view this plot. predicted_vs_actual_price.csv is the file that contains the data.
+
+[Video description begins] Code cell 37 reads: !dvc plots show predicted_vs_actual_price.csv --template scatter -x actual -y predicted --open. [Video description ends]
+
+The template is a scatter plot, x axis, the actual values, y axis contains the predicted values. --open will automatically open up this plot in a new browser tab and here is what the plot looks like.
+
+[Video description begins] A tab titled DVC Plot opens on the browser. It displays a scatter plot titled predicted_vs_actual_price.csv. [Video description ends]
+
+The linear relationship between the actual prices in our dataset and the predicted values from our model indicate that this random forest model is likely a good one. While instantiating the DVCLive object we'd specified the rf_regression folder as the directory where are experiment details should be stored. Now if you look at this folder, you will find all of the experiment files in here including the dvc.yaml file. We have all of the expected sections here, params, metrics, plots.
+
+[Video description begins] The page titled 'dvc_flights_price_prediction' appears. It displays a toolbar at the top. The navigation pane on the left displays 2 sections labeled Favourites and Tags. The main pane displays a table with 4 column headers: Name, Date Modified, Size, and Kind. Below, numerous folders appear such as data, dvc_plots, knn_regression, model_dir, rf_regression, and so on. [Video description ends]
+
+Notice we also have a custom plot predicted_vs_actual_price. This is the custom plot that we logged using live.log plot. In the artifacts section of this YAML file, we have 2 artifacts, flightprices that is of type dataset and flight-price-prediction that is of type model. 
+
+[Video description begins] The rf_regression folder is opened. The navigation pane on the left titled FOLDERS displays this collapsible folder. It contains 4 files: plots, dvc.yaml, metrics.json, and params.yaml. The dvc.yaml file is open on the main pane. [Video description ends]
+
+You can see that the path to our model directory is specified here. We go one step up .. then model_dir, and flight-price-prediction.joblib is the name of the serialized Python object representing our model. Let's take a look at the contents of the model_dir. You can see the .gitignore file here asks Git to ignore this joblib file.
+
+[Video description begins] The model_dir folder is open now. The navigation pane on the left titled FOLDERS displays this collapsible folder. It contains a few files such as .gitignore, flight-price-prediction.joblib.dvc, and so on. The .gitignore file is open on the main pane. It displays the following: /flight-price-prediction.joblib. [Video description ends]
+
+This is our serialized model. This will be tracked using DVC and not Git. And here is the .dvc file that tracks this serialized model.
+
+[Video description begins] The flight-price-prediction.joblib.dvc file is open on the main pane. Line 1 reads: outs:. Line 2 reads: - md5: d47a6419045cd62e91da921fbf004484. Line 3 reads: size: 835519936. Line 4 reads: hash: md5. Line 5 reads: path: flight-price-prediction.joblib. [Video description ends]
+
+Now we ask DVCLive to track this as an experiment.
+
+Let's note the experiment ID from Iterative Studio.
+
+[Video description begins] The dvc_flights_price_prediction page appears within Iterative Studio. There is a toolbar available below the title bar. It contains the following tabs: Filters, Columns, Plots, Trends, Compare, and Run. A table appears next with several column headers such as Experiment, Created, Message, CML, linear_regression/metrics.json, knn_regression/metrics.json, rf_regression/metrics.json, rf_regression, data, and so on. The linear_regression/metrics.json column header contains 4 sub-column headers: mae, rmse, r2_score, and training_r2_score. [Video description ends]
+
+You can see a new experiment here on top called weird-cors. That is the experiment ID for this random forest model. Let's call dvc exp push in our terminal window for this weird-cors experiment, specify your GitHub Username and your token so that we push all of the experiment files to DVC. 
+
+[Video description begins] The terminal window appears. The following command is added: dvc exp push origin weird -cors. [Video description ends]
+
+Once the experiment files, this includes the data as well as the serialized model are available in DVC, we can Update our Iterative Studio project, and here we have all of the metrics tracked for weird-cors our random forest model. Let's scroll over to the right and you should see the rf_regression/metrics.json file. Random forest model is the best one so far, with an r2_score of 0.98492.
+
+For this particular random forest model, we had also logged out the serialized model as an artifact and that's present in the column rf_regression flight-price-prediction. Observe that little + icon there. That + icon is what we can use to register this model with DVC's model registry. In addition, we have other artifacts here, the data that we used to train the model, you can see the model_dir is also present as an artifact. I want to view the plots logged in this experiment. So, I am going to select this experiment, and I am also going to select that little plot icon next to the checkbox. I will also deselect this plot icon for the medal-body experiment. I am not interested in viewing that. Once that's done, click on the plot icon up top. Here you will see all of the usual plots that we track.
+
+[Video description begins] The Plots page is open within the Iterative Studio. The navigation pane on the left displays 2 collapsible sections labeled Commits and Directories. The main pane displays several graphs. [Video description ends]
+
+But if you scroll down, here is our custom plot, predicted values from the model versus actual values from the data. This is the custom plot that we logged out as a part of this experiment. Now, if you remember I had mentioned that if you log an artifact of type model, it will automatically be available in DVC's model registry.
+
+[Video description begins] The main page of Iterative Studio is open. The toolbar at the top displays a dropdown labeled Personal as well as a few tabs like Projects, Models, Settings, Add a project, and others. Below, the welcome message is displayed. A section appears next, displaying the thumbnails of the private project titled dvc_flights_price_prediction and example-get-started-experiments, and so on. [Video description ends]
+
+Let's head over to models here on this main page and you can see the model right there, flight-price-prediction here at the bottom.
+
+[Video description begins] The page titled Models appears. It displays a few tabs at the top such as Last stage assignment, All stages, Columns, and so on. A table appears next with various column headers like Model, Repository, Latest version, Description, dev, prod, and stage. Various items are listed below. One of them is called flight-price-prediction. It displays a Register option in the column header titled Latest version. [Video description ends]
+
+This model is an artifact that has been logged out with this experiment and this can be seen here on Iterative Studio. If you click on the three dots next to the model, you can click on the option here to View the models page and this will give you additional details of the model. You can see the Path to the model file. We can't see metrics and params because we haven't really registered this model.
+
+[Video description begins] A context menu appears next to the flight-price-prediction item. It displays various options such as View model page, Register version, Deprecate model, and so on. [Video description ends]
+
+Well, the next step is for us to register this model with DVC's Model Registry. If you scroll to the top, on the top right, you should find the button that says Register first version.
+
+Video description begins] A page titled 'flight-price-prediction' appears. It displays a tab labeled Register first version in the top right corner. A section titled Model info appears below. It displays several fields like Assigned stages, Description, Labels, Path to model file, Metrics, and Params. There is a panel on the right. It displays 2 fields: Stages and History. [Video description ends]
+
+Let's click on this button and try and perform this registration and immediately, we run into a problem.
+
+[Video description begins] A dialog box titled 'Register a new version' appears. It contains 3 fields: Commit hash, Version name, and Message. At the bottom, 2 tabs labeled Register version and Cancel appear. A warning message appears in pink next to this dialog box. [Video description ends]
+
+Registering a model requires us to specify a GitHub commit hash, which means that we have to commit all of the experiments files with our remote repository before we can actually register this model. Now, clearly we can't register this model yet. But let's try this another way. I am going to head back to the main models page and here I am going to head over to the main Projects page and lets click through to our dvc_flights_price_prediction project. Now, here I am going to scroll over to the column where we saw the + icon for the model that has been logged as an artifact.
+
+Let's see if we can try and register the model this way.
+
+[Video description begins] The page titled 'dvc_flights_price_prediction' appears again. The column header labeled rf_regression displays a plus icon for the Experiment item weird-cors. [Video description ends]
+
+Now when a new dialog comes up, notice we have something here in the Commit hash field. We know for a fact that there is no GitHub commit associated with this experiment because we haven't committed the experiment files to GitHub. Now, where did this commit hash come from? Well, it's not a commit hash, it's actually the 40 character SHA-1 hash for this model. Let's see if you can try and register version 1.0.0 of this model. Click on Register version. This will spin for a bit and then give you an error. And if you click on this error icon you will get more details about this error. Failed to find the base commit. You cannot register a model till the file tracking the model has been pushed to our GitHub remote repository. The serialized model is being tracked by DVC. We've pushed it to DVC when we push the experiment files, but we also have to commit the metafiles to GitHub before we can register the model.
+
+16. Video: Registering Models with the Studio Registry (it_mlodvcdj_02_enus_16)
+
+In this video, discover how to register a model in the Iterative Studio registry.
+register a model in the Iterative Studio registry
+[Video description begins] Topic title: Registering Models with the Studio Registry. Your host for this session is Janani Ravi. [Video description ends]
+It's now time for us to commit all of the files associated with this random forest experiment to Git. Now let's run git pull to make sure that our local repository is up to date with our remote repository. You can see that is Already up to date.
+
+[Video description begins] The Jupyter notebook titled 'FlightsPricePrediction' is displayed. Code cell 38 reads: !git pull. [Video description ends]
+
+We have nothing to fear. We can commit our new changes. Now I'm going to run an ls -la in the model_dir to see what files we have in there. We have the joblib file and the metafile, the .dvc file tracking this joblib file. And then, of course, we have the gitignore ignoring the joblib file. I want to commit the metafiles that are tracking the model to Git. So, I'm going to go ahead and add everything under the model_dir.
+
+[Video description begins] Code cell 39 reads: !ls -la model_dir/. [Video description ends] 
+
+Next, let's take a look at the rf_regression folder that is the output of DVCLive for this particular model, and see what files we have in there. We have the dvc.yaml which we definitely want to commit to Git and a number of other files, we'll commit all of those files to Git as well. Remember we don't want any huge data files in Git, but these small files are OK. I'm going to go ahead and call git add and add all of the files under rf_regression to be tracked by Git. Now we have the metafile for our data in the data directory.  
+
+[Video description begins] Code cell 40 reads: !git add model_dir/.. [Video description ends]
+
+[Video description begins] Code cell 41 reads: !ls -la rf_regression/. [Video description ends]
+
+[Video description begins] Code cell 42 reads: !git add rf_regression/.. [Video description ends]
+
+I'm going to go ahead and git add the data directory as well. Remember, the actual data file will be ignored because of the .ignore we have in there. Now let's quickly run a git status to make sure that all of the files associated with this particular experiment a random forest model is now being tracked by Git.
+
+Yes indeed, you can see the untracked files and those are all files that we can continue to not track. Let's commit all of the files associated with this particular model and experiment. This commit is, of course, to our local repository on this machine.
+
+[Video description begins] The following code was added in code cell 43: !git add data/.. Code cell 44 reads: !git status. [Video description ends]
+
+ [Video description begins] Code cell 45 reads: !git commit -m "Committing model, data, and experiment files for RF model". [Video description ends]
+
+I'm going to call git push -u origin main to push this commit out to our GitHub main branch as well. So, the experiment files for the random forest model is now available on GitHub and we can confirm this by heading over to our repository.
+
+[Video description begins] Code cell 46 reads: !git push -u origin main. [Video description ends]
+
+ We can take a look at the main branch here. The last commit was just a few minutes ago, Committing model, data, and experiment files for the RF model. Now that the model's metafile is available on GitHub, we should be able to register the model. 
+
+[Video description begins] The page titled 'loonytest / dvc_flights_price_prediction' appears. It contains various tabs below, like Code, Issues, Pull requests, Actions, and so on. The Code tab is active. To the right are various drop-downs labeled Unwatch, Fork, and Star. Below, there are some more drop-downs labeled main, Add file, Code, and so on. Next to the dropdown labeled main, the following 2 buttons are displayed: 2 branches and 0 tags. A section appears next. It displays various items like .dvc, data, linear_regression, model_dir, and so on. The right pane displays various sections like About, Releases, Packages, and so on. [Video description ends]
+
+[Video description begins] The dvc_flights_price_prediction page appears within Iterative Studio. There is a tab labeled Update project available at the top. A toolbar is available below the title bar. It contains the following tabs: Filters, Columns, Plots, Trends, Compare, and Run. A table appears next with several column headers such as Experiment, Created, Message, CML, rf_regression/metrics.json, rf_regression, data, and so on. The rf_regression/metrics.json column header contains 3 sub-column heads: r2_score, rmse, and training_r2_score. There is a plus icon available in the rf_regression column for the items HEAD, main and weird-cors. [Video description ends]
+
+Back to Iterative Studio, let's update the project so that the changes in the remote repository are picked up. Notice we have a + icon now in our HEAD, main branch as well. The random forest model can now be registered from the main branch if we choose to do so. Let's register the model from the models page. Click on loonytest that will take us to the main page for all of the projects. Let's click on the Models tab here and there we see it, our flights_price_prediction/rf_regression model. Click on the Register button and notice that the Commit hash is automatically picked up from GitHub.
+
+[Video description begins] The page titled Models appears. It displays a few tabs at the top such as Last stage assignment, All stages, Columns, and so on. A table appears next with various column headers like Model, Repository, Latest version, Description, dev, prod, and stage. Various items are listed below. One of them is called flight-price-prediction. It displays a Register option in the column header titled Latest version. [Video description ends]
+
+The Commit hash for this model is the GitHub commit hash associated with the commit where we checked in the metafile tracking this model. The first version of our model v1.0.0 is what we are about to register. Now this will spin for a bit and you can see that the model has been successfully registered.
+
+[Video description begins] A dialog box titled 'Register a new version' appears. It contains 3 fields: Commit hash, Version name, and Message. At the bottom, 2 tabs labeled Register version and Cancel appear. [Video description ends] 
+
+You click on the three dots, let's go to View model page, and you will see a whole bunch of details for this model.
+
+[Video description begins] The page titled 'flight-price-prediction' appears. It displays a tab labeled Register new version in the top right corner. A section titled Version info appears below. There is a dropdown displayed next labeled v1.0.0 and a tab called Deregister version. Several fields appear below like Assigned stages, Description, Labels, Path to model file, Get the model file, Metrics, and Params. An option titled Assign stage is available next to the Assigned stages field. There is a panel on the right. It displays 2 fields: Stages and History. [Video description ends]
+
+You can see that this model has been registered. You can see a Path here to the model file in the model_dir. And you can see the dvc get command that we can run to access this model in our DVC project. So if a team member wants to access the model that you have trained, he or she can use this dvc get command. Of course, your team member needs to have access to the remote storage where your model is being tracked by DVC. Let's assign the stage to this model. Click on Assign stage and let's say this model is under development. We can choose to assign the dev stage.
+
+[Video description begins] A dialog box titled 'Assign stage' appears. It contains 3 fields: Select or enter a stage name, Choose model version, and Message. At the bottom, 2 tabs labeled Assign stage and Cancel appear. [Video description ends]
+
+Go ahead and hit Assign.
+
+DVC will now track this model as being in the dev stage. If you refresh, you will be able to see the stage information here as well. Assigning a stage to your model allows your other team members to track where exactly you are in the model development process, in the dev stage that means that you are actually still experimenting and figuring out what the model should be. In the first line, you can see that our flight-price-prediction model has been successfully registered, that is version 1 and it's in the dev stage. Now, let's change the stage for this model.
+
+[Video description begins] The Models page is displayed again. A context menu appears next to the flight-price-prediction item. It displays various options such as View model page, Register version, Assign stage, Deprecate model, and so on. [Video description ends]
+
+You can click on the three dots, click on Assign stage, and let's move this model to the prod stage. I have chosen prod as the stage and I click on Assign stage. Now, if your model is in the production stage that indicates that it's now ready for other people to use for prediction.
+
+[Video description begins] The dialog box titled 'Assign stage' appears again. [Video description ends] 
+
+You can see that our model is in the prod stage. So, let's head over to see how we can access this model. Go to View model page and here if you scroll down right in the center of this page, you have the dvc get command to get the model file. This is the command that you can use in a brand-new project or your team members can use in a brand-new project to actually access your trained model.
+
+Copy this command over and let's switch over to a terminal window. Now, rather than create a new project and show you how to access the model, I'm just going to create a subfolder in this project called loaded_model. I'm now going to cd into this loaded_model subfolder and I'm going to run the dvc get command that I copied over here. This dvc get command will access DVC and download the model tracked by DVC onto my local machine.
+
+[Video description begins] The terminal window appears. The following commands are added: mkdir loaded_model and cd loaded_model. [Video description ends] 
+
+[Video description begins] The command reads: dvc get https://github.com/loonytest/dvc_flights_price_prediction ../model_dir/flight-price-prediction.joblib--rev 472ca73d4e1f2f212008d63158eac1dea586bed4. [Video description ends] 
+
+I'll of course, need to specify my GitHub Username and Password, that is my token, and once I have done that, my flight_price_prediction joblib file has been downloaded into this current working directory. I'm going to run ls -l here and you can see the joblib file right here. The dvc get command accessed the remote storage where this model was being tracked and then downloaded this model to the current working directory and I can now use this model. 
+
+[Video description begins] The command reads: ls -l. [Video description ends]
+
+This dvc get command would not have succeeded if I did not have access to the remote storage where DVC was tracking this model. If I did not have access to the /tmp/dvc_storage_fpp folder, that's where the model is being tracked. Now that we have the serialized model, we can use it to make predictions. Import the load function from joblib and I invoke this load on this joblib file that we have stored in the loaded_model subfolder.
+
+[Video description begins] The Jupyter notebook titled 'FlightsPricePrediction' reappears. Line 1 of code cell 55 reads: from joblib import load. Line 3 reads: loaded_model = load('loaded_model/flight-price-prediction.joblib'). [Video description ends]
+
+Now that we have the loaded_model, let's make predictions on the test data using this loaded_model, and I save these predictions in the predictions_loaded variable. Now, let's see if these predictions match the original predictions that we had made using this model. That is in y_pred. I save this in predictions_original. Let's assert using an np.array_equal to see whether these predictions are the same. There was no assert error or exception, which means the loaded_model is the same one that we previously serialized out to disk.
+
+[Video description begins] Line 1 of code cell 56 reads: predictions_loaded = loaded_model.predict(X_test). Line 3 reads: predictions_loaded. [Video description ends] 
+
+[Video description begins] Line 1 of code cell 57 reads: predictions_original = y_pred. Line 3 reads: predictions_original. Code cell 58 reads: assert(np.array_equal(predictions_loaded, predictions_original)). [Video description ends]
+
+17. Video: Course Summary (it_mlodvcdj_02_enus_17)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary [Video description ends]
+You have now reached the end of this course, working with pipelines and DVCLive. We started this course off by getting a brief introduction into how pipelines can be configured and used in DVC. We saw that DVC pipelines can be used to track the different stages in a machine learning workflow, the dependencies of each stage, the outputs produced by each stage, and the parameters of each stage.
+
+This allowed us to modularize our machine learning workflow and coordinate all the steps involved right from data to training and prediction. We understood the role of the dvc.yaml file in helping manage pipeline stages and the dvc.log file in maintaining project consistency. We then moved on to working with DVC using Jupyter Notebooks. We used DVCLive to track parameters, metrics, and artifacts for our model in a simple manner using log statements from Python code. We were introduced to Iterative Studio which allowed us to manage our machine learning metrics and parameters using a visual user interface.
+
+We logged our model details using DVCLive and visualized these in Iterative Studio. Finally, we learned how to use DVCLive to track model experiments. We pushed experiment files to DVC and viewed them in Iterative Studio. We used different Git branches to manage our experiments and learned how we could use pull request to merge our experiment branches with the main branch. We saw how using branches allowed us to keep separate but parallel lines of development for our ML experiments.
+
+You also explored how to track model artifacts using DVCLive and register them with the Iterative Studio registry. In conclusion, this course provided a solid grasp of DVC's foundations and the use of DVCLive to automate tracking model metrics and parameters. You are now all set up for the course coming up ahead, tracking and serving models with DVC and MLEM.
+
+Course File-based Resources
+•	MLOps with Data Version Control: Working with Pipelines & DVCLive
+Topic Asset
+© 2023 Skillsoft Ireland Limited - All rights reserved.

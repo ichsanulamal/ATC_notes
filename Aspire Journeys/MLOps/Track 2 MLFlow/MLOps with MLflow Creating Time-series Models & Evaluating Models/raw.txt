@@ -1,0 +1,780 @@
+MLOps with MLflow: Creating Time-series Models & Evaluating Models
+MLflow integrates with Prophet, a powerful time-series model that considers seasonal effects. MLflow provides a variety of model evaluation capabilities, empowering you to thoroughly assess and analyze model performance. First, you will use Prophet in combination with MLflow for time-series forecasting. Integrating Prophet with MLflow's tracking capabilities, you will seamlessly manage and evaluate your time-series models. Running the Prophet model and viewing metrics will allow you to assess its forecasting performance. Cross-validation will enhance the evaluation process, ensuring reliability across different temporal windows. Then, you will use MLflow to evaluate machine learning (ML) models effectively. MLflow's evaluation capabilities, including Lift curves, Receiver Operating Characteristic-Area Under the Curve (ROC-AUC) curves, precision-recall curves, and beeswarm charts, provide valuable insights into model behavior and performance. Finally, you will use MLflow to configure thresholds for model metrics and only validate those models which meet this threshold.
+Table of Contents
+    1. Video: Course Overview (it_mlflowdj_05_enus_01)
+
+    2. Video: Cleaning Data for a Time-series Model (it_mlflowdj_05_enus_02)
+
+    3. Video: Training a Model and Viewing the Artifacts (it_mlflowdj_05_enus_03)
+
+    4. Video: Performing Cross-validation and Evaluating Performance (it_mlflowdj_05_enus_04)
+
+    5. Video: Cleaning Data and Performing Encoding (it_mlflowdj_05_enus_05)
+
+    6. Video: Creating a Machine Learning Model and Setting Up Model Evaluation (it_mlflowdj_05_enus_06)
+
+    7. Video: Evaluating a Model and Analyzing the Lift Curve (it_mlflowdj_05_enus_07)
+
+    8. Video: Understanding the Precision-Recall Curve and Beeswarm Charts (it_mlflowdj_05_enus_08)
+
+    9. Video: Using a Metric Threshold to Evaluate a Model (it_mlflowdj_05_enus_09)
+
+    10. Video: Course Summary (it_mlflowdj_05_enus_10)
+
+1. Video: Course Overview (it_mlflowdj_05_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for the session is Vitthal Srinivasan. [Video description ends]
+Hi and welcome to this course, creating time series models and evaluating models. My name is Vitthal Srinivasan, and I will be your instructor for this course. MLflow offers integration with Prophet, a powerful time- series model developed at Facebook that analyzes data for seasonal components and also allows easy time-series prediction and time-series model evaluation. Separately, MLflow provides a variety of model evaluation capabilities which you will also explore thoroughly.
+
+First, you will use Prophet in combination with MLflow for time-series forecasting. Integrating Prophet with MLflow's tracking capabilities, you will seamlessly manage and evaluate your time-series models - running the Prophet model and viewing metrics will allow you to assess its forecasting performance - cross-validation will enhance the evaluation process, ensuring reliability across different temporal windows.
+
+Next, you will use MLflow to evaluate machine learning models effectively - MLflow's evaluation capabilities, including Lift curves, ROC-AUC curves, precision-recall curves, and beeswarm charts, provide valuable insights into model behavior and performance. You will use MLflow to configure thresholds for model metrics and only validate those models which meet this threshold. In conclusion, this course will teach you how to create time-series models and evaluate models in MLflow.
+
+2. Video: Cleaning Data for a Time-series Model (it_mlflowdj_05_enus_02)
+
+Find out how to clean data for a time-series model.
+clean data for a time-series model
+[Video description begins] Topic title: Cleaning Data for a Time-series Model. Your host for the session is Vitthal Srinivasan. [Video description ends]
+In this demo, we are going to continue exploring MLflow's integrations with different machine learning and statistical packages. This time our focus is going to be on Prophet. Prophet is a time series forecasting package which was open-sourced by Meta which was then Facebook in 2017.
+
+[Video description begins] A Jupyter Notebook titled 'ManagingTimeSeriesModels' is open on the browser. It displays a toolbar at the top with various options like File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. A series of icons appear next. Among them, is a Run icon and a drop-down list labeled Code. The page below displays several code cells. [Video description ends]
+
+We will make use of forecast from Prophet in order to predict gold prices and we will run through many interesting scenarios.
+
+Let's go ahead and get started. Let's free up a little additional screen real estate by toggling the Toolbar and the Headers, and then let's get started with the installs. In this demo, we are going to make use of some visualization libraries such as kaleido and plotly which in turn have some dependencies of their own.
+
+[Video description begins] Code cell 3 reads: pip install -U kaleido. Code cell 4 reads: pip install plotly. [Video description ends]
+
+And they are quite finicky about the libraries that have been installed. So to be on the safe side, we begin with a pip install -U of numpy.
+
+We then do the same with prophet, Next, we also install plotly. Plotly is great for interactive visualizations.
+  
+[Video description begins] Code cell 1 reads: pip install -U numpy. Code cell 2 reads: pip install prophet. [Video description ends] 
+
+This installation also goes through pretty quickly and then we install another rather specialized library called nbformat. nbformat is a Python library that can be used to programmatically access and modify Jupyter Notebooks. A Jupyter Notebook is a JSON file under the hood, and the nbformat library is used by the other visualization libraries that we just mentioned in order to properly render high-end visualizations.
+
+[Video description begins] Code cell 5 reads: pip install nbformat. [Video description ends] 
+
+With all of those unusual library installations out of the way, let's come to some more standard imports.
+
+[Video description begins] Code cell 6 displays a few lines of code. Line 1 reads: import pandas as pd. Line 2 reads: import numpy as np. Line 4 reads: import matplotlib.pyplot as plt. Line 6 reads: from sklearn.model_selection import train_test_split. [Video description ends]
+
+These are all of the usual suspects from pandas, numpy, plotly, and sklearn. And then let's read in our dataset. We've downloaded gold prices dating back to the year 2000 and we now read those into a pandas DataFrame using pd.read_csv.
+
+[Video description begins] Code cell 7 displays 2 lines of code. Line 1 reads: gold_price_data = pd.read_csv('datasets/gold.csv'). Line 3 reads: gold_price_data.head(). The output displays a table containing numbers. It has 5 rows and 7 column headers: Date, Open, High, Low, Close, Volume, and Currency. [Video description ends]
+
+Here we've invoked the head command on the DataFrame. You can see the columns Date, Open, High, Low, Close, Volume, and Currency which is USD.
+
+It so happens that the data was already sorted in chronological order, so when we invoke the tail method on this DataFrame we see the last rows.
+
+[Video description begins] Code cell 8 reads: gold_price_data.tail(). [Video description ends]
+
+So, we have data here up to September 2022. The 2022-09-02 is the last date in our dataset. The largest index is 5702, which tells us that this DataFrame contains 5703 rows.
+
+Next, let's examine the types of the columns in this pandas DataFrame. We run the info method on the DataFrame and we note that the Date is of Dtype object.
+
+[Video description begins] Code cell 9 reads: gold_price_data.info(). [Video description ends]
+
+That's something that we will need to change. Along the way, we'll also drop columns that we are not interested in, namely the 'Open', 'High', 'Low', 'Volume', and 'Currency'.
+
+[Video description begins] Code cell 10 displays a few lines of code. Line 1 reads: gold_price_data = gold_price_data.drop(. Line 2 reads: columns = ['Open', 'High', 'Low', 'Volume', 'Currency']). Line 4 reads: gold_price_data['Date' = pd.to_datetime(gold_price_data['Date'], format = '%Y-%m-%d'). Line 6 reads: gold_price_data.info(). [Video description ends]
+
+For this demo, we are going to focus exclusively on the Date and the closing price. So, that drop operation is on lines 1 and 2 of this code cell.
+
+On line 4, we change the type of the Date column by invoking pd.to_datetime. We've also got to specify a date format. Based on the data in our CSV file, we specify %Y-%m-%d. We then rerun the .info method and verify now that we have just the two Columns, Date, which is of Dtype, datetime64(ns) and the Close. Let's explore our data by visualizing the relationship between Date and the Close.
+
+This time we've made use of plotly.express, so this is px.line.
+
+[Video description begins] Code cell 11 displays 3 lines of code. Line 1 reads: import plotly.express as px. Line 3 reads: fig = px.line(gold_price_data, x = 'Date', y = 'Close'). Line 5 reads: fig.show(). [Video description ends]
+
+You see we have a nice interactive visualization. Hovering over the individual points gives us a tooltip with the Date as well as the Close. It's always fascinating to look at market prices. Now let's come back to mlflow.
+
+[Video description begins] Code cell 12 displays 2 lines of code. Line 1 reads: import mlflow. Line 3 reads: mlflow.get_tracking_uri(). [Video description ends]
+
+Here we import mlflow and then call the get_tracking_uri( ) method. We see that the output is a file path.
+
+This is a file URL in the mlflow directory, and the runs directory is mlruns. So, we've gone back to running the mlflow server via the mlflow UI. Next, let's create a new experiment. This is called 'gold_price_forecasting' and then call mlflow.set_experiment passing in the same experiment_name.
+
+[Video description begins] Code cell 13 displays 2 lines of code. Line 1 reads: mlflow.create_experiment(name = 'gold_price_forecasting'). Line 3 reads: mlflow.set_experiment(experiment_name = 'gold_price_forecasting'). [Video description ends]
+
+We see the experiment_id which is the identifier starting with 7852 ending with 715. The artifact_location is a directory of the same name inside the mlruns directory.
+
+Now, the Prophet model which we are about to build is somewhat finicky about the column names passed in and in order to be consistent with what Prophet expects, we rename the columns in our pandas dataframe.
+
+[Video description begins] Code cell 14 displays 2 lines of code. Line 1 reads: gold_price_data = gold_price_data.rename(columns = {'Date': 'ds', 'Close': 'y'}). Line 3 reads: gold_price_data.sample(10). [Video description ends]
+
+We pass in a single input argument to the .rename method. This is called columns and it's a dictionary. The keys are Date and Close, and the values are ds and y. Then we sample the new dataframe and we see that the new column names are indeed reflected here.
+
+Let's also quickly run a tail command and make sure that all of the data is still in there and it is. Next, we have some of the required import statements. We import Prophet, the model as well as cross_validation and performance_metrics.
+
+[Video description begins] Code cell 15 reads: gold_price_data.tail(10). [Video description ends]
+
+ [Video description begins] Code cell 16 displays 3 lines of code. Line 1 reads: from prophet import Prophet. Line 2 reads: from prophet.diagnostics import cross_validation, performance_metrics. Line 4 reads: from mlflow.models.signature import infer_signature. [Video description ends]
+
+As we shall see, cross_validation in the Prophet context means something slightly different than its general usage in say scikit-learn. Now let's get to the code of the run.
+
+On lines 1 and 2, we have more import statements. On line 1, these are related to plotly. On line 2, these are metrics from sklearn.
+
+[Video description begins] Code cell 17 displays a series of codes. Line 1 reads: from prophet.plot import plot_plotly, plot_components_plotly. Line 2 reads: from sklearn.metrics import mean_absolute_percentage_error, mean_squared_error, mean_absolute_error. [Video description ends]
+
+These are the mean absolute_percentage_error, mean_squared_error, and mean_absolute_error. These are not metrics that we have used so far in any of our regression models. That's because these make more sense in the context of a forecasting problem. On line 4, we kick off the run with mlflow.start_run we instantiate the prophet_model on line 7.
+
+We fit it passing in our DataFrame that's on line 9, and then we Log params with the code fragment that you see on lines 12 through 14.
+
+[Video description begins] Line 4 reads: with mlflow.start_run(run_name = 'Price forecasting using Prophet') as run1:. Line 7 reads: prophet_model = Prophet(). Line 9 reads: prophet_model.fit(gold_price_data). [Video description ends]
+
+ [Video description begins] Line 12 reads: model_params = {. Line 13 reads: name: value for name, value in vars (prophet_model).items() if np.isscalar(value). Line 14 displays a }. [Video description ends]
+
+That's a little unusual, so let's take a moment to understand what's going on. You see on line 13 that we call the vars function, passing in prophet_model. vars is a built-in Python function which can be used in order to examine the attributes of any object. All attributes of an object can be accessed via a variable called __dict.
+
+So, that code fragment vars of prophet_model is going to return a dictionary in which all of the keys are going to be the names of the attributes of the model and the values are going to be those attribute values. Now, vars is going to return a dictionary with an invoke .items on that which gives us an iterable of key value pairs. We then iterate over that iterable with the for loop. There are two loop variables called name and value. Note, however, that vars is going to return all of the instance variables, properties, and methods. That's a little more than we wish to log out. That's why we have the if check over at the end. We call if np.isscalar(value) and if this condition is satisfied, then we are going to add the key value pair into our dictionary called model_params. That key value pair gets added via the name: value at the very left of line 13.
+
+Taken altogether, lines 12 through 14 are going to give us a dictionary in which we are going to have the key value pairs corresponding to all scalar attributes of our model object. model_params is exactly in the format that we require. It's a dictionary. We then pass it into mlflow.log_params on line 15.
+
+[Video description begins] Line 15 reads: mlflow.log_params(model_params). [Video description ends]
+
+On lines 18 and 21, we use the prophet_model in order to make forecasts. \
+
+[Video description begins] Line 18 reads: future_df = prophet_model.make_future_dataframe(periods = 180). Line 21 reads: forecast = prophet_model.predict(future_df). [Video description ends]
+
+On line 18, we invoke the method make_future_dataframe and we pass in (periods = 180).
+
+This is a way of telling the model that we'd like forecasts for the next 180 periods. This returns a dataframe and we print out the last 10 values. That's done on line 19.
+
+[Video description begins] Line 19 reads: print(future_df.tail()). [Video description ends]
+
+On line 21, we pass this empty dataframe into prophet_model.predict. prophet_model.predict will look at all of the values of ds in that dataframe and based on that it will make its predictions from the fitted model.
+
+This forecast is going to have four columns ds, yhat_lower, yhat_upper, and yhat. You can see those as the first four entries in the list on line 29.
+
+[Video description begins] Line 29 reads: actuals_pred_df = actuals_pred_df[['ds', 'yhat_lower', 'yhat_upper', 'yhat', 'y']]. [Video description ends]
+
+The names of these returned columns are quite self-explanatory. yhat is the predicted value. yhat_lower and yhat_upper give us confidence bounds around that forecast. Once we have the forecast on line 21, we then merge the forecast and the actuals.
+
+That's done on lines 23 through 27.
+
+[Video description begins] Line 23 reads: actuals_pred_df = pd.merge(. Line 24 reads: gold_price_data,. Line 25 reads: forecast[['ds', 'yhat_lower', 'yhat_upper', 'yhat']],. Line 26 reads: on = 'ds'. Line 27 displays a ). [Video description ends]
+
+We do a full join. So at the end of this process, we are going to have all of the columns that you see on line 29. We have ds as well as the original y values. y is the last element in that list, and then we'll have yhat_lower and yhat_upper that you see in the middle of that list. Those three came from the forecast. Let's call it a wrap for this demo and pick up the action again in the next demo, where we'll see what exactly the actual pred_df contains and how accurate those forecasts are.
+
+3. Video: Training a Model and Viewing the Artifacts (it_mlflowdj_05_enus_03)
+
+Discover how to train a model and view the artifacts.
+train a model and view the artifacts
+[Video description begins] Topic title: Training a Model and Viewing the Artifacts. Your host for the session is Vitthal Srinivasan. [Video description ends]
+We had ended the last demo right in the middle of this pretty complicated bit of code where we had invoked the prophet_model in order to predict gold prices for future 180 time periods. That was on line 21.
+
+[Video description begins] The Jupyter Notebook titled 'ManagingTimeSeriesModels' is open. Code cell 17 is displayed with several lines of code. Line 21 is highlighted. It reads: forecast = prophet_model.predict(future_df). [Video description ends]
+
+We had commented that the returned forecast includes three columns whose names we see on line 29, yhat_lower, yhat_upper, and yhat in addition to ds.
+
+[Video description begins] Line 29 reads: actuals_pred_df = actuals_pred_df[['ds', 'yhat_lower', 'yhat_upper', 'yhat', 'y']]. [Video description ends]
+
+Then on lines 23 through 27, we merged the forecast with the actual prices. We did this using the on input argument on line 26, as a result of which we have a full DataFrame with the actual data as well as the forecasts. 
+
+[Video description begins] Line 23 reads: actuals_pred_df = pd.merge(. Line 24 reads: gold_price_data,. Line 25 reads: forecast[['ds', 'yhat_lower', 'yhat_upper', 'yhat']],. Line 26 reads: on = 'ds'. Line 27 displays a ). [Video description ends]
+
+We print out ten of those values on line 31 and then scrolling down you see that we compute various metrics to see how good these forecasts were. On line 34, we compute the mean_absolute_percentage_error. That formula does exactly what its name would suggest. It takes the actual values which are in the column y on line 35, and it compares those to the predicted values in the column yhat. We then take the percentage difference between those two, and we compute the absolute value of each percentage difference and then take the mean. 
+
+[Video description begins] Line 31 reads: print(actuals_pred_df.head(10)). [Video description ends]'
+
+
+[Video description begins] Line 34 reads: mape = mean_absolute_percentage_error(. Line 35 reads: actuals_pred_df['y'], actuals_pred_df['yhat']). [Video description ends] That's the mape which we store on line 34.
+
+If we performed a similar calculation but did not compute the percentage error, then we'd get the mean_absolute_error, which you see on line 36. And for a mean_squared_error, we go to line 38. Notice how in each of these cases, we've got to make use of either the absolute value or the square in order to ensure that positive and negative errors do not cancel each other out.
+
+[Video description begins] Line 36 reads: mae = mean_absolute_error(. Line 37 reads: actuals_pred_df['y'], actuals_pred_df['yhat']). Line 38 reads: rmse = mean_squared_error(. Line 39 reads: actuals_pred_df['y'], actuals_pred_df['yhat'], squared = False). [Video description ends]
+
+We collect all of these metrics in a dictionary that's on lines 41 through 45, and then we invoke mlflow.log metrics on line 47. 
+
+[Video description begins] Line 41 reads: metrics = {. Line 42 reads: 'mape': mape,. Line 43 reads: 'mae': mae,. Line 44 reads: 'rmse': rmse. Line 45 displays a }. [Video description ends]
+
+[Video description begins] Line 47 reads: mlflow.log_metrics(metrics). [Video description ends]
+
+On lines 49 and 50, we rely on the integration between prophet and plotly. On line 49, we invoke plot_plotly and just pass in the prophet_model and the forecast. On line 50, we do something even more interesting. As we shall see in just a moment. The prophet_model not only produces an overall forecast, but it also has seasonality at the weekly and the annual level. The plot_components_plotly is going to create plots of the annual and the weekly seasonality that makes Prophet a great choice for data where seasonal patterns are particularly important.
+
+[Video description begins] Line 49 reads: fig1 = plot_plotly(prophet_model, forecast). Line 50 reads: fig2 = plot_components_plotly(prophet_model, forecast). [Video description ends]
+
+These two figures, fig1 and fig2, are then logged using mlflow.log_figure so that they will exist on the artifact server, and then on line 55, we call infer_signature.
+
+[Video description begins] Line 52 reads: mlflow.log_figure(fig1, 'forecast.jpeg'). Line 53 reads: mlflow.log_figure(fig2, 'forecast_components.jpeg'). Line 55 reads: signature = infer_signature(gold_price_data.drop(columns = 'y'), forecast). [Video description ends]
+
+Note that mlflow clearly does not integrate as tightly with Prophet as plotly does.
+
+That's why in the infer_signature call on line 55, we've had to explicitly pass in the columns from the gold_price_data. Notice how we do this after dropping the y column because that includes the target that's not the input. The second input argument is the forecast. This gives the actual values which the infer_signature method can use to infer the types of the input arguments. Then on line 57, we call mlflow.prophet.log_model and we pass in the prophet_model along with the signature which we explicitly inferred on line 55 up above.
+
+We can see from line 57 that there clearly is an integration between mlflow and prophet. 
+
+[Video description begins] Line 57 reads: model_info = mlflow.prophet.log_model(. Line 58 reads: prophet_model, 'price-forecasting-model', signature = signature. Line 59 displays a ). [Video description ends]
+
+That's why we can call mlflow.prophet.log_model. But that method cannot be relied upon to infer the signature correctly. That's why we've done so ourselves. Let's run this code. It runs through successfully and we get some interesting output. First up top, we have 5 rows. These are just some time periods for which we will be forecasting the gold price.
+
+You can see that these are all dates from 2023, i.e, from after the end of the input data. Remember that we were forecasting for the next 180 time periods starting from the 2022-09-02 and that's why the last date for which we want to forecast is 2023-03-01. We see that with the index 5882. Those first five rows are the output from the command future df.tail in line 19 of the code cell above.
+
+However, what comes next is a lot more interesting. This is where we print out the head. That's the first 10 rows of the actual spread df. Remember, our input data started in the year 2000 and that's why the first 10 rows start from the 2000-01-04. We have yhat_lower, yhat_upper, yhat, and y.
+
+We can see from comparing yhat and y how close to the actual price the predictions are. For instance, for the 4th of January, yhat is 269.59, y is 283.7, which is a deviation on the order of 4 to 5%. Let's now switch over to the MLflow UI and see what's been logged. We've got to refresh this UI and when we do, we see that over on the left we have two experiments, the Default and gold_price_forecasting.
+
+[Video description begins] A page titled mlflow 2.3.2 appears on the browser. The title bar at the top offers 2 tabs: Experiments and Models. The Experiments tab is active now. The navigation pane on the left displays 2 items: Default and gold_price_forecasting. The Default item is open on the main pane. It shows the header called Description. Below, a search bar appears along with several filter options such as Table view, Chart view, Sort, Columns, and so on. A table appears next with 5 column headers: Run Name, Created, Duration, Source, and Models. [Video description ends]
+
+We click on gold_price_forecasting and that's got the one run, Price forecasting using Prophet. We click into that, and we see that we have 16 Parameters 3 Metrics and the Artifacts down below.
+
+[Video description begins] A page labeled Price forecasting using Prophet appears within mlflow. It displays various details at the top in fields like Run ID, Date, Source, Git Commit, User, Status, and so on. Below, five collapsible sections appear: Description, Parameters, Metrics, Tags, and Artifacts. [Video description ends]
+
+Remember that the parameters had been logged by invoking the vars function on the prophet_model and these are all effectively attributes of that model object.
+
+[Video description begins] The Parameters section displays a table with 2 columns: Name and Value. Various items are listed like changepoint_prior_scale, changepoint_range, daily_seasonality, and so on. [Video description ends]
+
+The Metrics were logged by us. These are the mean absolute error, mean absolute percentage error, and the root mean square error.
+
+[Video description begins] The Metrics section displays a similar table with 2 columns: Name and Value. There are 3 items listed: mae, mape, and rmse. [Video description ends]
+
+And then in the Artifacts section, we have the price-forecasting-model.
+
+We can see that the Model schema is not blank, it's got 1 Input called ds.
+
+[Video description begins] The Artifacts section contains 2 panes. The left pane displays the folder called price-forecasting-model. It contains the following files: MLmodel, conda.yaml, model.pr, python_env.yaml, requirements.txt, forecast.jpeg, and forecast_components.jpeg. The main pane displays the title MLFlow Model. Below, there are two columns: Model schema and Make Predictions. The Model schema column contains a table with 2 column headers: Name and Type. The Make Predictions column displays codes. [Video description ends]
+
+Then we click into the MLmodel file, and we see here that the flavor is Prophet. There is also another flavor that's the python_function as usual, but the Prophet flavor is one that we've encountered for the first time. The prophet_version is 1.1.4. Let's scroll down to take a closer look at the inputs and the outputs. That's just the one input.
+
+That's the ds of type datetime. But the outputs are very interesting indeed. In addition to the ds, we also have trend, yhat_lower, yhat_upper, trend_lower, trend_upper. These define the trend component of the time-series. Then we have additive_terms, additive_terms_lower and additive_terms_upper before we get to the seasonal component. So there's weekly, weekly_lower, weekly_upper, and likewise yearly, yearly_lower, and yearly_upper.
+
+Finally, there's also a set of multiplicative_terms. It's pretty clear that Prophet is really quite a sophisticated time-series model.
+
+[Video description begins] The MLmodel file is displayed. Few lines are highlighted. The first line reads: prophet:. The second line reads: code: null. The third line reads: data: model.pr. The fourth line reads: model_type: Prophet. The fifth line reads: prophet_version: 1.1.4. [Video description ends]
+
+Let's click through some of the other files, such as the conda.yaml, the model.pr. Notice that this is not a pickle file. It's saved with a .pr extension and then python_env.yaml and requirements.txt. Nothing particularly interesting here.
+
+However, the two figures that we logged are indeed very interesting. The first is the forecast. You can see that we have two subplots here and the second has the forecast_components where we can see the trend and the weekly and the annual seasonality. The components chart is particularly interesting. 
+
+[Video description begins] The forecast.jpeg file displays a graph. The x-axis represents ds. The following years are marked on the x-axis: 2000, 2005, 2010, 2015, and 2020. The y-axis has the following points: 500, 1000, 1500, and 2000. At the top, 5 parameters appear: 1w, 1m, 6m, 1y, and all. [Video description ends]
+
+Looking at the trend, you can see that gold prices seem to have been trending upwards for much of this time period, but the trend was not upwards from around 2012 until about 2019. There was an uptrend in the beginning and one again towards the end of this 2.5 decade-long period.
+
+In the annual seasonality pattern, it clearly seems like there are peaks around February and September and a trough around July as well as January. On the weekly pattern, you can see here that prices seem to be highest at the start and the end of the week and low in the middle of the week. It's worth noting for the weekly charts that we can't be very sure of just how reliable the data for Saturdays and Sundays is.
+
+This might be for very thinly traded markets.
+
+[Video description begins] The forecast_components.jpeg file displays 3 graphs. The first graph measures the trend on the y-axis. The second graph measures the yearly trend on the y-axis using the following points: -20, -10, 0, 10, and 20. The following months are displayed on the x-axis: January 1, March 1, May 1, July 1, September 1, November 1, and January 1. The third graph measures the weekly trend on the y-axis using the following points: -0.5, 0, 0.5, and 1. The x-axis displays the 7 days of the week starting from Sunday through Saturday. [Video description ends]
+
+In any case, let's switch back to Jupyter and invoke the show method on our images.
+
+[Video description begins] Code cell 18 reads: fig1.show(). [Video description ends]
+
+These are the same images which were logged as a part of the artifacts. However, one advantage of viewing them within the Jupyter Notebook is that these are interactive.
+
+[Video description begins] The output displays the graph of the forecast.jpeg file. There are two subplots. The subplot at the bottom has a slider. As the slider is moved from left to right, the top subplot zooms in, displaying the values of the intervening and coming years. [Video description ends]
+
+Just as an aside, these visualizations were actually interactive even in the MLflow UI as of an earlier version of plotly.
+
+However, recently plotly upgraded some features, and after that upgrade, it seems like the interactivity is lost when we view the images inside the MLflow UI. It's possible that in a future release of MLflow, the interactivity will be restored.
+
+[Video description begins] Code cell 19 reads: fig2.show(). The output displays the chart of the forecast_components.jpeg file. [Video description ends]
+
+We spend some time exploring these different visualizations in the Jupyter Notebook and then in the next demo, we will move on and perform cross-validation in the context of Prophet.
+
+4. Video: Performing Cross-validation and Evaluating Performance (it_mlflowdj_05_enus_04)
+
+Learn how to perform cross-validation and evaluate model performance.
+perform cross-validation and evaluate model performance
+[Video description begins] Topic title: Performing Cross-validation and Evaluating Performance. Your host for the session is Vitthal Srinivasan. [Video description ends]
+Just how good are these forecasts? If you are planning to use Prophet for time-series forecasting, this is a question that you will inevitably ask yourself. And anticipating that Prophet has provided a way for us to measure just how good Prophet's forecasts are on a given dataset using something known as cross-validation. Let's see how this works in practice.
+
+On screen now, we've set up a DataFrame called test_dates. We get this by invoking pd.date_range and specifying a start and an end date and a frequency which is daily. That's on line 1 of this code cell. Then, on line 3, we convert this into a single series, pd.Series. We extract just the column called ds. 
+
+[Video description begins] The Jupyter Notebook titled 'ManagingTimeSeriesModels' is open. Code cell 20 is displayed with 3 lines of code. Line 1 is highlighted. It reads: test_dates = pd.date_range(start = '2022-09-03', end = '2023-01-03', freq = 'D'). [Video description ends]
+
+[Video description begins] Line 3 reads: test_df = pd.Series(data = test_dates.values, name = 'ds').to_frame(). [Video description ends]
+
+We print it out to screen, and you can see that it does indeed contain each date from the 2022-09-03 until the 2023-01-03.
+
+Next, we are going to load our prophet_model using mlflow.pyfunc.load_model. At this point, you might be wondering how we have the model_uri.
+
+[Video description begins] Code cell 21 displays 3 lines of code. Line 1 reads: prophet_model_saved = mlflow.pyfunc.load_model(model_info.model_uri). Line 2 reads: test_predictions = prophet_model_saved.predict(test_df). [Video description ends]
+
+If you look closely at this code, you see that we make use of model_info.model_uri. Where did this model_info come from? Well, let's jog our memories by scrolling up just a little bit. You can see that in the run on line 57, we had invoked mlflow.prophet.log_model and had saved the return value in a variable called model_info.
+
+[Video description begins] Lines 57 to 59 in code cell 17 are highlighted. Line 57 reads: model_info = mlflow.prophet.log_model(. Line 58 reads: prophet_model, 'price-forecasting-model', signature = signature. Line 59 displays a ). [Video description ends]
+
+This model info contains within it the model_uri, which we are referencing in the code cell you currently see on screen. We've scrolled back down by the way, just a few cells in the same workbook. Once we have the prophet_model that was saved, we can then invoke the predict method on it and we pass in the test_df, which we constructed a moment ago.
+
+We hit Shift + Enter, and here are the test_predictions in front of us. This includes a lot of terms. We start with the ds over on the left and then the trend, yhat_lower, yhat_upper, trend_lower, trend_upper, and then all of the additive, weekly, annual, and multiplicative terms. We had seen the names of these columns while exploring the model signature in MLflow. None of this answers our fundamental question which still remains just how good are all of these forecasts.
+
+Even so, this is an interesting and important exercise because it shows how we can use Prophet in order to forecast the value of y for very specific granular dates. Let's now turn back to the question of how good these forecasts are. We are going to try and answer this using cross-validation in the context of Prophet. The code for this is visible on screen. Now on line 1, you see that we have an import statement, where we import plot_cross_validation_metric from prophet.plot.
+
+[Video description begins] Code cell 22 displays a series of codes. Line 1 reads: from prophet.plot import plot_cross_validation_metric. [Video description ends]
+
+Then, on line 4, we have a with statement which kicks off a new run. On line 6, we create a prophet_model and indeed a lot of this is similar to the previous run.
+
+[Video description begins] Line 4 reads: with mlflow.start_run(run_name = 'Price forecasting using Prophet with cross-validation') as run2:. Line 6 reads: prophet_model = Prophet(). [Video description ends]
+
+ The new and interesting bits however are visible starting line 14. There, as you can see, we call the cross_validation function and we pass in as the first input argument in the prophet_model and then we have initial = 2000 days, period = 60 days, and horizon = 60 days.
+
+[Video description begins] Line 14 reads: cv_results = cross_validation(. Line 15 reads: prophet_model, initial = '2000 days', period = '60 days', horizon = '60 days'). [Video description ends] 
+
+Let's try and understand what this is doing. Usually in the context of machine learning, such as in scikit-learn, cross-validation refers to the process of creating multiple candidate models, then testing all of those models on some validation dataset and picking the model with the best performance. That is not what cross-validation means in the context of Prophet. In the scikit sense, cross-validation would involve multiple models, but if you look carefully here, you can see that there's just the one model, the one which is fit on line 7.
+
+What then is this cross-validation all about?
+
+[Video description begins] Line 7 reads: prophet_model.fit(gold_price_data). [Video description ends]
+
+Well, when we invoke cross_validation in this fashion, what Prophet is going to do is it's going to first fit a model where the training data consists only of the initial period which is 2000 days. That initial model will be used to predict the values for the next 60 days.
+
+That's the horizon which is the third input argument. Then over this 60 day period, various metrics of the performance will be computed. This will give us one set of performance metrics. And please note that all of these are out-of-sample performance because this particular version of the model was only trained on the first 2000 and it did not see any of the 60 days which it was used to predict for. Let's call this model 1.
+
+Then another model, model 2 will be constructed. This model will start not from day 0 but rather from day 60 and it will then go on for 2000 days from that period. That is defined by second input argument period which we see here on screen. This second model, model 2 which is trained with the data from day 60 up to day 2060 will then be used to perform an out-of-sample prediction for the next 60 days from day 2061 until day 2120. And once again, performance_metrics will be computed for this out-of-sample prediction. Iteratively, this process will continue for as long as there is data worth 2000 days in order to train a model. At the end of this period, we will have a large number of trained models and we will also have a large number of out-of-sample forecasts as well as the performance_metrics for these out-of-sample forecasts. At the end of this process, it is not the case that any of these models is selected as the final model.
+
+The final model remains the original model which we created on line 6. However, taken altogether, these out-of-sample forecasts will help us to get a sense of just how accurate the prophet_model is when applied to this data series. Coming back to the code of this run, you can see that the cross_validation is performed on lines 14 and 15.
+
+We get the results and store them in the variable cv_results on line 14. The metrics that we wish to use are defined in a list on line 17 and then we compute the performance_metrics on line 19 passing in the cv_results and the metrics. Just to be clear, the variable cv_results is going to consist of all of the dataframes corresponding to the out-of-sample forecast for all of these models.
+
+[Video description begins] Line 17 reads: cv_metrics = ['mae', 'rmse', 'mape']. [Video description ends]
+
+[Video description begins] Line 19 reads: metrics_results = performance_metrics(cv_results, metrics = cv_metrics). [Video description ends]
+
+All of those dataframes are then passed into performance_metrics along with the list of metrics to be computed, and the metrics_results are then printed out on line 20.
+
+[Video description begins] Line 20 reads: print(metrics_results).
+[Video description ends]
+
+Once we have all of these metrics across the different out-of-sample predictions, it's easy enough for us to average them, and that's what we do on line 22. We could also plot out all of these metrics and visualize them and that would give us a sense of how good these predictions are. 
+
+[Video description begins] Line 22 reads: average_metrics = metrics_results.loc[:, cv_metrics].mean(axis = 0).to_dict(). [Video description ends]
+
+That plot is constructed on line 26 where we invoke the method plot_cross_validation_metric. We pass in cv_results.
+
+[Video description begins] Line 26 reads: fig = plot_cross_validation_metric(cv_results, metric = 'mape'). Line 27 reads: mlflow.log_figure(fig, 'forecast_errors.png'). [Video description ends] 
+
+The metric we are visualizing here is the mape or the mean_absolute_percent_error. These cross_validation bits are the new and interesting part of this code. The remaining bits are pretty standard. As before, we log out the model by using mlflow.prophet.log_model. Before that, we infer the signature that's on line 32, and we also save the returned model_info object on line 34.
+
+[Video description begins] Line 32 reads: signature = infer_signature(gold_price_data.drop(columns = 'y'), predictions). Line 34 reads: model_info = mlflow.prophet.log_model(. Line 35 reads: prophet_model, 'price-forecasting-model-with-cv', signature = signature. Line 36 displays a ). [Video description ends]
+
+Let's hit Shift + Enter.
+
+This is a fairly long and time consuming process, as you can tell, it takes a while before all of the cross-validation is done. Then we've displayed the results of all of those cross-validations and down below is a visualization of the mape. This is interesting because it gives us a sense of how the model performs on different horizons. The blue line here represents the mape computed over a rolling window of the dots.
+
+[Video description begins] The output displays a graph. The x-axis represents Horizon (days). The following days are marked on the x-axis: 0, 10, 20, 30, 40, 50, and 60. The y-axis represents mape. The following points are marked on the y-axis: 0.00, 0.05, 0.10, 0.15, 0.20, and so on. [Video description ends]
+
+We have the time horizon in days on the X-axis and the mape on the Y-axis, and the blue line starts from 7 days.
+
+We see that the mape at a 7 day time horizon is about 7.5%, and as we go out to 60 days, that trends upward until it's just about 10%. Now these numbers are hard to tell precisely from this visualization, but if we scroll up just a little bit, we have the precise values of the mape for different time horizons, and here they are.
+
+On a 7 day time horizon, the mape is 7.4%, and scrolling down, that increases so that for a 60 day time horizon, it's 9.655%. That gives us a pretty objective and easy-to-understand answer to the question just how good are these forecasts? So if you are a gold trader, Prophet is unlikely to score you a big win. A margin of error of around 7.5 to 10% for a period 7 days out isn't all that hot when it comes to trading models.
+
+In any case, let's quickly switch over to the MLflow UI.
+
+[Video description begins] A page labeled Price forecasting using Prophet with cross-validation appears within mlflow. It displays various details at the top in fields like Run ID, Date, Source, Git Commit, User, Status, and so on. Below, five collapsible sections appear: Description, Parameters, Metrics, Tags, and Artifacts. [Video description ends]
+
+We examine the contents of the model directory and there in the Artifacts, we see that the forecast_errors.png file has been recorded successfully as well. That gets us to the end of this demo and indeed to the end of our exploration of Prophet and its integration with MLflow.
+
+5. Video: Cleaning Data and Performing Encoding (it_mlflowdj_05_enus_05)
+
+Find out how to clean data for machine learning (ML) and perform encoding.
+clean data for machine learning (ML) and perform encoding
+[Video description begins] Topic title: Cleaning Data and Performing Encoding. Your host for the session is Vitthal Srinivasan. [Video description ends]
+In this demo, we are going to change tracks and talk about MLflow's support for model evaluation and validation. Specifically, we will be making use of the mlflow.evaluate_API which allows us to compute a wealth of metrics on a single model and also to specify a baseline model against which all other candidate models will be evaluated. Let's go ahead and get started.
+
+You can see on screen now that we have the usual simple imports.
+
+[Video description begins] The Jupyter Notebook titled 'ModelEvaluationAndValidation' is open. Code cell 1 is displayed with 3 lines of code. Line 1 reads: import pandas as pd. Line 2 reads: from sklearn.linear_model import LogisticRegression. Line 3 reads: from sklearn.model_selection import train_test_split. [Video description ends]
+
+And then we read in our dataset from a .csv file into a pandas DataFrame.
+
+[Video description begins] Line 1 in code cell 2 is highlighted. It reads: bike_purchase_data = pd.read_csv('datasets/bike_buyers.csv'). [Video description ends]
+
+We invoke the head command in order to sample its columns, and you can see here that over on the right, we have a column called Purchased Bike that's categorical. It's called Yes, No values. That's the target. That's what we will be looking to predict. So, this is going to be a classification model and the X variables are visible towards the left.
+
+[Video description begins] Line 3 reads: bike_purchase_data.head(). [Video description ends] 
+
+We have the Marital Status, Gender, Income, number of Children, Education, Occupation, and so on. So, the aim is to use all of this demographic information in order to try and predict whether this particular user purchased a bike or not. Once we've read in the data, let's examine its shape and you can see here that our pandas DataFrame has 1000 rows and 13 columns. Next, let's perform some simple data preprocessing.
+
+[Video description begins] Code cell 3 reads: bike_purchase_data.shape. [Video description ends] 
+
+We drop the ID column and then we invoke the .isnull( ).sum() method in order to get a sense of how many null values, that is, how many missing values our remaining columns contain.
+
+[Video description begins] Code cell 4 contains 2 lines of code. Line 1 reads: bike_purchase_data.drop(columns = 'ID', inplace = True). Line 3 reads: bike_purchase_data.isnull(). sum(). [Video description ends]
+
+As you can see, there are missing values in here. For instance, in the Marital Status column, we have 7 missing values. We now have a choice about how we will deal with these missing values. One option would be to simply drop all rows in which any of the columns are missing values.
+
+However, that might drastically reduce the size of our dataset, so instead, let's go with a different approach. On screen now, you can see that for the columns 'Income', 'Children', 'Cars', and 'Age', we fill in the mean of each of these columns.
+
+[Video description begins] Code cell 5 contains 2 lines of code. Line 1 reads: for cols in ['Income', 'Children', 'Cars', 'Age']:. Line 2 reads: bike_purchase_data[cols].fillna(bike_purchase_data[cols].mean(), inplace = True). [Video description ends]
+
+Let's break this down. On line 1 of this code cell, we iterate over the columns in the list containing 'Income', 'Children', 'Cars', and 'Age'. Then on line 2, we index into our DataFrame using these columns.
+
+Notice that because cols is a variable which is defined as a list, when we pass that in to another pair of square brackets, we effectively get a subset of the pandas DataFrame, which is also a pandas DataFrame. We then invoke the .fillna on this new pandas DataFrame and we pass in the mean of all of those columns, again by invoking bike_purchase_data of [cols] and then the .mean method. Finally, we do all of this with inplace = True.
+
+'Income', 'Children', 'Cars', and 'Age' are all numeric in our DataFrame and that's why we could make use of the .mean method. Now let's adopt something similar for the categorical columns. These are in the next code cell.
+
+[Video description begins] Code cell 6 contains 2 lines of code. Line 1 reads: for cols in ['Marital Status', 'Gender', 'Home Owner']:. Line 2 reads: bike_purchase_data[cols].fillna(bike_purchase_data[cols].mode()[0],inplace = True). [Video description ends]
+
+For the columns 'Marital Status', 'Gender', and 'Home Owner', we find the .mode. After all, it doesn't make sense to compute the mean of categorical string-encoded columns.
+
+By the time we've run each of these top two code cells on screen now, we have eliminated all of the null values, and we can confirm that by rerunning the .isnull( ).sum methods on our bike_purchase_data.
+
+[Video description begins] Code cell 7 reads: sum(bike_purchase_data.isnull().sum()). [Video description ends]
+
+And this time you see that the sum returned is 0, indicating that we've now filled in all of the missing values. Next, let's eliminate the duplicate rows. We do this by invoking the .drop_duplicates method, and you can see that once we examine the shape after dropping duplicates, we've gone to 953 rows from 1000.
+
+[Video description begins] Code cell 8 contains 2 lines of code. Line 1 reads: bike_purchase_data = bike_purchase_data.drop_duplicates(). Line 3 reads: bike_purchase_data.shape. [Video description ends] 
+
+The number of columns has also reduced from 13 to 12. That's because we previously had dropped the ID column. Next, we've got to label encode a number of the categorical columns in our data. Let's start with this particular column called 'Commute Distance'.
+
+[Video description begins] Code cell 9 reads: bike_purchase_data['Commute Distance'].unique(). [Video description ends]
+
+We begin by invoking the .unique method on it, and you can see from the returned values that it contains strings such as '0-1 Miles', '2-5 Miles', and so on.
+
+Please note that even though this data is categorical, it is ordinal because there is a clear order. '0-1 Miles' is less than '2-5 Miles', which in turn is less than '5-10 Miles'. So, this particular column cannot be one-hot encoded. One-hot encoding will work for columns which are nominal, that is where there is no order implied. Now we are instead going to label encode and you can see we do that using a mapper dictionary. We have employed this once before.
+
+We set up the dictionary in which each of the keys corresponds to one of the unique values from the 'Commute Distance' column and the values are 0, 1, 2, 3, and 4.
+
+[Video description begins] Line 1 of code cell 10 is highlighted. It reads: comm_dist_mapper = {'0-1 Miles': 0, '1-2 Miles': 1, '2-5 Miles': 2, '5-10 Miles': 3, '10+ Miles': 4}. [Video description ends]
+
+Because '0-1 Miles' is less than '1-2 Miles', the key corresponding to 0-1 Miles is 0, which is less than 1, which happens to be the key for the 1-2 Miles. In this way, we have replaced the strings in this Commute Distance column with integers.
+
+Those integers still retain the ordinal information that was embedded in the strings. We set up the variable comm_dist_mapper on line 1 of the code cell and then on line 3, we invoke the .replace method on the 'Commute Distance' column of bike_purchase_data. We pass in the one input argument which is (comm_dist_mapper). Once that's done, we sample 5 rows of the newly reformed bike_purchase_data set.
+
+[Video description begins] Line 3 reads: bike_purchase_data['Commute Distance'] = bike_purchase_data['Commute Distance'].replace(comm_dist_mapper). Line 5 reads: bike_purchase_data.sample(5). [Video description ends]
+
+You can see by looking at the Commute Distance that it now contains the integer values such as 0, 1, 2, 3, and 4. Next, we do something similar for the column Purchased Bike. This time it's actually a binary column. It just has the two values 'No' and 'Yes'. So, it doesn't strictly matter whether we go with label encoding or one-hot encoding, but we've gone with label encoding.
+
+[Video description begins] Line 1 of code cell 11 is highlighted. It reads: label_mapper = {'No': 0, 'Yes': 1}. [Video description ends]
+
+We set up the two labels, 'No' and 'Yes', and the corresponding values 0 and 1, and then we invoke the .replace method passing in our (label_mapper).
+
+Once again, we sample the bike_purchase_data_sample(5) and this time we focus on the Purchased Bike column.
+
+[Video description begins] Line 3 reads: bike_purchase_data['Purchased Bike'] = bike_purchase_data['Purchased Bike'].replace(label_mapper). Line 5 reads: bike_purchase_data.sample(5). [Video description ends]
+
+That's the target column, way over on the right. And you can see that all of the No values have been replaced with 0 and all of the Yes values with 1. Once that's done, let's turn our attention to the remaining categorical columns. These include 'Marital Status', 'Gender', 'Education', 'Occupation', 'Home Owner', and 'Region'.
+
+Each of these columns is nominal, which means that there is no ordering implied in the different values contained within. For such columns, we can make use of pd.get_dummies. This will effectively perform one-hot encoding. This will also have the effect of making our DataFrame extremely broad because we will in effect be adding in all of the columns for the different dummies. We then specify drop_first = True.
+
+Remember that this is because in one-hot encoding, we always want to drop one of the columns, otherwise we'd end up with a multicollinearity problem if we also include an intercept in any kind of regression. 
+
+[Video description begins] Line 1 of code cell 12 reads: bike_purchase_data = pd.get_dummies(bike_purchase_data,. Line 2 reads: columns = ['Marital Status',. Line 3 reads:'Gender',. Line 4 reads:'Education',. Line 5 reads:'Occupation',. Line 6 reads:'Home Owner',. Line 7 reads:'Region'. Line 8 displays a ]. Line 9 reads: drop_first = True). [Video description ends]
+
+We sample the data and you now see that this is a very broad DataFrame indeed. Notice for instance that the one column Education has now been replaced by the multiple one-hot encoded columns such as Education_Graduate Degree, Education_High School, Education_Partial College, and so on.
+
+And we can also verify that of each of these dummy columns, exactly one of them will contain a 1 and the others will contain zeros. For instance, in the first row visible on screen now the one with index 382, you can see that Education_Partial College is 1 and the other education columns are all 0. Once we've verified that the one-hot encoding has been performed successfully, we can move on to actually setting up our model. We are done with the data exploration and preprocessing stage of this demo.
+
+6. Video: Creating a Machine Learning Model and Setting Up Model Evaluation (it_mlflowdj_05_enus_06)
+
+Discover how to create a machine learning model and set up model evaluation.
+create a machine learning model and set up model evaluation
+[Video description begins] Topic title: Creating a Machine Learning Model and Setting Up Model Evaluation. Your host for the session is Vitthal Srinivasan. [Video description ends]
+In this demo, we will continue with the data set we had set up and preprocessed in the previous demo, and we will now make use of MLflow's evaluate function. On screen now, we begin by first invoking the .value_counts method on our target column that's 'Purchased Bike'. As we see from the output, we have a roughly balanced dataset.
+
+[Video description begins] The Jupyter Notebook titled 'ModelEvaluationAndValidation' is open. Code cell 13 is highlighted. It reads: bike_purchase_data['Purchased Bike'].value_counts(). [Video description ends] 
+
+We have slightly more 0 rows than 1 rows, but this again is pretty balanced. Intuitively, with a balanced dataset, the precision, accuracy, and recall are numerically likely to be closer to each other, and so none of these metrics will matter a whole lot more than the others. In any case, let's now move on and split our data into training and test datasets. We do this as usual by first setting up the x and y variables
+
+. [Video description begins] Lines 1 and 2 of code cell 14 are highlighted. Line 1 reads: X = bike_purchase_data.drop(labels = ['Purchased Bike'], axis = 1). Line 3 reads: y = bike_purchase_data['Purchased Bike']. [Video description ends]
+
+The x includes all of the columns from the bike_purchase_data other than the 'Purchased Bike'. We drop that one column.
+
+And then the y includes only that one column. Next, we invoke train_test_split. We pass in test_size as 30% and the random_state as 124. Finally, let's examine the shapes of the x_train, y_train, x_test, and y_test.
+
+[Video description begins] Line 5 reads: X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 124). Line 7 reads: X_train.shape, y_train.shape, X_test.shape, y_test.shape. [Video description ends]
+
+As we see here, we have 667 rows in the training data and 286 rows in the test data. We have 18 regressors or x variables and of course, just the one y variable.
+
+Let's convert each of our input columns into type 'float64'. This will avoid warnings while working with MLflow.
+
+[Video description begins] Code cell 15 displays 2 lines of code. Line 1 reads: X_train = X_train.astype('float64'). Line 2 reads: X_test = X_test.astype('float64'). [Video description ends]
+
+So here we just invoke the astype and we specify the new type as float64. This will have no effect for those values which are already floating point, but it will convert the numeric integer values into this type. Next, let's import mlflow and sklearn and also let's invoke the get_tracking_uri method on mlflow.
+
+[Video description begins] Code cell 16 displays 3 lines of code. Line 1 reads: import mlflow. Line 2 reads: import mlflow.sklearn. Line 4 reads: mlflow.get_tracking_uri(). [Video description ends]
+
+We've run the mlflow server via the mlflow UI and that's why the tracking_uri is a file Uri which ends with mlruns. Next, let's invoke the create_experiment method. We specify bike_purchase_prediction as the experiment name. We cache the experiment_id in a variable and then we also call mlflow.set_experiment so that this experiment is the active one.
+
+[Video description begins] Code cell 17 displays 2 lines of code. Line 1 reads: experiment_id = mlflow.create_experiment('bike_purchase_prediction'). Line 3 reads: mlflow.set_experiment(experiment_name = 'bike_purchase_prediction'). [Video description ends]
+
+The experiment is successfully created, and we can see that the experiment_id is an identifier which starts with 5700 and ends with 282. We also see that there is a key in here called artifact_location and this is a directory which has the same name as the experiment_id. As we shall see, the mlflow.evaluate method generates a lot of metrics and it also generates a lot of visual representations of these metrics. Those will all be stored in that artifact_location as image files.
+
+[Video description begins] The output of code cell 17 is highlighted along with lines 19 to 24 in code cell 18. Line 19 reads: result = mlflow.evaluate(. Line 20 reads: model_uri,. Line 21 reads: eval_data,. Line 22 reads: targets = 'label',. Line 23 reads: model_type = 'classifier',. Line 24 reads: evaluators = ['default'],. [Video description ends]
+
+Next, we get to the code for the actual run. We can see that we import xgboost. That's a library which is used for building a specific type of tree-based MLmodel and then we import shap.
+
+[Video description begins] Line 1 of code cell 18 reads: import xgboost. Line 2 reads: import shap. Line 3 reads: from mlflow.models.signature import infer_signature. [Video description ends]
+
+Finally, on line 3, we import infer_signature from mlflow.models.signature. We've already encountered shap that's going to help us with the feature importances and that's going to be an important part of the output of mlflow.evaluate.
+
+Returning to xgboost, that is a pretty popular library for building machine learning models which are based on gradient-boosted trees. We've already discussed the basic idea of boosted trees. They are an ensemble learning technique in which we build a lot of decision trees under the hood. In that respect, they are similar to random forests. However, in random forests, the individual decision trees are built on independent random subsets of the training data as well as the x variables.
+
+In the case of gradient-boosted trees, the trees are not built randomly and independently. In fact, they are not built in parallel at all. Rather, the trees are built sequentially in such a manner that they build on the weaknesses of the preceding trees. And in this way, the hope is that the ensemble that's built of all of these different trees will compensate for each other's weaknesses. In any case, coming now to the code of the run, we kick it off with a with statement on line 5 as usual.
+
+Then on line 7, we instantiate a LogisticRegression object.
+
+[Video description begins] Line 5 reads: with mlflow.start_run(run_name = 'LR model evaluation') as run1:. Line 7 reads: lr_model = LogisticRegression().fit(X_train, y_train). [Video description ends]
+
+Just to be clear, this is not an xgboost regression object. It's a scikit-learn or sklearn LogisticRegression object. We will be instantiating the xgboost classifier in just a bit. This particular model is going to serve as our baseline. We invoke the .fit method passing in the x_train and y_train data. On line 9, we infer the signature.
+
+For that, we pass in the training data as well as the predictions that our model object gives out. On line 11, we create a copy of the x_test data that's going to be passed in to mlflow.evaluate.
+
+[Video description begins] Line 9 reads: signature = infer_signature(X_train, lr_model.predict(X_train)). Line 11 reads: eval_data = X_test.copy(). [Video description ends]
+
+You can see that when we invoke mlflow.evaluate down below on line 19, we pass in eval_data on line 21. However, after creating it but before passing it in, we've got to add in the y values.
+
+And we do that on line 13, where we add a new variable called 'label', the values of which are taken from y_test.
+
+[Video description begins] Line 13 reads: eval_data['label'] = y_test. [Video description ends]
+
+Then on line 15, we invoke mlflow.sklearn.log_model and we pass in our logistic regression model.
+
+[Video description begins] Line 15 reads: mlflow.sklearn.log_model(lr_model, 'log_reg_model', signature = signature). [Video description ends]
+
+We pass three input arguments into log_model. The first of course is the model object, the second is the artifact path or artifact directory and the third is the signature. The signature is a named parameter, it's the artifact path 'log_reg_model' that we are going to reuse on line 17.
+
+[Video description begins] Line 17 reads: model_uri = mlflow.get_artifact_uri('log_reg_model'). [Video description ends]
+
+Remember, that this model is going to be logged as a part of the current run and then we can always access the contents of the artifact_url associated with this run. And we do that by invoking mlflow.get_artifact_uri and we pass in the name of this artifact directory. That gives us the model_uri and that is something that we can pass into mlflow.evaluate starting line 19.
+
+[Video description begins] Line 19 reads: result = mlflow.evaluate(. Line 20 reads: model_uri,. Line 21 reads: eval_data,. Line 22 reads: targets = 'label',. Line 23 reads: model_type = 'classifier',. Line 24 reads: evaluators = ['default'],. Line 25 displays a ). [Video description ends]
+
+This is the function which is going to evaluate this model.
+
+It's going to compute a lot of very interesting and important statistics. The input arguments are the model_uri that's the first input, the eval_data which we set up above on lines 11 and 13. The name of the targets column which is just 'label'. Then the model_type which is 'classifier' and the evaluators which is a list containing a single value 'default'. The model_type input argument helps mlflow.evaluate decide what metrics are going to be used in order to evaluate the performance of this model.
+
+We can see here that we specify model_type = 'classifier', but other acceptable choices include regressor, question answering with a - text summarization and text. Based on the value of the model_type passed in as well as the value of the evaluators, mlflow.evaluate will log different metrics and metric artifacts.
+
+Here where we pass in the evaluators as just 'default', we will find that the confusion matrix, lift curve, ROC curve, AUC curve as well as a host of numeric metrics will all be logged. If we had gone with a different model_type, such as for instance question answering model, then the default evaluator would have tried to compute a metric known as the exact match. One other point worth keeping in mind, mlflow.evaluate is going to look at the different labels contained within the target and based on that it's going to determine whether this is a binary classifier or a multiclass classifier and based on that it will further tailor or customize the metrics that it computes.
+
+For instance, as we shall see shortly, mlflow.evaluate here is going to display a lift curve, which makes sense in the context of a binary classifier. On the other hand, let's say mlflow had determined from the y values in the targets column that this is a multiclass classifier. Then it would not have displayed or logged a lift curve.
+
+Instead, it would have various other curves such as a precision recall merged curves plot, ROC merged curves plot, and so on. As you can see, mlflow.evaluate is quite an intelligent method. It's going to log a lot of metrics and a lot of artifacts. We will examine what is logged in this particular case in the next demo.
+
+7. Video: Evaluating a Model and Analyzing the Lift Curve (it_mlflowdj_05_enus_07)
+
+Learn how to run a model evaluation and analyze a lift curve.
+run a model evaluation and analyze a lift curve
+[Video description begins] Topic title: Evaluating a Model and Analyzing the Lift Curve. Your host for the session is Vitthal Srinivasan. [Video description ends]
+Let's kick off the run that we explained in detail in the previous demo, view its output, and then switch over to the MLflow UI.
+
+[Video description begins] The Jupyter Notebook titled 'ModelEvaluationAndValidation' is open. The contents of code cell 18 are displayed. [Video description ends]
+
+Here you can see the output of the run. There are some interesting messages logged here. First, there's a WARNING, which we had looked at in detail that was about a supposed mismatch between the mlflow versions where the current is 2.3.2 and the required is 2.3.
+
+You might remember that this is because of a mismatch between the MLmodel file and the conda.yaml. Then you can see that we have an INFO message telling us that the model is being evaluated with the default evaluator. Then the evaluation dataset has been inferred as a binary dataset, positive label is 1, negative label is 0. It also tells us that it's using the Shap explainer Linear, as opposed to some other choices which are available.
+
+Let's now switch over from the Jupyter Notebook into the MLflow UI and see what's been logged for this model. We head over to the MLflow UI, hit Refresh, click on the bike_purchase_prediction experiment over on the left.
+
+[Video description begins] The page titled mlflow 2.3.2 appears on the browser. The title bar at the top offers 2 tabs: Experiments and Models. The Experiments tab is active now. The navigation pane on the left displays 2 items: Default and bike_purchase_prediction. The bike_purchase_prediction item is open on the main pane. It shows a header called Description at the top. Below, a search bar appears along with several filter options such as Table view, Chart view, Sort, Columns, and so on. A table appears next with 5 column headers: Run Name, Created, Duration, Source, and Models. It displays an item called LR model evaluation. [Video description ends]
+
+There's just the one run right now. LR model evaluation. We click through and we see that no Parameters have been logged, but there are 13 Metrics and a lot of Artifacts.
+
+[Video description begins] A page labeled LR model evaluation appears within mlflow. It displays various details at the top in fields like Run ID, Date, Source, Git Commit, User, Status, and so on. Below, five collapsible sections appear: Description, Parameters, Metrics, Tags, and Artifacts. [Video description ends]
+
+Let's start with the Metrics.
+
+Remember that these are all the standard metrics which mlflow.evaluate chose to call on a binary classifier.
+
+[Video description begins] The Metrics section displays a table with 2 columns: Name and Value. There are several items listed such as accuracy_score, example_count, f1_score, false_negatives, false_positives, log_loss, precision_score, recall_score, roc_auc, and so on. [Video description ends]
+
+The classifier was the model type that we passed in, and the binary nature of the classification was inferred by mlflow.evaluate from the labels in the data that we passed in to that function. First, we have the accuracy_score which is 51.4% and that's actually really quite bad given that this is a very balanced dataset. On this particular dataset, the model is pretty much no better than a coin toss.
+
+We see that we also have the example_count, which is the number of rows in the training data passed in. The f1_score, which is 0.329, and then we have the individual number of false_negatives and false_positives as well as the log_loss. Scrolling down a little further, you see that we have other metrics in there, such as the familiar precision and recall. The precision_score is 0.507, the recall_score is 0.243, and the harmonic mean of those two gave us the f1_score, which we saw a moment ago.
+
+It's also given us the roc_auc. For a perfect classifier, that value should be 1. For a random classifier, that should be 0.5. We can see that this is much closer to the random classifier than the perfect classifier. Once we've gone through the metrics and made sense of them, let's scroll down and examine the contents of the Artifacts directory.
+
+[Video description begins] The Artifacts section contains 2 panes. The left pane displays the folder called log_reg_model. It contains the following files: MLmodel, conda.yaml, model.pkl, python_env.yaml, requirements.txt, confusion_matrix.png, lift_curve_plot.png, precision_recall_curve_plot.png, roc_curve_plot.png, shap_beeswarm_plot.png, shap_feature_importance_plot.png, and shap_summary_plot.png. The main pane displays the title MLflow Model. Below, there are two columns: Model schema and Make Predictions. The Model schema column contains a table with 2 column headers: Name and Type. The Make Predictions column displays codes. [Video description ends]
+
+First, we have the model directory.
+
+Remember that was called log_reg_model and that has all of the usual contents which we've examined multiple times so far. Other than that, we see that there is a large number of .png files and those were all logged by the mlflow.eval method. These include the confusion_matrix, the lift_curve_plot, precision_recall_curve_plot, roc_curve_plot, and then three shap plots, all linked to feature importance. Let's go through these one by one, starting with the confusion_matrix. Here it is. This is a Normalized confusion matrix, which means that instead of the absolute values of the counts of the true positives, true negatives, and so on, we've got normalized percentages in here instead. On the Y-axis, we have the True labels and on the X-axis, we have the predictions.
+
+[Video description begins] The confusion_matrix.png file displays a 2x2 matrix titled 'Normalized confusion matrix' and a heat map. The x-axis displays 2 points: 0 and 1. The y-axis represents True label. There are 2 points marked on the y-axis 1 and 0. The first quadrant displays the value 0.77, the second quadrant 0.23, the third 0.76, and the fourth 0.24. The heat map on the right displays the following points: 0.3, 0.4, 0.5, 0.6, and 0.7. [Video description ends]
+
+The normalization happens row-wise that is based on the values of the True label. Here we see for instance that we have the value 0.77 displayed in the first quadrant.
+
+To the right of that, we see the number 0.23, and we notice that 0.77+0.23=1. In similar fashion, for True label 1, we see that the two labels 0.76+0.24 also sum to 1. So, of all of the rows in the evaluation dataset where the True label was actually 0, 77% of them were correctly marked or predicted as 0 by our classifier, and 23% of them were predicted incorrectly.
+
+Likewise, for all of those rows where the True label is 1, 76% were correctly classified and 24% were incorrectly classified. There's also a heat map over on the right which helps us to interpret the magnitude of these different coefficients. Next, let's click on the lift_curve_plot, which is also a very interesting way to evaluate a classifier.
+
+[Video description begins] The lift_curve_plot.png file displays a line graph titled Lift Curve. The y-axis measures the Lift along the following points: 1.0, 1.2, 1.4, 1.6, 1.8, and 2.0. The x-axis measures the Percentage of sample using the following points: 0.0, 0.2, 0.4, 0.6, 0.8, and 1.0. There is a legend displayed in the top right corner. There are three lines. The blue line represents Class 0. The orange line represents Class 1 (positive) while the dotted line represents Baseline. [Video description ends]
+
+On the Lift Curve plot, you see that on the X-axis, we have numbers which range from 0 through 1, and these correspond to the Percentage of the sample that has been encountered. On the Y axis, we have a metric known as the Lift, and that Lift has been separately measured for three series. Those series are visible in the legend over on the top right. The blue line is for Class 0, the orange line is for Class 1, and a horizontal dashed line is the Baseline.
+
+If we look closely at this chart, we see that over on the extreme right, all three of those converge to 1.0. So eventually, when we've covered 100% of the sample, all three of these curves show a lift of 1. This is going to be true of all lift curves. Over on the right, all lift values will reach 1 and we'll get to why in just a moment. More interesting is what the value of the lift is over on the extreme left.
+
+There, a good classifier should start out as high as possible, and it should have a horizontal portion for as long as possible. Here you can see that both of our curves do start out a lot higher than 1, and both of them have a brief horizontal stretch before they start to decline. In the case of a perfect classifier, there would have been a large horizontal portion over on the top left and then a gradual decline like an asymptote until the lift came to 1 over on the extreme right.
+
+We can also see here that the orange curve has a higher lift than the blue curve. That tells us that this model does better with the orange curve that's label 1 than with the blue curve, which is label 0. That's for the points who were on the extreme left. Given a set of binary classifications and probabilities, the lift curve is constructed by first sorting all of the predictions in decreasing order of probability.
+
+This is going to be done separately for the 0 and 1 values. So here, for instance, all of the probabilities of Class 1 would have been taken by mlflow.evaluate and sorted in decreasing order. The largest numbers which appear right up top would indicate where the classifier is most certain that this is a label 1. Then there would be an iterative process where for each point walking down that list, the lift would be computed, and the lift is a ratio.
+
+In the denominator of that ratio is the proportion of ones in the entire sample, and in the numerator is the proportion of ones that have been encountered so far. For a perfect classifier, it would get all of the ones perfectly right, and then all of the remaining probabilities would be 0. As a result, we would have the horizontal portion over on the top left, very high up, and then the asymptotic decline.
+
+The way the lift is computed, as we get to the end of the dataset, the lift is always going to work out to 1 because the numerator and denominator will become equal. So, the right-hand portion of a lift curve is usually not that interesting. However, it's not only the top left of the lift curve which is worth paying attention to. The belly of the lift curve also has valuable information. Here you can see that there are portions towards the center of the curve where the blue and the orange lines drop below the dashed line.
+
+That tells us that for those points, this classifier does worse than a random coin toss. That's not surprising that it happens in the belly, because those are the points where the classifier is most unsure. It's not clear to the classifier whether these are 0 or ones. These have predicted probabilities of just about 50%, and those have the highest chance of being wrong. If the decline to this portion is very steep, as it is for the orange classifier, then that's a bad sign.
+
+It's telling us that our classifier only knows how to classify extreme points. It's not good for the vast majority of points where the predicted probabilities are neither too close to 0 nor too close to 1. So, even though at the top left corner, the orange curve seems to be better than the blue curve in the belly of the lift curve, it's actually the blue curve where this classifier does better than with the orange curve.
+
+In any case, we've now spent quite a bit of time discussing the lift curve because it is an interesting and unusual visualization of the performance of a classifier. In the next demo, we'll move on to some of the other visuals, such as the precision-recall and the ROC curve, which we've discussed before.
+
+8. Video: Understanding the Precision-Recall Curve and Beeswarm Charts (it_mlflowdj_05_enus_08)
+
+Upon completion of this video, you will be able to review a precision-recall curve and beeswarm charts.
+review a precision-recall curve and beeswarm charts
+[Video description begins] Topic title: Understanding the Precision-Recall Curve and Beeswarm Charts. Your host for the session is Vitthal Srinivasan. [Video description ends]
+In this demo, we will move on from the lift_curve_plot which we discussed in detail in the previous demo and talk about the other visuals which have been computed and stored here in the artifact server. Let's move now to the precision_recall_curve. This is a curve which has Precision on the Y-axis and Recall on the X-axis.
+
+[Video description begins] The Artifacts section of the page labeled LR model evaluation is open. The precision_recall_curve_plot.png file is displayed. A line graph titled 'Precision recall curve' is shown. The y-axis measures Precision (Positive label: 1) along the following points: 0.0, 0.2, 0.4, 0.6, 0.8, and 1.0. A legend on the top right corner displays a blue line and the following: AP=0.534. [Video description ends]
+
+Remember that precision measures the accuracy of the classifier for the Positive labels.
+
+The formula for precision is TP divided by TP+FP, where TP is the number of true positives and FP is the number of false positives. On the Y-axis we have the Recall which can be thought of as the accuracy for when the label is actually 1, that is when the true label is 1. The formula for recall is TP divided by TP+FN, where FN is the number of false negatives.
+
+You can imagine that there is a trade-off between precision and recall and the precision-recall curve gives the value of the precision and recall of our classifier for every choice of the classification threshold. That threshold is indicated in this chart by the dashed gray line. You can see that when the threshold is set to 1, nothing is going to be marked as a positive, and that in turn means that the precision is going to be very high. This is a very conservative classifier, and this will have a very low recall because then none of the true ones will actually be picked out.
+
+In the case of this particular chart, you can see that we have a remarkably flat precision-recall curve. This also has to do with the fact that this is quite a balanced dataset. The number of positives and negatives is approximately equal. One last interesting bit about this curve before we move on, if we look at the top right corner, we see there that there is a value of the AP which is the average precision of 0.534.
+
+The average precision score, which can be calculated using sklearn.metrics.AveragePrecision score, summarizes a precision-recall curve with a single number. That single number is the weighted mean of the precisions achieved at each threshold, and there's a formula which also takes into account the change or the increase in recall from the previous threshold used as a weight.
+
+We can get more information from the docs, but it's worth knowing that the average precision score is different from the AUC or the area under curve which we are going to look at next. And the average precision curve is more conservative than the AUC. Here you can see that the AP is 0.534, and this is not particularly better than a random coin toss, which would have an average precision score of 0.5. Next, let's click on the roc_curve_plot, which is yet another artifact that's been logged here.
+
+This is a fairly standard AUC curve.
+
+[Video description begins] The roc_curve_plot.png file is displayed. A line graph titled 'ROC curve' is shown. The y-axis measures the True Positive Rate (Positive label: 1) along the following points: 0.0, 0.2, 0.4, 0.6, 0.8, and 1.0. A legend in the top left corner displays a blue line and reads the following: AUC=0.544. The x-axis measures the False Positive Rate (Positive label: 1) along the following points: 0.0, 0.2, 0.4, 0.6, 0.8, and 1.0. [Video description ends]
+
+On the Y-axis, we have the True Positive Rate. On the X-axis, we have the False Positive Rate. Each of those two axes ranges from 0 to 1, so the total area of the square formed by these two axes is equal to 1. The area under the curve there would effectively be the entire square, which is 1. Here we have a blue curve where every point reflects the True Positive Rate and the False Positive Rate for one particular choice of the decision threshold.
+
+Ideally, we want to find the point at the top left of the curve. However, in this particular case you can see that all of these points lie pretty much along the 45 degrees line. That dashed gray line, which is at 45 degrees to each axis, can be thought of as the ROC curve of a random classifier. That would be effectively just a coin toss, in order to decide whether to classify as a 0 or a 1.
+
+We scroll over to the top and we see the area under curve of our classifier. It's a little bit above 0.5. It's 0.544, but that's not a whole lot better than random. That does it for the roc_curve_plot.png Next, let's turn our attention to the three shap images. You can see here that we have a shap_beeswarm_plot, a shap_feature_importance_plot, and a shap_summary_plot.
+
+The beeswarm plot and the summary plot actually contain the same information, they're just visualized in very slightly different ways. In order to understand these two, it's best for us to start with the shap_feature_importance_plot, which we've discussed in a previous demo. Now, these images are pretty large, and they don't quite fit into the preview pane in MLflow, so we'll have to keep scrolling left and right. Now you see that we are in the shap_feature_importance_plot.
+
+[Video description begins] The shap_feature_importance_plot.png file is displayed. The y-axis displays the following variables: Income, Age, Children, Commute Distance, Cars, Region_North America, Marital Status_Single, Gender_Male, Education_Partial College, and so on. The x-axis measures mean (|SHAP value|) along the following points: 0.00, 0.02, 0.04, 0.06, 0.08, 0.10, 0.12, 0.14, 0.16, and so on. The Income variable displays a red bar and the value +0.15. The Age variable displays the value +0.1. The other variables display the value +0. [Video description ends]
+
+This is a horizontal bar chart and, on the Y-axis, we have one bar for each X variable in our model. We have the Income right up top, then the Age, the number of Children, and so on. Scrolling down, if we look at the X-axis, we see that this has something known as the mean of the absolute SHAP value. Each of these means, which corresponds to the bars up above, is a measure of the importance of that particular X variable.
+
+So, scrolling up we see that Income has the highest average SHAP value of +0.15 and the next most important, which is Age, has +0.1. These are clearly the tallest bars of our X variables. These have been constructed for us by the SHAP library, which, as we previously discussed, relies on a game theoretic calculation in which it builds a large number of different models.
+
+Each of those models is going to represent different combinations of the input data as well as of the X variables, and the order in which the X variables are added into the model will also vary. Across all of these models, it's able to come up with a measure of how important a particular feature or X variable is in determining the correct predicted value. As we've also discussed previously, SHAP values are associated not with the model as a whole, but rather with a set of predictions. So here, these SHAP values refer to the predictions of this model on this test data.
+
+Also, remember that we've got to interpret the magnitude and the signs of these SHAP values separately. A large magnitude indicates that this particular X variable is very important in the model. A large positive sign for an individual SHAP value indicates that this X variable positively impacts the prediction.
+
+Now in this visualization, we are plotting the mean of the absolute values and so we only get a sense of how important each variable is. The negative signs are lost. However, the SHAP values for each individual point in our test dataset are available and it is the average of the absolute values of each of those individual points which you see in this bar chart. And coming to those individual points, those SHAP values are what we see in the other two images which have been logged here, namely the shap_beeswarm_plot and the shap_summary_plot.
+
+With that context in mind, let's now click on the shap_beeswarm_plot.png in the File Explorer over on the top left. Here is a beeswarm plot and this is quite interesting to understand. We have a number of beeswarms and if we scroll over, we can see that each bar represents one of the X variables.
+
+[Video description begins] The shap_beeswarm_plot.png file is displayed. The y-axis displays the following variables: Income, Age, Children, Commute Distance, Cars, Region_North America, Marital Status_Single, Gender_Male, Education_Partial College, and so on. The x-axis measures SHAP value (impact on model output) along the following points: -0.2, 0.0, 0.2, 0.4, and 0.06. There is a color bar on the right measuring Feature value. It displays the label Low at the bottom. [Video description ends]
+
+So, in this respect, it's very similar to the feature importance bar plot that we just saw.
+
+If we scroll down, we can see that on the X-axis we now have the individual SHAP values. And as you can see here, these can be positive or negative. A large magnitude indicates a large impact on the model output. But that's not the end of the information visualized here. You can see that some of the plots appear to be blue, others seem to be red. So, the color has some importance as well. To understand that, let's scroll over to the extreme right where we have a color bar.
+
+At the low end, that's a deep blue and then as we scroll up, we see that it goes to a deep red. And what increases as we go from low to high is the Feature value. With all of that context in mind, let's now try and interpret one of these beeswarms. Here we are looking at the beeswarm for Income. Also, note that the height of each of these beeswarms is proportional to the number of points which have that particular SHAP value.
+
+So, for instance, right at the center where we have a relatively tall purple bar that represents a relatively large number of points from our test data which shared this SHAP value, which is close to 0. Then we see that as we scroll to the extreme right, the dots get redder. Those are outliers, that is, points with high income. As we move to the extreme left, those become very blue. Those are outliers with very low incomes. You can also see that for these outliers in terms of color, income is also an outlier in terms of the significance, and that is especially true at the extreme right.
+
+What this is telling us is that income is not a great predictor of whether a person bought a motorcycle or not for average levels of income, because for the purple points, the SHAP value is about 0. However, for very high levels of income, that is the very bright red dots over on the extreme right, it is an excellent predictor. And we know that because those points are over on the extreme right, which means that they have a very high SHAP value.
+
+In similar fashion, for the points over on the extreme left, the SHAP value is large in magnitude but negative in sign. And again, we see that these SHAP values are large in magnitude, which means that for consumers who have low levels of income, there is an inverse correlation between income and the probability to purchase a motorcycle.
+
+So, by looking at this, we can conclude that income is an important predictor, particularly at the outliers, that is, at either extreme end of the income distribution, and also that income positively correlates with the probability of buying a motorbike. The other beeswarms are similarly interpretable and the information in the third image, the shap_summary_plot.png, is effectively the same as that in the beeswarm.
+
+[Video description begins] The shap_summary_plot.png file is displayed. [Video description ends]
+
+We've now thoroughly understood the SHAP values, and we can move on to the next stage of our model evaluation.
+
+9. Video: Using a Metric Threshold to Evaluate a Model (it_mlflowdj_05_enus_09)
+
+Learn how to run a model and evaluate that model.
+run a model and evaluate that model
+[Video description begins] Topic title: Using a Metric Threshold to Evaluate a Model. Your host for this session is Vitthal Srinivasan. [Video description ends]
+In this demo, we will move on from all of the evaluation artifacts. We'll come back to Jupyter and try out a new candidate model and along the way also explore some additional functionality in the mlflow.evaluate method. On screen now on line 1, we import MetricThreshold which will be required down below. On line 3, we create a new candidate_model by instantiating xgboost.XGBClassifier.
+
+We then invoke .fit on this passing in X_train and y_train. Please note that this is the first time that we are instantiating an xgboost model. In the previous demo, we were using the default scikit learn logistic regression and we had seen that that performance was pretty disappointing. You can also see on lines 5 and 6 that we have a couple of commented-out lines of code. Those instantiate a different candidate_model.
+
+It's very similar to the one we have on line 3, except that here we specify the number of estimators to be 200 and the max_depth to be 10.
+
+[Video description begins] A Jupyter Notebook titled ModelEvaluationAndValidation appears. It displays a toolbar at the top with various options like File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The page below displays a several code cells. Line 1 reads: from mlflow.models import MetricThreshold. Line 3 reads: candidate_model = xgboost.XGBClassifier() .fit(X_train, y_train). Line 5 reads: # candidate_model = xgboost.XGBClassifier(n_estimators = 200, max_depth = 10) \. Line 6 reads: # .fit(X_train, y_train). [Video description ends]
+
+The effect of this second candidate_model, which is currently commented-out, will be to train the model for more time and build more trees. Remember that xgboost is an ensemble learning technique which relies on individual decision trees. In just a little bit, we will switch around the commenting on lines 3, 5, and 6 and we will see that the performance improves from scikit learn to the candidate_model on line 3, and then even more when we get to the candidate_model on lines 5 and 6.
+
+In any case, on line 8, we go back to the scikit learn model that is now our baseline_model. On line 10, we infer the signature of the candidate_model, not the baseline_model. Then we create the eval_data as we had done before. So, we create a copy of the X_test.
+
+[Video description begins] Line 8 reads: baseline_model = LogisticRegression() .fit(X_train, y_train). Line 10 reads: signature = infer_signature(X_train, candidate_model.predict(X_train)). Line 12 reads: eval_data = X_test.copy(). Line 14 reads: eval_data['label'] = y_test. [Video description ends]
+
+We add in the labels. That's done on line 14.
+
+Then on lines 16 through 29, we create a dictionary called thresholds and this is where the MetricThreshold which we imported on line 1 comes into play.
+
+[Video description begins] Line 16 reads: thresholds = {. Line 17 reads:'f1_score' : MetricThreshold(. Line 18 reads: # f1 score should be >=0.66. Line 19 reads: threshold = 0.66,. Line 21 reads: # accuracy should be at least 0.10 greater than baseline f1 score. Line 22 reads: min_absolute_change = 0.10,. Line 24 reads: # accuracy should be at least10 percent greater than baseline f1 score. Line 25 reads: min_relative_change = 0.10,. Line 27 reads: greater_is_better = True,. Line 28 reads: ),. Line 29 reads: }. [Video description ends]
+
+ The thresholds dictionary is going to be passed into mlflow.evaluate and as you might imagine it's going to be used by MLflow in order to evaluate the performance of the candidate_model. Within the thresholds dictionary, we have a key which is the kind of metric, and that here is the f1_score.
+
+The value is a MetricThreshold object, and you can see that within that MetricThreshold object, we have passed in a number of input arguments. The first is an absolute threshold which is 0.66. So, by setting threshold = 0.66, we will be telling mlflow.evaluate to reject any candidate_model where the f1_score is less than 0.66. Then on line 22, we have the min_absolute_change.
+
+That's the second input argument into our MetricThreshold object. We've set this to be equal to 0.1. This is going to measure the change or the increase in the metric of the baseline_model versus the candidate_model. As the comment on line 21 tells us, mlflow.evaluate will reject the candidate model unless the f1_score is at least 0.1 greater than the baseline f1_score.
+
+Then we have a similar relative_change on line 25. This is the percentage improvement which the candidate_model should give relative to the baseline_model. So that min_relative_change, which is 0.1 again, should be read as a percentage change. That's 10%. So, the accuracy of the metric, which here is the f1 score, should be at least 10% greater or 10% better than the performance of the baseline_model.
+
+And finally, on line 27, we tell mlflow.evaluate the direction in which the metric is to be measured. greater_is_better is set to True because, of course, a high f1_score is better than a low f1_score. Once we've set up this threshold's dictionary with the MetricThreshold object, we can then kick off our run. This starts on line 31. You see here that we have a with statement, and we instantiate a run called run2.
+
+[Video description begins] Line 31 reads: with mtflow.start_run(run_name = 'XGBoost candidate model evaluation') as run2:. [Video description ends] 
+
+Then on line 32, we set up the candidate_model_uri. You might be surprised to note that there on line 32, we invoked mlflow.sklearn.log_model. You might have been expecting mlflow.xgboost.log_model, which is an acceptable choice. But it turns out that xgboost models are compatible with this API. So, we invoke it and pass in the candidate_model, that's the first input argument. candidate_model as the directory on the artifact server, that's the string, which is the second input argument, and then the signature.
+
+Then we invoke the .model_uri attribute on this object and save it in our variable.
+
+[Video description begins] Line 32 reads: candidate_model_uri = mlflow.sklearn.log_model(. Line 33 reads: candidate_model, ' candidate_model', signature = signature. Line 34 reads: ) .model_uri. [Video description ends]
+
+We then do something very similar on line 36 for the baseline_model, except that this time we invoke mlflow.sklearn.log_model rather than mlflow.xgboost.log_model. Finally, on line 40, we invoke mlflow.evaluate.
+
+[Video description begins] Line 32 reads: baseline_model_uri = mlflow.sklearn.log_model(. Line 33 reads: baseline_model, ' baseline_model', signature = signature. Line 38 reads: ) .model_uri. [Video description ends] 
+
+[Video description begins] Line 40 reads: mlflow.evaluate(. Line 41 reads: candidate_model_uri,. Line 42 reads: eval_data,. Line 43 reads: targets = ' label' ,. Line 44 reads: model_type = ' classifier' ,. Line 45 reads: validation_thresholds = thresholds ,. Line 46 reads: baseline_model =baseline_model_uri ,. Line 47 reads: ). [Video description ends]
+
+We pass in as the first input argument candidate_model_uri, then the eval_data, the targets column which is called 'label', the model_ type which is still 'classifier', and then we pass in two additional input arguments on lines 45 and 46.
+
+On line 45, we specify the thresholds object with the name validation_thresholds, and on line 46, we pass in the baseline_model_uri. Now when we run this code we will see that mlflow.evaluate is quite brutal when it comes to using that validation_threshold that you see on line 45. If a particular run does not satisfy any of the criteria in that dictionary, then mlflow.evaluate will throw an exception.
+
+You might find this behavior rather extreme, but the designers of this API thought that this would be a good way of signaling that the candidate_model has not lived up to the threshold's set. Let's go ahead and see how this plays out. We run this code and the very first time we run it, we get an exception. ModelValidationFailedException: Metric f1_score value threshold check failed: candidate model f1_score is 0.64.
+
+The f1_score threshold is 0.66. So that's pretty clear. The model that we instantiated here failed on this particular part of the threshold check. Now remember that we had called mlflow.evaluate within a with statement, which means that the logging to the artifact server will occur even when this exception is thrown. We can verify that by switching over to the MLflow UI. We see there that within this experiment we have two runs, and the second run here is the XGBoost candidate model evaluation.
+
+[Video description begins] The MLflow page appears. It contains the following tabs: Experiments, Models, GitHub, and Docs. The Experiments tab is now highlighted. It contains the following files: Default and bike_purchase_prediction. The bike_purchase_prediction file appears. It contains 2 views: Table and Chart. The Table view is selected. It contains the following columns: Run Name, Created, Duration, Source, and Models. [Video description ends]
+
+You can also see that it's got a little red cross sign rather than the green checkbox next to it indicating that it did not terminate successfully, it ended in an exception. The first run does have the little green checkbox. Even so, we can click through into this run, and we can see in the Metrics that all of the details have indeed been logged successfully. For instance, the f1_score is indeed 0.64.
+
+In similar fashion, we can scroll down, and the Artifacts have also been logged. We see here that we have the baseline_model, the candidate_model, and then all of the images which we went through in so much detail. What we see from this is that even when mlflow.evaluate results in an exception because of the validation field, it still is very diligent about logging everything into the MLflow tracking server.
+
+[Video description begins] The Artifacts section is now active. It contains the following options: baseline_model, candidate_model, confusion_matrix.png, life_curve_plot.png, shap_summary_plot.png, and so on. [Video description ends] 
+
+Next, let's switch back to Jupyter and there let's go with the other candidate_model, the one we had previously commented-out on lines 5 and 6. Now you can see that this model is going to build many more estimators 200 and the max_depth is going to increase to 10. The default value for n_estimators is 100 and for max_depth is 3. So, this is going to give us a significantly better-trained tree. Now when we go ahead and run this code, we see that no exception results.
+
+As we can see at the very bottom of the output, Model validation has passed. If we now switch over to the MLflow UI and hit Refresh, we see that we have three runs, and the XGBoost candidate model evaluation has run through successfully as we can tell from the little green check box that's in the Created column. Let's click through into the details of this run. There we can see that we have 13 Metrics, and looking through them we can see that the f1_score is 0.674. So, that's above our threshold of 0.66.
+
+And of course, it's significantly better than our baseline, which had an f1_score of just about 0.32. So, that was an easy hurdle to pass. If we scroll down, we can also view the Artifacts, including the baseline_model, the candidate_model, and then all of the images. Here is the confusion_matrix.png. If we look at the lift_curve, we now see that this is significantly nicer than the one we had looked at previously.
+
+Notice that the curves converge to one only at the very right of the image, and even for points towards the middle or the belly of the lift curve. Both the blue and the orange lines are significantly above the baseline, which is the dashed black line at the bottom. The precision_recall_curve also has a discernible decline, so there is clearly a trade-off between precision and recall in this model that was not the case previously because the previous model, the baseline, was just about a coin toss.
+
+In the top right corner, we see that the average precision score is about 0.743, once again significantly higher than in the baseline. And it's a similar scene with the roc_curve_plot, which now clearly outperforms the dashed gray line which represents the random classifier. And the area under the curve is about 0.766 as we can see there. We also quickly look through the SHAP curves. You can see that the shap_beeswarm_plot looks a lot more dispersed and spread out.
+
+This is a great indication of how discriminating our model is. It's particularly interesting to look at some of the less important variables, such as the Region_Pacific. You can see that there is a beautiful separation of the blue and the red points. We see a very similar demarcation in the Marital Status column. The individual feature importances also look pretty different. They are a lot more spread out, and we now have a bar at the bottom called the Sum of 9 other features.
+
+The model has clearly eked out a lot of information from those 9 features because the SHAP curve for that last feature is in fact the longest. The SHAP value is 1.44, and if we look closely, we see that that's higher than any one of the other individual features, even higher than the Age, which is now the most important single variable with a SHAP score of 1.05. And thus, we've successfully validated this model.
+
+Not only has it cleared each of our validation criteria, but the artifacts logged by MLflow also confirm that this is indeed a very good model. That gets us to the end of our exploration of MLflow's evaluate and validation functionality.
+
+10. Video: Course Summary (it_mlflowdj_05_enus_10)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary [Video description ends]
+You have now reached the end of this course, creating time-series models and evaluating models. MLflow offers an integration with Prophet, a powerful time series model that takes seasonal effects into account. This integration allows for accurate time-series forecasting using MLflow. Separately, MLflow offers powerful support right out of the box for model evaluation. In this course, first, we utilized a time-series model called Prophet in combination with MLflow to perform time-series forecasting.
+
+Prophet was developed by Facebook's core data science team and is capable of handling seasonality and holiday effects. Running the Prophet model and viewing the artifacts allowed us to assess its forecasting performance. Setting up cross-validation for the Prophet model ensured that the model's forecasting performance is consistently reliable across different temporal windows.
+
+Next, we used MLflow to evaluate machine learning models effectively. MLflow's powerful evaluation capability such as Lift curves, ROC-AUC curves, precision-recall curves, and beeswarm plots allow us to gain valuable insights into model behavior and performance. We explored a wide range of model evaluation techniques and metrics, enabling us to make informed decisions about model improvements and suitability for real-world applications. We used Lift curves to gauge the confidence of the model in each prediction and judge the model performance using the ROC-AUC and precision-recall curves.
+
+In addition, we used the beeswarm charts to gain insights about the most important features of our data and model prediction distributions. We also configured a metrics threshold in MLflow and only validated models that met this threshold. Now that we know how to leverage MLflow's model evaluation capabilities, we can move on to tracking deep learning models in the course coming up ahead.
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

@@ -1,0 +1,930 @@
+MLOps with Data Version Control: Tracking & Logging Deep Learning Models
+Data Version Control (DVC) offers robust support for deep learning models by effectively managing large model files and their dependencies, allowing versioned tracking of complex architectures. This ensures reproducibility in training, evaluation, and deployment pipelines, even in deep learning projects. In this course, you will discover how to track deep learning models through DVC. Using PyTorch Lightning, you will construct a convolutional neural network (CNN) for image classification. Then you will use DVCLive to log and visualize sample images and use the DVCLiveLogger to monitor model metrics in real time via Iterative Studio. Next, you will undertake deep learning model training with TensorFlow. You will set up a CNN for image classification and train your model while leveraging DVCLive to record and display training-related metrics. Finally, you will use the DVCLiveCallback to dynamically visualize metrics during training. This course will equip you with the expertise to effectively build and track deep learning models within DVC's ecosystem.
+Table of Contents
+    1. Video: Course Overview (it_mlodvcdj_04_enus_01)
+
+    2. Video: Setting up an S3 Bucket and IAM User on AWS (it_mlodvcdj_04_enus_02)
+
+    3. Video: Configuring Cloud Remotes on Data Version Control (DVC) (it_mlodvcdj_04_enus_03)
+
+    4. Video: Visualizing and Tracking the CIFAR 10 Dataset (it_mlodvcdj_04_enus_04)
+
+    5. Video: Tracking Sample Images with DVC (it_mlodvcdj_04_enus_05)
+
+    6. Video: Setting up the CNN for Image Classification (it_mlodvcdj_04_enus_06)
+
+    7. Video: Tracking PyTorch Lightning Model Training (it_mlodvcdj_04_enus_07)
+
+    8. Video: Improving Image Classification (it_mlodvcdj_04_enus_08)
+
+    9. Video: Configuring Azure Cloud Storage as DVC Remote (it_mlodvcdj_04_enus_09)
+
+    10. Video: Training and Logging TensorFlow Models (it_mlodvcdj_04_enus_10)
+
+    11. Video: Tracking TensorFlow Models Using DVC (it_mlodvcdj_04_enus_11)
+
+    12. Video: Course Summary (it_mlodvcdj_04_enus_12)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_mlodvcdj_04_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Presented by: Janani Ravi. [Video description ends]
+Hi and welcome to this course on tracking and logging deep learning models. My name is Janani Ravi and I'll be your instructor for today. DVC offers robust support for deep learning models by effectively managing large model files and their dependencies, allowing version tracking of complex architectures and weights. This ensures reproducibility in training, evaluation, and deployment pipelines even in resource intensive deep learning projects. In this course, you will discover how to track deep learning models through DVC using PyTorch Lightning, you will construct a Convolutional Neural Network (CNN) for image classification. You'll use DVCLive to log and visualize sample images and then use the DVCLiveLogger and see how it helps to monitor model metrics in real time during training, you'll be able to view these model metrics in Iterative Studio.
+
+Next, you will undertake deep learning model training with TensorFlow. Once again, you'll set up a CNN for image classification. You'll train your model while leveraging DVCLive to record and display training-related metrics. You'll use the DVCLiveCallback to dynamically visualize metrics during training. Along the way, you'll learn the intricacies of configuring cloud-based remote storage for DVC. By setting up Amazon S3 and Azure Blob Storage, you'll learn to authenticate using access keys and connection strings. Emphasizing data security, you will explore the use of the DVC config.local file to safeguard sensitive authentication data outside of Git's reach. In conclusion, this course will equip you with the expertise to effectively build and track deep learning models within DVC's ecosystem.
+
+2. Video: Setting up an S3 Bucket and IAM User on AWS (it_mlodvcdj_04_enus_02)
+
+During this video, you will learn how to set up an AWS Identity and Access Management (IAM) user and Simple Storage Service (S3) bucket.
+set up an AWS Identity and Access Management (IAM) user and Simple Storage Service (S3) bucket
+[Video description begins] Topic title: Setting up an S3 Bucket and IAM User on AWS. Presented by: Janani Ravi. [Video description ends]
+In this demo, we'll see how we can track and log deep learning models using Data Version Control or DVC. In this demo, we'll build and train an image classification model using the PyTorch deep learning framework. We'll track the models, metrics, and parameters using DVCLive, link it up with Iterative Studio, and visualize the metrics there. In addition, we won't be storing our data in DVC using local storage. Instead, we'll set up and configure an S3 bucket on AWS in order to store our training data. As you might imagine, this is a more likely real-world use case. You won't really store your training data locally on your machine within a folder. Instead, you'll store it in cloud storage, and here we'll be storing it in S3.
+
+DVC will then use the S3 bucket that we've set up and configured to track and version our data. First, of course, we have to set up our DVC project, a remote repository, and our project on Iterative Studio. You know how these steps work, so I'm going to run through them quickly. I've already created a folder here that's going to be my current working directory, dvc_image_classification_pytorch, and observe that I'm once again working within the virtual environment, dvc_venv. I've also created a new private repository in my GitHub account, and this repository is called dvc_image_classification_pytorch. I like to have my repository names the same as the folder names for my project. 
+
+[Video description begins] A terminal window appears. The following command is highlighted: (dvc_venv) ~ /projects/dvc/dvc_image_classification_pytorch. [Video description ends]
+
+[Video description begins] A webpage appears with the heading: loonytest/dvc_image_classification/pytorch. It contains a menu bar with the following tabs: Code, Issues, Pull requests, Actions, Projects, and More. The Code tab is active. The main pane displays: dvc_image_classification_pytorch. Below, it contains two sections: Set up GitHub Copilot and Invite collaborators. [Video description ends]
+
+We'll need to run an initial set of steps to initialize Git and DVC for this repository. So, I run git init and then dvc init, which has initialized both git as well as dvc.
+
+The next step is for me to specify the username and user email that I want to use to commit to Git. I run git status. 
+
+[Video description begins] A Jupyter notebook appears with the heading: ImageClassificationPyTorch. It contains a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The right top corner displays: dvc_venv. Below, it contains various input cells. The input cell 1 is highlighted. Line 1 reads: !git init. Line 3 reads: !dvc init. [Video description ends]
+
+[Video description begins] The input cell 2 is highlighted. Line 1 reads: !git config --global user.name "loonytest". Line 2 reads: !git config -- global user.email "loony.test.001@gmail.com". Line 4 reads: !git status. [Video description ends]
+
+There are three changed files. These are the DVC project files. Let's configure our remote repository. This points to loonytest/dvc_image_classification_pytorch and let's name our current branch as main. Now, before we go any further with the project initialization, let's set up our remote storage for DVC and this remote storage is going to be on AWS S3. Head over to console.aws.amazon.com. You'll need to log in with a valid AWS account in order for this to work.
+
+[Video description begins] The input cell 3 is highlighted. Line 1 reads: !git remote add -f origin https://github.com/loonytest/dvc_image_classification_pytorch.git. Line 3 reads: !git branch -M main. [Video description ends] 
+
+[Video description begins] A new webpage appears titled: Amazon Web Services Sign-in. The main pane displays: aws Sign in. It contains two radio buttons: Root user and IAM user. Below, it contains a field option: Root user email address. The right pane displays a banner with the heading: AWS Skill Builder. [Video description ends] For the purposes of the demo of this course, you can just set up an AWS free trial and that will give you sufficient credits to run this demo.
+
+It won't really cost you a penny. Here I am logged into AWS and this is the AWS Management Console. What we are going to do here is set up an S3 bucket that will serve as the remote repository for DVC. Now, in order to create an S3 bucket, we need to go to the S3 service, click on Services. That will bring up all of the services available on AWS and you can see S3 listed here right on top. If you can't find S3, you can simply use the Search bar and type in S3, and you'll navigate right to it.
+
+[Video description begins] A webpage appears with the title: AWS Management Console. It contains a toolbar with the following options: Services, a Search bar, a notifications bell icon, a help icon, a user name drop-down, and so on. The main pane displays: Console Home. Further, it contains two sections: Welcome to AWS and AWS Health. [Video description ends]
+
+[Video description begins] A drop-down menu appears under the Services option. The left navigation pane contains various options: Recently visited, Favorites, All services, Analytics, and so on. The Recently visited option is active. The right pane contains various options: Console Home, S3, Billing, Kinesis. and so on. [Video description ends]
+
+S3 stands for Simple Storage Service. S3 buckets are essentially containers that are used to store and organize data on the Amazon Web Services or AWS cloud platform. S3 is a highly scalable and durable object storage service.
+
+That is, the data that you store here are in the form of BLOBs and it allows users to store and retrieve any amount of data. This will take us straight to the S3 page where you can see that I already have a number of different S3 buckets that I have created. Now you can ignore all of these buckets.
+
+[Video description begins] A new page appears titled: S3 Management Console. The left navigation menu contains various options: Buckets, Access Points, Storage Lens, Dashboards, and More. The main pane displays: Buckets. Below, it contains buttons: Refresh, Copy content, Empty, Delete, and Create bucket. Further, it contains a table with the column headings: Name, AWS region, Access, Creation date, and so on. [Video description ends]
+
+These are buckets that I've used for other projects. Just go ahead and click on the Create bucket button and this will allow us to create a new bucket for our DVC storage. The first thing you need to specify is the name of the bucket. Now, the Bucket name has to be globally unique.
+
+[Video description begins] The Create bucket page appears. It contains various sections: General configuration, Object Ownership, Bucket Versioning, Tags, and More. The General configuration section contains various options: Bucket name, AWS Region, and Copy settings from existing bucket - optional. [Video description ends]
+
+That means no one else in the world should have the same bucket name. And a common technique to avoid conflicts is to use the name of your organization as a prefix for your bucket name. Notice, I've called this loony-dvc-storage-bucket. The next step is to specify the geographical region where you want this bucket to live.
+
+By default, the AWS Region US East in Ohio is chosen. I'm just going to stick with the default. You can, of course, set up your bucket to be closer to where you're located. Now, there are many other properties that you can configure for buckets, but those don't really matter. For this demo, you can just accept the default values for all of these properties and go ahead and click on the Create bucket button here at the very bottom. In a few moments, you'll find that this bucket will be Successfully created. If you scroll over to the bottom, somewhere in the middle you can see our loony-dvc-storage-bucket in US East. Let's click through to the bucket.
+
+[Video description begins] The page titled: S3 Management Console appears again. It shows a notification: Successfully created bucket "loony-dvc-storage-bucket". [Video description ends]
+
+You'll find that this bucket starts off as completely empty. There's absolutely no data here in this newly created bucket.
+
+In order for DVC to be able to track your data and model artifacts using this S3 bucket, DVC needs to be configured with the right set of permissions to access your bucket here on AWS. What I'm going to do next is set up a user which has the right permissions to access buckets in our S3 account, and later we'll configure DVC to use the credentials associated with this user for access.
+
+[Video description begins] The loony-dvc-storage-bucket page is open. It contains various tabs: Objects, Properties, Permissions, Metrics, Management, and Access Points. The Objects tab is active. [Video description ends]
+
+ Now in order to set up a user, you'll need to head over to the Identity and Access Management service, IAM. This will take you straight to the IAM dashboard and on the left navigation, we'll click on the Users link. This is the page where you can create a new user, with the right permissions to access S3 buckets. 
+
+[Video description begins] A new page appears with the heading: Users | IAM | Global. The left navigation pane contains various options: Dashboard, Access management, User groups, Users, Roles, and so on. The main pane displays: IAM dashboard. [Video description ends]
+
+[Video description begins] The Users option is active. The main pane displays: Users. It contains three buttons: Refresh, Delete, and Add users. [Video description ends]
+
+Off to the top right, you see a button to add a new user. Click on this and this will take us to a dialog and we'll be guided through adding a new user with the right set of permissions.
+
+The first thing, you need to specify a name for the user, I've called this loony-dvc-storage-user. 
+
+[Video description begins] The Create user page is active. The left navigation pane contains three steps. Step 1 Specify user details. Step 2 Set permissions. Step 3 Review and create. The Step 1 is active. The main pane displays: User details. It contains one field option: User name. Below, it contains a checkbox option: Provide user access to the AWS Management Console - optional. [Video description ends]
+
+This user does not need access to the AWS console, so you can leave that check box unchecked and you can move on to the next screen in this wizard. Now, here on this screen, you'll be asked to specify what permissions you want this user to have. Now, there are several different ways you can add permissions to a user. We'll choose the simplest of all to Attach policies directly to the user with the right set of permissions.
+
+[Video description begins] The Step 2 Set permissions page is active. It contains two sections: Permissions options and Permissions policies. The Permissions options section contains three radio button options: Add user to group, Copy permissions, and Attach policies directly. The Permissions policies section contains a Search bar, a Filter by Type drop-down option, and a Create policy button. Below, it contains a table with the column headings: Policy name, Type, and Attached entities. [Video description ends]
+
+Once you select this option, here below on this page, you'll find an exhaustive list of AWS permissions that you can assign this user. Now we are not, of course, interested in all of these other permissions for all of the different services that AWS provides.
+
+We are interested in S3 access, Search for AmazonS3FullAccess and you can see that this permission shows up in the filtered list below. Now, attaching this policy to the user will give the user complete control over S3 buckets.
+
+[Video description begins] Under the Permissions policies section, in the table, a policy name appears: AmazonS3FullAccess. [Video description ends]
+
+ This policy will allow this user to read, write, and modify the contents of S3 buckets at will. Now, DVC doesn't really need all of these permissions to work with S3 buckets as a remote storage. However, instead of adding permissions individually, which is a little more difficult for the purposes of this demo, I'm going to give this user AmazonS3FullAccess. In a production environment, I would recommend that you give more granular permissions to your user. Select this policy and let's move on to the next page in this wizard. Here is where you can review the details of the user that you've created. Everything looks good to me so far. I'm going to go ahead and create this user. And in a moment, you'll see that this user has been successfully created.
+
+3. Video: Configuring Cloud Remotes on Data Version Control (DVC) (it_mlodvcdj_04_enus_03)
+
+Find out how to connect to an S3 bucket from DVC.
+connect to an S3 bucket from DVC
+[Video description begins] Topic title: Configuring Cloud Remotes on Data Version Control (DVC). Presented by: Janani Ravi. [Video description ends]
+Now that the user has been successfully created, we need a way for DVC to run using the identity of this user. And in order to do that, we need to generate an access key for this user. Click through to the user and this will take you to the details page of the user and right in the middle of this page, you should find a tab for Security credentials. Select this tab and scroll down to somewhere in the middle of the page. You'll see the option here to Create an access key to allow making programmatic calls to AWS using the identity of this user. 
+
+[Video description begins] A page appears with the heading: Users | IAM | Global. The left navigation pane contains various options: Dashboard, Access management, User groups, Users, Roles, and so on. The Users option is active. The main pane displays: Users. It contains three buttons: Refresh, Delete, and Add users. Below, it contains a table with the column headings: User name, Groups, Last activity, MFA, and so on. It contains one user name: loony-dvc-storage-user. [Video description ends]
+
+[Video description begins] The loony-dvc-storage-user page is active. It contains various tabs: Permissions, Groups, Tags, Security credentials, and Access Advisor. The Security credentials tab is active. It contains various sections: Console sign-in, Multi-factor authentication (MFA), Access keys, and so on. The Access keys sections contains a button: Create access key. [Video description ends]
+
+On the next page here, you'll have to specify why exactly you want this access key. What's your use case? Simply select the Other option and click on Next.
+
+[Video description begins] The Access key best practices & alternatives page is active. The left navigation menu contains three steps. Step 1: Access key best practices & alternatives, Step 2- optional Set description tag. Step 3 Retrieve access keys. The main pane displays: Use case. Below, it contains various radio button options: Command Line Interface (CLI), Local code, Third-party service, Other, and More. [Video description ends]
+
+You can choose to add a description here to this access key.
+
+I'm simply going to call it dvc_access_key and I'm now ready to create this access key. This will take you to a screen that you'll see just once.
+
+[Video description begins] The Step 2 Set description tag - optional page is active. It contains a field option: Description tag value. [Video description ends]
+
+Observe that you have an Access key and a Secret access key. Make sure you copy both of these over and store them safely. Remember that this Access key is not meant to be shared.
+
+[Video description begins] The Step 3 Retrieve access keys page is active. It contains two sections: Access key and Access key best practices. The Access key section contains the following information: Access key and Secret access key. [Video description ends]
+
+I've already deleted this user, which is why it's safe for me to display this here. I'll now copy over this Access key and Secret access key and store it safely in a file somewhere. We'll be needing this in just a bit. Now that we've set up the S3 bucket that will serve as DVC's remote storage, let's head back to our notebook, and configure this remote storage location for DVC. We are going to add our S3 storage as the default remote storage.
+
+[Video description begins] A Jupyter notebook appears with the heading: ImageClassificationPyTorch. It contains a a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The right top corner displays: dvc_venv. Below, it contains various input cells. [Video description ends]
+
+I use the dvc remote add command with the -d flag. The name of the remote is mys3remote and then I specify the URL of my Cloud Storage bucket. URLs referencing S3 start with s3 followed by ://, and then the name of the bucket, loony-dvc-storage-bucket is the name. You can see here that my S3 remote has been set as the default remote and we can confirm this by running dvc remote list. 
+
+[Video description begins] The input cell 4 is highlighted. Line 1 reads: !dvc remote add -d mys3remote s3://loony-dvc-storage-bucket. [Video description ends]
+
+And we now have our AWS Cloud Storage as the default remote for DVC. This is where our version data is going to be stored.
+
+[Video description begins] The input cell 5 is highlighted. Line 1 reads: !dvc remote list. [Video description ends]
+
+In order to be able to write data to S3, well, DVC needs the write permissions and we've already configured a user with Amazon S3 full access. And we now need to configure DVC to be able to run using the permissions of that user. We'll configure the credentials for DVC to access this S3 bucket in DVC's config.local file.
+
+Now, if you run a cat command for config.local, you'll find that at this point in time, it doesn't exist.
+
+[Video description begins] The input cell 6 is highlighted. Line 1 reads: !cat .dvc/config.local. [Video description ends]
+
+In addition to the DVC config file that we've seen before, DVC also has a config.local file. Any configuration you specify in config.local will override the options you specified in the original DVC config. In addition, config.local is a file that is ignored by Git, it won't be committed to your Git repository. This makes config.local very useful when you need to specify sensitive values or secrets which should not reach the GitHub repo. Let's use the config.local to specify the credentials that DVC should use to access our S3 bucket. I use the dvc remote modify command. The --local flag will add this configuration to config.local rather than config. I set up the access_key_id for my S3 remote.
+
+Make sure you specify your own access key here instead of the one you see here on screen. In addition to the access_key_id, we also need to specify the secret_access_key.
+
+[Video description begins] The input cell 7 is highlighted. Line 1 reads: !dvc remote modify --local mys3remote access_key_id 'AKIATOKI4M3BBVLDGIHG'. [Video description ends]
+
+Use dvc remote modify --local once again, and specify the secret_access_key for my S3 remote.
+
+[Video description begins] The input cell 8 is highlighted. Line 1 reads: !dvc remote modify --local mys3remote secret_access_key_ 'FVHavWBh0I1EKU4UIDKQ2c3KFNKzpy89E1dQMfB4'. [Video description ends]
+
+Both of these configuration changes that we made will have updated config.local, so you can see the file has been created and we have the access_key_id and the secret_access_key right here. Whenever DVC creates the config.local file, it also creates a corresponding gitignore file asking git to ignore this config.local.
+
+[Video description begins] The input cell 9 is highlighted. Line 1 reads: !cat .dvc/config.local. [Video description ends]
+
+[Video description begins] The input cell 10 is highlighted. Line 1 reads: !cat .dvc/ .gitignore. [Video description ends]
+
+You can see that in addition to the tmp and cache subfolders, the config.local file will also be ignored by Git. We're almost done with the initial project setup. Let's commit all of our changes to Git. I'm going to add dvc/config.
+
+We can take a look at its contents. It's now tracked by Git.
+
+
+[Video description begins] The input cell 11 is highlighted. Line 1 reads: !git add .dvc/config. Line 3 reads: !cat .dvc/config. [Video description ends]
+
+Let's go ahead and run git status to make sure that we have all of the initial files that we want committed. There are three files that are tracked here.
+
+[Video description begins] The input cell 12 is highlighted. It reads: !git status. [Video description ends]
+
+This looks about right. Go ahead and call git commit and specify a commit message, also called git push, to push all of the commits in our local repository to our remote repository on GitHub. Now once this goes through successfully, we can head over to GitHub and confirm that our commits are indeed present here. 
+
+[Video description begins] The input cell 13 is highlighted. Line 1 reads: !git commit -m "Initialized DVC for image classification with PyTorch. Remote storage on S3". Line 2 reads: !git push -u origin main. Line 3 reads: !git log. [Video description ends]
+
+You can see the one commit that we've pushed. Let's now go to Iterative Studio and create a new project connected with this repository. Click on the Add project button. 
+
+[Video description begins] A webpage appears with the heading: loonytest/dvc_image_classification/pytorch. It contains a menu bar with the following tabs: Code, Issues, Pull requests, Actions, Projects, and More. The Code tab is active. The main pane displays: dvc_image_classification_pytorch. Below, it contains three buttons: Go to file, Add file, and Code. Further, it contains a table. On the top right corner, it displays: 1 commit. [Video description ends]
+
+[Video description begins] A new webpage appears with the heading: Projects. It contains a menu bar with three tabs: Projects, Models, and Settings. The Projects tab is active. Below, it displays: Welcome to Iterative Studio. On the right, it contains a button: Add a project. [Video description ends]
+
+You'll find a link to all of your GitHub repositories. Select the repository that we are currently using, dvc_image_classification_pytorch. Go ahead and create the project. We are very close to being completely set up and move on to train our PyTorch model for image classification. There is one last bit of configuration that is optional for this demo, but something that you should know. At this point, with the configuration that we've set up in our local machine, DVC running on our local machine knows how to access our S3 bucket on the AWS cloud. However, Iterative Studio does not have the credentials to access the S3 bucket. The next step that we are about to perform here is not required for this demo.
+
+However, let's head over to the Settings page and I'll show you how you can configure the credentials for Iterative Studio to access your S3 bucket. Click on Add new credentials here on the Settings page for Data remotes.
+
+[Video description begins] The Settings tab is now active. The main pane displays: Data remotes (Cloud credentials). Below, it contains a button: Add new credentials. [Video description ends]
+
+This will bring up a dialog where you will be asked to specify the provider of your cloud remote. You can choose from Amazon S3, Google Drive, Cloud Storage, Azure Storage, and so on. Let's give our credential a name, let's say we call it dvc-credential.
+
+[Video description begins] A dialog box appears with the title: Add new credentials. It contains various field options: Provider, Credentials name, Access key ID, and Secret access key. [Video description ends]
+
+Next, specify the Access key ID and the Secret access key and Save these credentials. Iterative Studio will be able to use these credentials to access the cloud remotes if it needs to. One last bit of configuration. Back in our notebook, let's run the dvc config command and configure the studio access token so that DVCLive can connect to Iterative Studio in order to track metrics and parameters of our model.
+
+[Video description begins] The input cell 14 is highlighted. It reads reads: !dvc config --global studio.token isat_r7slxwNuIU4z2amj6BV0tDn6DfNYBxlnYBkdw4YCIWOKqw91. [Video description ends]
+
+4. Video: Visualizing and Tracking the CIFAR 10 Dataset (it_mlodvcdj_04_enus_04)
+
+In this video, discover how to visualize and track image data.
+visualize and track image data
+[Video description begins] Topic title: Visualizing and Tracking the CIFAR 10 Dataset. Presented by: Janani Ravi. [Video description ends]
+Having set up our DVC project and set up our cloud remote for DVC on AWS S3, we are now ready to train an image classification model and track its metrics and parameters using DVCLive. Now, the image classification model that we'll build and train is going to be a Convolutional Neural Network.
+
+[Video description begins] A Jupyter notebook appears with the heading: ImageClassificationPyTorch. It contains a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The right top corner displays: dvc_venv. Below, it contains various input cells. [Video description ends]
+
+ A Convolutional Neural Network, or CNN, is a type of deep learning model that is primarily used for image and video recognition tasks. CNNs are well-suited for these tasks because they can automatically learn and extract hierarchical patterns and features directly from pixel data. Rather than using the PyTorch framework directly, we'll use pytorch_lightning to build and train our CNN. Lightning is a lightweight PyTorch wrapper that simplifies the process of organizing, training, and evaluating PyTorch models.
+
+It gives us a high-level abstraction and standardization for PyTorch code and abstracts away a lot of the boilerplate code commonly found in PyTorch scripts such as handling training loops, validation loops, checkpointing, and so on. Go ahead and install the PyTorch Lightning package in your virtual environment.
+
+[Video description begins] The input cell 15 is highlighted. It reads: pip install pytorch_lightning. [Video description ends]
+
+Next, we install the torchvision package in PyTorch that provides access to several computer vision datasets, pre-trained models, and other image transformation utilities.
+
+[Video description begins] The input cell 16 is highlighted. It reads: pip install torchvision. [Video description ends]
+
+Next, let's set up the import statements for all of the libraries that we'll be using in this demo. Observe on lines 4 through 19, I have several imports that are specific to PyTorch, including pytorch_lightning. I'll point out a few interesting ones here. On line 9, observe that I import the CIFAR10 dataset from torchvision.datasets.
+
+This is the dataset that we are going to use to train our image classification model.
+
+[Video description begins] The input cell 17 is highlighted. Line 9 is highlighted. It reads: from torchvision.datasets import CIFAR10. [Video description ends]
+
+ The CIFAR10 dataset is a popular benchmark for computer vision tasks, specifically image classification. This is made-up of 60000 32 by 32 color images that belong to 10 different classes or categories. Next, let's set up the dataset, data loaders, and transforms that we'll use to load in the CIFAR10 data. On lines 1 through 4, you can see the transforms that I apply to the input images. I convert the input images to a tensor format. I then normalize the input images to be centered around 0 using a mean value of 0.5 across all three channels of the color image and a standard deviation of 0.5. We'll work with a batch_size of 8 to load our data.
+
+[Video description begins] The input cell 18 is highlighted. Line 1 reads: transform = transforms.Compose ( [. Line 2 reads: transforms.ToTensor ( ). Line 3 reads: transforms.Normalize ( ( 0.5, 0.5, 0.5), (0.5,0.5,05.)). Line 4 reads: ]). Line 6 reads: batch_size = 8. [Video description ends]
+
+The training dataset is instantiated on lines 8 through 11. Accessing the training data is very straightforward, instantiate a CIFAR10 object, specify the folder where you want this dataset to be downloaded. I'm going to store this data in the data subfolder in my current working directory. train = true will access the training dataset. download = True will actually download the data and then use it, and the transform that will be applied to the transform is the transform that we had specified earlier. On lines 13 through 16, I instantiate a DataLoader, which is a utility that helps us efficiently load and preprocess the data for training, validation, and testing. The trainloader is configured with a batch_size of 8. It'll shuffle the data as we iterate over it and it uses 2 workers to load the data.
+
+[Video description begins] Another set of commands is added. Line 8 reads: trainset = CIFAR10 (. Line 9 reads: root = ' ./data' , train = True,. Line 10 reads: download = True, transform = transform. Line 11 reads: ). [Video description ends] 
+
+On lines 18 through 21, I load the testset for CIFAR10.
+
+[Video description begins] The following commands are added. Line 13 reads: trainloader = torch.utils.data.DataLoader (. Line 14 reads: trainset, batch_size = batch_size,. Line 15 reads: shuffle = True, num_workers = 2. Line 16 reads: ). [Video description ends]
+
+The difference here is that train is set to False. That will access the testset.
+
+[Video description begins] The following commands are added. Line 18 reads: testset = CIFAR10 (. Line 19 reads: root = ' ./data' , train = False,. Line 20 reads: download = True, transform = transform. Line 21 reads: ). [Video description ends]
+
+Again, we instantiate a DataLoader, the testloader. This testloader does not shuffle the data, but other than that its configuration is the same as the trainloader. And finally, I have the classes or categories associated with these images.
+
+[Video description begins] The following commands are added. Line 23 reads: testloader = torch.utils.data.DataLoader (. Line 24 reads: testset, batch_size = batch_size,. Line 25 reads: shuffle = False, num_workers = 2. Line 26 reads: ). [Video description ends]
+
+10 different classes. The images can be of a plane, a bird, a cat, a horse, a ship, a truck, or any of the others. Go ahead and execute this cell and in a bit, the CIFAR10 training and test data will be downloaded to your local data directory. The downloaded data is in the form of a tar.gz file. Now that we have our data, let's track it using DVC, I call dvc add, and add this gzipped file in the data folder.
+
+[Video description begins] The following lines are added. Line 28 reads: classes = (. Line 29 reads: 'plane' ,. Line 30 reads: 'car',. Line 31 reads: 'bird' ,. Line 32 reads: 'cat' ,. Line 33 reads: 'deer',. Line 34 reads: 'dog' ,. Line 35 reads: 'frog',. Line 36 reads: 'horse'. Line 37 reads: 'ship',. Line 38 reads: 'truck'. Line 39 reads: ). [Video description ends]
+
+DVC is now aware of my image data and it's tracking it.
+
+[Video description begins] The input cell 19 is highlighted. It reads: !dvc add data/cifar-10-python.tar.gz. [Video description ends]
+
+Running dvc add would have set up a metafile referencing this data. Let's take a look at this .dvc file. Here is the hash of the dataset and the path to the dataset.
+
+[Video description begins] The input cell 20 is highlighted. It reads: !cat add data/cifar-10-python.tar.gz.dvc. [Video description ends]
+
+Calling the dvc add command would have added this data to our local cache. So, if you run an ls -R on the DVC cache, you should see some files cached in here. However, this data hasn't been pushed to our S3 bucket yet.
+
+[Video description begins] The input cell 21 is highlighted. It reads: !ls -R .dvc/cache. [Video description ends]
+
+Well, the reason for that is pretty obvious. We've only done a dvc add to this data. We haven't really pushed it to DVC, so we haven't done a dvc push. Well, that's very easily fixed. Let's go back to our notebook and do a dvc push.
+
+But before that, because we are pushing to S3, there is another Python package that you need to install. In order for DVC to access S3, you need to pip install the dvc_s3 package. And once this installation is complete, you'll be able to do the dvc push dvc push pushes the one file that we've added to DVC to our S3 bucket on AWS. Now head back to AWS S3 and hit refresh and you can see the files folder has been created in here. And if you click through to files, you'll find the md5 folder, and if you click through, you'll find our data. Having successfully tracked and pushed our data to S3, let's examine what this data looks like. I'm going to set up an iterator over the training data and access the first batch of images and labels.
+
+[Video description begins] The input cell 22 is highlighted. It reads: !pip install dvc_s3. [Video description ends]
+
+[Video description begins] The input cell 23 is highlighted. It reads: !dvc push. [Video description ends]
+
+ [Video description begins] A page appears with the heading: loony-dvc-storage-bucket. The left navigation menu displays: Amazon S3. It contains various options: Buckets, Access Points, Object Lambda Access Points, Storage Lens, and More. The Buckets option is highlighted. The main pane contains various tabs: Objects, Properties, Permissions, Metrics, and More. The Objects tab is active. It contains various buttons: Refresh, Actions, Create folder, Upload, and so on. Further, it contains a table with the column headings: Name, Type, Last modified, Size, and Storage class. [Video description ends]
+
+ [Video description begins] The input cell 24 is highlighted. Line 1 reads: dataiter = iter (trainloader). Line 3 reads: images, labels = next (dataiter). [Video description ends]
+
+Let's take a look at the shape of this images tensor and this will give us an idea as to the shape in which PyTorch expects the input images to be fed in. The first dimension here 8, refers to the batch_size of the images.
+
+[Video description begins] The input cell 25 is highlighted. It reads: images.shape. [Video description ends]
+
+The next dimension 3, refers to the number of channels in the image. Since it's a color image, there are three channels, R, G, and B. And finally, we have the height and width of each image. That's 32 pixels by 32 pixels. PyTorch expects the input images in this format, batch_size, channels, height, and width, and that's the shape of the images tensor.
+
+Now let's quickly visualize some of the images in this batch so that we can see what the CIFAR10 dataset looks like. I've set up a utility method here called imshow that takes in a single image, does a few transformations on the image, and displays it using Matplotlib. To view all of the images in a batch, torchvision provides a utility called make_grid that will essentially make a grid of that images and I use imshow to actually display this grid. We'll also print out the image labels at the bottom. And here is what a sample of images in the CIFAR10 dataset looks like.
+
+[Video description begins] The input cell 26 is highlighted. Line 1 reads: imshow (torchvision.utils.make_grid (images)). Line 3 reads: print (' ' .join (f ' {classes [ labels [ j ] ] : 5s } ' for j in range (batch_size))). [Video description ends]
+
+You can see that these are color images of a horse, plane, ship, frog, and car.
+
+5. Video: Tracking Sample Images with DVC (it_mlodvcdj_04_enus_05)
+
+Learn how to log images for image classification.
+log images for image classification
+[Video description begins] Topic title: Tracking Sample Images with DVC. Presented by: Janani Ravi. [Video description ends]
+Before we set up a neural network to perform image classification, let's see how we can use DVCLive to log a sample of images that we are working with. We already know how to use the live.log_image function. We'll be using that once again. However, we'll have to do a little bit of preprocessing to convert the images that we have in the tensor format to the PNG format before we can log those images out. We'll also push those images to DVC remote storage on our S3 bucket.
+
+[Video description begins] A Jupyter notebook appears with the heading: ImageClassificationPyTorch. It contains a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The right top corner displays: dvc_venv.Below, it contains various input cells. [Video description ends]
+
+Let's get started. Now, to convert images from the tensor format to a PNG format, we'll use the Pillow library. PIL stands for Python Imaging Library, which is now known as Pillow.
+
+Pillow is a popular library that provides extensive support for opening, manipulating, and saving many different image file formats. On line 3, I access the image at index 0. I denormalize the image, switch around its dimensions so that its height, width, and then number of channels, convert to the numpy format, multiply by 255 so that every image pixel is in the range 0 to 255, and resize the image to be 200 pixels by 200 pixels. Image.fromarray will convert the image from the numpy array format to the image object from Pillow, and we display this image. You can see that this is the image of a horse.
+
+[Video description begins] The input cell 30 is highlighted. Line 1 reads: from PIL import Image. Line 3 reads: im = Image.fromarray (np.uint8 ( ( images [0] /2 + 0.5).permute (1, 2, 0) .numpy ( )* 255 )) .resize ( ( 200, 200)). Line 5 reads: im. [Video description ends]
+
+It's a larger image, 200 pixels by 200 pixels. It is this kind of resized image that we log using DVCLive. Here I instantiate a train data loader again to access the first batch of images. I use a data iterator to iterate over the trainloader, access the first batch, both images and labels, this is on line 7.
+
+[Video description begins] The input cell 31 is highlighted. Line 1 reads: trainloader = torch.utils.data.DataLoader (. Line 2 reads: trainset, batch_size = 64,. Line 3 reads: shuffle = True, num_workers = 2. Line 6 reads: dataiter = iter (trainloader). Line 7 reads: images, labels = next (dataiter). [Video description ends]
+
+We then instantiate a Live instance on line 11. We'll store out the images to a directory called images_dir. Now save_dvc_exp is equal to True, meaning this will be logged as an experiment that we can view in Iterative Studio. cache_images is equal to True, which means that these images will be cached. We'll also then push these images to DVC's remote storage. I run a for loop to iterate over a sample of 30 images, and I call live.log_image, and give the image the name of its class label. So, they'll be like frog.png, deer.png, horse.png, and so on. If we have two images from the same category, say an airplane, then the second image will overwrite the first one. So, we'll be left with, say a maximum of 10 images, one from each class or category.
+
+The code on lines 15 and 16 we've seen before, we're simply converting the image from a tensor format, resizing it to be 200 by 200, and then representing it as a Pillow image object. When I run this and sample 30 images, I hope to get at least one image of each class or category. Now because save_dvc_exp was set to true, this would have been saved as an experiment, and if you run dvc exp show, you should see one experiment in your current workspace.
+
+[Video description begins] A set of commands are added. Line 11 reads: with Live (dir = 'images_dir', save_dvc_exp = True, cache_images = True) as live:. Line 12 reads: for i in range (0, 30):. Line 13 reads: live.log_image ( f' { classes [ labels [i]]} .png',. Line 15 reads: Image. fromarray (np.uint 8 ( ( images [i] /2 +0.5\. Line 16 reads: .permute (1, 2, 0) .numpy ( )* 255 )) .resize ( ( 200, 200)). [Video description ends]
+
+[Video description begins] The input cell 32 is highlighted. It reads: !dvc exp show. [Video description ends]
+
+This is the gimpy-jake experiment. Let's push everything associated with this experiment to DVC, dvc exp push origin gimpy-jake. Once you push all of the files associated with the experiment.
+
+[Video description begins] A terminal window appears. A new line of code is added: dvc exp push origin gimpy-jake. [Video description ends]
+
+This essentially is a dvc push on all of the images that we have logged, and those images should now be available in remote storage. But before that, let's quickly take a look at the images_dir that has been created in our current working directory. Within that, we have our dvc.yaml, metrics, and a plots subfolder.
+
+[Video description begins] A page appears with the heading: images_dir. The left navigation menu contains two sections: Favourites and Tags. The main pane contains two files and a folder : dvc.yaml, metrics.json, and plots. [Video description ends]
+
+The dvc.yaml simply contains a plots section that points to the images directory under plots. We haven't really trained in ML model, we've only logged out some plots. If you look at the subfolder images under plots, notice that we have PNG files, one for each class or category. And if you look at the images.dvc file, this is the meta filepointing to the images directory where we have our image data. 
+
+[Video description begins] The dvc.yaml file is open. The left navigation menu displays: FOLDERS. It contains various folders: images_dir, plots, and so on. The images folder contains various subfolders: bird.png, car.png, cat.png, deer.png, and so on. The main pane displays two lines. Line 1 reads: plots:. Line 2 reads: - plots/images. [Video description ends]
+
+And you can also confirm that these images are available in our remote storage on S3. Here in the md5 subfolder, you'll find that there are several more folders. These are folders that hold our images. You can actually click through to one of these folders and let's examine the image that has been uploaded here. 
+
+[Video description begins] The images.dvc file is now open. [Video description ends]
+
+ [Video description begins] A page appears with the heading: loony-dvc-storage-bucket. The left navigation menu displays: Amazon S3. It contains various options: Buckets, Access Points, Object Lambda Access Points, Storage Lens, and More. The Buckets option is highlighted. The main pane contains two tabs: Objects and Properties. The Objects tab is active. It contains various buttons: Refresh, Copy S3 URI, Copy URL, Download, Open, Delete, Actions, Create folder, and Upload. Further, it contains a table with the column headings: Name, Type, Last modified, Size, and Storage class. The table contains a lot of folders such as: 1c/, 28/, 30/, 3a/, and more. [Video description ends]
+
+[Video description begins] The 1c/ folder is now open. [Video description ends]
+
+Selected one of the image files that is represented by its hash and I click on the Download button. This will download this image onto my local directory and I'll be able to Open it up to actually view the image. And there you can see the image of a bird. Our training data is already on S3 at this point, we've also successfully managed to push a sample of images to our cloud S3 bucket. All that's left is for us to view this experiment on Iterative Studio.
+
+[Video description begins] A new page appears with the heading: loonytest/dvc_image_classification_pytorch. It contains a menu bar with the following options: Filters, Columns, Plots. Trends, Compare, and Run. Further it contains a table with the column headings: Experiment, Created, Message, and CML. The last column heading shows three tabs: images_dir, plots, and images. The table contains 2 experiments. [Video description ends]
+
+Now here on Iterative Studio, you see that the experiment has been committed or pushed to DVC, and if you look at the URL associated with the images, you can see that the URL points to our S3 bucket.
+
+[Video description begins] A box appears under the images information of the second experiment. It contains various options: Remote URL, Size, File count, Experiment, and Hash. [Video description ends]
+
+6. Video: Setting up the CNN for Image Classification (it_mlodvcdj_04_enus_06)
+
+In this video, find out how to set up a convolutional neural network (CNN) for image classification.
+set up a convolutional neural network (CNN) for image classification
+[Video description begins] Topic title: Setting up the CNN for Image Classification. Presented by: Janani Ravi. [Video description ends]
+We are now ready to define the architecture of the Convolutional Neural Network that we'll use for image classification. Now we instantiate a Python class to represent this network.
+
+[Video description begins] A Jupyter notebook appears with the heading: ImageClassificationPyTorch. It contains a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The right top corner displays: dvc_venv. Below, it contains various input cells. [Video description ends]
+
+
+It's called Net and it derives from the nn.Module base class in PyTorch.
+
+[Video description begins] Line 1 of code reads: class Net (nn.Module) :. [Video description ends]
+
+Within the init method of this class, we defined the network using the nn.Sequential class. nn. Sequential is just a container class that allows us to compose neural network layers in a sequential manner. Now, Convolutional Neural Networks are made up of alternating convolutional layers and polling layers. The first layer defined on lines 7 through 10 is a convolutional layer. A convolutional layer applies filters that slide over the input image. These filters apply a mathematical operation known as convolution.
+
+Each filter is responsible for detecting specific features from the input image, such as edges, textures, or other visual patterns. As the filters slide across the image, they create feature maps that highlight the presence of those features. On line 8, notice that the in_channels to this convolutional layer is 3. This corresponds to the three channels in our input images for RGB values. out_channels is 32, indicating that this convolutional layer will generate 32 feature maps at the output. The size of the kernel is a square kernel, 3 by 3, and we apply some padding to the input image, padding = 1. This convolutional layer is followed by a ReLU activation function on line 11, followed by yet another convolutional layer on lines 12 through 15, again a ReLU activation on line 16, a pooling layer on line 17.
+
+[Video description begins] Line 7 reads: nn.Conv2d (. Line 8 reads: in_channels = 3, out_channels = 32,. Line 9 reads: kernel_size = 3, padding = 1. Line 10 reads: ),. [Video description ends]
+
+[Video description begins] Line 11 reads: nn.ReLU ( ),. Line 12 reads: nn.Conv2d (. Line 13 reads: in_channels= 32, out_channels = 64,. Line 14 reads: kernel_size = 3, stride = 1, padding = 1. Line 15 reads: ),. [Video description ends]
+
+Pooling layers are used to reduce the spatial dimensions of the input feature map while still retaining the most important information.
+
+Pooling is kind of an aggregation operation. The batch normalization layer applied on line 18 centers the output images from this first block of convolutional and pooling layers to be centered around 0 for each batch. Batch normalization greatly helps with model training and convergence.
+
+[Video description begins] Line 17 reads: nn.MaxPool12d (2, 2) , # output : 64 x 16 x 16. Line 18 reads: nn.BatchNorm2d (64),. [Video description ends]
+
+The first block of layers that we just looked at on lines 7 through 18 comprised of two convolutional layers and one pooling layer and a batch normalization layer. Now, this CNN comprises of two more similar blocks. The second of these is defined on lines 20 through 31 and the third block defined on lines 33 through 44. This is a fairly complex Convolutional Neural Network and really you don't need to know the exact details of how this is configured. We'll focus on DVC.
+
+In a CNN architecture, convolutional layers are usually followed by linear layers and that's why we have the Flatten layer on line 46 and this is followed by three Linear layers with ReLU activation on lines 47, 50, and 53. You can see that the last Linear layer on line 53 has 10 outputs. This corresponds to the 10 classes or categories into which the input images can be classified. The forward function defines a forward pass made through this CNN that we've just set up. print (Net()) will actually print out the details of our CNN architecture. In order to train this Convolutional Neural Network using PyTorch Lightning, we'll set up a class which inherits from pl.LightningModule. The lightning module is a high-level abstraction that serves as a core building block for defining and organizing our machine learning models. A lightning module provides a structured and standardized way to define the model architecture, optimization, and training loops.
+
+[Video description begins] Line 46 reads: nn.Flatten ( ),. Line 47 reads: nn.Linear (256*4*4, 1024),. Line 49 reads: nn.ReLU ( ),. Line 50 reads: nn.Linear (1024, 512),. Line 52 reads: nn.ReLU ( ),. Line 53 reads: nn.Linear (512, 10)). Line 55 reads: def forward (self, x) :. Line 56 reads: return self.network (x). Line 58 reads: print (Net ( ) ). [Video description ends] 
+
+The init method of our LitCNN takes as input arguments the data directory and the learning rate. The data directory is set to ./data by default and the learning rate is 0.05 by default.
+
+[Video description begins] The next input cell is highlighted. Line 3 reads: class LitCNN (pl.LightningModule):. Line 5 reads: def__init__(self, data_dir = ' ./ data' , lr = 0.05 ): . [Video description ends]
+
+We initialize the data directory on line 8. On lines 10 through 13, we set up the transforms that we want to perform on the input dataset, we convert it to Tensor and then we normalize it. self.save_hyperparameters will save the input arguments that we pass into the init method as member variables so that they can be accessed later in other methods.
+
+[Video description begins] Line 8 reads: self.data_dir = data_dir. Line 10 reads: self.transform = transforms.Compose ( [. Line 11 reads: transforms.ToTensor ( ),. Line 12 reads: transforms.Normalize (0.5, 0.5, 0.5) , (0.5, 0.5, 0.5 )). Line 13 reads: ]). [Video description ends]
+
+[Video description begins] Line 15 is highlighted. It reads: self.save_hyperparameters ( ). [Video description ends]
+
+We initialize the model on line 17. That's simply the network class that we had defined earlier, Net. The forward function in the lightning module defines a forward pass made through our neural network model.
+
+We simply call self.model on the input images x and we apply a log_softmax function to the final output. log_softmax is a mathematical operation used for multi-class classification problems such as this one. log_softmax is simply a transformation of the raw output scores of a neural network into a probability distribution over multiple classes.
+
+[Video description begins] Line 17 reads: self.model = Net ( ). Line 19 reads: def forward (self, x) :. Line 20 reads: out = self.model (x). Line 22 reads: return F.log_softmax ( out, dim=1). [Video description ends]
+
+The training_step function defines one step in the training process of the model. It takes in a batch of input images. On line 27, we make a forward pass through the model and get the logits output. We then compute the loss of the model for this set of predictions using F.nll_loss. This is the negative log likelihood loss which is a common loss function used in multiclass classification problems.
+
+And then we call self.log to log the training loss for one pass through the model. The evaluate function also accepts a batch of images, makes a forward pass through the model on line 37, computes the nll_loss on line 39, and then gets the predictions from the model by calling torch.argmax. This will give us the class or category with the highest probability score, and that's the predicted output.
+
+[Video description begins] Line 24 reads: def training_step (self, batch, batch_idx) :. Line 25 reads: x, y = batch. Line 27 reads: logits = self (x). Line 29 reads: loss = F.nll_loss (logits, y). Line 31 reads: self.log ("train_loss" , loss). [Video description ends] 
+
+[Video description begins] Line 35 reads: def evaluate (self, batch, stage =None) :. Line 36 reads: x, y = batch. Line 37 reads: logits = self (x). Line 39 reads: loss = F.nll_loss (logits, y). Line 41 reads: preds = torch.argmax (logits, dim = 1). [Video description ends]
+
+We then compute the accuracy of the model on this set of predictions and then log out the stage and the loss for that stage and the accuracy for that stage.
+
+[Video description begins] Line 43 reads: acc = accuracy (preds, y, task = 'multiclass' , num_classes = 10). Line 45 reads: if stage: . Line 46 reads: self.log ( f" { stage}_loss", loss, prog_bar=True). Line 48 reads: self.log ( f" { stage}_acc", acc, prog_bar=True). [Video description ends]
+
+The input stage can be either validation or test. Next, we have two more functions, the validation_step and the test_step. Both of these just invoke the evaluate method.
+
+[Video description begins] Line 50 reads: def validation_step (self, batch, batch_idx) :. Line 51 reads: self.evaluate (batch, "val"). Line 53 reads: def test_step (self, batch, batch_idx) :. Line 54 reads: self.evaluate (batch, 'test'). [Video description ends]
+
+The configure_optimizers method sets up the optimizer that we are going to use to train this neural network.
+
+Here I've specified an Adam optimizer with the learning rate that we passed in as an input to this class. The predict_step is used to get predictions from the model.
+
+[Video description begins] Line 56 reads: def configure_optimizers (self) :. Line 58 reads: optimizer = torch.optim.Adam (self.parameters ( ), lr = self.hparams.lr). Line 60 reads: return optimizer. [Video description ends]
+
+We accept a batch of images as an input and then simply make a forward pass through the model. Forward pass is an invocation of self on line 65. And then we have the prepare_data method which is invoked to set up the training and test dataset.
+
+[Video description begins] Line 62 reads: def predict_step (self, batch, batch_idx, dataloader_idx = 0) :. Line 63 reads: x, y = batch. Line 65 reads: return self (x). [Video description ends]
+
+ We just invoked the CIFAR10 object with train = True and train = False and Download = True so that the dataset will be downloaded. The setup function instantiates the dataset for the training phase as well as the test phase. And then the train_dataloader, val_dataloader, and the test_dataloader functions initialize dataloaders for the training, validation, and test data.
+
+7. Video: Tracking PyTorch Lightning Model Training (it_mlodvcdj_04_enus_07)
+
+Discover how to track a PyTorch Lightning model during training.
+track a PyTorch Lightning model during training
+[Video description begins] Topic title: Tracking PyTorch Lightning Model Training. Presented by: Janani Ravi. [Video description ends]
+Now that we've set up our convolutional neural network as well as the PyTorch Lightning module class for image classification, we are now ready to train our image classification model and use DVCLive to track the metrics and parameters of this model.
+
+[Video description begins] A Jupyter notebook appears with the heading: ImageClassificationPyTorch. It contains a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The right top corner displays: dvc_venv. Below, numerous input cells appear. [Video description ends]
+
+Now, in order to do so, we'll need to install the dvclive[lightning] module. This package contains all of the libraries for DVCLive to work with PyTorch Lightning.
+
+[Video description begins] The input cell 33 is highlighted. It reads: !pip install "dvclive[lightning]". [Video description ends]
+
+Here you'll see that we'll do things a little differently, with scikit-learn, we trained our model and then logged out the metrics, parameters, and artifacts that we were interested in. When we work with PyTorch Lightning, the DVCLive integration is much deeper. You'll find that we'll instantiate a live object and run our training process within the context of this DVCLive object. Let's look at the code that I have here and things will make much more sense. On line 4, I instantiate my image classification model, my LitCNN with a learning rate of 0.01. Next, I instantiate a Live instance on line 6.
+
+Now, save_dvc_exp = True, so this will be saved as a DVC experiment. I also specify report = 'notebook' so that we get a nice visual report right within this Jupyter Notebook. The most important detail to observe here is that my model training actually occurs within the live context. This means that as the model is training, as it's going through its iterations, the metrics of the current stage of the model training will be available to DVCLive, and DVCLive will make them available in Iterative Studio. We'll checkpoint this model every few iterations of training, so I've instantiated a checkpoint on line 8.
+
+Now, the training of this model is done by instantiating a trainer object on lines 10 through 16. 
+
+[Video description begins] The input cell 34 is highlighted. Line 4 reads: model = LitCNN(lr = 0.01). Line 6 reads: with Live(save_dvc_exp = True, report = 'notebook') as live:. Line 8 reads: checkpoint = ModelCheckpoint(dirpath = 'pytorch_model'). [Video description ends]
+
+Now, the trainer object takes in a number of parameters. max_epochs is the number of epochs of training that we'll run. I've set it to just two because this is a fairly complex model with a fairly large dataset and each epoch will take about 10 minutes to train. Notice that I've set the logger property to be equal to the DVCLiveLogger. This is what will allow the trainer to actually log to DVC at each step of the process. We want all of the details to be logged in the current experiment that we've created. So, set the experiment property of the logger to the current live object. This live logger will allow us to get updated metrics for our model as the training process is going on.
+
+I also specify the callback which will actually checkpoint the model. We'll start the training process by calling trainer.fit pass in the model and trainer.test will actually evaluate the model. We'll also call live.log_artifact to log the last checkpoint as an artifact in our experiment and that's it.
+
+[Video description begins] Line 11 reads: max_epochs = 2,. Line 12 reads: logger = DVCLiveLogger(. Line 13 reads: experiment = live # Use the already created experiment object. Line 14 reads: ),. Line 15 reads: callbacks = checkpoint. [Video description ends] 
+
+[Video description begins] Line 18 reads: trainer.fit(model). Line 19 reads: trainer.test(). Line 21 reads: live.log_artifact(. Line 22 reads: checkpoint.best_model_path,. Line 23 reads: type = 'model',. Line 24 reads: name = 'lightning-model-5-epochs-lr-01'. Line 25 reads: ). [Video description ends]
+
+Let's start the training process. And now this training process is going to take a fair bit of time, so you'll have to be patient. Observe that we get a report right here within this notebook as the training process goes through. At this point, our PyTorch model is working through the batches of the first epoch of training. You can see the training loss is gradually falling as more batches of images are trained.
+
+This is the DVCLive report available within our notebook. As we wait for the training process to complete, it'll take about 20 minutes for two epochs.
+
+[Video description begins] A section titled DVC Report appears in the output cell. It contains 2 elements: params.yaml, and metrics.json. Underneath, there are 2 graphs labeled epoch, and train/loss. [Video description ends] 
+
+[Video description begins] A page titled dvc_image_classification_pytorch appears. It contains various icons at the top. The left navigation pane contains 2 sections: Favourites, and Tags. The main pane has a table with the following column headings: Name, Date Modified, Size, and Kind. It contains a few items like data, datasets, dvclive, and so on. [Video description ends]
+
+Let's take a look at the DVCLive folder which contains the details of our experiment. Here is our dvc.yaml file. params, metrics, and plots for this experiment have been logged to DVCLive. metrics.json will track the updated metrics for the current stage of training. We are currently in "epoch": 0, "step": 299. params.yaml just stores the data directory and the learning rate of the model and under plots, metrics, train, loss, you can see the loss for every step of the current epoch.
+
+[Video description begins] The dvclive file is open. The left navigation pane contains the header: FOLDERS. It contains the folder dvclive. It further contains files like plots, dvc.yaml, metrics.json, and params.yaml. The metrics.json tab is active on the main pane. It contains various lines of code below. Line 5 reads: "epoch": 0,. Line 6 reads: "step": 299. [Video description ends]
+
+[Video description begins] The params.yaml tab is active on the main pane. It contains various lines of code below. Line 1 reads: data_dir: ./data. Line 2 reads: lr: 0.01. [Video description ends] 
+
+And you can see where we are in the current epoch as well we are in step 349. Remember, within an epoch we are training batches of data and these steps represent those batches.
+
+[Video description begins] The following files: plots, metrics, train, loss, and epoch are selected one after the other. [Video description ends]
+
+Now, observe that our PyTorch trainer is automatically updating Iterative Studio with the latest set of metrics. You can see that we are now at step 399 and you can see the current loss as well. And I've found that the plots that DVCLive is able to track for deep learning models are far more interesting than for scikit-learn. We are still on epoch 0 and you can see how the loss of the model is gradually falling as we train different batches for this epoch.
+
+[Video description begins] A new page appears with the heading: loonytest>dvc_image_classification_pytorch. It contains a menu bar with the following options: Filters, Columns, Plots. Trends, Compare, and Run. Further it contains a table with the column headings: Experiment, Created, Message, CML,dvclive/params.yaml, and so on. The dvclive/params.yaml column heading shows 2 sub-columns: lr, and data_dir. [Video description ends]
+
+[Video description begins] The page now displays the same header: loonytest>dvc_image_classification_pytorch. It contains various options and icons below, like Filters, Columns, Delete, Clear selection, and so on. The left navigation pane contains 2 collapsible sections: Commits, and Directories. The Directories section contains options like dvclive, plots, metrics, and so on. The main pane displays the header: Plots. It contains 2 graphs below. [Video description ends]
+
+And this chart is updated in real-time, thanks to the DVCLive logger. Now, as we've been exploring, 1 epoch of training is almost complete. We are about to enter epoch 2. You can see here at the bottom that Epoch 0 is now complete and we are now at the start of Epoch 1.
+
+At the end of each epoch, the current accuracy of the model will be available on Iterative Studio. You can see that it's currently 0.18. Well, it's not great. But we've only trained for one epoch. Let's take a look at the plots as we watch our progress and from the graph of the loss, you can see that the loss is steadily falling as we train through different steps of the epoch. I've let the second epoch run through as well. Let's head back to our notebook where we have a nice report right here. The second epoch, Epoch 1, is currently in progress and soon this epoch has completed training as well. Once this is done, you'll get a final test_acc and loss for your model. You can see the final accuracy is just 23%, so it's not a great model with just two epochs of training and with a learning rate of 0.01. At the end of training if you look at the dvc.yaml file, you'll find that in addition to params, metrics, and plots, we also have logged the checkpoint as an artifact.
+
+[Video description begins] The dvc.yaml file is open now. [Video description ends]
+
+Let's go to Iterative Studio and look at the final metrics for this model. You can see the accuracy is 0.232 and a loss of 2. Now, this model is not a great one. That's because we only trained for two epochs and the learning rate that we chose was rather high. We can actually improve upon this by training for a little bit longer and using a lower learning rate, and we'll do that in a bit. In the meanwhile, let's look at the last set of plots that were generated for this experiment. Click on plots and there you can see the epochs as they step up. We had just two epochs and the loss as it kind of went down, but it was very spiky.
+
+It did not go down smoothly because our learning rate was rather high, thanks to the DVCLive logger, metrics were pushed to Iterative Studio during the training process. But we still need to push all of the experiment files to DVC, and we do that using a DVC experiment push.
+
+[Video description begins] A terminal window appears. The following command is added: dvc exp push origin ninth-dais. [Video description ends]
+
+Having pushed the experiment files to be tracked by DVC, we are done with this experiment and we'll move on to a second experiment with our PyTorch model where we'll train for longer with a lower learning rate.
+
+8. Video: Improving Image Classification (it_mlodvcdj_04_enus_08)
+
+Learn how to improve the image classification model.
+improve the image classification model
+[Video description begins] Topic title: Improving Image Classification. Presented by: Janani Ravi. [Video description ends]
+The model that we've just trained for image classification on the CIFAR10 dataset wasn't really a great one. That's because we had set the learning rate parameter of the model to be rather high, and we are only trained for two epochs. Let's fix both of those, just try and see whether we can get a better image classification model. Here I instantiate my LitCNN lightning module object and I specify a learning rate of 0.001.
+
+[Video description begins] A Jupyter notebook appears with the heading: ImageClassificationPyTorch. It contains a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The right top corner displays: dvc_venv. Below, numerous input cells appear. [Video description ends]
+
+This lower learning rate will actually help our model learn better because model convergence will flow more smoothly towards a lower value of loss. I instantiate Live object as before save_dvc_exp = True, report = 'notebook' so that we can see plots and metrics right here within our Jupyter notebook. I've instantiated a model checkpoint as before, I instantiate a Trainer object.
+
+[Video description begins] The input cell 35 is highlighted. Line 1 reads: model = LitCNN(lr = 0.001). Line 3 reads: with Live(save_dvc_exp = True, report = 'notebook') as live:. Line 5 reads: checkpoint = ModelCheckpoint(dirpath = 'pytorch_model'). [Video description ends]
+
+
+We'll train for 4 epochs. Each epoch will take about 10 minutes. You can train for longer if you want to. Four epochs here is just a sample. The model will not converge after 4 epochs of training. You can train for longer and improve the model.
+
+Once again we use the DVCLiveLogger so that training metrics will be logged directly to DVC and thus available on Iterative Studio as training is in progress. We set experiment equal to the current live object so that metrics and parameters are tracked to the current experiment. trainer.fit will train the model, trainer.test will evaluate the model and finally, once model evaluation is done, live.log_artifact will actually log out the best checkpoint of this model. Let's kick start the training process and while training is in progress, let's head over to Iterative Studio and take a look at this new experiment and the metrics that are available here. Here is the new experiment glial-tach, metrics are not yet available.
+
+[Video description begins] Line 7 reads: trainer = Trainer (. Line 8 reads: max_epochs = 4,. Line 9 reads: logger = DVCLiveLogger(. Line 10 reads: experiment = live. Line 11 reads: ),. Line 12 reads: callbacks = checkpoint. [Video description ends]
+
+ [Video description begins] Line 15 reads: trainer.fit(model). Line 16 reads: trainer.test(). Line 18 reads: live.log_artifact(. Line 19 reads: checkpoint.best_model_path,. Line 20 reads: type = 'model',. Line 21 reads: name = 'lightning-model-4-epochs-lr-001'. Line 22 reads: ). [Video description ends] 
+
+We'll have to wait for some more training progress before we can actually see these. As the model completes training on batches designated as steps. You can see that metrics are slowly getting to be available here on Iterative Studio, and we'll see live updates as model training progresses.
+
+[Video description begins] A new page appears with the heading: loonytest>dvc_image_classification_pytorch. It contains a menu bar with the following options: Filters, Columns, Plots. Trends, Compare, and Run. Further it contains a table with the following column headings: Experiment, Created, Message, and CML. The other columns show the following headers: dvclive/metrics.json, dvclive, pytorch_model, dvclive/params.yaml, and so on. [Video description ends]
+
+Don't worry, I won't make you wait for the entire 40 minutes of training. We are 16% through epoch 0, now 24% through epoch 0, and you can see that there is a steady march forward and very soon, Epoch 0 is complete and we've started on Epoch 1. We should now have the updated loss and accuracy values on Iterative Studio and you can see it populated there. Accuracy is 0.69.
+
+Observe how the accuracy is very high even with just 1 epoch of training on the new learning rate. With the larger learning rate that we used, even after two epochs of training, we only had 23% accuracy. That model was clearly not converging at all. You can see here that accuracy will steadily pick upward even though we are training only for four epochs. Let's take a look at the graphs. One of my favorite things about DVC is the ability to view these real time graphs on our neural network training. You can see the loss gradually fall as we progress through steps of training.
+
+[Video description begins] The page now displays the same header: loonytest>dvc_image_classification_pytorch. It contains various options and icons below, like Filters, Columns, Delete, Clear selection, and so on. The left navigation pane contains 2 collapsible sections: Commits, and Directories. The Directories section contains options like dvclive, plots, metrics, and so on. The main pane displays the header: Plots. It contains various graphs below. [Video description ends]
+
+If you scroll down below, you'll get the validation accuracy and loss as well, but these are just single points, not as much fun. Model training is still in progress.
+
+We finished epoch 0 and 1, that is 2 out of 4 epochs, and you can see the update here on Iterative Studio as well. We are now at 0.75% accuracy on the validation data after just two epochs of training. I'll leave it to you to explore these changes more on your own. I'll just wait for training to complete. Epoch 2 is done, Epoch 3 has started, and soon, Epoch 3 will be done as well. We are at 100%, we'll now run validation on our model after Epoch 3. Remember, that's the fourth epoch. The training process is now complete. Let's compute metrics on the test data and the test_acc is 0.78% after just four epochs of training. Iterative Studio should have the latest updates.
+
+You can see epoch 4 is now done and here is the accuracy on the test data .7832. This is clearly a very good model trained just for a few epochs. Let's take a look at the final Plots. Notice that epochs go from 0 all the way through to 3. Here is the plot for the training loss. You can see as the loss falls over time over the several steps of training. We've trained for over 2800 steps. Remember each epoch had about 750 or so steps. Here below is a nice little chart for how the validation accuracy of the model changed over time. We started somewhere at 0.68 but got to over 0.78. Iterative Studio has this very cool feature where you can compare not only the metrics of two experiments but also plots. First let's compare the metrics of the two experiments that we ran. One that trained for two epochs with the learning rate of 0.01 and the current one where the learning rate was 0.001 and we trained for four epochs.
+
+[Video description begins] A pop-up window titled 'Changes' appears on the right. Below, it contains 2 sections: Metrics, and Parameters. [Video description ends]
+
+Notice the difference in the number of steps. The new model trained for 2816 steps, the old model for 1408 steps. We trained for four epochs versus 2. What's most interesting here is the validation accuracy. For glial-tach, its 0.785. For our older ninth-dais model, it was just 0.23. The new model is clearly better. Notice the learning rate parameter at the bottom. The new model used a lower learning rate 0.001. The older model used a higher learning rate of 0.01 and that model did not really converge. It did very badly. We have our 2 experiments selected, and if you click on plots, you'll be able to see one plot overlaid over another.
+
+The purple line here represents the older experiment and the blue line the new current experiment. The new experiment trained for four epochs as opposed to two earlier. Let's look at some other plots. Take a look at the training loss. We trained for longer and you can see that the loss fell over time, whereas for the older model, the loss kind of stayed where it was. You can see the same detail here in the validation accuracy on the bottom left. The accuracy is clearly higher with our newer model, the line in blue. Now, all that's left for us to make sure that DVC and Git are tracking the details of this experiment. dvc exp push origin glial-tach will push all of the files associated with this experiment that we just completed to DVC. This will have been picked up by Iterative Studio.
+
+[Video description begins] A terminal window appears. The following command is added below: dvc exp push origin glial-tach. [Video description ends]
+
+You may need to click on the update project button. When it appears here you can see the dvc: commit next to the glial-tach experiment, indicating that we've pushed our file to DVC.
+
+Let's look at a few interesting DVC CLI commands before we update and commit our files to Git. dvc exp diff will allow you to compare the metrics and parameters associated with two experiments. Here I've picked ninth-dais and glial-tach and you can see right here within this terminal window how much better glial-tach has performed compared to ninth-dais. The same information is available in the Iterative Studio UI.
+
+[Video description begins] The next command added reads: dvc exp diff ninth-dais glial-tach. [Video description ends]
+
+This is the command to view this on the command line as well. Observe that you get this additional Change column that allows you to view the difference or the change in the two experiments for the metrics and params on display. You can also view a diff of the plots associated with the two experiments dvc plots diff. Rather than specify the two experiments by name, I run dvc exp list --name-only. This will list out all of the experiments in my current workspace.
+
+[Video description begins] The next command added reads: dvc plots diff $(dvc exp list --name-only). [Video description ends]
+
+There are two of them, and the plot differences or the plot overlays will be available here in this HTML file that I am now going to copy and view in a browser window. You can see the images that we logged in a previous experiment that's also part of this diff. Here you can see the overlaid epoch and loss graphs. These are the same graphs that we viewed on Iterative Studio, available right from within your command line and on your local browser.
+
+[Video description begins] A page titled DVC Plot appears. It contains several images and some graphs below. [Video description ends]
+
+All that's left for us to do is to commit our code and metafiles to Git. I'm going to run a git pull to make sure that my local repository is up to date
+
+[Video description begins] The input cell 36 is highlighted. It reads: !git pull. [Video description ends] with the remote repository, and it is. Let's quickly run a git status to see what files are being tracked by Git. Well, all of the files are untracked. [Video description begins] The input cell 37 is highlighted. It reads: !git status. [Video description ends] That means we'll have to explicitly add the files that we want to commit to Git. Let's run an ls -la on dvclive to see what files are available there. -la will show me the hidden files as well. [Video description begins] The input cell 38 is highlighted. It reads: !ls -la dvclive/. [Video description ends] Now, there is a .DS_Store file there that I can choose to ignore, but for simplicity, I'm just going to go ahead and call git add on the dvclive folder in its entirety.
+
+This will end up in the .DS_Store being committed. Well, that's fine. It's not ideal, but it's fine. In the PyTorch model folder we have the checkpoints of our model training.
+
+[Video description begins] The input cell 39 is highlighted. It reads: !git add dvclive/. [Video description ends]
+
+ls -la will show us there is a gitignore file here that will cause us to ignore the checkpoints, but track the .dvc files that is the metafiles associated with each checkpoint. Let's confirm that the .gitignore file is indeed ignoring the checkpoint files and that the DVC files will be tracked. Yes, it is. Let's now add everything in the pytorch_model folder to be tracked by Git, so that we can commit the .dvc files. The checkpoint files will not be committed, thanks to the gitignore. 
+
+[Video description begins] The input cell 40 is highlighted. It reads: !ls -la pytorch_model/. [Video description ends] 
+
+[Video description begins] The input cell 41 is highlighted. It reads: !cat pytorch_model/ .gitignore. [Video description ends] 
+
+[Video description begins] The input cell 42 is highlighted. It reads: !git add pytorch_model/. [Video description ends]
+
+Now, with that done, all that's left is for us to add this ImageClassificationPyTorch notebook.
+
+[Video description begins] The input cell 43 is highlighted. It reads: !git add ImageClassificationPyTorch.ipynb. [Video description ends]
+
+We want the code to be in git as well. Now, let's run git status and everything I want to commit to Git is now being tracked by Git. So at this point, I can go ahead and run the git commit command. This will commit the code and metafiles associated with this experiment to Git.
+
+[Video description begins] The input cell 44 is highlighted. It reads: !git status. [Video description ends]
+
+[Video description begins] The input cell 45 is highlighted. It reads: !git commit -m "Committing model, data, and experiment files for PyTorch CNN model". [Video description ends]
+
+The commit is now available in my local repository. I'll leave it to you as an exercise to push this commit to your GitHub remote repository.
+
+9. Video: Configuring Azure Cloud Storage as DVC Remote (it_mlodvcdj_04_enus_09)
+
+During this video, discover how to set up Azure Cloud Storage as a DVC remote.
+set up Azure Cloud Storage as a DVC remote
+[Video description begins] Topic title: Configuring Azure Cloud Storage as DVC Remote. Presented by Janani Ravi. [Video description ends]
+In the previous demo, we saw how we could log, track, and version an image classification model trained using the PyTorch framework. Now, DVC and DVCLive work with TensorFlow as well. So, if you are using either PyTorch or TensorFlow as the deep learning framework to train your models, well, you are in luck. DVC has great integrations with both of these frameworks. Today, PyTorch and TensorFlow are the most popular deep learning framework for training neural network models. TensorFlow, just like PyTorch, is open-source and it's developed by Google.
+
+PyTorch was originally open-sourced by Facebook.
+
+[Video description begins] A terminal window appears. A panel appears at the bottom that reads: TensorFlow, Open-source, deep learning framework developed by Google. [Video description ends]
+
+TensorFlow 1.0 was originally released back in 2013 and 2014 and that revolutionized the training of neural network models. TensorFlow 2.0 was released in late 2019 and that was a significant improvement over version 1. TensorFlow 2.0 is tightly integrated with the Keras API as the default high-level API for building and training neural networks, making it more user friendly and accessible to both beginners and experienced users. TensorFlow 2.0 with Keras is what we'll be using in this demo. Keras is now the official high-level API for TensorFlow.
+
+In addition to using TensorFlow rather than PyTorch for image classification, we'll also have DVC use Azure Cloud Storage as the location for its remote storage.
+
+[Video description begins] One more panel appears at the bottom that reads: Azure Cloud Storage, Use blob-storage containers to store model-related artifacts in DVC. [Video description ends]
+
+On Azure Cloud Storage, we'll provision blob-storage containers to store all of the model-related artifacts that we'll handled using DVC. In the previous demo, we saw how we could configure Amazon S3 buckets to work with DVC. In this demo, we'll see how we can configure Azure Cloud Storage BLOB containers to work with DVC. We'll build and train our model in TensorFlow, we'll track our artifacts with Azure Cloud Storage, and we'll of course, be using DVCLive an Iterative Studio to view our experiments metrics.
+
+Another thing to note here is that we are working within our main environment rather than the recommended virtual environment. That's because one of the dependencies for grpcio did not install successfully in the virtual environment on my local machine. It's quite likely that these issues might have been fixed by the time you set up to do this demo. We'll set up our project in exactly the same way. I'll walk through this very quickly without dwelling too much on the details. You already know the details. I've created an image classification_tf directory here for our DVC project. This is where our notebook will live.
+
+[Video description begins] The following commands are added in the terminal window: mkdir dvc_image_classification_tf, and cd dvc_image_classification_tf. [Video description ends]
+
+This is going to be our working directory for DVC.
+
+[Video description begins] The next command added reads: ls -l. [Video description ends]
+
+I've placed the notebook here behind the scenes. You can see it, ImageClassificationTensorFlow. We'll use a convolutional neural network to classify images from the CIFAR10 dataset.
+
+The problem statement is exactly the same, the framework is different. We have our local directory dvc_image_classification_tf. I've created a remote repository with exactly the same name.
+
+[Video description begins] A webpage appears with the heading: loonytest/dvc_image_classification_tf. It contains a menu bar with the following tabs: Code, Issues, Pull requests, Actions, Projects, and More. The Code tab is active. The main pane displays: dvc_image_classification_tf. Below, it contains two sections: Set up GitHub Copilot and Invite collaborators. [Video description ends]
+
+It's my practice to always mirror the name of my local folder as my GitHub repo so that it's easy for me to keep track what is the origin for each of my projects. Let's initialize our Git repository and our DVC project before we actually set up the project on Iterative Studio. So, I run git init and dvc init.
+
+[Video description begins] A Jupyter notebook appears with the heading: ImageClassificationTensorFlow. It contains a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The right top corner displays: Python 3 (ipykernel). Below, it contains the input cells. [Video description ends]
+
+These are both commands that you are very familiar with at this point in time.
+
+[Video description begins] The input cell 1 is highlighted. Line 1 reads: !git init. Line 3 reads: !dvc init. [Video description ends]
+
+I configure the username and e-mail address that I want to appear with my check-ins and I use git remote add to add the origin. That is the remote repository connected with my local repository here in this folder. And I update the name of my current working branch to be called main. Remember it previously used to be referred to as master on GitHub, but now the convention is to call it main. Before we go any further with the project setup let's head over to the Azure portal and set up our Cloud Storage account. We'll need to set up an Azure storage account and within that provision a BLOB storage container. So, go to portal.azure.com and sign in with your Azure username and password.
+
+, [Video description begins] The input cell 4 is highlighted. Line 1 reads: !git config --global user.name "loonytest". Line 2 reads: !git config -- global user.email "loony.test.001@gmail.com". Line 4 reads: !git remote add -f origin https://github.com/loonytest/dvc_image_classification_tf.git. Line 6 reads: !git branch -M main. [Video description ends] 
+
+[Video description begins] A new incognito tab is open on the browser. A context menu appears with options like Emoji & Symbols, Undo, Paste, Paste and Go to https://portal.azure.com, and so on. [Video description ends]
+
+[Video description begins] A page titled Sign in to Microsoft Azure appears. Below, the pop-up window on the page asks for username, and password. [Video description ends]
+
+Now, you'll need an Azure account in order for you to work on this demo. Now, you can easily sign up for an Azure free trial and that should allow you to make use of all of the resources that you need for this course. The resources that you need and how much you'll be charged for actually setting up an Azure Storage account as a remote storage for DVC is minimal, should just be a dollar or two, and that should be covered in your free trial.
+
+[Video description begins] The Azure portal appears. It contains a search bar at the top, along with some icons like Notifications icon, Settings icon, and so on. Below, there are 2 sections: Azure services, and Resources. The Azure services section contains options like Create a resource, Storage accounts, Groups, and so on. The Resources section contains 2 tabs: Recent, and Favorite. The Recent tab is active. It contains a table with 3 column headings: Name, Type, and last Viewed. [Video description ends] 
+
+In order to store data on the Azure cloud using BLOB storage, you'll need to create a new storage account. Now this happens to be available on my recently used products and services list. If it's not available for you, you can simply search for storage account using the search bar here on top of your screen. Once you click through to the Storage accounts page. Here you'll find an option to create a brand new storage account.
+
+[Video description begins] A page titled Storage accounts appears. Below, it contains buttons like Create, Restore, Manage view, Refresh, and so on. Under this, there is a search bar and some filter options. There is a table underneath with several column headings like Name, Type, Kind, Location, and so on. [Video description ends]
+
+The storage account is a fundamental storage resource in Azure and serves as a container for various types of storage services, including BLOB storage, which is what we are going to be using. But storage accounts can have file storage, table storage, and queue storage as well. The +Create button and it'll walk you through the steps that are required. Now, the first thing you need to specify is the Subscription and the Resource group within which you want your storage account to be created.
+
+[Video description begins] A page titled Create a storage account appears. It contains various tabs below, such as Basics, Advanced, Networking, Encryption, Review, and so on. The Basics tab is active. It contains 2 sections: Project details, and Instance details. The Project details section contains fields like Subscription and Resource group. There is a Create new option available below the Resource group field. The Instance details section contains fields like Storage account name, Region, Performance, and Redundancy. [Video description ends]
+
+A Resource group is just a logical container on Azure that groups together related Azure resources. Resources that you want together for management, billing, and access control. Just a way to organize and manage resources based on the applications that use them or the environments. I'm going to create a new resource group called loony-dvc-rg. The next thing that you need to specify is the name of the storage account.
+
+Since the storage account is going to be used with DVC, you are working with CIFAR10 data in TensorFlow dvccifar10tf is the name that I have specified. Let's move on to the next page. You can also specify the Region where you want this storage account to be located. That's where your data will be stored. I've left it as the default East US. Now, as you click through, you'll find that there are a number of other settings that you can configure, but for the purposes of this demo, you can accept the default values for all of these settings and go directly to the last page where you review your settings and click on the Create button to create a new storage account.
+
+It might take 15 to 20 seconds for this resource to be created, but once it's done, let's click on this button to go to this resource and that'll take us to the storage account and this is where we'll set up the BLOB storage container.
+
+[Video description begins] The other tabs like Advanced, Networking, Encryption, Review, and so on are selected one after the other. The default settings are selected for each one of them. [Video description ends]
+
+ [Video description begins] A page titled dvccifar10tf_1690545536185 | Overview appears. The left navigation pane contains options like Overview, Inputs, Outputs, and Template. The main pane contains buttons at the top, such as Delete, Redeploy, Download, and so on. Below, there is a button labeled Go to resource. [Video description ends]
+
+In order to do this, you'll need to click on Containers in the Data storage section on the navigation pane off to the left and here you'll find an option to create a new Container, click on the +Container button. Let's give this container a meaningful Name.
+
+[Video description begins] A page titled dvccifar10tf | Containers appears. The left navigation pane contains sections like Data storage, Security + networking, and so on. The Data storage section contains options like Containers, File shares, Queues, and Tables. The Containers option is highlighted. The main pane contains various buttons a the top, such as Container, Change access level, Refresh, and so on. Below, it displays a table with various column headings like Name, Last modified, Lease state, and so on. [Video description ends]
+
+[Video description begins] A pane titled New container appears on the right. It contains 2 fields: Name, and Public access level. It has a collapsible section labeled 'Advanced' underneath. [Video description ends] I'm going to call it dvc-cifar10-images because we'll log image data to this container. Now that this container has been successfully created, this is what I'm going to set up as the remote storage for DVC. Once again, I use the dvc remote add command, -d sets this up as my default remote, the name of the remote is myazureremote and here is how I specify the Azure URL that points to this remote. The name of the container has to be globally unique. So, I have azure://dvc-cifar10-images and I run a dvc remote list and that will allow us to verify that this remote storage has been successfully configured for DVC.
+
+This dvc remote add command has updated our dvc/config file. [Video description begins] The Jupyter notebook titled: ImageClassificationTensorFlow reappears. The input cell 5 is highlighted. Line 1 reads: !dvc remote add -d myazureremote azure://dvc-cifar10-images. Line 3 reads: !dvc remote list. [Video description ends] So, let's see what changes we have in the config file at this point in time.
+
+[Video description begins] The input cell 6 is highlighted. It reads: !cat .dvc/config. [Video description ends]
+
+Here is our myazureremote pointing to the right URL. For Azure, you also need to configure the storage account name for your remote storage, that is set the account_name property to some meaningful value. So, I use dvc remote modify and I set the account_name property of myazureremote to be myazurestorage. Now, the basic configuration is complete.
+
+[Video description begins] The input cell 7 is highlighted. It reads: !dvc remote modify myazureremote account_name 'myazurestorage'. [Video description ends]
+
+We still need to configure it so that DVC has access to our container here on Azure cloud storage. And for that you need to head over to your storage account and click on the Overview option. Now, here we are in the Storage account.
+
+[Video description begins] A page titled dvccifar10tf appears. The left navigation pane contains a section called Security + networking. It contains options like Networking, Azure CDN, Access keys, and so on. The Overview option is highlighted. The main pane contains various buttons a the top, such as Upload, Delete, Move, and so on. Below, it displays a section labeled Essentials. It provides various information in fields like Resource group, Location, Performance, and so on. Below, there are various tabs like Properties, Monitoring, Tutorials, and so on. [Video description ends]
+
+On the left navigation pane, you'll find an option for Access keys. Note that these access keys are for your storage account and not for the individual containers within your storage account. Access keys are available under the security and networking section. Here on this Access keys page, you'll find 2 keys listed for your storage account. There is the primary key and the secondary key. Any of these keys will work, but as is common practice, let's go ahead and copy over the Connection string for the primary key.
+
+[Video description begins] A page titled dvccifar10tf | Access keys appears. The main pane contains 3 buttons a the top, such as Set rotation reminder, Refresh, and Give feedback. Below, it displays a field called Storage account name and 2 sections labeled key1, and key2. Both the sections contain 2 fields: Key and Connection string. [Video description ends]
+
+This Connection string will allow DVC to authenticate and authorize itself against our Azure Cloud Storage and connect to it to upload data to it as needed. We've discussed before that if you're planning to store any sensitive information such as credentials, you should modify config.local and not the config file that's checked into Git. This is why when I call dvc remote modify, I specify the --local flag. I've set the connection_string property for my Azure remote to be the connection_string that I copied over from access keys. This of course, would have created the config.local file in my local machine. This is not going to be checked into GitHub.
+
+[Video description begins] The input cell 8 is highlighted. Line 1 reads: !dvc remote modify --local myazureremote \. Line 2 contains the copied Connection string. [Video description ends] 
+
+[Video description begins] The input cell 9 is highlighted. It reads: !cat .dvc/config.local. [Video description ends]
+
+And you can see that the connection string is available here. This is what DVC will use to authenticate itself to Azure cloud. Observe that config.local is a part of the gitignore in the .dvc folder.
+
+[Video description begins] The input cell 10 is highlighted. It reads: !cat .dvc/ .gitignore. [Video description ends]
+
+Sensitive information such as access keys, connection strings should not be checked into Git. Now go ahead, let's add the dvc config file so that it's tracked by Git.
+
+[Video description begins] The input cell 11 is highlighted. Line 1 reads: !git add .dvc/config. [Video description ends]
+
+This is the config file, not config.local. And let's commit all of these changes to our local repository and also push this to Github's remote repository.
+
+[Video description begins] The input cell 12 is highlighted. Line 1 reads: !git commit -m "Initialized DVC for image classification with TensorFlow. Remote storage on Azure". Line 3 reads: !git push -u origin main. [Video description ends]
+
+At this point, our remote repository has been initialized with our DVC project. In order for DVC to work with Azure Cloud Storage, you need an additional Python package that is the dvc_azure package.
+
+[Video description begins] The input cell 13 is highlighted. Line 1 reads: pip install dvc_azure. [Video description ends]
+
+Make sure you pip install this package so that DVC can work seamlessly with Azure. All of our changes have been successfully committed to Git. The only thing that's left for us to do is to configure our Iterative Studio project and at this point, we'll be ready to train our TensorFlow model for image classification. Here I am on iterative.ai.
+
+[Video description begins] A new webpage appears with the heading: Projects. It contains a menu bar with three tabs: Projects, Models, and Settings. The Projects tab is active. Below, it displays: Welcome to Iterative Studio. On the right, it contains a button: Add a project. Below, there are a few tabs, such as dvc_image_classification_pytorch, dvc_churn_prediction_hyperparameters, and so on. [Video description ends]
+
+You know that adding a new project connected to GitHub is straightforward since we already have the basic connection setup. Click on add project and here choose the dvc_image_classification_tf repository and once that's done, click on Create Project and you are all set up. Iterative Studio setup, our DVC project setup, Cloud Storage setup. There is of course, one last thing that we need to configure.
+
+[Video description begins] A page titled Add a project appears. It contains a search bar below. It also contains a collapsible section called My GitHub. It further contains a list of items like dvc_churn_prediction, dvc_image_classification_tf, and so on. There is a button labeled Connect next to all the items. [Video description ends]
+
+[Video description begins] A page titled Project settings appears. It contains 3 sections below: Project name, Project directory, and Public access. [Video description ends] 
+
+[Video description begins] A new page appears with the heading: loonytest>dvc_image_classification_tf. There is a more icon next to the heading. It contains a drop-down menu with the following options: Share, View on GitHub, Show warning, and so on. Below, a menu bar appears with the following options: Filters, Columns, Plots. Trends, Compare, and Run. A table appears next with the column headings: Experiment, Created, Message, and CML. [Video description ends]
+
+If you look at the warnings associated with this project, you'll see that Iterative Studio does not have permissions to fetch remote data stored on the Azure cloud. Let's go ahead and set these credentials.
+
+[Video description begins] A dialog box titled Notifications appears. It displays 2 links: Set credentials and Force import. [Video description ends] 
+
+Again, these are not really needed for this particular demo, but if you want Iterative Studio to access your model that lies in DVC and register your model, well, you'll need these credentials. You can see that Iterative Studio has automatically picked up my Azure remote from DVC. It's looked at the config file that we've checked into GitHub and figured out that we're going to be using my Azure remote.
+
+[Video description begins] The page titled Project settings reappears. It contains a few sections below like Project name, Project directory, Data remotes/cloud storage credentials and so on. The Data remotes/cloud storage credentials section contains 2 buttons labeled Add new credentials, and Unlink credentials. [Video description ends]
+
+We need to Add new credentials for Iterative Studio to access this remote, and this involves just pasting in the connection string for our Azure storage account right here on the screen. Having done this, we are all set. Go ahead and save the changes and let's head back to our notebook. Don't forget to run dvc config to set the studio.token so that DVC on your local machine can talk to Iterative Studio.
+
+[Video description begins] The input cell 14 is highlighted. It reads: !dvc config --global studio.token isat_r7slxwNuIU4z2amj6BV0tDn6DfNYBxlnYBkdw4YCIWOKqw9l. [Video description ends]
+
+10. Video: Training and Logging TensorFlow Models (it_mlodvcdj_04_enus_10)
+
+In this video, find out how to train and log TensorFlow models.
+train and log TensorFlow models
+[Video description begins] Topic title: Training and Logging TensorFlow Models. Presented by: Janani Ravi. [Video description ends]
+I found that when I use the latest version of TensorFlow at the time of this recording, it did not really work perfectly on my Mac, which is rather an old machine. So, I pip installed tensorflow 2.11.0. It's a fairly recent version of TensorFlow that's widely used, it's just not the latest version. You can, of course, work with the newer version if you have a new machine to support this, go ahead and pip install tensorflow. Again notice that we are working in the main environment and let's get started with coding. The next thing to do is set up all of the import statements for the different classes and libraries that we'll use. These are TensorFlow specific imports, NumPy, Matblotlib, and you can also see imports from keras.
+
+[Video description begins] A Jupyter notebook appears with the heading: ImageClassificationTensorFlow. It contains a menu bar with the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The right top corner displays: Python 3 (pykernel). Below, it contains various input cells. The input cell 15 is highlighted. Line 1 reads: pip install tensorflow ==2.11.0 [Video description ends] 
+
+Keras, remember is the high-level API that we'll use to work with TensorFlow. And as discussed before, the TensorFlow version that we are using is 2.11.0
+
+[Video description begins] The input cell 16 is highlighted. Line 1 reads: import keras. Line 2 reads: import tensorflow as tf. Line 3 reads: import numpy as np. Line 4 reads: import matplotlib.pyplot as plt. Line 6 reads: from tensorflow.keras.layers import Input, Conv2D, Dense, Flatten, Dropout. Line 7 reads: from tensorflow.keras.layers import GlobalMaxPooling2D, MaxPooling2D. Line 8 reads: from tensorflow.keras.layers import BatchNormalization. Line 9 reads: from tensorflow.keras.models import Model, Sequential. Line 10 reads: from tensorflow.keras.utils import to_categorical, plot_model. Line 12 reads: print (tf .__version__). [Video description ends]
+
+Just like the PyTorch library had built-in access the CIFAR10 dataset, the TensorFlow library also gives you the same access. You can see that the tf.keras.datasets namespace gives you access to the cifar10 data, and you can call cifar10.load_data to load both the test as well as the training data. Now, calling cifar10.load_data will download this data onto our local machine in a cache folder. Now, this happens to be a hidden folder managed by Keras. In this particular demo, I'm not going to add the CIFAR10 dataset to my DVC remote storage. We'll just use this cache data because it's easily available for us directly using the Keras API.
+
+[Video description begins] The input cell 17 is highlighted. Line 1 reads: batch_size = 64. Line 2 reads: cifar10 = tf.keras.datasets.cifar10. Line 4 reads: (X_train, y_train), (X_test, y_test) = cifar10.load_data ( ). [Video description ends]
+
+We already know that the CIFAR10 dataset comprise of color images.
+
+That is, every image will have three pixel values representing the color associated with that pixel's RGB values. Now, RGB values in the CIFAR10 dataset are expressed in the range of 0 to 255. We divide by 255 so that we have these pixel values represented in the range 0 to 1. ML models are more robust and trained well when we use smaller numbers in smaller ranges. We also flatten the y_train and y_test values. The labels are originally specified in two dimensions. We make them single dimensional arrays by calling flatten. The CIFAR10 dataset comprises of images belonging to 10 different classes or categories, and I set these up in the class_names variable. You're already familiar with these images, but let's take a quick look at a sample of images from our training data.
+
+[Video description begins] The input cell 18 is highlighted. Line 1 reads: X_train, X_test = X_train / 255.0, X_test / 255.0. Line 3 reads: y_train, y_test = y_train.flatten ( ), y_test.flatten ( ). [Video description ends] 
+
+I'm going to plot 25 different images using Matplotlib, and under each image, I've displayed the label corresponding to that image. So, these are the kind of images that we'll use to train and predict in our classification model.
+
+[Video description begins] The input cell 19 is highlighted. Line 1 reads: plt.figure (figsize = [10, 10] ). Line 3 reads: for i in range (25) : . Line 4 reads: plt.subplot (5, 5, i+1). Line 6 reads: plt.xticks ( [ ] ). Line 7 reads: plt.yticks ( [ ] ). Line 9 reads: plt.grid (False). Line 11 reads: plt.imshow (X_train [i], cmap = plt.cm.binary). Line 12 reads: plt.xlabel (class_names [y_train [i] ] ). Line 14 reads: plt.show ( ). [Video description ends]
+
+Next, let's set up the Convolutional Neural Network that we'll use for image classification. The neural network that we'd set up in PyTorch was a fairly complex one with several convolutional and pooling blocks, and that was actually an important reason that neural network took so long to train. In this case, for the purposes of this demo, I'm going to set up a much simpler CNN. We instantiate a Sequential model in Keras on line 1 and then add our first convolutional layer on lines 3 through 5.
+
+The convolutional layer uses 32 filters, which means there will be 32 feature maps at the output of this first layer. I've used a square 3 by 3 kernel as the kernel that will slide over the input images. We use relu as the activation function and we specify the shape of the input that's going to be fed into this first convolutional layer. Remember, each CIFAR10 image is 32 pixels by 32 pixels and is a color image, so it has three channels. So, that's why the input_shape is 32, 32, 3.
+
+[Video description begins] The input cell 20 is highlighted. Line 1 reads: model = Sequential ( ). Line 3 reads: model.add (Conv2D (. Line 4 reads: filters=32, kernel_size= (3, 3), activation = 'relu' , input_shape= (32, 32, 3). Line 5 reads: )). [Video description ends]
+
+After the convolutional layer, we have a MaxPooling layer. This is on line 6. Remember, pooling layers aggregate the information that has been extracted by the convolutional layers and also subsample the input so that the input is downsized.
+
+[Video description begins] Line 6 reads: model.add(MaxPooling2D ( ( 2, 2) ) ). [Video description ends]
+
+After the first block of convolution and pooling layers, I have another block defined on lines 8 through 11, again a convolutional layer and then a pooling layer.
+
+[Video description begins] Line 8 reads: model.add (Conv2D (. Line 9 reads: filters=64, kernel_size= (3, 3), activation = 'relu' . Line 10 reads: ) ). Line 11 reads: model.add (MaxPooling2D ((2, 2) ) ). [Video description ends]
+
+And then we have the last convolutional layer defined on lines 13 through 15, a layer that we flatten out the output of the last convolutional layer. This is on line 17 and then we have a linear Dense layer with relu activation and then finally a Dense layer with softmax activation. Observe that this last layer on line 20 has 10 outputs corresponding to the 10 classes or categories for the input images. This softmax layer will give us an output of probability scores for each class or category and the category with the highest score will be the prediction of the model. Now, model.summary will quickly give you an overview of what the model looks like and how many parameters exist in each layer, so you know how long training will take. The more parameters your model has, longer it takes to train your model.
+
+[Video description begins] Line 17 reads: model.add (Flatten ( ) ). Line 19 reads: model.add (Dense (64, activation = 'relu') ). Line 20 reads: model.add (Dense (10, activation = 'softmax' ) ). Line 22 reads: model. summary ( ). [Video description ends] 
+
+Like I said, this is a fairly simple model. Next, let's set up the validation and test datasets that we'll use to evaluate the model. Once again, we use a batch_size of 64. The CIFAR10 training data comprises of 50000 images. I'm only going to use the first 40000 to train our model. We'll use the remaining 10,000 to validate our model. On lines 2 and 3, you can see that we extract the last 10,000 records from our original training data to be used as validation data. On lines 5 and 6, you can see that we use the first 40000 records as our actual training data. And it is these 40000 records that I'm going to instantiate as a dataset object. On lines 8 and 9, I instantiate a data object from the 40000 records that I have for training, and I shuffle my training data.
+
+[Video description begins] The input cell 21 is highlighted. Line 1 reads: batch_size = 64. Line 2 reads: X_val = X_train [- 10000 : ]. Line 3 reads: y_val = y_train [-10000 : ]. Line 5 reads: X_train = x_train [: -10000]. Line 6 reads: y_train= y_train [ : - 10000]. [Video description ends]
+
+You don't need to shuffle the validation and test data, but it's important to shuffle the training data.
+
+[Video description begins] Line 8 reads: train_dataset = tf.data.Dataset.from_tensor_slices ( (X_train, y_train) ). Line 9 reads: train_dataset = train_dataset.shuffle (40000). batch(batch_size). [Video description ends]
+
+And finally, on the last two lines of this code cell, I instantiate the test_dataset. Remember, CIFAR10 offers test data separately, and this comprises of 10000 images. We are now ready to start the training process of our model.
+
+[Video description begins] Line 16 reads: test_dataset = tf.data.Dataset.from_tensor_slices ( (X_test, y_test) ). Line 17 reads: test_dataset = test_dataset. batch(batch_size). [Video description ends]
+
+Just like we saw in PyTorch where we got live metrics as the model training was in progress, in this case too, we'll get live metrics logged out to Iterative Studio while the model training is going on. Let's take a look at the structure of our code. I import dvclive.
+
+We'll use the Live object from DVC, is what we use to log out metrics and parameters of our model, and we'll use the DVCLiveCallback. The DVCLiveCallback is the logger that we can pass into TensorFlow model training so that we get live metrics on Iterative Studio while model training is going on. We instantiate a Live object on line 6.
+
+
+[Video description begins] The input cell 22 is highlighted. Line 1 reads: import dvclive. Line 3 reads: from dvclive import Live. Line 4 reads: from dvclive.keras import DVCLiveCallback, [Video description ends]
+
+Make sure that the parameter save_dvc_exp is set to true so that all of the details will be logged within an experiment on DVC. report is equal to notebook will show us live metrics updates right here within our notebook. The model.compile function sets up the configuration for our model. Here is where we specify the optimizer to use. Notice we are using the adam optimizer. Here is where we specify the loss function. We use the sparse_categorical_crossentropy loss for our classification model, and the metric that we want to use to evaluate the model is accuracy.
+
+We'll start the training process of the model by calling model.fit, pass in the train_dataset, and we'll train for 10 epochs.
+
+[Video description begins] Line 6 reads: with Live (save_dvc_exp = True, report = 'notebook') as live :. Line 7 reads: model.compile (. Line 8 reads: optimizer = 'adam' ,. Line 9 reads: loss = 'sparse_categorical_crossentropy' ,. Line 10 reads: metrics = [ 'accuracy']. Line 11 reads: ). [Video description ends]
+
+ But because our model is simple, you'll find that 10 epochs will run through in about 3 or 4 minutes. The validation_data is the val_dataset that we've instantiated. Notice callbacks Here, we pass in the DVCLiveCallback and the current instance of our Live object so that metrics and parameters during the training process of this model are logged to the current experiment.
+
+[Video description begins] Line 12 reads: model.fit (. Line 13 reads: train_dataset,. Line 14 reads: epochs = 10, . Line 15 reads: validation_data =val_dataset, . Line 16 reads: callbacks = [DVCLiveCallback (live= live)]. Line 17 reads: ). [Video description ends]
+
+Once training is complete, we evaluate the model and compute the test_loss and the accuracy, and then save out the model as an artifact. We do this by calling model.save on line 21, which will save out this TensorFlow model using the tensorflow saved model format. I want DVC to be able to track this model artifact so I call live.log_artifact and log this to DVC. And then I call live.log_metric to log the test_loss and the test_acc.
+
+[Video description begins] Line 20 reads: test_loss, test_acc = model.evaluate (test_dataset). Line 21 reads: model.save ( 'tf-model-cifar10'). Line 23 reads: live.log_artifact ('tf-mode-cifar10' , type = 'model' ). Line 25 reads: live.log_metric ('test_loss', test_loss, plot= False). Line 26 reads: live.log_metric ('test_acc', test_acc, plot =False). [Video description ends]
+
+Go ahead and hit Shift+Enter and let's start the process of model training. You can see that epoch1 is currently running, and you can see a DVC report appears right here within your notebook.
+
+
+11. Video: Tracking TensorFlow Models Using DVC (it_mlodvcdj_04_enus_11)
+
+During this video, you will learn how to track TensorFlow models in DVC.
+track TensorFlow models in DVC
+[Video description begins] Topic title: Tracking TensorFlow Models Using DVC. Presented by: Janani Ravi. [Video description ends]
+We'd started our model training in the previous video. As we wait for the training epochs to run through, let's head over to our current working directory, and there you'll find the dvclive folder where the model parameters, metrics, and other DVC files are being logged. Now, here in DVC, you have all of the usual files that you would expect. Notice that training and evaluation metrics are logged under two subfolders. Under train subfolder, we have the accuracy logged at every step of training, and here under the eval subfolder, we have the loss and the accuracy logged at every step of the training process as well. After each step, the model is evaluated. Model training is still running through.
+
+[Video description begins] A page appears with the heading: dvc_image_classification_tf. The left navigation menu contains two sections: Favourites and Tags. The main pane contains a table with the column headings: Name, Date Modified, Size, and Kind. It contains a Folder and a Document: dvclive and ImageClassificationTensorFlow.ipynb. [Video description ends]
+
+
+[Video description begins] A page displays the heading: accuracy.tsv. The left navigation menu shows: FOLDERS. It contains various folders and subfolders: dvclive, plots, metrics, eval, accuracy, loss, train, dvc.yaml, metrics.json, and so on. [Video description ends] So, here is our dvc.yaml file.
+
+It's incomplete, we only have the metrics and the plots, no artifacts have been logged yet. Also, for the metrics, we won't have the final metrics.
+
+[Video description begins] The dvc.yaml file is open. It contains a few lines of code. Line 1 reads: metrics:. Line 2 reads: - metrics.json. Line 3 reads: plots:. Line 4 reads: - plots/metrics:. Line 5 reads: x : step. [Video description ends]
+
+We'll only have the metrics for this current step, "step": 3. Because we've used the DVCLiveCallback, these metrics will be available in Iterative Studio as the model training goes on. Observe that we are on step 3. This is the third epoch of training at this point in time.
+
+[Video description begins] A page appears with the heading: loonytest >dvc_image_classification_tf. It contains a menu bar with the following options: Filters, Columns, a Plots symbol, Delete, Hide, and more. Below, it contains a table with the column headings: Experiment, Created, Message, loss, accuracy, and so on. [Video description ends]
+
+Again, thanks to live logging, the plots that have been generated are the live plots as of this current epoch of training. Observe the accuracy slowly creeping up. We are at about 0.74 at this point in time. The loss is slowly falling over the three epochs of training. The top two charts here are on the validation data and if you scroll down below,
+
+[Video description begins] The page now displays the same header: loonytest>dvc_image_classification_tf. It contains various options and icons below, like Filters, Columns, Delete, Clear selection, and so on. The left navigation pane contains 2 collapsible sections: Commits, and Directories. The Directories section contains options like dvclive, plots, metrics, and so on. The main pane displays the header: Plots. It contains various graphs below. [Video description ends] you'll see the accuracy and the loss on the training data.
+
+So, these are available in real-time as model training is in progress. I'm patiently waiting here for model training to complete. You can see that we have the loss and accuracy charts for training and evaluation available right here within this notebook.
+
+[Video description begins] A Jupyter notebook appears with the heading: ImageClassificationTensorFlow. It displays: DVC Report. Below, it contains various charts such as: train/loss, train/accuracy, eval/loss, and so on. [Video description ends]
+
+That's because we had used the report=notebook option while instantiating DVCLive. Model training is steadily marching on. We are on Epoch 6. This should be step 5 in our training process. If you head over to Iterative Studio, you can see that we are now on step 5, and the loss and accuracy of the model are all moving in the right direction. Back to the notebook, training is still in progress.
+
+[Video description begins] The loonytest>dvc_image_classification_tf page appears again. [Video description ends]
+
+We are almost near the end. Back to Iterative Studio, the updates are available. We are now on epoch 7.
+
+Let's take a look at the graphs, that is the Plots once again. You can see that accuracy is now almost up to 0.79. This is on the validation data.
+
+[Video description begins] The Plots page appears again. [Video description ends]
+
+So, our model looks like a pretty decent image classification model. At least for the CIFAR 10 dataset. We are almost there. We've run through all 10 epochs of training. TensorFlow Assets have also been written out to the tf-model-cifar10 folder. This is where we call model.save and wrote out the saved_model. Here are the final graphs. And these final graphs should be available here on Iterative Studio as well. Let's take a look. And yes indeed we have how the accuracy and the loss moves across all 10 epochs.
+
+We have this for the validation data as well as for the training data. Now, if you head over to the working directory of your DVC project, you should find a folder called tf-model-cifar10 and this is where your saved_model has been serialized out. And, of course, right next to this folder we have the .dvc file.
+
+[Video description begins] The page with the heading: dvc_image_classification_tf appears again. It contains one more folder and a document now named as: tf-model-cifar10 and tf-model-cifar10.dvc. [Video description ends]
+
+That is the dvc metafile used for tracking your model's assets. Our experiment-related DVC files should now have the final form. Here is the dvc.yaml. Notice we have an artifacts section pointing to our model's artifact. We also have the final metrics logged in our metrics.json file.
+
+[Video description begins] The dvc.yaml file is now open. The following lines are highlighted. Line 6 reads: artifacts: . Line 7 reads: tf-model-cifar10:. Line 8 reads: path: . . /tf-model-cifar10. Line 9 reads: type: model. [Video description ends]
+
+Final test_acc is 0.7156. We also have the training and evaluation loss and accuracy. Observe that the accuracy on the test data is lower than on the training and evaluation data, but it's still pretty good.
+
+0.71 for a 10 category classification is decent. I'll now push the data files associated with this experiment to DVC.
+
+[Video description begins] The metrics.json file is now open. The following lines are highlighted. Line 4 reads: "accuracy" : 0.7870799899101257. Line 8 reads: "accuracy" : 0.8111000061035156. Line 12 reads: "test_acc" : 0.7156000137329102. [Video description ends]
+
+Here is the name of my experiment, whist-snub.
+
+[Video description begins] The Plots page appears again. The Commits section on the left navigation menu, contains two files: HEAD, main and [whist-snub]. [Video description ends]
+
+I'll now head over to the terminal window and call dvc push origin and pass in whist-snub as the experiment ID and have all of my details stored on DVC. So, we've pushed to DVC but we haven't committed anything to GitHub yet.
+
+[Video description begins] A terminal window appears. A line of code is added: dvc exp push origin whist-snub. [Video description ends]
+
+The models, artifacts, and other experiment-related details should be available on Iterative Studio, go ahead and update your project. And if you head over to the main project page, here the presence of the + icon under your model artifact. So, under the dvclive column, you can see that plus. This indicates that your model artifact has been registered and is tracked with DVC. If you go to the Models page, you'll find that DVC and Iterative Studio are tracking your model.
+
+I'm going to click on Add a model and just close this dialog that pops up. This takes me directly to the Models page and you can see there, right somewhere in the middle, the tf-model-cifar10. Once we commit all of our experiment files to GitHub, this model will be available for registration here in the Iterative Studio registry. DVC should have successfully stored the experiment files on Azure Cloud Storage as well. 
+
+[Video description begins] A page appears with the heading: Models. It contains three tabs: Projects, Models, and Settings. The Models tab is active. Below, it contains a table with the column headings: Model, Repository, Latest version, Description, and so on. [Video description ends]
+
+Let's click through to our storage account that is dvccifar10tf and here let's go to our storage container. So, head over to Containers in the Data storage section. Here is the container that we had created for our DVC project, dvc-cifar10-images and here you should find a files folder and if you click through, you'll find that whatever artifacts and other data that we had associated with our current experiment have been successfully pushed to cloud storage here on Azure.
+
+[Video description begins] A new page appears with the heading: dvc-cifar10-images. The left navigation menu contains various options: Overview, Diagnose and solve problems, Access Control (IAM), and so on. The main pane contains a table with the column headings: Name, Modified, Access tier, Archive status, and more. [Video description ends]
+
+This is the DVC remote storage. Our data is now successfully tracked on Azure. All that remains for us is to push all of the files associated with this experiment to our GitHub remote repository. Let's first make sure that our local repository is up to date by invoking a git pull.
+
+[Video description begins] The Jupyter notebook appears with the heading: ImageClassificationTensorFlow. Code cell 26 reads: !git pull. [Video description ends]
+
+Well, we are up to date, so we can start committing to our local repository. I'll first run a git status to see what untracked files we have and what files we want to track.
+
+[Video description begins] Code cell 27 reads: !git status. [Video description ends] I'm going to explicitly add in the files. Let's look at what's in the dvclive folder. ls -la will show us the hidden files as well. I want to commit all of these files to the GitHub repository. dvc.yaml, metrics.json, and the plots.
+
+[Video description begins] Code cell 28 reads: ! ls -la dvclive/. [Video description ends] 
+
+So, I'm going to git add dvclive, the entire folder, everything under it.
+
+[Video description begins] Code cell 29 reads: !git add dvclive/. [Video description ends]
+
+That's taken care of. Let's run an ls -la in the current working directory. This will allow us to see the hidden files as well. This gives me an overview of what files I need to track.
+
+[Video description begins] Code cell 30 reads: !ls -la. [Video description ends]
+
+There is the .gitignore. This asks Git to ignore whatever files are present under the tf-model-cifar10 because those files are being tracked by DVC. I'll explicitly git add the metafile tracking this artifact folder that is the tf-model-cifar10.dvc file.
+
+[Video description begins] Code cell 31 reads: !cat .gitignore. [Video description ends]
+
+[Video description begins] Code cell 32 reads: !git add tf-model-cifar10.dvc. [Video description ends]
+
+Next, let's add this notebook that we are working in ImageClassificationTensorFlow.
+
+[Video description begins] Code cell 33 reads: !git add ImageClassificationTensorFlow.ipynb. [Video description ends]
+
+Let's take a look at the git status to see if I have all the files that I need. And you can see here that yes, indeed I do, except for the .gitignore.
+
+[Video description begins] Code cell 34 reads: !git status. [Video description ends]
+
+Now, whether you choose to commit this .gitignore file to the remote repository, that's kind of up to you. Now, it's normal practice when you're working in a team to actually commit the .gitignore so that other members of your team will also get this gitignore will know to ignore certain directories in your workspace. But really, there is no hard and fast rule about committing the .gitignore file as long as it's in my local repository and I'm ignoring the model artifact folder, then we are good to go. For now, I'm leaving out the gitignore, but you can choose to commit it if you want to. I call git commit to commit all of the experiment files to my local repository, and of course, I want it on GitHub. So, I'm going to call git push -u origin main to ensure all of this is committed to GitHub as well.
+
+
+[Video description begins] Code cell 35 reads: !git commit -m "Committing model, data, and experiment files for TensorFlow CNN model". [Video description ends] 
+
+[Video description begins] Code cell 36 reads: !git push -u origin main. [Video description ends] Let's take a quick peek at our GitHub repository to see whether everything has been pushed. And yes, indeed it has.
+
+12. Video: Course Summary (it_mlodvcdj_04_enus_12)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. Presented by: Janani Ravi. [Video description ends]
+You have now reached the end of this course, Tracking and Logging Deep Learning Models. We started this course off by exploring how to track deep learning models using DVC. We set up a convolutional network using PyTorch Lightning in order to perform image classification. We used the CIFAR10 dataset, which is an image dataset with 50000 color images categorized into ten classes or categories. We explored the dataset and logged a few sample images using DVCLive. We then moved on to creating our CNN model and setting up the layers of our neural network.
+
+We trained our model and tracked the epochs as they trained before evaluating the model on validation and test data. We also tweaked the learning rate of our model to try and improve model performance. We used the DVCLive logger with our trainer which allowed us to observe the model metrics in Iterative Studio as the model was being trained. Next, we performed deep learning model training using Tensorflow. Again, we built a convolutional neural network for image classification and once again, we used the CIFAR10 dataset to train this model. We trained the model and logged training-related metrics to DVCLive. We used the DVCLive callback to visualize metrics during model training.
+
+After performing model evaluation, we visualized the loss and performance of the model in the Iterative Studio UI as well as in our Jupyter Notebook. Along the way, we grasp the intricacies of setting up remote storage locations on the cloud for DVC. We configured Amazon S3 and Azure BLOB storage as remote storage locations, noting the different methods of authentication, namely access keys and connection strings respectively. We also observed that when storing sensitive authentication information, we should use the dvcconfig.local file that is untracked by Git. In conclusion, we now know how to create and track deep learning models in DVC. This sets us up nicely for the course up ahead, creating and using DVC pipelines.
+
+Course File-based Resources
+•	MLOps with Data Version Control: Tracking & Logging Deep Learning Models
+Topic Asset
+© 2023 Skillsoft Ireland Limited - All rights reserved.

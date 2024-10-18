@@ -1,0 +1,925 @@
+MLOps with Data Version Control: Getting Started
+Data Version Control (DVC) is a technology that simplifies and enhances data versioning and management. It provides Git-like capabilities to track, share, and reproduce changes in data while optimizing storage and facilitating collaboration in data-centric projects. In this course, you will discover how DVC simplifies the intricate components of ML projects – code, configuration files, data, and model artifacts. Next, you will embark on hands-on DVC exploration by installing Git locally and establishing a remote repository on GitHub. Then you will install DVC, set up a local repository, configure DVC remote storage, and add and track data using DVC. Finally, you will create Python-based machine learning (ML) models and track them with DVC and Git integration. You will create metafiles pointing to DVC-stored data and artifacts and commit these files to GitHub, tagging different model and data versions. Through Git tags, you will access specific model iterations for your work. This course will empower you with theoretical insights and practical proficiency in employing DVC and Git.
+Table of Contents
+    1. Video: Course Overview (it_mlodvcdj_01_enus_01)
+
+    2. Video: Data Version Control (DVC) (it_mlodvcdj_01_enus_02)
+
+    3. Video: A Brief Overview of Git (it_mlodvcdj_01_enus_03)
+
+    4. Video: DVC Concepts (it_mlodvcdj_01_enus_04)
+
+    5. Video: Installing Git (it_mlodvcdj_01_enus_05)
+
+    6. Video: Installing DVC (it_mlodvcdj_01_enus_06)
+
+    7. Video: Creating a Git Local Repository (it_mlodvcdj_01_enus_07)
+
+    8. Video: Connecting to GitHub from Git (it_mlodvcdj_01_enus_08)
+
+    9. Video: Configuring a Remote Storage Configuration in DVC (it_mlodvcdj_01_enus_09)
+
+    10. Video: Pushing Files to DVC Remote Storage (it_mlodvcdj_01_enus_10)
+
+    11. Video: Creating a Machine Learning (ML) Model in Python (it_mlodvcdj_01_enus_11)
+
+    12. Video: Pushing an ML Model to DVC and Git (it_mlodvcdj_01_enus_12)
+
+    13. Video: Viewing the Files Committed to GitHub (it_mlodvcdj_01_enus_13)
+
+    14. Video: Running and Pushing a Different Model Version (it_mlodvcdj_01_enus_14)
+
+    15. Video: Reverting to Previous Code Versions in Git (it_mlodvcdj_01_enus_15)
+
+    16. Video: Course Summary (it_mlodvcdj_01_enus_16)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_mlodvcdj_01_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Vitthal Srinivasan. [Video description ends]
+Hi and welcome to this course, getting started with Data Version Control. My name is Vitthal Srinivasan, and I will be your instructor for this course. DVC or Data Version Control is a technology that simplifies and enhances data versioning and management. It provides Git-like capabilities to track, share, and reproduce changes in data while optimizing storage and facilitating collaboration in data centric projects.
+
+In this course, you will learn to utilize DVC, a powerful version control system designed for managing machine learning projects. You will learn how DVC simplifies the intricate components of ML projects, code, config files, data, and model artifacts by enabling the tracking of multiple model versions and code changes through metafiles that reference DVC storage locations. You will explore the underlying Git principles that underpin DVC's functionality, gaining a clear understanding of Git's role in code and configuration file version control.
+
+Next, you will get hands-on with DVC. You will install Git locally and create a remote repository on GitHub. You will then install DVC, set up a local repository, configure DVC remote storage, and dive into adding and tracking data using DVC. Finally, you will explore the synergy between DVC and Git, acquiring the skills to create Python-based ML models and track them with DVC and Git integration.
+
+You will create metafiles pointing to DVC-stored data and artifacts, you will commit these files to GitHub, and tag different model and data versions - Through Git tags, you will access specific model iterations for your work. In conclusion, this course will give you both theoretical insights and practical proficiency in employing DVC and Git.
+
+2. Video: Data Version Control (DVC) (it_mlodvcdj_01_enus_02)
+
+After completing this video, you will be able to outline key concepts of DVC.
+outline key concepts of DVC
+[Video description begins] Topic title: Data Version Control (DVC). Your host for this session is Vitthal Srinivasan. [Video description ends]
+Hello and welcome to our exploration of DVC. DVC is an acronym, of course, for Data Version Control. We will spend most of the time in this learning path in demos. However, it always helps to have a bit of conceptual context to start with. So let's kick things off.
+
+At a very high level, let's understand where DVC fits in relative to say, a technology like MLflow. Imagine that at the extreme, you had a 1000 different candidate models, all of which you wish to try with one single dataset. Then you'd go with a technology like MLflow, lots of candidate models and one dataset. Now let's take things to the other extreme. Let's say that you have just one functional form for your model in mind, so effectively one family of models, but you have a 1000 different datasets that you would like to experiment with.
+
+In such a situation, you'd go to the other extreme and make use of DVC. DVC helps machine learning experts manage large datasets and other model artifacts. Now, of course, this comparison between MLflow and DVC was taking things to a bit of an extreme. Obviously, both of these are very versatile technologies and you can use either at the other extreme as well. But it's helpful looking at the extremes because, as they often say, the extremes inform the mean and not the other way around. DVC makes machine learning projects reproducible, and enables collaboration between teams.
+
+It's also worth mentioning here that DVC is an offering of Iterative.AI. As we'll see in the demos that come up ahead, DVC and Git work extremely closely together. The key difference is that Git is a great tool for managing code and versioning code. DVC is a great tool for managing data and models and versioning those artifacts. Both data and models, of course, can be thought of as artifacts in the machine learning process. DVC offers a command line tool that can be used for tracking data and managing the versions of large datasets as well as models. DVC specializes in really heavyweight artifacts and it does so using a clever system which relies on lightweight metafiles and simple commands that can be used to track very large files, directories, and model artifacts. So, these large files, be they datasets or models, can be stored in remote storage such as on Google Cloud Storage or Amazon S3 buckets, or even on on-premise network storage. It's only the metafiles which reference them that are stored in the Git repository. For this reason, data tracking is a key capability of DVC.
+
+Another key capability is reproducibility. Because DVC will capture each stage of the data processing pipeline as well as the dependencies between the stages and the parameters of the different machine learning models, it's very easy to recreate past versions of the pipeline. This can be very important for debugging, auditing, and collaboration. And then moving closer into the experiment life cycle stage DVC also provides a way to navigate through different versions of the code, data, and models. It also works closely with Git in order to navigate to any point in the life cycle of the project. As we've already mentioned, DVC and Git are complementary. DVC is focused heavily on the artifacts, specifically the datasets and the models, and Git focuses on the code. Because DVC's workflow is so closely tied to the Git workflow, it's worth our quickly refreshing what Git is. Git is a distributed version-control system.
+
+It's used for tracking changes in source code. It allows you to record changes to your project files over time and keep track of who made which change. It of course, also tracks the history of changes to all files so that we can roll back to specific versions later on, and in this way it also allows us to develop features in isolation via branches. Branches can then be merged into the main project branch once development work on the auxiliary branch is complete. At this point, a natural question to ask is, if we already have Git, then why do we need DVC? This question is especially pertinent because we never use DVC alone. DVC and Git are always used together, so DVC is not a replacement for Git. In a nutshell, that's because Git is not optimized to the machine learning workflow or to machine learning use cases. For instance, Git is not designed to handle large files of binary data. Once repositories become very large, they become also slow to work with and difficult to clone.
+
+There are some workarounds such as Git LFS, which mitigates this problem by replacing large files such as audio or video and graphics with text pointers. However, Git LFS is still not geared for the typical data science of machine learning workflow. Large binary files, or blobs as they are commonly referred to, are an integral part of those data science and machine learning workflows, and that's where DVC comes in. It's specifically designed for data science and ML, and it builds on Git's capabilities, so it can be used for versioning data and models, both of which can be classified as artifacts. While Git can still be used in order to version and control source code. Again, at the heart of DVC and its interworking with Git is a clever system in which we have metadata files which are very small and which have the .dvc extension. Those metadata files are in Git, while the large BLOB data itself is in separate data storage and tracked by DVC rather than by Git.
+
+This is important enough that it bears repeating. DVC will allow you to store the large files in remote storage, for instance on the cloud or in a database. Then it'll create lightweight metafiles which can be thought of as pointers which track the data associated with those large files. Each of these metafiles is going to have the .dvc extension, and it's going to be versioned and stored in Git. It's only the large data file itself that's going to be versioned and tracked by DVC. This is a clever arrangement that might be understood better visually. Let's see how DVC and Git work together. The rectangle on the left represents Git and the cloud on the right represents DVC. As the arrows demonstrate, the metafiles contained within Git point to the underlying data on DVC. So, the project files are all going to be tracked on Git. These deltas here refer to different changes to a file. Each change is going to be committed to the local repository and it could also be pushed out to a remote repository, for instance on GitHub. In this diagram on screen now, please note that we don't have DVC in the picture at all.
+
+This is talking about the workflow for a file which is tracked entirely within Git. Now, DVC makes use of the system in order to store metafiles in Git, where those metafiles track the data which resides on an external remote store. So, now the Git repository will hold the source code as well as the metafiles. Those metafiles are pointers to the data. But the data itself is going to be excluded from Git because it's going to be added to something called the .gitignore. Instead, that data is going to be stored in a remote store. The remote store is likely to be cloud storage or a database. And of course, in addition, DVC also has a clever caching system so that not every access to the data goes all the way around the remote store.
+
+And where DVC really comes in handy is when there are multiple versions of the data or the model artifacts. In such a case, DVC will make use of hashes and other metadata in order to keep track of the different versions. It's worth reiterating here that Git specializes in the source code, DVC specializes in the artifacts, and artifacts include data as well as the saved model. So, the metafiles which are in Git refer to the data in the remote storage. The metafiles will always have a .dvc extension, and other than that extension, they'll have the same name as the corresponding data file which is stored in DVC. So, let's say you have a large dataset contained in insurance.csv, that might exist on a cloud storage bucket. But then insurance.csv.dvc, which is of course, just a very small metafile, is going to exist within Git. So, insurance.csv.dvc is going to be in Git.
+
+insurance.csv will be in DVC and not in Git. It will explicitly be added to the .gitignore file. What if we have multiple versions? Well then we need to have multiple versions of the metafile in Git as well as multiple versions of the underlying file in DVC. As you can see in the diagram on screen now, we are going to have multiple versions on Git and each of those will point to a different version of the data on DVC. In this way, metafiles are versioned separately from the data. Now of course, this system has more moving parts, so in order for everything to work correctly, you need to have the correct version of the metafile in your local project. You also need the credentials to access the remote store, otherwise the link or the arrow from the metafile to the remote store will effectively break. As long as you have the correct version of the metafile and the credentials to that remote store, you will be able to access the correct version of the underlying data as well. So once again, do keep in mind that Git is used for versioning project files and metafiles. And DVC is used for versioning artifacts which include here the dataset as well as the model artifacts.
+
+3. Video: A Brief Overview of Git (it_mlodvcdj_01_enus_03)
+
+Upon completion of this video, you will be able to describe the features of Git.
+describe the features of Git
+[Video description begins] Topic title: A Brief Overview of Git. Your host for this session is Vitthal Srinivasan. [Video description ends]
+DVC is inextricably tied to Git. There's not much that we can accomplish with DVC if we aren't familiar with Git, so let's start off with a quick Git refresher. Remember that Git is a distributed version control system. Pretty much everyone can agree that Git focuses on tracking changes in source code during the software development process. Of course, as we've already mentioned, DVC specializes in the development process for data science and machine learning, and it focuses on data and artifacts such as saved models rather than on the source code.
+
+Now, let's go to a simple example. Let's say that we have a recipe for making tea. This is a simple four-step recipe and it's not that different from the pseudo-code for a really simple computer program. Of course, this file is going to change, and when changes are made to this file, we want those changes tracked and versioned. So, if we go from the four-step recipe to a five-step recipe, Git is great for creating versions v1 and v2 of our tea_recipe.txt.
+
+What's more? Git also makes it very easy for us to roll back to a previous version. So, for instance, let's say we start using version 2. Git makes it trivial for us to roll back to version 1. Now of course, folks rarely work on a single file at a time, and things get a little more complicated when we have multiple files in a project. That's what leads to the idea of a commit in Git. Here, a snapshot of every file in the commit is going to be stored by Git.
+
+It's worth keeping in mind that Git is going to store the entire file, that is, it's going to have a snapshot of the entire file for every file in the commit, and in this way, Git stores more state than some other version control software, which try and optimize things by only storing the deltas or changes between versions. Now, it's also worth keeping in mind that there is a local repository which is based on Git, and a remote repository which relies on another software which works with Git, most commonly GitHub. It's only the latest version of the code that's going to be kept in the local repository, and all previous versions in the history will be stored in remote repository which will typically be on some online storage.
+
+When we run git commit, the files are in the local repository, but they aren't going to go out to the remote repository until we run git push. This remote repository also allows other users to work with the code. They start out by cloning the remote repository. This will effectively create a copy of the latest version of that remote repository onto the local repository.
+
+In the example that's on-screen now, you can see that we have the remote repo where we have four changes, and then we've cloned that to the local repository which starts out with also those four changes. Then we can work on the files in this local repository and add change 5 and change 6. Those changes will first be committed to the local repository by running git commit and git commit can of course, be run even when you are offline, because after all the local repository is local. Then, at your convenience, you can go ahead and push those changes back to the remote repository so that it too now includes change 5 and change 6.
+
+As soon as you run git push, those changes will reflect in the remote repo, which, as the diagram on-screen shows, now also has Delta-5 and Delta-6. It's easy to visualize now how the remote repository allows multiple users to work independently. Alice and Bob can both clone the local repository and then work on their local copies, and then push their changes back to the origin as that remote repository is known.
+
+However, as you might imagine, this opens up the room for conflicts. What if the changes that Alice and Bob have made conflict with each other in some way? Well, then they will have to figure it out. They will have to look at each other's code and make sure that the changes do not get in each other's way. This is where it gets tricky, of course, because resolving these conflicts is easier said than done, especially if Alice and Bob each manage their own teams and those teams are working on entirely parallel and complex features.
+
+It's exactly for such complex situations that Git supports branches. Here, there is the initial repository, changes are committed and pushed out to this remote repository, and then at some point, Alice and Bob can both start working on their independent branches. Each of which starts out with the same starting point but then diverges from there. So, these branches which are going to be created will be created on the remote repository, and then the different team members can work on those branches without getting in each other's way. So, here we have the alice_branch, the bob_branch, and then we have the master branch.
+
+Once Alice's team and Bob's team are done with their respective projects, they will then commit to their local repositories and then push back out to the remote repository. It's really important to note that at this point, the alice_branch, the bob_branch, and the master branch all coexist. So, the alice and the bob branches are still distinct from each other as well as from the master, as the colors on screen now indicate. Then at some point, those feature branches will be merged back into the master. Of course, Alice and Bob both can't merge their branches simultaneously, so let's say Alice's team merges their changes into the master first, then Alice's version becomes the new master. And subsequently, Bob's team will merge into this new master. Now, this is the point where conflicts might arise, and those conflicts will need to be resolved. This, of course, is tricky because this conflict resolution must be performed by the individual team members.
+
+Coming back to the idea of remote and local repositories, just remember at a high level that the local repository is on your local machine and has only the latest version. The remote repository is on online storage and has the history of all versions. The local repository runs Git. The remote repository could run any number of different popular software, these include GitHub, GitLab, and Bitbucket. We will be making use of GitHub which is a hosting service for Git repositories is accessible at github.com. And just to be clear, GitHub is owned by Microsoft. Of course, it interoperates seamlessly with Git at the backend. GitHub has a free option as well as a paid service. We'll be using Git as well as GitHub along with DVC in the upcoming demos.
+
+4. Video: DVC Concepts (it_mlodvcdj_01_enus_04)
+
+After completing this video, you will be able to describe the features of DVC.
+describe the features of DVC
+[Video description begins] Topic title: DVC Concepts. Your host for this session is Vitthal Srinivasan. [Video description ends]
+Now that we have a fairly good grasp on how Git works, let's turn our attention to some DVC concepts. As we've already mentioned, DVC is a data science tool that helps with the machine learning workflow. It helps you manage large datasets and model artifacts. Data and models are going to be managed and versioned using DVC, while you will continue to rely on Git for the source code versioning.
+
+Let's see how DVC can be applied to the standard machine learning workflow. Consider an example where the data that's going to be used in training the machine learning model resides in a database. This data is going to be used to train version 1.0 of the model so, there will be a set of data transformations. That transform data is going to be saved in a file called data.csv. Notice how that data.csv is associated with a version number as well and it's the same version number that is associated with the model. So here, both data.csv and the model are version V1.0. This link is actually an important one and this relationship is quite deep once you stop to think about it.
+
+In machine learning, the model varies based on what it's been trained on. So, you can't really reproduce the training process of a model unless you have the original data, and that's why it's so important for both the model and the data used to train that model to be versioned and maintained in similar fashion. Otherwise, reproducibility goes for a toss. This, of course, is where DVC comes in and DVC works closely with Git. Here the idea is that we have two commands, dvc init as well as git init.
+
+The data file itself data.csv is going to be stored on some remote storage, which could be a cloud bucket or some kind of on-prem network storage. Notice how we have version 1.0 of data.csv on that remote storage. Just like we have dvc init, which is a one-to-one analog of git init, there are also dvc add and push commands. These are going to send the data to the remote storage. It's worth mentioning that we have dvc init and git init. We have dvc add and git add, and we have dvc push and git push. However, even though we have a git commit, there's no dvc commit. That makes sense when we stop to think about it because a DVC does not draw a distinction between a local and a remote repository. Everything in DVC is geared towards remote storage.
+
+In Git, on the other hand, there is an explicit distinction between the remote repository and the local repository. Git commit will only commit to the local repository, in order to send it out to the remote, we've got to run a git push. So, again we have dvc init, dvc add, and dvc push, but we don't have a dvc commit. DVC of course, is only going to be used for the data and the artifacts, such as the saved model. We still need the git add and git push in order to send the code as well as the metafiles to Git.
+
+Specifically, Git is going to track some DVC-specific files, the first of these is the .dvc/config. Then we have the metafile that's data.csv.dvc. Notice how that has the same name as the file stored on remote storage, but it has the .dvc extension. Then we have two additional files, the .gitignore and the .dvcignore. The .gitignore must include data.csv because Git must know that it should not be tracking data.csv, that is going to be tracked in DVC instead.
+
+The dvcignore on the other hand is going to contain all of the source files other than data.csv because all of those files need to be tracked in Git rather than in DVC. Now let's say that we come up with a new version of the data by applying a slightly different set of data transformations. Now we have version 2.0 of data.csv, and when we use this new data.csv in train our model, we get a different version of that as well, that results in version 2.0 of the model.
+
+At this point, we'll also have to make use of the appropriate DVC and Git commands. So, we'll need to push the data to DVC and the code to Git. And here is one really important potential gotcha. You must remember to run dvc push before you run git push, that makes sense when you stop to think about it. git push is going to send data.csv.dvc to git, at which point your collaborators might take that file off of Git and assume that the corresponding data file is available on DVC. If that's not the case, then bad things will happen. That's why you always ought to run dvc push first, in order to make sure that the new version of the data is tracked in DVC and only after that can you run git push in order to make sure that the corresponding .dvc file is pushed to git.
+
+Now, just like we run git init, in order to ensure that a directory is treated as a local repository by Git, there is also a corresponding dvc init. This command is going to initialize a DVC project including the internal .dvc directory. This directory will contain various metadata files, within which we will have, for instance, the dvc.yaml file which will manage the ML workflow, and it will also keep track of all files with the .dvc extension.
+
+As we've already discussed, for every data or artifact that we are tracking in DVC, we will have the actual data or artifact reside on remote storage, and we will have a lightweight metadata file which has the same name and the .dvc extension. The dvc.yaml file can be used to define the stages, parameters, metrics, and plots associated with the model. You can think of these stages as constituting the pipeline for the ML project. The parameters, metrics, and plots can also be used to evaluate and compare project versions. And then there will also be a .dvcignore file to contain the names of all files that DVC should not track.
+
+It's also worth quickly mentioning a couple of DVC components, DVCLive and DVC Studio. DVCLive is a Python library which supports tracking metrics and model parameters and makes tracking metrics and model parameters much easier. DVCLive results could be viewed either locally or pushed to DVC Studio or Iterative Studio as it's now known. As the name would suggests, this allows you to run and track experiments, and visualize models as well as their outputs, and share results. We'll be making use of DVCLive and Iterative Studio extensively in the demos that lie ahead.
+
+5. Video: Installing Git (it_mlodvcdj_01_enus_05)
+
+Learn how to install Git on your local machine.
+install Git on your local machine
+[Video description begins] Topic title: Installing Git. Your host for this session is Vitthal Srinivasan. [Video description ends]
+Let's begin our exploration of DVC. Now the DVC website identifies itself as a tool for open source Git-based data science and so it should come as no surprise that we first have to have Git up and running. Git comes preinstalled on Mac and many Linux-based systems, but just in case you do not happen to have it running, it's simple enough to fix that.
+
+We begin by navigating to the URL git-scm.com.
+
+[Video description begins] A New Incognito tab appears on the browser. It contains a URL bar at the top. Below, the header reads: You've gone Incognito. [Video description ends]
+
+As that web page informs us, Git is a free and open source distributed version control system. This page tells us that it's designed to handle everything from small to very large projects, but of course, the whole point is that it has certain deficiencies when it comes to data science applications and that's what DVC will fix.
+
+[Video description begins] A page titled Git appears. It contains a search bar at the rightmost corner. It displays some information at the top. Below, it has 4 buttons labeled About, Documentation, Downloads, and Community. [Video description ends]
+
+In any case, we now can scroll down and click on the Downloads link button towards the center left of the screen. And here in the Downloads section, you can see that Git is available for all major platforms, macOS, Windows, and Linux/Unix.
+
+[Video description begins] The page now displays a navigation pane on the left. It contains 4 options: About, Documentation, Downloads, and Community. The Downloads option contains 2 sub-options: GUI Clients and Logos. The main pane contains the header labeled Downloads and 3 options below it. These are macOS, Windows, and Linux/Unix. Under this, it displays the other 2 sub-options: GUI Clients and Logos. [Video description ends]
+
+Let's very quickly cycle through these.
+
+[Video description begins] A context menu appears for macOS option. It contains options like Open Link in New Tab, Open Link in New Window, Save Link As, Copy, Inspect, and so on. [Video description ends]
+
+We begin by clicking on macOS and there you can see that if you have Homebrew set up, then it's a simple one-line command brew install git in order to get Git up and running.
+
+[Video description begins] The page now displays the header: Download for macOS. It contains various items below, such as Homebrew, MacPorts, Xcode, Binary installer, Building from Source, and Installing git-gui. [Video description ends]
+
+In just a moment, we'll see how easy it is to install Homebrew if you do not happen to have that package manager running, but first, let's switch over to the Windows section of the Downloads.
+
+In the Windows Download page, you see that there are Standalone Installers for both 32-bit and 64-bit Windows or you can also use winget.
+
+[Video description begins] The Git page displays the header: Download for Windows. It displays a header called Other Git for Windows downloads. Below, various items appear under 3 sub-headers labeled Standalone Installer, Portable ("thumbdrive edition"), and Using winget tool. A section labeled Now What? appears next. It contains 3 icons labeled Read the Book, Download a GUI, and Get Involved. [Video description ends]
+
+Now this, of course, is merely in order to get Git installed on your machine. After you have Git up and running, you also need to get DVC up and running. And if you like to run DVC on Windows, then really you need WSL, and WSL stands for the Windows Subsystem for Linux. You can think of it as a compatibility layer which allows you to run a Linux environment on a Windows OS machine. So, do keep that in mind if you'll be working with DVC on Windows.
+
+Finally, let's click back and go through into the Linux/Unix Downloads page, and there, once again we have clear instructions for how to install Git.
+
+[Video description begins] The page displays the header: Download for Linux and Unix. It contains various items below like Debian/Ubuntu, Fedora, Gentoo, Arch Linux, and so on. [Video description ends]
+
+You can see here that there is detailed documentation for different flavors of Linux. In any case, we here will be working on a Mac system and here we already have Homebrew set up, we'll get to that in a moment. Let's first create our working directory. We call this project, so we run mkdir projects, cd into it, and mkdir dvc.
+
+Within this DVC folder, we are going to be creating individual folders for every demo in the courses up ahead.
+
+[Video description begins] A Terminal window appears. The following commands are added below: mkdir projects, cd projects, mkdir dvc, cd dvc. [Video description ends]
+
+This is a good point for you to install Homebrew in case you haven't got it running already. Let's see how to do this. It's really simple. We navigate to brew.sh and there we find just one simple command. You can see that towards the bottom of the screen, that one simple command is all you need to run in order to get brew up and running on your system. The command is a bash command, and it invokes curl, and you can see down below towards the left that we are told paste that in a macOS Terminal or Linux shell prompt. That's all we need to do in order to get the Homebrew Package Manager up and running.
+
+[Video description begins] A page titled Homebrew appears. It contains the header Homebrew and a search bar underneath. Under the header: Install Homebrew, the following command is displayed: $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)". Below, several details are listed. [Video description ends] 
+
+There are more details here in case you need them but for now, we can switch back to our terminal window. We already happen to have Homebrew running. Let's confirm that by running brew--version.
+
+[Video description begins] The Terminal window appears again. The following command is added: brew --version. [Video description ends]
+
+We have Homebrew 4.1.0. Once we have brew, it's simple enough to get Git here, we just run brew install git.
+
+[Video description begins] The following command is added: brew install git. [Video description ends]
+
+We hit Enter and the command runs through successfully. The next step is for us to check the version of Git and that can be done with git--version and you can see here that we have the latest version 2.41.0.
+
+[Video description begins] The next command added reads: git --version. [Video description ends]
+
+Next, let's also verify the versions of Python and Jupyter. So, python--version tells us that we have 3.10.9.
+
+[Video description begins] The following command is added: python --version. [Video description ends]
+
+Similarly, we then run pip --version, this will give us the version of pip, and that is 22.3.1. Let's also make sure that we are on the same page with regards to Jupyter, jupyter--version, and here come all of the version numbers.
+
+[Video description begins] The following commands are added: pip --version, and jupyter --version. [Video description ends]
+
+For instance, IPython is 8.10.0. Do make sure that you run all of these commands on your system, and in case there are any major mismatches, it's worth exploring whether something has changed since when these videos were recorded. In any case, that gets us to the end of this little demo, and in the demo coming up ahead, we will create a virtual environment and install DVC within it.
+
+6. Video: Installing DVC (it_mlodvcdj_01_enus_06)
+
+In this video, find out how to install DVC on your local machine.
+install DVC on your local machine
+[Video description begins] Topic title: Installing DVC. Your host for this session is Vitthal Srinivasan. [Video description ends]
+Now that we've got Git, Python, and pip, as well as the Jupyter libraries all set up, let's create a virtual environment which we will use for all of our work with DVC. The command to do so is visible on screen now python3 -m venv followed by the name of the virtual environment, which here is dvc_venv.
+
+In case you've not worked with virtual environments before, all that this is going to do is create a little sandbox, that sandbox which is called a virtual environment, will have its own environment and its own packages. So, you can install packages within this virtual environment, and they won't interfere with packages in any other project that you might be working in. Under the hood, when we run this command, a directory is being created. That directory has the same name as the virtual environment. We can verify that by running an ls-l and here you see dvc_venv is listed as a directory.
+
+[Video description begins] A Terminal window appears. The following command is added: python3 -m venv dvc_venv. [Video description ends]
+
+[Video description begins] The next command added is: ls -l. [Video description ends]
+
+Within this directory, is going to be a copy of the Python interpreter as well as of all of the standard Python libraries. Then, once we are inside this virtual environment, we will be able to install additional packages so, we get package management as well as isolation. How can we make sure that we are using this particular version of the Python interpreter and the Python standard libraries? Well, all we have to do is activate this virtual environment. And that can be done by running a particular script file called activate, which resides at a specific location inside the virtual environment.
+
+[Video description begins] The next command reads: source dvc_venv/bin/activate. [Video description ends]
+
+The command for this is on screen now, we run the source command and we reference the activate script within the bin directory inside the virtual environment directory. As soon as we run this, you can see that the prompt changes. It now includes the name of the virtual environment within parentheses. This is a very visual indication that our virtual environment has indeed been activated. Next, we are going to install DVC within this virtual environment. First, let's confirm that all of our Python and other libraries are set up correctly, python --version gives us 3.10.9.
+
+[Video description begins] The following command is added: python --version. [Video description ends]
+
+That's the same as the interpreter running outside. pip --version also gives us the latest version, that's 22.3.1.
+
+Let's also very quickly verify that we continue to have the Jupyter libraries.
+
+[Video description begins] The following commands are added: pip --version, and jupyter --version. [Video description ends]
+
+So, we run jupyter --version and then git --version. This confirms that we still are running the latest version of git 2.41.0. If at any point you would like to exit this virtual environment, all you need to do is run deactivate. That's going to execute another shell script present within that virtual environment directory, and you can see now that the prompt changes, we no longer have the name of the virtual environment dvc_venv within parentheses.
+
+[Video description begins] The following commands are added: git --version and deactivate. [Video description ends] 
+
+In any case, let's immediately go back into that virtual environment, so we again run source and then activate. That's within the bin directory, and the next order of business is to actually install DVC within this virtual environment. It turns out that all that's needed to do this is simply running pip install dvc. But before we do that, let's quickly check out the online documentation for DVC. We've hit the URL dvc.org/doc/install.
+
+[Video description begins] The following command reads: source dvc_venv/bin/activate. [Video description ends] 
+
+Here we are on the Installation page and scrolling through we can see that DVC will work on macOS, Windows, as well as Linux and in each case, all that we need to do is run pip install dvc.
+
+[Video description begins] A page titled DVC appears. It contains various tabs at the top, such as Use Cases, Doc, Blog, Course, Support, and so on. The navigation pane on the left contains a search bar at the top and several options below such as Home, Install, Get Started, Use Cases, and so on. The Install option contains various sub-options like macOS, Windows, Linux, and so on. The main pane displays the header: Installation. Below, it contains 3 options: Install on macOS, Install on Windows, and Install on Linux. Another section titled Advanced options appears next. [Video description ends]
+
+To see this for ourselves, let's click through into the macOS section first. There you can see that we can Install with brew, or alternatively, we can Install from package or Install with pip. Install with pip is the simplest option and that's what we will be going with. Here's the command visible on screen now. It's simply pip install dvc. Above that we have a note which tells us that Python 3.8+ is needed in order to run with the latest version of DVC, and above that, we are informed that DVC strongly recommends creating a virtual environment. That's something that we've already done.
+
+[Video description begins] The macOS option in the left pane is highlighted now. The page now displays the header: Installation on macOS. Below, it contains several options like Install with brew, Install from package, Install with pip, and so on. The Install with pip section contains a message, a note, and a command that reads: $ pip install dvc. [Video description ends]
+
+In similar fashion, we can click on the Windows link towards the center left and there once again there are multiple options Install with choco, Install with conda, and then Install with pip. There's also a Windows installer available down below. We can see that on Windows 2 we are asked to use only Python 3.8 or above and it's recommended that we use a virtual environment. And finally, we can do this same quick check of Linux and there too, we will find that the pip install option is available. pip install dvc, that's clearly the command that we need to be running.
+
+[Video description begins] The Windows option in the left pane is highlighted now. The page now displays the header: Installation on Windows. Below, it contains several options like Install with choco, Install with conda, Install with pip, and so on. The Install with pip section contains a message, a note, and a command that reads: $ pip install dvc. [Video description ends] 
+
+[Video description begins] The Linux option in the left pane is highlighted now. The page now displays the header: Installation on Linux. Below, it contains a section called Install with pip. It contains a message, a note, and a command that reads: $ pip install dvc. [Video description ends]
+
+At this point, we can switch back over to the terminal window and run pip install dvc and very quickly DVC is indeed available within our virtual environment. Let's do a quick version check. The command for that is dvc version and from the output you can see that we are currently running version 3.7.0. 
+
+[Video description begins] The Terminal window appears. The following command is added: pip install dvc. [Video description ends]
+
+[Video description begins] The next command reads: dvc version. [Video description ends]
+
+Now at this point, we've got Git setup and DVC setup. It's time for us to also set up GitHub. So, we navigate in a browser to github.com.
+
+Before we go any further, let's take a quick moment to understand the difference between Git and GitHub. We've already seen how Git runs on our local machines. We've got to install it on our local machine that is the distributed version control software. However, Git, as we were running it previously only had a local repository. That clearly is not going to be enough because after all we want our files to be shared across different users and so what we really need is some kind of cloud-based hosting, and that's exactly what GitHub provides. GitHub, which is owned by Microsoft, is one of multiple different cloud-based hosting services, which work with Git at the backend. Other examples include Bitbucket and GitLab.
+
+We've chosen to go with GitHub and that's why we are here at github.com, we click on Sign up at the top right. We then go through a pretty standard Sign in process. So, here we are prompted for our email, and we are asked to create a password as well as a username. Notice that we enter loonytest.
+
+[Video description begins] A page titled 'GitHub: Let's build from here' appears. It contains 4 drop-downs at the top: Product, Solutions, Open Source, and Pricing. To the right, there is a search bar, and a button labeled Sign up. [Video description ends]
+
+ [Video description begins] A page titled 'Join GitHub' appears. It displays the header: Welcome to GitHub! Below, it contains 3 fields: Enter your email, Create a password, and Enter a username. [Video description ends]
+
+Then we are presented with a little puzzle to make sure that we are not programmatically trying to create a GitHub account. Once that goes through, we'll be sent a code on our email ID.
+
+We type that code in, and then we run through a few simple survey questions that we are prompted for, and a brief few seconds later we find ourselves in the main Git dashboard page. This is where we can create our first repository.
+
+[Video description begins] The page now displays a field called Enter code, following the puzzle. [Video description ends]
+
+[Video description begins] The page now displays the header: The tools you need to build what you want. To the right, there are various survey questions. [Video description ends]
+
+ [Video description begins] The GitHub Dashboard page appears. It contains a search bar at the top, with a few icons. The left navigation pane contains 2 sections labeled: Create your first project and Recent activity. The Create your first project section has 2 tabs labeled Create repository and Import repository. The main pane contains 2 tabs at the top: For you and Following. The For you tab is active. Below, it displays 2 boxes with the headers: Start a new repository and Introduce yourself with a profile README. To the right, there is a pane titled Latest changes. [Video description ends]
+
+Notice the bright green Create repository button over at the center left. We'll pick up the action in the next demo by creating our first repository and then getting started with DVC.
+
+7. Video: Creating a Git Local Repository (it_mlodvcdj_01_enus_07)
+
+During this video, discover how to create a Git local repository.
+create a Git local repository
+[Video description begins] Topic title: Creating a Git Local Repository. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We had ended the previous demo by successfully configuring GitHub. A very quick word of reminder that GitHub is the remote web-based hosting service which allows us to host Git repositories remotely. This is in contrast to Git which runs on our local machine and Git is what hosts the local repository. So, the local repository is on Git on our machine, and the remote repository is on GitHub.
+
+We can take a moment to orient ourselves with the GitHub dashboard and then once we are ready, we can go ahead and create our first remote repository.
+
+[Video description begins] The GitHub Dashboard page appears. It contains a search bar at the top, with a few icons. The left navigation pane contains 2 sections labeled: Create your first project and Recent activity. The Create your first project section has 2 tabs labeled Create repository and Import repository. The main pane contains 2 tabs at the top: For you and Following. The For you tab is active. Below, it displays 2 boxes with the headers: Start a new repository and Introduce yourself with a profile README. To the right, there is a pane titled Latest changes. [Video description ends]
+
+The way to do this is by clicking on the bright green Create repository button towards the center left. We are prompted for the Repository name. Let's go with the name dvc_insurance_charges_prediction.
+
+[Video description begins] A page titled New repository appears. Below, it contains a header: Create a new repository. It has several fields like Owner, Repository name, Description, Initialize this repository with, and so on. The Description field contains two radio buttons labeled Public and Private, [Video description ends]
+
+We can also provide a Description that's optional. And then we have a radio button which determines whether this is a public or a private repository. We choose to make it private.
+
+We go ahead and click on the Create repository button towards the bottom right and our dvc_insurance_charges_prediction repository comes into existence. Please remember that this is the GitHub repository, which means that it's remote. We will have to wire this up so that it communicates with our local Git repository on our local machine. And the way we are going to do that in just a moment is by pasting that URL which you see at the center of your screen which ends with dvc_insurance_charges_prediction.git and invoking the command git remote add origin.
+
+[Video description begins] A page titled loonytest / dvc_insurance_charges_prediction appears. It contains various tabs at the top, such as Code, issues, Pull requests, Actions, Projects, and so on. The Code tab is active. Below, there are 2 boxes labeled Set up GitHub Copilot and Invite collaborators. Below, there is a section called Quick setup. It contains a URL that reads: https://github.com/loonytest/dvc_insurance_charges_prediction.git. [Video description ends]
+
+That's something that we will do on our local machine, so, let's switch back over to the terminal.
+
+Before we invoke git remote add origin, however, there's a lot of setup that we need to do first. So, let's mkdir dvc_insurance_charges_prediction. Let's cd into this directory and there we'll configure some Git settings.
+
+[Video description begins] A Terminal window appears. The following commands are added: mkdir dvc_insurance_charges_prediction and cd dvc_insurance_charges_prediction. [Video description ends]
+
+The first such setting that we want to set is the user.name property, and so, we invoke git config --global user.name and then "loonytest". Remember, this is the same username that we had specified while creating our GitHub account. That goes through successfully.
+
+Then let's similarly set the user.email. Once again, we invoke git config and specify this as a global property with the --global.
+
+[Video description begins] The following commands are added: git config --global user.name "loonytest", and git config --global user.email "loony.test.001@gmail.com". [Video description ends]
+
+Notice again, that the email that we specify here is the same one that we had used while signing up for GitHub. That's the same email id that GitHub had sent a token to during the sign-up process. It's important that this user email alley up with whatever we specified while connecting to GitHub because otherwise we will be prompted with a rather annoying prompt each time we access GitHub.
+
+Please note that by using the --global flag in each of these commands, we are ensuring that the user.name and user.email will be specified or shared across all repositories, so it's a global Git setting. Next, let's invoke git init. This is going to initialize a new Git repo in this directory. Remember again that we are talking about a Git repo right now, and that's a local repo. A GitHub repo, on the other hand, will reside on GitHub, and that's going to be remote.
+
+In any case, when we invoke git init, this is going to create a .git directory right here, and after this we can go ahead and start tracking files and committing changes, and so on. The command runs through successfully, and as we can see from the output, 'master' is the name for the initial branch. However, that name is frowned upon these days, and so for a more inclusive choice, we will make use of 'main'. Git also helpfully gives us a hint as to how to rename this branch, git branch -m followed by the name, and we'll make use of that command in just a bit.
+
+Having run git init, we now have the .git directory present in this folder. That's not going to be visible with a simply ls -l because ls -l will not display hidden files. You can see that on screen now. [Video description begins] The following commands are added: git init, and ls -l. [Video description ends] However, in order to view hidden files, all we have to do is include the 'a' flag. So, we now invoke ls -la or equivalently ls -al and when we do this, you can see that the .git directory does appear in the output. Then let's run git status. That's going to return the name of the branch that we currently are on, as well as the status of the different files within this repository. That status could be untracked, modified, staged, or deleted.
+
+You can see right now that the name of the branch appears as master, and there are no commits, and in fact, there's nothing to commit at all. There are no files that have been added to the Git repository. As that comment that tells us we can create/copy files into this local repository and then use "git add" in order to start tracking them. Now we aren't going to do that ourselves, however, we are going to invoke the command dvc init and as we shall see in just a moment, dvc init will actually create some files and add them to the Git repository.
+
+[Video description begins] The following commands are added: ls -la, git status, and dvc init. [Video description ends]
+
+Now a moment ago we ran git init in order to initialize our local Git repository and in similar fashion, we now have run dvc init in order to initialize our local DVC repository. As the message here tells us, we can now commit the changes to git. What changes are those? Well, if git init created the .git directory, then the dvc init command is also going to create some directories. Let's run ls -la and here you can see that in addition to .git which already existed in here, we have two additional listings, .dvc and .dvcignore. .dvc is a directory, just like .git was a directory, and .dvcignore is a file which can be used in order to specify files that should not be tracked by DVC.
+
+You might add files to the .dvcignore for instance, if you have a large number of data files and you don't want to include all of them in the DVC tracking because it slows down the execution time for commands like DVC status. Likewise, if you're working on a macOS system, you'll keep encountering files with the .DS_Store name. Those are system-generated files that also should not be tracked. Let's cd into the .dvc directory and then run the ls -la command. You can see that in here are three listings, .gitignore, config, and tmp. That config file is currently empty.
+
+We try and examine its contents by using the cat command. However, we shall see that this is going to be an important file. We can add and edit its contents either manually or using the dvc config command. The tmp directory will hold miscellaneous files which are required by DVC forests in the workings, these include some lock files and then later on this DVC directory will also hold the cache directory. This cache directory will store project data again in a specific structure that DVC knows how to interpret.
+
+At this point, these three files have been added to Git by DVC. And we can see that for ourselves by cding out of this directory and running git status once again. Remember that the last time around there were no files when we had been prompted to add some, and now you can see that there are indeed three new files. So, when we ran dvc init, that created these files and directories, and it also ran a git add, which meant that Git is now tracking these files.
+
+[Video description begins] The following commands are added: ls -la, cd .dvc, ls -la, cat config, and cd .. [Video description ends] 
+
+Let's go ahead and commit these changes, and we do that by running the git command git commit-m followed by the message, "Initialised DVC for insurance charges prediction".
+
+[Video description begins] The following commands are added: git status and git commit -m "Initialised DVC for insurance charges prediction". [Video description ends]
+
+This command runs through successfully. We are told that 3 files were changed and there were 6 insertions. Now, if we rerun git status, we will find that there are no uncommitted files. On branch master, nothing to commit, working tree clean. So far so good.
+
+Let's also quickly run git log and in the output, you can see that the message that we passed in while invoking git commit appears here, "Initialised DVC for insurance charges prediction". Now up to this point, we've only been working with DVC and Git. If we switch over to a browser and hit Refresh in our GitHub repository, we see that none of these files appear in the remote repository, and that's because we haven't yet mapped our local Git repository to the remote GitHub repository, and that's something that we'll do in the next demo.
+
+[Video description begins] The following commands are added: git status, and git log. [Video description ends] 
+
+8. Video: Connecting to GitHub from Git (it_mlodvcdj_01_enus_08)
+
+In this video, you will learn how to connect to a remote GitHub repo from Git.
+connect to a remote GitHub repo from Git
+[Video description begins] Topic title: Connecting to GitHub from Git. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We ended the previous demo having successfully run dvc init as well as git init, and then we had run git commit in order to ensure that all of the files created by dvc init had been added to Git. We also noted that those files were still not visible in our GitHub remote repository and in order to make sure that that happens, we'll have to wire up Git and GitHub, i.e. we'll have to connect up our local and remote repositories. Here we are in GitHub. Let's now copy the path to the repository.
+
+[Video description begins] The page titled loonytest / dvc_insurance_charges_prediction appears. It contains various tabs at the top, such as Code, issues, Pull requests, Actions, Projects, and so on. The Code tab is active. Below, there are 2 boxes labeled Set up GitHub Copilot and Invite collaborators. Below, there is a section called Quick setup. It contains a URL that reads: https://github.com/loonytest/dvc_insurance_charges_prediction.git. [Video description ends]
+
+It's visible at the center of the screen. Then we switch back to the terminal and run the command git remote add origin.
+
+Notice that we have to specify the path to our GitHub remote repository as an input argument to git remote add origin and once we run this command, the Git local repository and the GitHub remote repository have been wired up.
+
+[Video description begins] The Terminal window appears. The following command is added: git remote add origin https://github.com/loonytest/dvc_insurance_charges_prediction.git. [Video description ends]
+
+We will now be able to work with files on the remote repository. In order to do so, we will have to make use of git push and git pull. So, git push and git pull are commands which will work with the remote repository, whereas git add and git commit work with the local repository. This command, git remote add origin is usually cited as if the word origin is a part of the command syntax, but actually that's not the case. You could use anything else in place of origin. However, the default is origin and that's a widely followed convention. Later, any time we want to refer to this particular remote GitHub repository, we will do so with the name origin. Now, one little detail. If you look closely at the top of the screen, you see that when we ran git status, we got back the output telling us that we are On branch master.
+
+That's because by default, the name of the default branch on Git is still set to master. However, that choice has been changed on GitHub. Now, all new repositories on GitHub will have main as the name of the default branch. In order to sync up these two names, let's run the command git branch -M main. This is going to make main the name of our default branch on Git as well. The -M flag is used to move or rename branches, and the effect of calling git branch -M is to take whatever branch we currently are on and move or rename that to be main. Since the current name is master, that's now going to be changed to main.
+
+[Video description begins] The following command is added: git branch -M main. [Video description ends]
+
+Once that's done, we can now call git push. This is going to make sure that the files which we have committed to our local Git repository will be pushed to the remote GitHub repository.
+
+git push -u origin main is a way of saying that we would like to sync up all of the files from our current local repository into the remote repository called origin. The name of the local branch is main and that's what we had set just a minute up above when we run git branch -M main. Now when we run this command, we are going to be prompted for our credentials. 
+
+[Video description begins] The following command is added: git push -u origin main. [Video description ends]
+
+First is the Username and we enter loonytest which is the username that we had also specified previously and then they are prompted for the Password. In theory, we could now enter our GitHub password and the authentication would succeed. But actually, this way of authenticating using the password directly is now deprecated and so, we are going to let this authentication fail and instead do things the right way by switching over to GitHub and generating an access token. Let's click on our profile photograph in the top right corner. That's the default profile pic. We haven't bothered to change it.
+
+[Video description begins] The Profile icon on the loonytest / dvc_insurance_charges_prediction page contains a menu with several options like Your repositories, Your projects, Your stars, Your sponsors, Try Copilot, Settings, and so on. [Video description ends]
+
+In the menu that opens up, we click on Settings. Then in the Settings section, we scroll down and at the very bottom we have on the left Developer settings.
+
+[Video description begins] A page titled Your Profile appears. It contains the header: Settings. The left navigation pane offers several options in various sections like Access, Security, Archives, and so on. The Archives section contains 2 options: Security log and Sponsorship log. Below, there is one more option called Developer settings. The main pane displays the header: Public profile. Below, it contains fields like Name, Public email, Bio, and so on. [Video description ends]
+
+Let's click on Developer settings.
+
+Then again in the menu which opens up, we click on Personal access tokens on the left, there are two choices, Fine-grained tokens and classic Tokens.
+
+[Video description begins] A page titled GitHub Apps appears. The left navigation pane consists of options like GitHub Apps, Personal access tokens, and so on. The Personal access tokens option offers 2 sub-options: Fine-grained tokens, and Tokens (classic). The main pane displays the header GitHub Apps. [Video description ends]
+
+Let's click on Fine-grained tokens. Fine-grained tokens use OAuth and they are more modern than the classic tokens. In any case, we now enter some details such as the Token name, we go with dvc_token, the Expiration is 30 days, the Resource owner is loonytest, and then we grant Repository access to All repositories that is both current and future repositories. 
+
+[Video description begins] The main pane now displays the header: Fine-grained personal access tokens. It displays a button in the right-hand corner labeled Generate new token. [Video description ends]
+
+[Video description begins] The page displays the header: New fine-grained personal access token. Below, it contains various fields like Token name, Expiration, Description, Resource owner, and so on. Various sections appear next like Repository access, Permissions, and Overview. The Permissions section further contains various drop-down fields like Actions, Administration, Codespaces, and so on. There is a button labeled 'Generate token' at the bottom of the page. [Video description ends]
+
+This is being very liberal with the permissioning and you should be careful using this in a real-world enterprise setting. If you go with this option, then all repositories including future repositories can be accessed using this access token.
+
+We scroll down into the Permissions section and there we proceed to grant 9 separate permissions. Under Actions, we grant Read and write access. We then do the same under Administration, Commit, Contents, Deployments, Environments. All of these were read and write access and then under Metadata, we grant Read-only access and then back to Pages where we grant Read and write access once again and then Workflows, again Read and write access. So, we granted 9 permissions that's displayed in the Overview section down below and at this point we can go ahead and generate our token. We are also told when the token will expire. When we click on Generate token, we are taken to a page where the token is visible and we are warned to be sure to copy this personal access token now as you will not be able to see this again, we go ahead and copy it and save it somewhere in a safe location.
+
+We will need it when we head back to the terminal. Now, we again run git push -u origin main. That's the same command that we had run up above.
+
+[Video description begins] The Terminal window reappears. The following command is added: git push -u origin main. [Video description ends]
+
+Once again, we are prompted for the Username and we specify that and this time when we are prompted for the Password, we just paste in our token. So effectively, our token serves as a password and we are authenticated successfully. Our files are going to be pushed out to the remote GitHub repository. Looking at the output, you can see that 6 objects were enumerated and 6 objects were written out. We can see that in the total 6 (delta 0). You can also see the name of the GitHub repository as well as the local as well as the remote branches. Here, both of those are main. That's why we see the main arrow name and we are also informed that the branch main was set up to track origin/main. Now if we switch back to the browser, this is in GitHub. We click on our profile photograph over at the top, in the menu which opens up, we click on Your repositories.
+
+And here we have just one the dvc insurance charges prediction.
+
+[Video description begins] A page titled 'Your Repositories' appears. Below, it contains various tabs like Overview, Repositories, Projects, Packages, and Stars. The Repositories tab is active. Below, it displays a profile icon and a link: dvc_insurance_charges_prediction adjacent to it. [Video description ends]
+
+We click on that and you can see that our DVC files do appear here .dvc and .dvcignore. .dvc is a directory, let's click through into that and we now see the contents. 
+
+[Video description begins] The page titled loonytest / dvc_insurance_charges_prediction reappears. It contains various tabs below, like Code, Issues, Pull requests, Actions, and so on. The Code tab is active. Under this, a table appears, containing 2 items labeled .dvc, and .dvcignore. [Video description ends]
+
+These include the .gitignore and the config file as well as the .dvcignore file which is one level out. If we click on .gitignore, you can see that at this point there are three lines within it, /config.local, /tmp, and /cache. All of these are related to the inner workings of DVC and that's why they have been added in the .gitignore. Let's also click on the config file that's empty. Nothing appears in the pane at the center of the screen, and then we click on .dvcignore. This again is just a stub. However, there's a URL there which tells us where we can learn more about the .dvcignore file.
+
+[Video description begins] The main pane now displays the header: dvc_insurance_charges_prediction / .dvcignore. The left pane titled Code displays a drop-down field, an add button, a search button, and a search bar. Below, it contains a folder named.dvc. It further contains 3 files: .gitignore, config, and .dvcignore. [Video description ends]
+
+At this point, we've successfully set up our remote repository. The next step is to set up our remote data storage. We'll get to that in the next demo.
+
+9. Video: Configuring a Remote Storage Configuration in DVC (it_mlodvcdj_01_enus_09)
+
+Discover how to configure a remote storage configuration in DVC.
+configure a remote storage configuration in DVC
+[Video description begins] Topic title: Configuring a Remote Storage Configuration in DVC. Your host for this session is Vitthal Srinivasan. [Video description ends]
+So far, we've been working mostly with Git and GitHub. As far as DVC is concerned, all that we've really accomplished so far is running dvc init. On screen now, we can see the artifacts which were created. These have been pushed out to the Git remote repository. Now let's put DVC through its spaces. In doing so, it's useful keeping in mind an analogy between DVC and Git.
+
+Just as we ran git init and then dvc init, in similar fashion, if Git has a local repository and a remote repository, then DVC will also have similar constructs. So in the world of Git, where we have a remote repository in dvc, what we have is remote data storage.
+
+You can see on screen now that we've switched back to a terminal window and we've typed out the command DVC remote list. As this command name would suggest, this is going to list out all of the remote storage configurations that have been set up with our DVC project.
+
+[Video description begins] A Terminal window appears. The following command is added: dvc remote list. [Video description ends]
+
+It's possible to have more than one of course, and these remote storage configurations could refer to cloud storage services or even to a local file path. These remote storage locations can be used in order to push files out. Right now you can see from the output that we don't have any such remote data storage configurations.
+
+Let's change that. For now, we'll keep things really simple and set up a local file path which is inside the tmp directory as our first remote data storage. So, we create this directory dvc_storage inside the tmp directory. Then let's configure this directory as one of our remote data storage configurations with dvc remote add -d localremote followed by the file path. Here, localremote is simply the name that we wish to assign to this data storage configuration.
+
+[Video description begins] The following commands are added: mkdir /tmp/dvc_storage and dvc remote add -d localremote /tmp/dvc_storage. [Video description ends]
+
+Of course, it's not really remote, but we will later move on to using buckets on S3 and the Google Cloud service in Azure. This is just a first step. However, everything that we do with this remote data storage can also be done with a true blue cloud storage bucket as well. In any case, coming back to this command, the -d flag means that this remote is going to be treated as the default remote. That's why you see in the output Setting 'localremote' as a default remote. Now let's rerun the dvc remote list command and when we do, you can see that we do have one remote list that's named local remote and it's mapped to the dvc storage directory in the tmp directory.
+
+[Video description begins] The following command is added: dvc remote list. [Video description ends]
+
+Once we have this remote directory structure, we can now push our data out to this remote storage. Again, remember the analogy with Git. With Git, when you run a git push, that's in order to send committed files from the local Git repository to the remote repository, such as a GitHub repository. And here, the push command, that's the dvc push command, is going to be used in order to push files into a remote storage location. We need some file in order to do this with.
+
+So, let's switch back over to a Finder window. We have copied over a large data file into our dvc_insurance_charges_prediction folder.
+
+[Video description begins] A page titled dvc_insurance_charges_prediction appears. It contains various icons at the top. The left navigation pane contains 2 sections: Favourites, and Tags. The Favourites section contains options like AirDrop, Recents, Applications, Desktop, and so on. The Tags section contains options like Red, Orange, Yellow, and so on. The main pane displays a table with 4 column headers: Name, Date Modified, Size, and Kind. It contains an item called insurance.csv. [Video description ends]
+
+This is called insurance.csv. This is a Kaggle dataset and the URL is visible on screen now. Let's open this really quickly.
+
+[Video description begins] A context menu appears with options like Open, Open With, Move to Bin, Get Info, and so on. The Open With option further contains a drop-down menu with options like Numbers (default), Google Chrome, Notes, and so on. A panel appears at the bottom of the screen. It displays the title Insurance Dataset from Kaggle and the following URL: https://www.kaggle.com/datasets/simranjain17/insurance?select=insurance.csv. [Video description ends]
+
+This is a fairly standard tabular data file. We'll be using this in order to train our machine learning model.
+
+[Video description begins] The page now displays several icons at the top, labeled as Insert, Table, Chart, Text, and so on. Below, there is a table with the following column headers: age, sex, bmi, children, smoker, region, and charges. The right pane displays various tabs above, such as Table, Cell, Text, and Arrange. The Table tab is active. Below, it shows various Table Styles templates. Under this, there are various sections like Table Options, Headers & Footer, and so on. [Video description ends]
+
+Now, let's head back into our directory.
+
+This is the directory dvc_insurance_charges_prediction into which we just copied insurance.csv. At this point, if we run git status, git tells us about two changes that have been made to our local repository.
+
+[Video description begins] The Terminal window reappears. The following command is added: git status. [Video description ends]
+
+A file .dvc/config has been modified and then there's one untracked file that's insurance.csv. You can see that the insurance.csv does not appear as being modified. That's because we've yet to run git add with this file name. Why does the config file in the dvc folder appear here? Well, that's because we added a remote data location. Let's check out the contents of the new modified config file for ourselves. We invoke cat on this config file and you see that it's no longer empty.
+
+[Video description begins] The following command is added: cat .dvc/config. [Video description ends]
+
+It's got two sections.
+
+The first is called core and it currently contains just the one line, remote = localremote. It's also possible for the code to contain many other elements which could have names like cache, checksum jobs, check Div, auto checkout state, and so on. Then we have another section which corresponds to a remote, and we have the name of the remote storage location, which here is local remote.
+
+And we also have the corresponding URL, which in this instance merely points to a local file path, the dvc_storage directory inside the temp directory. Now for a pretty important step, we've got to make sure that the insurance.csv file is directly tracked. You might imagine that we run git add insurance.csv but that's actually not what we'll do. We instead run dvc add insurance.csv.
+
+[Video description begins] The following command is added: dvc add insurance.csv. [Video description ends]
+
+Remember the whole point of DVC is to version control and maintain data and insurance.csv is our data file. We do not want Git to track this file.
+
+We want DVC to track it, and that's why we run dvc add insurance.csv. Now this is going to create a new file called insurance.csv.dvc and that new file is something that we will need to add to Git. So, the output of this command is telling us that we must remember to explicitly do this. It's telling us to run git add insurance.csv.dvc and .gitignore. Both of these are files which have been modified by this dvc add operation and we then have to remember to add both of those files to Git. Equally importantly, remember that insurance.csv is not tracked by Git, it's tracked by DVC and that's why the .gitignore file has been modified, because as we shall see in just a moment, DVC has added the insurance.csv file into the .gitignore. So again, when we run a dvc add insurance.csv, dvc takes over, it's effectively signaling to Git, don't worry about this file insurance.csv.
+
+I've got it. It then adds that file to the .gitignore file and it creates a file with the same name but the .dvc extension, and we'll look at that in a little more detail in just a moment. That file, the one with the .dvc extension, needs to be explicitly added to Git, as does the new .gitignore. We will get to adding both of those to Git in just a moment, but first let's explore some of the other changes that occurred when we ran dvc add. And we'll do that first thing in the next demo.
+
+10. Video: Pushing Files to DVC Remote Storage (it_mlodvcdj_01_enus_10)
+
+Find out how to push a file to DVC remote storage.
+push a file to DVC remote storage
+[Video description begins] Topic title: Pushing Files to DVC Remote Storage. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We ended the previous demo by running the command dvc add insurance.csv. We noted that this led to the creation of a file called insurance.csv.dvc and also to the original file insurance.csv being added to the .gitignore. We also noted that we must remember to explicitly use git add with these two files, as you can see on screen now.
+
+Next, let's see what other changes our running dvc add wrote. We start by running ls -la and we see now that there are some new files in here.
+
+[Video description begins] The Terminal window appears. The following command is added: ls -la. [Video description ends]
+
+There's the insurance.csv.dvc as well as the .gitignore. Those are the only visible changes. But if we now run a git status, we see that in addition to those two new files, there's also a modification made to the config file inside .dvc.
+
+[Video description begins] The following command is added: git status. [Video description ends]
+
+The reason the config file is modified here is because we had added a remote storage by running dvc remote add. We've yet to commit those changes and we'll get to that. Now first, let's turn to the untracked files. These are the two files that we just mentioned. These are insurance.csv.dvc, and .gitignore. From the directory output up above, you can see that these two files are both pretty small.
+
+insurance.csv.dvc is just 94 bytes and the .gitignore is just 15 bytes. If we invoke cat on .gitignore, we see that it's a simple text file with just the one line insurance.csv. Notice also the / that's the relative path telling dvc where this file exactly resides. Next, let's call cat on insurance.csv.dvc. And this is also a very simple file.
+
+[Video description begins] The following commands are added: cat .gitignore, and cat insurance.csv.dvc. [Video description ends]
+
+You can see that it has within it the md5 hash for the original file.
+
+It has the size of the original file, which is 16199 bytes, the type of hash that's MD5, and then the path to the original file. Looking at the contents of this file, you can see why this file is often referred to as the metafile, because it contains metadata about the original data file. It's also sometimes referred to as the pointer file because it's very similar to a pointer in old school C. It's a level of indirection which allows DVC to track the original data file through this much smaller file.
+
+Pay attention to that md5 hash. You can see that it starts with 637f and it ends with e1244. Now let's run ls -l on the dvc_storage directory. Remember that this is the local directory which we had specified as our remote storage area.
+
+[Video description begins] The next command reads: ls -l /tmp/dvc_storage. [Video description ends]
+
+Before we view the output of this ls -l, ask yourself, will this directory contain anything? A hint here is remember that we've just run a dvc add.
+
+Remember the analogy between dvc and git, dvc add is analogous to git add and when we call git add, will a file get pushed out to the remote repository? The answer is no, and that's why when we call dvc add as you can see on screen now, it does not get pushed out to the remote data storage here either. That's why the contents of the dvc_storage directory are still empty. Remember that git add effectively starts tracking a file, and it does that via some metadata which is present inside the .git directory.
+
+And so, we should expect that some metadata has been stored inside the .dvc directory. And indeed, when we run ls -la on the .dvc directory, we see that there is something new in there.
+
+[Video description begins] The next command reads: ls -la .dvc. [Video description ends]
+
+There's a cache directory, and this wasn't in there previously. Now let's run ls -la on the cache directory and you can see in here that there is a subdirectory called files. Let's follow this chain.
+
+[Video description begins] The following command is added: ls -la .dvc/cache. [Video description ends] 
+
+We now run ls -la on the file subdirectory.
+
+[Video description begins] The following command is added: ls -la .dvc/cache/files. [Video description ends]
+
+In here is a further subdirectory called md5 and when we explore the contents of that md5 directory, we find that there is here another directory called 63, and that's because those were the first 2 digits of the md5 hash of insurance.csv. Inside this directory we have a file and that file has the name of the remainder of the md5 hash. Notice how it ends with 9e1244.
+
+[Video description begins] The following command is added: ls -ls .dvc/cache/files/md5. [Video description ends]
+
+Let's copy that and call cat on it.
+
+[Video description begins] The first command reads: ls -ls .dvc/cache/files/md5/63. The following command reads: cat .dvc/cache/files/md5/63/7f019d70c2e3d7e57a335ddb9e1244. [Video description ends]
+
+You can see from the output that this contains effectively the contents of the original insurance.csv. Is this a copy of the original insurance.csv file? While this is not something which the DVC docs are very clear about, this is platform dependent and most likely, this particular file which we see on screen is a symbolic link. In general, just know that the exact contents of the cache vary, but DVC tries its best to optimize what it stores in there so that it's not creating multiple copies of very large files.
+
+The reason for this cache, of course, is that in a real world use case, the remote configuration is going to be a cloud bucket and you probably do not want every reference or every access of your data to be redirected to a cloud bucket, which is why this caching system is implemented by DVC. We've now explored in detail what happens when we call dvc add. The next step is to call dvc push. This is going to do exactly what its name would suggest. It's going to push this particular file out from the local storage area to the remote storage area. And in our case, that remote storage area is simply the dvc_storage directory inside tmp, so when we run ls -l, we now find the same directory structure in there as well.
+
+We have a top-level directory called files. We won't walk the entire directory structure, but we paste in the same directory path where we have files, md5, and then the various components of the actual hash.
+
+[Video description begins] The first command reads: dvc push. The next command reads: ls -l /tmp/dvc_storage. The following command reads: cat /tmp/dvc_storage/files/md5/63/7f019d70c2e3d7e57a335ddb9e1244. [Video description ends]
+
+And in there we have once again insurance.csv. We are done pushing our data to DVC and in the next demo, we are going to use this data in order to train a machine learning model and actually generate some outputs.
+
+11. Video: Creating a Machine Learning (ML) Model in Python (it_mlodvcdj_01_enus_11)
+
+During this video, you will learn how to create and serialize an ML model.
+create and serialize an ML model
+[Video description begins] Topic title: Creating a Machine Learning (ML) Model in Python. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We had ended the last demo by calling dvc push that had pushed insurance.csv out onto our remote storage area. That remote storage area was our dvc_storage file location, and when we looked inside that location, we had found effectively a cached copy of our insurance.csv file.
+
+[Video description begins] A Terminal window appears. The first command reads: ls -l /tmp/dvc_storage. The following command reads: cat /tmp/dvc_storage/files/md5/63/7f019d70c2e3d7e57a335ddb9e1244. [Video description ends]
+
+In this demo, we'll continue in the same way. Whatever we just did for the data that we want to train our model with, we will do with the model itself. So in this demo, we will have a model.pkl file, and we will then push both that model.pkl file as well as the data which was used to train that model out to DVC. Let's get started. We switch back over to a Finder window and paste in a couple of new files into our directory. These are requirements.txt and train.py.
+
+[Video description begins] A page titled dvc_insurance_charges_prediction appears. It contains various icons at the top. The left navigation pane contains 2 sections: Favourites, and Tags. The Favourites section contains options like AirDrop, Recents, Applications, Desktop, and so on. The Tags section contains options like Red, Orange, Yellow, and so on. The main pane displays a table with 4 column headers: Name, Date Modified, Size, and Kind. It contains various items like requirements.txt, train.py, and so on. [Video description ends]
+
+Let's quickly examine each of them. requirements.txt has all of the required libraries which our train.py needs.
+
+[Video description begins] The Terminal window reappears. The following command is added: cat requirements.txt. [Video description ends]
+
+These are matplotlib, numpy, pandas, and scikit-learn. Remember as an aside that we are doing all of this inside our virtual environment and you can confirm that by looking at the prompt. The prompt includes the name of the virtual environment dvc_venv before the actual directory path. In any case, next let's run pip install -r requirements.txt.
+
+[Video description begins] The next command reads: pip install -r requirements.txt. [Video description ends]
+
+This will ensure that all of these libraries are available in our virtual environment. Next, let's take a quick look at the train.py Python file. We've opened this up now in Sublime Text, which is a popular word editor. We can see the precise directory structure in the list of folders over on the left.
+
+In any case, turning back to the code, you see that up top we have the import statements. Then we have two functions, train and predict. The train function is visible right here, starting line 19 and then scrolling a little further down the predict function begins on line 77. At the very end of the file starting line 105, you can see that we have a main where we either invoke train or predict. So, the main takes in an input argument which has to be either train or predict. You can see that from the print on line 108, if the argument passed in was train, then on line 113 we invoke the train function, elif the argument passed in was predict, then we invoke predict that's on line 115, and else we print that this was an Invalid argument.
+
+[Video description begins] A page titled train.py appears. The left navigation pane contains the header: FOLDERS. It contains various collapsible items like projects, dvc, .dvc, and so on. The .dvc item contains various files like requirements.txt, train.py, .dvcignore, and so on. The train.py file is open on the main pane. It contains various lines of code below. Line 108 reads: print("Please provide an argument: 'train' or 'predict'"). [Video description ends]
+
+ [Video description begins] Line 112 reads: if argument == "train":. Line 113 reads: train(). Line 114 reads: elif argument == "predict":. Line 115 reads: predict(). Line 116 reads: else:. Line 117 reads: print("Invalid argument. Please provide 'train' or 'predict'"). [Video description ends]
+
+That's for the big picture of this code file. Let's now scroll back up and look at train and predict in a little more detail.
+
+In the train function, you can see that we read in the contents of insurance.csv into a DataFrame that's on line 23. It's this insurance.csv file that we've pushed out to DVC. Then we invoke train _test_split on line 28. This gives us the X_train, X_test, y_train, and y_test variables. Scrolling a little further down, you can see that we instantiate a RandomForestRegressor that's on line 31.
+
+[Video description begins] Line 23 reads: insurance_data = pd.read_csv("insurance.csv"). Line 28 reads: X_train, X_test, y_train, y_test = train_test_split(. Line 31 reads: rf_model = RandomForestRegressor(). [Video description ends]
+
+We set up all of the feature processing steps with the transformer. That's the categorical_transformer on line 35, the ColumnTransformer on line 41, and we instantiate the Pipeline on line 46. This Pipeline has two steps, preprocessor and regressor.
+
+[Video description begins] Line 35 reads: categorical_transformer = Pipeline(. Line 41 reads: preprocessor=ColumnTransformer(. Line 46 reads: pipe_rf = Pipeline(. Line 47 reads: steps = [('preprocessor', preprocessor), ('regressor', rf_model)]. [Video description ends]
+
+Then on line 50, we invoke fit on our pipeline, passing in X_train and y_train. Then on line 52, we invoke predict on our pipeline and we pass in the X_test data.
+
+[Video description begins] Line 50 reads: pipe_rf.fit(X_train, y_train). Line 52 reads: y_pred = pipe_rf.predict(X_test). [Video description ends]
+
+Remember that this is all still within the train function. However, we invoke predict on the test data and we compute some evaluation metrics on the test data as well. We do that starting on line 54 where we have the training_score, the mean_abs_error, root_mean_sq_error, and the r_sq_score.
+
+[Video description begins] Line 54 reads: training_score = pipe_rf.score(X_train, y_train). Line 55 reads: mean_abs_error = mean_absolute_error(y_test, y_pred). Line 56 reads: root_mean_sq_error = mean_squared_error(y_test, y_pred, squared = False). Line 57 reads: r_sq_score = r2_score(y_test, y_pred). [Video description ends]
+
+Then on lines 59 and 60, we do something important. We dump out our pipeline object to model.pkl.
+
+[Video description begins] Line 59 reads: with open('model.pkl', 'wb') as files:. Line 60 reads: pickle.dump(pipe_rf, files). [Video description ends]
+
+It's important to note first off that we dump this object out because we will be referencing this pickled model object in the predict function and also because it's this pickled model which we will be pushing out to DVC. As an aside, notice also that we are careful to pickle the pipeline and not only the random forest regressor. By pickling the pipeline, we can ensure that all of the data preprocessing steps are going to be consistent during prediction, they'll be the same as they were during training. So, that invocation of pickle.dump passing in pipe_rf and files on line 60 is pretty important. Then on line 67, we have another with construct. Here we dump out a metrics.json file and that contains simply all of the metrics which we just computed.
+
+So, we invoke json.dump and specify the Training score, MAE, RMSE, and the Test R2_score.
+
+[Video description begins] Line 68 reads: json.dump({. Line 69 reads: 'Training score': training_score,. Line 70 reads: 'MAE': mean_abs_error,. Line 71 reads: 'RMSE': root_mean_sq_error,. Line 72 reads: 'Test R2_score': r_sq_score. Line 73 reads: }, outfile). [Video description ends]
+
+When the train function has run through, we will expect two additional files to appear in this directory, model.pkl and metrics.json. Once the model.json has been written out in the train function, it can be read in in the predict function that starts on line 77. Here you can see that we read in the pickled file using pickle.load. That's on line 91 and we are looking for this in the file model.pickle. Once we have the model, we can invoke model.predict on line 94. Once again, we just pass in X_test. So, this is going to compute the same scores which we had in the train function.
+
+[Video description begins] Line 91 reads: model = pickle.load(file). Line 94 reads: y_pred = model.predict(X_test). [Video description ends]
+
+We print out those scores on lines 100 through 102.
+
+[Video description begins] Line 100 reads: print('MAE:', mean_abs_error). Line 101 reads: print('RMSE:', root_mean_sq_error). Line 102 reads: print('Test R2_score:', r_sq_score). [Video description ends]
+
+All that's left now is the main, where as we've already discussed, we accept an input argument and based on that input argument we either invoke train on line 113 or predict on line 115.
+
+[Video description begins] Line 113 reads: train(). Line 115 reads: predict(). [Video description ends]
+
+Now that we've understood the code, let's switch back over to the terminal and run it.
+
+We begin with an ls -l to ensure that we have all of the files that we require. These include requirements.txt and train.py. Next, let's invoke our train.py, python train.py. We don't specify an input argument and we are prompted to provide one, either train or predict. Next, let's call python on train.py and pass in train as the input argument.
+
+[Video description begins] The Terminal window reappears. The following commands are added: ls -l, python train.py, and python train.py train. [Video description ends]
+
+This quickly runs through. The Dataframe dimensions are displayed 400, 7, so our training data in this particular run has 7 columns and 400 rows. All of the metrics are displayed as well. The Training score is 0.9824 and the MAE, RMSE, and Test R2_score are also printed out.
+
+Next, let's run another ls -l and now we find that there are a couple of additional files, model.pkl and metrics.json. These were the two files which were written out when we invoked the train function in our code. The pickle file is a binary file, so we can't examine it easily. But we can examine the metrics.json, we call cat on it and we see the Training score, MAE, RMSE, and Test R2_score. Next, let's try and invoke predict, so we call python train.py. The one input argument is predict and indeed we see the values of the test metrics and these are identical to the values in metrics.json. Let's do a quick spot check.
+
+[Video description begins] The following commands are added: ls -l, cat metrics.json, and python train.py predict. [Video description ends] 
+
+The MAE when we invoke predict is 2595.31 and the MAE printed out as a part of metrics.json is also 2595.31. And in this way we've successfully run our very simple little model. We now have a pickled model that's a model.pkl file, and in the next demo, we will see how we can push this model.pkl out to DVC, and we'll also see how closely Git and DVC work together. So we'll have only the training data and the model pickle file on DVC, and all of the other relevant files will be pushed out to Git. We'll see all of this in the next demo.
+
+12. Video: Pushing an ML Model to DVC and Git (it_mlodvcdj_01_enus_12)
+
+In this video, discover how to push and commit a model to DVC and Git.
+push and commit a model to DVC and Git
+[Video description begins] Topic title: Pushing an ML Model to DVC and Git. Your host for this session is Vitthal Srinivasan. [Video description ends]
+In this demo, we are going to see how we can push out our model.pkl so that that file along with the training data insurance.csv are on DVC and how all of the source files are tracked on Git. Now one takeaway may be the most important takeaway from this demo is that when you run dvc push and git push, the dvc push should occur first. Again, first dvc push, then git push. If you ignore that little rule of thumb, complicated and bad things tend to happen.
+
+In any case, remember that at the end of the last demo that we had run our Python code, which had resulted in the creation of model.pkl. That's what we want to push out to DVC before we can push it to DVC, we've got to add it to DVC, and that's why on screen now we can see that we call dvc add model.pkl.
+
+[Video description begins] A Terminal window appears. The following command is added: dvc add model.pkl. [Video description ends]
+
+Remember, the two things will now happen. First, there will be the metafile or the pointer file that's going to be created, that's going to have the same name as the file we are adding, but it'll have a .dvc suffix. That's why you can see that we have model.pkl.dvc.
+
+Secondly, DVC is going to modify the contents of the .gitignore file and add in model.pkl to the .gitignore. That's DVC's way of telling Git don't worry about this particular file model.pkl, I've got it covered. Please note that it's the model.pkl that's added to the .gitignore, not the model.pkl.dvc. The .dvc file, that's the metafile is going to indeed be tracked by Git. That's why the command on-screen reminds us that we've got to run git add model.pkl.dvc as well as possibly .gitignore.
+
+Let's run ls -l and when we do, we can see in the output that the model.pkl.dvc file has also been added into this directory.
+
+[Video description begins] The following command is added: ls -l. [Video description ends]
+
+Remember that this metafile is just a simple and small text file. Let's cat model.pkl.dvc.
+
+[Video description begins] The next command reads: cat model.pkl.dvc. [Video description ends]
+
+It has the md5 hash which starts with d4. The size of this file in bytes is printed out in addition to the type of the hash, which is md5, and the path.
+
+Remember that while we have a dvc add and a dvc push, there's no dvc commit and that's because as soon as we add a file to DVC, it's going to be placed in the cache. So, this pickle file is now visible in the cache. We search in .dvc/cache/files/md5, there you can see that we now have two directories, not one. We have 63, which corresponds to the directory for insurance.csv, and d4 which corresponds to the directory for our model.pkl file. You can see for yourself that d4, which is the name of that directory, is also a start of the md5 in the output of model.pkl.dvc towards the top of the screen.
+
+[Video description begins] The next command reads: ls -ls .dvc/cache/files/md5. [Video description ends]
+
+At this point, we've only run dvc add, we've not run dvc push and that's why when we search inside our remote file storage area, we do not find the directory called d4 in there, there's just the one directory called 63. Notice once again, that the directory structure in the remote file storage area mirrors that in the cache, except that in the remote file storage area, the directory structure starts with tmp rather than with cache. Let's fix this by pushing our model.pkl file out using dvc push.
+
+[Video description begins] The next command reads: ls -l /tmp/dvc_storage/files/md5. [Video description ends] 
+
+At this point, all files that have been added but not yet pushed will be pushed out. 1 file is pushed, that's what we see in the output. And now when we rerun the command ls -l on /tmp/dvc_storage/files/md5, we find two directories in there, 63 and d4.
+
+[Video description begins] The following commands are added: dvc push, and ls -l /tmp/dvc_storage/files/md5. [Video description ends]
+
+At this point, we are done with the dvc push, and it's worth reiterating here that our dvc push in this particular case was to our remote file storage, which happen to be the directory which we see on screen now. However, in subsequent demos, we'll see how easy it is to configure the remote file storage to point to a cloud bucket. And in that case, we would be pushing out to the cloud bucket rather than to a local directory.
+
+Remember again, that the command we used for this was dvc remote add. In any case, we are done with the dvc push. Remember again that the dvc push has to occur before the git push, otherwise, bad things happen. Let's now turn our attention to the Git end of business. We begin with a git status and when we do this, we see that the dvc config has been modified. This is the same change from when we mounted our remote file storage area. We did that by calling dvc remote add. That's why the config file in .dvc appears as modified. Also, notice that this is in the section titled Changes not staged for commit.
+
+[Video description begins] The following command is added: git status. [Video description ends] 
+
+Then, in addition, there are a number of files which are simply not yet tracked. These include the .gitignore, the two .dvc files, insurance.csv.dvc and model.pkl.dvc, and then also metrics.json, requirements.txt, and train.py. All of these are files that we do indeed want to push out to Git. So, remember again, all of the .dvc files do need to be pushed out to Git. Here insurance.csv.dvc and model.pkl.dvc have yet to be added and pushed out to Git. These are the metafiles, but the corresponding underlying files are both added to the .gitignore.
+
+We run cat.gitignore and you can see that insurance.csv and model.pkl are both listed in there. 
+
+[Video description begins] The following command is added: cat .gitignore [Video description ends]
+
+This makes sense, of course. We want those files to be tracked by DVC and not by Git. It's only the pointer files or the metafiles, the ones ending in the .dvc that we do want tracked by Git. So, let's add all of these untracked files to Git. We call a git add first with insurance.csv.dvc, model.pkl.dvc, metrics.json, and .gitignore. That goes through successfully. And then we call git add again on the two source files, requirements.txt and train.py. That does it for all the untracked files, but there's also a tracked and modified file, which is the config file in the .dvc directory.
+
+Let's call git add on this config file in order to ensure that all of those latest changes are added in as well. At this point, we call git status and when we rerun this command, you can see that we no longer have any changes which are not yet staged for commit, and we also don't have any untracked files. We have a modified file and a number of new files. We can run git commit, git commit -m and the -m helps us to pass in a message, "First model, trained with data from 400 customers". 
+
+[Video description begins] The following commands are inserted: git add insurance.csv.dvc model.pkl.dvc metrics.json .gitignore, git add requirements.txt train.py, git add .dvc/config, and git status. [Video description ends]
+
+[Video description begins] The following command is added: git commit -m "First model, trained with data from 400 customers". [Video description ends]
+
+When we call a git commit, remember that all of these changes are only going to be reflected or committed to our local Git repository. We have yet push them out onto the remote repository which is in GitHub.
+
+Next, let's associate this commit with an annotated tag. We do that by calling git tag-a. The annotation associated with the tag is v1.0. And we also specify the tag message right here using the -m flag, that is "model v1.0, 400 customers". This now is the second commit to our local repository. Let's view both of those commits by running git log.
+
+[Video description begins] The first command reads: git tag -a "v1.0" -m "model v1.0, 400 customers". The following command reads: git log. [Video description ends]
+
+The most recent commit appears up top. You can see up top that it does not yet reflect any path on the remote repository, so we do not see origin/main. We see that for the second commit, the one previously done, but we don't see it for the first where instead, we have HEAD -> main. Also, notice the tag which is v1.2.
+
+The message is First model, trained with data from 400 customers. This output of git log tells us that the second commit, the one we just performed, needs to be pushed out to the remote repository. So, here's the command git push -u origin main. We've already run this command once before. origin is the name that we've associated with our remote repository, main is the name of the local branch that we want to push from.
+
+[Video description begins] The following command is added: git push -u origin main. [Video description ends]
+
+This command runs through, and you can see that 10 objects are pushed out. Total 10 with delta 0.
+
+Let's switch over to a browser. We are now in our GitHub repository page. We hit Refresh. All of the files that we just pushed out from our Git local repo do indeed appear here.
+
+[Video description begins] The page titled loonytest/dvc_insurance_charges_prediction appears. It contains various tabs below, like Code, Issues, Pull requests, Actions, and so on. The Code tab is active. To the right, there are various drop-downs labeled Unwatch, Fork, and Star. Under this, there are some more drop-downs labeled main, Add file, Code, and so on. Below, there is a section containing various items like .dvc, .dvcignore, .gitignore, and so on. The right pane displays various sections like About, Releases, Packages, and so on. [Video description ends]
+
+Let's very quickly cycle through some of these. We'll do that in the next demo.
+
+13. Video: Viewing the Files Committed to GitHub (it_mlodvcdj_01_enus_13)
+
+Find out how to view the files that GitHub tracks.
+view the files that GitHub tracks
+[Video description begins] Topic title: Viewing the Files Committed to GitHub. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We had ended the previous demo by pushing out all of our source files into git using git push. Here we are on the GitHub repository. We have the two files ending with .dvc, insurance.csv.dvc and model.pkl.dvc. Notice importantly, that we do not have insurance.csv and model.pkl because those files are tracked by DVC and not by Git.
+
+Then we have the source files, that's requirements.txt and train.py. We have another text output that's metrics.json. This was written out by train.py. And then we have the dvc folders, .dvc and .dvcignore.
+
+[Video description begins] A page titled loonytest/dvc_insurance_charges_prediction appears. It contains various tabs below, like Code, Issues, Pull requests, Actions, and so on. The Code tab is active. To the right, there are various drop-downs labeled Unwatch, Fork, and Star. Under this, there are some more drop-downs labeled main, Add file, Code, and so on. Below, there is a section containing various items like .dvc, .dvcignore, .gitignore, and so on. The right pane displays various sections like About, Releases, Packages, and so on. [Video description ends]
+
+Also, finally, notice that we have the .gitignore file in there. Let's click through into this.
+
+This contains a list of files that should not be tracked by Git, and when we click through, exactly as expected, we find there are two entries, insurance.csv and model.pkl. Again, that's because these two files are being tracked by DVC and not by Git. These are the data files, but the corresponding metafiles are indeed checked into Git.
+
+[Video description begins] The main pane displays the header: dvc_insurance_charges_prediction/ .gitignore. Below, it contains 2 lines of code. Line 1 reads: /insurance.csv. Line 2 reads: /model.pkl. The left pane contains various options like .dvc, insurance.csv.dvc, metrics.json, and so on. [Video description ends]
+
+Let's check that for ourselves. We click on insurance.csv.dvc and the contents appear in the center pane.
+
+This has the same md5, size, hash, and path that we had seen from our terminal window. Likewise, when we click on model.pkl.dvc, we find the corresponding md5 there as well.
+
+[Video description begins] The insurance.csv.dvc, and model.pkl.dvc options are selected one after the other. [Video description ends]
+
+Notice, this is the same md5 which starts with d4. Let's explore the contents of the .dvc folder. This has two files within it, the .gitignore and the config file. The config file is interesting. We click on it and we've seen this file before.
+
+We have the core section where there's one remote element called localremote, and then that's defined with its url, which is the directory location /tmp/dvc_storage.
+
+[Video description begins] The .dvc folder contains 2 files in it: .gitignore, and config. The config file is highlighted. The main pane displays the corresponding lines of code. Line 1 reads: [core]. Line 2 reads: remote = localremote. Line 3 reads: ['remote "localremote"']. Line 4 reads: url = /tmp/dvc_storage. [Video description ends]
+
+Everything seems to be exactly as we expected. But wait, there's one little missing piece. We click through into the name of the repository up top and when we get back to the outer page, we see that at this point there are 0 tags associated with it. Hadn't we created a tag with git tag -a. Well, we had done so, but tags also need to be pushed.
+
+Let's take care of that little detail. We switch back over to a terminal window and run git push --tag.
+
+[Video description begins] The Terminal window reappears. The following command is added: git push --tag. [Video description ends]
+
+This has the effect of pushing out all annotated tags from the local repository to the remote repository. We can see from the output that this push was successful. 1 tag was pushed out, and we can also see the value of the tag. It's v1.0. v1.0 -> v1.0 tells us that the tag v1.0 is now also going to be associated with this commit over on the remote repository. Let's confirm that. We switch back over to GitHub.
+
+We hit refresh in our repository and you can see that the number of tags changes. You can see that if we have one tag that's clickable, we click on it and it takes us into the details. It's simply the tag v1.0.
+
+[Video description begins] A page titled loonytest/dvc_insurance_charges_prediction appears. It contains various tabs below, like Code, Issues, Pull requests, Actions, and so on. The Code tab is active. There are 2 buttons below: Releases, and Tags. The Tags button is active. Under this, there is a section labeled Tags which displays the item v1.0. [Video description ends]
+
+And that gets us to the end of this little demo in which we examined closely the files that we had pushed out to the remote GitHub repository. Please again, remember that while working with DVC and Git, we want to be performing the dvc push before the git push.
+
+To imagine why this is so important, think of what would happen if you pushed out to Git before you pushed to DVC. Once it's on Git, your colleagues would be able to access the metafiles, which would then allow them to train this model. They would then attempt to access the data, but that data is not yet available because it's not yet been pushed to DVC, and that would be the start of problems. So again, first dvc push and then git push.
+
+14. Video: Running and Pushing a Different Model Version (it_mlodvcdj_01_enus_14)
+
+During this video, you will learn how to run and push a different model version.
+run and push a different model version
+[Video description begins] Topic title: Running and Pushing a Different Model Version. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We ended the previous demo with GitHub successfully reflecting tag 1.0 which we had associated with our commit. Now, let's switch back and see how we can add one more version of the data and model to our GitHub repository. In the Finder window on screen now, you can see that we have insurance.csv, and if you look towards the right, you can see that the Size of this file is currently 16 KB. You might recall that file had 400 rows. We are now going to Paste in a new version of insurance.csv. 
+
+[Video description begins] A page titled 'dvc_insurance_charges_prediction' appears. It displays a toolbar at the top. The navigation pane on the left contains 2 sections called Favourites and Tags. The Favourites section offers options such as AirDrop, Recents, Applications, and so on. The Tags section offers several options like Red, Orange, Yellow, Green, and so on. The main pane displays a table with 4 column headers: Name, Date Modified, Size, and Kind. It contains several items such as insurance.csv, insurance.csv.dvc, metrics.json, model.pkl, model.pkl.dvc, train.py, and others. [Video description ends]
+
+[Video description begins] A pop-up menu appears with options like New Folder, Paste Item, Get Info, View, and so on. [Video description ends]
+
+This one is now 56 KB and that's because it contains 1300 rows rather than 400 rows. Let's quickly Open up this file and make sure that it has the same column formats as the previous file.
+
+[Video description begins] A drop-down menu appears with several options like Open, Open With, Move to Bin, Get Info, and so on. The Open With option further contains another drop-down list with options like Numbers (default), Google Chrome, Notes, Sublime Text, and so on. The Numbers (default) option is selected. [Video description ends]
+
+Here you can see that we have the column age over on the left, and then sex, bmi, children, and so on. Please note that this file has the same name insurance.csv as the previous file.
+
+[Video description begins] The insurance.csv file is open. There is a toolbar at the top with several options like View, Zoom, Add Category, Pivot Table, Insert, Table, Chart, Text, Shape, and so on. A tab labeled Sheet 1 appears next in green. Below, a rows and columns grid is displayed. The main pane displays a table with the following column headers: age, sex, bmi, children, smoker, region, and charges. It displays numbers and details. A pane appears on the right. It displays 4 tabs at the top: Table, Cell, Text, and Arrange. The Table option is active now. It displays Table Styles, Table Options, Rows, Columns, and so on. [Video description ends]
+
+It has more rows and so when we train our model with it, we are going to get a higher score. Remember that insurance.csv is not tracked by Git, it's actually tracked by DVC.
+
+[Video description begins] A Terminal window is open. The following command is entered: dvc add insurance.csv. [Video description ends]
+
+So, we run dvc add insurance.csv. From the output which appears down below, you can see that insurance.csv.dvc has been modified. And so we are told that we ought to run git add insurance.csv.dvc. That's the first interesting bit about this output. The second is that we can turn on something known as auto-staging by running dvc config core.autostage true. Let's understand what this is all about.
+
+Let's try and relate this to Git. Let's say you create a new file. You then run git add that will turn tracking on. Git will now start to track that file. When you run git commit, whatever version of that file you had created just before you ran git add is going to be committed to the local repository. So if you modify that file, you ideally ought to run git add again before you can commit the new modified version of the file to your local repo. In similar fashion, in DVC, if you have a file which has been added to DVC with dvc add, and you then modify that file, you've got to run dvc add. That's what you see on screen now. Once we run dvc add insurance.csv that is going to modify insurance.csv.dvc.
+
+That's the metafile and that's why we've got to run git add insurance.csv.dvc. The new bit here is the autostage. DVC makes it possible for you to dispense with this step where we run dvc add. When autostage is set to true, DVC will automatically detect changes in the files, and then, if we ran dvc commit or dvc push, it will pick up those changes and automatically stage them and use the modified versions of the files. This, of course, sounds like it's pretty convenient, but it's worth using this feature extremely carefully because you might end up committing versions of the data that you were just playing around with in your local file system. So, be very careful with this core.autostage true command that you can run. Now that we've run dvc add on this file, if you look inside the cache, we'll find that there are two hashed versions.
+
+[Video description begins] The command reads: ls -ls .dvc/cache/files/md5. [Video description ends]
+
+You can see here we've run ls -ls .dvc/cache/files/md5 and there are now 3 directories in there. Two of these were the previously present ones, 63 and d4, but there's a new one, it's called d5. That's because the first few digits of the md5 hash of our new version of insurance.csv start with the characters d5. We'll verify that in a bit, but first let's retrain our model with this larger dataset. For this, we run python train.py and we specify train as the one input argument.
+
+[Video description begins] The command reads: python train.py train. [Video description ends]
+
+This runs through successfully. You can see that the Dataframe dimensions now have 1338, so this is indeed the new version which has more than 1300 rows. You can also see that the Test R2_score has picked up significantly. It now reads 0.8540. So, this is a new version of the model that's been trained with our extended training dataset.
+
+That model is also going to be serialized to model.pkl.
+
+[Video description begins] The command reads: ls -l. [Video description ends]
+
+We run ls -l and you can see that we've got a new version of model.pkl. We can see from the timestamp that metrics.json and model.pkl were both created at time 16:01, in contrast to the model.pkl.dvc file which was created at 15:34. So, clearly, we've got to update the version of model.pkl.dvc by running dvc add on model.pkl as well. We'll get to that in a moment, but before that, let's run predictions on our model.
+
+[Video description begins] The command reads: python train.py predict. [Video description ends]
+
+For this, we run python train.py, and this time, we specify predict as the input argument. This runs through successfully as well and you can see that the Test R2_score is also 0.8540 as indeed it should be. Let's cause DVC to start tracking our new version of the model.
+
+[Video description begins] The command reads: dvc add model.pkl. [Video description ends]
+
+For that, we run dvc add model.pkl. Once again, we are told that we need to run git add model.pkl.dvc and we are also told how we could enable auto-staging. Now, the new model.pkl is going to be hashed and stored in the cache. We can confirm that by rerunning ls -ls and specifying our cache directory.
+
+[Video description begins] The following command is inserted again: ls -ls .dvc/cache/files/md5. [Video description ends]
+
+Inside the md5 directory, you can see that we now have 4 directories and not 3. The new one here is the one starting with 09. So, we have 63 and d4 from the first set of insurance.csv and model.pkl, and then 09 and d5 from the modified versions. The next step is to run dvc push.
+
+[Video description begins] The command reads: dvc push. [Video description ends]
+
+Remember that in Git, the workflow is git add, then git commit, and then git push. On DVC, it's just dvc add and then dvc push.
+
+So, you can see the dvc push causes 2 files to be pushed out to the remote storage location, and in our particular case, that remote storage location also happened to be mapped to a local directory. But you get the idea. In a subsequent demo, we will point that remote storage area to a cloud storage bucket. Please remember also our admonition that dvc push has to come before git push. The dvc push is done, so we can now set up the git push. For that, let's first run git status.
+
+[Video description begins] The command reads: git status. [Video description ends]
+
+You can see in Changes not staged for commit that insurance.csv.dvc, model.pkl.dvc, and metrics.json, all show up. We've got to first commit these to git to the local repo, and then push them out to the remote repository.
+
+Let's begin with a git add --all that does exactly what its name would suggest. [Video description begins] The command reads: git add --all. [Video description ends] Now, if we rerun git status, you can see that nothing shows up in that red font.
+
+[Video description begins] The command reads: git status. [Video description ends]
+
+There are Changes to be committed. That's the same three files, insurance.csv.dvc, metrics.json, and model.pkl.dvc. Along the way, you can see that we've also picked up a new file that's the .DS_Store. That's just some system file which is created on the Macintosh platform. We don't really want it in there, so we could add it to the .gitignore, but we'll dispense with that little detail for now. Now we can commit these files with git commit -m and then the that we've got all of these files in our local Git repo.
+
+message, "Second model, trained with data from 1338 customers". This goes through successfully, which means [Video description begins] The command reads: git commit -m "Second model, trained with data from 1338 customers". [Video description ends]
+
+Before we push these out to the remote repo, let's associate a tag with this commit. We'll call this tag version 2.0, and we have the message, "model v2.0, 1338 customers".
+
+[Video description begins] The command reads: git tag -a "v2.0" -m "model v2.0, 1338 customers". [Video description ends]
+
+Now, we can run git push -u origin main.
+
+[Video description begins] The command reads: git push -u origin main. [Video description ends]
+
+This will push all of the commits from our local branch to the corresponding branch on the remote repository, which is identified with the alias origin. We've previously set up origin to wire up to our GitHub repo with the command git remote add origin and the GitHub URL. This push runs through successfully, but we know from the last time around that our annotated tag is not going to be pushed. For that, we've got to separately run git push --tag.
+
+You can see from the output that this was successful as well and that it's now version 2.0 that's been pushed out. We can see that from the message v2.0 -> 2.0. Let's switch over to a browser and verify that this does reflect in our GitHub repository. We hit refresh on dvc_insurance_charges_prediction and you can now see that there are 2 tags in there. So, we were successfully able to push out the tag. And then looking at the timestamps down below, you can see that insurance.csv.dvc, metrics.json, and model.pkl.dvc were all uploaded just 1 minute ago. So, these are clearly the new versions of those files. We will examine them and see how we can switch between versions in the next demo.
+
+[Video description begins] The command reads: git push --tag. [Video description ends] 
+
+15. Video: Reverting to Previous Code Versions in Git (it_mlodvcdj_01_enus_15)
+
+Discover how to revert to previous code versions in Git.
+revert to previous code versions in Git
+[Video description begins] Topic title: Reverting to Previous Code Versions in Git. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We ended the previous demo by successfully pushing out version 2.0. We can verify that these new versions are indeed available by clicking on the metafiles.
+
+[Video description begins] The page titled loonytest/dvc_insurance_charges_prediction appears. It contains various tabs below, like Code, Issues, Pull requests, Actions, and so on. The Code tab is active. To the right, there are various drop-downs labeled Unwatch, Fork, and Star. Under this, there are some more drop-downs labeled main, Add file, Code, and so on. Below, there is a section containing various items like .dvc, .dvcignore, .gitignore, insurance.csv.dvc, and so on. The right pane displays various sections like About, Releases, Packages, and so on. [Video description ends]
+
+Let's start by clicking on insurance.csv.dvc, and you can see here that the md5 hash does indeed start with d5.
+
+[Video description begins] The page now displays 2 tabs below, labeled Code, and Blame. The Code tab is active. It contains various lines of code below. [Video description ends]
+
+The previous version had started with d4. Likewise, if we click on model.pkl.dvc, the new version has md5 starting with 091.
+
+These correspond to the directory names which we had seen in our cache directory on our local DVC repository. Let's also really quickly examine the tags associated with this repo. We click through into the 2 tags and we see here that we have version 2.0 as well as version 1.0. Next, let's see how easy it is to switch between versions. So, we head back to the terminal and we first run git checkout v1.0.
+
+[Video description begins] A Terminal window appears. The following command is added: git checkout v1.0. [Video description ends]
+
+Now, while working with checkouts, it's important to realize that we've got to first perform the git checkout and only then run dvc checkout. So, while pushing files, we first run dvc push and then run git push. While checking out, we first run git checkout and then dvc checkout. Once again, if we stop to think about it, this makes perfect sense.
+
+When we run git checkout, we are going to get the updated version of the metafiles, and those lightweight metafiles effectively are pointers to the correct version of the underlying data. If you work with old-style memory allocation in C, all of this would make a lot of sense. You first allocate the memory and then get the pointer. Here you first get the pointer and then deallocate the memory. In any case, leaving that very dated analogy aside, you can see on screen now that our git checkout of version 1.0 has changed the latest version that we have in our local repo. The very first line of the output reads Note: switching to 'v1.0' and then the last line of the output reads HEAD is now at and that's followed by the commit hash of the first commit and the corresponding message. First model, trained with data from 400 customers.
+
+By this point we've now got the version 1 of model.pkl.dvc and insurance.csv.dvc. But we also have to get version one of the actual files model.pkl and insurance.csv, and we do that with dvc checkout. Please notice how when we call dvc checkout, we do not specify a version number because dvc checkout is effectively going to take a look at the corresponding header files. [Video description begins] The following command is added: dvc checkout. [Video description ends] It will check whether the corresponding underlying files exist in the local cache, and if yes, it will just replace the versions in this directory with the ones from the cache.
+
+In our little example so far, because our cache was already populated with version 1 as well as version 2 of these two files, dvc checkout just went ahead and performed the replacement. We'll verify that in a moment. Before that, it's worth mentioning that if the versions that are specified or pointed to in the metafiles are not present in the local dvc cache, then an error will result. In those cases, we need to be running dvc get rather than dvc checkout. We'll get to that command also in a subsequent demo. For now, dvc checkout has done what we required. At this point, we can confirm that we have version 1 of these files. In a Finder window, you can see that insurance.csv is now back to being only 16 KB rather than 56 KB.
+
+[Video description begins] The page titled 'dvc_insurance_charges_prediction' appears. It displays a toolbar at the top. The navigation pane on the left contains 2 sections called Favourites and Tags. The Favourites section offers options such as AirDrop, Recents, Applications, and so on. The Tags section offers several options like Red, Orange, Yellow, Green, and so on. The main pane displays a table with 4 column headers: Name, Date Modified, Size, and Kind. It contains several items such as insurance.csv, insurance.csv.dvc, metrics.json, model.pkl, model.pkl.dvc, train.py, and others. [Video description ends]
+
+And if we open this file, we can scroll down and see that it has only 400 rows.
+
+[Video description begins] A context menu appears with several options like Open, Open With, Move to Bin, Get Info, and so on. The Open With option further contains another drop-down list with options like Numbers (default), Google Chrome, Notes, Sublime Text, and so on. The Numbers (default) option is selected. [Video description ends]
+
+How do we know? Because if you look at the COUNTA towards the bottom of the screen, you can see that that reads 401. So, there's 400 data rows and the one header row. We had to select one of the columns in our data in order to view this output.
+
+[Video description begins] The insurance.csv file is open. There is a toolbar at the top with several options like View, Zoom, Add Category, Pivot Table, Insert, Table, Chart, Text, Shape, and so on. A tab labeled Sheet 1 appears next in green. Below, a rows and columns grid is displayed. The main pane displays a table with the following column headers: age, sex, bmi, children, smoker, region, and charges. It displays numbers and details. A pane appears on the right. It displays 4 tabs at the top: Table, Cell, Text, and Arrange. The Table option is active now. It displays Table Styles, Table Options, Rows, Columns, and so on. [Video description ends]
+
+In any case, now let's also run wc -l on insurance.csv.
+
+[Video description begins] The Terminal window reappears. The following command is entered: wc -l insurance.csv. [Video description ends]
+
+This is another way of ensuring that we do have version 1. This also tells us that there are only 401 lines in our insurance.csv file. At this point, if we use the version of model.pkl in this local directory to perform predictions, do you think we'll see the Test R2_score of 0.85 or of 0.74? Let's find out.
+
+We run python train.py with predict as the input argument and the Test R2_score is 0.74. This is the Test R2_score that we had obtained with the first version of our model, the one which had been trained with 400 rows, and this therefore demonstrates that we've successfully switched to version 1.0 of both the model as well as the insurance.csv data which was used to train the model. You can see just how easy dvc made it for us to switch between versions of our underlying data. Now, let's switch back to version 2.0. Again, remember the sequence, first git checkout and then dvc checkout. So, on screen now we have the git checkout of v2.0. The output tells us the Previous HEAD position as well as the current HEAD position. These are the git commit hashes as well as the associated messages. The HEAD is currently associated with the version, Second model, trained with data from 1338 customers.
+
+[Video description begins] The following commands are added: python train.py predict and git checkout v2.0. [Video description ends] 
+
+The git checkout is done. We have to specify the version tag in the git checkout. Next is the dvc checkout but here we do not need to specify any version tag. We just run dvc checkout and model.pkl and insurance.csv are going to be updated locally.
+
+[Video description begins] The next command reads: dvc checkout. [Video description ends]
+
+Please again remember that dvc checkout will only pick up files from the local cache. If you would like to get them from a remote storage area, then you either need to run dvc get or you run dvc pull and then run dvc checkout. At this point, insurance.csv on our local file system is going to have 1339 rows and we can confirm that by running wc -l on insurance.csv. That's for the 133 data rows and the one header.
+
+[Video description begins] The following command is entered: wc -l insurance.csv. [Video description ends]
+
+This verifies that we are back to version 2.0 of the training data. Let's also verify that we have the latest version of the model.
+
+[Video description begins] The next command reads: python train.py predict. [Video description ends]
+
+If we now run python train.py predict, you can see that the Test R2_score is back to 0.8540. We again have gone back to version 2.0 of model.pkl as well. We've now performed two full workspace checkouts. That is, we updated all of our files in the dvc workspace to specific versions, either version 1.0 or 2.0. Next let's see how we can check out a specific version of a specific file. On screen now you can see that the command we run is git checkout. That's followed by the version that's v1.0. But then there's something new. We specify the name of the metafile insurance.csv.dvc.
+
+When we run this command, we will only get version 1.0 of the training data that's reflected in the message Updated 1 path. However, at this point we've yet to check out the corresponding underlying data, and so we've got to run dvc checkout. And here too, we've got to specify the name of the metafile. Now, this command is slightly counterintuitive because you can see that we've called dvc checkout and then specified insurance.csv.dvc. And you might remember that insurance.csv.dvc is actually not tracked by dvc, it's tracked by git.
+
+[Video description begins] The next command reads: git checkout v1.0 insurance.csv.dvc. [Video description ends]
+
+[Video description begins] The next command reads: dvc checkout insurance.csv.dvc. [Video description ends]
+
+Even so we pass the name of the metafile into dvc checkout, and when we run this command, the version of the underlying data file, insurance.csv in our local directory is going to be updated as well. DVC checkout is going to figure out what version of insurance.csv is pointed to by insurance.csv.dvc, fetch that from the cache and place it in our current directory, overwriting its previous contents.
+
+At this point, if we run wc -l insurance.csv, we can see that this file has 401 line breaks. That's for the header row and the 400 rows of data. We've updated the training data, but we've not updated the model.pkl file and that's why at this point, if we rerun python train.py and pass in predict as the input argument, the Test R2_score that we see is still 0.86.
+
+[Video description begins] The following command is entered: wc -l insurance.csv. [Video description ends]
+
+ [Video description begins] The next command reads: python train.py predict. [Video description ends]
+
+In case you're wondering why it's not 0.854, remember that that previous Test R2_score of 0.854 came when we ran version 2.0 of the model on version 2.0 of the data. Here we are running version 2.0 of the model on version 1.0 of the data, and that gets us to the end of this demo in which we saw how to switch between different versions of files in a DVC workspace.
+
+16. Video: Course Summary (it_mlodvcdj_01_enus_16)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary [Video description ends]
+You have now reached the end of this course, getting started with Data Version Control. We started this course off by exploring DVC, a version control system for machine learning projects. We learnt that there are many parts to a machine learning project, code files, config files, data and model artifacts. We saw how DVC allows us to track multiple versions of ML models and code using metafiles which point to the artifact and data locations on DVC storage.
+
+We learned that DVC is built using Git concepts and fundamentals and we understood how Git works for version control of code and configuration files. Next, we moved on to working hands on with DVC. We installed Git on our local machine and set up a remote repository on GitHub.
+
+We also installed DVC locally, setting the stage for tracking machine learning workflows using DVC. We created and initialized the local repository and configured DVC remote storage on our local machine. We saw how DVC commands could be used to add and track our data. Finally, we explored how to leverage DVC and its integration with Git. We learned how to create an ML model in Python and tracked this using both DVC as well as Git. We saw how DVC created metafiles that point to data and artifacts stored on DVC and committed these metafiles to GitHub.
+
+We tagged the different versions of our model and data using Git tags and used these to access the version that we were interested in working with. In conclusion, you have gained both theoretical insights and practical know how in using DVC and Git. These skills set you up nicely as you move on to getting started with pipelines and DVCLive in the course coming up ahead.
+
+Course File-based Resources
+•	MLOps with Data Version Control: Getting Started
+Topic Asset
+© 2023 Skillsoft Ireland Limited - All rights reserved.

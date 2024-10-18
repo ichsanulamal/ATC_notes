@@ -1,0 +1,924 @@
+MLOps with Data Version Control: Tracking & Serving Models with DVC & MLEM
+Data Version Control (DVC) enables model tracking by versioning machine learning (ML) models alongside their associated data and code, allowing seamless reproducibility of model training and evaluation across different environments and collaborators. MLEM is a tool that easily packages, deploys, and serves ML models. In this course, you will compare ML model performance using DVC. You will create multiple churn-prediction classification models employing various algorithms, including logistic regression, random forests, and XGBoost and you will track metrics, parameters, and artifacts. Then you will leverage the Iterative Studio interface to visually contrast models' metrics and performance graphs and perform comparisons using the command line. Next, you will unlock the potential of hyperparameter tuning with the Optuna framework. You will tune your ML model, compare the outcomes of hyperparameter-tuned models, and select the optimal model for deployment. Finally, you will codify and move your ML model through REST endpoints and Docker-hosted container deployment, solidifying your understanding of serving MLEM models for predictions. This course will equip you with comprehensive knowledge of codifying and serving ML models.
+Table of Contents
+    1. Video: Course Overview (it_mlodvcdj_03_enus_01)
+
+    2. Video: Preprocessing Data for Churn Prediction (it_mlodvcdj_03_enus_02)
+
+    3. Video: Tracking and Comparing Logistic Regression Experiments (it_mlodvcdj_03_enus_03)
+
+    4. Video: Tracking and Comparing Random Forest Experiments (it_mlodvcdj_03_enus_04)
+
+    5. Video: Tracking an XGBoost Experiment (it_mlodvcdj_03_enus_05)
+
+    6. Video: Tracking Artifacts and Registering a Classification Model (it_mlodvcdj_03_enus_06)
+
+    7. Video: Setting up the DVC Project for Hyperparameter Tuning (it_mlodvcdj_03_enus_07)
+
+    8. Video: Performing Hyperparameter Tuning Using Optuna (it_mlodvcdj_03_enus_08)
+
+    9. Video: MLEM (it_mlodvcdj_03_enus_09)
+
+    10. Video: Extracting Model Codification Using MLEM (it_mlodvcdj_03_enus_10)
+
+    11. Video: Using MLEM to Serve Models Locally on FastAPI (it_mlodvcdj_03_enus_11)
+
+    12. Video: Installing and Setting up Docker (it_mlodvcdj_03_enus_12)
+
+    13. Video: Deploying a Model in a Docker Container (it_mlodvcdj_03_enus_13)
+
+    14. Video: Getting Predictions from a Docker Hosted Model (it_mlodvcdj_03_enus_14)
+
+    15. Video: Course Summary (it_mlodvcdj_03_enus_15)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_mlodvcdj_03_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Janani Ravi. [Video description ends]
+Hi, and welcome to this course on tracking & serving models with DVC & MLEM. My name is Janani Ravi, and I’ll be your instructor for today.
+
+DVC enables model tracking by capturing and versioning machine learning models alongside their associated data and code, allowing seamless reproducibility of model training and evaluation across different environments and collaborators.
+
+MLEM is a tool to easily package and deploy and serve machine learning models. It supports a variety of scenarios like real-time serving and batch processing.
+
+In this course, you explore how you can compare machine learning model performance using DVC. You will create multiple churn-prediction classification models employing various algorithms, including logistic regression, random forests, and XGBoost, and you’ll see how you can track metrics, parameters, and artifacts for these models.
+
+You will leverage the Iterative Studio interface to visually contrast models' metrics and performance graphs, and also learn how you can perform comparisons using the command line. Next, you will unlock the potential of hyperparameter tuning with the Optuna framework that is intimately integrated with DVC.
+
+You will tune your machine learning model and compare the outcomes of hyperparameter-tuned models, and select the optimal model for deployment. Finally, you will harness the power of MLEM - By codifying your machine learning model, you will move it to deployment through REST endpoints on your local machine or Docker-hosted containers.
+
+You will deploy your model first to a local REST endpoint via the FastAPI library. Then you will explore Docker-hosted container deployment, solidifying your understanding of serving MLEM models for prediction.
+
+In conclusion, this course will equip you with comprehensive knowledge of codifying and serving machine learning models, providing a robust foundation for seamless deployment.
+
+2. Video: Preprocessing Data for Churn Prediction (it_mlodvcdj_03_enus_02)
+
+During this video, you will learn how to perform data cleaning and preprocessing.
+perform data cleaning and preprocessing
+[Video description begins] Topic title: Preprocessing Data for Churn Prediction. Your host for this session is Janani Ravi. [Video description ends]
+In this demo, we’ll train a classification model for churn predictions for a travel site, so this is travel customer churn prediction. This is going to be a binary classification model in that we'll use the details that we have for different customers to determine whether the customer will churn or not.
+
+We'll train a number of different classification models using different classification algorithms. We’ll track all of these model training runs as experiments on DVC, so we’ll save the details to DVC, and we’ll visualize these details and compare different models using Iterative Studio.
+
+So let’s get started, the setup is the same as what we’ve seen before. [Video description begins] The terminal window displays. [Video description ends] Make sure that you’re within the dvc_venv virtual environment. We'll be running our Notebook in this virtual environment and performing all our operations within this environment.
+
+Create a new directory called dvc_churn_prediction, that’s going to be our project folder, that’s going to be our DVC workspace. [Video description begins] The presenter highlights the workspace command on the terminal window. The command reads: mkdir dvc_churn_prediction [Video description ends]
+
+cd into this directory, this is going to be the current working directory for this entire demo. [Video description begins] She highlights the next set of command on the terminal window. The command reads: cd dvc_churn_prediction [Video description ends]
+
+Behind the scenes, I've already added the data and the Notebook that we're going to be using for this demo. Notice I have a folder called data within which I have the CustomerTravel.csv file, and I have a Notebook called ChurnPrediction.
+
+Our local workspace has been set up successfully now, let’s head over to Git and create a new repository for this new DVC project. Click on the New option here on this page. [Video description begins] The GitHub Dashboard page displays. She selects the New button present on the upper-left corner side of the screen. [Video description ends]
+
+We are logged in to our GitHub account, and let's give our repository a name. Give it the same name as your working directory dvc_churn_prediction. [Video description begins] The Create a new repository page displays, and the presenter types the name in the Repository name field. [Video description ends]
+
+Again, you can choose to make it a Private or Public repository, all of the repositories that I’ve created here are Private. All that’s left to do here is click on this green Create repository button, and a new repository for our new DVC project has been created.
+
+The repository starts off empty in the beginning, but we'll soon be committing changes to this remote repo in no time at all. Now, let’s head over to the Notebook and initialize our local repository in our workspace.
+
+We run !git init to initialize Git, next because this is a DVC project we’re going to run !dvc init, and this will set up all of the files and folders that DVC needs to operate. And of course, we need to configure the user.name and user.email that we'll use for our commits, looneytest, looney.test.001@gmail.com.
+
+!git status shows us that there are three files that are tracked but not committed. Let’s connect our local repository to the remote repository that we are working with !git remote add origin and point to dvc_churn_prediction on your GitHub repo.
+
+We also designate the current branch that we are working on as the main branch. The next step is to configure remote storage for DVC. I create a new directory under my /tmp folder called dvc_storage_cp, this is my remote storage for churn prediction, again it’s on my local machine.
+
+I use !dvc remote add -d to add this with the name localremote, and I run the !dvc remote list command to ensure that the remote storage has been configured successfully. And yes indeed, it has, as you can see here from the results.
+
+This of course, means that our configuration file has been modified. So I’m going to !git add the .dvc/config file so that it’s tracked by Git. And I’m going to call !git commit to commit all of the changes to my local repository, we’ve "Initialized DVC for churn prediction" that’s the commit message.
+
+Let's quickly push this commit to our remote repository so we have the initial setup all synced up with remote !git push -u origin main. Now there's another bit of setup that we need to do. We need to set up an Iterative Studio project head over to Iterative Studio, but first you can confirm that all of the changes are indeed present on GitHub, and you can see that they are.
+
+We’re already logged in to Iterative Studio using our looneytest GitHub account. All we have to do here is add a new project, click on the Add a project button and this will display all of the GitHub repositories that you have available connected to this account. [Video description begins] The Add a project page displays. [Video description ends]
+
+Now, dvc_churn_prediction this is the repository that we are working with. Go ahead and click on Connect. There is no sub part within this project directory, we can leave that empty. Click on Create Project, and we have our Iterative Studio project set up as well.
+
+In order for DVC to talk to Iterative Studio, we need to configure the Iterative Studio token on DVC. [Video description begins] She selects the profile photo on the top right corner of the page and selects the profile option from the dropdown. The profile page displays, and then she scrolls to the bottom of the webpage to the Studio Access Token field. [Video description ends]
+
+The Studio Access Token is available via our profile right here, you can copy this over, I already have it copied over. And I’m now going to head over to Jupyter Notebook and configure this so that DVC uses the studio token to access Iterative Studio.
+
+Now that we have our project set up, we can turn our attention to the code. We'll be training a classification model using scikit-learn, and we'll start off with a logistic regression model and then move on to other classifiers, such as random forest and then XGBoost.
+
+Go ahead and set up all of the imports for the packages that you need to preprocess data and train our classification model. Next, let’s read in the data that we’re going to be using the travel_churn_data. The file is CustomerTravel.csv, and it’s already present in the data folder.
+
+Now, if you look at this dataset, you see that we have a number of bits of information about different travelers, and the target variable is what we’re trying to predict. [Video description begins] She highlights the output: customer travel table with different features. [Video description ends]
+
+0 for when the customer did not churn, and 1 when the customer actually did churn. This dataset is not very large, if you take a look at the shape of this data, we have fewer than 1000 records.
+
+Now, this of course, means that this wouldn’t be a great model for the real-world, but for the purposes of our demo, where we’re trying to understand how DVC helps us track, log, and manage our ML workflow, this is sufficient, and it will actually serve our purpose quite well.
+
+Let’s take a look at the columns in this data, we’ve already got an overview of this dataset, so the columns is just information we’ve seen before. All of the columns except for the Target column are going to be features that we use to train our model. We have some numeric columns, such as age, and many categorical columns.
+
+Now, it turns out that this data has a large number of duplicates, so I'm going to go ahead and drop all of the duplicate records. And we are left with only 447 records, a small dataset, but sufficient for the purposes of our demo.
+
+Another thing to note, and this is especially important for classification models, is that this dataset is rather skewed. If you look at the value_counts based on the target variable, you can see that most customers 325 out of the 447 did not churn, and only a few customers actually did churn.
+
+We have far fewer instances of customers who did churn than those who did not. This is something to keep in mind as we train our classification model. The next step is for us to preprocess our data, and this involves converting our categorical features to numeric values.
+
+Let’s examine this AnnualIncomeClass categorical variable, and you can see that there are three possible classes or categories: Low Income, Middle Income, and High Income. This is clearly an ordinal categorical variable, that is, there is an inherent order in the categories, Low Income comes first, then Middle Income, then High Income.
+
+I use label mapping to actually map these two categorical values. We’ll map the category Low Income to the integer 0, Middle Income to 1, and High Income to 2. So, there is an inherent order to the integers representing these categories.
+
+On line 3, I replaced the AnnualIncomeClass categories with these integer mappings that I’ve specified. Next, we’ll preprocess the remaining categorical and numeric features. The remaining categorical_features are all binary categories FrequentFlyer, AccountSyncToSocialMedia, and BookedHotelOrNot.
+
+We instantiate a Pipeline serving as our categorical_transformer, where we use one hot encoding to one hot encode these binary categories. Our ColumnTransformer performs preprocessing on the categorical features as well as the numeric features.
+
+You can see on line 11 the categorical_transformer performs one hot encoding on the categorical_features that we have specified. And the remainder of the numeric features are all standard scale, this is specified on line 12.
+
+On line 15, we set up the X variables for our ML model, that is, all of the columns are features except for Target. Target is what we are trying to predict, and that’s what I set as my y variable on line 17.
+
+And on line 21, we use train_test_split to split our data so that we have 80% to train our model and 20% to evaluate our model. With our data preprocessed and set up, we can track metrics and params for the different classification models using DVC and compare these on Iterative Studio.
+
+3. Video: Tracking and Comparing Logistic Regression Experiments (it_mlodvcdj_03_enus_03)
+
+In this video, find out how to compare logistic regression models.
+compare logistic regression models
+[Video description begins] Topic title: Tracking and Comparing Logistic Regression Experiments. Your host for this session is Janani Ravi. [Video description ends]
+The first model that we train and track using DVCLive is going to be a logistic regression model. And here is the data for actually training that model. [Video description begins] The Jupyter Notebook webpage with ChurnPrediction.pynb file displays. [Video description ends]
+
+Make sure that you import Live from dvclive. You’re going to be using dvclive to automatically track metrics, params, and data artifacts of our model and also track these as an experiment and connect to Iterative Studio. [Video description begins] The presenter highlights the code on line 1. The code in line 1 reads: from dvclive import Live [Video description ends]
+
+Now, this is going to be a LogisticRegression model, I instantiate the model on line 6, and set up a Pipeline on line 8. The Pipeline will preprocess the data using the preprocessing steps that we saw in the previous video, and then fit a logistic regression model as our classifier at the end of preprocessing.
+
+We access the model_params on line 10, and then train the model by calling pipe_lr.fit on line 12. We get predictions from our model on line 14, and on line 15 I also access the prediction probabilities at the output of this model.
+
+The logistic regression classification model outputs probability scores for each class or category that a particular record could belong to. So there’ll be a probability score for churn equal to yes, and one for churn equal to no.
+
+These are the probabilities that we access by invoking predict_proba. Then we compute a number of metrics for this model on lines 17 through 22. This includes the accuracy_score on the training data, on the test data, the precision, and recall_scores of the model, the f1_score that gives us the harmonic mean of the precision and recall, and also the area under the curve, on line 22.
+
+I set up the metrics that we’ve computed in a dictionary format, in the metrics dictionary on lines 24 through 31. Now that we have a trained model, let’s track the metrics and parameters of this model using DVCLive. I instantiate a Live instance on lines 33 through 36.
+
+Notice that I specify save_dvc_exp = True, so that this will be tracked as a DVC experiment and will be available for us to view in Iterative Studio. Note that I haven't specified a directory for where the experiment files should be generated.
+
+They will be placed by default in a dvclive subfolder under this current project. Now notice that I only log parameters, metrics, and plots for this model. I don’t log any artifacts, neither the data nor the serialized model.
+
+On line 37, I call live.log_params that accepts a dictionary of parameters to log. On lines 39 through 44, I call live.log_metric to log out the individual metrics, I can also log these out as a dictionary if I want to.
+
+And finally, I use live.log_sklearn_plot that allows me to log a confusion_matrix of the predictions on the test data. And this will be logged out to a cm.json file. [Video description begins] She explains the code on line 46. The code in line 46 reads: live.log_sklearn_plot('confusion_matrix', y_test, predictions, name = 'cm.json') [Video description ends]
+
+Go ahead and execute this cell that will train the model and track it as an experiment in DVC. DVCLive would have logged the details of the experiment locally, you should find a dvclive folder in your current working directory.
+
+Let's take a look at the files that we have here in this folder. [Video description begins] The sublime text tool displays. The subfolders of the dvclive folder are displayed in the navigation bar on the left. [Video description ends] The first file is of course the dvc.yaml file, which tracks all of the different configurations and artifacts for our ML workflow.
+
+The section for params tells us that our parameters are tracked in params.yaml. Under metrics, we see metrics are present in metrics.json. And then we have the plots section. These are the details that we logged using DVCLive, we did not log any artifacts for our ML workflow.
+
+Observe that we have two kinds of plots, plots/metrics with the usual metrics that DVC tracks, the metrics that we logged out. And then we have plots/sklearn/cm.json with our Confusion Matrix. Here is metrics.json with all of the metrics that we tracked for this model.
+
+You can see that this model has an accuracy_score of 0.73, but the recall_score is pretty poor, just 0.33, and the f1_score is just 0.4, so it’s not really a great model. And then here are the params for the default logistic regression model in params.yaml.
+
+Let's head back to our terminal window to see the list of experiments that we currently have. This will be dvc exp list. We’ve just run a single experiment so far, the one with ID adult-vlei. The details of this experiment, the metrics, and parameters will be available locally.
+
+You can run dvc exp show in order to actually view these details. You get this nicely formatted output, and you can actually scroll using your left and right keys to view the full output. However, we won’t do that, we’ll actually view this details in Iterative Studio.
+
+Copy over the experiment ID and then call dvc exp push and specify adult-vlei as the experiment ID. Your experiment ID will of course be different. You'll, of course need to authenticate yourself with your GitHub credentials in order to push the details of the experiment to DVC.
+
+Remember, this is a dvc push and not a git push. You can actually copy over the URL for the project associated with this experiment, and let’s view this in a browser. [Video description begins] The Iterative Studio page displays. [Video description ends]
+
+And here is our adult-vlei experiment, AUC_score of 0.75, and that really poor recall_score of 0.33. We only logged metrics and params, so if you scroll over to the right, you should see the parameters of the model.
+
+Now we had also logged a custom plot, so let’s select this experiment and click on the little plot icon next to the experiment. And this will take us to the Plots page. Now the plot page is not that interesting, we just have all of these plots, which have a single point representing the scores that we computed on our model.
+
+And at the very bottom, we have the Confusion Matrix that we logged out. The Confusion Matrix, as you know, is just a grid of predicted values from the model versus actual values in the test data. And you can hover over the individual grid cells to view the actual results.
+
+There were 8 records of customers churning that were accurately predicted by the model. And here you can see there were 8 records where our model got things wrong. [Video description begins] She points towards the bottom-left grid cell of the confusion matrix. [Video description ends]
+
+The customer did not churn, but our model predicted that they did. An important reason that this model isn't a great one is because we are working on a skewed dataset, we have far fewer records where customers have churned as compared to when they have not. [Video description begins] The Jupyter Notebook webpage with ChurnPrediction.pynb file displays. [Video description ends]
+
+Now, this is something that we can mitigate by configuring our logistic regression model with an input parameter. I've added in some new code here, and on line 1, you can see I instantiate the LogisticRegression model by setting class_weight = 'balanced'.
+
+Working with imbalanced datasets can lead to biased models, setting class_weight = 'balanced' is a technique used to mitigate this issue. When you set this parameter, the algorithm automatically adjusts the weights of classes inversely proportional to their frequencies.
+
+The algorithm will give a higher weight to the minority class, that is where travelers actually churned, and will give a lower weight to the majority class during the training process. Overall, leading to a less biased model and a better model.
+
+The rest of the code on lines 1 through 26 is identical to our previous training of the logistic regression model, nothing to explain there. And here below, on lines 28 through 41, we use DVCLive to track this new model as an experiment.
+
+Note that since I don’t specify an explicit directory for DVCLive to store the experiment results, it will actually save it out to the dvclive folder. It will replace the files that we had for the previous experiment. But don't worry, your previous experiment details are not lost because we’ve pushed them to DVC, DVC is tracking them.
+
+Observe that the experiment message is a little different, I’ve updated it to include that we’re using balanced weights. [Video description begins] She highlights the code on line 30. The code in line 30 reads: exp_message = 'logistic regression balanced weight churn classification' [Video description ends]
+
+And again, we log params, metrics, and the sklearn_plot, we don’t log any artifacts, we’ll get to that in a bit. Go ahead and train this model and generate the experiment files for this model. We've trained two different models, so we have two experiments.
+
+If you run dvc exp list on the terminal window, you should see the experiment IDs of the two different experiments, kaput-awns, that seems to be the new one. The experiment metrics and params have been logged locally, so if you run dvc exp show, you should see the details of the two experiment and be able to compare them side-by-side.
+
+Observe that the test accuracy of the kaput-awns experiment was 0.72, which is a little lower than the 0.73 we got for the adult-vlei experiment. Also observe that the metrics associated with the workspace row correspond to the last experiment that was run.
+
+That is the one with balanced weights. It's much easier to observe metrics and parameter details on Iterative Studio. So I’m going to run dvc exp push and push the experiment files for the kaput-awns experiment to DVC, and thus, they’ll be available on Iterative Studio.
+
+Let’s head over to Iterative Studio, and there we see our new experiment kaput-awns, along with the metrics and parameters that correspond to that experiment. Since both experiments have been logged to the dvclive folder, we can compare the metrics and params head-on.
+
+Observe that the recall_score with balanced weights is 0.583, which is far better than the 0.33 that we had earlier. You can actually compare the metrics and params of the two experiments, and see how they differ.
+
+Select both of the experiments and click on the little icon up top, that is the comparison icon. [Video description begins] The Changes screen displays on the right side of the screen. [Video description ends]
+
+And here, you get a nice side-by-side view of all of the metrics and parameters that we tracked, and you can see how they are different. Observe the difference in the AUC and recall scores for the two models.
+
+Observe the difference in the parameter class_weight. You can also compare the plots from these two experiments side-by-side. Select the plots for both of these experiments, and once you have both selected, you’ll find in the plots icon up top, you’ll see a number 2.
+
+This is an indication that you're looking at the plots for two separate experiments, and here are the Plots for both experiments. Now I'm going to scroll to the very bottom, and we'll look at the Confusion Matrix. You can see the subtle difference in the shading of the grid cells for the two confusion matrices. You can hover over the individual grid cells to get more information.
+
+4. Video: Tracking and Comparing Random Forest Experiments (it_mlodvcdj_03_enus_04)
+
+Discover how to compare random forest models.
+compare random forest models
+[Video description begins] Topic title: Tracking and Comparing Random Forest Experiments. Your host for this session is Janani Ravi. [Video description ends]
+Now, I must say that I'm not super satisfied with the classification models that we trained using logistic regressions. [Video description begins] The Jupyter Notebook webpage with ChurnPrediction.pynb file displays. [Video description ends]
+
+Our experiments haven't been great so far. Let's now train a random forest classifier. Now we already have the preprocessor and everything setup, which means the code here is very similar to the code that we saw for logistic regression with just a few changes that I'll point out.
+
+We’ve instantiated the random forest classification model on line 2, and setup a Pipeline to preprocess our data, and then fit the classifier on line 4. We access the model_params on line 6, train the model on line 8.
+
+Get predictions and prediction probabilities from the model on lines 10 and 11. We compute various metrics on the model on lines 13 through 18. And of course, we want to track the parameters and metrics for this model using DVCLive.
+
+We instantiate a Live object on lines 29 through 32. save_dvc_exp is set to True, so that Live logs this as an experiment, and sets it up on Iterative Studio. Again, since I haven’t specified a directory, DVCLive will actually log out the experiment files to the dvclive folder, so it will overwrite what we have there previously.
+
+But because we've pushed all previous experiments to DVC, our experiment details are still available with DVC and we can view them on Iterative Studio.
+
+Once again, I log parameters, metrics, and the sklearn plot, I do not log any artifacts, neither the data nor the serialized model. [Video description begins] She explains the code from lines 33 through 42. The code on line 33 reads: live.log_params(model_params); line 34 reads: null; line 35 reads: live.log_metric('Train_accuracy_score',train_accuracy_score); line 36 reads: live.log_metric('Test_accuracy_score',test_accuracy_score); line 37 reads: live.log_metric('Test_precision_score', test_precision_score); line 38 reads: live.log_metric('Test_recall_score', test_recall_score); line 39 reads: live.log_metric('Test_f1_score', test_f1_score); line 40 reads: live.log_metric( 'AUC_score', auc_score); line 41 reads: null; line 42 reads: live.log_sklearn_plot('confusion_matrix' y_test, predictions, name = 'cm.json') [Video description ends]
+
+Let’s hit Shift+Enter, train the model and log metrics and params with DVCLive. [Video description begins] The terminal window displays [Video description ends] Now that we have one more experiment that we’ve run dvc exp show to show us three experiments available in our current workspace.
+
+The new experiment for the random forest model is called mushy-yard. Now notice something, the Train_accuracy_score for this experiment is 0.96078, but the Test_accuracy_score is just 0.73. The random forest model hasn't really done that well on our data.
+
+Now, one reason for that might be that we are still working on an imbalanced dataset. We haven’t done anything to mitigate that imbalance. [Video description begins] The Jupyter Notebook webpage with ChurnPrediction.pynb file displays. [Video description ends]
+
+Let’s fix that, I’m going to train a random forest model once again, but this time I’m going to set class_weight to be equal to balanced. You can see this change when I instantiate the RandomForestClassifier on line 3, class_weight = 'balanced'. [Video description begins] Line 3 reads: rf_model = RandomForestClassifier(class_weight = 'balanced') [Video description ends]
+
+Now the rest of the code in this code cell is identical to what we had before. There’s one other change here in the experiment message on line 32, I specify that this is a 'Random forest balanced weight churn classification' model.
+
+I like to keep the messages descriptive because it helps me identify the model on Iterative Studio. Now, once the training and logging with DVCLive is done, let's switch over to the terminal window. Once again, we’ll run dvc exp show, and now we have four experiments in our workspace.
+
+The new experiment with our balanced class_weights is the milky-hose experiment. Your experiment ID will be different remember, these are randomly generated. Now, what struck me was, really having balanced class_weights did not improve the performance of the model much.
+
+The Train_accuracy_score for milky-hose and mushy-yard are exactly the same, and the Test_accuracy_score for milky-hose has actually fallen, it’s 0.7222. Let's push the details of both of these random forest experiments to DVC so that we can compare them on Iterative Studio. [Video description begins] The terminal window displays. [Video description ends] 
+
+So dvc exp push origin milky-hose will push our balanced weight, random forest classifier. And once that push is complete, go ahead and push the original random forest experiment as well dvc exp push origin mushy-yard. [Video description begins] Code reads: dvc exp push origin mushy-yard [Video description ends]
+
+So this will push the random forest classifier with no balanced weights for classes. The changes that we’ve made to DVC will have been picked up by Iterative Studio, go back and update the project. [Video description begins] The Iterative Studio webpage displays. She selects the Update project button in the pop-up message on top of the webpage. [Video description ends]
+
+And there you see, both milky-hose and mushy-yard are available here. Now let's compare the metrics for both of these models. Select both of these experiments, and let's use the compare feature that's available here. [Video description begins] She selects the Compare selected commits button present on the taskbar. [Video description ends]
+
+And here you see a nice side-by-side comparison. [Video description begins] The Changes screen displays on the right side of the screen. [Video description ends] You can see that the AUC_scores are almost the same, the Test_accuracy_scores are almost the same.
+
+The recall_scores are a little different, the recall_score improved to 0.5 from about 0.45. For our class_weight is equal to balanced model, but overall, even the f1_score is kind of disappointing just 0.489. Clearly we need to run more experiments with different models till we get one that is reasonably satisfactory.
+
+5. Video: Tracking an XGBoost Experiment (it_mlodvcdj_03_enus_05)
+
+In this video, you will learn how to train an XGBoost model and view the performance.
+train an XGBoost model and view the performance
+[Video description begins] Topic title: Tracking an XGBoost Experiment. Your host for this session is Janani Ravi. [Video description ends]
+So far we've run a number of different experiments and trained different classifiers, but we haven't been satisfied with the metrics of any of these classifiers. So though we've pushed all of the experiment files to DVC, we haven't committed those files to our GitHub remote repository. [Video description begins] The Jupyter Notebook webpage with ChurnPrediction.pynb file displays. [Video description ends]
+
+Our experimentation process still continues, we still need to find the best ML model for classifying the data that we have. Which is why the next model that we're going to try is going to be an XGBoost classifier.
+
+And for that you need the XGBoost library, so go ahead and pip install that library. [Video description begins] The presenter highlights the code on line 1. The code in line 1 reads: pip install xgboost [Video description ends]
+
+XGBoost is an open source high performance library designed to implement gradient boosting algorithms. Gradient boosting is an ensemble learning technique just like random forest. Now in random forest, the individual decision trees that make up the ensemble are applied in parallel on different subsets of the data to train a number of different models.
+
+With gradient boosting models, you actually apply the individual decision trees that make up the model in sequence on your data, so that each decision tree learns from the mistakes of the previous one, in the sequence.
+
+Each learner in the sequence corrects the errors or mistakes made by the previous learner. Now, this model I know is going to be a good one, I've run this experiment before, which is why I’m going to save artifacts for this model, before I push to DVC.
+
+We’ll serialize the model using joblib, which is why I have the from joblib import dump import statement on line 2. Now the model that I’ve chosen is the XGBClassifier from the scikit-learn library, I instantiate the model on line 6.
+
+Now we use all of the default values for this XGBoost Classifier, except for one parameter that we specify scale _pos_weight=2. Now this parameter helps address imbalances in your classes in the training data. It does so by assigning a higher weight to the positive class during the training process.
+
+When we set scale_pos_weight to a value > 1 that indicates that the positive class is underrepresented relative to the negative class. Setting a scale_pos_weight value of 2 means that the positive class that is travelers who have churned is about half the size of the negative class, and XGBoost will assign a higher weight to the positive class during the training to balance the impact of the two classes.
+
+We set up the Pipeline with the preprocessed data and the XGBoost model as a classifier on line 8. Train the model on line 9. Access the model_params on line 11.
+
+Now we need to create a directory where we'll save the serialized model artifact, which is why I call os.makedirs and create a model_dir under the current working directory. exist_ok = True, which means is the directory already exists, no matter do not fail.
+
+Next, we set up a path to the model using os.path.join so the model will be in the model_dir and the serialized file will be called churn-prediction.joblib. I then call dump on the train pipeline on line 19 to serialize and store the model in the directory that we've just created.
+
+Next on lines 21 and 22, we use the models for predictions, including computing the prediction probabilities, and then we compute metrics on the model on lines 24 through 29. Now let’s use DVCLive to track this experiment, we instantiate a Live object on lines 40 through 43. save_dvc_exp is set to True.
+
+Now I’m going to log all of the model’s parameters using live.log_params. [Video description begins] She highlights the code on line 44. The code in line 44 reads: live.log_params(model_params) [Video description ends]
+
+In addition, I also log the data as an artifact, you can see this on lines 46 through 52. Now the data is present in the data subfolder data/Customertravel.csv. I’ve set the type of the artifact to be dataset so that DVC recognizes it as such. The name of the artifact is ‘customertravel’, description: Customer travel churn prediction.
+
+And then, we’ve added the labels 'classification' and 'churn'. On lines 54 through 59, we log out all of the metrics for this model. On line 61, we log the confusion_matrix using log_sklearn_plot, and on line 63, we log the model itself as an artifact.
+
+We specify the model_path, type = model will allow DVC to recognize this as a model and this model will automatically be available in the studios model registry. This means once we commit the changes related to this experiment, we should be able to register that model.
+
+Now go ahead and run this code so that DVC tracks our XGBoost experiment. This new experiment will log all of the records in the dvclive folder. [Video description begins] The terminal window displays. [Video description ends] Let’s take a look at the dvc.yaml file.
+
+In addition to parameters, metrics, and plots, we have the artifacts section and we have two artifacts in there, the customertravel artifact of type dataset, and then the churn-prediction artifact of type model. The data is in the data subfolder, Customertravel.csv and the model is in the model_dir subfolder churn-prediction.joblib.
+
+This is now our fifth experiment, so if you run dvc exp show the experiment details should be available locally, and you can see the new experiment up top fleet-nuke. This experiment already looks a little promising, notice the Test_accuracy_score of 0.77, which is better than all of the previous accuracies that we've computed on other models. [Video description begins] Some of the results are displayed in a table, with the following columns: Experiment (workspace main) and an example reads 54f9c4a (fleet-nuke). created at 6.58pm; Train_accuracy_score: 0.96078; Test accuracy score: 0.77778 and test precision score: 0.5625. [Video description ends]
+
+The next step is to push all of the experiment details to DVC, and I’ll do that using the dvc exp push origin command. We’ll push the fleet-nuke experiment. This will also push the data tracked by this experiment as well as the model tracked by this experiment to DVC.
+
+The experiment details that we’ve pushed to DVC should have been picked up by Iterative Studio. Update the project here on Iterative Studio, and you can see that the metrics for the fleet-nuke experiment are available right here, that is our XGBoost model. [Video description begins] The Iterative Studio webpage displays. She selects the Update project button in the pop-up message on top of the webpage. [Video description ends]
+
+Quick glance at the metrics shows you that this is the best performing model so far. Look at the recall_score of this model, it’s 0.75. This is clearly the best model. This is the model that we should register and use for predictions.
+
+Now, because we've logged both the data and the model as artifacts, if you scroll over to the right, you should see under dvclive our churn-prediction model. The + icon indicates that we can register that model once we’ve committed our files to GitHub. We have the data and model_dir under which we have the data and the serialized model respectively.
+
+Let’s view the Confusion Matrix for this model under Plots, we need to deselect the plots for the previous experiments that we had viewed and select the fleet-nuke experiment for the XGBoost model. [Video description begins] She deselects the buttons against the experiments on the left side of the screen and selects only the fleet-nuke experiment. [Video description ends]
+
+Click on the plot icon and this will take us straight to the Plots page. Let’s go straight down to the Confusion Matrix and the colors of the grid show you that this model is much better. Let’s hover over the off diagonal cells, this is what the model got wrong.
+
+So there were 6 records where the model predicted no churn, but the customers actually churned, that is the top right cell. These are the false negatives from our model. And the bottom left cell also shows us what the model got wrong. The model thought the customer churned, but the customer did not actually churn in 14 instances, these are the false positives.
+
+6. Video: Tracking Artifacts and Registering a Classification Model (it_mlodvcdj_03_enus_06)
+
+Find out how to register a classification model with the Iterative Studio registry.
+register a classification model with the Iterative Studio registry
+[Video description begins] Topic title: Tracking Artifacts and Registering a Classification Model. Your host for this session is Janani Ravi. [Video description ends]
+Here we are back to the main page of our project, and at this point we are quite happy with this XGBoost model, it's the best model so far with the best recall score. [Video description begins] The Iterative Studio webpage lists all the experiments, and the presenter highlights the fleet-nuke experiment. [Video description ends]
+
+This is the model that I want to register with the model registry. But first we need to commit all of our experiment files to our remote repository GitHub, and we can do this from right within Iterative Studio.
+
+Click on the three dots next to the experiment, and select the option to Create branch/pull request from the experiment. This will bring up a dialog that will allow us to commit all of the experiment files to a different branch, not to the main branch of our GitHub repo. The branch is called fleet-nuke-branch, that is the experiment ID followed by the -branch suffix.
+
+Once DVCs experiment files have been committed to this branch, I also want to create a pull request after the branch has been created to merge these files with our main branch.
+
+We don’t want to delete the experiment after creating the branch, we want it to stick around, go ahead and create this branch. Now it will take a few moments till the GitHub remote repository is updated.
+
+Now in a few moments you should be able to head over to your GitHub repo to see whether the changes are available there. [Video description begins] The GitHub webpage displays the dvc_churn_prediction repository with its related subfolders. [Video description ends]
+
+You’ll have to refresh your page because I don’t think GitHub auto refreshes, and you can see we now have 2 branches instead of a single main branch. If you click through here, you will find our second branch, the fleet-nuke-branch that we just committed through Iterative Studio. [Video description begins] She selects the fleet-nuke-branch under the active branches field, and then the lists of all the subfolders are displayed on the screen. [Video description ends]
+
+You can see here that all of the files and folders that we tracked in our experiment have been pushed to our GitHub remote. There is the .dvc folder which has been updated, the data folder that contains our data metafiles, the dvclive folder that contains our experiment metafiles, the model_dir folder that contains our model metafiles.
+
+Let's take a quick look at some of these files, so that we can verify that the contents are what we expect them to be. Starting with the config file for DVC, here is where we specify the remote storage for DVC, a folder on our local machine. [Video description begins] She selects the tmp folder and then chooses the config file. The details of the code are displayed on the main content pane. [Video description ends]
+
+Under data, we have the metafile tracking the data that we use to train our model Customertravel.csv.dvc. You can see the hash for the dataset and the path to the data right here. Under dvclive, I have the dvc.yaml file, this is a file that we looked at on our local machine containing params, metrics, plots, and of course the artifacts that we track with DVC.
+
+No surprises there, we have the metrics for the XGBoost model that we just trained. Then we of course have the parameters of the XGBoost model. Everything looks good so far. Maybe one last look at the model_dir to make sure that the model metafiles are set up correctly.
+
+Here is the metafile tracking our model on DVC, we have the hash for the model, the path to the model, again, everything is as expected. Our changes are available here on this branch they all look good, which means we are ready to actually merge these changes with the main branch, and there is a Pull requests for exactly that, we have specified this in the dialog.
+
+Now click through to this Pull requests, we know that the changes should not cause any conflicts and if you scroll down, you can see that the branch has no conflicts with the base branch. [Video description begins] She selects the Pull requests button present under the repository name. [Video description ends]
+
+Go ahead and click on the button to merge this pull request. You’ll be asked to confirm the merge, you can do that safely and once that’s done, all of the changes committed to the branch are now available in our main branch.
+
+And you can check that by heading over to the main branch and taking a quick look. At this point, since all of the experiment files have been committed to our remote repository, we should be able to register this model using DVC studio. [Video description begins] The Iterative Studio webpage displays the list of experiments. [Video description ends]
+
+So let’s head back to the main projects page, and here we’ll click on Models. [Video description begins] She selects the loonytest title present on the top left side of the screen. She then selects the Models button in the navigation bar. [Video description ends]
+
+Now because we logged the artifact with type equal to model, the churn-prediction model should be present here in the Model registry, and you can see it here at the bottom. Well, at this point, we are confident that model registration should work because we already have committed all of the experiment files to Git.
+
+Click on Register + model, here you’ll see that the Git Commit hash has been automatically picked up by Iterative Studio. [Video description begins] The Register a new version dialog box displays. [Video description ends]
+
+Now the Version name is v1.0.0, I’m happy with that, let's go ahead and register this model. [Video description begins] She selects the Register version button present on the bottom left side of the dialog box. [Video description ends] Registering the model takes about a minute or so, but soon you should see v1.0.0 successfully registered.
+
+Once that's done, you can click on the three dots next to the model and let's take a look at the model page. [Video description begins] She selects the three-dot button present next to the model and then selects the View model page from the drop-down options. [Video description ends]
+
+The model page is where we get all of the details of the model. We haven't assigned this model a stage yet, but if you scroll down, you can see the Path to the model file and the DVC get command that you can use to access the model from your project.
+
+The Metrics associated with this model are also available to view here on this page. As are the parameters used to train the model. And if you scroll further down, you'll see all of the plots that we plotted for this experiment, including the Confusion Matrix and all of the plots auto-generated by DVC tracking the model metrics.
+
+Now let's scroll back somewhere to the center of this page where we have the dvc get command that we can use to retrieve this model in our project and then use the serialized model to make predictions.
+
+Copy over this command and let's switch over to the terminal window and create a new subfolder called loaded_model, and let’s cd into that subfolder. Now, the model is not present here in this loaded_model subfolder, we’ll get it using the dvc get command.
+
+This dvc get command will look at the metafile associated with the model that we have committed to Git, and then use that to retrieve the model to this local folder. Now this retrieval is possible only if you have access to the remote storage on DVC, where the model artifacts have been stored.
+
+Now the remote storage happens to be in a temp folder on our local directory, we do have access to that, and that’s why this dvc get will work. Once the dvc get command is complete, let’s run an ls -l, and you should see the joblib file for the model here in the current working directory loaded_model.
+
+Now, let’s switch over to our Jupyter Notebook, and use this loaded_model to make predictions. We’ll use the joblib load command to deserialize and load the model and store it in the loaded_model variable. [Video description begins] She highlights the code on In [31] line 3. The code on line 3 reads: loaded_model = load('loaded_model/churn-prediction.joblib') [Video description ends]
+
+We’ll now make predictions from the loaded_model variable and store it in predictions_loaded. [Video description begins] She highlights the code on In [32] line 1. The code on line 1 reads: predictions_loaded = loaded_model.predict(X_test) [Video description ends]
+
+And let's compare these with the original predictions that are in the predictions variable. [Video description begins] She highlights the code on In [33] lines 1 through 3. The code on line 1 reads: predictions_orginal = predictions; Line 2 reads: null; Line 3 reads: predictions_original [Video description ends]
+
+So here are the original predictions, and we’ll use an assert statement to check that these predictions are the same. They should be the same because the loaded model should be the same as the model that we serialized out to disk, and assert through no error, which means everything looks good.
+
+Now we could just end this demo here we are at a nice logical break, but I want to show you one more thing, and that is the DVC Python API. So far we've been working with DVC using the command line, but DVC also gives us a Python API that we can use to programmatically access details such as all of the experiments in DVC.
+
+I import dvc.api, and I call dvc.api.exp_show, and this will return a list of all of the experiments. And if you list out these experiments, you can see that we have a list of JSON objects where each JSON object represents the details of an experiment that we've run.
+
+There should be five different JSON objects here, corresponding to our five experiments. You can also access the metrics in the current workspace by calling dvc.api.metrics_show, and you can see the metrics for the XGBoost model that we've trained, the last model that we trained in this workspace.
+
+And here is the Python API to view the parameters associated with our last trained model dvc.api.params_show() will give us the params of the XGBoost model, the last experiment that we ran in our current workspace.
+
+7. Video: Setting up the DVC Project for Hyperparameter Tuning (it_mlodvcdj_03_enus_07)
+
+During this video, discover how to set up a DVC project for hyperparameter tuning.
+set up a DVC project for hyperparameter tuning
+[Video description begins] Topic title: Setting up the DVC Project for Hyperparameter Tuning. Your host for this session is Janani Ravi. [Video description ends]
+In this demo, we’ll once again train a classification model. We'll use the same customer travel churn prediction dataset, but this time we'll see how we can perform hyperparameter tuning using the Optuna framework.
+
+The Optuna framework will allow us to define the objective function that we want to optimize during the hyperparameter tuning process, and also set up the search space for tuning our model.
+
+The Optuna framework is integrated with DVCLive, which means that all of our models trials that we run will be tracked using DVC experiments. There’s one little detail that you ought to be aware of when we’re working with the Optuna framework.
+
+At the time of this recording, I found that I was unable to install Optuna successfully in a virtual environment. If you notice the prompt of my terminal window, I’m in my base environment and not in the DVC virtual environment.
+
+At the time of this recording, Optuna uses a deprecated way of calling one of its dependencies, a dependency called greenlet. Installing Optuna does not seem to work in a virtual environment, but does work in the base environment, so the base environment is what we’ll use.
+
+Now let’s set up a project for hyperparameter tuning dvc_churn_prediction_hyperparameters is a directory that I’ve created, I’m going to cd into this directory, this is going to be the working directory for this project.
+
+I run ls -l behind the scenes here, I've set up the data folder with my churn prediction data and the Python Notebook where we will be writing code.
+
+Next step set up a remote repository on GitHub, click on new repository, I’m going to call this the same as my local directory name dvc_churn_prediction_hyperparameters. [Video description begins] The GitHub Dashboard page displays. The presenter selects the New button present on the top-left corner side of the screen. The Create a new repository page displays, and then she types the name in the Repository name field. [Video description ends]
+
+Go ahead and create this repository, it’s going to be empty beforehand, and it’s going to be a private repository, but we'll soon be committing changes here. [Video description begins] In the Create a new repository page, she selects the Private radio button and then selects the Create repository button present at the bottom right of the screen. [Video description ends]
+
+I'll now head over to my churn prediction hyperparameter tuning and model serving Notebook. Because I'm working in the base environment, I need to pip install dvc as well as dvclive. These libraries were only present in the virtual environment, which means I need to install these in the base environment as well.
+
+Well, not ideal, but we have to do with what works. [Video description begins] She highlights the code on In [*] line 1. The code on line 1 reads: !pip install dvclive [Video description ends] Next, we follow the steps that we’ve seen in earlier demos to set up our DVC project !git init !dvc init to initialize both.
+
+Next of course, we configure the user.name and user.email for our commits, and we run !git status to see the files that are being tracked by Git. You can see the initial DVC files in there. Then of course, we have to set up our remote repository, which we do by calling !git remote add, we rename our branch to main as well.
+
+Once again, the DVC remote storage that we'll use will be on our local machine. I create a new directory under temp called dvc_storage_cphytuning. I call !dvc remote add -d to add this as my default remote storage for DVC. I call !dvc remote list to confirm that this has been added.
+
+I add the .dvc/config file to be tracked by Git, and I print out the status of Git. So you can see that all of these operations ran through successfully.
+
+The next step is for us to commit the initialization of this project to the local repository and also push it through to remote, and this is successful as well. [Video description begins] She highlights the code on In [7] lines 1 through 3. The code on line 1 reads: !git commit -m "Initialized DVC for churn prediction hyperparameter tuning"; Line 2 reads: !git push -u origin main; Line 3 reads: !git log [Video description ends]
+
+You can quickly head over to GitHub, and make sure that the initial project setup has been committed successfully. And yes, indeed it has.
+
+One more bit of basic setup, we need to add this repository as a project on Iterative Studio, we’ll be using Iterative Studio here as well. [Video description begins] The Iterative Studio home page displays. She selects the Add a project button present in the main content pane. The Add a project screen displays. She selects the My GitHub dropdown button and then clicks the connect button against dvc_churn_prediction_hyperparameters. [Video description ends]
+
+Here is our repository, dvc_churn_prediction_hyperparameters. Go ahead and connect to this repository so that it's available as a project in Iterative Studio. [Video description begins] The Project settings web page displays. [Video description ends]
+
+Click on Create Project and the project is available right here. [Video description begins] The Iterative Studio projects page displays all the related projects. [Video description ends] With this done, we can now head over to our Notebook, and let’s use the !dvc config command to configure the studio access token for DVC. We'll get started coding.
+
+Again, the initial steps are ones that we’ve seen before, we’ll import all of the libraries that we need. We’ll read in the CustomerTravel.csv file, this is the data that we’re going to use for hyperparameter tuning to find the best model for this dataset. [Video description begins] She highlights the code on In [10] lines 1 through 3 and executes it. The output is displayed in tabular format. The code on line 1 reads: travel_churn_data = pd.read_csv('data/CustomerTravel.csv'); Line 2 reads: Null; Line 3 reads: travel_churn_data.head() [Video description ends]
+
+We’ve worked with this data before, we can go ahead. We’ll drop duplicates, we are left with 447 records, a small dataset. [Video description begins] She highlights the code on In [11] lines 1 through 3 and executes it. The output is displayed as (447, 7). The code on line 1 reads: travel_churn_data = travel_churn_data.drop_duplicates(); Line 2 reads: Null; Line 3 reads: travel_churn_data.shape [Video description ends]
+
+Next step is data pre-processing. We label encode the AnnualIncomeClass ordinal categorical values so that the three categories are represented by integers 0, 1, and 2. We set up a Pipeline the categorical_transformer to one hot encode the remaining categorical values. [Video description begins] Code reads: categorical_ transformer = Pipeline (steps*[('encoder', OneHotEncoder(handle_unknown = 'ignore', drop = 'first'))]} [Video description ends]
+
+We instantiate a ColumnTransformer to preprocess both our categorical as well as numeric values. The preprocessing of categorical values will be done using the categorical_transformer, and we’ll use the StandardScalar to preprocess numeric features. [Video description begins] Code reads: preprocessor = ColumnTransformer( transformers = [( 'cat_tr', categorical_transformer, categorical_features)], remainder = StandardScaler() [Video description ends]
+
+I'm going through this quickly because we've seen these steps before. We’ll extract the X features and the y values used to train the model, and split the dataset into training data and test data. There are of course, several frameworks that you can use for hyperparameter tuning.
+
+We choose Optuna because Optuna has a great integration with DVCLive. Optuna is an open source Python framework, designed for hyperparameter optimization. It helps automate finding the best set of hyperparameters for a given ML model.
+
+Hyperparameter tuning with Optuna is very efficient and fast because it uses a technique called sequential model-based optimization to efficiently explore the hyperparameter search space and quickly converge on a good set of hyperparameters.
+
+Now Optuna employs different optimization algorithms to search for the best hyperparameters within your search space. Optuna is easy to integrate with different ML workflows and also flexible because it works with different ML frameworks such as scikit-learn, TensorFlow, PyTorch, XGBoost, and so on.
+
+Go ahead and install Optuna, and in addition to Optuna, we’ll also need to install the XGBoost library. [Video description begins] She highlights and executes the code on line 1. Line 1 reads: pip install xgboost [Video description ends]
+
+We have all of this in the virtual environment, but we don't have these libraries in the base environment, which is why we have to reinstall them, kind of a pain. In any case, we are all set to start the process of hyperparameter tuning.
+
+8. Video: Performing Hyperparameter Tuning Using Optuna (it_mlodvcdj_03_enus_08)
+
+Learn how to perform hyperparameter tuning in DVC using Optuna.
+perform hyperparameter tuning in DVC using Optuna
+[Video description begins] Topic title: Performing Hyperparameter Tuning Using Optuna. Your host for this session is Janani Ravi. [Video description ends]
+In order to use the Optuna framework for hyperparameter tuning, the first thing that we need to define is an objective function. The objective function is a user-defined function that represents the task that we want to optimize.
+
+The objective function encapsulates the entire machine learning model training, the evaluation of the model, and the metric that we want to either minimize or maximize. The whole idea of the objective function is to take a set of hyperparameters as an input, train a model with those hyperparameters, and return a value that represents the performance of the model.
+
+Optuna will repeatedly call this objective function with different hyperparameters and train different models. [Video description begins] The Jupyter Notebook displays a series of codes. [Video description ends] Now here is my objective function defined starting line 5.
+
+The first thing to note here is the input argument to the objective function with the variable trial. The trial parameter passed into the objective function is an instance of the trial class in Optuna. A trial object corresponds to a single execution of the objective function and is instantiated each time the objective function is invoked by the Optuna framework. [Video description begins] Code on line 5 reads: def objective(trial): Line 6: """Define the objective function""" [Video description ends]
+
+The next thing we do here is to set up the parameters with which the current model will be trained within this objective function, and this I do on lines 8 through 15. Here are the parameters that we tweak for the XGBoost model, the max_depth of the decision trees, the learning_rate, the number of estimators, min_child_weight, lambda and alpha values.
+
+You will notice that we use suggest APIs from the trial class to actually get the parameters with which the current run of the model will be trained. These suggest APIs allow us to specify the search space for hyperparameters, allowing Optuna optimization algorithms to explore and sample values from this space effectively.
+
+Let's look at some of these suggest APIs. On line 11 for number of estimators, I invoke trial.suggest_int because number of estimators is an integer value, so I want integer suggestions from Optuna. The search space suggestions will range from 50 through 500, that's the range we have specified.
+
+And the log parameter is set to True, so that we sample from the search space in the log space and not the regular linear space. Let’s look at another suggest API, the value for learning_rate we use trial.suggest_float because the learning_rate is a floating point value.
+
+The min max range is 0.01 to 1.0, and once again we search in the log space log = True. These different suggest APIs will initialize the parameters for this invocation of the model and we use these parameters to instantiate our XGBoost Classifier on line 17.
+
+As before, we set up a Pipeline to train our model, on line 19 this will preprocess the data and then fit the classification model. We start the training process on line 20, we get the predictions from the model on line 22 and we compute the f1_score of the model on line 23.
+
+Now this f1_score is the metric that we use to evaluate our different models. The model with the best f1_score is the best model as far as we are concerned, and it is this metric that we returned from the objective function.
+
+The objective function should return the metric that you want to minimize or maximize during the hyperparameter tuning process. Now that we have our objective function, the next step is to set up the Optuna study.
+
+A study is just an optimization process that explores different sets of hyperparameters in an iterative manner to find the best combination that maximizes or minimizes your objective function. Here I use the optuna.create_study function to create a new study that is our optimization function.
+
+Notice the direction argument here, direction = 'maximize' tells Optuna that we want to maximize the value returned from the objective function. The metric that we are using to evaluate our models is the f1_score and we want the model with the highest or the maximum f1_score to be treated as the best model.
+
+Observe that I’ve accessed the sampler that the study uses and printed out the name of its class. Now what is this Sampler? The Sampler is simply the algorithm that Optuna is going to use to actually search the hyperparameter space.
+
+The default sampler is the TPE Sampler where TPE stands for Tree-structured Parzen Estimator. TPE is a bayesian optimization algorithm that aims to efficiently find the optimal set of hyperparameters by modeling the relationship between the hyperparameters and the objective functions performance.
+
+The TPE algorithm is much more efficient than a brute force search of the hyperparameter search space. It balances exploration and exploitation to efficiently explore the search space and converge towards the best configuration for your model.
+
+Next, let’s start the process of hyperparameter tuning. We have our study object we call study.optimize and pass in the objective function, that’s the first input argument objective. The second input argument here is the n_trials parameter that I’ve set to 32, this means that Optuna will run the objective function 32 times with different values of the hyperparameters, and then try to find the best model within these 32 trials.
+
+The hyperparameter search space can be infinitely large, and this is one way of limiting the search space by specifying the number of trials. And finally, the third input argument is the callback that I’ve set to DVCLiveCallback.
+
+The DVCLiveCallback can be thought of as a built in logger provided by DVCLive that allows us to track the intermediate results of the hyperparameter tuning process. So for every model that's trained, the DVCLiveCallback will be invoked and we can use that to track the metrics of each trial.
+
+Let’s go ahead and start the hyperparameter tuning process. Now for our fairly simple model and just 32 trials, this process is actually quite fast because Optuna is very efficient at searching the hyperparameter search space.
+
+There are a number of warnings here about untracked files, you can go ahead and ignore those. But if you look carefully you’ll see details of each trial logged to the output, for example, notice we have "Trial 1 finished with value: 0.558". That is the f1_score for Trial 1, and you also have the parameters 'max_depth': 2, 'learning_rate': 0.742, and 'n_estimators': 450 and so on.
+
+As the 32 different trials for our model are run through, you’ll see the output for each trial here in this Notebook. If you look at the very bottom, you can see Trial 31 is finally complete with the value: 0.754 for the f1_score. And it turns out that this model is the best one amongst our 32.
+
+You can see the message right there "Best is trial 31 with value: 0.7547." Hyperparameter tuning is now complete. Every trial within this hyperparameter tuning run is a separate experiment, and has been logged to DVCLive.
+
+Which means these experiments should be visible on DVC studio, you may need to refresh the page and there you see it the experiments corresponding to the first 10 trials are displayed on screen.
+
+You can click on Show 10 more experiments, and then finally Show 3 more experiments, and then you'll be able to see all 32 experiments. The experiments have been successfully logged to DVC, but we do not have the experiment details yet because we haven't pushed them from our local machine, and that's what we'll do next.
+
+First, let's make sure that we have the entire list of experiments here on our local machine, and we can view this using the dvc exp show command. [Video description begins] The terminal window displays. [Video description ends] Here you see our 32 experiments, the 32 trials that were run. You can actually configure how exactly you want these experiments to be displayed.
+
+Here I run the dvc exp show command once again, but I specify that I want the experiments to be sorted by the metric that has been logged, and the sort order should be in the descending order, so that we get the experiment with the best f1_score up on top. [Video description begins] She executes the command: dvc exp show --sort-by metric --sort-order desc [Video description ends]
+
+You can see that this is the experiment ahead-drab with the metric value of 0.75472. That is the best f1_score which we got after hyperparameter tuning our model. These metrics are available locally, but we really want them to be in Iterative Studio, which means we need to push all of the experiment files to DVC.
+
+We can push all 32 experiments in one go by calling dvc exp push origin --all-commits. This will avoid us pushing each experiment individually and all 32 trials and their metrics and corresponding parameters will be pushed to DVC, which means we’ll be able to see them on Iterative Studio. [Video description begins] The Iterative Studio webpage displays. [Video description ends]
+
+Here you’ll get an Update project button as it picks up the changes to DVC, click on that and you can see that all of the experiments metrics are available right here. [Video description begins] She selects the Update project button in the pop-up message on top of the webpage. [Video description ends]
+
+You can see that the metrics.json column has a single metric that’s just the f1_score because that’s the only metric that we are tracking. And then we have the parameters of the model. [Video description begins] These contain numeric information and display under headings such as alpha, lamba, and max_depth. [Video description ends] Once the data is in DVC, and we’ve connected our Iterative Studio, comparing experiments is easy. Let's select two experiments that we want to compare.
+
+Once you've done this, you can click on the little compare icon, and this will allow us to compare these two experiments. [Video description begins] She selects the Compare selected commits button present on the taskbar. And then, the Changes screen displays on the right side of the screen. [Video description ends]
+
+You can see that ahead-drab is clearly better with an f1_score of 0.754, that’s our best experiment after all. brute-heel has an f1_score of 0.641. Let's quickly close this and if you're curious about the other trials that were run, you can select two other experiments and compare those as well.
+
+Click on Compare selected commits, and you'll be able to see the differences between these two experiments. You can also programmatically access the best trial run found by Optuna. [Video description begins] The Jupyter Notebook displays a series of codes. [Video description ends]
+
+Here I call study.trials and compute the length on line 1, to see how many trials were actually executed. I get the best trial by accessing the best_trial variable in the study object.
+
+On line 5, we print out the metric for the best trial by accessing trial.value, and on lines 8 and 9, we print out the parameters associated with the best trial, by calling trial.params, that’s a dictionary we iterate over and print out the params.
+
+And here is the result right here, we ran a total of 32 trials, the Best trial had an f1_score of 0.754 and the parameters of the model that we trained to get this f1_score are displayed right there in the Params section.
+
+9. Video: MLEM (it_mlodvcdj_03_enus_09)
+
+After completing this video, you will be able to outline key concepts of MLEM.
+outline key concepts of MLEM
+[Video description begins] Topic title: MLEM. Your host for this session is Janani Ravi. [Video description ends]
+At this point, you are familiar and comfortable with DVC and you know how data version control allows you to track the metrics, parameters, artifacts, and data associated with your machine learning workflow.
+
+But DVC does not really help with model deployment. Let's say you have a train model and you want to package it and serve it for prediction, well, DVC is not the tool that you will turn to, you will turn to MLEM, also developed by the Iterative.ai team.
+
+Before we discuss what exactly MLEM helps us with, let me tell you that I don’t believe that MLEM is an acronym from what I could tell MLEM is just the name of the tool.
+
+So what exactly is MLEM? MLEM is a tool to package, deploy, and serve machine learning models that makes it easier to manage model deployment for real-time serving as well as batch processing. MLEM saves your machine learning models in a standard format that can be used in a variety of production scenarios such as real-time rest serving or batch processing.
+
+MLEM allows you to run your models anywhere, you can wrap your models as a Python package or a Docker image, or deploy them to Heroku, Sagemaker, or Kubernetes. These are the platforms that MLEM supports at this point in time, more platforms will be added in due course.
+
+So how exactly does MLEM help? Now trained machine learning models we've seen are serialized out to disk using well-defined file formats.
+
+Now, if you’re training a scikit-learn model, you might choose to serialize the model using pickle, joblib, or if you’re using TensorFlow or PyTorch, all of these frameworks have their own saved model formats in which models can be serialized out to disk.
+
+MLEM does not try to reinvent the wheel. MLEM will look at the serialized model that you've saved out. It will then add some special sauce by inspecting the model objects and saving all of the metadata associated with the model into special files which have the .mlem extension. These .mlem files hold your model metadata.
+
+These files automatically include Python requirements, input data needs in a human readable deployment ready format. The metadata that’s available in these .mlem files allows packaging and serving models in a very easy and intuitive way, and this automates away the pain points that exist in machine learning workflows.
+
+These MLEM files are a code representation of your machine learning model. By codifying and managing the information about our ML models, MLEM makes model deployment easy.
+
+When you work with MLEM, the most basic structure that you ought to be aware of is the MLEM object. MLEM objects are a fundamental MLEM concept that represent models, data, and other types of artifacts.
+
+Essentially, you can think of MLEM as a library to create, manage, and use different MLEM objects, where MLEM objects can be of these different types. MLEM objects are saved as special metafiles in the YAML format and all of these objects have the .mlem extension.
+
+These .mlem files contain the special sauce that MLEM adds to any data or artifact that it manages. MLEM objects contain all of the extra information that may be needed to reliably recreate the artifacts and other objects that make up your machine learning workflow.
+
+When you create an MLEM object from your model that is referred to as the "codification" of the model, and this model codification is the core functionality that underlies MLEM. This codified model the .mlem file is just a plain text file in the YAML format that can be checked into Git.
+
+And this is an important reason why MLEM is special. MLEM uses a GitOps approach to manage model lifecycles. The MLEM file can be checked into Git, and we can use Git as a single source of truth for our model. Thus, we unify model as well as software development and we reuse the existing Git infrastructure that we are familiar with.
+
+Let’s discuss what exactly MLEM extracts from your serialized model. MLEM inspects your model, and then extracts what methods can be invoked on this model. methods such as predict() and predict_proba() for scikit-learn models.
+
+MLEM performs a deep recursive inspection of your model and extracts all of the information and makes it available in a plain text format. MLEM examines your model to see what custom Python functions and objects are invoked by your model.
+
+Maybe your model invokes other models transformers or preprocessors, all of this is inspected and extracted by MLEM. MLEM also inspects and extracts the schema of the input data that you need to feed into the model for predictions. It will also codify what return values you get from the model when you invoke the different model functions.
+
+And finally, MLEM will keep track of all of the libraries and packages that you need to train the model and use it for prediction. MLEM is a modular tool that’s built to serve exactly one purpose, package your models in a reusable and intuitive manner. MLEM integrates well into larger tool sets from iterative AI such as DVC and CML (Continuous Machine Learning).
+
+10. Video: Extracting Model Codification Using MLEM (it_mlodvcdj_03_enus_10)
+
+In this video, find out how to codify models using MLEM.
+codify models using MLEM
+[Video description begins] Topic title: Extracting Model Codification Using MLEM. Your host for this session is Janani Ravi. [Video description ends]
+After having performed hyperparameter tuning using the Optuna framework, we ran this unit for 32 trials, we've got the best model based on our tuning. [Video description begins] The Jupyter Notebook displays. [Video description ends]
+
+And the model parameters are available via trial.params. I'm now going to store these parameters in the params variable, and I'm going to use these params to instantiate and train an XGBoost classification model on our training data.
+
+Once we have the trained model, we’ll serialize the model out to disk, package the model for deployment using MLEM. We’ll deploy the model first on our local machine, and then within a Docker container. I have the parameters of the best model that we’ve found.
+
+I’ll now use these parameters to instantiate and train XGBoost Classifier, I instantiate the model on line 1. Set up the Pipeline to preprocess our data and then fit the model on line 3. Train the model on line 4, and then use the model for predictions on line 6.
+
+Now let’s quickly look at the accuracy, precision, recall, and f1 score of the model that we just trained. We already know what the f1 score is going to be on the test data, it’s 0.7547, remember, this was the f1 for the best model.
+
+And this is indeed the best model, you’re using the same parameters. The accuracy is rather high, 0.855. The model has a good precision as well 0.689. And then the recall score is also really good 0.833.
+
+Overall, we are satisfied with this model, which is why we are ready to package this model and use it for deployment and we'll do so using MLEM. In order to use MLEM, we need to pip install the MLEM package, but before that, what exactly is MLEM?
+
+This is a tool that allows us to easily package, deploy, and serve machine learning models, and is another MLOps tool that is part of Iterative AIs suite of tools.
+
+DVC is one amongst them, and then we have Iterative Studio, which works with DVC. We have DVCLive that makes working with DVC easier, and now we have MLEM to package and deploy models.
+
+Now you might ask why MLEM is really needed? It seems like a simple task, all we have to do is use something like pickle or joblib to serialize a model out to disk, and then deserialize it when we want to load the model and then host it somewhere and use it for predictions.
+
+Now, no matter what library you use, even if you use the built-in serializers offered by TensorFlow and PyTorch libraries, serialized models end up being black boxes of sorts. MLEM makes things easier.
+
+MLEM adds special sauce to your packaged models by inspecting the objects and saving their metadata into separate .mlem metafiles and using these metafiles intelligently later on when the model has to be deployed.
+
+Now the special sauce that MLEM adds to package your models bear some explanation and this entire process of packaging your models is referred to as model codification by MLEM.
+
+The special sauce is actually captured in a metafile that is associated with every model that you package with MLEM, and this metafile contains a bunch of details that you need to reliably recreate the model during deployment.
+
+A bunch of details will be reliably extracted by inspecting your model object and then written out to a .mlem metadata file. And this process of extracting information by inspecting the model and then writing out to a file that we can observe and understand that is referred to as model codification.
+
+Now, this entire process of model codification will become clearer when we actually use MLEM. So let’s just go ahead and perform the initial steps and I'll explain things as we encounter them. pip install the mlem package because this is what we need to package our model.
+
+Once you have MLEM available, we can import the save function from mlem.api and then invoke the save function on our model pipe_xgb. Now the save function takes in a number of input arguments, we’ll discuss those first before we discuss the results of save. pipe_xgb that’s the model that we actually want to package and save out to disk.
+
+The second input argument is where we want this model to be saved, and that's in the models directory. And the name of the model, and its corresponding metafile will start with pipe_xgb. MLEM will also include the signature of the data that it needs to use the model for predictions.
+
+And the way it enforces the signature is by passing in some sample data. Here I pass in X_test as a sample_data so that the model's signature can be inferred by MLEM. Now let’s run this code, and let’s discuss what exactly we’ve accomplished by invoking the save function.
+
+Observe that the model has been saved out as an instance of the object MlemModel. What exactly is this? Well, this is a kind of MLEM object. When we call save on our model, we are creating an MLEM object from the corresponding python object.
+
+MLEM objects are special metafiles in the YAML format which have the .mlem extension. MLEM objects are the core concept in MLEM. Anything that you want to package and represent using MLEM will be represented as an object.
+
+Now this can be some data that you’re using to train your model, or your model artifacts. Here we’ve actually created a model artifact, and saved that out as an MLEM object. Now, this MLEM object is the package version of our model, and we can actually take a look at this in the models directory.
+
+If you click through to models in your current working directory, you will find two files in there. pipe_xgb is your model artifact that is the serialized version of your model saved out to disk. pipe_xgb.mlem is the metafile that codifies your model.
+
+How exactly this metafile codifies and represents your model is best understood if you actually look at this .mlem file. [Video description begins] The sublime text tool displays pipe_xgb.mlem file and its related code. [Video description ends]
+
+Observe that the entire details of your model pipeline have been inspected and extracted by MLEM, and they are present here in a human readable format. In the artifacts section, you can see the hash that represents our model artifact.
+
+The uri of the model artifact is pipe_xgb, because it’s in the same working directory as this MLEM file. In the call_orders section, you can see what methods are exposed by our serialized model, the predict and predict_proba methods.
+
+These are the two methods that we can invoke on our model. The object_type is model, that’s because we have packaged a model. Under processors model methods, we have all of the methods that you can invoke on this packaged model and the schema of the input data that you need to pass to these methods and the type of return value that you'll get from these methods.
+
+Let’s take a look at the predict method, the entire section starts on line 17 and goes on to line 46. Now, this first input argument to the predict method is basically the X argument that is the features that you’ll use for prediction.
+
+You can see the columns that you need to pass in. The first column is just an ID, then Age, FrequentFlyer, AnnualIncomeClass, ServicesOpted, AccountSyncedToSocialMedia, and BookedHotelOrNot.
+
+In the dtypes section on lines 29 through 36, you can see the data types for each of the input features, this ensures that you pass in the right features for prediction. Then under the returns section on lines 41 through 44, you can see the return value from this predict method, that’s just a dtype int64, the predictions are 0 or 1.
+
+Now we have similar information for the predict_proba method that you can invoke on the model defined on lines 47 through 77. We know what kind of input features we need to pass in. Look at the return type, on line 72 you can see that the return type is a floating point, float32 and the shape is null, 2.
+
+The predict_proba returns a probability score for the two possible categories into which your record can be classified. The probability score is a float, and there are two values, that’s why the shape is null, 2. And finally, here at the bottom, we have the requirements.
+
+The name of the library and the version of the library that was used to train your model, which your model will need when it's actually deployed for predictions. Now, let’s head back to our Notebook, and let’s load this serialized model and use it for predictions to make sure everything works fine.
+
+We use the load function from MLEM to load the model back, this is on line 3. Now the features that we are going to use to feed into this model, the feature columns are specified on lines 5 through 8. I set up two sample records in a DataFrame defined on lines 10 through 13.
+
+You can see the two records on line 11 and 12 respectively. We call model.predict and pass in the sample_df and then print out the predictions from the model. Let's run this code and you can see the prediction, the first customer did not churn, that’s a value of 0, the second customer did churn, that’s the prediction of 1.
+
+11. Video: Using MLEM to Serve Models Locally on FastAPI (it_mlodvcdj_03_enus_11)
+
+During this video, you will learn how to serve MLEM models locally on FastAPI.
+serve MLEM models locally on FastAPI
+[Video description begins] Topic title: Using MLEM to Serve Models Locally on FastAPI. Your host for this session is Janani Ravi. [Video description ends]
+In this video, we'll deploy our model packaged using MLEM to a locally running FastAPI server, and we'll use it for predictions. Before we actually deploy our model locally, let's save out some prediction data out to a CSV file.
+
+This is the CSV file that we’ll pass to our model, and we’ll get predictions for this data. [Video description begins] The terminal window displays. [Video description ends] The first line in our CSV file is going to include the header for the CSV file that is the names of all of the features.
+
+I echo the feature names in the form of a comma separated string and I pipe this out to the test.csv file. The > sign will create the test.csv file and overwrite whatever data there is in it.
+
+Next, let’s append the first record to this test.csv file, Age is 38, FrequentFlyer: Yes, AnnualIncomeClass is 2, etcetera, etcetera. And we’ll append this data to test.csv. The append operation is accomplished using the >> sign.
+
+Let’s append the second record for which we want predictions to the CSV file as well. I use the echo command, I specify the record as a comma separated string and I append it to test.csv. Our test.csv file is now set up.
+
+Let’s confirm that things look okay by running cat test.csv that will print out the contents of this file. Things look okay, we are setup with our prediction data. Now you need not get predictions from the model only by serving it.
+
+You can simply use the mlem apply command as well. mlem apply and then you specify the path to the model that is models/pipe_xgb. Next, specify the prediction data in the format expected by the model that’s in the test.csv file.
+
+The method that we want to invoke on the model is the predict method. And the import and import-type arguments specify the format in which we are passing in data as a csv file that can be parsed with pandas. This will invoke the predict method on your model, and here are the model's predictions.
+
+Now for both of these records, the model believes that both customers will not churn. The prediction is 0, 0. MLEM supports several different server implementations allowing us to serve our model locally. MLEM supports servers such as FastAPI, RabbitMQ, or Streamlit.
+
+One of the most widely used serving frameworks is FastAPI, and this is what we're going to be using to serve our model. FastAPI is a modern fast web framework for building APIs with Python. It's designed to be highly efficient, easy to use, and it provides automatic validation, serialization, and documentation of APIs.
+
+FastAPI is built on top of Starlette, a high performance asynchronous web framework and pydantic, a data validation and parsing library. In order to use FastAPI with MLEM for serving, we’ll need to pip install the mlem[fastapi] package, and that’s exactly what I’m doing here. We’ll now use FastAPI to expose our model to external users via a rest interface. And doing this is extremely straightforward, you just use the mlem serve command. Here I’ve specified mlem serve and then fastapi indicates that I want to use the FastAPI web framework to actually host my API.
+
+Next, we specify where our MLEM packaged model lives, that is in models/pipe_xgb. And where do I want this API to run on my localhost 0.0.0.0 and on port 8000. Go ahead and start this server and once it's up and running, let's now use the browser to hit the API endpoint. [Video description begins] The presenter opens the browser and pastes the URL. [Video description ends]
+
+When you actually hit this URL on your localhost port 8000, you'll find an entire user interface available to you. [Video description begins] The FastAPI page displays. [Video description ends] And this is the Swagger UI for the open API specification for your model’s API.
+
+Let’s understand what exactly Swagger UI is. It's a web based graphical user interface that provides interactive documentation for APIs. It allows developers to visualize and explore what API endpoints are available, understand what input parameters have to be passed into the API and the response formats from the API.
+
+This Swagger UI is automatically generated based on your APIs Open API specification. The Open API specification is nothing but a standardized format used to describe restful APIs, and it defines the structure of the API, what endpoints it has, the request and response data, authentication methods, and so on.
+
+When MLEM serves your models using FastAPI, it defines the API using the Open API specification. And this Swagger UI is automatically generated and made available to you. Observe that you can make a GET request to your API in order to understand the APIs interface.
+
+You can make POST request to the predict and the predict_proba methods. And here at the bottom we have a bunch of additional information about the schemas that are used with your API. Let's focus on the actual APIs. Let’s click on GET here and understand what it does.
+
+Even if you knew nothing about the API, you can see exactly how it should be called right here. You can see that the Successful Response will return a "string". Let’s try it out by clicking this Try it out button, and let’s execute this API by clicking on the Execute blue button right there on screen.
+
+And once you click on Execute, you can see that this GET request returns the interface for your API. So you can see what methods can be invoked on this API and the format of the request and response for these methods. In order to have our served model make predictions, we have to make a POST request to the /predict path in the API.
+
+If you click on POST here, you'll get instructions on how exactly this API should be invoked and what is the structure of the Request body that you need to send this API. The stub for the Request body is present here in JSON format.
+
+We need to replace this with our prediction data, so that’s exactly what I’m going to do next. I’m going to replace this with an actual prediction record, I’m now going to hit Execute. And let’s take a look at the response from the API.
+
+And you can see that the prediction for this particular record was 0, the customer did not churn. The prediction is present in the Response body. Let’s try making a POST request to the second endpoint to predict_proba, click on POST here.
+
+Once again, when you click on Try it out, you’ll be presented with a stub Request body that we can then replace with the actual Request body that contains the prediction record. We specified the prediction data in the JSON format, let’s click on Execute here and if we scroll to the bottom you’ll see the response from the model.
+
+The response comprises of two probability scores, one associated with each of the possible classes or categories. Now 0.6 is the higher probability score. So the prediction of this model was actually 0, the customer did not churn.
+
+Now, if you look at the Swagger UI, you'll find that for every API you get an example of a Curl command that you can use to hit that REST endpoint. [Video description begins] She scrolls to the Curl field and highlights the command. [Video description ends]
+
+Here is an example of the Curl command used to hit the predict API. You can see the Request URL at the bottom localhost 8000/predict and you can see the Curl command up top. [Video description begins] She highlights the Request URL command. The command reads: http://0.0.0.0:8000/predict [Video description ends]
+
+I’m actually going to use this Curl command, I'm going to copy this over and switch over to the terminal window and paste that Curl command in. You can see that this is a POST request that I make with curl.
+
+The endpoint that I hit is localhost 8000/predict the Content-Type of the request body is application/json and the request body is specified after the -d flag. Let’s go ahead and hit Enter, and here is the prediction from the model 0, the customer did not churn.
+
+12. Video: Installing and Setting up Docker (it_mlodvcdj_03_enus_12)
+
+In this video, discover how to install and set up Docker.
+install and set up Docker
+[Video description begins] Topic title: Installing and Setting up Docker. Your host for this session is Janani Ravi. [Video description ends]
+If you just want to test out how model serving works, serving your model locally is the right thing to do. But in a production environment, you'll use something else. Maybe you'll run your model within a Docker container, or if you have multiple instances of your model running, and you want a scaled production environment, you'll run your model on Kubernetes.
+
+Now in this video, we’ll see how you can deploy and serve your model using a Docker container. But the first question I’ll answer here is what exactly is Docker? Docker is an open source platform that enables developers to automate deployment, scaling, and management of applications inside lightweight portable containers.
+
+A container is just a virtualization technique that abstracts your application from the underlying operating system. Your container will package your applications code and all of the dependencies of your application into a single unit called the container.
+
+Containers can be thought of as isolated environments that encapsulate your application along with its runtime, system tools, libraries, and any configuration you have for your app. Each container runs as an isolated process on the host operating system, thus allowing you to virtualize the running of your application without actually running a virtual machine.
+
+The easiest way to install Docker on your local machine, whether you’re running Windows or macOS or Linux is via Docker Desktop. If you go to this URL: docker.com/products/docker-desktop, you'll be presented with an install page.
+
+Now this page is automatically detected that I’m on a macOS machine, that’s why it presents me with a Download Docker Desktop for a macOS machine with an Intel Chip. If you're on Windows or Linux that will be detected automatically as well.
+
+And the process for download and install should be very similar and very straightforward. Now I’ve downloaded the Docker.dmg file here, and I’m going to Open this up so that I can install Docker Desktop.
+
+In order to complete this installation, I need to drag Docker onto my Applications folder, and that's exactly what I'm about to do. [Video description begins] The docker dialog box appears on the screen for dragging and dropping the files for installation. [Video description ends]
+
+This will install Docker on my macOS device. Once the installation process is complete, and it takes just a few minutes, you should be able to launch Docker. I’m going to bring up the search bar on my macOS, search for Docker, and the Docker application will be launched.
+
+It asks me for verification to Open Docker. Docker is now up and running. And the way I can tell that Docker is up and running is that I see this Docker icon in my top toolbar. The same Docker icon will be present on Windows and Linux in your toolbar as well. [Video description begins] She highlights the docker icon present on the browser's toolbar. [Video description ends]
+
+You can click on this icon and if you select Dashboard, this will bring up the Docker Desktop dashboard user interface. At this point in time, we've just installed Docker and we have no containers running. If you click on the Containers option, on the left navigation pane, you can see that we have no container, this page is completely empty.
+
+We know that a Docker container is an isolated environment that runs our application, containers are built from images. Docker uses images as templates for creating containers. An image is a read-only snapshot of your application and its dependencies.
+
+Images are just binaries that we use to create and run containers. Images are created from a template specification that is called a Dockerfile, that’s a single word. What exactly a Dockerfile is? Well, just a series of commands to build your image, we’ll understand that in more detail when we actually use Docker.
+
+I have Docker Desktop installed and running, I can now switch over to the terminal window, and if I run docker --version, it should tell me what version of Docker I’m using, it’s 24.0.2. If you want to view all of the containers hosted and running on Docker right now, the command that you would execute is docker ps.
+
+You can see that there are no containers that are up and running at this point in time. If you want to know what images you have registered locally, which you can use to create containers, you run docker images, we have no images as well.
+
+13. Video: Deploying a Model in a Docker Container (it_mlodvcdj_03_enus_13)
+
+Find out how to deploy a MLEM model to Docker.
+deploy a MLEM model to Docker
+[Video description begins] Topic title: Deploying a Model in a Docker Container. Your host for this session is Janani Ravi. [Video description ends]
+Before we can use MLEM to deploy our packaged model to a Docker container, we first need the right library setup. [Video description begins] The terminal window displays. [Video description ends]
+
+Now, in order to use Docker with MLEM, you need to pip install the 'mlem [docker]' package, which is exactly what I’m doing right now. Once this required package has been installed, we’ll follow three simple steps to actually deploy our packaged model using Docker.
+
+Rather than building our model and deploying our model within our current working directory, that is our main workspace directory. I’m going to create a new directory called serving, so I’ve mkdir the serving directory, let’s cd into the serving directory, and this is where we’ll work for our deployment.
+
+Now the three steps that we’ll follow will involve building our model and then deploying it. Building is a way to "Bake" your model into something usable in production, and this is something usable can be a Docker image.
+
+Building can also refer to exporting your model to another format or to export the underlying requirements and dependencies of the model allowing you to create virtual environments using these requirements and dependencies.
+
+Now, I’d mentioned earlier that deploying your model using Docker requires three steps for deployment, but I'd mention just two overall steps building and deployment. That’s because building your model has two sub-steps. The very first step is to create a builder.
+
+A builder is just an MLEM object, that is an object with an associated metadata file. And that metadata file is in the .mlem file.
+
+This builder that you create will define how exactly your model will be built. If you want to deploy your image using Docker, this builder declaration will define all of the things that you need to build a Docker image, that is the binary file for your Docker container with your application running that is your model running.
+
+This builder file will include the name of your image, what server you want to use to serve your model with, and some other stuff. Now the way you create a builder is use the mlem declare command, and that’s exactly what we are going to be doing now.
+
+Use mlem declare to create a builder for our model. mlem declare will pre-configure our builder with a YAML file. So here I call mlem declare builder because that’s what I’m trying to configure, docker because I’m going to serve and deploy this model using Docker.
+
+Next, I specify the name of the MLEM file that will contain my builder declaration, that is docker_builder.mlem. The --image.name flag allows me to specify the name of the Docker image that I want build to represent my model. I’ve called the image mlem-model.
+
+The --daemon.host flag allows me to specify where the Docker daemon service is running. It happens to be running on my localhost, which is why I have the empty string. The --server flag allows me to specify the server that I want to use to deploy my model, and this is the fastapi web framework, we already have the libraries installed for that.
+
+Now mlem declare will actually set up the builder file for my model. If you run an ls -l command here in this current working directory, you should see a docker_builder.mlem file. Now remember this is an MLEM object that is an object with metadata here in this file, let’s take a look at the contents of this file and understand them.
+
+You can see that this file contains your builder declaration, that is a definition for how your model will be built. The name of the Docker image, which will contain your model is mlem-model. Remember, a Docker image is just a binary with all the information needed to run your image as a container.
+
+object_type: builder indicates that this particular file represents a model builder declaration. server type: fastapi specifies what kind of server we want to use to serve our model and type is equal to docker indicates that this model will be built as a Docker image.
+
+At this point, we’ve completed step 1 in the deployment process. It's time for us to move on to step 2. [Video description begins] She types the clear command and executes it. [Video description ends] This is where we'll use the builder that we've just defined to build our model.
+
+This is where we'll build our model into reusable assets such as a Docker image or a Python image that can be distributed and used to serve our model. Building our model into a Docker image is straightforward, we just use the mlem build command.
+
+Now we pass the builder that we have defined earlier using the --load flag. The mlem build command will then use the definition specified in the builder to actually build the Docker image serving our model. mlem build also needs to know where exactly our MLEM package for our model is located. It’s in the models subfolder, and it’s called pipe_xgb.
+
+That’s what we pass in in the --model flag. When you execute this command MLEM will actually build a Docker image behind the scenes. A Docker image is a read-only snapshot of our application and all of its dependencies, that is our model and all of its dependencies.
+
+You can see in the output here that MLEM build loaded the model from pipe_xgb.mlem that is our metafile associated with our model. Then loaded the builder from docker_builder.mlem, that’s in the current working directory. It then generated a dockerfile.
+
+A Dockerfile is essentially a file used to build a Docker image. A Dockerfile contains all of the instructions for assembling all of the components of your image. Now within the Dockerfile, MLEM added the sources needed to deploy the model, the requirements file for your model, and then build the docker image called mlem-model:latest.
+
+This image that has been built has been registered with our locally running Docker. If you head over to Docker Desktop and you click on Images, you’ll see the mlem-model image right there. [Video description begins] She selects the Images option in the navigation pane on the left. [Video description ends]
+
+We’ll use this image to run a Docker container that will serve our model using FastAPI within a Docker isolated container environment. Now you’ll see there’s an additional image that has been registered here, this is the python image for Python 3.10.9.
+
+This python image is actually used by our mlem-model image. So our model uses this python image to serve our model with FastAPI, and that’s why the python image is also present here.
+
+At this point after the completion of step 2, we've created an image, but there should be no running Containers. [Video description begins] She selects the Containers option in the navigation pane on the left. [Video description ends]
+
+If you see a container that’s exited here, that’s because I was playing around with MLEM before and this is the container I worked with previously. But there are no running containers, our model hasn’t been deployed to a container yet.
+
+That’s what we’ll do next step three. [Video description begins] The terminal window displays. [Video description ends] At this point, we’ve defined our builder and used the builder to build the model.
+
+The third step is to deploy the model because we've set up a Docker container image, we’ll deploy the model in a Docker container. This is where we run a server which offers an endpoint to our model and we can use that endpoint for predictions.
+
+The command that you use to deploy your model is the mlem deploy command. Here I say mlem deploy run docker_container. docker_container indicates to the deployment that we’re using a Docker container to serve our model.
+
+Next, we specify the name of the MLEM file that will represent our deployment object, this is docker_app.mlem. I use the --model flag to specify where the model object is located, that’s in models/pipe_xgb.
+
+The --server flag to specify the web framework used to serve our model, that’s fastapi. The --ports flag here needs a little bit of additional explanation, now, when we deploy and serve our model in a Docker container, the Docker container will expose a port with our REST endpoint.
+
+We want to map the port of the Docker container to a port on our localhost, that is our local machine. Mapping the ports in this fashion will allow us to access the port on our local machine to access the model's endpoint.
+
+MLEM deploy will actually expose the model’s endpoint on port 8080 of the Docker container and map that to port 8080 on the local machine, that's what this port's flag does. When you execute this command, this will run the docker image that we previously built the mlem model: latest image and deploy it as a Docker container.
+
+So, we’ll have our nice model REST endpoint running within Docker. Now that we’ve successfully deployed our model following the three separate steps, I have a confession to make, in order to deploy your model to serve within a Docker container, you actually didn’t need to perform these three steps separately.
+
+If you just run this mlem deploy run command, it would have automatically performed the first two steps for you. It would have generated the builder definition file, use the builder to build your Docker image, and then run that Docker image as a container.
+
+However, I wanted you to know what’s going on behind the scenes when you actually run this mlem deploy command. And that's why I showed you those three steps explicitly. But, when you’re actually using MLEM to deploy your model to Docker, you can just run this last command that you see here on-screen.
+
+It will take care of the previous two steps for you. We have that nice success message here at the bottom Container mlem-deploy followed by a string of numbers is up. Before we look at that container, let’s take a look at a file that was generated by the mlem deploy command, the docker_app.mlem file.
+
+This file is the MLEM object that represents our Docker deployment. You can see the object_type is deployment. Port mapping is 8080:8080 on our local machine, server is fastapi, and the type of deployment is within a docker_container. Now we have our server running but we haven't really seen it or accessed it. Well, that's what we'll do in the next video.
+
+14. Video: Getting Predictions from a Docker Hosted Model (it_mlodvcdj_03_enus_14)
+
+Learn how to get predictions from endpoints hosted on Docker.
+get predictions from endpoints hosted on Docker
+[Video description begins] Topic title: Getting Predictions from a Docker Hosted Model. Your host for this session is Janani Ravi. [Video description ends]
+In the previous video, we successfully deployed our model using the mlem deploy command. [Video description begins] The terminal screen displays mlem deploy commands. [Video description ends]
+
+We have a Docker container running that hosts our model, and if you head over to the Docker Desktop, you'll be able to see that Docker container right there. Observe that we have a running container called mlem-deploy-1, which came up just about 42 seconds ago.
+
+This is the container serving our model endpoint, and you can see in the Port(s) column that the port 8080 has been mapped to 8080 on our local machine. That’s the port that we’ll hit for our REST endpoint. Now let's click through and take a look at the details of this container.
+
+There are lots of interesting things that we can see here. [Video description begins] The mlem-deploy-1690460402 container page displays logs in the Logs tab. [Video description ends] Now, logs here represent the logs corresponding to the container.
+
+So if the container doesn't come up for any reason, you can use these logs to debug. The Inspect tab will give you an overview of the Environment within which the application in the container runs. You can see what the PATH variable is configured to, notice PYTHON_VERSION, it’s 3.10.9.
+
+The PYTHON_PIP_VERSION is 22.3.1 and if you scroll down you’ll see a number of other environment variables. You can see what MLEM_EXTENSIONS have been installed and used, and you can see the Port exposed by this container port 8080.
+
+A common use case when you're running applications in Docker is to log in to the shell prompt within your Docker container. And this is accessed using this Terminal tab. The shell prompt can be used to run Linux commands, which we can use to explore the contents of the container.
+
+The Files tab will give us a visual overview of the file system that has been set up within the Docker container. So you can see these are the files that are present, that the tmp folder, the root folder, the run folder, the sbin folder and so on.
+
+And the Stats tab here displays, a number of graphs that we can use to monitor this container, you can monitor its CPU usage, Memory usage, Disk read/write operations and Network I/O. Let’s head back to the Terminal tab and run a few commands that will allow us to better understand how MLEM actually containerized our model serving.
+
+I’m going to run an ls -l command here in this home folder. And you can see that there are a number of different files here. These are the files that have been used for the deployment within Docker. Let's understand some of these files.
+
+Now, the model file, which has a size of 210068 bytes, that’s actually our packaged model, this is what is being served. The model.mlem file is the MLEM object representing our model. This is essentially the metafile that MLEM is created in order to package and serve our model.
+
+If you run a cat command to see the contents of this model.mlem file, you’ll find that this is the same metafile that we saw when we served the model locally. This represents the artifacts of the model, the methods that are exposed by the model and the requirements for the model to be served.
+
+Another file in the current working directory was this requirements.txt file and you can see this contains all of the Python libraries and the corresponding versions that our model needs to run. [Video description begins] She executes a line of command. The command reads: cat requierements.txt [Video description ends]
+
+This is what is used to set up the environment for the model. In this current working directory, there is also the Dockerfile that MLEM created to create the image for this container. [Video description begins] She executes a line of command. The command reads: cat Dockerfile [Video description ends]
+
+And here is what a Dockerfile looks like. The Dockerfile specifies different components that make up your image, notice the first line which says FROM python: 3.10.9-slim. This refers to the python image that sets up a Python environment within our Docker container.
+
+Now we run some apt-get update commands to get our container environment in the right state. We COPY over the requirements.txt file and then RUN pip install to get all of the requirements within the isolated environment of the container.
+
+There is a pip install for MLEM as well. Then we set up a bunch of MLEM environment variables MLEM_DEBUG and MLEM_EXTENSIONS. And then finally we run the run.sh#, that is the command at the very bottom.
+
+And if you look at this run.sh script, you'll see that it's just the command used to serve this model, the mlem serve command. This is the command that we ran locally when we served the model from our local machine, not within Docker.
+
+We can actually hit the REST endpoint exposed by our model running within this container. [Video description begins] The Docker Desktop page displays with Containers selected in the navigation pane on the left. [Video description ends] If you click on this port 8080, that will take us to localhost 8080.
+
+And there you see the familiar Swagger UI. And just like we did with our locally served model, we can explore this REST endpoint and use this UI to get predictions from our model.
+
+Let’s make a GET request, I'm going to click on this option here to try things out. [Video description begins] She selects the Try it out button on the right side of the screen, under the GET request field. [Video description ends]
+
+There is a big blue Execute button here, go ahead and click on that and you essentially get the interface for this REST endpoint. Essentially, the response is just the JSON format of what methods you can call on this endpoint, and what the return values will be.
+
+Let’s make a POST request to get predictions from the model, I’m going to click on the POST option for the Predict API. Now, if you click on Try it out, you’ll be presented with a Request body that you can send to the server. I’m now going to replace this Request body with an actual record for prediction.
+
+Once you specify the Request body, click on Execute and here is the response from the server. This customer did not churn, and the Response body says 0. Let’s make another POST request and this time to the endpoint for predict_proba.
+
+I want the prediction probability scores rather than the actual prediction. Let’s try out this API. [Video description begins] She selects the Try it out button on the right side of the screen, under the Post /predict_proba request field. [Video description ends]
+
+Once again you’ll need to replace the Request body with an actual record for prediction. Go ahead and click on Execute, and here below in the Response body we have the prediction probabilities for the two classes.
+
+The higher probability is of course 0.6, which means the prediction was zero. We've successfully deployed our model to a Docker container. [Video description begins] The terminal window displays. [Video description ends]
+
+Let's check the status of our deployment by using the MLEM deployment command: mlem deployment status docker_app.mlem, remember this represents our deployment object. You can see that the deployment is currently running.
+
+If you want to stop and remove this deployment, you run mlem deployment remove and specify the deployment object. This deployment has now been stopped and is no longer running and you can confirm this by running docker ps, that will display the running containers that we have and there are no running containers.
+
+15. Video: Course Summary (it_mlodvcdj_03_enus_15)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. Your host for this session is Janani Ravi. [Video description ends]
+You have now reached the end of this course tracking and serving models with DVC and MLEM. We started this course off by exploring how to compare the performance of ML models in DVC.
+
+We created multiple churn prediction classification models, which used different algorithms including logistic regression, random forests, and XGBoost. We tracked metrics, parameters, and artifacts for all of these classification models.
+
+We then used Iterative Studios user interface to visually compare these models. We saw that Iterative Studio allowed us to compare actual metrics as well as graphs of model performance.
+
+We also saw how we could use the command line interface to compare model metrics. These hands-on experiences solidified our understanding of model performance evaluation and comparison in DVC.
+
+Next, we performed hyperparameter tuning using the Optuna framework. Optuna is a hyperparameter tuning framework that integrates very closely with DVC, allowing us to seamlessly perform tuning on our models. We compared the results of the hyperparameter tuned models and selected the best model for deployment.
+
+Finally, we explored the power of MLEM. Using MLEM, we codified our machine learning model and deployed it to a REST endpoint and a Docker-hosted container. We first deployed our model to a locally running REST endpoint created using the FastAPI library.
+
+In order to view the model and make predictions, we used the Swagger UI to access endpoints. We then served our MLEM model using a Docker-hosted container, and use this model for predictions.
+
+In conclusion, you now have a solid grounding on how to codify models and serve them. You have everything you need to move on to the next course in this learning path, tracking and logging deep learning models.
+
+Course File-based Resources
+•	MLOps with Data Version Control: Tracking & Serving Models with DVC & MLEM
+Topic Asset
+© 2023 Skillsoft Ireland Limited - All rights reserved.

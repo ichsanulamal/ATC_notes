@@ -1,0 +1,757 @@
+MLOps with MLflow: Hyperparameter Tuning ML Models
+Hyperparameter tuning, an essential step to improve model performance, involves modifying a model's parameters to find the best combination for optimal results. The integration of MLflow with Databricks unlocks a powerful combination that enhances the machine learning (ML) workflow. First, you will explore the collaborative potential between MLflow and Databricks for machine learning projects. You will learn to create an Azure Databricks workspace and run MLflow models using notebooks in Databricks, establishing a robust foundation for model development in a scalable environment. Additionally, you will set up Databricks File System (DBFS) as a source of model input files. Next, you will implement hyperparameter tuning using MLflow and its integration with the hyperopt library. You will define the objective function, search space, and algorithm to optimize model performance. Through systematic tracking and comparison of hyperparameter configurations with MLflow, you will find the best-performing model setups. Finally, you will integrate SQLite with MLflow, allowing efficient management and storage of experiment-run data. You will create a regression model using scikit-learn and statsmodels, comparing the processes for the two.
+Table of Contents
+    1. Video: Course Overview (it_mlflowdj_04_enus_01)
+
+    2. Video: Understanding How MLflow Works with Databricks (it_mlflowdj_04_enus_02)
+
+    3. Video: Creating a Databricks Workspace and Cluster (it_mlflowdj_04_enus_03)
+
+    4. Video: Uploading a File to DBFS and Running a Model from Databricks (it_mlflowdj_04_enus_04)
+
+    5. Video: Setting Up the Objective Function for Hyperparameter Tuning (it_mlflowdj_04_enus_05)
+
+    6. Video: Understanding the Objective Function and Viewing the Runs (it_mlflowdj_04_enus_06)
+
+    7. Video: Defining the Search Space and Search Algorithm (it_mlflowdj_04_enus_07)
+
+    8. Video: Running a Hyperparameter Tuning Model and Viewing the Results (it_mlflowdj_04_enus_08)
+
+    9. Video: Setting Up SQLite and Using MLflow with SQLite (it_mlflowdj_04_enus_09)
+
+    10. Video: Performing Data Cleaning and Building a Regression Model (it_mlflowdj_04_enus_10)
+
+    11. Video: Building and Tracking a Regression Model Using statsmodels (it_mlflowdj_04_enus_11)
+
+    12. Video: Course Summary (it_mlflowdj_04_enus_12)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_mlflowdj_04_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Vitthal Srinivasan. [Video description ends]
+Hi, and welcome to this course, Hyperparameter Tuning ML Models in MLflow. My name is Vittal Srinivasan, and I will be your instructor for this course.
+
+Hyperparameter tuning, an essential step to improve model performance, involves modifying a model's parameters to find the best combination for optimal results. In this course, we will use MLflow on Databricks and also use hyperopt, a powerful library for hyperparameter tuning that integrates with both MLflow and Databricks.
+
+First, you will explore the collaborative potential between MLflow and Databricks for machine learning projects. You will learn how to create an Azure Databricks workspace and run MLflow models using notebooks in Databricks, establishing a robust foundation for model development in a scalable environment. Additionally, you will setup DBFS as a source of model input files.
+
+Next, you will implement hyperparameter tuning with MLflow and its integration with the hyperopt library. You will define the objective function, search space, and algorithm and optimize model performance. Through systematic tracking and comparison of hyperparameter configurations with MLflow, you will find the best-performing model setups.
+
+Finally, you will integrate SQLite with MLflow, allowing efficient management and storage of experiment run data. You will create a regression model using scikit-learn and statsmodels, comparing the processes for the two. In conclusion, this course will give you the skills and abilities to use MLflow on Databricks for hyperparameter tuning with hyperopt.
+
+2. Video: Understanding How MLflow Works with Databricks (it_mlflowdj_04_enus_02)
+
+After completing this video, you will be able to outline how MLflow works with Databricks.
+outline how MLflow works with Databricks
+[Video description begins] Topic title: Understanding How MLflow Works with Databricks. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We’re going to be making fairly extensive use of MLflow on Databricks. And so, it's worth spending some time introducing Databricks really quickly.
+
+Databricks is a unified cloud-native data management platform. The keywords here are unified and cloud-native. Let's first focus on the unified bit. Databricks is truly unified because it brings, under one umbrella, tools for building, deploying, sharing, and maintaining data solutions. And what’s more, those solutions can be truly at enterprise-grade scale.
+
+Just to be clear, Databricks is both the name of the company which provides the platform and of the platform itself. Databricks has a truly impressive lineage. The founders of Databricks are also key folks behind Apache Spark as well as MLflow. So Databricks, Apache Spark, and MLflow all have close links to each other.
+
+Next, it’s worth emphasizing that Databricks is cloud-native, which means that really you've got to run it on one of the hyperscalers. It has powerful and extensive integrations with AWS, Microsoft Azure, and the Google Cloud Platform. The demos that we will be undertaking will be on Microsoft Azure, but I think you'll find that they will work with minimal changes on AWS as well as on the GCP.
+
+Databricks seems to be everywhere these days, and that's because it has a lot of users. Here are some representative use cases you might want to consider Databricks if you are focused on data processing and workflow management, if you are building business analytics using SQL, if you’re creating dashboards and visualizations, for data ingestion and processing and ETL pipelines, for managing data governance and security, and of course for ML model training, serving and tracking.
+
+Databricks is not just some quick prototyping tool, it also features source control with Git repos. So as you can see, this is a pretty exhaustive list of use cases.
+
+It's also worth emphasizing that Databricks founders are associated with some really important and powerful tools: Delta Lake, Apache Spark, and the subject of all of these demos, of course, MLflow. These tools together are really the building blocks of Databricks. For instance, if you go to the Databricks UI, you will find top-level entities from these three technologies intermixed freely.
+
+The MLflow experiments and model stabs will be right next to the feature store and the data, and the compute required for the Databricks cluster. Let’s quickly talk about each one of these components in turn and how it fits into the big picture on Databricks.
+
+Let's start with Apache Spark. The creators of Databricks were also the original creators of Apache Spark. As a result, Databricks runs a managed version of Spark, which has more features and functionality than the open-source version.
+
+Spark, of course, is almost the original unified big data platform. It integrates processing for both batch and streaming data. It does all of this in-memory by using different smart abstractions. It loads and processes data using in-memory data frames.
+
+These are the successors to the RDDs, which used to be used in the early days of Spark. Spark is inherently distributed, it’s built on top of Hadoop infra, and it supports multiple languages, Python, Scala, Java, and R. And finally, it’s well known for its scalability and fault tolerance. It makes use of partitioning and data replication across machines and relies on that for parallel processing.
+
+The next big component of Databricks is Delta Lake. This does a good job of combining the best features of data warehouses and data lakes. And this part of Databricks has made Databricks a formidable competitor to the data warehouse offerings from the hyperscalers, such as for instance, BigQuery from Google, as well as a competitor of Snowflake.
+
+Let's quickly talk about data warehouses and data lakes. You can think of a data warehouse as a single source of truth for structured data. You can imagine that the data in a data warehouse comes from various operational data sources. The difference between operational data and the data in a data warehouse is that operational data is going to probably require support for OLTP, such as transaction processing.
+
+Once the data from all of these different data sources has been collected in a data warehouse, it can then be used for business intelligence and other high-level use cases. This will likely not include a lot of data science and machine learning, and compute intensive use cases. Also, the data warehouse will not contain semi-structured or unstructured data.
+
+A lot of data warehouse offerings are proprietary and extremely expensive. Delta Lake has emerged as a formidable competitor in this space because it allows you to work with any of the underlying hyperscalers. So for organizations which have often sought out a multi-cloud approach recently because they are wary of vendor lock-in to one of the three hyperscalers, then Databricks is a compelling offering.
+
+Complementary to data warehouses are data lakes. If a data warehouse is a single source of truth for structured data, then you can think of a data lake as the single source of truth for the raw data, which could be structured, or semi-structured, or unstructured. As a result, the data in the data lake can be used easily for data science and machine learning type use cases, it's not restricted or mostly restricted to business intelligence and analytics and dashboards.
+
+Because Databricks is cloud-native, it serves as a level of abstraction. The data lakes functionality within Delta Lake is an abstraction over the low-cost, low-level cloud storage data. And in this way, the data in the data lake can be used for pre-processing before it may be passed into a business intelligence or a reporting use case or serve as the starting point for some intensive machine learning analysis.
+
+Delta Lake serves the dual role of a data warehouse as well as that of a data lake. And for that reason, it’s a very popular example of a new category, the Data Lakehouse. The name is, of course, a portmanteau or a combination of the data lake and the data warehouse.
+
+A lakehouse contains structured, semi-structured, and unstructured data, all at the low-level. That data can then be used for a variety of use cases. At the one end, those could be dashboarding and business intelligence. They could be batch or streaming analytics kind of use cases, or they could be very compute intensive ML development use cases as well.
+
+Let's quickly talk about some of the attractions of data lakehouses in general and Delta Lake in particular. The first is cost-effective storage, because Delta Lake relies on cloud-native storage such as Amazon S3 or Azure Data Lake storage. It's pretty cost-effective for storing large volumes of data.
+
+Second, a data lakehouse offers unified data processing for batch as well as real time, as well as for use cases that go from BI and dashboarding to machine learning and Python model development. There are virtually no constraints on the type of data that can be stored in a data lakehouse.
+
+This could include entirely unstructured data, including JSON, Parquet, Avro files, or even images and log files. Delta Lake has also been very proactive about offering integration with different DI and ML tools.
+
+Then from the data warehouse side, Delta Lake supports ACID transactions, that’s, atomicity, consistency, isolation, and durability, as well as schema enforcement and governance. Many data lakes are schema on read, where you define the schema when you read in the data.
+
+That’s not quite strict enough, so data lakehouses also offer schema on write, where the schema is defined up front as you write the data out. That is a feature that’s more commonly found in data warehouses than in data lakes. And by going with the stricter version of schema enforcement, Delta Lake has become accessible to many more use cases.
+
+That was a very quick overview of the second of the important components of Databricks, namely Delta Lakes. The third, of course, is MLflow, which is what all of these demos are all about. In this context, it’s worth mentioning different Databricks environments that we are likely to encounter while using MLflow.
+
+There is Databricks SQL which can be thought of as the data warehouse phase of Delta Lake. A fairly typical user here is likely to be an analyst running SQL queries to feed those into dashboards and to build visualizations for an executive audience.
+
+Then there's Databricks data science and engineering, where the focus is more on data scientists and engineers who are processing data using Apache Spark. These are use cases of the ETL pipeline variety. And finally, there's Databricks Machine Learning, which is focused on data scientists and ML engineers whose primary role is building and deploying ML models.
+
+These are the three environments that you are most likely to encounter while working with Databricks. And it should come as no surprise that within these three, MLflow fits best into the third. And that’s exactly how we will be making use of MLflow in the demos that lie ahead.
+
+3. Video: Creating a Databricks Workspace and Cluster (it_mlflowdj_04_enus_03)
+
+Find out how to create a Databricks workspace and create a cluster to run code.
+create a Databricks workspace and create a cluster to run code
+[Video description begins] Topic title: Creating a Databricks Workspace and Cluster. Your host for this session is Vitthal Srinivasan. [Video description ends]
+In this demo and the next few demos, we will be working on hyperparameter tuning in MLflow. We will be making use of hyperopt, [Video description begins] The Microsoft Azure homepage displays a list of Azure Services and Resources. The Resources list is displayed in two tabs: Recent and Favorite. [Video description ends] which is a Python library for hyperparameter tuning, and we will be performing these demos on Databricks.
+
+The Databricks runtime for machine learning has an optimized and enhanced version of hyperopt, and this also is tightly integrated with MLflow tracking. Now Databricks is a unified cloud-native data management platform. The cloud-native means that it has to be run on a cloud platform.
+
+Of course, Databricks works with all of the major hyperscalers. This demo will be performed on Microsoft Azure, but you probably will find that you can make it work with minimal changes on the GCP as well as on AWS. So again, because Databricks is cloud-native, we’ve got to make use of a cloud platform.
+
+Here we are in Microsoft Azure, you see here that we have the recent resources, and right up top is our familiar Resource group. We click through into it, and at this point, we don't have any resources within it because we had deleted all of them at the end of the last demo. [Video description begins] The loony-mlflow-rg Resource group page displays. [Video description ends]
+
+We scroll down over on the right and click on the Create resource button. We are now going to set up an Azure Databricks workspace. [Video description begins] The Marketplace webpage displays. [Video description ends]
+
+We start typing out Azure Databricks in the search bar over on the top left, and we get a list of services starting with Azure Databricks. We click on that, and you can see here that we have a Create button to create an Azure Databricks workspace. [Video description begins] The Azure Databricks webpage displays. [Video description ends]
+
+This is a resource like any other, and so it’s got to exist within a Resource group, and that Resource group has to be within a Subscription. [Video description begins] The Create an Azure Databricks workspace webpage displays five sections: Basics, Networking, Encryption, Tags, and Review + create. [Video description ends]
+
+Both of those have been prefilled up top. We fill in the other Instance Details, such as the Workspace name and Region. We call this looney-db-ws. [Video description begins] He highlights the column against the Workspace name field. [Video description ends]
+
+In the Pricing Tier, we go with the Trial. This is a premium with 14 days of free DBUs. Under this particular option, we will be paying for the VMs that we will use for the compute, but we won’t actually pay for Databricks for the first 14 days. We hit Next, that takes us into the Networking section.
+
+In the remaining steps of this dialog, we don't change any of the defaults, we just go with whatever is presented for us. And pretty quickly, we get to the end of this process, where our Azure Databricks workspace has been created. [Video description begins] He selects the Next button at the bottom of the page for the remaining four sections. [Video description ends]
+
+We know when we are done because, over on the top right, you see the Deployment succeeded message. And we can now click on the Go to resource button in order to actually do stuff [Video description begins] The loony-mlflow-rg_loony-db-ws | Overview Deployment webpage displays. [Video description ends] with our workspace. [Video description begins] The loony-db-ws Azure Databricks Service webpage displays. [Video description ends]
+
+Here we are you can see over on the top left corner the name of the workspace looney-db-ws. Below that, we see the service name, it’s the Azure Databricks Service. At the center of the screen, we have some other details, such as the Subscription ID, for instance.
+
+We scroll down, and we now click on the Launch Workspace button. The UI changes from having the familiar Microsoft Azure look and feel. We are authenticated, and we quickly find ourselves in the Databricks look and feel. [Video description begins] The Microsoft Azure Databricks webpage displays. [Video description ends]
+
+For instance, over on the top left corner, we have the three personas. Let’s click on that little dropdown, and we see the three Databricks personas: Data Science & Engineering, Machine Learning, and SQL.
+
+At a very high-level, you can think of the Data Science & Engineering persona as targeted for users of Spark and ETL pipelines. The Machine Learning persona targeted at machine learning model developers, and the SQL persona is ideal for Databricks SQL.
+
+Here we will be working with the Machine Learning persona, so let’s pin that. Before we click on the Machine Learning persona, you can see that we are in the Data Science & Engineering persona by default. And in the center of the screen, we have options such as Data import and Transform data which are more ETL focused.
+
+Once we click on Machine Learning, the options change to Notebook, AutoML, and Feature Store. For now, we will only be working with Notebook within Databricks, there’s almost nothing else that we’ll be doing. But in order to run our Notebook, we will need to configure Compute, and we'll also need to make some changes to the data.
+
+Let's expand the bit on the left, and you can see that there is an item there titled Compute, which we are about to click on. Before that, however, let's also orient ourselves with some of the other options. Looking a little down below, you can see that we have Experiments, and further down, we have Models.
+
+These are both MLflow entities, and this shows that MLflow is tightly integrated into Databricks. After all, MLflow and Databricks share a lot of history and top management personnel. In any case, we now click on Compute, and in the center of the screen, we have the Compute resources, currently there are none. [Video description begins] The Compute webpage displays [Video description ends]
+
+We can add those by clicking on the dark blue button over on the center right. The Create compute button opens up a dialog in which we are prompted for the kind of cluster we go with a Single node cluster. And then we've also got to specify the Databricks runtime version.
+
+When we click on the drop-down, we see that over on the left there are two types: Standard and ML. We’ve now clicked on ML, and in the Databricks runtimes geared or optimized towards ML, we pick a recent version which does not have GPU support.
+
+GPUs would be overkill for what we are looking to accomplish here, so we click on 13.1 ML, and that’s the runtime version that we will go with. We don’t make any changes to the Node type. The other properties, but we do give this a more descriptive cluster name.
+
+Let’s call this loony-ml-cluster. Once we are done configuring it, we click on the Create Cluster button at the bottom and wait for the Compute resources to be provisioned. Pretty quickly, we see the green check mark up top next to the cluster name. Then we move back to the section on the left and click on Data.
+
+Now, within Databricks, there always is an underlying Databricks File System known as DBFS. However, here when we’ve clicked on Data, you see that over on the top right we do not see a button titled Browse DBFS. We'd like to change that because we'd like to upload the test and training data for our machine learning model to DBFS.
+
+And in order to access DBFS, we’ll have to make a change to the Admin Settings. That can be done by clicking on the account name over on the top left, and from the dropdown which opens up, we choose Admin Settings.
+
+This allows us to configure different groups of settings, we click on Workspace settings at the top center, and then we scroll down a little bit. And under the Advanced section, you see that there is a setting which reads DBFS File Browser: Disabled.
+
+That’s the one which we need to change, so we slide that button over to the right. And as the flash message tells us, the DBFS File Browser has been enabled. Now we'll have to refresh this page for the change to take effect. So we’ll do that, and we navigate back into the Data section.
+
+And this time, we see on the top right the Browse DBFS button. Now here's why we care about the DBFS. Our end goal here is to set up a Jupyter Notebook within Databricks and that is going to contain an ML model and is going to run a lot of very familiar MLflow code.
+
+The input data into that ML model needs to exist somewhere within this context, and that somewhere can either be the DBFS file store or it can be a Databricks delta table. If we uploaded our data to a delta table, then we'd have to access it in the form of SQL commands. That's not what we'd like to do right now.
+
+We'd like to go with the much simpler option of simply uploading our data as a flat file to DBFS. So that’s why we enabled Browse DBFS, and that’s why we now click on that button and then navigate into the FileStore, which you see over on the left.
+
+At this point, we can upload data here, so we right-click and choose the Upload here option. And very quickly, we are able to upload the training data that we were making use of, this is the customer_travel.csv file. [Video description begins] The Upload Data to DBFS dialog box displays. The presenter then selects the "Drop files to upload, or click to browse" option and then browses through the folders to select the required file. [Video description ends]
+
+As this message tells us, these files uploaded to DBFS are accessible to everyone who has access to the workspace. You can also see how we can access this file down below the file has been uploaded to /FileStore/customer_travel.csv.
+
+That gets us to the end of this demo, in which we set up our Databricks workspace on Azure. And we also were able to get our input training data loaded into the DBFS file stored within this Databricks workspace. In the next demo, we'll move on and get our Notebook up and running as well.
+
+4. Video: Uploading a File to DBFS and Running a Model from Databricks (it_mlflowdj_04_enus_04)
+
+Learn how to upload a file to Databricks File System (DBFS) and run a model from Databricks.
+upload a file to Databricks File System (DBFS) and run a model from Databricks
+[Video description begins] Topic title: Uploading a File to DBFS and Running a Model from Databricks. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We ended the previous demo by successfully uploading the file that we wish to use as our training and test dataset onto the Databricks file store. Let’s now also set up our code. Remember that MLflow and Databricks are very tightly integrated. [Video description begins] The Data Explorer webpage on Microsoft Azure Databricks website displays. [Video description ends]
+
+In the list of items over on the left, you see that Experiments appear along with the Feature Store, which is an out-and-out Databricks concept. Below the Feature Store, we also have Models, so we have MLflow entities and Databricks entities co-mingling in this list.
+
+Let’s click on Experiments, you can see that at this point, we don’t have any experiments, and there is a big blue button over on the top right, which reads Create AutoML Experiment. Now AutoML is the Databricks no code solution.
+
+By clicking on the little dropdown next to that button, we can also create a regular MLflow experiment, and that's something that we are going to do in just a moment. But first, let's line up our code for which we are going to import our Jupyter Notebook from our local machine.
+
+For that, let’s switch from Experiments to Models from the menu over on the left. We now see a listing of models. There are no Registered Models at this point, but we can click on the Create a model button in order to build a new model natively in Databricks.
+
+For now, what we are looking to do is to upload code from our local machine. So we click on Workspace over on the top left, and from the menu which opens up, we click on Users, we select the current user, and click on Import.
+
+This will now allow us to Import files from our local machine. [Video description begins] The Import dialog box appears. [Video description ends] The file that we are going to go with this time is a Jupyter Notebook, so we navigate to our Jupyter Notebook on our local machine, hit Import, and pretty quickly we have successfully imported that .ipynb file.
+
+We see the green flash message up top, and in the center of the screen, we see that we are still in the Workspace menu. You now see that below the Trash, we also have this hyperparameterTuningUsingHyperopt.ipynb, the file that we just imported.
+
+We right-click on it, and we choose the Open in New Tab option. We move past that informational announcement by clicking Dismiss, and the next thing we know, we have a Notebook open. This is within Databricks, and the code looks very familiar.
+
+Before we can actually run any of this code though, we will need to connect it up to some compute resources, so for that, we click on the Connect button over on the top right. There’s just the one compute resource, that’s the looney-ml-cluster.
+
+Although we could click on more in order to provision additional compute if we so choose. Now we can actually run the cells here, we click on Run in the menu up top, and for now, we will go with the Clear all cell outputs command. We are using the same dataset that we had in the previous demo, that’s the customer travel_churn dataset.
+
+And the initial bits of code are very similar to what we've already encountered. [Video description begins] Once the presenter selects the Clear all cell outputs option, a dialog box appears with the message "Are you sure you want to clear all cell outputs? This will clear all cell outputs in this notebook," and then the presenter selects the confirm button. [Video description ends]
+
+There are a few new import statements on line 16 where we pull in various classes and functions from the hyperopt library, and we’ll see what those are about in just a bit. Next, let’s read in our data. We do this by invoking pd.read_csv.
+
+The only interesting bit here is the file path /dbfs/FilesStore/customer_travel.csv. So the dbfs and FileStore bits are worth paying attention to. We then display the contents of this panda's data frame before moving on to some other data processing. This, again ought to be very familiar to us.
+
+We are dealing with the nominally and ordinarily encoded categorical data. None of this is particularly noteworthy until we get to the code cell, where we invoke mlflow.set experiment. And this is worth understanding in detail, you see that we import mlflow and then invoke mlflow.set_experiment.
+
+The experiment_name is a qualified path, it starts with /Users, then it has our current account followed by the name of the experiment hptuning_churn_prediction_model. Note that we’ve yet to run this code cell, before we run it, we’ve got to actually create this experiment, and we do that by clicking on the Experiments item from the menu over on the left.
+
+And let’s choose to right-click and Open Link in New Tab because we don't want to lose this Jupyter Notebook window. Here we are in the Experiment Tracking page, we click on the button over on the top right.
+
+There are two options there, Create an AutoML Experiment and Create a Blank Experiment. [Video description begins] He selects the Create MLflow Experiment option from the dropdown list. [Video description ends] This dialog is simple enough, we paste in the experiment Name.
+
+We could also specify an Artifact Location, but that’s optional. We skip that and just hit Create. A moment later, we can see that in the experiments tracking page, we have the details of this particular experiment. There are no runs in here as yet.
+
+This UI is very similar to the experiments tab in the MLflow UI, so we should feel right at home. In any case, let's switch back to the other browser tab where we can now run our code cell where we invoked mlflow.set_experiment, and that’s gone through successfully.
+
+What’s returned is the experiment object, we can quickly examine its properties to make sure that everything is okay. Let’s start with the experiment_id, which is displayed at the end of the first line and wraps onto the second line. This experiment_id is an identifier which starts with 259 and ends with 612.
+
+Then if you look at the artifact_location, you can see that, that too is created in a directory with the same name as the experiment_id. [Video description begins] He highlights the artifact_location on line 1 of the experiment object. [Video description ends] It starts with 259 and ends with 612 as well.
+
+Once we have an experiment, we can populate it with a run. Here is the code for the run. This also ought to look pretty familiar. We have a with construct, we invoke mlflow.start_run, on line 1 of this code cell. We don’t specify a run name, so mlflow will assign a default.
+
+We instantiate a LogisticRegression model object on line 3, and a Pipeline on line 5, and then we set up the model in familiar fashion. On line 18, we invoke mlflow.log_params. Notice that we are only passing in the params of the lr_model and not of the entire pipeline, so the number of parameters will not be that large.
+
+We create a metrics dictionary starting line 20, and then invoke mlflow.log_metrics on line 29. And finally, we invoke mlflow.sklearn.log_model on line 31 here we are careful to pass in the entire pipeline and not only the model.
+
+Remember that the whole aim of logging the pipeline rather than just the logistic regression model is because we want all of the pre-processing to also be included as a part of the registered model. This code looks fine, let’s go ahead and run it. And we can see that the MLflow run has indeed gone through.
+
+One difference in the Databricks Jupyter environment is that we get a nice, clickable link to the MLflow run right here. So let’s click on that 1 run, and that will open up the run details in the MLflow UI. All still within Databricks, here we are. [Video description begins] A new MLflow tab opens within the browser with detailed information, including Run ID, Date, Source, User, Duration, and Lifecycle stages. [Video description ends]
+
+The default name assigned was languid-calf-727. We see 15 Parameters, which are all parameters of the logistic regression model. Then the 6 Metrics which we had explicitly logged. And then, most interestingly, in the Artifacts section, we have the lr_model directory, and all of these files ought to look pretty familiar, starting with the MLmodel file as well as the conda.yaml, model.pkl and so on.
+
+In this way, we’ve gotten to the end of this demo in which we successfully imported our Jupyter Notebook into Databricks. We also created a new MLflow experiment. And then from our Notebook we worked with that experiment and added a run to it. We've also examined the outputs of that run and everything seems to be working just fine.
+
+5. Video: Setting Up the Objective Function for Hyperparameter Tuning (it_mlflowdj_04_enus_05)
+
+Discover how to set up the objective function for hyperparameter tuning.
+set up the objective function for hyperparameter tuning
+[Video description begins] Topic title: Setting Up the Objective Function for Hyperparameter Tuning. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We ended the previous demo by conducting an ordinary run from within MLflow on Databricks. Now, in this demo, our focus is going to be on hyperparameter tuning. And so, let's very quickly jog our memories as to the difference between hyperparameters and ordinary model parameters.
+
+The key difference is that ordinary model parameters change during the training process. In fact, the whole point of training a machine learning model is to determine the best values for the model parameters given the training data.
+
+Hyperparameters, on the other hand, are design choices which govern the model and its construction and functional form. And these do not change during training. Hyperparameters can play a crucial role in model performance, and that’s why hyperparameter tuning is so important.
+
+In this demo, we will be making use of a Python library known as hyperopt. This is a powerful library, actually more of a framework which can be used in order to perform hyperparameter tuning of machine learning models.
+
+MLflow integrates with hyperopt, and as we shall see, it makes it easy for us to perform hyperparameter tuning on our MLflow models. Now because hyperopt is a framework, the manner in which different bits of code communicate with each other is a little complicated.
+
+The easiest way to understand this is by starting out with the model that we are looking to optimize. [Video description begins] The Microsoft Azure Databricks webpage with HyperparameterTuningUsingHyperopt notebook displays in the browser. [Video description ends]
+
+You can see this here on line 5, this is a simple LogisticRegression model. [Video description begins] In Cmd 8, he highlights the code on line 5. The code on line 5 reads: lr_model = LogisticRegression(C = params ['C'], [Video description ends]
+
+The name is lr_model, and you see that the hyperparameters that we are looking to tweak or optimize the value of C, the solver, and the class_weight, you can see that on lines 5, 6, and 7. You can see in this code that the values of C, solver, and class_weight are taken by indexing into the dictionary params.
+
+And params is passed in as an input argument into this function which is called objective, and that’s done on line 3. Now before we understand all of the wiring up, let’s just focus on these three hyperparameters: C, solver, and class_weight.
+
+In the next code cell, the one right below this one, we specify possible alternative values for these three hyperparameters, and that’s done in a variable that we call the search_space, this is a dictionary. The keys in this dictionary are the hyperparameters: C, solver, and class_weight.
+
+And the values help to define all of the different choices of the hyperparameter to be tried. To understand these, let’s start with what C, solver, and class_weight actually mean. In this context, C is used to control how strong the regularization performed by the logistic regression model is. [Video description begins] In Cmd 9, he highlights the code on line 2. The code on line 2 reads: 'C': hp.lognormal('C', 0, 1.0), [Video description ends]
+
+Remember that regularization is a technique used to prevent overfitting. If our model fits the training data too well, it will do very well in training but very poor in real-life performance.
+
+In order to combat this, the C parameter can be used, small values of C will cause very strong regularization. This will cause the model to do less well in training but be less overfitted to the training data and so more robust to changes in prediction data.
+
+So small values of C imply that the model will do less well in training, but it will be more robust in production, the model will just be simpler. Larger values of C will give weaker regularization, which means that the model will fit the training data more closely.
+
+So what value of C would we like to use in our logistic regression model? The answer is we would like to choose different values drawn from a lognormal distribution and that lognormal distribution should have mean 0 and standard deviation of 1.0.
+
+We express this on line 2 via hp.lognormal, C is the name or the label for the hyperparameter, 0 represents the mean, and 1.0 represents the variance. In similar fashion, the second hyperparameter that we wish to tune is the solver.
+
+The search_space for this hyperparameter is defined on line 3 of this code cell. [Video description begins] In Cmd 9, he highlights the code on line 3. The code on line 3 reads: 'solver': hp.choice('solver', ['liblinear', 'lbfgs']), [Video description ends]
+
+Here this is a categorical variable, and so we’ve got to specify the different choices. We do that with a list which has two elements, liblinear, and lbfgs. liblinear is the default choice, it works well when there is a relatively large number of samples and a relatively small number of x variables. lbfgs, on the other hand, is a good choice when the number of x variables is very large.
+
+There are also other possible choices of solver, such as, for instance, SAG or Stochastic Average Gradient, which works well for very large datasets. The third hyperparameter we specify is class_weight. [Video description begins] In Cmd 9, he highlights the code on line 4. The code on line 4 reads: 'class_weight': hp.choice('class_weight', [None, 'balanced']) [Video description ends]
+
+Once again, this is categorical, and so on line 4, we define the search_space with hp.choice, and we pass in a list with the two values: None and balanced. The basic idea of class_weight is to try and balance the training dataset in order to increase the representation of minority labels.
+
+For instance, if the number of candidates that churn in our travel dataset is much smaller than no churn. We might end up with a biased model unless we upweight the proportion of churn rows in the training data.
+
+If we specify class_weight as balanced, then that's going to assign different weights to rows in the training data based on the Y label. And there will be an inverse relationship between the frequency of the Y label and the weight in the training data.
+
+If we set class_weight equal to None, then that's equivalent to treating all classes as equally important. We are now done understanding the search_space. Again, this search_space is going to be taken in as an input during the hyperparameter tuning process.
+
+Now remember that we kind of glossed over the first code input cell, and we've got to get back to that. But first, let’s move forward and understand the algorithm which we set on the next cell. Here we set algo = tpe.suggest the search_space, which we just defined in the previous cell, is extremely vast.
+
+You can think of searching in that search_space as a set of nested for loops where we are going to try every possible combination of C, solver, and class_weight. That’s simply not possible to do exhaustively. And therefore, hyperopt is all about finding smart choices within that search_space.
+
+This is where the algorithm comes into play. There are two main choices hyperopt.tpe.suggest, which is what we’ve used here, and hyperopt.rand.suggest. rand.suggest is a random search, and it’s nonadaptive, which means that the algorithm will pick points at random from the search_space.
+
+An adaptive search algorithm is one in which successive search attempts are linked to each other, and rand.suggest is not adapted. In contrast, hyperopt.tpe.suggests, which you see referenced here, is adaptive.
+
+tpe is short for Tree of Parzen Estimators, and this is a Bayesian approach in which it will adaptively select new choices for the hyperparameters based on how the last choice worked. This is the algorithm, let’s now turn to the next code cell, where we set up the top-level mlflow run.
+
+Now, remember that MLflow integrates with hyperopt, and also remember that hyperopt is a framework. This means that MLflow has a very prescriptive approach to how hyperparameter tuning has to be performed.
+
+We are recommended to do things in a certain way, and that's what we are going to do. The recommendation is to have a top-level MLflow run. [Video description begins] In Cmd 11, he highlights the lines of code from lines 1 to 8. The code on line 1 reads: with mlflow.start_run():; Line 2 reads: best_lr_params = fmin(; Line 3 reads: fn = objective,; Line 4 reads: space = search_space,; Line 5 reads: algo = algo,; Line 6 reads: max_evals = 16); Line 7 reads: Null; Line 8 reads: print('Best value found: ', best_lr_params) [Video description ends]
+
+That’s the one that you see right here on screen. This code looks pretty simple, we have a with statement where we invoke mlflow start_run on line 1. And then, on line 2, we invoke a function called fmin.
+
+We only call fmin once, and then fmin behind the scenes is going to go ahead and call another function, the objective function, multiple times. Each of those evaluations of the objective function, which you can see defined on line 3, is going to run one ML model with one set of hyperparameter choices.
+
+It will keep track of each of these different models with its different set of hyperparameters, and the one which does best, in terms of minimizing the objective function will be tracked, and the parameters of that model will be returned and stored in the variable best_lr_params.
+
+So fmin is the hyperopt function which does all the work. You can see the inputs into the fn function. First, we pass in the objective function. This is the function that is used to quantify or measure the performance of the model.
+
+The way fmin expects its objective function to work, it's always looking to minimize the returned value from this objective function. This objective function is what we've skipped over, and we've yet to return to. So we specify the objective function on line 3.
+
+On line 4, we specify the search_space, this is something which we already looked at in detail. Line 5 has the algorithm, this is where we went with tpe algorithm. And finally, on line 6, we have to specify the maximum number of evaluations, and that’s = 16.
+
+This is important because, of course, the search_space is very vast, and if we did not bound the number of evaluations, well, there'd be no end to the amount of time and compute resource that would be required.
+
+This is the code where the hyperparameter optimization actually happens. But before we run this, we've got to thoroughly understand the objective function, and we'll get to that in the next demo.
+
+6. Video: Understanding the Objective Function and Viewing the Runs (it_mlflowdj_04_enus_06)
+
+Upon completion of this video, you will be able to review the objective function and view the runs.
+review the objective function and view the runs
+[Video description begins] Topic title: Understanding the Objective Function and Viewing the Runs. Your host for this session is Vitthal Srinivasan. [Video description ends]
+In this demo, we are going to continue discussing hyperparameter tuning using hyperopt in MLflow on Databricks, but we are effectively going to rewind through the contents of the last demo. [Video description begins] The Microsoft Azure Databricks webpage with HyperparameterTuningUsingHyperopt notebook displays in the browser. [Video description ends]
+
+There we went over things top-down, now let’s go bottom-up. On the screen, you can see top-level mlflow run. Here really, all we do is invoke the function fmin on line 2. We pass in the objective function, which is to be minimized.
+
+The search_space, which is all of the different hyperparameter values and choices to be tweaked. The algorithm we have used the tpe algorithm and the maximum number of evals, which is 16.
+
+Now in this, you can see that the function that’s going to be called repeatedly is called objective, and that’s the input argument on line 3. Now, before we look at that objective function in detail, let me also point out that this run that you see on-screen now is the parent run or the top-level run.
+
+From the fact that we are calling it a top-level run or a parent run. You can imagine that there's going to be a nested run somewhere, and that somewhere is in the objective function mentioned on line 3.
+
+We had glossed over the code of this objective function in the previous demo, and now here we are again. We start out with a requisite import statement, and then the function is defined starting line 3.
+
+Notice how it takes in params as the input argument, and these params are referenced on lines 5, 6, and 7. Params is a dictionary, and this function is going to be called with one specific set of hyperparameter values.
+
+Then on lines 5, 6, and 7, we will be able to access that choice of hyperparameter values using the keys: C, solver, and class_weight. Within the body of this function, we have a run which is kicked off that’s on line 4. [Video description begins] In Cmd 8, the presenter highlights the code on line 4. The code on line 4 reads: with mlflow.start_run(nested = True):. [Video description ends]
+
+We do that with statement, and then we invoke mlflow.start_run. Nothing new there, but what is new is the nested = True. This is a nested mlflow run, and the idea of a nested run is that it's going to be contained within an outer or parent run.
+
+All of the runs that we were running so far were parent or top-level runs. And if you remember, in the code cell we saw a moment ago, the parent run specified the maximum number of evaluations as 16, so we can have up to 16 nested runs.
+
+This will make it easier to organize hyperparameter tuning. We'll have a top-level run, and then within that one single top-level run, we will have the 16 nested or child runs. Those child runs can then be searched based on the metrics.
+
+So this objective function is going to be called from within the parent run. Within the objective function, we have the with block, which starts on line 4, that kicks off the nested run. Within the body of the with block, everything looks pretty standard.
+
+We instantiate the LogisticRegression object on line 5. We specify the values of the parameters C, solver, and class_weight from the params dictionary. And then, we set up the pipeline, perform the predictions and compute all of the metrics.
+
+On line 22, you can see that we invoke mlflow.log_params, and once again, we just pass in the params from the lr_model. Then on line 33, we log_metrics. On line 35, we log the model. Nothing new here, but line 37 is a new. [Video description begins] In Cmd 8, the presenter highlights the code on line 37. The code on line 37 reads: return {'lose': -test_f1_score, 'status': STATUS_OK} [Video description ends]
+
+This is where we set up the return value from our objective function. And hyperopt requires this return value to have a very specific format. You can see that this is a dictionary, there are two keys in this dictionary: loss, and status. The loss is the negative of the test_f1_score, and the status is STATUS_OK.
+
+The test_f1_score is calculated on line 19 by just invoking the usual f1_score function on y_test and predictions. Why, then are we negating it on line 37? The answer is that hyperopt is always looking to minimize the loss.
+
+That is, it’s always looking for that child run or that model, which minimizes the loss metric. If we are looking for the model with the highest positive f1_score, that is, we want to maximize the positive f1_score, then that's equivalent to saying that we want to minimize the negative f1_score, and that's why we return the negative of the test_f1_score here.
+
+Now that we've understood the architecture of this objective function, we can run this bit of code. Let's also scroll through and execute the next code cell. This is the search_space which we've already discussed in detail.
+
+Notice again how it’s a dictionary, we specify the values for C, solver, and class_weight. hyperopt is going to try and find the best values for these three hyperparameters. However, it's too large a search_space for it to search exhaustively, so an algorithm is required to search smartly.
+
+That algorithm is the tpe.suggest algorithm, which we specify here. [Video description begins] He highlights the said code in Cmd 10. [Video description ends] And finally, in the next code cell, we set up the parent run. We've already discussed this in a lot of detail.
+
+We pass in the objective function, the search_space, and the algorithm, as well as the number of max_evals. We hit Shift+Enter, and this cell takes some time to run, it’s a heavyweight function call. All of the child runs are being kicked off.
+
+You can see that the number of runs is being logged, there are 7 right now. And over on the right, we have details of each of these runs. The names are auto-generated, and pretty quickly, all of the 16 runs have gone through.
+
+And you can see that the Best values found are reported. We can see that the best value of C, for instance, has been determined to be 7, class_weight is 1, and solver is 1. This gives us the parameters of the best model.
+
+Now, if we want to actually get access to the best model, then we can always search these runs on the basis of the f1_score, which is one of the log metrics, and take the one with the highest. We've already seen how to do that programmatically as well as through the UI.
+
+Next, let’s click on the Experiment Runs over on the top right, we’ll expand that out into a full new window. [Video description begins] The Experiments Runs page displays in a new tab. [Video description ends]
+
+Here we are you can see that in the list of runs, we have up top the blushing-hens-776, with a little + sign next to it. And when we click on that + sign, we get details of all of the nested runs there are 16 of them.
+
+And that gives us a total of 18 matching runs, we see that in the bottom left corner. There are two top-level runs and then the 16 nested runs within the first parent run. From here on in, it’s all smooth sailing.
+
+Let’s click on the Columns, and let's select some additional metrics that we'd like to display. [Video description begins] He selects the Column button present above the table on the main page. [Video description ends] Let’s go with the AUC_score, Test_accuracy_score, and Test_f1_score. This will cause each of these to be added as a new column over on the right.
+
+Now remember that our hyperparameter tuning process was trying to maximize the Test_f1_score. So next, let’s sort all of these models by the Test_f1_score and see which model appears right up top. [Video description begins] He selects the Sort:Created dropdown button present on the top left of the main page. [Video description ends]
+
+It is the stately-skunk-586, that’s called a Test_f1_score of 0.495. However, looking more closely, we see that the top four rows have the same Test_f1_score. And in fact, there are lots of these runs where the Test_f1_score is the same.
+
+That need not be surprising, it just means that some of these hyperparameter choices were not influencing the model predictions. This does mean that these three child runs, stately-skunk-586, inquisitive-hen-623, and receptive-ox-728 are all equivalent as far as the hyperparameter tuning process went.
+
+And so, hyperopt would have picked any one of these at random and returned its hyperparameter values. And that's why we should not be surprised if we click into one of these three and find that the parameters differ from what we saw in Jupyter.
+
+If we search for all three, then we will find conclusively one of these child runs, which exactly matches the best returned hyperparameters. Let’s click through into the stately-skunk-586, we scroll in and look at the model Parameters, and we can see here that the value of C is 1.8054.
+
+Now that’s different from the value 7, which we had gotten back in our Jupyter Notebook. Should we be alarmed? No, we do not need to be alarmed. This is because we have multiple models, which tied on the best Test_f1_score.
+
+But we can confirm that this one was tied for top position by opening up the Metrics, where we see that the Test_f1_score is indeed equal to 0.495. Everything else about this run is exactly as we would expect.
+
+In the Artifact section, the model has been logged, and we can click through and satisfy ourselves that it has been logged just like any other model from a top-level run. Once we are done examining it, let's return to the Experiments page.
+
+We click on hptuning_churn_prediction_model, that takes us to the runs page. We have 18 matching runs here. Let's select all of these and delete them because we are going to perform yet another hyperparameter tuning exercise.
+
+And for that, we don't want the runs cluttering up the experiment. [Video description begins] The Delete Experiment Runs dialog box displays. [Video description ends] A couple of points worth noting, you see here there’s a checkbox: Delete all descendant runs of selected runs.
+
+That means that if we delete the top-level run, the child or nested runs will be deleted as well. The second point to note is that deleted runs are restorable for 30 days, after which they will be purged. The process runs through successfully, and our experiment is back to being empty and devoid of any runs.
+
+7. Video: Defining the Search Space and Search Algorithm (it_mlflowdj_04_enus_07)
+
+During this video, discover how to create a search space and define a search algorithm.
+create a search space and define a search algorithm
+[Video description begins] Topic title: Defining the Search Space and Search Algorithm. Your host for this session is Vitthal Srinivasan. [Video description ends]
+In the previous demo, we had performed hyperparameter tuning on our logistic regression model. That was fine as far as it went, but it wasn’t really all that interesting because the hyperparameters that we were tuning did not have much of an impact on the predictions.
+
+We know that because in the resulting runs, there were a large number of runs that were tied for first place, second place, and so on. [Video description begins] The Microsoft Azure Databricks web page displays the list of Experiment runs in tabular format. [Video description ends]
+
+As you can see on the screen now, we had no less than three runs, which had the same Test_f1_score. Now at the end of the last time, we had deleted all of those runs, and in this demo, we are going to move on to a much more real-world heavyweight hyperparameter tuning exercise.
+
+The easiest way to introduce this is by looking at the search_space that we are going to search over. On-screen now, we’ve set up the search_space, and you can see that this is a nested search_space. [Video description begins] The Microsoft Azure Databricks webpage with HyperparameterTuningUsingHyperopt notebook displays in the browser. [Video description ends]
+
+Up top, we have a hp.choice, that’s on line 3. And there, we are choosing different classifier_types. [Video description begins] In Cmd 13, he highlights the code on line 3. The code on line 3 reads: search_space = hp.choice('classifier_type', [ [Video description ends]
+
+That’s why the first input argument into hp.choice is the classifier_type. Then we have a list, and within that list, we have the different types. On line 5, we have an svm that’s a Support Vector Machine classifier. On line 10, we have type rf, that’s for the Random Forest.
+
+On line 17, we have type logrec, that’s for Logistic Regression. And then, scrolling a little further down, we have type dtc, which stands for Decision Tree Classifier. Now for each one of these types of classifier, we also have the hyperparameters which are specific to that type.
+
+For instance, scrolling back up, you can see that for the svm classifier, we specify choices of C and kernel. Now, we already discussed C in the previous demo, that's related to the strength of regularization.
+
+The kernel choice here comes down to either linear or rbf. [Video description begins] In Cmd 13, he highlights the code on line 7. The code on line 7 reads: 'kernel': hp.choice('kernel', ['linear', 'rbf']) [Video description ends] What's interesting to note is that we have a nested search_space.
+
+So we have a hp.choice on line 3, that’s at the top-level where we choose the classifier_type, and then we again have a hp.choice on line 7, for instance, where we are choosing the kernel. In a similar fashion in the dictionary for type rf, which extends from line 9 through line 15, we have n_estimators, max_depth, min_samples_leaf, and min_samples_split.
+
+You can see that a lot of these hyperparameters are specified in terms of their distributions. So the C on line 6 is to be drawn from a lognormal distribution with mean 0 and standard deviation 1.0. For numbers such as n_estimators, we specify hp.quniform.
+
+Here we would like the number of estimators to be picked from a uniform random distribution. There are three input arguments, 100, 500, and 50, those correspond to low, high, and q. q here just tells us what’s going to be returned, that’s going to be something like q multiplied by a uniform number drawn between low and high divided by q.
+
+Now, of course the number of estimators needs to be integer-valued, and that’s why we enclose all of this inside scope.int. So the scope.int within that, we have hp.quniform, and that uniform number is going to be drawn from a distribution defined by 100, 500, and 50.
+
+So these three parameters will together define the number of estimators, and that will go into just one choice of the hyperparameters. This is going to be a lot more interesting because our hyperparameter tuning is not only going to tune the individual hyperparameters of a particular type of model, but it's also going to try out many different types of models.
+
+Let’s now see how this hyperparameter tuning can be implemented at the level of the child run, there are some syntactic hoops that we’ve got to jump through. Remember that the top-level run calls fmin from hyperopt, and that in turn requires the search_space, which you can see on the screen now, as well as the objective function to minimize.
+
+Let's switch over to the code of that objective function. You can see that the one input argument is called params. Then on line 2, we invoke mlflow.start_run. Once again, notice that nested is set to True, and this, of course is in the with block. Next, we perform some rather peculiar operations with the params, you can see that in the del statement on line 5 and also the **params on lines 8, 10, 12, and 14.
+
+We seem to be making use of the Python construct known as kwargs or keyword args. [Video description begins] He highlights the code on line 5 and then highlights the code on lines 8, 10, 12, and 14. The code on line 5 reads: del params['type']; line 8 reads: clf = SVC(**params); line 10 reads: clf = RandomForestClassifier(**params); line 12 reads: clf = LogisticRegression(**params); line 14 reads: clf = Decision TreeClassifier(**params) [Video description ends]
+
+Why is that? Well, that has to do with the structure of the params dictionary that's passed in. When this function is called by fmin from the top-level run, params is going to be a dictionary, and this dictionary is going to be a single level dictionary, it’s going to have one key called type, and that is going to hold the classifier_type.
+
+We extract that key on line 4. So we get the classifier_type by looking in the params for the keyword type. Based on the classifier_type, we instantiate an object of the correct variety. For instance, if the classifier_type is svm, then on line 8, we instantiate an svm object.
+
+And in a similar fashion on line 10, we instantiate a RandomForestClassifier. On line 12, a LogisticRegression classifier, and on line 14, a DecisionTreeClassifier. If the classifier_type passed in does not match any of these patterns, then on line 16, we just return 0.
+
+Let’s now come back to the use of **. Remember that params is a dictionary and remember that params has one of its keys as type. On line 5, we delete this particular key. We also, of course, delete the corresponding value.
+
+The reason we do this is because, other than type, all of the other keys that are present in this params dictionary can be directly passed in as input arguments while instantiating the corresponding type of classifier.
+
+So, for instance, if type is equal to svm, then the other keys in params are going to be C and kernel. How do we know? Well, because when we define the search_space, we defined all of the keys corresponding to type svm to be type C and kernel.
+
+In a similar fashion, if the classifier_type is rf, then the other keys in the params passed into the objective function are going to be n_estimators, max_depth, min_samples_leaf, and min_samples_split.
+
+Now all of these inputs can be passed in directly, as is, to the corresponding object. Coming back to the SVC object, which is defined on line 8 of the objective function that will take in input arguments C and kernel. This is a use case tailor-made for Python kwargs or keyword args.
+
+We need to invoke a particular function, and we don't exactly know what the input arguments into that function are going to be called. But we have a dictionary in which all of those input arguments are associated as key value pairs.
+
+All we need to do is to make use of the ** operator and pass that dictionary in while invoking our function. Here, that function is simply going to construct the corresponding classifier object. All we need to do is to pass in **params while constructing those objects.
+
+And that’s what you see done on lines 8, 10, 12, and 14. The only remaining loose end now is line 5, where we delete the type from the original params. The reason we’ve got to delete type on line 5 is because otherwise, we pass in an extra input argument to whichever classifier we are constructing.
+
+Let's say we did not delete type. Then, for instance, while constructing the svm classifier, we would pass in three input arguments called type, C, and kernel. The svm classifier understands C and kernel, but it's not expecting type, and that would cause an error.
+
+And that’s why on line 5, we’ve got to delete the key value pair with the key type from the params. As long as we do this, the use of kwargs and **params will go through smoothly. This now explains all of the syntactic hoops that we had to jump through, given this two level hyperparameter tuning.
+
+There is nothing else particularly new about this particular child run, in the model itself, we construct a pipeline object, we fit that pipeline, then we log all of those metrics on line 38 as well as the model on line 40.
+
+On line 42, we return a dictionary in the prescribed format. It's got two keys, loss and status, and again, the loss is the negative of the test_f1_score. This does it for the code of the child run. We'll pick up with the code of the parent run and view the results of this hyperparameter tuning in the next demo.
+
+8. Video: Running a Hyperparameter Tuning Model and Viewing the Results (it_mlflowdj_04_enus_08)
+
+In this video, you will learn how to run a hyperparameter tuning model and view the results.
+run a hyperparameter tuning model and view the results
+[Video description begins] Topic title: Running a Hyperparameter Tuning Model and Viewing the Results. Your host for this session is Vitthal Srinivasan. [Video description ends]
+In this demo, we will continue with our more large-scale hyperparameter tuning exercise. We did a lot of the hard work in the last demo where we set up our objective function, which we now see on screen. Let’s now run that code through.
+
+Here is the search_space, which again, we had defined in detail. You can see here that it's a two level search_space. We have the classifier type, which could be svm, rf, logreg, or dtc. And we run this through as well.
+
+Once we've set up the objective function and the search_space, the next item on the agenda is running the top-level parent run. The code for that is visible on the screen now. [Video description begins] In Cmd 14, the presenter highlights the code on lines 1 thru 12. The code on line 1 reads: algo = tpe.suggest; Line 2 reads: null; Line 3 reads: spark_trials = SparkTrials(); Line 4 reads: null; Line 5 reads: with mlflow.start_run():; Line 6 reads: best_result = fmin(; Line 7 reads: fn = objective,; Line 8 reads: space = search_space,; Line 9 reads: algo = algo,; Line 10 reads: max_evals = 32,; Line 11 reads: trials = spark_trials; Line 12 reads: ) [Video description ends]
+
+And here we've done something a little different. It starts out familiarly enough, on line 1, we specify algo = tpe.suggest. Remember that there are two possible choices of algo, and the tpe algorithm is an adaptive search algorithm, which means that successive trials will be influenced by how the previous trial performed.
+
+The new bit, however, is on line 3. Here we instantiate a SparkTrials object, and then when we kick off our top-level run on line 5, we invoke fmin passing in this trials object that’s done on line 11, where we have trials = spark_trials.
+
+This spark_trials object is a class which is used specifically for hyperparameter optimization across a spark cluster nodes. So this is a part of the integration between hyperopt and Spark. Also, do keep in mind that Spark, Databricks, and MLflow all have common lineage in terms of their management and their founders.
+
+That is part of why when we set up our Databricks machine learning runtime that came with Spark preloaded. Now in our case, we’ve only set up a single node cluster, that’s the loomy-ml-cluster, which you see over on the top right.
+
+But were we running this in a production environment, you would have a real distributed spark cluster available for our hyperparameter tuning. In any case, coming back to this code here, within our parent run, we invoke fmin. That’s the function which does all of the hyperparameter tuning.
+
+We specify the objective function on line 7, the search_space on line 8, the algorithm on line 9, and we have max_evals = 32 on line 10. Let’s hit Shift+Enter, and all of the hyperparameter tuning begins. This is happening behind the scenes, but from the log messages which are reported to the screen, we can see that there is some Spark involvement here.
+
+We have a progress bar for Spark Jobs. We also have the number of MLflow runs. And then, we have a message telling us that Because the requested parallelism was None or a non-positive value, parallelism will be set to (4).
+
+There is also more context about Hyperopt with SparkTrials and how this automatically tracks MLflow trials. All of this is helpful context. The trials run through, all 32 have succeeded.
+
+Remember that the success or failure is determined by the status returned from the objective function, and our objective function always returned status ok, as one of the keys in its result dictionary.
+
+Now that the hyperparameter tuning is done, let's make use of another hyperopt library which allows us to view the results. We’ve imported hyperopt, and then we run hyperopt.space_eval passing in search_space and best_result.
+
+The result is a dictionary, and we can see right away that this is a decision tree classifier, we know that because type is equal to dtc. The criterion here is gini, max_depth is 10, and max_features is 3. Let’s switch over to the UI, we do that by clicking on the experiment link up top. It's very handy to have that link in the output here in Jupyter.
+
+Here we are in the Experiments page hptuning_churn_prediction_model, we have 33 matching runs, one for the top-level run and 32 for the hyperparameter tuning runs. You can see that the Sort order is still in descending order of Test_f1_score.
+
+That's a holdover from the previous hyperparameter tuning exercise even though we deleted all of the runs after that, the Sort order remains the same. And from that, we can see that right up top. The best Test_f1_score is for the run bemused-conch-651, and that Test_f1_score is 0.706.
+
+This time there is no tie for the first spot, although there are ties lower down among the different Test_f1_scores. In any case, let’s now click through into this particular test run and verify the results.
+
+First, let’s start with the Parameters, the criterion is not directly visible here, it just says 0. Presumably, that corresponds to the gini criterion, but we can confirm that the max_depth and max_features agree with what we saw in the Jupyter Notebook. max_depth is 10.0 and max_features is indeed equal to 3.0.
+
+We can also browse through the Metrics, we can confirm that the Test_f1_score is indeed 0.706. The loss is -0.706, that’s simply the negative of the Test_f1_score. Let’s also check out the Tags, you can see here that the trial_status shows as success. We also have the runSource, which is hyperoptAutoTracking.
+
+Finally, we can scroll down into the Artifacts section and verify for ourselves that the model has also been logged nicely here. And that gets us to the end of this demo in which we ran a pretty serious hyperparameter tuning exercise in MLflow on Databricks, and we also leveraged hyperopt.
+
+9. Video: Setting Up SQLite and Using MLflow with SQLite (it_mlflowdj_04_enus_09)
+
+Find out how to set up and use SQLite to track model experiments and runs.
+set up and use SQLite to track model experiments and runs
+[Video description begins] Topic title: Setting Up SQLite and Using MLflow with SQLite. Your host for this session is Vitthal Srinivasan. [Video description ends]
+In this demo, we are going to change tracks once again, after an exciting journey to Microsoft Azure and then to Databricks on Microsoft Azure, we are going to return to our local machine. This series of demos, we will go back to running MLflow on our local machine with two additional twists.
+
+First, we will see how we can redirect the backend store of MLflow to be a relational database instead of the file system. And second, we will now use statsmodels in order to build our model rather than scikit-learn.
+
+The relational database that we are going to make use of is SQLite, which is an embedded database. It’s really simple, it’s really just a wrapper over the file system. But even so, it serves to show the way in which you can connect to a relational database from MLflow.
+
+Let’s get started installing SQLite. We hit the URL: sqlite.org/index.html and click on the Download button that we see there. That takes us to a list of different downloadables. And you can also get a sense of the kind of use cases, for instance, the Precompiled Binaries for Android.
+
+SQLite is a preferred source of internal database like storage in many technologies. In any case, we scroll down until we come to the Precompiled Binaries for Mac OS X (x86), and you can click on the version for Windows, which appears right below that.
+
+If you happen to be running this from a Windows machine. A zip file appears in our downloads folder, let's click on that and open it. It’s unzipped, and now we enter that folder where we see there are three executable files. We see the kind over on the left reads Unix Executable.
+
+Before we run these, we’ve got to make some changes to our environment, so let’s switch over to a terminal window. And let’s open up our .zshrc, a zshrc file. Now on a mac machine, there is a .zshrc file at the home directory level as well as at the system level, and we want to make sure that we are editing the correct one.
+
+So let's first ensure that we are in the home directory. The cd command reveals that we are just in the ~, that’s the home directory. And now, we edit the .zshrc file. We open it up in nano, which is a common editor, and paste in just the one line.
+
+This line exports the path. [Video description begins] The presenter pastes the line of code in the nano editor. Code reads: export PATH="/Users/loonycorn/sqlite-tools-osx-x86-342000:$PATH" [Video description ends]
+
+You can see that the path environment variable now includes the path to the sqlite tools folder. And then, at the very end of that, we have the : and the $PATH. So in effect, we are appending the SQLite directory onto the existing path.
+
+This way, wherever we happen to run the SQLite commands, they will be accessed because this directory is included in the path. We save this file and exit out of it, and once that's done, let’s make sure that we source the modified .zshrc file.
+
+This will ensure that all of the changes are reflected in this shell right away. That does it for the SQLite specific setup, you can see that we are now back in familiar territory. We've activated the virtual environment, and in case you don't have this handy, the command to do this is source mlflow_venv/bin/activate.
+
+Here mlflow_venv is the name of the virtual environment. You can see from the prompt at the very top of the screen that this is, indeed after the activation. That's why the virtual environment name appears first. You can also see that the path that we are currently at is ~/projects/mlflow.
+
+That’s the directory from which we’ve been conducting all of our MLflow experiments. Let’s create a directory here called database and then cd into it, and create an empty file which can be used as the starting point for SQLite. The Unix touch command does this touch mlflow.db.
+
+Now we can run the sqlite3 command along with the name of this file, mlflow.db. And this takes us into the sqlite shell. This is a really simple shell, and we can try a few simple commands, for instance, the .tables command.
+
+At this point, there are no tables in this sqlite database, and we will change that by kicking off MLflow in just a bit. Now, if you happen to have the mlflow ui still running, then it's time to bring it down. Here you can see that we do have the mlflow that's still running in a terminal window.
+
+We are going to abort it. And the reason for that is that the mlflow ui is effectively a wrapper around the mlflow server, but with one restriction. Both the backend store and the artifact store are going to point to the local file system.
+
+There is no way to change that if we are running the mlflow server via the mlflow ui. So instead, we are effectively going to run the mlflow server for ourselves. And in order to do that, we’ve got to take down the mlflow ui, which is why we have hit Ctrl+C in this window, and killed the invocation of the mlflow ui.
+
+Now for another bit of administrivia, at this point, and all along on our local machine, we've been running version 2.3.2 of mlflow. We can see that confirmed by mlflow --version, and its output on-screen now. Unfortunately, we were unable to get the mlflow server to work with SQLite as its backend store.
+
+However, this was a problem that only occurred with version 2.3.2, so only for the purposes of this demo we are going to upgrade our mlflow to the most recent version where this problem seems to go away.
+
+We run pip install mlflow -U, and very quickly, we see that we've upgraded our mlflow to 2.4.1. The message at the very end confirms that. And we can double confirm that by rerunning mlflow --version, the output now is 2.4.1.
+
+With this version, we will now be able to run the mlflow server, the first time that we are doing so. [Video description begins] A line of code displays in the terminal window. Code reads: mlflow server --backend-store-uri sqlite:////Users/loonycorn/projects/mlflow/database/mlflow.db --host localhost -p 5000 [Video description ends]
+
+We can see here that we specify a couple of flags. We have the --backend-store-uri and the uri that follows is the sqlite file location mlflow.db. We also specify the host flag, and we’d like to run mlflow server on localhost. The port, which is denoted with -p, is 5000.
+
+What if you wanted to connect to a backend store on a real relational database? Something like MySQL, for instance. Well, then you change the format of the backend store uri. A sample is visible on the screen.
+
+Now you would have, for instance, mysql://<user>:<password>@<host>/<database>. If you wanted to leave out the password, you just omit that bit, and you'd be prompted for it at runtime. You’d go with a similar choice for PostgreSQL, you just change the mysql to postgresql.
+
+So if, for instance, you were running as the root user on localhost, and that’s where your mysql was running, and if you wanted mlflow_tracking_db to be the backend store, then the sample connection string is visible on screen now.
+
+Another point worth keeping in mind is that when we run mlflow server in this fashion, we can continue to use the mlflow ui. After all, we are running the server on port 5000, and that port is open to connections using http via the browser.
+
+So we will be able to get all of the functionality of the mlflow ui even when we run the server in this manner. Finally, there are additional flags that we can use in order to configure the location of the artifact store. However, that's not our focus right now, so let's hit Enter, and kick off the server.
+
+Next, let’s switch to a browser, and hit localhost:5000. And when we do this, we find our familiar mlflow ui appear before us. At this point, we also have one experiment that's the Default which is visible over on the left.
+
+Now if we switch back to the terminal window where we were still signed into sqlite and we rerun the .tables command, we see that a large number of tables have now come into existence. These names are pretty meaningful datasets, experiments, inputs, params, metrics, model_versions, runs, tags, registered_models, all of these are familiar to us.
+
+Let’s run a select * from experiments; and we see that there is indeed one row in the experiments table. This has experiment ID 0, and the name is Default, which is exactly what we expect. It’s clear that the mlflow server has written out all of this metadata to the backend store.
+
+Next, let’s run the .schema runs command. This has the effect of giving us the schema of the table runs, and here it is: CREATE TABLE IF NOT EXIST "runs". And we can also see all of the columns as well as their definitions. We had one row in the experiments table.
+
+Let’s see if there’s anything when we run select * from runs. No, there isn’t, the output is blank. Likewise, select * from metrics also returns an empty result. We’ve successfully configured sqlite as the backend store for our mlflow server, but we’ve yet to set up any runs, and that's why these tables are empty, we'll change that in the next demo.
+
+10. Video: Performing Data Cleaning and Building a Regression Model (it_mlflowdj_04_enus_10)
+
+Learn how to perform data cleaning and build a regression model.
+perform data cleaning and build a regression model
+[Video description begins] Topic title: Performing Data Cleaning and Building a Regression Model. Your host for this session is Vitthal Srinivasan. [Video description ends]
+In the previous demo, we successfully set up SQLite as our backend store, and we ran mlflow server to make use of that backend store. Now in this demo, we’ll move on and work with statsmodels instead of scikit-learn. [Video description begins] The Jupyter Notebook displays a series of code. [Video description ends]
+
+We begin by installing the statsmodels library. That’s with the usual pip install statsmodels command. In case you have not encountered statsmodels previously, it’s another statistical library in Python.
+
+It's a little more traditionally statistics focused than scikit-learn, which is quite focused on machine learning. Both scikit-learn and statsmodels have their own use cases and fan followings. MLflow integrates very nicely with statsmodels, and that's what we are going to demonstrate here.
+
+As you can see from the first line of the output, the version installed in this virtual environment is 0.14.0. [Video description begins] The presenter starts explaining the series of code in the input code cell mentioned in the Jupyter Notebook. [Video description ends]
+
+Let’s move on with some of the other usual imports, such as pandas, numpy, and LinearRegression, which we also pull in for comparison purposes from sklearn. And for the same reason, we also pull in Pipeline, StandardScalar, and train_test_split.
+
+Then in the next code cell, we read in our dataset, this is a very simple Ecommerce dataset read in from a csv file. We invoke the head command, you can see that we have the Email ID, the Address, the Avatar, Time on App, Time on Website, Length of Membership, and the Yearly Amount Spent.
+
+We are going to try and run a very simple regression model in which we will attempt to predict the Yearly Amount Spent from the other three numeric variables that you see here. Next, let's perform some simple data processing.
+
+We drop the categorical columns, such as the Email, Address, and Avatar, and then set up a pipeline with a single step. This step is the StandardScalar. Remember that this will have the effect of converting each of the X variables into a zero mean and unit variance vector.
+
+That’s done by simply subtracting out the mean and dividing by the standard deviation. That’s done on line 3 of this code cell. On lines 5 and 7, we extract the X and the y variables, respectively. The X variables include all of the remaining columns except the Yearly Amount Spent, that’s why we invoke drop on that column, and the Y is the Yearly Amount Spent.
+
+Next, we import mlflow, and then we invoke the method set_tracking_uri. This is not something that we previously had to do when we were running the mlflow server through the MLflow UI. That's because doing it that way, the default value which mlflow would pick up in Python would be the same as the default value set by MLflow UI.
+
+However, in this case, because we have explicitly started the mlflow server ourselves, we’ve got to make sure that we specify the tracking_uri, and that's simply localhost and the port 5000. So we run that command and then make sure that it's gone through successfully.
+
+Let’s run mlflow.get_tracking_uri ( ), and we can see that this returns localhost:5000, which is what we just said. Next, let’s create a new experiment, we invoke mlflow.create_experiment. The name we specify is ecommerce_revenue_prediction.
+
+This returns the experiment_id, and then we set the experiment using mlflow.set_experiment, and we pass in the experiment name. We hit Shift+Enter, and we see from the experiment object, which is returned, that the experiment_id is 1.
+
+And that’s why the artifact_location is mlflow-artifacts:/1. So the 1 in the artifact location refers to the experiment_id. The name is also correct, its ecommerce_ revenue_prediction.
+
+Now let’s switch over to the MLflow UI, and if we refresh this view, we will now see that we have two experiments visible over on the left, the Default and the newly created ecommerce_revenue_prediction. We can confirm here that the Experiment ID is 1.
+
+The Artifact Location also has 1 at the end of the path. There are no runs in here. Let’s now switch over to another terminal window where we are still in our sqlite session. Now we will rerun the select * from experiments, and this time we find that the result includes not one but two rows.
+
+These have the experiment IDs 0 and 1. 0 was already in there, that’s the Default experiment, which was created as soon as the mlflow server was launched. However, this second row, the experiment ID 1, has just come into existence because of what we did from Jupyter.
+
+The other fields such as the name and the artifact location are correct as well. We’ve created the experiment, but we still don’t have any runs, as we can see from the UI, let’s change that. We switch back to Jupyter, and here on screen now is the code for our first run.
+
+This one uses sklearn. As you can see from line 3, we’ve made use of mlflow.sklearn.autolog. On line 5, we are careful to re-import any of the functions that might be instrumented by autolog. The body of the run is pretty straightforward. We instantiate a LinearRegression object on line 8.
+
+We call train_test_split on lines 10 and 11. We fit our model on line 13. Use it for prediction on line 15. Compute various metrics on lines 17 through 19 and then invoke log_metrics on line 21 and set a tag on line 23.
+
+Just one interesting note about line 21, you can see there that we extract all of the training column names, that’s X_train.columns. We also get all of the coefficients from our regression model. We do that using reg_model.coef_. Then we zip those two lists together.
+
+Then we convert that into a dictionary. And it's that dictionary which we log out to mlflow. This is going to give us effectively the values of each of the regression coefficients along with the corresponding column name.
+
+Let’s run this code through and then switch over to the MLflow UI. There once we hit Refresh, we see that we do indeed have one run in our experiment. [Video description begins] The Refresh button is present of the center top-left of the main page. [Video description ends]
+
+We click through into it, and we see that there are 4 Parameters. All of these were auto logged, and then we have 11 Metrics. Now a lot of these Metrics were auto logged, but the interesting ones here are the first three: Length of Membership, Time on App, and Time on Website.
+
+Remember that these are the coefficients of our regression model, which we had written out. Also, remember that we had applied standard scaler to each of these columns, which means that the coefficients are directly comparable.
+
+By looking at this, it seems like the Length of Membership is the most significant x variable, and it’s positively correlated with the annual spend. The third x variable, Time on Website, has the smallest magnitude and also is negative in sign.
+
+Interpreting a regression coefficients in this manner, of course, is rather risky. It is only possible when we normalize all of the x variables to have the same mean and variance, which we have done in this case using standard scalar. We now can click through the rest of the MLflow logs.
+
+We can see that under the Artifacts section, this sklearn model has been logged. There is nothing particularly new here. And so, we will now move on to the statsmodel run, and we’ll get to that in the next demo.
+
+11. Video: Building and Tracking a Regression Model Using statsmodels (it_mlflowdj_04_enus_11)
+
+Discover how to build and track a regression model using Statsmodel.
+build and track a regression model using Statsmodel
+[Video description begins] Topic title: Building and Tracking a Regression Model Using statsmodels. Your host for this session is Vitthal Srinivasan. [Video description ends]
+In the previous demo, we had built a simple scikit-learn regression model. In this demo, we are going to redo this regression, but this time using statsmodels. Here on-screen now is the code. Once again, we are making use of autolog.
+
+However, we are now making use of the statsmodels autolog rather than the scikit-learn autolog. [Video description begins] The Jupyter Notebook displays a series of codes. And the presenter starts explaining the series of code in the input code cell. [Video description ends]
+
+You see that on line 3, we are relying on the integration between mlflow and statsmodels for the autolog functionality. One important little note we specify log_models = False, and that ensures that auto logging does not automatically log out the model.
+
+Instead, we will explicitly log out the model, as you can see down below on line 21. Along the way, we will also explicitly infer the signature we do that on line 19. So we are turning off log_models on line 3 so that we can do it ourselves and exert more control over the process.
+
+On line 5 and 6, we have import statements. Remember once again that we’ve got to re-import any functions that we had previously imported. Otherwise, autolog will not be able to instrument them. In addition, on line 6, we explicitly import infer_signature from mlflow.models.signature.
+
+And that’s because the autolog functionality with statsmodels will, by default, not add the signature to the ml model file. If we want to have that in there, then we've got to explicitly log the signature ourselves, and that’s why we are inferring the signature ourselves on line 19 and then explicitly calling log_model on line 21, passing in the signature as one of the input arguments.
+
+The ml directory will be called model as we specify on line 21. So that second input argument, the model within ' ' refers to the name of the model artifact directory. Let's quickly look at the code of this regression model.
+
+The way statsmodels regressions work, we've got to explicitly add in a constant, if we'd like, an intercept in our regression. And that’s why on lines 10 and 11, we invoke sm.add_constant, we do this with the X_train as well as the X_test data.
+
+Each of these lines will have the effect of adding a column of all ones to the X_train and X_test data, respectively. On line 13, we build the model by invoking sm.OLS and then invoking fit on the resulting OLS object, OLS is short for Ordinary Least Squares.
+
+Then on line 14, we invoke the predict method on this model, and we pass in X_test. On line 16, we invoke log_metrics, and we pass in model.params. This is similar to what we had done in the case of scikit-learn, except that we had to make use of the zip function and pull in the values of the coefficients and the X variables.
+
+Here we can do it a lot more directly. We've already discussed the logging of the model as well as the need to infer the signature, and we add a tag at the very end as we've customarily done. Finally, please note that the name of this run is run2, you can see that over on the right of line 8.
+
+We hit Shift+Enter, and this run goes through successfully. And we can confirm this by switching over to the MLflow UI and hitting Refresh. [Video description begins] The MLflow UI webpage displays a list of runs in tabular format. The Refresh button is present in the center right of the main page. [Video description ends]
+
+There we see the new run regression using statsmodels. Let’s click through into it and examine the Parameters and Metrics, these look very different from the scikit-learn versions that we've gotten used to. Under Metrics, notice that up top, we continue to have the regression coefficients.
+
+We can see for ourselves that the values of those coefficients are exactly the same as for the regression that was performed in scikit-learn, for instance, Length of Membership has a coefficient of 62.9, Time on App is 38.03, and Time on Website is -0.221.
+
+This proves that we’ve effectively built the same model, and we've also successfully logged out the model parameters in both cases. Scrolling down, we see that we have some interesting metrics, such as, for instance, the rsquared_adj of 0.874.
+
+In the Tags, we have one tag, the Regressor, and then in the model section, this looks quite interesting. We have two flavors as usual, the first of these is python_function, but within that, data is specified to model.statsmodels.
+
+You can also see that the loader_module is mlflow.statsmodels. And then the second flavor that’s listed down below, is statsmodels. There again, we have data set to model.statsmodels, and looking further down, you can see that the signature has indeed been logged.
+
+This is the signature that we explicitly inferred, and you can notice that all of the types here are of type: double. If we had not turned auto logging off and then explicitly inferred the signature and called mlflow.logmodel ourselves, this signature would have been missing from this section.
+
+Finally, the model_summary.txt has the usual summary that users of stats models swear by. You can see it here, it has the OLS Regression Results, the coefficients, standard errors, and various other statistics down below. Next, let's switch over to our backend store. [Video description begins] The terminal window displays. [Video description ends]
+
+This is the sqlite session, which we still have going, and run select * from runs. You now see that we have two runs listed down below. The run that we just created from statsmodels is the second row, and the first field within that is the run_id.
+
+That run_id begins with 603b and ends with ca15. Now let's switch back over to Jupyter. Let’s execute a command to print out the run_id. This is the same identifier that we just saw, it starts with 603b and ends with ca15.
+
+Now, we’ve not registered this model, but given that we have the run_id, we can access it using the run_id and the runs uri. On-screen now, you see that we’ve imported mlflow, and then we’ve accessed the log model using the runs uri and the run_id.
+
+And then, we invoke mlflow.pyfunc.load_model with this uri that gives us the loaded_model. On line 6, we invoke the .predict method on that loaded_model and pass in X_test. We hit Shift+Enter and see that we do indeed have predictions.
+
+These are predictions which we obtained from the loaded_model, which we've effectively deserialized from the model directory. If you’d like to compare these predictions to the actual Y values, we can do so, as you see on-screen now, we’ve created a DataFrame with the actual and the predicted values, and we can now view them side-by-side.
+
+Next, register our model so that we can access it with a model_uri rather than in that rather hacky way, with the run_id. On-screen now, we invoke mlflow.register_models we pass in the run uri. So that has runs followed by the run_id, and the model directory.
+
+That’s the first input argument into mlflow.register_model. The second is the model_name, which is revenue prediction model. This goes through successfully as well, you see that we’ve created version 1 of this model.
+
+Let’s now switch over to the MLflow UI and click on the Models tab at the very top. As expected, there is just one model in here, the revenue_prediction_model, the latest version is 1. We click through there is only one version, that’s Version 1, and we click through into that yet again, where we now see the stage, which is currently None.
+
+Let’s change that, so let’s engineer a Transition to Production. When we do this, we are prompted with a checkbox for whether we’d like to transition any existing Production models to Archived. [Video description begins] The Stage Transition dialog box displays. [Video description ends]
+
+We don’t have any Production models right now, but in any case, we leave the default checkbox checked and hit OK. Now let's switch back to the model by clicking on the model name up top. You can see in the breadcrumbs that it’s next to the Registered Models link.
+
+In this outer view, we see all of the versions of this particular model. There’s just one, which is Version 1, and the stage shows up as Production. Because we've registered this model, we can now access it using a model_uri, which is a lot more intuitive. [Video description begins] The Jupyter Notebook displays. [Video description ends]
+
+We are still invoking mlflow.pyfunc.load_model that’s on line 3. However, now on line 4, the model_uri is an f string which starts with models. Then that’s followed by a : and a / and the model_name as well as the model stage, and the stage which is defined on line 1 is = Production.
+
+This gives us the loaded_model, and then we invoke the .predict method on it, on line 7 over to the right. We then compare the predictions along with the actual y_test values and pass those into the r2_score method. Let’s go ahead and hit Shift+Enter. And we find that this has run through successfully.
+
+And the R2 score that’s reflected here in Jupyter is 0.9030. We’ve successfully been able to load the model from production. Now let’s tie up one last loose end, let’s switch over to our backend store. There we run select * from model_versions.
+
+We see here that there's just the one row in this table. It's a little hard to interpret, but the model name is a revenue_prediction_model, that’s the first field. And we also find the word Production in there, indicating that that’s the stage.
+
+That gets us to the end of this demo, in which we successfully implemented sqlite as the backend store. To accomplish this, we had explicitly run the mlflow server. We can now kill that server. So we hit Ctrl+C in that terminal window, and the server is no longer running.
+
+Remember now that in order to get this to work, we had to upgrade our mlflow from version 2.3.2 to version 2.4.1. Let's undo that so that all of the future demos continue to be on the same version as the ones so far. So we now run pip uninstall mlflow, this zaps mlflow from this virtual environment.
+
+Of course, after confirming with us that we want to do so, then let’s reinstall the old version 2.3.2 with the pip install and the specific version that you now see on-screen. This process also runs through successfully, and we can verify that we are back to our good old version by running mlflow --version, and we find that we are back at version 2.3.2 as we were before we started this series of demos.
+
+12. Video: Course Summary (it_mlflowdj_04_enus_12)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. Your host for this session is Vitthal Srinivasan. [Video description ends]
+You have now reached the end of this course, hyperparameter tuning ML models in MLflow. Hyperparameter tuning is the process of modifying the parameters of a model in an attempt to find which combination of parameters returns the best result.
+
+By leveraging the integration of MLflow with Databricks, you unlock a powerful combination that enhances the machine learning workflow. With the further integration of hyperopt, a tuning library with MLflow, one can effectively optimize hyperparameters leading to more accurate and efficient machine learning models.
+
+First, we explored the collaborative potential between MLflow and Databricks for machine learning projects. We learned to create an Azure Databricks workspace and run MLflow models using notebooks in Databricks, noting that one must create a cluster and use the ML persona.
+
+In addition, we set up DBFS or the Databricks File System as a source of the model input files. By creating a Databricks workspace configuring clusters and utilizing DBFS for file management. We established a robust foundation for model development within a scalable and flexible environment.
+
+Next, we delved into hyperparameter tuning with MLflow and its integration with the hyperopt library. We set up the objective function for hyperparameter tuning and define the search_space and algorithm to optimize model performance.
+
+Through running hyperparameter tuning models and analyzing the results, we witnessed the benefits of using MLflow to track and compare different hyperparameter configurations systematically. The integration with hyperopt significantly simplifies the process of tuning hyperparameters, enabling us to efficiently find the best performing model configuration.
+
+The combination of MLflow is experiment tracking and hyperopts hyperparameter optimization capabilities elevates the efficiency and effectiveness of our model development process.
+
+Finally, we integrated SQLite with MLflow. To start, we set up SQLite as the backend for MLflow, enabling us to efficiently manage and store experiment runs data and query this data with SQL. We then turned to our model building after performing the standard pre-processing that we are so accustomed to by now.
+
+We created a regression model using scikit-learn. Then we used statsmodels to run the same regression, noting the slight differences in the process of creating the run, but the remarkable consistency of the features like auto log and model performance analytics.
+
+Now that we understand the power of hyperparameter tuning, Databricks, and building and tracking models for statsmodels, we are well equipped to move on to creating time-series models and evaluating models coming up in the course ahead.
+
+Course File-based Resources
+•	MLOps with MLflow: Hyperparameter Tuning ML Models
+Topic Asset
+© 2023 Skillsoft Ireland Limited - All rights reserved.

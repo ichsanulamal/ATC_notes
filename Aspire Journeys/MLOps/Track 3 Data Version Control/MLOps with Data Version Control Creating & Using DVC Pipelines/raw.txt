@@ -1,0 +1,1013 @@
+MLOps with Data Version Control: Creating & Using DVC Pipelines
+Data Version Control (DVC) pipelines empower data practitioners to define, automate, and version complex data processing workflows. By streamlining end-to-end processes, pipelines enhance collaboration, maintain data lineage, and enable efficient experimentation and deployment in data-centric projects. In this course, you will discover the intricacies of machine learning (ML) pipelines within DVC. You will set up a pipeline with data cleaning, training, and evaluation stages and run these stages using the dvc repro command. Then you will use DVC to track the status of the pipeline with the help of the dvc.lock file. Next, you will run and track a DVC pipeline as an experiment using DVCLive and view metrics and artifacts of your pipeline in the Iterative Studio user interface. Finally, you will queue DVC experiments so they can be run later, either in parallel or sequentially. This course gives you an in-depth understanding of DVC pipelines, equipping you to seamlessly orchestrate and manage your ML workloads.
+Table of Contents
+    1. Video: Course Overview (it_mlodvcdj_05_enus_01)
+
+    2. Video: Configuring a DVC Project for an ML Pipeline (it_mlodvcdj_05_enus_02)
+
+    3. Video: Tracking Training Data with DVC (it_mlodvcdj_05_enus_03)
+
+    4. Video: Adding the Data Process Stage to the ML Pipeline (it_mlodvcdj_05_enus_04)
+
+    5. Video: Executing Pipeline Stages (it_mlodvcdj_05_enus_05)
+
+    6. Video: Adding a Train Stage to the ML Pipeline (it_mlodvcdj_05_enus_06)
+
+    7. Video: Executing the Data Process and Train Stages (it_mlodvcdj_05_enus_07)
+
+    8. Video: Adding and Executing the Evaluate Stage in a Pipeline (it_mlodvcdj_05_enus_08)
+
+    9. Video: Eliminating a Duplicate dvc.yaml File (it_mlodvcdj_05_enus_09)
+
+    10. Video: Running DVC Experiment Pipelines (it_mlodvcdj_05_enus_10)
+
+    11. Video: Queueing and Running Experiments (it_mlodvcdj_05_enus_11)
+
+    12. Video: Course Summary (it_mlodvcdj_05_enus_12)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_mlodvcdj_05_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Presented by: Janani Ravi. [Video description ends]
+Hi, and welcome to this course on creating and using DVC pipelines. My name is Janani Ravi, and I’ll be your instructor for today.
+
+DVC pipelines empower data practitioners to define, automate, and version complex data processing workflows, seamlessly integrating data code and outputs.
+
+By streamlining end-to-end processes, pipelines enhance collaboration, maintain data lineage, and enable efficient experimentation and deployment in data-centric projects.
+
+In this course, you will discover the intricacies of ML pipelines within DVC.
+
+You will learn to define and organize pipeline stages, giving you the ability to modularize and harmonize every facet of your ML workflow.
+
+You will configure the dvc.yaml file that holds all pipelines state details and dependencies to set up a pipeline for data pre-processing, training, and evaluation.
+
+You will utilize the dvc repro command to execute only the necessary stages in your pipeline and learn how the dvc.log file helps keep track of the pipeline status.
+
+Next, you will explore how you can run and track DVC pipelines as experiments. Through the integration of DVC light, you will capture and monitor pipeline experiments and view metrics and artifacts within the Iterative Studio interface.
+
+Finally, you will learn how you can queue DVC experiments for deferred execution. This will empower you to configure sequential or parallel execution of multiple experiments, optimizing your workflows efficiency and resource utilization.
+
+In conclusion, this course gives you an in-depth understanding of DVC pipelines, equipping you to seamlessly orchestrate and manage your machine learning workflows.
+
+2. Video: Configuring a DVC Project for an ML Pipeline (it_mlodvcdj_05_enus_02)
+
+Find out how to set up a Data Version Control (DVC) project for a machine learning (ML) pipeline.
+set up a Data Version Control (DVC) project for a machine learning (ML) pipeline
+[Video description begins] Topic title: Configuring a DVC Project for an ML Pipeline. Presented by: Janani Ravi. [Video description ends]
+So far, we’ve been writing code in Jupyter Notebooks to prototype and train our machine learning models on experiments that are tracked by DVC, and we’ve visualized and viewed the results of these experiments on Iterative Studio.
+
+We used DVCLive in order to automate this tracking and logging of metrics parameters and artifacts for our model.
+
+At this point in time, we know the importance of the dvc.yaml file, and we worked with several different sections of the DVC YAML. Sections for metrics, plots, artifacts, and so on.
+
+However, we haven’t really used the dvc.yaml file completely because the primary reason for the existence of the dvc.yaml file is to define and manage the stages of our machine learning pipeline, the entire end-to-end workflow.
+
+We’ve logged and tracked metrics parameters and artifacts in DVC, and all of these were entries in the dvc.yaml file. But we haven’t actually used the DVC YAML to manage our machine learning pipeline code.
+
+We haven’t specified stages in our pipeline, how the stages connect up with one another, how the outputs of one stage feed in as inputs to the next stage in the pipeline. This entire machine learning workflow represented in dvc.yaml and managed by DVC. Well, that’s something that we are yet to cover. And that’s exactly what we’ll see how to do here in this demo. [Video description begins] A page is open in the local directory. The first line of command reads: ~/projects/dvc. [Video description ends]
+
+In this demo, we’ll define and manage our ML pipeline stages, dependencies that exist between these stages, and the output for each step in this pipeline using the dvc.yaml file.
+
+And we’ll configure this file using the DVC command line. We also won't be working with Jupyter Notebooks anymore.
+
+Jupyter Notebooks was great when we wanted to experiment with our model, we weren't sure what kind of model we want to build. We wanted to run different experiments, compare them, and find the best model for our use case.
+
+Once you’re building your final ML model using a pipeline, we’ll work with regular Python code. Let’s get started!
+
+Here I am in my projects DVC directory. I’m going to activate my virtual environment, and once more, I’m going to be running my entire project within this virtual environment. [Video description begins] The presenter runs the virtual environment command: source dvc_venv/bin/activate. [Video description ends] Building a ML pipeline and defining its stages, well, this is going to be a brand-new project, so let's create a new folder to hold this project.
+
+dvc_telecom_churn_prediction_pipeline is the name of my folder, I’ll cd into this folder and this is going to serve as the current working directory for this project.
+
+I'm going to initialize and work with Git, which means I need a remote repository as well. I’ve created one on GitHub, dvc_telecom_churn_prediction_pipeline. [Video description begins] On the GitHub Chrome page, the header reads: loonytest / dvc_telecom_churn_prediction_pipeline. A GitHub Copilot and Quick setup message boxes are displayed on the page. [Video description ends]
+
+Since we're not going to be working with Jupyter Notebooks, let’s run all of the commands to initialize Git and DVC right from within this terminal.
+
+git init will actually set up Git in this current working directory. [Video description begins] The presenter runs the command: git init. As an output, a list of hints appears on the screen. A message at the bottom reads: Initialized empty Git repository in /Users/loonycorn/projects/dvc/dvc_telecom_churn_prediction_pipeline/ .git/. She clears the screen to run a new command. [Video description ends]
+
+Let’s go ahead and initialize DVC as well so it sets up all of the files and directory that it needs in order to be able to track our machine learning pipeline. [Video description begins] The presenter runs the command: dvc init. As an output, a message inside a box appears. It reads: DVC has enabled anonymous aggregate usage analytics. A URL is provided below it. A What's next? category is given below the box. She clears the screen to run a new command. [Video description ends]
+
+We have the usual commands here to set up the username and email address that I'll use for my commits. Username is loonytest and email address is loony.test.001@gmail.com.
+
+Let’s quickly run a git status to see what files are being tracked. Here are the files that DVC has added to Git tracking. These are the initial set of files. [Video description begins] Three files are highlighted on the screen. It reads: new file: .dvc/.gitignore, new file: .dvc/config, and new file: .dvcignore. The presenter clears the screen to run a new command. [Video description ends]
+
+The next thing to do is configure the remote storage location for DVC.
+
+I'm no longer going to use any kind of cloud storage. You already know how to use S3 and Azure Blob Store to store your artifacts. You can configure those if you want to, but I'm going to stick with storage on a local directory here on my machine.
+
+I create a new directory for storage in the temp folder, /tmp/dvc_pipeline_store. Now let’s go ahead and add this as the remote storage for our DVC.
+
+dvc remote add -d myremote, and point to the local folder. Now, once this is done, we have our remote setup, which means our config file has been modified. [Video description begins] The output reads: Setting 'myremote' as a default remote. [Video description ends]
+
+We can verify that the remote has been added successfully by calling dvc remote list. And you can see myremote configured right there. [Video description begins] The highlighted output reads: myremote /tmp/dvc_pipeline_store. [Video description ends] Things look good so far!
+
+Let’s double-check our DVC config file. I like to do this each time I make a change just to make sure that the change is as I expect it to be. [Video description begins] Four lines of command are highlighted on the screen. 1st line reads: [core]. 2nd line reads: remote = myremote. 3rd line reads: ['remote "myremote" ' ]. 4th line reads: url = /tmp/dvc_pipeline_store. The presenter clears the screen to run the new command. [Video description ends]
+
+Let's make sure that Git is indeed tracking all of the files that I'm interested in in this pipeline. I’m going to git add the .dvc/config file and then run git status to make sure all of the right files are being tracked.
+
+So here are the three git files being tracked, dvc/config, dvc/.gitignore, and dvcignore.
+
+Let's quickly commit these changes to our remote repository and set up our Iterative Studio project.
+
+I call git commit, which will actually commit these changes locally. Let’s confirm that the changes have been committed by calling git log, and you should see one commit here in this Git project. [Video description begins] The presenter runs the command: git commit -m "Initialized DVC for telecom churn prediction pipeline". As an output, 3 files changed appear on the screen. [Video description ends]
+
+This is a newly created project. [Video description begins] The newly created project name reads: commit 24c8a8b81eb457822bf84d6ef4cec9a6501bd577 (HEAD -> master). [Video description ends]
+
+Let’s go ahead and configure our origin, git remote add origin, and point to dvc_telecom_churn_prediction_pipeline on your GitHub repo.
+
+Let’s rename our current branch so that it’s the main branch rather than the master branch. [Video description begins] The presenter runs the command: git branch -M main. [Video description ends]
+
+And once this is done, it’s now time for us to push all of our local commits to the remote GitHub repository. [Video description begins] The presenter runs the command: git push -u origin main. A list of outputs appears on the screen, such as: Enumerating objects: 6, done, Delta compression using up to 4 threads, and so on. [Video description ends]
+
+Once this is done, we are pretty sure that our commits are all safe, and you can head over to GitHub and ensure that the commits are indeed present there. A Refresh will show you that everything has been committed and pushed here successfully. [Video description begins] On the GitHub Chrome page, a branch is highlighted on the screen. It reads: loonytest initialized DVC for telecom churn prediction pipeline. Two folders are given below it: .dvc and .dvcignore. [Video description ends]
+
+Once again, we’ll be using DVC live to log out some metrics from our trained model.
+
+So let’s head over to the Iterative Studio to set up a project connected with this GitHub repository. [Video description begins] On a new Chrome page, the presenter types the URL: studio.iterative.ai/user/loonytest/projects. A Welcome to Iterative Studio along with the steps to get started page opens. On the toolbar, six buttons are given, namely: Projects, Models, Add a project, and so on. [Video description ends]
+
+Let’s do this very quickly. Add a project, go to My GitHub, you should find the dvc_churn_prediction pipeline as a GitHub repo. Connect this. Everything looks good! Click on Create Project.
+
+Since we've already committed our initialization to our GitHub repo, the project should be set up successfully. You can click through to the project and make sure that the first commit is indeed present there. And you can see right here that it is!
+
+Also, the DVC in our local project needs to be configured with our studio token so that it can talk to Iterative Studio. [Video description begins] The highlighted command on the screen reads: dvc config --global studio.token isat_r7s1xwNuIU4z2amj6BV0tDn6DfNYBx1nYBkdw4YCIWOKqw91. [Video description ends]
+
+And that's the last step in our project setup. We are now ready to move on with our pipeline code.
+
+3. Video: Tracking Training Data with DVC (it_mlodvcdj_05_enus_03)
+
+In this video, you will learn how to track training data in DVC.
+track training data in DVC
+[Video description begins] Topic title: Tracking Training Data with DVC. Presented by: Janani Ravi. [Video description ends]
+We’re now ready to configure our machine learning pipeline using DVC so that it’s tracked and versioned by DVC.
+
+The first thing I'm going to do here is have DVC track the data that we're going to use to train our churn_prediction model. [Video description begins] A page is open in the local directory. There are three lines of command. The first line reads: (dvc_venv) ~/projects/dvc/dvc_telecom_churn_prediction_pipeline. [Video description ends]
+
+Now I’ve already set up all of the files and folders associated with this project in the current working directory behind the scenes. I’ll show you what those files are, and we’ll walk through them step by step.
+
+Observe that in the current dvc_telecom_churn_prediction_pipeline working directory, I have a data subfolder which is where my training data lives, and I have a source subfolder, which is where my pipeline code lives. [Video description begins] The presenter opens a new page. It is divided into two sections. On the left pane, some folders are given, namely: dvc_telecom, .dvc, data, and so on. Each folder has some files. The right pane is blank for now. [Video description ends]
+
+We look at the data here in this video, and we look at the pipeline code step by step. But before we do anything else, let’s look at the requirements.txt file.
+
+This is the file where I define what libraries and packages I need to actually run my machine learning pipeline. [Video description begins] On the right pane, a new header opens: requirements.txt. A list of 9 processes is displayed on it. [Video description ends]
+
+requirements.txt essentially contains everything I need installed in my virtual environment so that I can run the training process for my ML workflow. This includes dvc and dvclive. You’re familiar with both dvc and dvclive; no explanation needed there!
+
+I’m going to be working with YAML settings programmatically, which is why I have the pyaml dependency on line 3.
+
+ipykernel not strictly needed for this demo, but if you’re going to use Jupyter Notebooks within your virtual environment, you’ll need that.
+
+And of course, we need numpy, scikit-learn, pandas, and matplotlib to visualize our data process our data, and then train our machine learning model.
+
+Let’s take a look at what we have under the data and source subfolders.
+
+Let’s look at the source subfolder first because we’re not really going to worry about any of those PY files right now. We have three separate files, one that performs data processing, one that trains the model, and one that evaluates the model. These files correspond to the three stages in our ML pipeline. This is just a heads-up for what we’re going to do next.
+
+Before we actually worry about any of these stages, let’s make sure that our data that we use to train our model is versioned and tracked by DVC.
+
+This is the telecom_churn dataset that’s present in the data folder. [Video description begins] On the right pane, a new header opens: telecom_churn.csv. The page is populated with lines of codes. [Video description ends]
+
+The dataset that we’re going to be working with is the telecom_churn_prediction dataset available at this link here on Kaggle. [Video description begins] The Kaggle URL on the screen reads: https://www.kaggle.com/datasets/barun2104/telecom-churn?select=telecom_churn.csv [Video description ends]
+
+Now this is a fairly simple dataset. Each record here belongs to a different individual who has signed up with a telecom company. Based on the individual’s usage, contract renewal, data plan, etc., what we’ll try and do is predict whether this particular telecom customer is likely to churn or not.
+
+So, we’ll be building and training a simple classification model in scikit-learn.
+
+The dataset here is fairly straightforward. The first column here is the Churn column, indicating whether a customer churned or not. The remaining columns are all features that we'll use to train our model. [Video description begins] There are 10 features in the first column of churn, namely: DataPlan, DayMins, MonthlyCharge, and so on. [Video description ends]
+
+The first thing we need to do is to ensure that we have all of the packages and libraries that we need to run training on our model on our local machine. [Video description begins] The presenter returns to the local directory page to run the new commands. [Video description ends]
+
+And I do this by running pip install -r on requirements.txt, which will install all of the packages that we have specified within this text file. We've already seen what those packages are. Everything has been successfully installed. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+The next thing is to ensure that our training data is tracked and versioned using DVC. Use dvc add to indicate to DVC that this is the data that we are going to use to train our model.
+
+data/telecom_churn.csv. Note that the dvc add operation generates a .dvc metafile that references this data on our local machine.
+
+In addition to the .dvc metafile, a .gitignore file, ignoring the artifact that is our training data in the data folder, has been generated. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+I’m going to add both of these to Git so that these are tracked by Git, and we'll be able to commit them a little bit later on. [Video description begins] The presenter runs the command: git add data/ .gitignore data/telecom_churn.csv.dvc. [Video description ends]
+
+In addition to these two files, I want to ensure that requirements.txt is also available as a part of my GitHub repo. So I’m going to go ahead and git add that as well. This will allow anyone running this machine learning pipeline to recreate the environment needed for this pipeline.
+
+Once this is done, let's quickly take a look at the .gitignore file to ensure that it’s set up correctly.
+
+You can see that it is! [Video description begins] The presenter runs the command: cat data/ .gitignore. [Video description ends] The /telecom_churn.csv file is the one that’s ignored. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Let’s also take a quick look at the metafile that references our training data. This is the telecom_churn.csv.dvc file. Here you can see the md5 hash representing this data, the size of the file, and the path to the file, telecom_churn.csv. [Video description begins] The following are highlighted on the screen. - md5: 19765e62de31b7be19bb992cd20a793b, size: 128783, hash: md5, and path: telecom_churn.csv. [Video description ends]
+
+This CSV file is in the same working directory as the metafile, which is why there is no explicit path to the CSV file.
+
+Both the metafile as well as the training data file are present in the data subfolder. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+The dvc add command not only sets our data up to be tracked by DVC, it also adds this data to our local cache.
+
+So if you do an ls -R, where the R is for recursive, and look under the .dvc subfolder that has been created, you should see an entry in the cache for our training data.
+
+Notice the path there, .dvc/cache/files/md5/19, that’s where our cache data lives. [Video description begins] The cache data reads: 765e62de31b7be19bb992cb20a793b. The presenter clears the screen to run a new command. [Video description ends]
+
+We know that dvc add tracks our data and adds it to cache, but it does not push it to remote storage.
+
+So if you do an ls -R on our remote storage /tmp/dvc_pipeline_store, there should be nothing there.
+
+In order to get our data to remote storage, we need to do a dvc push. I run the dvc push command, and a single file, that is, our training data, has been pushed to DVC. Let’s run an ls -R on our remote storage here in our local file system, and you can see that our data is now available on remote storage. [Video description begins] The highlighted output on the screen reads: files, /tmp/dvc_pipeline_store//files : md5, /tmp/dvc_pipeline_store//files/md5 : 19, and /tmp/dvc_pipeline_store//files/md5/19 : 765e62de31b7be19bb992cb20a793b. The presenter clears the screen to run the new command. [Video description ends]
+
+At this point, we’ve successfully set up for DVC to track and version our data. Let's commit all of these changes to our local repository using a git commit. So we've added the telecom churn data to DVC. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Let's push all of these changes to our remote repository as well. So we are now up to date. [Video description begins] The presenter runs the command: -->git push -u origin main. A list of outputs appears on the screen. [Video description ends] DVC now knows about our training data and tracks it.
+
+Let's move ahead with setting up the first stage for our pipeline.
+
+4. Video: Adding the Data Process Stage to the ML Pipeline (it_mlodvcdj_05_enus_04)
+
+Discover how to add a data process stage to an ML pipeline.
+add a data process stage to an ML pipeline
+[Video description begins] Topic title: Adding the Data Process Stage to the ML Pipeline. Presented by: Janani Ravi. [Video description ends]
+At this point, we’ve successfully added the data that we are going to be using in our ML workflow to be tracked by DVC.
+
+The next step is for us to add the data processing stage to our machine learning pipeline. The very first stage is going to be the data processing stage. [Video description begins] A local directory page is open. The first line of command reads: (dvc_venv) ~/projects/dvc/dvc_telecom_churn_prediction_pipeline. [Video description ends]
+
+The code that I’m going to use for data processing is set up in a separate Python file and this Python code is going to access some parameters from the params.yaml file that I’ll configure in our DVC project.
+
+Here in the current working directory, I’m going to use the touch command which will simply create the params.yaml file. All the touch command does is create an empty file with the name that I have specified, params.yaml.
+
+If you want to run an equivalent command on Windows, you’ll use the type nul command and pipe that to params.yaml.
+
+Let’s confirm that the file has indeed been created by running an ls -l command. You can see that params.yaml exists in my current working directory. [Video description begins] From the list of outputs, the following command is highlighted on the screen: -rw-r--r-- 1 loonycorn staff 0 Jul 31 15:23 params.yaml [Video description ends]
+
+I’m now going to head over to sublime text so that I can edit this params.yaml file. [Video description begins] The presenter opens a new page. It is divided into two sections. On the left pane, some folders are given, namely: dvc_telecom, .dvc, source, and so on. On the right pane, a folder is open: params.yaml. There are two lines of code on it. [Video description ends]
+
+The only parameter that I specify here is going to be used by our data_process Python file, and that is the split_ratio for the data. I use a split_ratio of 0.2, meaning I’ll use 80% of the data that we have to train the model and 20% to evaluate the model.
+
+Parameters in DVC refer to any values used inside your code to influence the results of your model. In the data processing stage of our machine learning pipeline, we’ll use this split_ratio parameter that we have specified here to split our data into training data and test data.
+
+Just a heads up that this params.yaml that I have created here is going to be used by all three stages of my pipeline.
+
+Our pipeline is going to have a data processing stage, a training stage, and an evaluation stage, and all three stages will use this same params.yaml file.
+
+It’s also possible as your code gets more complex to have a separate params.yaml file for each stage in your pipeline. But we won't get into those complexities in this demo.
+
+The first stage of our pipeline will run the code present in data_process.py. So go ahead and select that file under the source subfolder. [Video description begins] A new page opens with the header: data_process.py. The page is populated with lines of code. [Video description ends]
+
+You can see the import statements for this Python code on lines 1 through 5. [Video description begins] The import statement on line 1 reads: import os. Line 2 reads: import pandas as pd. Line 3 reads: import yaml. Line 4 reads: import sys. Line 5 reads: from sklearn.model_selection import train_test_split. [Video description ends]
+
+And then I have defined a function called process_data. The one input argument passed into process_data is data_file_name. This is the name of the file that contains our training and evaluation data.
+
+The data processing that I perform here is fairly straightforward. We'll clean the data, replace a few missing values in our data, and then split the data into training and test.
+
+The first thing I need is the split_ratio, which is available in our params.yaml file.
+
+Notice on line 11, I call yaml.safe_load and open up the params.yaml file that’s present in the main working directory of my project. Once we open up params.yaml, we access the data_process section within the params.yaml, and then within that section, I access the split_ratio. And we’ll save this in the split_ratio variable.
+
+Next, we access the data that we’re going to work with, our churn_data. We use pandas to read in that data from the data_file_name variable. This data_file_name will be passed in as an input argument to our invocation of this data_process.py file.
+
+Once we have the churn_data, I print out the shape of the data so that we know the number of rows and columns that we are dealing with.
+
+I then print out on line 17 the number of null values in each feature of this dataset. Now this dataset contains a few null values, so we’ll perform a fillna and clean this dataset. This I do on line 19. [Video description begins] The code on line 19 reads: churn_data_cleaned = churn_data.fillna(churn_data.mean()). [Video description ends]
+
+We'll fill all of the null values with the mean values in that column.
+
+Once we've cleaned our data on lines 21 and 22, I print out the sum of null values for each feature after we’ve performed the data cleaning. This is the only processing that I perform here.
+
+Our dataset is fairly simple and comprises only of numeric values that we can use to directly train our model. So no additional pre-processing is required, which is why I move directly on to splitting the data into training and test data. This I do on line 25. [Video description begins] The code on line 25 reads: train, test = train_test_split(churn_data_cleaned , test_size = split_ratio). [Video description ends]
+
+The train_test_split uses the split_ratio that we read in from params.yaml.
+
+Once we have the training and test data, I create a new folder to save both of these data files. The name of the subfolder is going to be called processed_data. I call os.makedirs to create this folder. If the folder already exists, that’s totally fine. That’s why exist_ok is set to true.
+
+os.makedirs will not throw an error, if this data_path already exists.
+
+Once we’ve done this, let’s save out our prepared data, both train and test. [Video description begins] The train and test codes are highlighted on lines 32 and 33. Line 32 reads: train.to_csv(os.path.join(data_path, 'out_train.csv'), index = False). Line 33 reads: test.to_csv(os.path.join(data_path, 'out_test.csv'), index = False). [Video description ends] The training data will be in out_train.csv in the processed_data subfolder and our test data in the out_test.csv in the same subfolder.
+
+Now if you scroll down below, you’ll see the main entry point of this Python code. [Video description begins] The main entry point code is shown on line 36. It reads: if __name__ == "__main__": [Video description ends] The data_process.py file should be invoked with a single argument on the command line.
+
+That’s why I check whether the length of the command line arguments is < 2. If yes, then print out a usage message. [Video description begins] The usage message is given on line 39. It reads: print("Please provide the name of the input data file"). [Video description ends]
+
+If there are at least two arguments on the command line, the first argument will be the name of the file itself, data_process.py. The second argument will be the path to the data which needs to be read in by this file.
+
+sys.argv at index 1 will give us the data_file_name, and we invoke process_data with that data_file_name.
+
+Now that we've seen our data processing code, let’s add the data processing stage as the first stage in our machine learning pipeline. And in order to add a stage, we’ve seen this before, you use the dvc stage add command. [Video description begins] The presenter returns to the local directory page to run the new command. [Video description ends]
+
+Here on screen, you can see that I invoke dvc stage add, and I specify the name of the stage using the -n flag. This is the data_process stage.
+
+The -p flag specifies what parameters from the params.yaml file is accessed and used by the code for this stage. So within our params.yaml, we use the data_process.split_ratio for data processing.
+
+Every stage in your pipeline will have dependencies and these dependencies need to exist for the stage to run through and execute correctly.
+
+The dependencies for this stage in our pipeline are specified using the -d flag. The first dependency is the code dependency. What code needs to exist before our pipeline stage, data_process, can be executed? That’s the first -d flag. We need the data_process.py file in the source subfolder.
+
+The second dependency that I’ve specified using the second -d flag is on the data that needs to exist for the data processing stage to run. This is the telecom_churn.csv file in the data subfolder.
+
+Every stage in your ML workflow will produce outputs that will then be used by the remaining stages in your workflow. The output produced by this particular stage in our pipeline specified using the -o flag is present in the processed_data subfolder. This is the subfolder that we create to write out the training and test CSV files.
+
+And then finally, at the very bottom, we specify the command that needs to be executed for this stage in the pipeline to run. The command is python source/data_process.py, and the input argument we specify is a pointer to our training data in the data subfolder, telecom_churn.csv.
+
+Running this command will set up the dvc.yaml file in our current working directory, and this stage and all of its parameters will be configured in the dvc.yaml file. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Let’s run an ls -l command, and you’ll find the dvc.yaml file newly created right here in this working folder. Let’s take a look at the contents of this file. [Video description begins] A new page opens with the header: dvc.yaml. There are 11 lines of code displayed on it. [Video description ends]
+
+So we understand the configuration of our first stage.
+
+Notice that the configuration is specified in the stages section. The name of the stage is data_process. The command that will be run for this stage on line 3 is the Python command executing data_process.py and passing in the telecom_churn data as the input argument to our Python code.
+
+Dependencies for the stage are specified in the deps section. This stage depends on the data/telecom_churn.csv, and it also depends on the existing of the source code run by the stage, data_process.py.
+
+Parameters, that’s data_process.split_ratio from the params.yaml and the outputs generated by this stage is specified in the outs section, that is the contents of the processed_data subfolder.
+
+5. Video: Executing Pipeline Stages (it_mlodvcdj_05_enus_05)
+
+During this video, you will learn how to run a pipeline stage.
+run a pipeline stage
+[Video description begins] Topic title: Executing Pipeline Stages. Presented by: Janani Ravi. [Video description ends]
+At this point, we’ve just added the first stage of our pipeline, that is, the data_process stage. If you run the dvc dag command, it will give you a visual representation of all the stages that you have in your pipeline so far. [Video description begins] A local directory page is open. The first line of command reads: (dvc_venv) ~/projects/dvc/dvc_telecom_churn_prediction_pipeline. The presenter runs the command: dvc dag. The output reads: data/telecom_churn.csv.dvc pointing towards data_process. [Video description ends]
+
+We have just the one stage configured, that is, data_process and it works on the data present in the telecom_churn.csv file. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Just like we have git status to know what’s being tracked by Git, you can use the dvc status command to see the current state of our DVC project. Run dvc status, and we’ll get a whole bunch of interesting information.
+
+dvc status allows you to track the current state of your pipeline on your local machine. You’ll see what has changed, and this will give you an indication of what stage in your pipeline needs to be re-executed.
+
+Here you can clearly see that the dependencies for the data_process stage have changed and the output produced by the data_process stage is not yet available. It shows as deleted.
+
+dvc status gives us the current status of our pipeline and it will let us know what has changed and any stage whose dependency has changed will need to be rerun.
+
+For example, you can see that the dependencies being tracked as modified include telecom_churn.csv and data_process.py. This means that when we run this pipeline, the data_process stage will need to be executed because its dependencies have changed. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+If you want to run a DVC pipeline or run a single stage in your pipeline, you can use the dvc repro command. This command is used to reproduce the entire machine learning pipeline or specific stages of the pipeline. This ensures that all the dependencies and outputs of each stage are up to date and correctly processed based on the definitions specified in the dvc.yaml file.
+
+And the other data and code that is tracked by DVC.
+
+Here I run dvc repro and specify the name of the stage that I want to execute or reproduce. This is the data_process stage. That’s the only stage in our pipeline anyway.
+
+Let’s go ahead and execute this and see the results.
+
+You can see interesting details in the output here. Observe the first line, which says that telecom_churn.csv.dvc did not change. So the data hasn’t changed since we got DVC to track it.
+
+We’ve added data_process as a new stage, that means we have a new dependency on the source code, so this stage will be executed.
+
+Notice the shape of the data. We have 3333 records and 11 columns in the data. You can see that there are a few null values for individual features, but we’ll fill in those null values. So after processing the sum of null values equal to 0. [Video description begins] There are 11 null values highlighted on the screen, such as: Churn 0, AccountWeeks 3, DataUsage 2, and so on. [Video description ends]
+
+When you use the dvc repro command to execute your pipeline or a stage of your pipeline, DVC will generate a dvc.lock file, and you can see the message for that right here. [Video description begins] The message on the screen reads: Generating lock file 'dvc.lock' [Video description ends]
+
+This dvc.lock file allows DVC to record the state of our pipeline and helps track its outputs. Every dvc.yaml file will have a corresponding dvc.lock file when you execute your ML pipeline. This dvc.lock file is what allows DVC to detect when the stage definitions in your dvc.yaml or the dependencies for these stages have changed.
+
+If any of these have changed, the pipeline will need to be reproduced, that is, that individual stage will need to be rerun. All of this is tracked using the dvc.lock file.
+
+Now that we've run one stage of our pipeline, let's explore what the output of this stage has been.
+
+Here I am with my current working directory opened up in sublime text. [Video description begins] The presenter opens a new page. It is divided into two sections. On the left pane, some folders are given, namely: dvc_telecom, .dvc, dvc.lock, and so on. On the right pane, a folder is open: out_train.csv. The page is populated with lines of code. [Video description ends]
+
+Notice that I have a processed_data folder. And within this processed_data folder, I have an out_train.csv and an out_test.csv. This is the training and test data that are the outputs of the first stage in our pipeline.
+
+There is also the generated dvc.lock file right next to our dvc.yaml file. Let's take a look at its contents. [Video description begins] A new page opens with the header: dvc.lock. There are 22 lines of code displayed on it. [Video description ends]
+
+Observe that it has tracked the data_process stage that exists in our ML pipeline. It holds the command for the stage, the dependencies for the stage, the params for the stage, and the outs for the stage.
+
+It tracks the hash values of the dependencies and the outputs for this stage. [Video description begins] The hash values are highlighted on lines 7, 11, and 19. It reads: hash: md5. [Video description ends] If the data changes or the Python code changes, the hashes in the dependencies section will change.
+
+And that's how DVC will know that this particular stage needs to be re-executed.
+
+Now that we've executed the new stage that we've added in our pipeline, [Video description begins] The presenter returns to the local directory page. [Video description ends] let’s run dvc status, and you should get the message- data and pipelines are up to date. Nothing needs to be rerun.
+
+DVC uses the dvc.lock file to know whether a pipeline stage needs to be rerun. We have discussed this!
+
+Now, if you run dvc repro and specify the data_process stage, none of its dependencies have changed, which means this pipeline stage is up to date and will not be re-executed. [Video description begins] The output message highlighted on the screen reads: 'data/telecom_churn.csv.dvc' didn't change, skipping, Stage 'data_process' didn't change, skipping. Data and pipelines are up to date. The presenter clears the screen to run the new command. [Video description ends]
+
+If you want to run your entire pipeline rather than running just a single stage, you’ll just use dvc repro. We have just the one stage, data_process, in our pipeline that hasn’t changed in any way, dvc repro did not run anything.
+
+Now let me show you how DVC actually tracks the data that we use to train our pipeline.
+
+Here is our telecom_churn.csv file, and I'm going to add a new record here in this file in the very first row. You can see the new record on line 2. [Video description begins] The presenter returns to the sublime text page. A folder is open: telecom_churn.csv. The page is populated with lines of code. The new record on line 2 reads: 0,48,1,1,0.2,0,200.4,118,99,13.8,11.1 [Video description ends]
+
+Make sure you save the changes that you've made to this file.
+
+Now, at this point in time, a dependency of our first stage has changed. If you run dvc status, you should be able to see this here. [Video description begins] On the local directory page, the presenter runs the command: dvc status. The output that appears shows the dependency and outs have been modified. [Video description ends]
+
+You can see that the dependency in the data_process stage, that is, the telecom_churn.csv file, has been modified. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Now, when we try to reproduce our machine learning workflow, this change will be picked up by DVC. Run dvc repro and DVC will correctly identify that the data_process stage needs to be rerun because one of its dependencies has changed.
+
+Observe the message that says- Running stage ‘data_process’. Notice the shape of the data. We now have 3334 records. We added that one record in the CSV file, and the rest of the data processing stage runs through.
+
+For every execution of the pipeline, the dvc.lock file will be updated. You can see the message right there- Updating lock file ‘dvc.lock’. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+We’ve used DVC to track our data. The data has changed. We’ve also used DVC to set up the data_process stage of our pipeline.
+
+All of these changes need to be pushed to the DVC remote storage and this is easily accomplished using the dvc push command.
+
+A little heads-up here! Make sure you run dvc push before you actually commit the files for your machine learning workflow to Git. That’s because if you commit to Git first and push to the Git remote repository first, it's quite possible that your teammate will pull from Git and try to run your machine learning workflow, but you haven't pushed the DVC data yet.
+
+In order to avoid this, make sure you always run dvc push before committing to Git.
+
+dvc push will push to the remote storage all of the files currently being tracked by DVC. [Video description begins] The presenter runs the command: dvc push. The output that appears reads: 4 files pushed. The presenter clears the screen to run the new command. [Video description ends]
+
+Let’s run git status to see what we need to commit to Git. Now that I have one stage in my pipeline, I want to make sure that I push all of my changes to the remote repository.
+
+You can see that there are a bunch of DVC related files not tracked by Git, such as dvc.lock, dvc.yaml, params.yaml, and so on. Let's go ahead and make sure that we track all of these files.
+
+Also, notice that one of the files we stored in Git has been modified. This is the telecom_churn.csv.dvc file. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Now, whenever I see a modified file in my local repository, I’m curious to see how this file has changed as compared to what I’ve pushed to the remote repository. A way you can do this is by using the git diff HEAD command.
+
+This will allow you to see what local changes you've made on your machine as compared to the head of the branch on GitHub, your remote repository. [Video description begins] The presenter runs the command: git diff HEAD data/telecom_churn.csv.dvc. A list of data outputs appears on the screen, such as: size: 128783, and so on. [Video description ends]
+
+Here you can see that our changes lie in the data. The data size is now 128822 bytes as opposed to 128783 bytes. This makes sense because we’ve added a new record to the CSV file on our local machine, and this is the change DVC has noted. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+I’ll now specify a bunch of git add commands so that I’ll track all of the files I want to commit to Git, starting with the .dvc file that was modified.
+
+Let’s add our source code as well, git add source/data_process.py. Let’s add the dvc.lock, dvc.yaml, and the params.yaml file as well. All of these are DVC files that should be committed to Git. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Remember to not commit any data.
+
+Let's run git status and let's see what else I've missed here. There is a .gitignore file in my current working directory. I’m not going to commit that.
+
+There is the evaluate.py and train.py files. I’m not tracking those because we haven’t added those stages to our DVC pipeline yet. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Let’s go ahead and commit all of the rest of the changes to our local repository.
+
+We’ve added the data processing stage to our pipeline. [Video description begins] The presenter runs the command: git commit -m "Add the data processing stage to pipeline". A list of create mode outputs appears on the screen. The first line reads: 5 files changed, 80 insertions (+), 2 deletions (-). She clears the screen to run the new command. [Video description ends]
+
+And of course, let’s use git push -u origin main to push these out to our remote repository as well. [Video description begins] The outputs that appear on the screen read as done for several actions, such as: Counting objects, Compressing objects, and so on. [Video description ends]
+
+At this point, we’ve successfully added the data processing stage to our pipeline and run dvc repro to execute our pipeline.
+
+6. Video: Adding a Train Stage to the ML Pipeline (it_mlodvcdj_05_enus_06)
+
+In this video, find out how to add a train stage to an ML pipeline.
+add a train stage to an ML pipeline
+[Video description begins] Topic title: Adding a Train Stage to the ML Pipeline. Presented by: Janani Ravi. [Video description ends]
+Now that we've successfully set up and executed the data_process stage of our pipeline, let's move on to the next stage, and that is the train stage.
+
+Here is where we’ll execute code to build and train a RandomForest model on our telecom_churn data. [Video description begins] A page is displayed. It is divided into two sections. On the left pane, some folders are given, namely: dvc_telecom, .gitignore, dvc.lock, and so on. On the right pane, a folder is open: params.yaml. There are two lines of code shown on it. Line 1 reads: data_process:. Line 2 reads: split_ratio: 0.20. [Video description ends]
+
+Now, when we train this RandomForestClassification model, we need a way to specify the hyperparameters of this model, that is, the model's design parameters. And we’ll do so using the params.yaml file.
+
+So, I’m going to add a few parameters that our model will use here to this file, and you can see these parameters in the train section. [Video description begins] On the same page, the presenter adds more codes. There are 9 lines of codes displayed on it now. [Video description ends]
+
+I've set the number of estimators for our model to be 200, so our RandomForest model will train 200 decision trees. The max_depth of each tree is set to 5, min_sample_split: 2, min_samples_leaf: 1, and class_weight is set to empty string, so I haven’t specified a value for the class_weight.
+
+Make sure you save any changes that you make to this file. And once you've made those changes, let’s switch over and take a look at the code in train.py.
+
+This is the code that’s going to use the parameters that we just specified in params.yaml. [Video description begins] A new page opens with the header: train.py. The page is populated with lines of code. [Video description ends]
+
+All of the imports that this code needs is specified on lines 1 through 7. On line 7, you can see that we import the RandomForestClassifier. On line 2, notice that we import the pickle library. That’s what we’ll use to save out our serialized model artifact.
+
+I then have a method defined the train function, which takes as input argument the data_file_name. This data_file_name will contain the path to the training data for our model.
+
+On line 12, I use yaml.safe_load to load in the contents of the params.yaml file, and we’ll use the params variable to access the parameters that our model needs.
+
+On lines 14 through 18, observe how I look up the parameters in the train section, n_estimators, max_depth, class_weight, and so on.
+
+Now that we have our model parameters, we load the training data. On line 21, I call pd.read_csv and read the data_file_name made available as a command line argument to this Python code.
+
+Next, we separate the features and labels in our data.
+
+x_train holds all of the features that we’ll use to train the model, all columns except the churn column.
+
+y_train, that’s what we’re trying to predict. That’s the target. That's simply the values in the churn column. [Video description begins] The x and y train are highlighted on lines 23 and 24. Line 23 reads: x_train = train_data.drop(columns = 'Churn' ). Line 24 reads: y_train = train_data[ 'Churn' ] [Video description ends]
+
+We have the model parameters and the data. It's time for us to instantiate our classification model.
+
+Here is the RandomForestClassifier instantiated on lines 27 through 32, with all of the parameters that we extracted from the params.yaml file. [Video description begins] Line 27 reads: model = RandomForestClassifier(. Line 28 reads: n_estimators = n_estimators, max_depth = max_depth,. Line 29 reads: min_samples_split = min_samples_split,. Line 30 reads: min_samples_leaf = min_samples_leaf, and Line 31 reads: class_weight = class_weight. [Video description ends]
+
+We call model.fit to start the training process of the model and then we print out ‘Training done’.
+
+We then create a new model directory to write out the serialized model to disk. I use os.makedirs to create this model directory and if it already exists this will not throw an error, exists_ok is equal to True.
+
+Let’s construct the model_path, that is, within the model directory, we’ll save out the serialized model to the model.pkl file. [Video description begins] The highlighted code on line 41 reads: model_path = os.path.join('model_dir', 'model.pkl'). [Video description ends] We open up the model_path and call pickle.dump on our model to save out our serialized model.
+
+And here below is the main entry point of our Python code. We expect two command line arguments. The name of the train.py file, that will be the first argument at index 0.
+
+And the second argument will be the name of the file containing the input training data. [Video description begins] The presenter indicates the codes from lines 48 to 55. Line 48 reads: if __name__ == "__main__":. Line 50 reads: if len(sys.argv) < 2:. Line 51 reads: print("Please provide the name of the input training data file"). Line 52 reads: else:. Line 53 reads: data_file_name = sys.argv[1]. Line 55 reads: train(data_file_name). [Video description ends]
+
+On line 53, we access the path to the training data, and with that, we invoke the train method. That’s the method that we just saw.
+
+Now that we've seen what the training code looks like, let’s head back to the terminal window and run dvc status. At this point, our data and pipelines are up to date. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Let's set up the training stage of our machine learning pipeline.
+
+Once again, we use dvc stage add. The -n parameter allows us to specify the name of the stage. I’ve simply called it train.
+
+The -p parameter allows us to specify what parameters from the params.yaml file this particular stage will access. Observe that we specify all of the params here using the -p flag, n_estimators, max_depth, min_samples_leaf, class_weight, and so on.
+
+The -d flag allows us to specify the dependencies for the stage and this stage depends on the presence of the out_train.csv file in the processed_data folder.
+
+Remember, this is the file that is the output of the previous stage in the pipeline, the data_process stage. The output of the previous stage is a dependency to this next stage, the train stage.
+
+There is another dependency for this particular stage, and that is, the Python code that this stage needs to execute, -d source/train.py.
+
+Now, you might say, why does this stage depend on the Python code? Well, you do want it to be tracked as a dependency because if the Python code changes, then you want the stage to be re-executed. And that’s why the code for a particular stage is always a dependency for that stage.
+
+Now, this stage also produces an output, and that is the serialized model. The -o flag specifies that within the model_dir, the model.pkl file is the output of this stage.
+
+And then finally on the last line, we have the command that will be executed when we execute the stage, and that command is, python source/train.py processed_data/out_train.csv. The path to the training data is a command line argument.
+
+When you execute this command, a new stage will be added to our ML pipeline and this stage will be represented in the dvc.yaml file.
+
+There’s a little warning here that says that the .gitignore file in the model_dir could not be created. However, DVC will try to create this .gitignore once again, and at that point, this little warning should disappear.
+
+Let’s take a look at the dvc.yaml file, which should now have the details for the second stage that we’ve added. [Video description begins] The presenter returns to the sublime text page, where the folder: dvc.yaml is open. There are 23 lines of code displayed on it. [Video description ends]
+
+Notice we have the train stage defined on line 11.
+
+The command section contains the command that will be executed. [Video description begins] The command on line 12 reads: cmd: python source/train.py processed_data/out_train.csv. [Video description ends] The deps, the dependencies for this stage on out_train.csv and train.py.
+
+The params section contains a reference to the params.yaml file and the parameters used by our model.
+
+And the outs section contains what outputs this particular stage will generate.
+
+7. Video: Executing the Data Process and Train Stages (it_mlodvcdj_05_enus_07)
+
+During this video, discover how to run multiple pipeline stages.
+run multiple pipeline stages
+[Video description begins] Topic title: Executing the Data Process and Train Stages. Presented by: Janani Ravi. [Video description ends]
+Here, you can clearly see the data that is then processed in the data_process stage, and the output of the data_process stage is fed to the train stage. [Video description begins] In the local directory page, the first line of command reads: (dvc_venv) ~/projects/dvc/dvc_telecom_churn_prediction_pipeline. The presenter runs the command: dvc dag. The output reads: data/telecom_churn.csv.dvc points to data_process which further points to the train stage. The presenter clears the screen to run the new command. [Video description ends]
+
+Our current execution of our ML pipeline is not complete, so dvc status should indicate this. You can see that the dependencies for our train stage have been modified and this means that the train stage needs to be re-executed. [Video description begins] The highlighted output reads: changed deps:, modified: processed_data/out_train.csv, modified: source/train.py. [Video description ends]
+
+The output that it produces in the model_dir is not yet available, and that’s why it shows as deleted.
+
+Let’s execute our pipeline using dvc repro. Now dvc repro will check the existing dvc.lock files and only re-execute stages that need to be re-executed.
+
+The output here is super interesting! DVC has correctly concluded that the stage data_process didn’t change, and it has safely skipped that stage. It has only executed the train stage of our pipeline. Once training was complete, Training done is printed out to screen. The dvc.lock file was also updated to indicate the current state of our pipeline.
+
+After completing training, the serialized model has been saved out to the model directory. [Video description begins] The presenter opens the sublime text page. It is divided into two sections. On the left pane, some folders are given, namely: dvc_telecom, .dvc, data, and so on. On the right pane, a folder is open: .gitignore. There are two lines of code displayed on it. [Video description ends]
+
+In addition, the .gitignore file which asks to ignore the model.pkl file in this directory, has also been successfully generated.
+
+Our newly updated dvc.lock file now contains information for both stages, the data_process stage and the train stage, specified here on lines 23 through the end of the file. [Video description begins] A new page opens on the right pane with the header: dvc.lock. There are 45 lines of code displayed on it. [Video description ends] 
+
+The dvc.lock file contains the hashes of all of the dependencies for each stage, and it is these hashes that allows DVC to track whether a particular stage needs to be rerun because a dependency has changed.
+
+At this point, the execution of our pipeline is up to date, and dvc status will give us the same information. You should see- Data and pipelines are up to date.
+
+Now, the train stage of our machine learning pipeline depends on our train.py code. So, I’m going to tweak this code to make a very teeny, tiny change.
+
+Notice this print statement that says ’Training done′. Instead of Training done, I’m going to change this to Training completed. [Video description begins] On the sublime text page, a folder is open: train.py. The page is populated with lines of code. The presenter changes the code on line 36. [Video description ends]
+
+Now, this doesn't fundamentally alter our code in any way, but it will change the hash of our Python file.
+
+So, if you now look at dvc status, you can see that the dependency for our train stage has changed. [Video description begins] The changed output reads: Changed deps:, modified: source/train.py. The presenter clears the screen to run the new command. [Video description ends]
+
+The fact that this has changed means that if we were actually to run the pipeline using dvc repro, the train stage will be re-executed, and that is indeed the case. The data_process stage was skipped, but the train stage was executed.
+
+Now let's change something that will cause our entire pipeline to be rerun. I’m going to head over to the telecom_churn.csv file and add one more record to this data. So I'm going to add that record to the very top of the file. [Video description begins] On the sublime text page, a new folder is open: telecom_churn.csv. The page is populated with lines of code. The presenter changes the code on line 2: 1,24,2,1,0.6,0,100.5,50,45,13.8,16.7 [Video description ends]
+
+As you might imagine, changing the data used to train our machine learning pipeline will require a re-execution of the entire pipeline.
+
+Now, if you run dvc status, you’ll find that the dependencies for the data_process stage have changed. This means that the data_process stage will be re-executed and re-executing data_process will produce new outputs that will then re-execute our train stage.
+
+And running dvc repro will confirm that this is indeed the case. DVC will smartly check what needs to be re-executed, and it will run the data_process stage that will produce new outputs, which will then cause the train stage to be executed. [Video description begins] The highlighted output shows the Data Shape: 3335 and a list of null values for each feature, such as: AccountWeeks 3, DataPlan 0, and so on. [Video description ends]
+
+And the train stage will, of course, produce a new serialized model written out to the model_dir. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Now that we’ve successfully expanded our ML pipeline to include the train stage, let’s run dvc push so that the DVC remote storage contains all of the files associated with our pipeline. The changed data files, the output of the data_process stage, the serialized model, everything has been pushed to DVC.
+
+Now let’s take a look at our remote storage. You can see that it contains a whole bunch of files being tracked by DVC. [Video description begins] The presenter runs the command: ls -R /tmp/dvc_pipeline_store/. A list of file names appears on the screen as output, such as: /tmp/dvc_pipeline_store//files: md5, and more. [Video description ends] Our pipeline is up to date, DVC is up to date. All that's left is for us to commit these changes to Git.
+
+Let’s run git status to see what files have been modified and what files need to be tracked. A lot of the DVC-related files have been modified. [Video description begins] There are four modified files highlighted on the screen. They are: modified: data/telecom_churn.csv.dvc, modified: dvc.lock, modified: dvc.yaml, and modified: params.yaml. A list of untracked file names is also given below. The presenter clears the screen to run the new command. [Video description ends]
+
+If you're curious about the changes to these files, we can use the git diff command to see how these files differ from what we’ve committed to our remote repositories HEAD. The change in this .dvc file essentially reflects the change in our data.
+
+Remember, we added one more record to the telecom_churn.csv file. [Video description begins] A list of outputs appears on the screen, such as: outs:, + size: 128860, hash: md5, and so on. The presenter clears the screen to run the new command. [Video description ends]
+
+Well, this file change is legitimate, so let’s go ahead and call git add so that we track it using Git. The train.py file is also not committed to our repository. Let’s go ahead and git add that one as well.
+
+Let’s look at the local changes that we have in our dvc.yaml file as compared to what has been committed to the HEAD of our repo. The change here is obvious!
+
+We’ve added a new stage to our ML pipeline, and that is the train stage. [Video description begins] There are 13 lines of command displayed under the train stage, such as: + deps:, + - processed_data/out_train.csv, params, and so on. The presenter clears the screen to run the new command. [Video description ends] Again, this change is legitimate.
+
+Let’s look at the change in the params.yaml file, and you can see that we have new parameters for the train stage. [Video description begins] The presenter runs the command: git diff HEAD params.yaml. The highlighted output reads: +train:, + n_estimators: 200, + max_depth: 5, + min_samples_split: 2, + min_samples_leaf: 1, + class_weight:. The presenter clears the screen to run the new command. [Video description ends] Running dvc repro generates the dvc.lock file that tracks the status of our pipeline.
+
+Let’s look at the changes in this file, and you can see the changes have to do with the change in the data. [Video description begins] The presenter runs the command: git diff HEAD dvc.lock. A list of outputs appears on the screen. [Video description ends]
+
+Notice that the md5 hash and the size of the telecom_churn.csv file has changed. This, in turn, has changed the processed_data output by the data_process stage. And of course, we’ve added an entirely new train stage. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Let’s add all of these files to Git, dvc.lock, dvc.yaml, params.yaml. We have a model directory with the serialized model. Let's go ahead and add the model directory as well.
+
+Let's now run git status to see what files are being tracked. Everything looks good so far.
+
+I’m going to go ahead and commit all of these changes to my local repository using a git commit command.
+
+We’ve added the training stage to our pipeline, and we will, of course, push all of these changes to our remote repository as well using git push -u origin main.
+
+8. Video: Adding and Executing the Evaluate Stage in a Pipeline (it_mlodvcdj_05_enus_08)
+
+Learn how to add an evaluation stage to an ML pipeline.
+add an evaluation stage to an ML pipeline
+[Video description begins] Topic title: Adding and Executing the Evaluate Stage in a Pipeline. Presented by: Janani Ravi. [Video description ends]
+At this point, we’ve successfully added two stages to our DVC machine learning pipeline.
+
+We have the data_process stage, where we processed and cleaned our data and produced the training and test_data as output files.
+
+We then had the train stage, where we actually trained our model on the training data and wrote out the serialized model to disk. [Video description begins] The sublime text page is open. It is divided into two sections. On the left pane, some folders are given, namely: dvc_telecom, .gitignore, source, and so on. On the right pane, a folder is open: evaluate.py. The page is populated with lines of code. [Video description ends]
+
+We’ll now add the third stage to our DVC ML pipeline, and that is the evaluate stage.
+
+Take a look at evaluate.py. This is yet another Python file under the source subfolder. We have the import statements up top on lines 1 through 11. [Video description begins] Line 1 reads: import sys. Line 2 reads: import os. Line 3 reads: import pickle. Line 4 reads: import json. Line 5 reads: import numpy as np. Line 6 reads: import pandas as pd. Line 8 reads: from dvclive import Live. Line 9 reads: from matplotlib import pyplot as plt. Line 11 reads: from sklearn.metrics import recall_score, precision_score, f1_score, accuracy_score, roc_auc_score [Video description ends]
+
+Notice that here we make use of dvclive to log metrics and parameters associated with our model. On line 8, you can see the import for dvclive.
+
+On line 13, I define the evaluate function which takes in two input arguments, the model_path and the test_file_name.
+
+The model_path is a path on our disk where the serialized model lives. The test_file_name is the path that contains the test_data that we’ll use to evaluate our model.
+
+On lines 15 and 16, we use pickle to reserialize and load our model from disk. [Video description begins] Line 15 reads: with open(model_path, 'rb') as f:. Line 16 reads: model = pickle.load(f) [Video description ends]
+
+On line 19, we use pandas to read the test_data, and we separate the test_data into test_features and labels on lines 21 and 22. [Video description begins] The code on line 21 reads: test_features = test_data.drop('Churn', axis = 1). Line 22 reads: test_labels = test_data ['Churn']. [Video description ends]
+
+Now, we use the features to make predictions on the test_data. We compute both the predictions as well as the prediction probabilities. This is the code that you see on lines 25 and 26. [Video description begins] Line 25 reads: predictions_proba = model.predict_proba(test_features). Line 26 reads: test_predictions = model.predict(test_features) [Video description ends]
+
+Now that we have predictions from the model on the test_data, let's compute metrics for this model. We compute accuracy, precision, recall, F1 score, and auc_score on lines 29 through 33.
+
+And we print out on line 35, Evaluation metrics computed.
+
+Now, we'd like to store out all of these evaluation metrics somewhere on disk, and for that we set up an evaluation path. This is a subfolder called results that we’ll create in the current working directory.
+
+I call os.makedirs and create this results folder. And if it already exists, that’s fine! This shouldn’t throw an error. That’s why it exist_ok is equal to True.
+
+On line 42, we set up a DataFrame containing the actual labels from our test_data and the predicted values from our model. And we write this DataFrame out as a CSV file to the EVAL_PATH. So under results, we should have a predictions_vs_actuals.csv file.
+
+On lines 46 through 57, we use matplotlib to plot a horizontal bar chart of Feature Importances. [Video description begins] Line 46 reads: fig, axes = plt.subplots(). Line 47 reads: fig.subplots_adjust(left = 0.2, bottom = 0.2, top = 0.95). Line 49 reads: importances = model.feature_importances_. Line 50 reads: indices = np.argsort(importances). Line 51 reads: features = test_features.columns. Line 53 reads: plt.title('Feature Importances'). Line 54 reads: plt.barh(range(len(indices)), importances[indices], color = 'b', align = 'center'). Line 56 reads: plt.yticks(range(len(indices)), [features[i] for i in indices]). Line 57 reads: plt.xlabel('Relative Importance') [Video description ends]
+
+Since we’ve trained a RandomForest model, the model.feature_importances_ member variable accessed on line 49 gives us the relative importance of each feature in making predictions.
+
+We plot the relative importance of features using a horizontal bar chart, that’s the code on lines 53 through 59, and we save this plot out as a PNG file called feature_importance.
+
+Now, we'll take DVCLive's help in logging some metrics and plots for our model. We could set up these metrics and plots manually, but DVCLive makes it automated and makes it so much easier for us.
+
+I instantiate a live object on line 62. [Video description begins] The code on line 62 reads: with Live(os.path.join(EVAL_PATH, 'live')) as live: [Video description ends] We’ll have DVCLive track and log all of the metrics and plots that we are interested in in the EVAL_PATH subfolder, that is the results subfolder.
+
+You know from your previous experience with Live that, within this results subfolder, Live will produce a dvc.yaml file.
+
+But we already have a dvc.yaml file in our current working directory. How to reconcile these two? Well, we’ll have to do it manually, and I’ll show you how to do that in just a bit.
+
+Meanwhile, let’s just use Live to track metrics, params, and images in our model, and I’ll show you how you can basically have just a single dvc.yaml file. We’ll have to delete the auto-generated one from DVCLive.
+
+Another thing to note is when we instantiate the live object is that I haven’t specified save_dvc_exp = True. So DVCLive will log these results locally but will not connect to Iterative Studio and will not create an experiment with these results. We’ll do that manually using the command line.
+
+After instantiating the live object on lines 64 through 68, I call live.log_metric to log all of the metrics associated with this model that we computed on the test_data.
+
+On lines 70 through 81, I call live.log_sklearn_plot to plot some custom visualizations.
+
+The first log_sklearn_plot plots the ROC Curve. The second one a Confusion_matrix for the results, and the third log_sklearn_plot plots the Precision and Recall Curve. These are all plot templates that DVC is aware of.
+
+On lines 71, 75, and 79, observe that the first input argument that we pass in to log_sklearn_plot that says roc, confusion_matrix, and precision_recall, these are all the kinds of plots that DVC understands and knows how to plot using log_sklearn_plot. [Video description begins] Line 71 reads: 'roc', test_labels.squeeze(),. Line 75 reads: 'confusion_matrix', test_labels.squeeze(),. Line 79 reads: 'precision_recall', test_labels.squeeze(),. [Video description ends]
+
+And finally, at the bottom, we call live.log_image to log out the feature_importance image to be tracked by DVC as well.
+
+And here at the bottom we have the main entry point of this eval function. Notice that we use the command line arguments passed in to access the model_path and test_file_name, and these are what we use to invoke the evaluate function.
+
+Now that we know what the evaluate code looks like, let’s head over to the terminal window and add the evaluate stage to our pipeline. This is going to be the third and last stage of our pipeline.
+
+I use dvc stage add -n and specify the name of the stage, that is, evaluate. The dependencies of this stage include two, the evaluate.py file, I’ve specified that using the -d flag, and the model.pkl file. This is what we read in to make predictions, I’ve specified that using the -d flag as well.
+
+And the output generated by this evaluate stage is essentially the CSV file called predictions_vs_actuals.csv. And the command that is executed as a part of the evaluate stage is this line here at the bottom, python evaluate.py, and we pass in the path to the model.pkl file and the test data, out_test.csv.
+
+Go ahead and add this stage.
+
+Once again, you can ignore that warning that you see there about the .gitignore file in the results folder that will be generated automatically when we run our pipeline.
+
+Now, having added this stage, let’s see what changes have been made to the dvc.yaml file. [Video description begins] The presenter returns to the sublime text page. A new folder is open: dvc.yaml. There are 30 lines of code displayed on it. [Video description ends]
+
+Here at the bottom on lines 24 through 30, I have the evaluate section. We have the command to run, the dependencies of this stage, and then the outs produced by this stage.
+
+The directed acyclic graph representing our ML workflow should have been updated.
+
+Running dvc dag will show us this new updated pipeline of ours.
+
+We start with our telecom_churn data, run the data_process stage in it, then the train stage, and then finally, the evaluate stage. Our ML pipeline is now complete.
+
+All that’s left is for us to run the pipeline. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Let’s take a look at the status of the pipeline at this point in time using dvc status. It’s only the evaluate stage that has yet to be run. Its dependencies have been modified and its outs do not exist. [Video description begins] The highlighted output reads: changed deps:, modified: model_dir/model.pkl, modified: source/evaluate.py [Video description ends]
+
+Well, all that’s left for us to actually run this pipeline.
+
+Let’s run dvc repro, and this will skip the data_process and train stages because they’ve already been run through. It will only run the evaluate stage.
+
+Observe that we see a warning here on screen, dvclive can’t connect to Studio without creating a DVC experiment. That’s because we hadn’t specified save_dvc_exp = True.
+
+DVCLive has logged out the details of the run, but we haven't actually saved the details as an experiment.
+
+And if you head over to Iterative Studio, you will find that there is no new experiment that has been created there. But the results are indeed available locally.
+
+In our main project directory, you should find a results subfolder, and within this results subfolder, you should find another subfolder called live. This is where DVCLive has plotted out the metrics and plots associated with our model. [Video description begins] Under the live folder, four files are displayed: dvc.yaml, metrics.json, plots, and report.html [Video description ends]
+
+Observe that there is also a dvc.yaml file that has been automatically generated. This is the dvc.yaml containing all of the specifications for the metrics and plots that DVCLive automatically logged out.
+
+Your DVC project should have only a single dvc.yaml file, and this is a duplicate. But we do need some of the details of this dvc.yaml, and we’ll see how to use that in just a bit.
+
+Meanwhile, let’s look through to plots and see what it contains. You can see that we have images, metrics, sklearn plots all here.
+
+The image that we plotted here is the feature_importance.png file. Let's open this up and take a look.
+
+You can see that DayMins, the minutes used by a customer on his mobile phone on a particular day, is the biggest predictor of churn. [Video description begins] A chart is displayed on the screen. The header reads: Feature Importances. At the bottom, the scales are shown under the header: Relative Importance, 0.00 being the lowest and 0.25 being the highest. On the left, the names of the churns are given, presenting the highest to the lowest scales, namely: DayMins, MonthlyCharge, DataPlan, and so on. [Video description ends]
+
+That's by far the most important feature.
+
+The best way to view all of the plots logged out using DVCLive is to use report.html. Open up this HTML file in your browser window, and you’ll be able to kind of see in one place all of the plots and visualizations available. [Video description begins] The presenter opens a browser windows page, titled: DVC Plot. The header reads: metrics_json. There are five test scores displayed on a horizontal ribbon, such as: Test_accuracy_score 0.92054, Test_recall_score 0.54, and so on. Five boxes are shown below, which are further divided into four plotted sections. [Video description ends]
+
+You can see the metrics that we logged out at the very top of the report, accuracy of 0.92.
+
+If you scroll down, you’ll see the feature importance image somewhere in the middle of your screen, and at the very bottom, we have the custom sklearn images.
+
+We have the ROC curve for the model, the Precision-Recall Curve. And if you scroll further down, a nice Confusion Matrix.
+
+9. Video: Eliminating a Duplicate dvc.yaml File (it_mlodvcdj_05_enus_09)
+
+Find out how to remove a duplicate dvc.yaml file.
+remove a duplicate dvc.yaml file
+[Video description begins] Topic title: Eliminating a Duplicate dvc.yaml File. Presented by: Janani Ravi. [Video description ends]
+Our pipeline has not been set up perfectly yet. We’ve used DVCLive to track some metrics and plots in our model.
+
+However, DVCLive has generated this extra dvc.yaml file in the results folder.
+
+Now let’s take a look at what’s in results, and whatever DVCLive has logged out, I’m going to copy that over to the main dvc.yaml file that we have for the project.
+
+So I’m going to select this dvc.yaml that lives in my results folder and notice that we have a bunch of interesting sections here. [Video description begins] The sublime text page is open. It is divided into two sections. On the left pane, some folders are given, namely: dvc_telecom, model_dir, results, source, and so on. On the right pane, a folder is open: dvc.yaml. There are 28 lines of code displayed below it. [Video description ends]
+
+We have the metrics section tracking the metrics.json file, we have the plots section within which we are tracking sklearn plots as well as the images that we’ve plotted. Now this dvc.yaml file is in the results folder.
+
+metrics.json is right within the results folder. The plots are within plots/sklearn and then the name of the plot. All within the results folder.
+
+And on line 6, you can see that the images subfolder is also within the results subfolder. There is a plots directory, and then we have the images directory.
+
+Let’s copy this entire section over because we do want our projects dvc.yaml to have sections.
+
+I’m going to now switch over to the dvc.yaml of the entire project. This is the one where we’ve added the stages of our pipeline.
+
+Here in this projects dvc.yaml, I’m going to include all of the sections that were auto-generated by DVCLive. The metrics, plots section, and all of the sub-sections for the individual plots. [Video description begins] Under the source folder, the presenter selects the dvc.yaml file. There are 31 lines of code displayed on it. She pastes the previous codes below. They are shown from lines 32 to 58. [Video description ends]
+
+Just copying this over isn't sufficient.
+
+Remember that DVCLive is generating all of the metrics and plots within the results subfolder. But this dvc.yaml file is in my main project folder.
+
+This implies that I’ll need to make a few changes to the parts that I’ve copied over so that it points to the right file in the results subfolder.
+
+So instead of just having metrics.json, I’ll specify the entire path to the metrics.json file auto-generated by DVCLive, that’s, results/live/metrics.json.
+
+To every path that you see here, you’ll have to prepend results/live because that’s where all of these files are going to be generated. So results/live/plots/metrics.
+
+Then again for the images, results/live/plots/images.
+
+We need to update the paths to the sklearn plots as well. Again, we’ll add the prefix results/live.
+
+Let’s do it for the remaining two sklearn plots, add the prefix in. [Video description begins] The presenter changes the code on line 38 to: - results/live/plots/sklearn/ROC Curve.json:. On line 45: - results/live/plots/sklearn/Confusion-matrix.json:. And line 52: - results/live/plots/sklearn/Precision-Recall Curve.json: [Video description ends]
+
+At this point, this dvc.yaml file in our main projects folder has the right path to all of the plots, images, and metrics auto-generated by DVCLive. Now having made this change in this dvc.yaml file, we need to change our code a little bit as well.
+
+We need to instantiate our live object in our evaluate.py code. [Video description begins] A new page opens with the header: evaluate.py. The page is populated with lines of code. [Video description ends] And basically, tell it- Do not generate a dvc.yaml, I already have a dvc.yaml for my project.
+
+Essentially, what we’re doing here is telling DVCLive, "Please do generate all of the metrics, plots, and images that I’m logging out in an automated manner but do not generate a corresponding dvc.yaml file."
+
+This can be done very easily by setting the property, dvcyaml=False when you instantiate the live object. [Video description begins] The presenter indicates the code on line 62. It reads: with Live(os.path.join(EVAL_PATH, 'Live'), dvcyaml=False) as live: [Video description ends]
+
+This tells DVCLive that you have another dvc.yaml that you’re managing, do not generate one. But do generate the metrics, plots, images, and anything else that we log out.
+
+We’ve made changes to the code. We made changes to the dvc.yaml file.
+
+Let's run our ML pipeline once again.
+
+dvc repro will correctly identify that we do not need to rerun the data_process and train stages, but we do need to rerun the evaluate stage.
+
+DVCLive has regenerated the results folder and re-logged metrics, plots, images, and everything else that we had specified.
+
+Note that there is no dvc.yaml file within the live subfolder. We have metrics, plots, we have a report but no dvc.yaml. That’s exactly what we want. We have our dvc.yaml in the main project folder.
+
+Now that we've set up everything, we've set up all of the files for this run of the pipeline. I call dvc push to push and track all of our data with DVC.
+
+Running dvc metrics show will allow us to view the metrics from the current execution of the pipeline. We now have a metrics section in our dvc.yaml associated with the project. [Video description begins] A table appears as the output. It has 6 headers with the following details: Path: results/live/metrics.json, AUC_score: 0.89076, Test_accuracy_score: 0.92054, Test_f1_score: 0.67081, Test_precision_score: 0.88525, and Test_recall_score: 0.54. The presenter clears the screen to run the new command. [Video description ends]
+
+If you want to view the plots associated with this project, well, run dvc plots show. This will actually generate an index.html file with all of the plots generated by DVCLive. [Video description begins] The HTML file reads: file:///Users/loonycorn/projects/dvc/dvc_telecom_churn_prediction_pipeline/dvc_plots/index.html [Video description ends]
+
+Copy this file over and open it up within your browser window, and you’ll get a nice HTML report with the plots that were generated in this run of our pipeline.
+
+10. Video: Running DVC Experiment Pipelines (it_mlodvcdj_05_enus_10)
+
+In this video, discover how to run dvc experiment pipelines.
+run dvc experiment pipelines
+[Video description begins] Topic title: Running DVC Experiment Pipelines. Presented by: Janani Ravi. [Video description ends]
+Now, we did not use save_dvc_exp = True when we logged out metrics using a DVC pipeline. That’s because when you use machine learning pipelines in DVC, there’s actually another way that you’ll create and run an experiment, and that is by using the dvc exp run command. [Video description begins] On the local directory page, the first line of command reads: (dvc_venv) ~/projects/dvc/dvc_telecom_churn_prediction_pipeline. [Video description ends]
+
+dvc exp run will run the pipeline that we have in our current project as an experiment, which means a new experiment will be created, and this experiment will be logged on Iterative Studio. The pipeline will not be re-executed, but the results of the pipeline will now be in Studio. [Video description begins] A list of pipeline stages appears as outputs on the screen. The line above them reads: Reproducing experiment 'cased-heck'. [Video description ends]
+
+Observe that dvc exp run has correctly picked up that the pipeline stages need not be rerun because nothing has changed.
+
+However, experiment results have been applied to our workspace, and they should now be available on Iterative Studio. And that’s where we’ll head to take a look. [Video description begins] In the Iterative Studio window page, the header reads: loonytest > dvc_telecom_churn_prediction_pipeline. A table is displayed on it. It is divided into two sections. On the left, there are three headers: Experiment, Created, and Message. On the right, the metrics, data, etcetera of the experiments are given. Such as, Under Metrics, it reads: AUC_score, Test_f1_score, and so on. Five experiment names are displayed in the columns. [Video description ends]
+
+Observe that a new experiment called cased-heck has been created, containing the metrics, data, and other details associated with our ML pipeline.
+
+These details that we’ve logged with Iterative Studio can also be viewed on the command line by running dvc exp show, and it will show us the details of the single experiment that we have logged. [Video description begins] A table appears on the screen as output. There are six headers such as: Experiment, Created, and so on. For the experiment: cased-heck, the information reads as follows: Created: 04:41 PM, Test_accuracy_score: 0.92054, Test_precision_score: 0.88525, Test_recall_score: 0.54, and so on. The presenter clears the screen to run the new command. [Video description ends]
+
+Let’s make sure that all of the files associated with this experiment are pushed to DVC by running dvc exp push origin, and the experiment ID, which in our case is cased-heck. [Video description begins] The output reads: Pushed experiment cased-heck to Git remote 'origin'. View your experiments at https://studio.iterative.ai/user/loonytest/projects/dvc_telecom_churn_prediction_pipeline-ttv69sbqlv [Video description ends]
+
+Once your experiment files are tracked using DVC, Iterative Studio will pick this up. Click on Update project, and you can see the commit next to your experiment, cased-heck. All of the details are now available on DVC and thus accessible using Iterative Studio.
+
+This means you can select this experiment and click on that little plot icon, and all of the plots that were tracked locally should now be available on Iterative Studio. [Video description begins] A new page opens on the Iterative Studio window page. It is divided into two sections. On the left pane, a list of Commits and Directories names is given. On the right pane, the Plots section is open with the header: cased-heck. Some charts are displayed on it, namely: dvc.yaml::results/live/plots/metrics/AUC_score.tsv [Video description ends]
+
+Here are all of the plots that we’ve logged using DVCLive, Precision-Recall Curve, ROC Curve, Confusion Matrix, and finally, the image for Feature Importances.
+
+Now that we’ve set up our ML pipeline as an experiment, you can actually configure the parameters of your model and rerun the experiment with those new parameters. This allows you to quickly iterate and view different versions of your model.
+
+I use dvc exp run, and here are the parameters I’ve modified.
+
+n_estimators I’ve set to 50, and I’ve set max_depth to 2. This will rerun the pipeline as a new experiment, and that experiment will use these new model parameters. [Video description begins] The output on the screen reads: Reproducing experiment 'coaly-quey' [Video description ends]
+
+The data_process stage will not be rerun because that hasn’t changed in any way.
+
+But the train and evaluate stages of our pipeline will be re-executed. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+This run, of course, would have updated the params.yaml file associated with this ML pipeline and a git diff will allow us to see those changes.
+
+Here you can see that number of estimators was originally 200, max_depth: 5, but with this new run, it’s 50 and the max_depth is 2.
+
+We now have two experiments corresponding to the two different executions of our model. Let's commit all of our experiments to DVC. [Video description begins] The presenter clears the screen to run the new command. She runs the command: dvc exp push origin -A. [Video description ends]
+
+All of our experiment runs that we have in the local machine will be pushed to DVC.
+
+You can head over to Iterative Studio and update your project, and you should see the two experiments there. [Video description begins] The two experiments highlighted on the Iterative Studio window page reads: coaly-quey and cased-heck. [Video description ends] And you can now select these experiments and compare metrics and params as you wish to.
+
+I’m going to select both of these experiments where our RandomForest model has been trained with different hyperparameters, and I'm going to turn on plots for both experiments.
+
+But before we look at the visualization, let’s compare the two commits, the two experiments based on their metrics and parameters. [Video description begins] On the right pane, a dialog box opens with the header: Changes. Three tables are displayed on it: Metrics, Parameters, and Files. Each has three headers: Name, cased-heck, and coaly-quey. Metrics has five columns, namely: metrics.json:AUC_score. Parameters has two columns, namely: params.yaml:train.n_estimators. [Video description ends]
+
+Let’s take a look at the accuracy score. You can see that it was much better, 92%, in the earlier experiment, where we had a larger number of estimators. With just 50 estimators, the accuracy has dropped to 85%.
+
+The recall score is where you can really see how badly the second model has performed. The recall for the second model is 0. So, with 50 estimators, we basically could not identify any of the telecom customers who churned.
+
+Now, let’s take a look at the visualizations for the two experiments. [Video description begins] The presenter opens the Plots section. It displays two headers now for comparison: cased-heck and coaly-quey. Some charts are shown below. [Video description ends]
+
+Here, you'll see overlaid the points from the two experiments. You can see the two Precision-Recall Curves. You can compare them side by side.
+
+You can see that the two Confusion Matrixes are also available next to one another. [Video description begins] On the Confusion Matrix chart, there are four scales: 0, 200, 400, 600. Both experiments have the same scales, except one where coaly-quey 0 scale is the highest among all. [Video description ends]
+
+And here are the Feature Importances of the two models, again laid out side by side. [Video description begins] The Feature Importances scales of both experiments are a bit different, such as:ContractRenewal, DayCalls, and more. [Video description ends]
+
+I’m going to train yet another experiment using dvc exp run. Here n_estimators=100, max_depth=5, and I set the class_weight to be balanced.
+
+When you set class_weight=balanced, the model automatically assigns the class weights inversely proportional to their respective frequencies. More importance will be given to the minority class that will improve the recall of our model.
+
+Let’s go ahead and train our model using these new parameters. [Video description begins] A list of running stages outputs appears on the screen. The first line reads: Reproducing experiment 'nervy-arcs'. The presenter clears the screen to run the new command. [Video description ends] I definitely expect that this model will be better than the second model that we trained.
+
+Let’s see if it’s better than the first. What's the difference in the parameters?
+
+You can see the number of estimators is different and class_weight is now balanced. [Video description begins] The highlighted output reads: - n_estimators: 200, + n_estimators: 100. [Video description ends]
+
+So, we are using fewer estimators than the original 200 we had in the first experiment. But we’ve set class_weight to balanced.
+
+Let’s see how this works!
+
+Let’s push all of the data to DVC, dvc exp push origin -A. This will push all of the experiments from our local machine to DVC.
+
+Let's now head over to Iterative Studio, update our project, and see the details of this experiment.
+
+DVC allows us to compare just two experiments, so I'm going to deselect the very first experiment that we ran, and I'm going to compare the second and the most recent experiment.
+
+You can just see on this page that the recall score of our new experiment is so much better. Look at the column, Test_recall_score, it’s 0.76 as opposed to 0 from the earlier experiment.
+
+And you can see that the recall score is much better than the very first experiment as well. There it was 0.54, now 0.76.
+
+Looking at the plots and visually comparing the experiments is always useful. Let’s head over to the Plots, and we can see a side-by-side comparison of the two experiments. [Video description begins] On the Plots section, two experiments are displayed for comparison: coaly-quey and nervy-arcs. Some charts are shown below. [Video description ends]
+
+You can see here that the Precision-Recall Curves of the two experiments are overlaid, one on top of the other.
+
+Here are the two Confusion Matrixes side by side. You can actually hover over these matrixes and see and compare how the results are different.
+
+And then, of course, we see the Feature Importances chart here at the very bottom.
+
+Let’s copy over the experiment IDs of the two experiments and run dvc exp diff. This will allow us to compare the metrics for the two experiments side by side here within our terminal window. [Video description begins] On the local directory, the presenter runs the command: dvc exp diff coaly-quey nervy-arcs. As an output, two tables: Metric and Param appear as an output. Each has 5 headers, namely: Path, coaly-quey, Change, and so on. The presenter clears the screen to run the new command. [Video description ends]
+
+At this point, we are satisfied with the model that we’ve trained using our ML pipeline.
+
+Let’s run dvc push to make sure everything is tracked using DVC. Everything seems to be up to date.
+
+We are now ready to commit to Git all of the metafiles and code files associated with this experiment.
+
+Let’s add all of our source code in git add source/. will get all of our Python files to be tracked by Git.
+
+Let’s add the dvc.lock, dvc.yaml, params.yaml, and the .gitignore file in our current working directory.
+
+Once this is done, let’s take a look at the git status to see whether there are any untracked files that we need to track using Git and commit to our local repository.
+
+Everything under results is going to be tracked by DVC, we don’t need to add those explicitly to Git.
+
+Let’s go ahead and call git commit and commit our complete pipeline to the local repository, and we’ll also push all of these changes to our GitHub remote repository by calling git push -u origin main.
+
+11. Video: Queueing and Running Experiments (it_mlodvcdj_05_enus_11)
+
+During this video, you will learn how to queue and run experiments sequentially and in parallel.
+queue and run experiments sequentially and in parallel
+[Video description begins] Topic title: Queueing and Running Experiments . Presented by: Janani Ravi. [Video description ends]
+Before we move on from this demo, where we learned to run our machine learning experiments as ML Pipelines in DVC, let’s look at one last interesting experiment-related feature that DVC offers, and that is the DVC queue.
+
+DVC queues are used to manage and execute multiple machine learning experiments in parallel.
+
+Let’s say you want to run a number of different experiments, where in each experiment, your model is trained with a different set of parameters.
+
+Rather than lining up and executing each of these experiments individually, we can use DVC queues to automate and streamline the process of running experiments with various settings. Allowing us to explore different combinations of hyperparameters or models quickly and easily. [Video description begins] On the local directory page, the first line of command reads: (dvc_venv) ~/projects/dvc/dvc_telecom_churn_prediction_pipeline. [Video description ends]
+
+You can individually add experiments to queues, but here is a way to queue up multiple experiments with different hyperparameters.
+
+I use the dvc exp run command to run experiments. I specify the name that will be used as a prefix for all of the experiments that I run. [Video description begins] The presenter runs the command: dvc exp run --name "num-of-trees-tuning" \ [Video description ends]
+
+And notice the --queue flag in the second line of this command. This basically tells DVC, add all of these different experiments to a queue. And then later on, we’ll see how we can execute this queue.
+
+And then, you can specify the parameters you want for the different experiments in the queue.
+
+Notice my first -S flag where I specify the number of estimators parameter. Observe that I have a comma-separated list.
+
+I want to train four experiments, one with 50 estimators, one with 100, 200, and 300.
+
+For all of these four experiments, I want the class_weight parameter to be balanced.
+
+All of the other parameters will be picked up from the params.yaml file.
+
+Essentially, this will create a queue of four different experiments where each experiment will train a model with a different number of estimators.
+
+Observe the messages here. You can see that there are four experiments that have been queued, num-of-trees-tuning-1, 2, 3, and 4. They haven’t been executed yet. They’ve only been queued.
+
+And you can see the parameters for each of these queued experiments. Num estimators 50, 100, 200, and 300, and class_weight=balanced for all four. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Now you can run these queued experiments in two ways. If you run dvc queue start, DVC will allocate one worker to run each experiment and the experiments will be run sequentially one after the other. They will not be run in parallel.
+
+So let’s see how dvc queue start works. You can see the message here that says, started ‘1’ new experiments task queue worker.
+
+If you head over to Iterative Studio, you'll see how these experiments are being executed sequentially.
+
+Let’s go to our main projects page and click on Update Project, and you can see that one experiment is currently running, that is the first of our experiment tuning the number of trees estimators. [Video description begins] On the Iterative Studio window page, the header reads: loonytest > dvc_telecom_churn_prediction_pipeline. A table is displayed on it with headers, such as: Experiment name, metrics, such as: AUC_score, Test_f1_score, and so on. [Video description ends]
+
+In a bit, you'll see that the metrics for this experiment is now available.
+
+Now the worker will move on to execute the second experiment. You can see the second experiment now shows up on this page. For some reason, the metrics for the second experiment is not available. But the third experiment is now executing and the metrics for those will soon be available.
+
+And finally, here is our fourth and final experiment, and the metrics for those are also now available on Iterative Studio.
+
+For some reason, the second experiment experienced some kind of glitch, and the metrics were not displayed.
+
+At this point, all our queued experiments have been successfully run one after the other, and metrics and parameters for all four experiments are available for us to view on Iterative Studio.
+
+You can also check the status of all of the experiments in your queue by running dvc queue status, and you can see that all four experiments were run through successfully. [Video description begins] A table appears as output. It has four headers: Task, Name, Created, and Status. The four task names read: a2cb205, 0ebb95c, cb288dc, and 637fb0f. The names read: num-of-trees-tuning-1, 2, 3, and 4. The Created for all four reads as 04:57 PM. And the Status for all four reads as Success. The presenter clears the screen to run the new command. [Video description ends]
+
+Now let’s queue up our experiments once again, and we’ll change a different parameter this time.
+
+And we’ll run our experiments in parallel this time around. We’ll queue up our experiments first and run them in parallel, dvc exp run once again.
+
+The name of the experiments will start with max-depth-tuning because that’s the parameter that we’re going to tune.
+
+Notice the --queue flag indicating that these experiments should be queued up and not run right away.
+
+We fixed the number of estimators for each model to be equal to 50. We changed the max_depth to have values 2, 9, 10, and 12, and we set the class_weight to be balanced.
+
+So we'll have four different models run in four different experiments and this will actually queue up those four experiments.
+
+Notice the experiment names, max-depth-tuning-1, 2, 3, and 4. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Now, rather than spinning up just one worker to run these experiments, I’m going to call dvc exp run all, and as many experiments as possible will be run in parallel based on the resources of your local machine.
+
+You can see here that two experiments have been started right away. [Video description begins] The presenter runs the command: dvc exp run --run-all. A list of outputs appears on the screen, where two experiments started: Reproducing experiment 'max-depth-tuning-1' and Reproducing experiment 'max-depth-tuning-2' [Video description ends]
+
+Let’s head back to Iterative Studio, and you’ll see that we have multiple experiments here.
+
+Notice that there are three entries for max-depth-tuning. You can watch the experiments run here in the terminal window. They’re being run in parallel, though the output here is serial, and you can see that the experiments finished rather quickly.
+
+All four max-depth-tuning experiments are complete, and you can visualize and evaluate their metrics. And that’s how easy it is to use queues in DVC.
+
+Now here, I've used queues primarily for hyperparameter tuning, but you can add individual experiments to your queues one by one if you want to.
+
+I’m just going to dvc exp push all of the experiments that we’ve trained so far, so that all of the experiment files are available with DVC.
+
+And before we close out this demo and head over to the next demo, let’s update our Iterative Studio project to make sure all of the experiment files are available with DVC.
+
+12. Video: Course Summary (it_mlodvcdj_05_enus_12)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. Presented by: Janani Ravi. [Video description ends]
+You have now reached the end of this course, creating and using DVC pipelines.
+
+We started this course off by defining the stages of our ML Pipelines in DVC. DVC pipelines are a way to organize the steps in the ML workflow so that each step corresponds to a pipeline stage.
+
+So you might have a pipeline with a data pre-processing stage, a training stage, and an evaluation stage. This allows you to modularize and coordinate each step of the ML pipeline.
+
+Creating a pipeline involves modifying the dvc.yaml file, the main config file that stores all the stages and their dependencies.
+
+We set up a pipeline with data cleaning, training, and evaluation stages.
+
+We ran these stages using the dvc repro command, which tracks what stages need to be executed and only executes those to avoid unnecessary rerunning of our pipeline code.
+
+We saw that DVC tracks the status of the pipeline with the help of the dvc.log file.
+
+Next, we explored how to run and track a DVC pipeline as an experiment. We saw that it was possible to use DVCLive to track experiments from DVC pipelines and then view metrics and artifacts of our pipeline in the Iterative Studio user interface.
+
+Finally, we explored how to queue DVC experiments so that they can be run later. We learned that queuing experiments allowed us to configure multiple experiments to be run either in parallel or sequentially one after the other.
+
+In conclusion, we have a good grip on how DVC pipelines implement the ML workflow. This knowledge will prove integral for the concepts in the course coming up ahead.
+
+Performing CI/CD using continuous machine learning.
+
+Course File-based Resources
+•	MLOps with Data Version Control: Creating & Using DVC Pipelines
+Topic Asset
+© 2023 Skillsoft Ireland Limited - All rights reserved.
