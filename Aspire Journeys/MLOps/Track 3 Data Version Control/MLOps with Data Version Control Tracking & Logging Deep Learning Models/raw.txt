@@ -162,11 +162,11 @@ In addition to the DVC config file that we've seen before, DVC also has a config
 
 Make sure you specify your own access key here instead of the one you see here on screen. In addition to the access_key_id, we also need to specify the secret_access_key.
 
-[Video description begins] The input cell 7 is highlighted. Line 1 reads: !dvc remote modify --local mys3remote access_key_id 'AKIATOKI4M3BBVLDGIHG'. [Video description ends]
+[Video description begins] The input cell 7 is highlighted. Line 1 reads: !dvc remote modify --local mys3remote access_key_id '$access_key_id'. [Video description ends]
 
 Use dvc remote modify --local once again, and specify the secret_access_key for my S3 remote.
 
-[Video description begins] The input cell 8 is highlighted. Line 1 reads: !dvc remote modify --local mys3remote secret_access_key_ 'FVHavWBh0I1EKU4UIDKQ2c3KFNKzpy89E1dQMfB4'. [Video description ends]
+[Video description begins] The input cell 8 is highlighted. Line 1 reads: !dvc remote modify --local mys3remote secret_access_key_ '$SAK'. [Video description ends]
 
 Both of these configuration changes that we made will have updated config.local, so you can see the file has been created and we have the access_key_id and the secret_access_key right here. Whenever DVC creates the config.local file, it also creates a corresponding gitignore file asking git to ignore this config.local.
 
