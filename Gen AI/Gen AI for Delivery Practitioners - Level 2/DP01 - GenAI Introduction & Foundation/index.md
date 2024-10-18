@@ -1,4 +1,4 @@
-DP01 - GenAI Introduction & Foundation
+# DP01 - GenAI Introduction & Foundation
 Version 1.0
 
 

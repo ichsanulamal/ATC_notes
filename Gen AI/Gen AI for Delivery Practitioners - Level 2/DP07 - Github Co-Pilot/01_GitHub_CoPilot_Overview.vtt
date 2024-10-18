@@ -1,0 +1,793 @@
+WEBVTT
+
+0
+00:00:15.029 --> 00:00:15.060
+Giap
+
+1
+00:00:15.710 --> 00:00:19.579
+Copilot, a great example of a futuristic vision
+
+2
+00:00:19.719 --> 00:00:21.899
+becoming reality is our github
+
+3
+00:00:22.110 --> 00:00:23.090
+copilot.
+
+4
+00:00:23.440 --> 00:00:23.940
+OK,
+
+5
+00:00:24.110 --> 00:00:24.469
+Github Copi.
+
+6
+00:00:24.799 --> 00:00:28.719
+The copilot is a tool built in into the code editor.
+
+7
+00:00:28.840 --> 00:00:32.540
+It is capable of writing code itself based on
+
+8
+00:00:32.549 --> 00:00:35.729
+the code you have already written in your project.
+
+9
+00:00:35.740 --> 00:00:38.290
+So whatever code you have written already based on that,
+
+10
+00:00:38.299 --> 00:00:40.840
+it will suggest like you you can it it
+
+11
+00:00:40.849 --> 00:00:43.509
+will all automatically generate a code based on the
+
+12
+00:00:43.830 --> 00:00:48.139
+existing code. The one thing you need to do is a type of functioning.
+
+13
+00:00:48.669 --> 00:00:50.450
+You just have to type a functioning
+
+14
+00:00:50.580 --> 00:00:51.770
+or sub comments
+
+15
+00:00:51.900 --> 00:00:55.580
+and Copilot will automatically fill in the implementation,
+
+16
+00:00:55.810 --> 00:01:00.630
+the tool processes the user input in the cloud. So how
+
+17
+00:01:00.860 --> 00:01:00.889
+gap
+
+18
+00:01:01.180 --> 00:01:02.069
+provide works? It,
+
+19
+00:01:02.180 --> 00:01:04.919
+it takes the input it give in in the
+
+20
+00:01:04.930 --> 00:01:09.089
+cloud and come back with the snippet that you expect
+
+21
+00:01:10.459 --> 00:01:12.959
+you, you can either you can accept the code,
+
+22
+00:01:12.970 --> 00:01:16.860
+you can decline or ask for further solution suggestion.
+
+23
+00:01:16.870 --> 00:01:21.139
+So whatever code generation happens. So le le let's say I'm writing
+
+24
+00:01:21.239 --> 00:01:22.160
+a, a prompt sign
+
+25
+00:01:22.300 --> 00:01:25.779
+that uh write a write a code for adding two numbers.
+
+26
+00:01:25.790 --> 00:01:28.910
+So I'll just write, write a function for add two numbers.
+
+27
+00:01:28.919 --> 00:01:33.440
+So it it will based on my prompt, it would suggest me some code either I can I,
+
+28
+00:01:33.449 --> 00:01:36.510
+if it is satisfying my requirement, I'll accept it.
+
+29
+00:01:36.610 --> 00:01:39.269
+If it is not such, that's fine. I can decline it.
+
+30
+00:01:39.430 --> 00:01:44.480
+Or else if I want some more suggestion for, for planet in the code, I can uh also
+
+31
+00:01:44.650 --> 00:01:44.790
+request
+
+32
+00:01:45.050 --> 00:01:47.529
+for solution suggestions. Ok. Giap
+
+33
+00:01:48.389 --> 00:01:50.440
+Copilot was introduced by github
+
+34
+00:01:51.230 --> 00:01:58.150
+Microsoft on 29th, June 2021. This tool is powered by open
+
+35
+00:01:58.290 --> 00:01:58.860
+A I
+
+36
+00:01:59.069 --> 00:02:02.199
+GP T three, which is a language production model
+
+37
+00:02:02.349 --> 00:02:04.739
+designed to generate humanlike text
+
+38
+00:02:06.169 --> 00:02:06.230
+grey
+
+39
+00:02:06.370 --> 00:02:08.419
+is the most advanced auto gray
+
+40
+00:02:08.589 --> 00:02:10.070
+model created by mankind.
+
+41
+00:02:10.250 --> 00:02:14.630
+And A I itself was trained on publicly available code from
+
+42
+00:02:14.759 --> 00:02:14.830
+github
+
+43
+00:02:15.009 --> 00:02:17.820
+or whatever public repositories we had in our github
+
+44
+00:02:17.889 --> 00:02:21.720
+based on that this tool was played OK.
+
+45
+00:02:21.770 --> 00:02:25.369
+In practice it, it, it's doing surprisingly well.
+
+46
+00:02:25.440 --> 00:02:28.250
+It's not like most of those annoying codes
+
+47
+00:02:28.429 --> 00:02:29.270
+packages.
+
+48
+00:02:29.380 --> 00:02:31.460
+It's actually not annoying at all.
+
+49
+00:02:31.539 --> 00:02:35.960
+I often forget that I even have it running in my code editor. OK?
+
+50
+00:02:36.009 --> 00:02:41.809
+So it, it does not interfere much with your workflow if you don't like any code
+
+51
+00:02:42.009 --> 00:02:43.589
+copilot's input.
+
+52
+00:02:43.740 --> 00:02:43.949
+OK.
+
+53
+00:02:43.960 --> 00:02:45.039
+As I already said,
+
+54
+00:02:45.050 --> 00:02:49.990
+if you don't like the suggestion which uh copilot testing can just simply ignore it,
+
+55
+00:02:50.000 --> 00:02:52.990
+decline it and it can carry on with your activity.
+
+56
+00:02:53.139 --> 00:02:53.630
+So
+
+57
+00:02:55.039 --> 00:02:58.309
+this despite my initial suspicion in the end, I was
+
+58
+00:02:58.460 --> 00:03:02.020
+uh I amazed that this is a tool can be really useful.
+
+59
+00:03:02.110 --> 00:03:06.300
+It makes the biggest impression only after spending some time with it.
+
+60
+00:03:06.389 --> 00:03:10.539
+So as the the more you give the input to the tool, it gets straight
+
+61
+00:03:10.649 --> 00:03:11.410
+and it, it
+
+62
+00:03:11.514 --> 00:03:14.574
+gives you the accurate example, accurate code
+
+63
+00:03:14.904 --> 00:03:18.565
+in the next prompt, like next suggestions on which. OK.
+
+64
+00:03:18.574 --> 00:03:22.854
+So the more you spend time with the tool, it the the accurate code
+
+65
+00:03:23.225 --> 00:03:27.884
+code generation would happen in your, in your remaining activities. OK?
+
+66
+00:03:28.210 --> 00:03:31.350
+So it it helps developer to write code. The main features of
+
+67
+00:03:31.550 --> 00:03:31.660
+gup
+
+68
+00:03:32.020 --> 00:03:34.509
+Copilot is it helps developers to write code double. Should the
+
+69
+00:03:34.770 --> 00:03:40.149
+op fix the issues, find the bugs in your code, streamline, the development process,
+
+70
+00:03:40.160 --> 00:03:44.520
+it supports varieties of programming language including Python javascript to be
+
+71
+00:03:44.669 --> 00:03:44.990
+Ja
+
+72
+00:03:45.169 --> 00:03:46.619
+uh Java CC play plus
+
+73
+00:03:46.740 --> 00:03:46.759
+Z
+
+74
+00:03:47.059 --> 00:03:48.050
+trusts and so on.
+
+75
+00:03:48.059 --> 00:03:51.119
+So there are a few listed programming unit but apart from that,
+
+76
+00:03:51.130 --> 00:03:54.119
+it also supports various others programming language as well.
+
+77
+00:03:55.860 --> 00:03:57.179
+So how does
+
+78
+00:03:57.429 --> 00:03:57.490
+github
+
+79
+00:03:57.889 --> 00:03:58.960
+Copilot work?
+
+80
+00:03:59.279 --> 00:04:03.619
+OK. It can suggest complete lines of code or entire function
+
+81
+00:04:03.740 --> 00:04:06.919
+by analyzing how your code has written.
+
+82
+00:04:06.929 --> 00:04:09.589
+So whatever you have imported or whatever you have in uh
+
+83
+00:04:09.699 --> 00:04:11.710
+whatever projects code you have already
+
+84
+00:04:11.990 --> 00:04:12.789
+input it.
+
+85
+00:04:12.850 --> 00:04:14.119
+So based on the code,
+
+86
+00:04:14.130 --> 00:04:16.029
+it will try to read and it will analyze
+
+87
+00:04:16.040 --> 00:04:19.040
+the code and it will suggest the new code snippet
+
+88
+00:04:19.519 --> 00:04:19.640
+gitter
+
+89
+00:04:19.890 --> 00:04:22.390
+copyright can assemble code from user comment.
+
+90
+00:04:22.399 --> 00:04:26.000
+It predicts your code by just reading the function's name.
+
+91
+00:04:26.350 --> 00:04:26.660
+OK?
+
+92
+00:04:26.670 --> 00:04:28.709
+By reading the function's name, you have declared,
+
+93
+00:04:28.720 --> 00:04:32.839
+it allows you to cycle through alternate suggestions, manual edited,
+
+94
+00:04:33.029 --> 00:04:36.630
+edit the suggested code, it auto fills repetitive code or create
+
+95
+00:04:36.940 --> 00:04:39.380
+unit test case for your methods. OK?
+
+96
+00:04:39.390 --> 00:04:42.940
+So first push, push code and text on the internet.
+
+97
+00:04:42.950 --> 00:04:47.899
+So first uh and then it will be passing on to the open A I CO codex model.
+
+98
+00:04:48.269 --> 00:04:48.769
+OK?
+
+99
+00:04:48.890 --> 00:04:51.049
+So then it will, it will like uh
+
+100
+00:04:51.850 --> 00:04:51.899
+get
+
+101
+00:04:52.079 --> 00:04:52.089
+a
+
+102
+00:04:52.470 --> 00:04:54.529
+copilot service would be available on in the github.
+
+103
+00:04:55.000 --> 00:04:57.600
+So first, it would provide the suggestion,
+
+104
+00:04:57.779 --> 00:04:59.690
+they were uh prompt you have written.
+
+105
+00:04:59.880 --> 00:05:03.779
+So based on that, it would provide the suggestion. If it is acce accepted,
+
+106
+00:05:03.890 --> 00:05:06.510
+it will provide uh give the feedback back to the get
+
+107
+00:05:06.649 --> 00:05:06.739
+up
+
+108
+00:05:06.880 --> 00:05:10.790
+and uh it will, if it is declined, it will get, it will get some more uh
+
+109
+00:05:11.279 --> 00:05:15.630
+new or like uh other suggestions to the users. OK.
+
+110
+00:05:15.640 --> 00:05:19.440
+So it, it also takes an improvement suggestion provides a little context to the
+
+111
+00:05:20.209 --> 00:05:21.910
+users. OK? So this is how the github
+
+112
+00:05:22.040 --> 00:05:23.149
+copilot works.
+
+113
+00:05:23.529 --> 00:05:26.750
+Next is some benefits versus limitations of the github
+
+114
+00:05:26.920 --> 00:05:27.630
+copilot.
+
+115
+00:05:27.880 --> 00:05:30.190
+The first is increased productivity.
+
+116
+00:05:30.799 --> 00:05:34.279
+The what what benefits you are achieving is increased productivity,
+
+117
+00:05:34.290 --> 00:05:35.660
+saves time and effort,
+
+118
+00:05:35.839 --> 00:05:39.750
+increase content in unfamiliar areas like it will enhance your productivity.
+
+119
+00:05:39.760 --> 00:05:40.529
+Copilot office
+
+120
+00:05:40.910 --> 00:05:42.649
+real time code suggestion,
+
+121
+00:05:42.820 --> 00:05:45.899
+which can speed up your coding process can be
+
+122
+00:05:45.910 --> 00:05:49.299
+especially helpful for repetitive task or boring things like
+
+123
+00:05:49.399 --> 00:05:52.209
+boilerplate codes. So it will, it will help you to
+
+124
+00:05:52.440 --> 00:05:54.739
+uh when whenever you want to repeat the code
+
+125
+00:05:54.750 --> 00:05:56.959
+or if you want to eliminate the reputation code
+
+126
+00:05:57.195 --> 00:06:00.065
+case it would be very helpful to increase your activity.
+
+127
+00:06:00.204 --> 00:06:03.375
+And the advantage of using Copilot includes saving
+
+128
+00:06:03.385 --> 00:06:05.875
+time providing the start point for the programmers.
+
+129
+00:06:05.885 --> 00:06:09.855
+Even though programmer is not very familiar with that particular language using
+
+130
+00:06:10.105 --> 00:06:14.885
+KC, they can train and they can, they can learn, they can write the code quick,
+
+131
+00:06:14.894 --> 00:06:17.665
+easy and it it can the time would be also set.
+
+132
+00:06:18.075 --> 00:06:20.855
+Copilot supports wide range of programming language
+
+133
+00:06:20.864 --> 00:06:23.494
+making it versatile for different projects.
+
+134
+00:06:24.109 --> 00:06:25.779
+With A I driven suggestion,
+
+135
+00:06:25.790 --> 00:06:29.329
+there are potential reduction in semantical and logical error
+
+136
+00:06:29.750 --> 00:06:32.209
+which enhance code quality and
+
+137
+00:06:32.329 --> 00:06:32.679
+reading.
+
+138
+00:06:33.500 --> 00:06:36.720
+OK. Encre uh encourages exclusion and innovation for big
+
+139
+00:06:36.839 --> 00:06:40.459
+Copilot can serve a learning tool by suggesting best
+
+140
+00:06:40.470 --> 00:06:45.049
+practices offering code snippet they might not be familiar with
+
+141
+00:06:45.869 --> 00:06:48.730
+even though it, it has lots of benefits apart from it,
+
+142
+00:06:48.739 --> 00:06:54.149
+it it also has some limitations like privacy concern, privacy and security.
+
+143
+00:06:54.160 --> 00:06:58.929
+Some developers may worry about sharing their code with an A I. Even if github
+
+144
+00:06:59.089 --> 00:07:02.489
+as shows that the code has been used responsibly
+
+145
+00:07:02.839 --> 00:07:03.239
+over
+
+146
+00:07:03.570 --> 00:07:04.119
+resilience.
+
+147
+00:07:04.130 --> 00:07:07.890
+There is a risk that developer might become over really resilient to the
+
+148
+00:07:08.170 --> 00:07:09.829
+copa potentially stunting there
+
+149
+00:07:10.089 --> 00:07:11.779
+organized coding skill,
+
+150
+00:07:12.040 --> 00:07:14.640
+copyright considerations, nexus
+
+151
+00:07:14.959 --> 00:07:19.109
+opportunities, experimentations. They there there have been concerns about
+
+152
+00:07:19.250 --> 00:07:24.170
+copilot suggesting code that might be copyrighted or not appropriate license
+
+153
+00:07:24.640 --> 00:07:25.220
+with auto
+
+154
+00:07:25.470 --> 00:07:26.630
+suggestion at hand.
+
+155
+00:07:26.640 --> 00:07:30.239
+Developer might opt for the first suggestion without considering
+
+156
+00:07:30.250 --> 00:07:34.190
+if it is there any other best solution available.
+
+157
+00:07:34.660 --> 00:07:37.720
+Code coding isn't just about getting the job
+
+158
+00:07:37.730 --> 00:07:40.619
+done the way someone codes the style and the
+
+159
+00:07:40.730 --> 00:07:44.760
+nuns can also get lost if you rely too much on the A I
+
+160
+00:07:44.959 --> 00:07:45.260
+too.
+
+161
+00:07:45.709 --> 00:07:48.989
+OK. So the few limitations of guitar co-pilot,
+
+162
+00:07:49.209 --> 00:07:52.359
+some best practices of uh guitar copilot
+
+163
+00:07:53.350 --> 00:07:53.440
+it, a
+
+164
+00:07:53.779 --> 00:07:55.640
+copilot is a tool that can,
+
+165
+00:07:55.760 --> 00:07:57.950
+that can help you to speed up your work.
+
+166
+00:07:57.959 --> 00:08:03.079
+Eliminating the redundancy code, inspire you to try new solutions.
+
+167
+00:08:03.279 --> 00:08:03.859
+A is are,
+
+168
+00:08:04.000 --> 00:08:09.690
+are great at understanding natural languages, you can describe what you want and
+
+169
+00:08:09.839 --> 00:08:12.739
+github will generate the code solution at your problem
+
+170
+00:08:12.929 --> 00:08:15.609
+in whatever programming language you need.
+
+171
+00:08:15.760 --> 00:08:18.459
+But you have to provide a clear and destructive
+
+172
+00:08:18.470 --> 00:08:21.339
+content the way we discussed in the prompt engineering.
+
+173
+00:08:21.640 --> 00:08:23.470
+Uh It it understand context,
+
+174
+00:08:23.480 --> 00:08:27.359
+remember what you said previously and will establish an ongoing
+
+175
+00:08:27.369 --> 00:08:31.010
+collaboration with you with a lot of back and foot.
+
+176
+00:08:31.119 --> 00:08:37.489
+OK? With good guidance. In eight out of 10 cases, get up, get up rights would quote
+
+177
+00:08:38.140 --> 00:08:39.280
+as you use github
+
+178
+00:08:39.808 --> 00:08:45.039
+copilot, it learns from your pattern and correction makes to its suggestion,
+
+179
+00:08:45.440 --> 00:08:48.099
+take the time to correct and provide feedback.
+
+180
+00:08:48.349 --> 00:08:48.659
+OK?
+
+181
+00:08:48.669 --> 00:08:50.880
+So even though the code has been generated,
+
+182
+00:08:50.890 --> 00:08:54.380
+you have to spend some time to validate your code.
+
+183
+00:08:54.390 --> 00:08:57.510
+Provide a feedback on a ac inaccuracy and incorrect suggest
+
+184
+00:08:57.690 --> 00:09:00.219
+for that it it would help improve the A I model
+
+185
+00:09:00.229 --> 00:09:05.619
+over time and benefiting not just you but also bo developer community
+
+186
+00:09:05.830 --> 00:09:09.219
+by Copilot can be a safe timing tool.
+
+187
+00:09:09.309 --> 00:09:12.489
+Avoid blindly copy pasting the code without
+
+188
+00:09:12.500 --> 00:09:15.419
+understanding its proper and functionality OK.
+
+189
+00:09:15.500 --> 00:09:20.229
+Take the time to review the code generated code slipped, understand their imp
+
+190
+00:09:20.419 --> 00:09:25.650
+uh amplification and verify that they aligned with your designed behavior
+
+191
+00:09:25.950 --> 00:09:26.000
+because
+
+192
+00:09:26.119 --> 00:09:26.469
+this
+
+193
+00:09:26.580 --> 00:09:28.929
+prevents potential bulk and unintended
+
+194
+00:09:29.059 --> 00:09:31.049
+consequence in your code.
+
+195
+00:09:31.479 --> 00:09:33.090
+OK. So that your best practices
+
+196
+00:09:33.640 --> 00:09:36.609
+we have while we have to follow while using the
+
+197
+00:09:36.859 --> 00:09:38.000
+github copilot.

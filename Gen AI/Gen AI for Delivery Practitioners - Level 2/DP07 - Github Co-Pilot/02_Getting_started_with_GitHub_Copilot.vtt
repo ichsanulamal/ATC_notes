@@ -1,0 +1,1449 @@
+WEBVTT
+
+0
+00:00:12.930 --> 00:00:17.079
+So first thing like uh how to enable or how to utilize github
+
+1
+00:00:17.200 --> 00:00:18.020
+Copilot
+
+2
+00:00:18.190 --> 00:00:20.309
+in your developers environment is
+
+3
+00:00:20.520 --> 00:00:22.149
+we have to use uh
+
+4
+00:00:22.379 --> 00:00:23.389
+ID E
+
+5
+00:00:23.530 --> 00:00:26.030
+either we can go with visual code studio
+
+6
+00:00:26.190 --> 00:00:28.129
+and visual studio or Intel
+
+7
+00:00:28.329 --> 00:00:30.069
+J or Eclipse. So one of the
+
+8
+00:00:30.729 --> 00:00:35.479
+development environment you need ID and then you have to enable the extension.
+
+9
+00:00:35.490 --> 00:00:39.310
+So in here in our training environment, we are utilizing the VS
+
+10
+00:00:39.689 --> 00:00:42.869
+code as well as we are trying to utilize github
+
+11
+00:00:43.009 --> 00:00:46.319
+Copilot by installing an extension. So that is github
+
+12
+00:00:46.540 --> 00:00:50.310
+copilot and for chat functionality, we are also using the github
+
+13
+00:00:50.419 --> 00:00:51.869
+copilot chat
+
+14
+00:00:52.580 --> 00:00:53.200
+and
+
+15
+00:00:53.709 --> 00:00:55.000
+and how does github
+
+16
+00:00:55.490 --> 00:00:58.209
+Copilot is providing you uh like uh for
+
+17
+00:00:58.220 --> 00:01:00.580
+code generation or for just suggesting codes.
+
+18
+00:01:01.479 --> 00:01:05.540
+These are the different ways through which we can ask or like github
+
+19
+00:01:05.720 --> 00:01:08.260
+can try to help you or try to aid you
+
+20
+00:01:08.269 --> 00:01:11.699
+in generating the code or auto completion or we can say
+
+21
+00:01:11.870 --> 00:01:15.919
+uh fixing the code or whatever task which you daily do as
+
+22
+00:01:16.019 --> 00:01:16.029
+a
+
+23
+00:01:16.150 --> 00:01:19.860
+developer. So first suggestion behavior is your declaration based.
+
+24
+00:01:19.919 --> 00:01:25.139
+So if you are right, started writing something like you're typing public main,
+
+25
+00:01:25.150 --> 00:01:26.500
+something of you have started
+
+26
+00:01:27.010 --> 00:01:29.959
+defining a function or you started defining a variable,
+
+27
+00:01:30.010 --> 00:01:32.190
+so it will try to complete it for you.
+
+28
+00:01:32.370 --> 00:01:35.949
+So that uh that form of suggestion is your declaration based of suggestion.
+
+29
+00:01:36.050 --> 00:01:37.919
+And next is your comment based.
+
+30
+00:01:37.930 --> 00:01:42.080
+So you didn't write the program or you didn't start writing the code,
+
+31
+00:01:42.089 --> 00:01:45.279
+but instead of it, you just started writing a comment
+
+32
+00:01:45.620 --> 00:01:46.730
+uh which is the
+
+33
+00:01:47.419 --> 00:01:52.319
+or which is explaining what you intend or what you want to write
+
+34
+00:01:52.489 --> 00:01:58.230
+or develop in this part of a program. So using or based on those comments, also github
+
+35
+00:01:58.690 --> 00:02:00.199
+Copilot will try to suggest you that.
+
+36
+00:02:00.300 --> 00:02:00.580
+OK,
+
+37
+00:02:00.589 --> 00:02:03.959
+this can be a suitable example of code which you
+
+38
+00:02:03.970 --> 00:02:06.639
+can use it or which you can utilize and improve it
+
+39
+00:02:06.819 --> 00:02:07.080
+and
+
+40
+00:02:07.180 --> 00:02:08.538
+line by line suggestions.
+
+41
+00:02:08.550 --> 00:02:12.490
+Sometimes it may not provide you the whole code directly instead of it.
+
+42
+00:02:12.649 --> 00:02:16.919
+It will uh just keep on it. It will be a journey with you along with you.
+
+43
+00:02:16.970 --> 00:02:19.000
+So you write one line and press enter,
+
+44
+00:02:19.009 --> 00:02:22.429
+it will try to suggest another line or another line of code for you.
+
+45
+00:02:22.490 --> 00:02:27.240
+And again you press enter and it can suggest you another line of code. So which can
+
+46
+00:02:27.529 --> 00:02:29.850
+uh let's see can be useful for the
+
+47
+00:02:29.860 --> 00:02:33.929
+com achieving your desired output to complete your task
+
+48
+00:02:34.100 --> 00:02:37.300
+and multiple suggestions. So we have this option also
+
+49
+00:02:38.100 --> 00:02:40.089
+and using this multiple suggestions
+
+50
+00:02:40.350 --> 00:02:44.830
+for some functionality. So let's say you want to do some task or
+
+51
+00:02:45.089 --> 00:02:47.699
+you want to, let's say take a flutter up example,
+
+52
+00:02:47.710 --> 00:02:50.940
+you want to add some widget or add some
+
+53
+00:02:51.050 --> 00:02:54.399
+text or add some uh you field or something.
+
+54
+00:02:54.490 --> 00:02:58.559
+Then for the for doing this task or for adding a widget.
+
+55
+00:02:58.660 --> 00:03:01.029
+So multiple code
+
+56
+00:03:01.770 --> 00:03:03.300
+solutions can be available.
+
+57
+00:03:03.360 --> 00:03:06.470
+So you can choose whichever is the most suitable for you.
+
+58
+00:03:06.479 --> 00:03:10.820
+And then you can accept that one. Otherwise you can just discard those solutions.
+
+59
+00:03:10.830 --> 00:03:12.699
+And again, you can refine your prompt.
+
+60
+00:03:12.729 --> 00:03:16.029
+And again, you can go for or ask for the suggestions from the github
+
+61
+00:03:16.649 --> 00:03:17.800
+Copilot, github
+
+62
+00:03:18.039 --> 00:03:18.190
+co
+
+63
+00:03:18.360 --> 00:03:20.199
+plot. Like it's a very good tool.
+
+64
+00:03:20.210 --> 00:03:23.229
+It's like it's uh we have discussed, it's a very powerful tool
+
+65
+00:03:23.500 --> 00:03:28.500
+for generating the code positions or for other task which you do as a developer.
+
+66
+00:03:28.669 --> 00:03:31.250
+But keep this thing in mind that
+
+67
+00:03:31.410 --> 00:03:34.220
+it's not a replacement for your own programming.
+
+68
+00:03:34.520 --> 00:03:37.199
+So already we have seen some things. But
+
+69
+00:03:37.539 --> 00:03:39.520
+so you should also be like
+
+70
+00:03:39.690 --> 00:03:43.199
+uh reviewing the code like whatever it is suggesting you OK?
+
+71
+00:03:43.210 --> 00:03:44.130
+It's good and well,
+
+72
+00:03:44.139 --> 00:03:46.660
+but you have to review it or you have to see
+
+73
+00:03:46.669 --> 00:03:50.330
+or check that whether whatever suggest it is providing you,
+
+74
+00:03:50.350 --> 00:03:54.619
+it is suitable for your task or not, any improvement is needed in that position.
+
+75
+00:03:54.630 --> 00:03:56.619
+So you can refine your prompting, asks it.
+
+76
+00:03:56.750 --> 00:03:58.070
+Otherwise you can just say,
+
+77
+00:03:58.080 --> 00:04:03.809
+oh no uh rewrite this in this way or you can ask for the uh you can define or you,
+
+78
+00:04:04.559 --> 00:04:07.589
+you can just state your objective in a different perspective
+
+79
+00:04:07.770 --> 00:04:10.779
+so that Copilot can try to suggest you the same
+
+80
+00:04:10.789 --> 00:04:12.410
+kind of code or a different kind of code,
+
+81
+00:04:12.419 --> 00:04:14.960
+which can be much more aligned with your needs.
+
+82
+00:04:14.970 --> 00:04:15.470
+So
+
+83
+00:04:15.830 --> 00:04:20.358
+uh it's important to consider this as a tool as a a and
+
+84
+00:04:20.809 --> 00:04:23.440
+I know like it's just very gentle reminder that do
+
+85
+00:04:23.450 --> 00:04:27.950
+not rely on it completely because sometimes it may generate some
+
+86
+00:04:28.279 --> 00:04:31.420
+of old code also because let's say you take Java.
+
+87
+00:04:31.429 --> 00:04:35.429
+So earlier it was Java eight, then we have Java 11, then we have Java 17,
+
+88
+00:04:35.440 --> 00:04:36.579
+then we have Java 21.
+
+89
+00:04:36.600 --> 00:04:39.540
+So sometimes it may generate some old code.
+
+90
+00:04:39.549 --> 00:04:41.739
+It can also be possible because it is trained
+
+91
+00:04:41.750 --> 00:04:44.489
+on the uh different different kinds of code base.
+
+92
+00:04:44.510 --> 00:04:48.209
+So in code basis, we can have legacy code also, right?
+
+93
+00:04:48.320 --> 00:04:52.730
+So it can be possible that it will be generating some old quote at some point of time.
+
+94
+00:04:52.809 --> 00:04:57.170
+So what you have to do is you just have to verify it whether OK, this is suitable or not.
+
+95
+00:04:57.179 --> 00:05:00.869
+Is it perfect or not? And then we have to incorporate the code suggest
+
+96
+00:05:01.070 --> 00:05:02.399
+as code snippet into our uh
+
+97
+00:05:02.549 --> 00:05:05.160
+workspace or into our project.
+
+98
+00:05:05.299 --> 00:05:06.850
+And specifically
+
+99
+00:05:07.019 --> 00:05:10.130
+github co pilot is used in code generation,
+
+100
+00:05:10.589 --> 00:05:15.260
+test case generation, code explanation, document generation. And
+
+101
+00:05:15.420 --> 00:05:19.179
+for improving the code quality like the way we write or the way we define,
+
+102
+00:05:19.190 --> 00:05:21.119
+we are going to define the programs or
+
+103
+00:05:21.250 --> 00:05:26.700
+different uh parts of our code so that we are trying to improve it in code generation,
+
+104
+00:05:26.709 --> 00:05:30.619
+we can like we can start it from scratch or we can just take uh
+
+105
+00:05:30.630 --> 00:05:35.739
+existing project and then we can add some new components to it or we can
+
+106
+00:05:36.339 --> 00:05:39.299
+customize the existing code which is like
+
+107
+00:05:39.679 --> 00:05:43.799
+uh uh more aligned to the current requirement or the current trends or scenarios.
+
+108
+00:05:43.970 --> 00:05:46.019
+And for test case generation. So we can
+
+109
+00:05:46.269 --> 00:05:49.910
+uh whatever code we have generated earlier for that, we can
+
+110
+00:05:50.019 --> 00:05:51.959
+generate some unit test cases.
+
+111
+00:05:51.970 --> 00:05:56.399
+And we can also debug the code which can help to identify any underlying issues.
+
+112
+00:05:56.410 --> 00:05:57.822
+And we'll try, you can also try to
+
+113
+00:05:57.972 --> 00:06:00.252
+fix it, code explanation.
+
+114
+00:06:00.282 --> 00:06:03.592
+And this is like one of the good feature here because if you're,
+
+115
+00:06:03.602 --> 00:06:06.072
+let's say you're totally new to one, some of the
+
+116
+00:06:06.183 --> 00:06:11.092
+uh programming language and you have, you are being assigned a task to
+
+117
+00:06:11.192 --> 00:06:14.263
+improve something or modify something or add a new feature.
+
+118
+00:06:14.273 --> 00:06:17.393
+Then first what you have to do like your first plan or
+
+119
+00:06:17.506 --> 00:06:22.186
+first step would be OK, let's understand first what it is doing this program.
+
+120
+00:06:22.256 --> 00:06:27.656
+So you try to understand it, you will go line by line or read it and then understand it.
+
+121
+00:06:27.665 --> 00:06:27.865
+OK?
+
+122
+00:06:27.876 --> 00:06:31.526
+What it is doing or what functionality it is performing and then
+
+123
+00:06:31.536 --> 00:06:34.425
+you will try to update it or you'll try to modify it or
+
+124
+00:06:34.575 --> 00:06:38.006
+you will try to incorporate some new feature into that existing one.
+
+125
+00:06:38.220 --> 00:06:41.429
+So this understanding your existing code, some,
+
+126
+00:06:41.489 --> 00:06:46.200
+sometimes it can take a bit longer time or sometimes it can be complex
+
+127
+00:06:46.209 --> 00:06:49.200
+one and you may not be able to understand it in the easiest manner.
+
+128
+00:06:49.329 --> 00:06:51.989
+So in that case, or in that scenario, github
+
+129
+00:06:52.410 --> 00:06:54.769
+copilot can be a very powerful tool which can
+
+130
+00:06:54.779 --> 00:06:57.519
+easily explain you or like make you understand,
+
+131
+00:06:57.529 --> 00:06:58.600
+OK, what this piece of
+
+132
+00:06:58.730 --> 00:06:59.640
+code is doing
+
+133
+00:06:59.750 --> 00:07:01.589
+and what you want to do.
+
+134
+00:07:01.600 --> 00:07:04.950
+And then it can also suggest you or can provide recommendations,
+
+135
+00:07:04.959 --> 00:07:06.769
+good recommendations for you so that
+
+136
+00:07:06.950 --> 00:07:12.100
+uh you can easily and effectively complete your task and document generation.
+
+137
+00:07:12.109 --> 00:07:17.339
+As of now, uh it is very useful for making your code more readable,
+
+138
+00:07:17.350 --> 00:07:18.820
+more understandable.
+
+139
+00:07:18.829 --> 00:07:22.230
+So, uh and how does it achieving this readability and under
+
+140
+00:07:22.470 --> 00:07:24.850
+understandable purposes by generating comments?
+
+141
+00:07:24.910 --> 00:07:29.160
+So at this point of time, it is trying to generate comments for
+
+142
+00:07:29.739 --> 00:07:34.429
+your selected code and it will try to make sure it is looking good and well.
+
+143
+00:07:34.440 --> 00:07:35.929
+And by doing this,
+
+144
+00:07:35.940 --> 00:07:40.540
+we are trying to improve the readability of our function of the feature of our code
+
+145
+00:07:40.690 --> 00:07:42.600
+and code quality. So
+
+146
+00:07:42.769 --> 00:07:43.809
+if you are
+
+147
+00:07:43.970 --> 00:07:47.760
+discovering or let's say uh while you're reviewing your code,
+
+148
+00:07:47.769 --> 00:07:51.079
+if any errors are formed, you can also fix it or you can also
+
+149
+00:07:51.196 --> 00:07:53.675
+try to debug those errors using the
+
+150
+00:07:53.786 --> 00:07:53.855
+github
+
+151
+00:07:54.036 --> 00:07:54.346
+co pilot.
+
+152
+00:07:54.876 --> 00:07:58.615
+So it will be much more easier to fix those issues with the help of github
+
+153
+00:07:59.235 --> 00:07:59.365
+coate
+
+154
+00:07:59.466 --> 00:08:03.295
+instead of us searching first understanding. OK. Why is this error?
+
+155
+00:08:03.305 --> 00:08:05.906
+Why, what is this error and why it is coming?
+
+156
+00:08:05.985 --> 00:08:08.946
+And actually why is this an issue and then trying to resolve it.
+
+157
+00:08:09.066 --> 00:08:11.585
+So we can easily understand with the help of good
+
+158
+00:08:11.716 --> 00:08:13.592
+github corporate like what was the issue?
+
+159
+00:08:13.742 --> 00:08:16.712
+And if we want to resolve this issue, what can be done
+
+160
+00:08:16.842 --> 00:08:19.611
+and how to how it can be implemented in
+
+161
+00:08:19.712 --> 00:08:19.721
+a
+
+162
+00:08:19.872 --> 00:08:21.691
+much easiest way.
+
+163
+00:08:21.761 --> 00:08:26.152
+So these are the like major applications or let's say areas where github
+
+164
+00:08:26.282 --> 00:08:31.312
+copilot can enhance or can help the developer to complete their work, you know,
+
+165
+00:08:31.701 --> 00:08:33.981
+much more effective and efficient way.
+
+166
+00:08:35.849 --> 00:08:36.308
+So github
+
+167
+00:08:36.799 --> 00:08:40.539
+Copilot a coding productivity booster because it is able to
+
+168
+00:08:40.549 --> 00:08:42.469
+do a lot of things and it is able to
+
+169
+00:08:42.570 --> 00:08:45.880
+help or assist the developer in a lot of different different areas.
+
+170
+00:08:46.919 --> 00:08:48.940
+And how does this the github
+
+171
+00:08:49.070 --> 00:08:49.179
+code
+
+172
+00:08:49.400 --> 00:08:51.659
+is able to do all these things like generating
+
+173
+00:08:51.669 --> 00:08:54.539
+code or test case generation or explaining code.
+
+174
+00:08:54.549 --> 00:08:59.140
+So you have to direct it. So the user or the developer has to direct the github
+
+175
+00:08:59.820 --> 00:09:02.309
+copilot to do a particular task or
+
+176
+00:09:02.510 --> 00:09:05.260
+you have to reach out to the github copilot saying OK,
+
+177
+00:09:05.270 --> 00:09:07.320
+I'm not able to understand this code or I I
+
+178
+00:09:07.590 --> 00:09:12.580
+have to or I want to generate test cases or I want to add this features what can be done
+
+179
+00:09:12.820 --> 00:09:14.479
+and how it can be implemented.
+
+180
+00:09:14.530 --> 00:09:19.799
+So you have to define your objective in a clear and concise manner. Then github
+
+181
+00:09:20.210 --> 00:09:21.869
+Copilot can assist you. OK?
+
+182
+00:09:21.929 --> 00:09:23.520
+So you want to do this fine,
+
+183
+00:09:23.539 --> 00:09:26.619
+I have these suggestions or I have these solutions for you.
+
+184
+00:09:26.630 --> 00:09:30.159
+So and if you are fine or if you are like, OK,
+
+185
+00:09:30.169 --> 00:09:33.320
+these are very good solutions for me and I can try to implement it.
+
+186
+00:09:33.330 --> 00:09:35.219
+So then you can accept those suggestions,
+
+187
+00:09:35.229 --> 00:09:37.559
+uh suggestions into your code and you can try to
+
+188
+00:09:37.700 --> 00:09:40.270
+use it. But after your
+
+189
+00:09:40.385 --> 00:09:42.935
+incorporating or after you're using those positions,
+
+190
+00:09:43.176 --> 00:09:43.685
+uh it
+
+191
+00:09:43.885 --> 00:09:46.565
+is very much recommended to test the code.
+
+192
+00:09:46.575 --> 00:09:49.166
+Normally, just like we do if you're writing your own code,
+
+193
+00:09:49.176 --> 00:09:53.075
+whatever test cases you try to do or whatever check cases you do.
+
+194
+00:09:53.166 --> 00:09:57.445
+So all those uh has to be implemented. Even if you are using the
+
+195
+00:09:57.575 --> 00:09:57.645
+github
+
+196
+00:09:57.895 --> 00:09:57.926
+co
+
+197
+00:09:58.135 --> 00:09:58.245
+pilot,
+
+198
+00:09:58.255 --> 00:10:00.645
+then only we'll be able to achieve or we'll be
+
+199
+00:10:00.656 --> 00:10:04.515
+able to improve the overall quality of our code.
+
+200
+00:10:04.536 --> 00:10:05.966
+And by using github
+
+201
+00:10:06.455 --> 00:10:07.796
+copilot, we can actually
+
+202
+00:10:07.952 --> 00:10:12.952
+focus more or let's say when it comes to like implementing a certain new feature. So
+
+203
+00:10:13.211 --> 00:10:15.572
+you are tasked with a new feature and you don't
+
+204
+00:10:15.581 --> 00:10:18.831
+know what has to be done or what programming concept
+
+205
+00:10:18.841 --> 00:10:23.692
+has to be used or what package has to be used or you don't even know where to start.
+
+206
+00:10:23.702 --> 00:10:28.052
+Let's say you want to implement a new feature and you don't know where to start
+
+207
+00:10:28.062 --> 00:10:32.731
+and uh like from which particular uh package or how to start writing the coding.
+
+208
+00:10:32.742 --> 00:10:35.452
+So you can utilize the get a copilot and
+
+209
+00:10:35.679 --> 00:10:39.489
+uh use its recommendations to start it. And you can also try
+
+210
+00:10:39.590 --> 00:10:43.739
+and experiment with the the implementation of the new features staying in the state
+
+211
+00:10:43.750 --> 00:10:48.320
+of flow So that is uh earlier when you're using the development environment,
+
+212
+00:10:48.330 --> 00:10:51.700
+if you encounter any error and you're not able to resolve it.
+
+213
+00:10:51.840 --> 00:10:55.020
+So what you will do either you will reach out to your colleague
+
+214
+00:10:55.150 --> 00:10:59.210
+or you will reach out to your senior employee or you'll try to
+
+215
+00:10:59.219 --> 00:11:02.320
+search in the Google or you'll try to make use of any of the
+
+216
+00:11:02.500 --> 00:11:06.146
+platforms, internal platforms through, you will try to resolve that error.
+
+217
+00:11:06.156 --> 00:11:10.067
+So what you are doing, you are moving away from your development environment
+
+218
+00:11:10.257 --> 00:11:13.447
+and you're trying to search solutions uh on
+
+219
+00:11:13.456 --> 00:11:16.226
+the internet or with your colleagues or internally uh
+
+220
+00:11:16.236 --> 00:11:17.807
+you are using a different tool or you
+
+221
+00:11:17.817 --> 00:11:21.146
+or you're navigating away from your development environment.
+
+222
+00:11:21.156 --> 00:11:24.887
+So sometimes this effect or like this transition
+
+223
+00:11:24.896 --> 00:11:28.507
+is influencing the development or the developer productivity.
+
+224
+00:11:28.577 --> 00:11:29.286
+Now with the
+
+225
+00:11:29.656 --> 00:11:30.356
+usage of github
+
+226
+00:11:30.456 --> 00:11:30.927
+copilot,
+
+227
+00:11:30.937 --> 00:11:32.327
+there is no need to navigate away from
+
+228
+00:11:32.336 --> 00:11:34.934
+your uh development and environment there and there itself
+
+229
+00:11:35.124 --> 00:11:38.843
+you can make use of the chat functionality or you can make use of the any of the gi
+
+230
+00:11:38.943 --> 00:11:39.004
+coperate
+
+231
+00:11:39.684 --> 00:11:39.823
+suggest
+
+232
+00:11:40.004 --> 00:11:41.703
+behaviors and try to
+
+233
+00:11:41.953 --> 00:11:44.624
+resolve your solution most of the times.
+
+234
+00:11:44.633 --> 00:11:47.494
+Uh let's say maximum of the times it will try
+
+235
+00:11:47.504 --> 00:11:50.263
+to provide a recommendation which can be useful for you
+
+236
+00:11:50.273 --> 00:11:53.833
+for resolving your issues or for implementing something which you
+
+237
+00:11:53.843 --> 00:11:56.333
+don't know or which you are not aware of.
+
+238
+00:11:56.343 --> 00:11:57.473
+And sometimes github
+
+239
+00:11:58.033 --> 00:12:00.713
+coal it like it brings the creativity out of you.
+
+240
+00:12:00.763 --> 00:12:03.361
+So when it is trying to provide a suggestion, right?
+
+241
+00:12:03.370 --> 00:12:07.841
+So you think in a different manner, OK, this can be done. OK. How to I uh improve it more
+
+242
+00:12:07.971 --> 00:12:11.101
+uh what else can be done along with this?
+
+243
+00:12:11.111 --> 00:12:15.130
+So you're going to think much more in a different manner
+
+244
+00:12:15.231 --> 00:12:17.661
+and you get a one more uh like colleague.
+
+245
+00:12:17.671 --> 00:12:22.020
+Uh of course, it is a robotic colleague and it is a chat board kind of thing.
+
+246
+00:12:22.111 --> 00:12:22.661
+Still,
+
+247
+00:12:22.671 --> 00:12:27.620
+it will be very much useful and it it has a great influence on how you work as
+
+248
+00:12:27.630 --> 00:12:28.950
+well as how you think and how you are
+
+249
+00:12:28.960 --> 00:12:32.171
+trying to implement the things as part of your work
+
+250
+00:12:33.030 --> 00:12:35.440
+and reducing, develop a cognitive load.
+
+251
+00:12:35.450 --> 00:12:40.489
+So you now cognitive load in the sense like how much mental effort you're putting
+
+252
+00:12:40.580 --> 00:12:44.900
+or how much you're thinking about how to do this or how to accomplish this.
+
+253
+00:12:44.909 --> 00:12:46.650
+OK? You're writing a function or
+
+254
+00:12:46.770 --> 00:12:48.840
+you're trying to implement some
+
+255
+00:12:49.099 --> 00:12:51.809
+uh particular functionality or you're writing a
+
+256
+00:12:51.820 --> 00:12:53.609
+class or you're writing a test case.
+
+257
+00:12:53.619 --> 00:12:58.530
+So you'll be thinking right? OK. How this can be done? What has to be written or
+
+258
+00:12:58.684 --> 00:13:00.215
+what are the variables has to be used?
+
+259
+00:13:00.224 --> 00:13:03.065
+What values we have to use, what logic we have to use.
+
+260
+00:13:03.075 --> 00:13:05.104
+So we are thinking in that manner.
+
+261
+00:13:05.284 --> 00:13:07.864
+So now with the help of this uh github
+
+262
+00:13:08.034 --> 00:13:12.534
+Copilot, so the stress or the mental effort which the developer has to put in,
+
+263
+00:13:12.674 --> 00:13:14.934
+so that is being reduced because we can get some
+
+264
+00:13:14.945 --> 00:13:17.955
+suggestions and we can find or we can try to
+
+265
+00:13:18.114 --> 00:13:23.104
+reuse the uh we can generate some new code or some new logic with the help of github
+
+266
+00:13:23.455 --> 00:13:23.554
+Cobalt,
+
+267
+00:13:23.674 --> 00:13:24.265
+which can
+
+268
+00:13:24.479 --> 00:13:28.859
+uh reduce that load and we can focus or we can put our or
+
+269
+00:13:29.349 --> 00:13:34.700
+we can apply this mental efforts on a other useful task which is much more productive
+
+270
+00:13:34.849 --> 00:13:40.049
+and which can be like increasing the overall quality as well as the experience,
+
+271
+00:13:40.059 --> 00:13:42.450
+the developer, the developer experience while
+
+272
+00:13:42.849 --> 00:13:44.440
+performing their task.
+
+273
+00:13:44.590 --> 00:13:45.460
+And github
+
+274
+00:13:45.640 --> 00:13:48.979
+copilot is like is majorly
+
+275
+00:13:49.450 --> 00:13:52.510
+creating influence on the development environment.
+
+276
+00:13:52.559 --> 00:13:54.969
+So when the developer is writing the code or when the
+
+277
+00:13:54.979 --> 00:13:58.400
+unit cases are being generated or when the developer is trying to
+
+278
+00:13:58.650 --> 00:14:02.570
+understand the existing code or when they are trying to generate
+
+279
+00:14:02.580 --> 00:14:06.900
+some comments or like making the code more readable and understandable.
+
+280
+00:14:06.909 --> 00:14:09.549
+So that is why it is applying mainly to the
+
+281
+00:14:09.799 --> 00:14:10.090
+DeVos
+
+282
+00:14:10.359 --> 00:14:11.109
+inner loop.
+
+283
+00:14:11.119 --> 00:14:16.429
+So regarding this inner loop, I will try to explain it more in the upcoming slides.
+
+284
+00:14:16.669 --> 00:14:19.880
+Uh Don't worry about it like how and where this github
+
+285
+00:14:20.020 --> 00:14:20.770
+cooperators
+
+286
+00:14:20.901 --> 00:14:26.700
+creating the huge influence or let's say where is the exact impact created
+
+287
+00:14:26.710 --> 00:14:29.901
+in the development and environment that we are going to see regarding this?
+
+288
+00:14:30.130 --> 00:14:33.140
+And it can also improve the communication and collaboration
+
+289
+00:14:33.151 --> 00:14:35.531
+between developers like when you're working with a team,
+
+290
+00:14:35.541 --> 00:14:35.870
+right?
+
+291
+00:14:36.010 --> 00:14:38.950
+So uh with the help of get copilot,
+
+292
+00:14:39.051 --> 00:14:43.781
+so you can also improve the uh team culture and the collaboration within your team,
+
+293
+00:14:43.791 --> 00:14:46.801
+which can lead to faster development times as well.
+
+294
+00:14:47.322 --> 00:14:49.452
+You can complete your work
+
+295
+00:14:49.921 --> 00:14:55.361
+effectively as well as like you can reach your desired output or your goal in a
+
+296
+00:14:55.552 --> 00:14:57.642
+easier way, as well as effective.
+
+297
+00:14:57.651 --> 00:15:01.132
+And without impacting the overall quality of your code,
+
+298
+00:15:01.382 --> 00:15:02.812
+you have used it, right?
+
+299
+00:15:03.512 --> 00:15:08.552
+Github goot. Now how to decide it, whether it is generating good code or bad code.
+
+300
+00:15:08.562 --> 00:15:10.581
+The first thing is manual review
+
+301
+00:15:10.781 --> 00:15:13.601
+and that is why it just gave a general reminder that
+
+302
+00:15:13.952 --> 00:15:14.012
+github
+
+303
+00:15:14.622 --> 00:15:15.531
+Copilot is for your
+
+304
+00:15:15.643 --> 00:15:19.562
+help. OK? So you have to lead it or you have to direct it,
+
+305
+00:15:19.773 --> 00:15:22.922
+uh what you want to do and what you want the
+
+306
+00:15:23.473 --> 00:15:23.543
+github
+
+307
+00:15:23.682 --> 00:15:23.773
+co
+
+308
+00:15:24.013 --> 00:15:27.453
+pilot to do for yourself or instead of you what the github
+
+309
+00:15:27.812 --> 00:15:29.632
+cot has to perform and how like how,
+
+310
+00:15:29.643 --> 00:15:32.543
+what kind of suggestions or what kind of thing you are looking for.
+
+311
+00:15:32.572 --> 00:15:34.603
+So we are trying to give directions or we are
+
+312
+00:15:34.612 --> 00:15:36.713
+trying to guide it or we are giving some hints
+
+313
+00:15:36.853 --> 00:15:40.362
+and then we are trying to uh expect a response from it,
+
+314
+00:15:40.552 --> 00:15:44.263
+right? So first, even if it is doing the task for you
+
+315
+00:15:44.374 --> 00:15:47.614
+are in the like you have to take the full control and
+
+316
+00:15:47.624 --> 00:15:50.193
+you have to ensure or you have to verify and check,
+
+317
+00:15:50.203 --> 00:15:50.443
+OK?
+
+318
+00:15:50.453 --> 00:15:52.494
+Whether this code is acceptable or
+
+319
+00:15:52.643 --> 00:15:56.544
+you know the coding rules and frameworks which are being followed
+
+320
+00:15:56.554 --> 00:15:59.393
+in your team or in your project or in your organization.
+
+321
+00:15:59.523 --> 00:16:00.554
+So make sure that
+
+322
+00:16:00.684 --> 00:16:00.754
+github
+
+323
+00:16:00.854 --> 00:16:04.093
+corporate is following all of those things and then generating your code.
+
+324
+00:16:04.114 --> 00:16:05.513
+So you should be
+
+325
+00:16:05.614 --> 00:16:07.963
+still verifying it. And apart from it,
+
+326
+00:16:08.193 --> 00:16:12.994
+you, the code should be tested locally to ensure that the code is working fine or
+
+327
+00:16:13.104 --> 00:16:14.744
+it's working well and good.
+
+328
+00:16:14.815 --> 00:16:17.244
+And apart from it, basic understanding,
+
+329
+00:16:17.255 --> 00:16:20.005
+if you have uh let's say you're developing in Java.
+
+330
+00:16:20.015 --> 00:16:23.164
+So if you have some basic understanding of Java like, OK, how,
+
+331
+00:16:23.174 --> 00:16:26.525
+how the code is being written or how the programs are being developed,
+
+332
+00:16:26.534 --> 00:16:27.945
+then it can come handy.
+
+333
+00:16:27.955 --> 00:16:30.474
+So it will be a like upper hand for you
+
+334
+00:16:30.575 --> 00:16:36.335
+and it will be like an added advantage. So it is not necessary or it is not compulsory.
+
+335
+00:16:36.344 --> 00:16:40.075
+But still if you have the basic understanding of programming language,
+
+336
+00:16:40.085 --> 00:16:41.724
+which you are working in, it can
+
+337
+00:16:41.835 --> 00:16:44.156
+give you like added advantage or more
+
+338
+00:16:44.286 --> 00:16:48.135
+upper hand of your and you can easily verify the code generated
+
+339
+00:16:48.145 --> 00:16:50.825
+by the github populate is good or not or suitable for you,
+
+340
+00:16:50.835 --> 00:16:56.056
+not in a much more better way and code reviews should never be skipped.
+
+341
+00:16:56.065 --> 00:16:58.176
+So whatever earlier you were doing,
+
+342
+00:16:58.185 --> 00:17:01.335
+let's say when you were writing the code by yourself,
+
+343
+00:17:01.346 --> 00:17:03.736
+then you are performing some uh test, right?
+
+344
+00:17:03.745 --> 00:17:06.276
+Maybe in terms of security or maybe in terms of
+
+345
+00:17:06.286 --> 00:17:09.406
+functional testing or nonfunctional testing or different kinds of testing,
+
+346
+00:17:09.415 --> 00:17:10.494
+whatever you're performing,
+
+347
+00:17:10.729 --> 00:17:12.270
+nothing should be skipped.
+
+348
+00:17:12.390 --> 00:17:12.949
+We should,
+
+349
+00:17:12.959 --> 00:17:15.170
+we should be following all those steps even
+
+350
+00:17:15.180 --> 00:17:17.219
+though the code is generated by the github
+
+351
+00:17:17.329 --> 00:17:21.550
+copilot. And uh we know that most of the times it generates good code, but still
+
+352
+00:17:21.780 --> 00:17:24.140
+for ensuring that it is generating good code
+
+353
+00:17:24.150 --> 00:17:26.550
+and for ensuring that everything is going smoothly,
+
+354
+00:17:26.608 --> 00:17:28.239
+we have to do all the
+
+355
+00:17:28.449 --> 00:17:33.280
+different kinds of check cases like this. And uh in terms of security or other
+
+356
+00:17:33.569 --> 00:17:38.790
+scenarios, also we have to do it and manual review like you have to be in control,
+
+357
+00:17:38.800 --> 00:17:41.599
+like what kind of positions you are accepting from github
+
+358
+00:17:41.729 --> 00:17:42.380
+Copilot.
+
+359
+00:17:42.530 --> 00:17:44.020
+And after accepting,
+
+360
+00:17:44.030 --> 00:17:47.520
+you also have to ensure that it's working and it's uh
+
+361
+00:17:47.530 --> 00:17:50.540
+usable and it can be a part of your project.
