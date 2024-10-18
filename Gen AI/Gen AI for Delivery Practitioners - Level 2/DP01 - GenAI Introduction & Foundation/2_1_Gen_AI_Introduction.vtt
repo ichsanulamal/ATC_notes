@@ -1,0 +1,929 @@
+WEBVTT
+
+0
+00:00:15.130 --> 00:00:18.729
+What is generative A I generative A I is primarily
+
+1
+00:00:18.739 --> 00:00:23.500
+it is used for generating new and original content,
+
+2
+00:00:23.510 --> 00:00:23.930
+right?
+
+3
+00:00:24.209 --> 00:00:26.629
+So when we look at uh generative A I, right?
+
+4
+00:00:26.639 --> 00:00:31.690
+So how it's different from traditional A I uh more focused on, you know,
+
+5
+00:00:31.700 --> 00:00:34.610
+performing a specific task or activity?
+
+6
+00:00:34.619 --> 00:00:35.959
+Say for example, right,
+
+7
+00:00:36.130 --> 00:00:38.069
+if you need to classify
+
+8
+00:00:38.240 --> 00:00:39.610
+a defect or you know,
+
+9
+00:00:39.790 --> 00:00:44.119
+or in the application development space or if you need
+
+10
+00:00:44.130 --> 00:00:48.439
+to classify or classify an incident or cluster an incident,
+
+11
+00:00:48.500 --> 00:00:53.950
+you will need to make use of the appropriate uh algorithms, you know,
+
+12
+00:00:53.959 --> 00:00:59.279
+maybe a support vector mission or a Kines clustering algorithm and so on,
+
+13
+00:00:59.290 --> 00:01:00.779
+you need to train the data,
+
+14
+00:01:00.790 --> 00:01:04.138
+you need to test the data and then based on that
+
+15
+00:01:04.199 --> 00:01:08.650
+you'll be able to execute it for that particular task only.
+
+16
+00:01:08.660 --> 00:01:13.610
+So that is the, that is what is with respect to the traditional A I.
+
+17
+00:01:13.750 --> 00:01:16.480
+But when it comes to generative A I,
+
+18
+00:01:16.879 --> 00:01:18.830
+generative A I, it,
+
+19
+00:01:18.900 --> 00:01:24.129
+it it it makes use of this large language models and especially over the last one,
+
+20
+00:01:24.220 --> 00:01:29.559
+you know, with the, you know the the with the chat GP T going public, right?
+
+21
+00:01:29.569 --> 00:01:33.279
+So you would have, I'm sure all of you would have, you know,
+
+22
+00:01:33.290 --> 00:01:35.680
+tried different ways and forms of
+
+23
+00:01:36.160 --> 00:01:39.319
+chat GP T or other uh you know,
+
+24
+00:01:39.629 --> 00:01:39.949
+um
+
+25
+00:01:40.730 --> 00:01:42.650
+conversation interfaces,
+
+26
+00:01:42.660 --> 00:01:47.150
+which uh which connects to the large language models like bar and all that.
+
+27
+00:01:47.389 --> 00:01:47.730
+So,
+
+28
+00:01:47.739 --> 00:01:51.830
+generative A I makes use of different large language models
+
+29
+00:01:51.839 --> 00:01:56.029
+which has been trained with millions and millions of parameters.
+
+30
+00:01:56.199 --> 00:02:01.809
+And then based on um and these parameters have been sourced from the public
+
+31
+00:02:01.830 --> 00:02:06.529
+uh you know the database of the internet and then based on that right,
+
+32
+00:02:06.540 --> 00:02:08.889
+it can generate text.
+
+33
+00:02:08.899 --> 00:02:11.500
+So you give a text, it will provide a text.
+
+34
+00:02:11.509 --> 00:02:13.949
+So you might, you might want to ask a question,
+
+35
+00:02:14.199 --> 00:02:17.970
+right? And when you ask the question, it will provide a response,
+
+36
+00:02:18.229 --> 00:02:24.300
+you type a text to generate a code, it will be in a position to generate the same.
+
+37
+00:02:24.309 --> 00:02:25.210
+Similarly
+
+38
+00:02:25.470 --> 00:02:30.449
+by um by keying in a text, you will be in a position to generate
+
+39
+00:02:30.550 --> 00:02:31.699
+an image.
+
+40
+00:02:32.369 --> 00:02:35.880
+Uh you might be able to generate an architecture diagram,
+
+41
+00:02:35.970 --> 00:02:40.300
+you'll be able to generate videos, audios, you know.
+
+42
+00:02:40.309 --> 00:02:41.800
+So all these things
+
+43
+00:02:42.050 --> 00:02:47.979
+now, if you look at what the key differences between generative and A I,
+
+44
+00:02:48.309 --> 00:02:48.960
+so
+
+45
+00:02:49.389 --> 00:02:52.759
+the differences are primarily with respect to the
+
+46
+00:02:52.770 --> 00:02:55.279
+different parameters that we are seeing over here.
+
+47
+00:02:55.820 --> 00:02:58.039
+The first one being the core functionality.
+
+48
+00:02:58.589 --> 00:03:00.630
+So when traditional A I
+
+49
+00:03:00.779 --> 00:03:03.429
+traditional A I is more predictive
+
+50
+00:03:03.800 --> 00:03:07.250
+diagnostic and it's partly generative. Whereas
+
+51
+00:03:07.520 --> 00:03:08.160
+when it is,
+
+52
+00:03:08.279 --> 00:03:10.250
+when we focus on generative A I
+
+53
+00:03:10.520 --> 00:03:12.729
+it generates new content.
+
+54
+00:03:13.139 --> 00:03:15.600
+Then again, when we look at the applicability,
+
+55
+00:03:16.250 --> 00:03:19.190
+traditional A I is only specific to
+
+56
+00:03:19.350 --> 00:03:20.679
+some use cases.
+
+57
+00:03:20.860 --> 00:03:22.589
+Whereas generative A I
+
+58
+00:03:22.960 --> 00:03:25.809
+is focused on a wide range of use cases.
+
+59
+00:03:26.360 --> 00:03:27.720
+And traditional A I,
+
+60
+00:03:28.240 --> 00:03:30.750
+it is trained prior to deployment.
+
+61
+00:03:31.119 --> 00:03:35.949
+Whereas generative A I is pre trained on billions of data parameters.
+
+62
+00:03:36.850 --> 00:03:39.080
+Again, when we look at the training data
+
+63
+00:03:39.449 --> 00:03:40.630
+in traditional A I,
+
+64
+00:03:40.860 --> 00:03:44.990
+it is trained with a use case specific data like I was mentioning right,
+
+65
+00:03:45.000 --> 00:03:46.839
+with respect to say, for example,
+
+66
+00:03:46.850 --> 00:03:50.600
+with respect to sentiment analysis or defect classification.
+
+67
+00:03:50.869 --> 00:03:53.570
+But then when it comes to generative A I,
+
+68
+00:03:53.949 --> 00:03:57.699
+it is trained with billions of public data parameters.
+
+69
+00:03:57.949 --> 00:04:02.740
+So the output quality of traditional A I, it's all based on the data that uh
+
+70
+00:04:02.899 --> 00:04:03.669
+flows in
+
+71
+00:04:04.035 --> 00:04:07.085
+so it could be garbage in and garbage out.
+
+72
+00:04:07.184 --> 00:04:12.585
+So when it comes to generative A I, it is all based on the context. So it is ga garbage
+
+73
+00:04:13.565 --> 00:04:20.095
+and hallucination out you can you you can generate content but then the output might
+
+74
+00:04:20.625 --> 00:04:23.404
+not be realistic for all. For all we know.
+
+75
+00:04:23.704 --> 00:04:28.375
+Then in traditional A I, there's a lot to focus on the training data,
+
+76
+00:04:28.385 --> 00:04:30.684
+the quality of the data that is provided.
+
+77
+00:04:30.755 --> 00:04:32.524
+Whereas in generative A I,
+
+78
+00:04:32.970 --> 00:04:36.790
+the focus is on the context. So for example,
+
+79
+00:04:36.940 --> 00:04:40.140
+you might want to see right here, you know say for example, right,
+
+80
+00:04:40.149 --> 00:04:42.779
+you might have majority of, you might have made use of the
+
+81
+00:04:42.929 --> 00:04:44.190
+CHA GP T right.
+
+82
+00:04:44.279 --> 00:04:48.429
+So where in which you might have used it for querying for different aspects?
+
+83
+00:04:48.440 --> 00:04:50.820
+Now, uh when we look at that as well.
+
+84
+00:04:50.829 --> 00:04:52.140
+So for example, if you,
+
+85
+00:04:52.149 --> 00:04:56.309
+uh if people here are from the application maintenance space, so you might want,
+
+86
+00:04:56.320 --> 00:04:59.570
+if you want to know how exactly a job needs to be processed.
+
+87
+00:04:59.640 --> 00:05:02.989
+So, and you ask a question, definitely you'll get an output.
+
+88
+00:05:03.000 --> 00:05:05.220
+But then how if, how do you
+
+89
+00:05:05.790 --> 00:05:09.299
+as a job in your client specific context, then
+
+90
+00:05:09.779 --> 00:05:13.769
+you know, you will get a output which might not really be relevant.
+
+91
+00:05:13.779 --> 00:05:15.480
+So that is hallucination. So
+
+92
+00:05:15.760 --> 00:05:20.000
+in generative A I, there's a lot of focus on the domain context.
+
+93
+00:05:20.010 --> 00:05:25.220
+So these are the key differences between traditional A I and generative
+
+94
+00:05:25.230 --> 00:05:28.950
+A I with respect to all these parameters that we are seeing
+
+95
+00:05:29.329 --> 00:05:30.440
+right now.
+
+96
+00:05:30.850 --> 00:05:33.950
+The main thing in generative A I is that
+
+97
+00:05:34.079 --> 00:05:34.519
+it
+
+98
+00:05:34.959 --> 00:05:38.380
+it is based on the foundation models, right?
+
+99
+00:05:38.440 --> 00:05:43.589
+And these foundation models have a broad range of capabilities.
+
+100
+00:05:43.720 --> 00:05:48.109
+So right from you know the question answer then summarizing
+
+101
+00:05:48.459 --> 00:05:53.739
+generating code, generating content, you know, automation and so on.
+
+102
+00:05:53.809 --> 00:05:56.019
+So for example, you ask a question,
+
+103
+00:05:56.209 --> 00:05:56.670
+you know,
+
+104
+00:05:56.929 --> 00:05:59.660
+how do I process an invoice?
+
+105
+00:05:59.880 --> 00:06:01.130
+You will get a response.
+
+106
+00:06:01.820 --> 00:06:04.079
+So if you have uh an email,
+
+107
+00:06:04.429 --> 00:06:07.519
+you might want to summarize that email content,
+
+108
+00:06:08.250 --> 00:06:10.589
+you, you might want to generate
+
+109
+00:06:10.700 --> 00:06:11.589
+a code,
+
+110
+00:06:11.959 --> 00:06:15.630
+right? For your um for a payment processing module,
+
+111
+00:06:16.220 --> 00:06:17.910
+you can use generative A I,
+
+112
+00:06:18.239 --> 00:06:23.089
+you want to generate a content, right? So for example, you might want to
+
+113
+00:06:23.230 --> 00:06:26.109
+uh generate a design document,
+
+114
+00:06:26.519 --> 00:06:28.059
+you can use generative A I.
+
+115
+00:06:28.239 --> 00:06:29.359
+So like this,
+
+116
+00:06:29.529 --> 00:06:31.970
+you can actually use it for
+
+117
+00:06:32.170 --> 00:06:37.660
+multiple you know different purposes and you can use in text data,
+
+118
+00:06:38.160 --> 00:06:42.940
+an image, you can use voice and so you with the structured data,
+
+119
+00:06:42.950 --> 00:06:44.570
+you can use unstructured data.
+
+120
+00:06:44.630 --> 00:06:48.779
+So all these things for various purposes and
+
+121
+00:06:49.320 --> 00:06:54.519
+there are a lot of players in the market and the number is increasing day by day.
+
+122
+00:06:54.529 --> 00:06:57.829
+So, but the key players are the Azure open
+
+123
+00:06:58.160 --> 00:06:58.790
+A I, the Azure,
+
+124
+00:06:59.269 --> 00:07:00.980
+then we have the Google,
+
+125
+00:07:01.390 --> 00:07:03.049
+then the Aws,
+
+126
+00:07:03.279 --> 00:07:04.769
+then the oracle and
+
+127
+00:07:04.980 --> 00:07:06.399
+NVIDIA. So Azure,
+
+128
+00:07:06.600 --> 00:07:07.279
+they have abs
+
+129
+00:07:07.420 --> 00:07:07.510
+open
+
+130
+00:07:07.799 --> 00:07:15.209
+A I Google the palm, then the vertex A I Aws bedrock oracle cohere, then NVIDIA.
+
+131
+00:07:15.260 --> 00:07:19.809
+So these are all the leading players and there are multiple models
+
+132
+00:07:19.980 --> 00:07:23.980
+that we can uh that are available today and almost there are 700
+
+133
+00:07:24.109 --> 00:07:25.209
+odd generative A I
+
+134
+00:07:25.355 --> 00:07:26.346
+models as of date,
+
+135
+00:07:26.515 --> 00:07:26.906
+right?
+
+136
+00:07:26.915 --> 00:07:29.756
+And the numbers are continuously increasing day by
+
+137
+00:07:29.765 --> 00:07:32.175
+day with uh it's being fine tuned,
+
+138
+00:07:32.186 --> 00:07:33.895
+refined, new models are being
+
+139
+00:07:34.015 --> 00:07:36.015
+developed and so on. And
+
+140
+00:07:36.235 --> 00:07:42.415
+that we have multiple models say for example, for generating text, right?
+
+141
+00:07:42.536 --> 00:07:44.915
+So we uh it could be with respect to a
+
+142
+00:07:44.925 --> 00:07:49.216
+marketing content or with respect to a sales email or
+
+143
+00:07:49.321 --> 00:07:54.611
+you know, a chat or you know, just a simple, you know, uh generating some content.
+
+144
+00:07:54.671 --> 00:07:59.832
+So you can use generative A I and the models that are available include like open
+
+145
+00:07:59.992 --> 00:08:00.022
+A I
+
+146
+00:08:00.282 --> 00:08:02.022
+GP T three dot Fighter book
+
+147
+00:08:02.312 --> 00:08:04.622
+GP T four. Then we have deep mind
+
+148
+00:08:04.812 --> 00:08:05.611
+gopher meal
+
+149
+00:08:06.082 --> 00:08:08.902
+Lama then hugging face, Cohere
+
+150
+00:08:09.161 --> 00:08:09.272
+Anor
+
+151
+00:08:09.842 --> 00:08:10.641
+Google
+
+152
+00:08:10.761 --> 00:08:16.122
+Palm like this. We have so many models. Similarly when it comes to code generation
+
+153
+00:08:16.522 --> 00:08:17.981
+for documentation,
+
+154
+00:08:18.369 --> 00:08:21.510
+converting code from one language to another.
+
+155
+00:08:21.649 --> 00:08:22.029
+So
+
+156
+00:08:22.350 --> 00:08:24.750
+we have different models that are available
+
+157
+00:08:24.910 --> 00:08:29.029
+like the GPT four, then tab nine stability
+
+158
+00:08:29.149 --> 00:08:31.000
+A codex alpha
+
+159
+00:08:31.119 --> 00:08:32.109
+code and so on.
+
+160
+00:08:32.400 --> 00:08:35.090
+Similarly, for image generating image,
+
+161
+00:08:35.909 --> 00:08:37.369
+then for consumer
+
+162
+00:08:37.679 --> 00:08:39.169
+than for advertising.
+
+163
+00:08:39.308 --> 00:08:39.849
+So
+
+164
+00:08:39.989 --> 00:08:44.299
+if there are multiple models that are available like the GP T four open E
+
+165
+00:08:44.510 --> 00:08:47.330
+GP T four, then stable diffusion, then
+
+166
+00:08:47.590 --> 00:08:47.820
+Dhi
+
+167
+00:08:48.119 --> 00:08:48.960
+then there's mid
+
+168
+00:08:49.130 --> 00:08:54.169
+journey crayon like there, there are so many models and then again for speech
+
+169
+00:08:54.719 --> 00:08:55.380
+video,
+
+170
+00:08:55.539 --> 00:08:56.369
+3d
+
+171
+00:08:57.099 --> 00:09:00.080
+and other aspects like gaming, music, audio
+
+172
+00:09:00.650 --> 00:09:07.510
+for biology. All these, there are so many generative A I models that are available,
+
+173
+00:09:07.890 --> 00:09:09.440
+three generative A I.
+
+174
+00:09:09.559 --> 00:09:13.770
+So you will be able to um you make use of these foundation
+
+175
+00:09:13.880 --> 00:09:17.849
+models or the large language models and then it is
+
+176
+00:09:17.859 --> 00:09:22.030
+made it is used for performing different kinds of activities.
+
+177
+00:09:22.039 --> 00:09:24.349
+So there are different kinds of use cases over here.
+
+178
+00:09:24.440 --> 00:09:29.309
+So with respect to the question answer, so you ask a question, you get a response,
+
+179
+00:09:29.320 --> 00:09:31.719
+then maybe you, you know, you have a la
+
+180
+00:09:32.242 --> 00:09:36.742
+um you have uh the cubic conversation, right with somebody.
+
+181
+00:09:36.752 --> 00:09:39.463
+And then uh you might want to quickly summarize that
+
+182
+00:09:39.473 --> 00:09:44.182
+particular conversation and get the concise list of uh information.
+
+183
+00:09:44.312 --> 00:09:46.143
+So, or you might have an email,
+
+184
+00:09:46.153 --> 00:09:50.783
+you might want to summarize that particular uh email or, you know, within a ticket,
+
+185
+00:09:50.793 --> 00:09:55.822
+the data, you, you might have a huge description in that particular uh ticket data.
+
+186
+00:09:55.833 --> 00:09:56.432
+You might want to
+
+187
+00:09:56.596 --> 00:09:57.366
+memorize that.
+
+188
+00:09:57.526 --> 00:10:00.846
+Then again, you might, you know, you might want to generate a code,
+
+189
+00:10:00.856 --> 00:10:03.296
+you given the text, I want to write it.
+
+190
+00:10:03.306 --> 00:10:10.895
+Can you give me a, a code to um uh uh to change the color of uh uh of a screen, you know,
+
+191
+00:10:10.906 --> 00:10:12.335
+from red to blue.
+
+192
+00:10:12.346 --> 00:10:17.005
+So you it will immediately be able to generate such a code then generating a content,
+
+193
+00:10:17.015 --> 00:10:17.366
+right?
+
+194
+00:10:17.375 --> 00:10:20.846
+So for uh for example, I want to get generate the um
+
+195
+00:10:21.349 --> 00:10:26.150
+uh uh a survey uh after the particular training session or,
+
+196
+00:10:26.159 --> 00:10:30.369
+or generate uh uh requirements uh document, right?
+
+197
+00:10:30.380 --> 00:10:34.549
+So it will be able to generate that then again to over perform automation, right?
+
+198
+00:10:34.559 --> 00:10:37.059
+So enriching a ticket data or you know,
+
+199
+00:10:37.070 --> 00:10:40.239
+identifying the root cause analysis and so on.
+
+200
+00:10:40.270 --> 00:10:43.559
+So, and um across the market, right?
+
+201
+00:10:43.570 --> 00:10:48.770
+So there are a lot of players who are involved in uh in this. So
+
+202
+00:10:49.140 --> 00:10:54.049
+there is the Azure Open A I, then again, Google has the uh with the bar,
+
+203
+00:10:54.200 --> 00:10:59.710
+then aws uh bedrock, then oracles cohere, then again in media.
+
+204
+00:10:59.760 --> 00:11:05.979
+So like this, there are so many um large language models by different uh players.
+
+205
+00:11:06.039 --> 00:11:09.789
+And um so, and you can actually see those over here, right?
+
+206
+00:11:09.900 --> 00:11:12.169
+So with respect to text,
+
+207
+00:11:12.320 --> 00:11:16.190
+we have the open A GP T four. Then again, um
+
+208
+00:11:16.559 --> 00:11:17.159
+the deep
+
+209
+00:11:17.280 --> 00:11:18.039
+mind gopher
+
+210
+00:11:18.320 --> 00:11:18.679
+Lama
+
+211
+00:11:18.830 --> 00:11:20.700
+then um Lambda.
+
+212
+00:11:20.710 --> 00:11:25.059
+So and all this is actually, I mean, you can make use of for um you know,
+
+213
+00:11:25.070 --> 00:11:29.820
+uh in uh marketing content, sales support, general writing.
+
+214
+00:11:29.830 --> 00:11:32.200
+Then again, um with respect to code, right,
+
+215
+00:11:32.210 --> 00:11:34.950
+you many of you might have tried using the github uh
+
+216
+00:11:35.150 --> 00:11:38.460
+Copilot or the codex or Tab nine, right?
+
+217
+00:11:38.534 --> 00:11:43.315
+So it, it uh it uh supports in the code generation, code remediation,
+
+218
+00:11:43.484 --> 00:11:45.294
+you know the documentation,
+
+219
+00:11:45.445 --> 00:11:47.104
+the test case generation.
+
+220
+00:11:47.125 --> 00:11:50.934
+So all those things then again, when it comes to I images, right?
+
+221
+00:11:50.945 --> 00:11:56.364
+So there are different kinds of uh models that are available like the GP T uh four.
+
+222
+00:11:56.474 --> 00:11:57.554
+Then there we have the
+
+223
+00:11:57.655 --> 00:12:00.385
+DALI three, then uh we have the
+
+224
+00:12:00.880 --> 00:12:04.359
+stable diffusion imagine news, then more
+
+225
+00:12:04.469 --> 00:12:08.849
+mid journey. So all these other then similarly, you know, there are different uh
+
+226
+00:12:09.039 --> 00:12:14.909
+large language models which are available for speech, for video for 3D
+
+227
+00:12:15.070 --> 00:12:15.820
+and so on.
+
+228
+00:12:16.140 --> 00:12:17.760
+I hope you have just had a,
+
+229
+00:12:17.770 --> 00:12:23.380
+a glance at all these uh models that are available and it is an evolving one, right?
+
+230
+00:12:23.390 --> 00:12:27.539
+So now GP T uh PHI is actually it is going to come up.
+
+231
+00:12:27.549 --> 00:12:30.409
+So the and it's a continuously evolving one.

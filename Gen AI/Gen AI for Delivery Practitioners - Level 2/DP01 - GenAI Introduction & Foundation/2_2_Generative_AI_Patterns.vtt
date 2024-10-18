@@ -1,0 +1,505 @@
+WEBVTT
+
+0
+00:00:15.489 --> 00:00:16.309
+So ja I
+
+1
+00:00:16.469 --> 00:00:18.329
+opportunities across
+
+2
+00:00:18.549 --> 00:00:23.149
+the technology delivery life cycle. That is what TDLC stands for.
+
+3
+00:00:23.450 --> 00:00:26.790
+So the first and foremost thing uh we need to
+
+4
+00:00:26.799 --> 00:00:30.069
+focus on is understand the patterns in gene A I.
+
+5
+00:00:30.409 --> 00:00:33.110
+So when we say understanding the patterns, right?
+
+6
+00:00:33.119 --> 00:00:36.569
+So there are different types of patterns. So
+
+7
+00:00:36.680 --> 00:00:38.069
+like generation.
+
+8
+00:00:38.569 --> 00:00:42.590
+So what do we mean by generation? So when we say generation,
+
+9
+00:00:43.450 --> 00:00:45.849
+it could be, you know, generating a survey,
+
+10
+00:00:46.080 --> 00:00:48.000
+generating a template,
+
+11
+00:00:48.130 --> 00:00:55.000
+right? So the generating uh uh requirements with a complete acceptance criteria,
+
+12
+00:00:55.119 --> 00:00:57.409
+generating a test case.
+
+13
+00:00:57.459 --> 00:01:03.509
+So like that, uh you know, that is what generation is all about then completion.
+
+14
+00:01:03.569 --> 00:01:06.489
+So when we say completion, it is actually
+
+15
+00:01:06.809 --> 00:01:07.500
+uh
+
+16
+00:01:07.959 --> 00:01:10.160
+completing uh information.
+
+17
+00:01:10.169 --> 00:01:12.319
+So you start writing a piece of code,
+
+18
+00:01:12.330 --> 00:01:17.000
+then you know the the through ja I you will be able to complete it,
+
+19
+00:01:17.199 --> 00:01:21.800
+you you give the un user story, it will be in a position to
+
+20
+00:01:22.220 --> 00:01:27.040
+complete the user story with the right acceptance criteria,
+
+21
+00:01:27.319 --> 00:01:33.730
+right? So that is the completion then synthesis. So when we say synthesis,
+
+22
+00:01:33.860 --> 00:01:35.720
+it is more focused on,
+
+23
+00:01:35.930 --> 00:01:38.269
+you know, collating information
+
+24
+00:01:39.010 --> 00:01:44.269
+or collecting the information from multiple sources and then
+
+25
+00:01:44.489 --> 00:01:45.040
+uh
+
+26
+00:01:45.540 --> 00:01:48.919
+and creating it in a presentable format. Say, for example,
+
+27
+00:01:49.370 --> 00:01:51.069
+um if you're familiar,
+
+28
+00:01:51.080 --> 00:01:56.150
+if I'm not sure how many of you are in the support uh space in the operation space,
+
+29
+00:01:56.160 --> 00:01:56.440
+right?
+
+30
+00:01:56.540 --> 00:02:00.040
+So, but typically in an operation space, for example,
+
+31
+00:02:00.129 --> 00:02:03.209
+um there can be a scenario where there might be
+
+32
+00:02:03.220 --> 00:02:06.610
+an issue with respect to uh a job failure.
+
+33
+00:02:06.620 --> 00:02:10.850
+So when there is a job failure, right, typically what happens is
+
+34
+00:02:10.960 --> 00:02:15.429
+the support team goes ahead and looks into multiple log files. So
+
+35
+00:02:15.809 --> 00:02:19.029
+and so what to do and then they come up
+
+36
+00:02:19.410 --> 00:02:20.839
+that particular information,
+
+37
+00:02:21.089 --> 00:02:26.009
+right? So, but this entire process it can be done through ja I,
+
+38
+00:02:26.130 --> 00:02:27.869
+so you where in which you
+
+39
+00:02:28.210 --> 00:02:31.889
+all that information? So that is synthesis, then analysis,
+
+40
+00:02:32.000 --> 00:02:36.429
+analysis is actually once you collate all that particular information,
+
+41
+00:02:36.440 --> 00:02:38.779
+you analyze it to identify
+
+42
+00:02:38.960 --> 00:02:44.029
+what could be the root cause of a particular issue, right? So that is the analysis.
+
+43
+00:02:44.039 --> 00:02:45.750
+Then summarization,
+
+44
+00:02:46.279 --> 00:02:50.850
+summarization is all about, you know, say for example, you know, somebody is uh
+
+45
+00:02:50.960 --> 00:02:54.139
+uh makes a call, right? Or during your
+
+46
+00:02:54.520 --> 00:02:59.580
+on on on a day to day basis, you have multiple calls, right? It's on an ongoing thing.
+
+47
+00:02:59.589 --> 00:03:03.050
+But and post that particular call, you would want to uh you know,
+
+48
+00:03:03.059 --> 00:03:05.490
+uh quickly create a minutes of the meeting,
+
+49
+00:03:05.500 --> 00:03:08.220
+summarize the gist of that particular conversation.
+
+50
+00:03:08.229 --> 00:03:08.839
+Now,
+
+51
+00:03:08.949 --> 00:03:10.250
+that entire thing can
+
+52
+00:03:10.354 --> 00:03:14.764
+transcribed, then you can create a summary out of it using a gen A I,
+
+53
+00:03:15.095 --> 00:03:20.404
+right? So that is summarization then sentiment analysis. So typically
+
+54
+00:03:20.705 --> 00:03:25.945
+uh any uh text or any content that is spoken, right?
+
+55
+00:03:25.955 --> 00:03:27.895
+So it all there is there might be either a
+
+56
+00:03:27.904 --> 00:03:32.664
+positive sentiment or a negative sentiment or there could be a
+
+57
+00:03:32.914 --> 00:03:34.285
+neutral sentiment.
+
+58
+00:03:34.880 --> 00:03:38.399
+Now, when we actually, and uh when we go with the traditional A I,
+
+59
+00:03:38.410 --> 00:03:40.500
+we need to train the model to, you know,
+
+60
+00:03:40.509 --> 00:03:43.339
+understand what was the sentiment of that particular text.
+
+61
+00:03:43.350 --> 00:03:47.029
+Now through gen A I, you just provide a particular test text.
+
+62
+00:03:47.039 --> 00:03:50.710
+It will be in a position to give you what was the particular sent, right?
+
+63
+00:03:50.720 --> 00:03:53.169
+Which the particular user might have uh you know,
+
+64
+00:03:53.179 --> 00:03:56.380
+with which the user might have spoken about, then there is remit.
+
+65
+00:03:57.326 --> 00:04:00.356
+So when we say remediation, it is all about fixing.
+
+66
+00:04:00.365 --> 00:04:05.856
+So yeah, typically, you know, once a code is developed, then what happens, you know,
+
+67
+00:04:05.865 --> 00:04:08.466
+we might want to review that particular code.
+
+68
+00:04:08.475 --> 00:04:13.576
+So typically, what do we do? We go ahead and we make use of uh different tools.
+
+69
+00:04:13.585 --> 00:04:18.630
+One of the tools may be, you know, it could be a Sonar cube. So for um so so not
+
+70
+00:04:18.760 --> 00:04:21.450
+cube is a tool which is used for code review
+
+71
+00:04:21.459 --> 00:04:24.101
+for those who may not really be familiar with that.
+
+72
+00:04:24.110 --> 00:04:27.170
+So now once you I I review the code,
+
+73
+00:04:27.180 --> 00:04:32.050
+then it might identify what could be the issues in the code.
+
+74
+00:04:32.061 --> 00:04:36.871
+Now you have to go ahead and fix it, right? So when you are so through ja I,
+
+75
+00:04:37.170 --> 00:04:39.601
+you will be in a position to quickly
+
+76
+00:04:40.049 --> 00:04:43.839
+you know, fix that particular code, then segmentation of that code,
+
+77
+00:04:43.850 --> 00:04:45.730
+uh segmentation is more of clustering.
+
+78
+00:04:45.739 --> 00:04:48.829
+So you, you give it have a incident description,
+
+79
+00:04:48.839 --> 00:04:52.470
+then it will be in a position to uh cluster that then again,
+
+80
+00:04:52.480 --> 00:04:56.940
+translation translation is all about, you know, translating, you know,
+
+81
+00:04:56.950 --> 00:04:58.670
+say from one language to another,
+
+82
+00:04:58.679 --> 00:05:03.869
+maybe from Spanish to English or German to English or you know,
+
+83
+00:05:04.011 --> 00:05:05.032
+translating, you know,
+
+84
+00:05:05.041 --> 00:05:08.772
+from one programming language to another programming language,
+
+85
+00:05:08.782 --> 00:05:12.712
+maybe from uh uh uh C program to a Java program.
+
+86
+00:05:12.721 --> 00:05:16.261
+So like that, then Q and A is more about, you know, you ask a question,
+
+87
+00:05:16.272 --> 00:05:20.032
+get a response and then classification, you have some defects,
+
+88
+00:05:20.041 --> 00:05:22.302
+you might want to classify it, you know, as a
+
+89
+00:05:22.411 --> 00:05:27.872
+um you know, uh simple medium complex and so on. And typically,
+
+90
+00:05:27.973 --> 00:05:32.114
+you know, we typically, what we do is we go ahead and provide labels.
+
+91
+00:05:32.123 --> 00:05:35.114
+But now all these things, you can just go ahead and uh you know,
+
+92
+00:05:35.123 --> 00:05:38.114
+you can perform through JA I but, and,
+
+93
+00:05:38.123 --> 00:05:43.394
+and this is what uh these are the different uh patterns that we see uh across here now.
+
+94
+00:05:43.403 --> 00:05:46.634
+And what we see over here is this uh across the different
+
+95
+00:05:46.644 --> 00:05:50.183
+areas in the technology delivery life cycle that I already spoke about,
+
+96
+00:05:50.194 --> 00:05:50.533
+right?
+
+97
+00:05:50.544 --> 00:05:51.834
+So with respect to in
+
+98
+00:05:51.936 --> 00:05:56.855
+requirements, so in requirements, you can go ahead and create the requirements,
+
+99
+00:05:56.865 --> 00:05:59.615
+you'll be able to then summarizing those requirements,
+
+100
+00:05:59.635 --> 00:06:02.196
+then generating the prototypes, right?
+
+101
+00:06:02.205 --> 00:06:05.415
+And then again, you know, based on the user stories or requirements,
+
+102
+00:06:05.425 --> 00:06:10.455
+generating the design documents, then generating an architectural diagram,
+
+103
+00:06:10.466 --> 00:06:12.786
+you know the technical, the functional architecture,
+
+104
+00:06:12.795 --> 00:06:15.786
+the application architecture, the technical architecture.
+
+105
+00:06:16.079 --> 00:06:20.489
+Then again from a development I like I told about it's uh generating code,
+
+106
+00:06:20.500 --> 00:06:24.170
+analyzing the code remediating the code, then testing in testing,
+
+107
+00:06:24.179 --> 00:06:26.220
+generating test cases data,
+
+108
+00:06:26.380 --> 00:06:29.910
+then automation, then you might have a regression test suit.
+
+109
+00:06:29.920 --> 00:06:32.760
+You might want to optimize a particular regression test suit.
+
+110
+00:06:32.769 --> 00:06:36.200
+You might want to uh you know, there could be duplicate uh regression test.
+
+111
+00:06:36.209 --> 00:06:37.410
+So you might look at your,
+
+112
+00:06:37.529 --> 00:06:40.959
+you know, you might want to optimize the entire regression test bed, right.
+
+113
+00:06:40.970 --> 00:06:43.630
+Then while deploying, you might, you might want to, you know,
+
+114
+00:06:43.640 --> 00:06:47.649
+if you're having AC I CD pipeline, you might generate the terraform scripts,
+
+115
+00:06:47.660 --> 00:06:50.320
+you might perform the infrastructure provisioning and
+
+116
+00:06:50.329 --> 00:06:54.220
+then deploy then again from a support standpoint
+
+117
+00:06:54.329 --> 00:06:56.470
+uh in operate, you know, it's
+
+118
+00:06:57.970 --> 00:06:58.869
+automatically,
+
+119
+00:06:58.980 --> 00:07:01.839
+you know, synthesizing and analyzing the root causes,
+
+120
+00:07:01.850 --> 00:07:07.239
+then uh enriching ticket data and then automating generating the documents.
+
+121
+00:07:07.250 --> 00:07:08.869
+So all these things and then again,
+
+122
+00:07:08.880 --> 00:07:11.839
+there are multiple aspects and from a collaboration standpoint,
+
+123
+00:07:11.850 --> 00:07:15.239
+then document search knowledge management and so on.
+
+124
+00:07:15.250 --> 00:07:16.589
+So these are the different NA
+
+125
+00:07:16.739 --> 00:07:20.149
+I opportunities across the technology delivery life cycle.

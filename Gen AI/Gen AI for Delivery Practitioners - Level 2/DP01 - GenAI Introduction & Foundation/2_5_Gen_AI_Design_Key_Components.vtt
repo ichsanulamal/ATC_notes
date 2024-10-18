@@ -1,0 +1,349 @@
+WEBVTT
+
+0
+00:00:16.649 --> 00:00:19.239
+We are still trying to understand all those uh key
+
+1
+00:00:19.250 --> 00:00:21.860
+design components in this particular uh uh you know,
+
+2
+00:00:21.870 --> 00:00:25.000
+for one technology delivery life cycle use case.
+
+3
+00:00:25.010 --> 00:00:27.020
+Now in this particular use case
+
+4
+00:00:27.120 --> 00:00:30.450
+uh that is so the this is with respect to uh uh
+
+5
+00:00:30.459 --> 00:00:35.090
+application development or uh you know uh system integration uh use case.
+
+6
+00:00:35.099 --> 00:00:40.509
+So if there is a banking application, right? And in a banking uh application.
+
+7
+00:00:40.520 --> 00:00:43.110
+So if there is a payment uh process
+
+8
+00:00:43.312 --> 00:00:44.571
+module, right?
+
+9
+00:00:44.582 --> 00:00:48.312
+And in the payment processing module, say for example, you might want to
+
+10
+00:00:48.451 --> 00:00:51.771
+um add a new uh
+
+11
+00:00:52.352 --> 00:00:57.902
+you know, payment processor or you might want to add a new supplier or or a vendor,
+
+12
+00:00:57.911 --> 00:00:58.251
+right?
+
+13
+00:00:58.262 --> 00:01:02.321
+So if that is the case, then when if you had to create a user story.
+
+14
+00:01:02.332 --> 00:01:08.491
+So uh the user story is, you know, I want to uh create a payment uh processing mo
+
+15
+00:01:08.622 --> 00:01:08.751
+pro
+
+16
+00:01:09.734 --> 00:01:13.143
+add a new payment processing for country
+
+17
+00:01:13.323 --> 00:01:16.674
+um you know, for for country XYZ.
+
+18
+00:01:16.683 --> 00:01:22.554
+Now when you do that, so typically what happens is this user story that is created?
+
+19
+00:01:22.624 --> 00:01:27.083
+So the that actually the it is preprocess when when you say preprocess,
+
+20
+00:01:27.094 --> 00:01:31.424
+it is tokenized the features are extracted, then it is you know the ember,
+
+21
+00:01:31.433 --> 00:01:34.674
+it is embedded, it goes into the vector database.
+
+22
+00:01:34.683 --> 00:01:36.194
+Then in the knowledge graph,
+
+23
+00:01:36.416 --> 00:01:37.255
+you also you know,
+
+24
+00:01:37.265 --> 00:01:41.005
+search for that particular if there is some particular information.
+
+25
+00:01:41.015 --> 00:01:42.896
+So when we say information,
+
+26
+00:01:42.905 --> 00:01:46.716
+we are trying to understand if there are any functional
+
+27
+00:01:46.746 --> 00:01:49.986
+or nonfunctional areas also that we need to look at.
+
+28
+00:01:49.996 --> 00:01:51.555
+So typically when we are looking at an
+
+29
+00:01:51.666 --> 00:01:56.496
+user story, so we try to understand what are the nonfunctional aspects also, right.
+
+30
+00:01:56.505 --> 00:02:00.216
+So from a security standpoint, if something needs to be covered or you know,
+
+31
+00:02:00.225 --> 00:02:02.026
+from a scalability perspective,
+
+32
+00:02:02.036 --> 00:02:04.477
+something needs to be looked at from a performance
+
+33
+00:02:04.487 --> 00:02:06.828
+perspective or like that we need to look at,
+
+34
+00:02:06.837 --> 00:02:07.127
+right?
+
+35
+00:02:07.138 --> 00:02:08.437
+And similarly, um
+
+36
+00:02:08.937 --> 00:02:10.556
+so all this information
+
+37
+00:02:10.657 --> 00:02:14.167
+is looked at for reference and then this context is
+
+38
+00:02:14.177 --> 00:02:17.598
+also uh taken and then the prompt is generated,
+
+39
+00:02:17.647 --> 00:02:20.358
+then there is this LLM orchestrator.
+
+40
+00:02:20.367 --> 00:02:24.048
+Now the LLM orchestrator here we are using the L
+
+41
+00:02:24.307 --> 00:02:28.067
+chain. Now, typically what it does is it identifies
+
+42
+00:02:28.238 --> 00:02:29.218
+what is the
+
+43
+00:02:29.809 --> 00:02:30.000
+LA
+
+44
+00:02:30.110 --> 00:02:33.389
+LLM that needs to be uh made use of.
+
+45
+00:02:33.399 --> 00:02:38.009
+So depending upon the type of uh you know uh information that uh the
+
+46
+00:02:38.220 --> 00:02:40.080
+query that we are actually looking at.
+
+47
+00:02:40.190 --> 00:02:43.979
+So it does determine it selects that particular large language model.
+
+48
+00:02:44.000 --> 00:02:46.429
+So for example, if it is a uh uh text
+
+49
+00:02:46.619 --> 00:02:51.229
+type of information that we want to extract, then so in this case, it's a user story,
+
+50
+00:02:51.240 --> 00:02:54.589
+it will automatically switch to a GP T 3.5.
+
+51
+00:02:54.600 --> 00:02:55.270
+But then
+
+52
+00:02:55.410 --> 00:02:56.300
+if you,
+
+53
+00:02:56.423 --> 00:03:00.524
+yeah, if the instead of this user input of generate user story, right?
+
+54
+00:03:00.533 --> 00:03:01.444
+Say for example,
+
+55
+00:03:01.453 --> 00:03:04.044
+it might be generate an uh you know
+
+56
+00:03:04.054 --> 00:03:08.044
+uh technology architecture or an application architecture.
+
+57
+00:03:08.054 --> 00:03:11.514
+Then instead of this GP T 3.5 this will
+
+58
+00:03:11.953 --> 00:03:17.173
+will switch to, you know, a GP T 4.0 or it will switch to a DC, right? So
+
+59
+00:03:17.333 --> 00:03:17.363
+the,
+
+60
+00:03:17.423 --> 00:03:19.694
+so the land chain uh actually it
+
+61
+00:03:19.703 --> 00:03:23.003
+helps in a selective identification of that particular
+
+62
+00:03:23.388 --> 00:03:24.957
+um you know, opening
+
+63
+00:03:25.067 --> 00:03:26.777
+or the particular LLM.
+
+64
+00:03:26.787 --> 00:03:29.378
+So it goes to that particular large language model
+
+65
+00:03:29.388 --> 00:03:31.498
+along with the particular pro with the prompt,
+
+66
+00:03:31.507 --> 00:03:33.658
+the context, it gets the response,
+
+67
+00:03:33.667 --> 00:03:38.677
+then the particular response is formatted then and then it again,
+
+68
+00:03:38.688 --> 00:03:42.018
+uh it sends it back to the user interface and uh
+
+69
+00:03:42.188 --> 00:03:46.777
+and when we look at uh within uh uh uh uh it's within my wizard, right?
+
+70
+00:03:46.787 --> 00:03:49.697
+So we already have many um my wizard assets also.
+
+71
+00:03:49.811 --> 00:03:54.421
+So for example, especially uh you know, when we look at uh uh requirements, right?
+
+72
+00:03:54.432 --> 00:03:58.042
+So within requirements, so we have the requirements readiness, you,
+
+73
+00:03:58.052 --> 00:04:01.572
+we have the requirements dependency identifier like that.
+
+74
+00:04:01.582 --> 00:04:03.401
+There are so many my visitor assets are there.
+
+75
+00:04:03.442 --> 00:04:07.031
+So when the user stories are also created, it will also go into, you know,
+
+76
+00:04:07.042 --> 00:04:10.292
+check these particular assets as well to understand, you know,
+
+77
+00:04:10.302 --> 00:04:13.302
+uh if those require user stories are in line with
+
+78
+00:04:13.311 --> 00:04:16.391
+that uh invest uh uh principles when I say invest
+
+79
+00:04:16.505 --> 00:04:21.685
+it is independent negotiable, valuable estimable, small testable.
+
+80
+00:04:21.696 --> 00:04:25.735
+This is so people who are in the application development space, right?
+
+81
+00:04:25.746 --> 00:04:28.506
+So they will be and who are familiar with
+
+82
+00:04:28.786 --> 00:04:28.795
+a
+
+83
+00:04:29.096 --> 00:04:32.726
+agile and all they'll be more familiar with this invest uh principles.
+
+84
+00:04:32.735 --> 00:04:37.325
+But typically what it does is it looks at all these uh assets as well and uh you know,
+
+85
+00:04:37.335 --> 00:04:40.846
+tries to bring in all those best practices and then, you know,
+
+86
+00:04:40.855 --> 00:04:43.115
+it provides them the sponsors accordingly.

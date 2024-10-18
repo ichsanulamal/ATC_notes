@@ -1,0 +1,1821 @@
+WEBVTT
+
+0
+00:00:13.170 --> 00:00:17.549
+Let us understand the role of vector embeddings in generative A I solution.
+
+1
+00:00:18.219 --> 00:00:20.639
+Vector embeddings play a crucial role
+
+2
+00:00:20.770 --> 00:00:25.030
+in generating A I bridging the gap between human readable data
+
+3
+00:00:25.239 --> 00:00:27.219
+and computational algorithms.
+
+4
+00:00:27.530 --> 00:00:28.680
+For example,
+
+5
+00:00:28.950 --> 00:00:31.920
+when a user asks a query in natural language,
+
+6
+00:00:32.200 --> 00:00:36.240
+what are the potential root causes for the failure of job XYZ
+
+7
+00:00:37.029 --> 00:00:38.770
+generative A I solution?
+
+8
+00:00:38.970 --> 00:00:41.380
+It needs to comprehend the user query,
+
+9
+00:00:41.599 --> 00:00:44.040
+apply computational algorithms
+
+10
+00:00:44.150 --> 00:00:45.450
+to retrieve answer
+
+11
+00:00:45.610 --> 00:00:47.330
+and then provide a response.
+
+12
+00:00:47.540 --> 00:00:49.250
+Now, in order to achieve this,
+
+13
+00:00:49.520 --> 00:00:51.630
+the plain text must be converted
+
+14
+00:00:51.740 --> 00:00:54.610
+into a computer under understandable language.
+
+15
+00:00:54.759 --> 00:00:57.369
+And this process is called as vector embedding
+
+16
+00:00:58.630 --> 00:01:01.680
+vector embeddings transform different types of data
+
+17
+00:01:02.529 --> 00:01:06.550
+such as text or images into numerical representations
+
+18
+00:01:06.819 --> 00:01:09.610
+so that generative A I can comprehend
+
+19
+00:01:09.760 --> 00:01:11.489
+and process them effectively
+
+20
+00:01:11.860 --> 00:01:15.000
+vector embeddings capture the similarities and
+
+21
+00:01:15.010 --> 00:01:17.430
+relationships between different data points.
+
+22
+00:01:17.610 --> 00:01:19.470
+This allows generative A I
+
+23
+00:01:19.610 --> 00:01:23.230
+to understand the context and associations within the data
+
+24
+00:01:23.620 --> 00:01:26.959
+enhancing its ability to generate meaningful outputs.
+
+25
+00:01:27.290 --> 00:01:30.440
+Now, by representing the data in numerical vectors,
+
+26
+00:01:30.610 --> 00:01:32.750
+generative A I can process
+
+27
+00:01:32.910 --> 00:01:35.720
+and analyze the information more efficiently.
+
+28
+00:01:36.000 --> 00:01:37.680
+And this efficiency
+
+29
+00:01:37.919 --> 00:01:39.199
+enables quicker
+
+30
+00:01:39.419 --> 00:01:42.440
+and more accurate generation of outputs
+
+31
+00:01:42.680 --> 00:01:44.000
+by the A I model.
+
+32
+00:01:45.269 --> 00:01:46.360
+So in summary
+
+33
+00:01:46.580 --> 00:01:47.879
+vector embeddings empi
+
+34
+00:01:48.169 --> 00:01:53.580
+generative A I by transforming diverse data types into numerical vectors,
+
+35
+00:01:53.639 --> 00:01:55.449
+capturing relationships
+
+36
+00:01:55.739 --> 00:01:59.139
+and enabling efficient processing and analysis.
+
+37
+00:02:00.980 --> 00:02:04.239
+Now let's understand some of the concepts
+
+38
+00:02:04.599 --> 00:02:05.660
+like vector
+
+39
+00:02:06.529 --> 00:02:07.620
+vector embedding
+
+40
+00:02:08.050 --> 00:02:08.949
+and vector stove.
+
+41
+00:02:09.910 --> 00:02:12.979
+A vector is a fixed length array of numbers
+
+42
+00:02:13.199 --> 00:02:16.220
+that mathematically represents a point in space.
+
+43
+00:02:16.869 --> 00:02:22.020
+Each number in the array corresponds to a unique direction or dimension
+
+44
+00:02:22.250 --> 00:02:23.490
+in the vector space
+
+45
+00:02:23.789 --> 00:02:25.539
+and its value represents
+
+46
+00:02:25.710 --> 00:02:28.500
+the magnitude of the vector in that direction.
+
+47
+00:02:29.589 --> 00:02:32.289
+Let's take an example of a sentence
+
+48
+00:02:32.740 --> 00:02:35.229
+root cause is due to server misfigure.
+
+49
+00:02:36.500 --> 00:02:37.880
+In this example,
+
+50
+00:02:38.130 --> 00:02:39.190
+each word
+
+51
+00:02:39.500 --> 00:02:40.279
+namely
+
+52
+00:02:40.399 --> 00:02:41.089
+root cause,
+
+53
+00:02:43.149 --> 00:02:44.009
+server
+
+54
+00:02:44.710 --> 00:02:45.789
+and misfigure
+
+55
+00:02:47.169 --> 00:02:49.330
+can be represented as vectors.
+
+56
+00:02:49.830 --> 00:02:52.429
+For simplicity. These vectors
+
+57
+00:02:52.639 --> 00:02:55.960
+are visualized as two dimensional vectors
+
+58
+00:02:56.839 --> 00:03:02.270
+where each word corresponds to a point with X and Y coordinate values.
+
+59
+00:03:02.589 --> 00:03:03.389
+However,
+
+60
+00:03:03.779 --> 00:03:05.539
+in real world applications,
+
+61
+00:03:06.279 --> 00:03:10.679
+multidimensional vector spaces are typically used to capture a
+
+62
+00:03:10.690 --> 00:03:15.210
+broad range of relationships and semantic nuances between the words
+
+63
+00:03:16.490 --> 00:03:17.740
+a vector embedding
+
+64
+00:03:17.949 --> 00:03:20.460
+or simply embedding is a numerical
+
+65
+00:03:20.470 --> 00:03:24.940
+representation of typically nonnumerical data objects
+
+66
+00:03:25.389 --> 00:03:29.220
+embeddings capture the essential properties and relationships
+
+67
+00:03:29.350 --> 00:03:32.339
+of the original data. In a condensed format.
+
+68
+00:03:33.309 --> 00:03:38.320
+A vector store is a specialized type of database management system or DB
+
+69
+00:03:38.529 --> 00:03:38.690
+MS
+
+70
+00:03:39.220 --> 00:03:43.119
+which is designed to store and manage vectors,
+
+71
+00:03:43.899 --> 00:03:44.839
+knowledge graphs,
+
+72
+00:03:45.470 --> 00:03:50.460
+knowledge graphs play a pivotal role in enhancing generative A I solutions.
+
+73
+00:03:50.710 --> 00:03:53.529
+A knowledge graph is an interconnected structure
+
+74
+00:03:53.820 --> 00:03:55.669
+that represents entities
+
+75
+00:03:55.789 --> 00:03:56.899
+that attributes
+
+76
+00:03:57.100 --> 00:03:58.740
+and relationships
+
+77
+00:03:59.389 --> 00:04:02.169
+in the context of the technology delivery life cycle.
+
+78
+00:04:02.199 --> 00:04:04.509
+Let's take an example of a sentence.
+
+79
+00:04:04.649 --> 00:04:05.699
+Root cause of
+
+80
+00:04:05.970 --> 00:04:08.729
+server failure is mis configuration.
+
+81
+00:04:09.050 --> 00:04:11.789
+Now, in the left side of this diagram,
+
+82
+00:04:12.059 --> 00:04:14.020
+we can see the probable vectors
+
+83
+00:04:14.139 --> 00:04:17.769
+namely the root cause server failure
+
+84
+00:04:18.119 --> 00:04:20.108
+and mis configuration.
+
+85
+00:04:20.459 --> 00:04:22.089
+All these are vectors.
+
+86
+00:04:22.540 --> 00:04:24.140
+Now, in the right side,
+
+87
+00:04:24.369 --> 00:04:29.079
+we can see a representative knowledge graph for the same vectors.
+
+88
+00:04:29.959 --> 00:04:34.730
+Each keyword namely root cause server failure
+
+89
+00:04:35.040 --> 00:04:35.369
+and
+
+90
+00:04:36.089 --> 00:04:36.500
+misfigure
+
+91
+00:04:36.730 --> 00:04:38.510
+are all called as entities.
+
+92
+00:04:38.799 --> 00:04:40.160
+Now, the entities
+
+93
+00:04:40.410 --> 00:04:42.010
+have a relationship,
+
+94
+00:04:42.190 --> 00:04:43.209
+for example,
+
+95
+00:04:43.910 --> 00:04:44.450
+uh so
+
+96
+00:04:44.660 --> 00:04:45.470
+has
+
+97
+00:04:46.010 --> 00:04:46.019
+a,
+
+98
+00:04:47.239 --> 00:04:48.179
+a failure,
+
+99
+00:04:48.959 --> 00:04:50.779
+a failure has a root cause,
+
+100
+00:04:51.420 --> 00:04:53.760
+root causes mis configuration
+
+101
+00:04:54.839 --> 00:04:55.010
+misfigure
+
+102
+00:04:55.290 --> 00:04:56.790
+occurred in server.
+
+103
+00:04:57.329 --> 00:05:00.190
+The failure is due to mis configurations.
+
+104
+00:05:00.510 --> 00:05:01.100
+Now,
+
+105
+00:05:01.230 --> 00:05:06.019
+knowledge graphs provide explicit context and meaning to the data
+
+106
+00:05:06.440 --> 00:05:13.540
+and it enables the generative A I models to ground the response in validated facts.
+
+107
+00:05:15.100 --> 00:05:17.359
+Now, by combining knowledge graphs
+
+108
+00:05:17.720 --> 00:05:19.119
+with vector search
+
+109
+00:05:19.290 --> 00:05:22.399
+generated A I can provide precise
+
+110
+00:05:22.529 --> 00:05:24.989
+and relevant responses.
+
+111
+00:05:25.519 --> 00:05:31.720
+And this synergy is achieved by linking diverse data sources together
+
+112
+00:05:31.890 --> 00:05:38.000
+and providing the requisite context for accurate analysis and interpretation.
+
+113
+00:05:38.690 --> 00:05:39.950
+Now, in summary
+
+114
+00:05:40.079 --> 00:05:42.549
+knowledge graphs play a crucial role
+
+115
+00:05:43.160 --> 00:05:44.179
+in enabling
+
+116
+00:05:44.309 --> 00:05:44.399
+gene
+
+117
+00:05:44.859 --> 00:05:44.890
+I
+
+118
+00:05:45.239 --> 00:05:49.989
+to deliver contextually accurate and efficient responses.
+
+119
+00:05:50.209 --> 00:05:52.869
+So thereby its service is a key element
+
+120
+00:05:53.269 --> 00:05:54.230
+in unlocking
+
+121
+00:05:54.450 --> 00:05:57.880
+business value in generative A I solutions.
+
+122
+00:06:00.010 --> 00:06:02.109
+Now let's understand semantic search.
+
+123
+00:06:02.799 --> 00:06:03.399
+Semantic
+
+124
+00:06:03.600 --> 00:06:05.950
+search is predominantly used in A I
+
+125
+00:06:06.149 --> 00:06:10.140
+natural language processing and generative A I applications.
+
+126
+00:06:10.470 --> 00:06:12.869
+Semantic search is a powerful approach
+
+127
+00:06:13.049 --> 00:06:15.049
+that enhances traditional keyword
+
+128
+00:06:15.230 --> 00:06:16.869
+based search techniques
+
+129
+00:06:17.790 --> 00:06:22.209
+by understanding the intent and context behind the user queries.
+
+130
+00:06:23.910 --> 00:06:25.100
+It goes beyond
+
+131
+00:06:25.869 --> 00:06:29.209
+keywords to understand the user intent and
+
+132
+00:06:29.220 --> 00:06:33.059
+provide more accurate and contextually relevant results.
+
+133
+00:06:33.369 --> 00:06:37.109
+Now let's take an example of two user queries.
+
+134
+00:06:38.230 --> 00:06:40.489
+In the first example, a user asks
+
+135
+00:06:40.700 --> 00:06:40.709
+a
+
+136
+00:06:40.880 --> 00:06:41.079
+query,
+
+137
+00:06:41.190 --> 00:06:45.209
+explain the process to rerun a failed job in etl process.
+
+138
+00:06:46.369 --> 00:06:47.079
+In the second
+
+139
+00:06:47.549 --> 00:06:48.390
+query,
+
+140
+00:06:48.399 --> 00:06:54.329
+the user asks explain to me the job of a business analyst in software development.
+
+141
+00:06:54.609 --> 00:06:55.149
+Now,
+
+142
+00:06:55.269 --> 00:06:59.359
+in both the queries, the word job has different meanings
+
+143
+00:06:59.820 --> 00:07:04.329
+in these scenarios. Keyword search will not provide the right response.
+
+144
+00:07:04.339 --> 00:07:08.899
+Hence, semantic search is used to understand the intent of the user query.
+
+145
+00:07:09.320 --> 00:07:10.579
+And based on that
+
+146
+00:07:10.730 --> 00:07:12.730
+the search content will retrieve
+
+147
+00:07:13.329 --> 00:07:17.109
+information from the database and then provide the response.
+
+148
+00:07:18.250 --> 00:07:24.250
+Now let's understand some key processes semantic search namely vector search,
+
+149
+00:07:24.559 --> 00:07:25.989
+query transformation
+
+150
+00:07:26.320 --> 00:07:29.250
+matching process context and intent
+
+151
+00:07:29.820 --> 00:07:30.670
+vector search.
+
+152
+00:07:31.880 --> 00:07:34.589
+Semantic search is powered by vector search.
+
+153
+00:07:34.980 --> 00:07:39.500
+It encodes information into vectors or numerical representations
+
+154
+00:07:39.640 --> 00:07:42.510
+and compels them to determine the similarity
+
+155
+00:07:43.149 --> 00:07:44.440
+query transformation.
+
+156
+00:07:45.010 --> 00:07:47.049
+When a user query is launched,
+
+157
+00:07:47.220 --> 00:07:52.119
+the search engine transforms it into embeddings or numerical representations.
+
+158
+00:07:52.279 --> 00:07:54.220
+And these are stored in vectors
+
+159
+00:07:54.500 --> 00:07:55.730
+matching process
+
+160
+00:07:56.390 --> 00:07:58.809
+algorithms like K nearest neighbor
+
+161
+00:07:59.309 --> 00:08:00.160
+or KNN
+
+162
+00:08:00.640 --> 00:08:01.089
+or cosine
+
+163
+00:08:01.350 --> 00:08:06.700
+matches existing document vectors to query vectors, generating
+
+164
+00:08:06.829 --> 00:08:09.350
+results based on conceptual relevance,
+
+165
+00:08:09.950 --> 00:08:11.309
+context and intent.
+
+166
+00:08:11.470 --> 00:08:17.470
+Semantic search considers context, geographical location, textual context, etc
+
+167
+00:08:18.089 --> 00:08:22.540
+and interprets user intent to provide relevant answers.
+
+168
+00:08:22.989 --> 00:08:27.730
+Now, this diagram on the right, it explains the vector search process,
+
+169
+00:08:29.549 --> 00:08:33.820
+use case relevant enterprise knowledge artifacts like design documents,
+
+170
+00:08:33.869 --> 00:08:34.880
+run books,
+
+171
+00:08:35.429 --> 00:08:38.619
+application architectural diagrams, knowledge, session,
+
+172
+00:08:38.630 --> 00:08:41.859
+recordings in different formats like image
+
+173
+00:08:41.989 --> 00:08:43.058
+documents,
+
+174
+00:08:43.239 --> 00:08:45.219
+audios, videos, etc
+
+175
+00:08:45.669 --> 00:08:48.099
+are first transformed into embeddings
+
+176
+00:08:49.570 --> 00:08:51.109
+as explained previously.
+
+177
+00:08:52.580 --> 00:08:54.809
+Now, these embeddings are
+
+178
+00:08:55.679 --> 00:08:57.440
+stored in a vector store
+
+179
+00:08:57.869 --> 00:08:59.900
+which will be searched later
+
+180
+00:09:00.049 --> 00:09:02.840
+based on the query from users.
+
+181
+00:09:03.250 --> 00:09:07.520
+The query is asked through a chatbot or collaboration tool like MS
+
+182
+00:09:07.630 --> 00:09:08.030
+teams
+
+183
+00:09:08.549 --> 00:09:12.859
+and this is again transformed into vector embeddings
+
+184
+00:09:12.869 --> 00:09:15.940
+and it is passed to the search engine.
+
+185
+00:09:17.200 --> 00:09:18.929
+The semantic search engine
+
+186
+00:09:19.059 --> 00:09:21.809
+does a context matching from the vector
+
+187
+00:09:21.820 --> 00:09:25.359
+store based on the K nearest neighbor algorithm
+
+188
+00:09:25.479 --> 00:09:28.580
+and it fetches the relevant vector embeddings.
+
+189
+00:09:28.919 --> 00:09:30.409
+The response received
+
+190
+00:09:31.010 --> 00:09:33.429
+is then provided back to the user
+
+191
+00:09:33.530 --> 00:09:35.929
+through the chat bot of the MS teams
+
+192
+00:09:37.239 --> 00:09:39.260
+in generative A I solutions,
+
+193
+00:09:39.380 --> 00:09:43.520
+pre trained foundation models or large language models are
+
+194
+00:09:43.530 --> 00:09:48.140
+commonly utilized to provide accurate responses to generate queries.
+
+195
+00:09:48.739 --> 00:09:49.500
+However,
+
+196
+00:09:49.630 --> 00:09:53.940
+there may be challenges to generate correct responses or
+
+197
+00:09:54.909 --> 00:09:57.570
+it might even produce inaccurate information
+
+198
+00:09:57.719 --> 00:10:00.719
+when faced with highly specific client queries.
+
+199
+00:10:00.900 --> 00:10:01.750
+Now, this is
+
+200
+00:10:02.219 --> 00:10:07.609
+primarily due to lack of training or client specific data or knowledge.
+
+201
+00:10:07.869 --> 00:10:10.169
+Now to overcome this challenge,
+
+202
+00:10:10.609 --> 00:10:14.530
+retrieval augmented generation technique is employed with
+
+203
+00:10:14.929 --> 00:10:17.080
+within generative A I solutions.
+
+204
+00:10:18.090 --> 00:10:20.099
+Retrieval augmented generation
+
+205
+00:10:20.690 --> 00:10:21.929
+is an architecture
+
+206
+00:10:22.289 --> 00:10:25.140
+designed to enhance the capabilities of large
+
+207
+00:10:25.260 --> 00:10:25.919
+language
+
+208
+00:10:26.049 --> 00:10:26.919
+models
+
+209
+00:10:27.200 --> 00:10:28.559
+such as GPT
+
+210
+00:10:28.919 --> 00:10:31.130
+bedrock lama
+
+211
+00:10:31.469 --> 00:10:31.640
+etc.
+
+212
+00:10:32.219 --> 00:10:35.520
+By integrating an information retrieval system
+
+213
+00:10:36.210 --> 00:10:37.500
+rag supplements LMS
+
+214
+00:10:38.140 --> 00:10:43.299
+by incorporating relevant information from external sources.
+
+215
+00:10:44.049 --> 00:10:46.989
+It enables precise control over the data
+
+216
+00:10:47.119 --> 00:10:47.760
+used by
+
+217
+00:10:48.169 --> 00:10:51.270
+LMS during query and response generation
+
+218
+00:10:51.679 --> 00:10:53.599
+for enterprises
+
+219
+00:10:53.780 --> 00:10:55.159
+rag ensures
+
+220
+00:10:55.609 --> 00:10:58.510
+that generative A I operates within the confines
+
+221
+00:10:58.520 --> 00:11:03.159
+of the proprietary content sourced from vectorized documents,
+
+222
+00:11:03.390 --> 00:11:04.289
+images
+
+223
+00:11:04.450 --> 00:11:06.190
+and other data formats.
+
+224
+00:11:07.280 --> 00:11:09.280
+The complete process of rag
+
+225
+00:11:09.820 --> 00:11:13.820
+can be understood at a high level as follows.
+
+226
+00:11:14.489 --> 00:11:16.210
+Now in this diagram,
+
+227
+00:11:16.440 --> 00:11:18.599
+a user initiates a query
+
+228
+00:11:18.760 --> 00:11:19.750
+or a prompt.
+
+229
+00:11:20.750 --> 00:11:24.969
+Now this query of prompt, it is converted into
+
+230
+00:11:25.179 --> 00:11:26.109
+embeddings
+
+231
+00:11:26.390 --> 00:11:28.820
+and a search and retrieval process
+
+232
+00:11:29.580 --> 00:11:32.289
+takes place from the vector store
+
+233
+00:11:33.409 --> 00:11:34.030
+or
+
+234
+00:11:34.349 --> 00:11:36.190
+online data sources.
+
+235
+00:11:36.400 --> 00:11:37.010
+Now,
+
+236
+00:11:37.479 --> 00:11:39.229
+the relevant information
+
+237
+00:11:39.440 --> 00:11:40.539
+is searched
+
+238
+00:11:40.789 --> 00:11:41.349
+and and
+
+239
+00:11:41.479 --> 00:11:47.679
+if if it is available, it is retrieved with the top rank search results.
+
+240
+00:11:48.090 --> 00:11:49.919
+And this search outcome
+
+241
+00:11:50.070 --> 00:11:52.739
+is incorporated into the prompts
+
+242
+00:11:53.260 --> 00:11:56.950
+to and that is sent to the large language models.
+
+243
+00:11:58.710 --> 00:12:01.549
+Now, natural language understanding in
+
+244
+00:12:01.919 --> 00:12:05.520
+LMS, it is utilized to generate a response.
+
+245
+00:12:07.650 --> 00:12:10.390
+The response which is so obtained from the
+
+246
+00:12:10.789 --> 00:12:11.020
+LM
+
+247
+00:12:11.229 --> 00:12:12.609
+is formatted
+
+248
+00:12:12.729 --> 00:12:15.250
+and then sent to the user
+
+249
+00:12:15.390 --> 00:12:17.140
+either through the chatbot
+
+250
+00:12:17.289 --> 00:12:18.890
+or through the teams
+
+251
+00:12:20.020 --> 00:12:22.219
+in the expected template.
+
+252
+00:12:24.140 --> 00:12:29.119
+Now that we have got a basic understanding of vector embedding knowledge graphs,
+
+253
+00:12:29.130 --> 00:12:32.239
+semantic search and retrieval augmented generation.
+
+254
+00:12:32.400 --> 00:12:35.200
+Let's put all of these together for a use case.
+
+255
+00:12:35.469 --> 00:12:37.859
+The scenario is for a retail client
+
+256
+00:12:38.239 --> 00:12:39.309
+namely Supermart
+
+257
+00:12:39.739 --> 00:12:40.200
+X,
+
+258
+00:12:40.659 --> 00:12:44.320
+accenture is providing application maintenance support.
+
+259
+00:12:44.770 --> 00:12:48.359
+Level two incident management is the primary scope of work
+
+260
+00:12:48.710 --> 00:12:51.320
+whenever an incident is raised in service. Now,
+
+261
+00:12:51.760 --> 00:12:55.099
+the level two support team performs root cause analysis
+
+262
+00:12:55.299 --> 00:12:56.979
+identifies resolutions,
+
+263
+00:12:57.200 --> 00:12:58.059
+results
+
+264
+00:12:58.179 --> 00:12:59.260
+and documents
+
+265
+00:12:59.450 --> 00:13:00.900
+the same in service. Now,
+
+266
+00:13:01.909 --> 00:13:04.280
+server performance issue is an issue
+
+267
+00:13:04.479 --> 00:13:06.520
+that leads to repeat incidents.
+
+268
+00:13:06.979 --> 00:13:11.239
+Now, the account team wants to automate the root cause analysis
+
+269
+00:13:11.440 --> 00:13:13.510
+and recommendation generation
+
+270
+00:13:13.690 --> 00:13:14.869
+leveraging genial
+
+271
+00:13:15.070 --> 00:13:15.169
+L
+
+272
+00:13:15.340 --> 00:13:16.039
+automation.
+
+273
+00:13:17.719 --> 00:13:20.169
+Similar incidents have occurred in the past
+
+274
+00:13:20.869 --> 00:13:21.099
+Jai
+
+275
+00:13:21.390 --> 00:13:25.099
+solution can leverage the past incident documentation
+
+276
+00:13:25.469 --> 00:13:26.619
+to synthesize
+
+277
+00:13:26.750 --> 00:13:30.580
+and analyze to identify root cause for a new incident.
+
+278
+00:13:32.090 --> 00:13:36.859
+The ticket term from service now includes incident details like description,
+
+279
+00:13:37.039 --> 00:13:39.510
+root cause resolution notes,
+
+280
+00:13:39.809 --> 00:13:40.020
+etc.
+
+281
+00:13:40.969 --> 00:13:45.770
+When there are multiple incidents, patterns are identified from the incidents,
+
+282
+00:13:45.799 --> 00:13:48.530
+root cause and resolution notes.
+
+283
+00:13:48.539 --> 00:13:48.570
+In
+
+284
+00:13:48.760 --> 00:13:49.739
+this case,
+
+285
+00:13:49.890 --> 00:13:51.140
+there is a pattern
+
+286
+00:13:51.320 --> 00:13:55.330
+that links mis configuration of server to performance issue.
+
+287
+00:13:55.890 --> 00:13:59.340
+So here is the scenario with the historical incident, a
+
+288
+00:13:59.479 --> 00:14:02.710
+user reports, a performance issue with an application.
+
+289
+00:14:02.929 --> 00:14:05.710
+The incident has been logged in service now
+
+290
+00:14:05.869 --> 00:14:10.190
+and the description of the ticket application takes more than five minutes to open
+
+291
+00:14:10.549 --> 00:14:14.309
+the root cause analysis is the it team has identified
+
+292
+00:14:14.659 --> 00:14:15.479
+that
+
+293
+00:14:15.780 --> 00:14:20.359
+the issue is primarily due to mis configuration in the application server
+
+294
+00:14:20.479 --> 00:14:24.489
+and they have also resolved the issue by adjusting the server settings.
+
+295
+00:14:24.570 --> 00:14:27.330
+So the resolution summary is that the performance
+
+296
+00:14:27.340 --> 00:14:30.890
+issue has been resolved by adjusting server settings.
+
+297
+00:14:30.900 --> 00:14:33.760
+So this is one such historical incident
+
+298
+00:14:33.900 --> 00:14:38.630
+like this, there are multiple such incidents. Now let's consider a scenario
+
+299
+00:14:38.799 --> 00:14:40.919
+that where in which there is a new incident,
+
+300
+00:14:41.719 --> 00:14:44.909
+there is a delay in launching the application for
+
+301
+00:14:44.919 --> 00:14:48.320
+which the right root cause needs to be identified
+
+302
+00:14:48.440 --> 00:14:50.780
+based on the past incident data.
+
+303
+00:14:52.280 --> 00:14:56.700
+Now, the objective is to prepare a high level functional architecture
+
+304
+00:14:56.830 --> 00:14:59.099
+of a generative A I solution
+
+305
+00:14:59.330 --> 00:15:01.299
+that leverages vector embedding
+
+306
+00:15:01.580 --> 00:15:03.419
+retrieval augmented generation
+
+307
+00:15:03.609 --> 00:15:06.539
+to identify root cause of the incident in
+
+308
+00:15:06.940 --> 00:15:09.409
+the service now and update the same there as well.
+
+309
+00:15:10.520 --> 00:15:13.349
+Now there are two parts to this uh solution.
+
+310
+00:15:13.570 --> 00:15:17.090
+The first one being the initial vector store setup,
+
+311
+00:15:17.179 --> 00:15:20.080
+embedding the incident dump from the service now.
+
+312
+00:15:20.229 --> 00:15:23.450
+And the second one being the new incident processing for
+
+313
+00:15:23.789 --> 00:15:25.580
+identifying the root cause.
+
+314
+00:15:25.760 --> 00:15:30.859
+Now let us understand the first part namely the initial vector store setup
+
+315
+00:15:31.549 --> 00:15:34.489
+which involves embedding incident dump from the service. Now,
+
+316
+00:15:35.169 --> 00:15:35.900
+the first
+
+317
+00:15:36.010 --> 00:15:40.789
+step is to extract the incident details from the service. Now,
+
+318
+00:15:40.919 --> 00:15:42.250
+this includes
+
+319
+00:15:42.429 --> 00:15:43.609
+the description,
+
+320
+00:15:43.809 --> 00:15:46.760
+the root cause resolution notes, etc.
+
+321
+00:15:47.630 --> 00:15:50.669
+Once the incident details are extracted,
+
+322
+00:15:50.929 --> 00:15:52.770
+the text is preprocess.
+
+323
+00:15:53.309 --> 00:16:01.059
+So text preprocessing includes cleaning up of the records by removing stop words,
+
+324
+00:16:02.669 --> 00:16:04.659
+normalizing different words
+
+325
+00:16:04.770 --> 00:16:06.619
+with similar or same meaning
+
+326
+00:16:06.820 --> 00:16:09.380
+and extraction of key attributes
+
+327
+00:16:09.609 --> 00:16:13.609
+like the issue root cause resolution
+
+328
+00:16:13.820 --> 00:16:15.780
+geography server name,
+
+329
+00:16:15.969 --> 00:16:16.299
+etc.
+
+330
+00:16:17.409 --> 00:16:22.150
+The next step is uh tokenizing the description.
+
+331
+00:16:22.380 --> 00:16:25.859
+So tokenizing implies breaking down the
+
+332
+00:16:25.869 --> 00:16:29.289
+incident description into individual tokens.
+
+333
+00:16:29.770 --> 00:16:30.719
+This can be
+
+334
+00:16:30.840 --> 00:16:33.809
+words or it can be characters. In
+
+335
+00:16:33.950 --> 00:16:35.419
+this example,
+
+336
+00:16:35.619 --> 00:16:41.510
+we are considering a tokenized representation of the incident description.
+
+337
+00:16:41.909 --> 00:16:45.270
+Application takes more than five minutes to open
+
+338
+00:16:45.890 --> 00:16:46.989
+and the token
+
+339
+00:16:47.679 --> 00:16:49.309
+format could look like
+
+340
+00:16:49.669 --> 00:16:50.780
+application
+
+341
+00:16:51.010 --> 00:16:51.979
+takes
+
+342
+00:16:52.239 --> 00:16:53.309
+more than
+
+343
+00:16:53.489 --> 00:16:55.349
+five minutes to open.
+
+344
+00:16:57.250 --> 00:16:59.030
+The next step is
+
+345
+00:16:59.270 --> 00:17:00.219
+encoding.
+
+346
+00:17:02.299 --> 00:17:06.358
+So the first thing that happens is extracting the features.
+
+347
+00:17:06.368 --> 00:17:11.979
+So feature extraction involves selecting relevant features from the tokens.
+
+348
+00:17:12.160 --> 00:17:14.140
+And so here in this example,
+
+349
+00:17:14.280 --> 00:17:20.000
+the features can be application takes more five minutes and to open
+
+350
+00:17:21.750 --> 00:17:22.530
+the next
+
+351
+00:17:22.979 --> 00:17:25.510
+uh once features are extracted,
+
+352
+00:17:25.680 --> 00:17:28.839
+it needs to be encoded and feature encoding,
+
+353
+00:17:29.060 --> 00:17:33.719
+it will convert the selected features into a suitable format.
+
+354
+00:17:33.880 --> 00:17:35.410
+For the embedding model.
+
+355
+00:17:36.369 --> 00:17:37.890
+Typically
+
+356
+00:17:38.010 --> 00:17:41.949
+one hot encoding is a common technique that is made use of.
+
+357
+00:17:42.079 --> 00:17:42.630
+And
+
+358
+00:17:43.839 --> 00:17:45.729
+once it is applied,
+
+359
+00:17:46.060 --> 00:17:46.609
+the
+
+360
+00:17:46.810 --> 00:17:49.000
+vector is represented
+
+361
+00:17:49.130 --> 00:17:49.760
+as
+
+362
+00:17:50.069 --> 00:17:51.449
+you can see over here
+
+363
+00:17:51.849 --> 00:17:54.770
+with the one at the position corresponding to its
+
+364
+00:17:54.780 --> 00:17:58.969
+index in the vocabulary and zero is elsewhere.
+
+365
+00:17:59.810 --> 00:18:02.199
+The next step is vector organization.
+
+366
+00:18:02.760 --> 00:18:05.239
+This involves transforming the one
+
+367
+00:18:05.380 --> 00:18:06.839
+hot encoded vectors
+
+368
+00:18:07.520 --> 00:18:11.229
+into dense vectors using an embedding model.
+
+369
+00:18:11.910 --> 00:18:16.140
+There are different types of embedding models used like word to
+
+370
+00:18:16.380 --> 00:18:17.000
+Vec Glow
+
+371
+00:18:17.329 --> 00:18:20.260
+DC which is a variant of GP T three.
+
+372
+00:18:20.380 --> 00:18:24.439
+And finally, these dense vectors are stored in a vector data store
+
+373
+00:18:24.699 --> 00:18:26.000
+and something like this
+
+374
+00:18:26.310 --> 00:18:31.280
+and these dense vectors can be indexed for efficient uh retrieval.
+
+375
+00:18:31.650 --> 00:18:33.780
+Now to create knowledge graphs out of
+
+376
+00:18:33.790 --> 00:18:35.969
+the vector embeddings that were created above.
+
+377
+00:18:35.979 --> 00:18:38.969
+The first step is to identify the entities,
+
+378
+00:18:40.569 --> 00:18:45.469
+the entities include the incidents, the root cause resolution,
+
+379
+00:18:45.650 --> 00:18:46.920
+the components
+
+380
+00:18:47.030 --> 00:18:47.510
+and
+
+381
+00:18:47.689 --> 00:18:48.709
+the users.
+
+382
+00:18:49.640 --> 00:18:52.780
+The next step is to determine the relationship between the
+
+383
+00:18:52.930 --> 00:18:53.910
+entities.
+
+384
+00:18:54.160 --> 00:18:55.300
+In this example,
+
+385
+00:18:55.310 --> 00:19:00.939
+some relationships include has root cause has resolution impacts,
+
+386
+00:19:01.329 --> 00:19:02.239
+leads to
+
+387
+00:19:02.819 --> 00:19:03.000
+etc.
+
+388
+00:19:03.959 --> 00:19:04.420
+Now,
+
+389
+00:19:04.630 --> 00:19:08.359
+the examples of entities and relationship include
+
+390
+00:19:08.569 --> 00:19:10.310
+say incident 001
+
+391
+00:19:10.430 --> 00:19:11.900
+has a root cause
+
+392
+00:19:12.079 --> 00:19:13.319
+of misfigure
+
+393
+00:19:14.400 --> 00:19:18.859
+incident 001 has a resolution of adjusting the server settings.
+
+394
+00:19:19.239 --> 00:19:24.219
+And incident 001 is related to the component, application server.
+
+395
+00:19:24.719 --> 00:19:29.630
+The component or application server impacts the mis configuration
+
+396
+00:19:29.800 --> 00:19:33.939
+and the mis configuration can be resolved by the it admin.
+
+397
+00:19:34.109 --> 00:19:40.060
+And this is represented by the knowledge graph that we can see
+
+398
+00:19:40.199 --> 00:19:41.939
+towards the right.
+
+399
+00:19:42.829 --> 00:19:46.449
+So these are the entities and these are the relationships.
+
+400
+00:19:47.089 --> 00:19:49.500
+Now let's understand the second part,
+
+401
+00:19:49.829 --> 00:19:54.069
+namely new incident processing for identifying root cause.
+
+402
+00:19:55.430 --> 00:19:57.180
+Now when a new incident
+
+403
+00:19:57.719 --> 00:20:03.170
+is raised with a description, there is a delay in launching the application.
+
+404
+00:20:03.660 --> 00:20:06.010
+It again goes through the
+
+405
+00:20:06.430 --> 00:20:09.310
+ization process that we discussed previously.
+
+406
+00:20:09.500 --> 00:20:10.300
+Namely
+
+407
+00:20:10.619 --> 00:20:13.410
+the text gets preprocess, it is cleansed,
+
+408
+00:20:13.869 --> 00:20:15.839
+then it is tokenized,
+
+409
+00:20:16.349 --> 00:20:19.459
+then the features are extracted and encoded
+
+410
+00:20:20.369 --> 00:20:21.189
+and the
+
+411
+00:20:21.400 --> 00:20:25.750
+resultant vector embeddings are then stored in the vector database
+
+412
+00:20:25.910 --> 00:20:26.390
+and
+
+413
+00:20:26.530 --> 00:20:29.780
+indexed. Now to determine the potential
+
+414
+00:20:29.880 --> 00:20:34.949
+root cause a semantic search is made use of these index
+
+415
+00:20:34.959 --> 00:20:39.469
+vectors are then queried to find if there are similar incidents
+
+416
+00:20:39.689 --> 00:20:40.270
+and
+
+417
+00:20:40.469 --> 00:20:44.099
+to determine the potential root cause. Now to quickly
+
+418
+00:20:44.689 --> 00:20:45.650
+the
+
+419
+00:20:45.770 --> 00:20:49.770
+similarity, a cosine similarity search is made use of
+
+420
+00:20:49.939 --> 00:20:52.959
+and cosine similarity is nothing but the product of
+
+421
+00:20:52.969 --> 00:20:56.229
+the two vectors by the magnitude of the vectors.
+
+422
+00:20:56.630 --> 00:20:59.800
+And it takes values between minus one and one.
+
+423
+00:20:59.900 --> 00:21:04.300
+And if the value is minus one, it implies that
+
+424
+00:21:04.449 --> 00:21:07.910
+the vectors are in opposite directions, they are not similar.
+
+425
+00:21:08.290 --> 00:21:10.209
+However, if it is one
+
+426
+00:21:10.359 --> 00:21:12.630
+or if it is close to one,
+
+427
+00:21:12.640 --> 00:21:16.619
+it indicates that the vectors are similar and in the same direction.
+
+428
+00:21:16.729 --> 00:21:17.689
+Now, if the cosine
+
+429
+00:21:17.939 --> 00:21:19.880
+similarity is close to one,
+
+430
+00:21:20.069 --> 00:21:20.619
+then
+
+431
+00:21:21.030 --> 00:21:23.630
+based on the similarity,
+
+432
+00:21:23.750 --> 00:21:25.550
+the relevant index in
+
+433
+00:21:25.660 --> 00:21:27.969
+incident information is retrieved from the
+
+434
+00:21:27.979 --> 00:21:30.290
+vector database and the knowledge graph.
+
+435
+00:21:30.369 --> 00:21:31.979
+And this information
+
+436
+00:21:32.109 --> 00:21:33.890
+including the vector embedding.
+
+437
+00:21:33.900 --> 00:21:36.290
+The relevant data from the knowledge graph is
+
+438
+00:21:36.300 --> 00:21:39.770
+integrated or augmented with the original prompt.
+
+439
+00:21:39.780 --> 00:21:42.449
+Now, when the this information
+
+440
+00:21:42.670 --> 00:21:44.380
+is incorporated,
+
+441
+00:21:44.589 --> 00:21:47.380
+then the system gets a better understanding of
+
+442
+00:21:47.390 --> 00:21:50.500
+the context and it will enable it to provide
+
+443
+00:21:50.650 --> 00:21:54.119
+informed potential root cause or recommendations
+
+444
+00:21:54.130 --> 00:21:56.569
+for that retrieved incident information.
+
+445
+00:21:56.689 --> 00:22:00.000
+Now what happens is the large land wage model
+
+446
+00:22:00.010 --> 00:22:03.959
+will synthesize the response based on the augmented prompt and
+
+447
+00:22:04.089 --> 00:22:06.390
+retrieved incident information.
+
+448
+00:22:06.400 --> 00:22:09.670
+Now using the language generation capabilities,
+
+449
+00:22:09.680 --> 00:22:14.550
+it generates what could be the potential recommendation for the root cause.
+
+450
+00:22:14.560 --> 00:22:16.699
+Then this response that is so
+
+451
+00:22:16.880 --> 00:22:19.430
+retrieved, it gets formatted
+
+452
+00:22:19.550 --> 00:22:22.430
+and then the root cause and the recommendations
+
+453
+00:22:22.439 --> 00:22:25.469
+are updated in the service now incident record.
+
+454
+00:22:25.969 --> 00:22:28.500
+So this is the entire process.

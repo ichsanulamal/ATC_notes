@@ -1,0 +1,173 @@
+WEBVTT
+
+0
+00:00:15.239 --> 00:00:18.989
+This video is about an introduction to prompt engineering. A
+
+1
+00:00:19.219 --> 00:00:22.590
+prompt is a set of instructions provided to large
+
+2
+00:00:22.600 --> 00:00:26.790
+language models with the objective of obtaining a response.
+
+3
+00:00:27.270 --> 00:00:30.389
+Prompt engineering is a technique used in large
+
+4
+00:00:30.399 --> 00:00:34.069
+language models to guide and control their output.
+
+5
+00:00:34.479 --> 00:00:38.709
+The primary aim is to provide specific instructions or data
+
+6
+00:00:38.959 --> 00:00:43.310
+to enhance the accuracy and relevance of the model's responses.
+
+7
+00:00:44.490 --> 00:00:45.580
+In the context of gen
+
+8
+00:00:45.680 --> 00:00:45.790
+A
+
+9
+00:00:46.319 --> 00:00:51.689
+prompt engineering involves designing input queries or commands that instruct
+
+10
+00:00:51.700 --> 00:00:54.779
+the A I on what kind of output is desired.
+
+11
+00:00:55.200 --> 00:00:57.310
+Prompt engineering is crucial
+
+12
+00:00:57.490 --> 00:01:01.419
+because it directly influences the quality and
+
+13
+00:01:01.430 --> 00:01:03.830
+relevance of the A I generated content.
+
+14
+00:01:05.370 --> 00:01:08.870
+Effective prompt engineering not only improves the
+
+15
+00:01:08.879 --> 00:01:11.180
+position of the A I generated content
+
+16
+00:01:11.300 --> 00:01:14.230
+but also plays a vital role in tailoring
+
+17
+00:01:14.239 --> 00:01:18.889
+responses to meet user expectations and ethical standards.
+
+18
+00:01:19.360 --> 00:01:21.510
+By carefully crafting prompts,
+
+19
+00:01:21.750 --> 00:01:26.910
+we ensure a more reliable and user friendly interaction with the A I system,
+
+20
+00:01:27.000 --> 00:01:28.669
+creating an experience
+
+21
+00:01:28.779 --> 00:01:32.790
+that aligns with user needs and ethical considerations.
+
+22
+00:01:34.500 --> 00:01:36.970
+Prompt engineering is a technique
+
+23
+00:01:37.089 --> 00:01:37.980
+that guides
+
+24
+00:01:38.300 --> 00:01:43.430
+A I systems ensuring they produce accurate and relevant information
+
+25
+00:01:43.550 --> 00:01:45.050
+leading to positive
+
+26
+00:01:45.250 --> 00:01:49.900
+and ethical interaction with users and optimized gen A I results. It is
+
+27
+00:01:50.400 --> 00:01:52.279
+important to note that
+
+28
+00:01:52.440 --> 00:01:56.010
+crafting precise problems is critical in producing
+
+29
+00:01:56.019 --> 00:01:59.559
+accurate and contextually relevant A I outputs
+
+30
+00:02:01.779 --> 00:02:05.750
+effective prompt engineering is a key factor in minimizing the
+
+31
+00:02:05.760 --> 00:02:10.850
+trial and error typically associated with eliciting desired outputs,
+
+32
+00:02:11.350 --> 00:02:12.529
+resulting in
+
+33
+00:02:12.899 --> 00:02:16.110
+substantial savings of time and resources.
+
+34
+00:02:17.009 --> 00:02:19.899
+By contextualizing and fine tuning problems.
+
+35
+00:02:20.059 --> 00:02:23.089
+Large language models can be used for generating
+
+36
+00:02:23.100 --> 00:02:26.639
+content across the technology delivery life cycle.
+
+37
+00:02:26.970 --> 00:02:29.160
+And it can also be used for generating
+
+38
+00:02:29.169 --> 00:02:33.279
+insights and recommendations based on various metrics.
+
+39
+00:02:33.910 --> 00:02:39.419
+In addition, finely tuned prompts coupled with correct contextual information,
+
+40
+00:02:39.479 --> 00:02:40.940
+ensure that LMS
+
+41
+00:02:41.360 --> 00:02:45.029
+do not hallucinate or generate incorrect information.
+
+42
+00:02:46.020 --> 00:02:46.820
+Thank you.

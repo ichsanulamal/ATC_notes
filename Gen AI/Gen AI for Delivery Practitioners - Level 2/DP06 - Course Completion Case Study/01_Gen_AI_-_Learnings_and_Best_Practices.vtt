@@ -1,0 +1,489 @@
+WEBVTT
+
+0
+00:00:14.880 --> 00:00:20.170
+Now um these are some of the again few lessons, few more lessons learned.
+
+1
+00:00:20.350 --> 00:00:24.110
+I think I have taken some examples that P one P two I was telling, right?
+
+2
+00:00:24.120 --> 00:00:25.829
+It worked for P one P two
+
+3
+00:00:26.059 --> 00:00:29.540
+but it did not work for P three P four, right?
+
+4
+00:00:29.719 --> 00:00:31.620
+That's the uh the first row,
+
+5
+00:00:32.250 --> 00:00:35.000
+other the second, so that that you already know, right?
+
+6
+00:00:35.009 --> 00:00:38.950
+So the second one is the closure notes in incident dump pulled from service. Now,
+
+7
+00:00:39.220 --> 00:00:43.270
+the accuracy of recommendation significantly influenced by the quality of data.
+
+8
+00:00:43.290 --> 00:00:44.630
+In one instance,
+
+9
+00:00:44.740 --> 00:00:44.919
+J
+
+10
+00:00:45.130 --> 00:00:48.990
+I generated an incorrect knowledge article due to a spelling error
+
+11
+00:00:49.709 --> 00:00:51.319
+in the incident. Closer note
+
+12
+00:00:52.389 --> 00:00:53.880
+that is on ground.
+
+13
+00:00:54.889 --> 00:00:57.349
+So you see that second row,
+
+14
+00:00:58.040 --> 00:01:01.509
+there was a note to each in the closure note, there is a word called un
+
+15
+00:01:01.990 --> 00:01:02.110
+Gr
+
+16
+00:01:03.270 --> 00:01:03.939
+Ound on ground,
+
+17
+00:01:05.230 --> 00:01:08.209
+but it was supposed to be on ground. Now,
+
+18
+00:01:08.410 --> 00:01:10.569
+this LLM will not understand.
+
+19
+00:01:11.919 --> 00:01:17.379
+So if you give a word called on ground, then LLM will hallucinate something. So
+
+20
+00:01:17.580 --> 00:01:19.900
+we got a very totally different uh
+
+21
+00:01:20.239 --> 00:01:26.769
+uh knowledge article from the. So basically our object our use case was creating um
+
+22
+00:01:27.050 --> 00:01:27.349
+so
+
+23
+00:01:27.849 --> 00:01:28.889
+notes are there right?
+
+24
+00:01:28.900 --> 00:01:31.940
+From the resolution notes we are creating some knowledge, document,
+
+25
+00:01:31.949 --> 00:01:32.839
+knowledge article
+
+26
+00:01:33.540 --> 00:01:36.160
+and it gave it hallucinated because of this.
+
+27
+00:01:37.500 --> 00:01:40.800
+OK. So the quality of documentation is very, very critical.
+
+28
+00:01:41.449 --> 00:01:42.019
+Then
+
+29
+00:01:42.690 --> 00:01:47.069
+the third one actually it was the use case was a test case journalism. And
+
+30
+00:01:47.250 --> 00:01:51.660
+as Rita was saying, right, for test case generation, you need to, you have to have
+
+31
+00:01:52.029 --> 00:01:53.019
+users to read documentation.
+
+32
+00:01:54.180 --> 00:01:54.790
+No,
+
+33
+00:01:55.699 --> 00:01:56.260
+when we
+
+34
+00:01:56.980 --> 00:01:58.620
+the the user stories,
+
+35
+00:01:59.360 --> 00:02:01.339
+it was written right in the project
+
+36
+00:02:01.860 --> 00:02:05.230
+as is when we took the user story and asked the generator
+
+37
+00:02:06.330 --> 00:02:09.639
+to create test cases, the test cases were not making sense.
+
+38
+00:02:11.199 --> 00:02:12.800
+Then what happened?
+
+39
+00:02:12.949 --> 00:02:15.470
+You are you asked to rewrite the uh
+
+40
+00:02:15.610 --> 00:02:16.809
+test cases
+
+41
+00:02:17.699 --> 00:02:18.970
+in a particular
+
+42
+00:02:19.339 --> 00:02:22.820
+like a standard format that agile brings in, right?
+
+43
+00:02:23.600 --> 00:02:24.660
+So you can read as
+
+44
+00:02:25.369 --> 00:02:27.460
+if you can read the A
+
+45
+00:02:27.830 --> 00:02:28.690
+and to be right,
+
+46
+00:02:29.059 --> 00:02:31.289
+change CS CRSD
+
+47
+00:02:32.059 --> 00:02:33.220
+on joiner
+
+48
+00:02:33.800 --> 00:02:34.839
+doj change the
+
+49
+00:02:35.110 --> 00:02:38.350
+generative. I will not understand what is DOJ,
+
+50
+00:02:38.880 --> 00:02:40.550
+what is the CS
+
+51
+00:02:40.699 --> 00:02:41.339
+CRSD?
+
+52
+00:02:42.080 --> 00:02:42.929
+It means
+
+53
+00:02:43.699 --> 00:02:44.309
+because Gene Tia
+
+54
+00:02:44.449 --> 00:02:46.429
+is not a human with a like
+
+55
+00:02:47.380 --> 00:02:52.119
+the DOJ can have anything, right? But in this context context, Doj is that of joining
+
+56
+00:02:53.029 --> 00:02:55.089
+but DOJ may be something else. So
+
+57
+00:02:55.710 --> 00:02:57.690
+LLM can understand anything, right?
+
+58
+00:02:58.820 --> 00:03:00.440
+So that is why
+
+59
+00:03:00.970 --> 00:03:02.860
+if you look at all these are
+
+60
+00:03:02.970 --> 00:03:04.520
+expanded, right?
+
+61
+00:03:04.639 --> 00:03:09.160
+So we asked the team to rewrite the user story with all the expansions.
+
+62
+00:03:09.820 --> 00:03:15.199
+After that, it gave the uh user story which was around 70 80% correct
+
+63
+00:03:16.479 --> 00:03:16.500
+the
+
+64
+00:03:16.610 --> 00:03:17.419
+test cases.
+
+65
+00:03:18.850 --> 00:03:22.860
+So these are very ground level learnings that we uh got it.
+
+66
+00:03:23.179 --> 00:03:25.089
+Now the other example also I gave right,
+
+67
+00:03:25.100 --> 00:03:28.149
+fourth one we were use case was code generation.
+
+68
+00:03:29.240 --> 00:03:29.880
+Now
+
+69
+00:03:30.449 --> 00:03:31.229
+the code,
+
+70
+00:03:31.710 --> 00:03:33.660
+the code file where we're changing
+
+71
+00:03:34.119 --> 00:03:37.529
+the functionality had an independence in the other code file.
+
+72
+00:03:37.779 --> 00:03:38.600
+But in
+
+73
+00:03:38.970 --> 00:03:39.600
+only
+
+74
+00:03:40.369 --> 00:03:43.339
+the code file where changes has to be done was opened.
+
+75
+00:03:43.710 --> 00:03:47.550
+So the code which was getting generated was not making sense.
+
+76
+00:03:48.570 --> 00:03:50.089
+After analysis, we found that
+
+77
+00:03:50.699 --> 00:03:54.059
+this functionality has impact on the other code models
+
+78
+00:03:54.449 --> 00:03:56.800
+and it tends to refer those also
+
+79
+00:03:57.059 --> 00:03:58.279
+by generating code.
+
+80
+00:03:58.289 --> 00:04:03.399
+So we asked the team to open all these other code files in the id and try again
+
+81
+00:04:03.750 --> 00:04:04.559
+and it worked
+
+82
+00:04:06.509 --> 00:04:07.729
+you are seeing, right? How
+
+83
+00:04:08.479 --> 00:04:08.889
+like
+
+84
+00:04:09.490 --> 00:04:11.070
+that context we are saying, right,
+
+85
+00:04:11.199 --> 00:04:15.789
+generative A I has to get the exact right context to give the right output.
+
+86
+00:04:16.570 --> 00:04:21.108
+So like this, there are many uh uh this, when this file will be shared with you,
+
+87
+00:04:21.119 --> 00:04:22.790
+you can go through all this, right?
+
+88
+00:04:23.179 --> 00:04:26.269
+There are multiple multiple of learnings that we have
+
+89
+00:04:26.559 --> 00:04:27.489
+um brought in
+
+90
+00:04:27.609 --> 00:04:29.230
+so that when you
+
+91
+00:04:29.890 --> 00:04:30.799
+start I
+
+92
+00:04:30.929 --> 00:04:34.070
+take implementing, you take care of all this, right?
+
+93
+00:04:34.869 --> 00:04:39.149
+So uh in advance itself so that you don't get into that hallucination and
+
+94
+00:04:39.470 --> 00:04:42.779
+um uh waste of effort, right? Um or
+
+95
+00:04:43.049 --> 00:04:46.000
+low efficiency in your generative A I implementation.
+
+96
+00:04:47.290 --> 00:04:50.709
+OK. So this is what I wanted to share a couple of examples.
+
+97
+00:04:51.250 --> 00:04:51.670
+So
+
+98
+00:04:51.799 --> 00:04:57.200
+now the learnings are not uh something I mean uh it's not limited, right?
+
+99
+00:04:57.369 --> 00:04:58.609
+The the moment
+
+100
+00:04:58.839 --> 00:05:01.339
+we integrate more and more projects into Gen
+
+101
+00:05:01.529 --> 00:05:02.170
+on Gen
+
+102
+00:05:02.279 --> 00:05:02.440
+Wizard,
+
+103
+00:05:02.540 --> 00:05:05.049
+we'll get more learnings not only from pilots.
+
+104
+00:05:05.290 --> 00:05:08.709
+So is there any comprehensive system in accenture
+
+105
+00:05:08.720 --> 00:05:11.230
+which provides all the learnings so far?
+
+106
+00:05:11.239 --> 00:05:12.019
+What we get?
+
+107
+00:05:12.839 --> 00:05:13.500
+Uh
+
+108
+00:05:13.660 --> 00:05:15.109
+I don't think so,
+
+109
+00:05:15.209 --> 00:05:18.459
+but we are, we tried, we tried to consolidate
+
+110
+00:05:19.339 --> 00:05:21.369
+and put it here in the training materials.
+
+111
+00:05:22.230 --> 00:05:25.559
+Uh Learning harvesting from generative.
+
+112
+00:05:25.850 --> 00:05:25.859
+I
+
+113
+00:05:26.399 --> 00:05:30.720
+maybe a good idea will see uh if but again, for that, you need to
+
+114
+00:05:30.929 --> 00:05:33.609
+have a harvesting mechanism. So that because
+
+115
+00:05:34.369 --> 00:05:35.010
+today
+
+116
+00:05:35.510 --> 00:05:38.760
+you can say like fif uh 5060 clients are implementing the
+
+117
+00:05:38.970 --> 00:05:40.299
+visa, right? But tomorrow
+
+118
+00:05:40.489 --> 00:05:42.510
+it will be 503 100. So
+
+119
+00:05:42.799 --> 00:05:46.410
+we have to see how these learnings are to be harvested and all.
+
+120
+00:05:46.519 --> 00:05:50.109
+So when we are doing in the limit count we harvested all this,
+
+121
+00:05:50.500 --> 00:05:50.529
+right?

@@ -1,0 +1,157 @@
+WEBVTT
+
+0
+00:00:00.009 --> 00:00:04.250
+A business process hierarchy is a means to document the processes of a client.
+
+1
+00:00:04.400 --> 00:00:07.630
+This is done during the discover and envision phase of an SAP
+
+2
+00:00:07.639 --> 00:00:10.220
+implementation project where the client's processes
+
+3
+00:00:10.229 --> 00:00:12.899
+are documented to support solution confirmation
+
+4
+00:00:13.340 --> 00:00:16.180
+gen wizard can complete up to six levels of the hierarchy.
+
+5
+00:00:16.190 --> 00:00:18.909
+When provided an input that contains fewer levels.
+
+6
+00:00:18.920 --> 00:00:19.829
+Practically,
+
+7
+00:00:19.840 --> 00:00:24.379
+this represents a case when only a high level detail of a client's hierarchy is known
+
+8
+00:00:24.870 --> 00:00:27.989
+and detailed discussions are needed to complete the hierarchy.
+
+9
+00:00:28.250 --> 00:00:31.420
+The gen wizard solution can now put a customized hierarchy
+
+10
+00:00:31.430 --> 00:00:34.470
+that can be further validated and optimized during workshops.
+
+11
+00:00:34.680 --> 00:00:35.409
+All right,
+
+12
+00:00:35.419 --> 00:00:39.319
+let's go through the steps of generating a business process hierarchy together.
+
+13
+00:00:39.770 --> 00:00:43.490
+Firstly, log in to Gen wizard and click on the get started button.
+
+14
+00:00:44.099 --> 00:00:46.930
+Make sure your workspace and projects set up are done.
+
+15
+00:00:46.939 --> 00:00:49.849
+Then click on the project you've created or create a new one.
+
+16
+00:00:50.259 --> 00:00:54.520
+Next on the left pane select the generate business process hierarchy
+
+17
+00:00:54.529 --> 00:00:58.490
+option under discover and envision in the total enterprise reinvention section.
+
+18
+00:00:59.029 --> 00:01:02.229
+Navigate to the client details tab and fill in all the required
+
+19
+00:01:02.240 --> 00:01:05.839
+details that will be used to customize the hierarchy and then click submit
+
+20
+00:01:07.180 --> 00:01:11.099
+in the chatbot text area. Click on the send button against the prefilled prompt.
+
+21
+00:01:11.110 --> 00:01:12.980
+Please generate client hierarchy.
+
+22
+00:01:13.489 --> 00:01:16.139
+Select the method upload client hierarchy.
+
+23
+00:01:17.489 --> 00:01:21.269
+Click on the upload client hierarchy link in the response on the chat window,
+
+24
+00:01:23.699 --> 00:01:26.290
+upload a file from your local system via the pop up
+
+25
+00:01:26.300 --> 00:01:29.419
+box that appears next and click on the button generate hierarchy.
+
+26
+00:01:33.180 --> 00:01:36.580
+After the business process hierarchy is successfully generated.
+
+27
+00:01:36.589 --> 00:01:38.559
+Click on the most recent item on the list
+
+28
+00:01:39.349 --> 00:01:42.809
+pop up that appears review the generated hierarchy and select
+
+29
+00:01:42.819 --> 00:01:45.330
+the check boxes for the nodes that are satisfactory.
+
+30
+00:01:46.069 --> 00:01:48.809
+Click the button create business process hierarchy.
+
+31
+00:01:49.919 --> 00:01:53.970
+Observe the notification bar for completeness and once complete the status
+
+32
+00:01:53.980 --> 00:01:56.080
+of the item on the list will turn to published.
+
+33
+00:01:56.699 --> 00:01:59.040
+Click the download button on the actions column in
+
+34
+00:01:59.050 --> 00:02:01.519
+the list to download a local copy of the hierarchy
+
+35
+00:02:04.839 --> 00:02:07.180
+experience the productivity gains to be had
+
+36
+00:02:07.190 --> 00:02:09.720
+by utilizing gen wizard capability to perform
+
+37
+00:02:09.729 --> 00:02:12.979
+a task in minutes that would have taken both skill and effort to perform.
+
+38
+00:02:13.199 --> 00:02:14.020
+Try it out.

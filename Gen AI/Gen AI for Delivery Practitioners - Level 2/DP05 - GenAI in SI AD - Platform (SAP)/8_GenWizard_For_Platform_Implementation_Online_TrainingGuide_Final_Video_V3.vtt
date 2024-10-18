@@ -1,0 +1,377 @@
+WEBVTT
+
+0
+00:00:03.160 --> 00:00:04.210
+Hello, everyone.
+
+1
+00:00:04.599 --> 00:00:08.180
+This document is intended for all users and will
+
+2
+00:00:08.189 --> 00:00:12.250
+guide them to understand the key features and the usage
+
+3
+00:00:12.409 --> 00:00:15.390
+of genres or functionality for platform implementation.
+
+4
+00:00:16.469 --> 00:00:20.899
+We will be covering a total of five use cases in this training. And
+
+5
+00:00:21.219 --> 00:00:23.020
+let's start with introduction.
+
+6
+00:00:24.040 --> 00:00:24.340
+Gen
+
+7
+00:00:24.450 --> 00:00:29.530
+wizard is our mainstream platform for technology delivery
+
+8
+00:00:29.540 --> 00:00:32.889
+and automation powered by generative A I.
+
+9
+00:00:33.490 --> 00:00:37.299
+Participants will have access to learning environment.
+
+10
+00:00:38.020 --> 00:00:39.540
+Click on the URL
+
+11
+00:00:39.819 --> 00:00:42.509
+which would be provided where participants can
+
+12
+00:00:42.520 --> 00:00:45.590
+perform all the hands on activities,
+
+13
+00:00:46.250 --> 00:00:50.459
+an confidentiality disclaimer pops up once you log in.
+
+14
+00:00:50.470 --> 00:00:55.720
+Please click on confirm so that you protect the accenture proprietary
+
+15
+00:00:55.900 --> 00:00:56.110
+gener
+
+16
+00:00:56.590 --> 00:00:59.090
+tool against legal liabilities.
+
+17
+00:01:00.009 --> 00:01:03.750
+Please click on the project assigned on the screen
+
+18
+00:01:03.919 --> 00:01:06.849
+post that you have now landed on the gen
+
+19
+00:01:06.959 --> 00:01:11.970
+wizard for S A use case page where a digital core with gen
+
+20
+00:01:12.279 --> 00:01:17.620
+pop up details. The construct of these comprehensive solutions close it.
+
+21
+00:01:18.199 --> 00:01:21.599
+Click on the use case from the left pan.
+
+22
+00:01:21.620 --> 00:01:27.650
+A pop up appears with brief explanation of input process output value, flow,
+
+23
+00:01:27.660 --> 00:01:28.669
+close it.
+
+24
+00:01:28.809 --> 00:01:35.139
+We have client details form where users can provide process area functions,
+
+25
+00:01:35.989 --> 00:01:39.540
+you can update the wage details to and submit.
+
+26
+00:01:39.919 --> 00:01:45.139
+Click on the maximize icon on the chat window to type in a prompt
+
+27
+00:01:45.949 --> 00:01:48.309
+type in the prompt. As seen here,
+
+28
+00:01:48.559 --> 00:01:50.839
+document can be uploaded here.
+
+29
+00:01:50.849 --> 00:01:57.089
+A prefill template is attached to can upload that and click on generate hierarchy.
+
+30
+00:01:58.220 --> 00:02:03.339
+Document can be uploaded here. A prefill template is attached
+
+31
+00:02:03.699 --> 00:02:04.529
+which
+
+32
+00:02:04.699 --> 00:02:09.410
+is upload post that and click on generate hierarchy.
+
+33
+00:02:10.830 --> 00:02:14.220
+Once client hierarchy is uploaded successfully,
+
+34
+00:02:14.229 --> 00:02:17.500
+you can click on the hierarchy and highlight it
+
+35
+00:02:18.369 --> 00:02:20.419
+and this is how it will appear
+
+36
+00:02:21.029 --> 00:02:23.429
+next up. We have fit to standard.
+
+37
+00:02:23.470 --> 00:02:29.460
+You will see a pop up again with a brief explanation of input process output value.
+
+38
+00:02:29.630 --> 00:02:30.539
+Close it
+
+39
+00:02:31.649 --> 00:02:34.309
+can select the last published hierarchy.
+
+40
+00:02:34.320 --> 00:02:37.520
+You will see that mapping in progress and done as well
+
+41
+00:02:37.759 --> 00:02:40.350
+can select the last published hierarchy.
+
+42
+00:02:40.539 --> 00:02:41.149
+Now
+
+43
+00:02:41.320 --> 00:02:46.119
+this page shows the recommendation level four and therefore is
+
+44
+00:02:46.750 --> 00:02:49.460
+we have requirement specifications.
+
+45
+00:02:49.479 --> 00:02:51.669
+Next you will see a pop up again
+
+46
+00:02:51.679 --> 00:02:54.910
+with a brief explanation of input process output value
+
+47
+00:02:55.220 --> 00:02:56.470
+and then close it
+
+48
+00:02:57.190 --> 00:02:59.809
+notification appears saying it is in progress.
+
+49
+00:02:59.820 --> 00:03:02.089
+Kindly check notification section.
+
+50
+00:03:02.899 --> 00:03:05.289
+We can see that it is in progress here,
+
+51
+00:03:06.229 --> 00:03:09.410
+user stories are generated successfully.
+
+52
+00:03:09.889 --> 00:03:13.160
+We will now go to design and implement.
+
+53
+00:03:13.660 --> 00:03:16.639
+We will go through these two use cases.
+
+54
+00:03:17.509 --> 00:03:20.649
+The fill template from this slide you can download.
+
+55
+00:03:21.539 --> 00:03:23.350
+Please enter the prompt assume
+
+56
+00:03:24.320 --> 00:03:27.970
+click on generate code from FD and upload FD.
+
+57
+00:03:29.050 --> 00:03:32.649
+Attach the fill template with the template from
+
+58
+00:03:32.660 --> 00:03:35.259
+this slide and you can download it and upload
+
+59
+00:03:35.490 --> 00:03:37.660
+shows the progress and completion
+
+60
+00:03:38.399 --> 00:03:40.039
+a code gets generated.
+
+61
+00:03:41.350 --> 00:03:42.800
+Please generate a bar
+
+62
+00:03:42.910 --> 00:03:47.770
+code in gen wizard chatbot and select generate code through my prompt
+
+63
+00:03:48.600 --> 00:03:51.190
+message shows that code has been generated.
+
+64
+00:03:51.199 --> 00:03:53.800
+Successfully code has been highlighted
+
+65
+00:03:54.660 --> 00:03:56.479
+and this is how it will appear
+
+66
+00:03:57.589 --> 00:04:00.169
+a pop up of specification with brief
+
+67
+00:04:00.179 --> 00:04:04.610
+explanation of input process output pattern flow appears
+
+68
+00:04:04.800 --> 00:04:05.789
+close.
+
+69
+00:04:06.169 --> 00:04:06.580
+The pop
+
+70
+00:04:06.910 --> 00:04:08.139
+up will navigate to the gen
+
+71
+00:04:08.259 --> 00:04:09.460
+wizard chatbot.
+
+72
+00:04:09.869 --> 00:04:15.119
+Enter the prompt, generate 10 test data for purchase order in SAP in
+
+73
+00:04:15.470 --> 00:04:15.860
+the Gen
+
+74
+00:04:15.979 --> 00:04:21.350
+wizard chatbot press enter on the keyboard or click on the arrow icon.
+
+75
+00:04:22.248 --> 00:04:29.878
+Pop up with upload document appears on the screen where users can provide inputs,
+
+76
+00:04:30.058 --> 00:04:33.878
+template attach in this slide for reference.
+
+77
+00:04:34.368 --> 00:04:35.398
+Click on
+
+78
+00:04:35.658 --> 00:04:38.479
+upload to have the template uploaded.
+
+79
+00:04:39.230 --> 00:04:41.709
+Once you click on upload,
+
+80
+00:04:41.720 --> 00:04:44.559
+you will see in progress screenshot and
+
+81
+00:04:44.570 --> 00:04:48.480
+then upload it successfully screen screenshot two
+
+82
+00:04:49.109 --> 00:04:51.559
+once done, click on close
+
+83
+00:04:52.519 --> 00:04:55.470
+one upload notifications and box will
+
+84
+00:04:55.480 --> 00:04:58.109
+show that template is generated successfully.
+
+85
+00:04:59.079 --> 00:05:03.910
+This data that was uploaded now shows up under highlighted
+
+86
+00:05:04.220 --> 00:05:07.890
+user can download it and upload template
+
+87
+00:05:08.359 --> 00:05:12.269
+pop up with upload document appears on the screen.
+
+88
+00:05:12.450 --> 00:05:15.429
+Click on upload to have template upload it.
+
+89
+00:05:16.359 --> 00:05:18.089
+Once you click on upload,
+
+90
+00:05:18.100 --> 00:05:24.359
+you will see a in progress screen and then an uploaded successfully
+
+91
+00:05:24.369 --> 00:05:30.809
+screen screenshot one post that close once the data gets generated as highlighted
+
+92
+00:05:31.799 --> 00:05:33.619
+and this is how it will appear.
+
+93
+00:05:36.779 --> 00:05:38.119
+Thank you very much.

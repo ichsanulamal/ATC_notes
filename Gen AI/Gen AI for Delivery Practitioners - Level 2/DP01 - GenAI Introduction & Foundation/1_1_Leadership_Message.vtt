@@ -1,0 +1,637 @@
+WEBVTT
+
+0
+00:00:06.179 --> 00:00:08.239
+What we are going to do is cover the
+
+1
+00:00:08.250 --> 00:00:10.899
+training objectives and expectations from all of you.
+
+2
+00:00:10.909 --> 00:00:14.800
+This is not like a one time done and dusted training, you,
+
+3
+00:00:14.890 --> 00:00:17.120
+you will have to continuously apply these
+
+4
+00:00:17.129 --> 00:00:19.750
+skills within your engagements within your projects
+
+5
+00:00:20.030 --> 00:00:22.030
+and have discussions with your clients.
+
+6
+00:00:22.629 --> 00:00:25.930
+So let me tell you the difference between the three trainings.
+
+7
+00:00:25.940 --> 00:00:26.459
+First,
+
+8
+00:00:26.479 --> 00:00:28.760
+there are three trainings that we have launched based
+
+9
+00:00:28.770 --> 00:00:30.879
+on the role that you are going to play
+
+10
+00:00:31.010 --> 00:00:34.439
+most of you on today's training fall under the delivery practitioner,
+
+11
+00:00:34.939 --> 00:00:39.909
+which is for levels uh right from CL 12 up to CL seven,
+
+12
+00:00:40.380 --> 00:00:43.229
+there are two other trainings if you wish to uh
+
+13
+00:00:43.500 --> 00:00:47.860
+get or graduate or post graduate into an automation architect,
+
+14
+00:00:48.090 --> 00:00:51.909
+that would be your next part uh which is for cl nine to CL four,
+
+15
+00:00:51.919 --> 00:00:55.340
+but it is only applicable for selected and nominated people
+
+16
+00:00:55.349 --> 00:00:58.439
+as it's a very rigorous course and more duration.
+
+17
+00:00:59.090 --> 00:01:02.189
+Those who are moving on to the project management path,
+
+18
+00:01:02.200 --> 00:01:06.110
+going to become delivery leads or technology service leads CL six.
+
+19
+00:01:06.120 --> 00:01:07.819
+And uh to above
+
+20
+00:01:08.199 --> 00:01:11.629
+uh they can graduate into the uh the first course mentioned here.
+
+21
+00:01:12.279 --> 00:01:17.250
+Now, most all the three courses have more or less similar
+
+22
+00:01:17.569 --> 00:01:19.699
+uh self learning courses that you have done.
+
+23
+00:01:20.430 --> 00:01:23.230
+I have myself gone through all the self learning courses
+
+24
+00:01:23.540 --> 00:01:26.529
+and I have also recommended few additions to be done
+
+25
+00:01:27.019 --> 00:01:29.949
+what you would have covered in the level one course so far,
+
+26
+00:01:30.180 --> 00:01:32.470
+uh you have gone through the talent question.
+
+27
+00:01:32.480 --> 00:01:35.589
+You would have gone through the basics of uh A I and ML
+
+28
+00:01:35.870 --> 00:01:37.879
+you would have learned what is JA
+
+29
+00:01:37.980 --> 00:01:42.949
+I and applying practically on applications using API S and chat GP T.
+
+30
+00:01:43.480 --> 00:01:44.709
+Uh You would have gone through the JA
+
+31
+00:01:44.720 --> 00:01:48.059
+I essentials which covered the overview LLM models.
+
+32
+00:01:48.069 --> 00:01:50.650
+How does it work? What is responsible A I
+
+33
+00:01:51.000 --> 00:01:54.459
+legal aspects and security aspects around applying gen A I
+
+34
+00:01:54.900 --> 00:01:58.190
+and then you did some grounded foundational hands
+
+35
+00:01:58.199 --> 00:02:01.139
+on work understanding what is prompt engineering,
+
+36
+00:02:01.150 --> 00:02:04.669
+which is very essential for applying gen A I use cases.
+
+37
+00:02:04.959 --> 00:02:06.900
+Uh What are the basics of vector data
+
+38
+00:02:06.910 --> 00:02:10.229
+stores and what are the different ecosystem tools
+
+39
+00:02:10.538 --> 00:02:11.800
+coming up in the market?
+
+40
+00:02:12.589 --> 00:02:16.949
+The few short courses that I have recommended and will get added very soon.
+
+41
+00:02:17.199 --> 00:02:20.240
+Uh These are, these are not mandatory for you to complete today's class,
+
+42
+00:02:20.250 --> 00:02:24.039
+but after you complete today's class, you can go and complete the other ones
+
+43
+00:02:24.580 --> 00:02:27.410
+that will get you knowledge about uh
+
+44
+00:02:27.570 --> 00:02:29.740
+the transformers architecture,
+
+45
+00:02:30.190 --> 00:02:33.570
+what are embeddings and how to use embeddings to
+
+46
+00:02:33.580 --> 00:02:36.000
+build your own custom applications on JA I.
+
+47
+00:02:36.970 --> 00:02:40.330
+Uh you will have some extra hands on, on prompt engineering,
+
+48
+00:02:40.339 --> 00:02:42.869
+especially focusing on pair programming.
+
+49
+00:02:43.149 --> 00:02:46.770
+And if you are interested, there are two additional optional courses.
+
+50
+00:02:46.839 --> 00:02:48.750
+One is on how to use github
+
+51
+00:02:49.229 --> 00:02:52.619
+Copilot, especially if you are developers getting started with it.
+
+52
+00:02:52.880 --> 00:02:56.199
+And second is on fine tuning of the LLN
+
+53
+00:02:58.520 --> 00:02:59.860
+what you will learn today,
+
+54
+00:02:59.880 --> 00:03:04.190
+you will have details around what is the accenture differentiation of assets.
+
+55
+00:03:04.419 --> 00:03:05.449
+So accenture,
+
+56
+00:03:05.740 --> 00:03:09.449
+invest a lot in building competitive differentiation
+
+57
+00:03:09.839 --> 00:03:12.759
+and those are the assets that you will go through at a high level.
+
+58
+00:03:12.770 --> 00:03:15.559
+You will understand the architecture around it
+
+59
+00:03:15.830 --> 00:03:18.949
+and how it works along with the other ecosystem tools.
+
+60
+00:03:19.309 --> 00:03:21.889
+And most of the time you will be doing hands on
+
+61
+00:03:22.020 --> 00:03:25.410
+either using directly LLM models, prompt engineering
+
+62
+00:03:25.580 --> 00:03:31.130
+or focusing on the use cases on ems I MS SI custom S ISA P
+
+63
+00:03:31.550 --> 00:03:36.800
+uh using the accenture assets. So that's going to be your entire course content.
+
+64
+00:03:37.179 --> 00:03:37.809
+As I said,
+
+65
+00:03:37.820 --> 00:03:41.369
+if you wish to graduate into the other two courses based on your eligibility,
+
+66
+00:03:41.380 --> 00:03:43.490
+you feel free to do that later on.
+
+67
+00:03:44.570 --> 00:03:47.250
+Now, what's expected out of you and the objective
+
+68
+00:03:48.149 --> 00:03:51.990
+there has been a very significant progress on gen A I
+
+69
+00:03:52.100 --> 00:03:56.029
+within the managed services world as well as the system integration work.
+
+70
+00:03:56.550 --> 00:03:57.270
+Now,
+
+71
+00:03:57.279 --> 00:04:01.309
+we have to keep our competitive differentiation high compared to our competitors.
+
+72
+00:04:01.320 --> 00:04:04.539
+Everybody is working on this. So that's not new.
+
+73
+00:04:04.559 --> 00:04:07.300
+And if we don't keep our competitive differentiation high,
+
+74
+00:04:07.309 --> 00:04:10.630
+our growth gets hindered and our delivery also gets entered.
+
+75
+00:04:11.020 --> 00:04:15.889
+So you need to understand what is the differentiation accenture brings on the table
+
+76
+00:04:16.130 --> 00:04:17.880
+and you should be able to have those
+
+77
+00:04:17.890 --> 00:04:21.238
+level of conversations with your clients within your engagements
+
+78
+00:04:21.390 --> 00:04:22.619
+as and when needed.
+
+79
+00:04:23.660 --> 00:04:27.059
+That's what you will learn. And you are expected to know that very thorough.
+
+80
+00:04:28.299 --> 00:04:29.209
+Second,
+
+81
+00:04:29.579 --> 00:04:34.570
+the ways of working or ways of delivery are evolving from new to it has become new,
+
+82
+00:04:34.579 --> 00:04:36.200
+new or not new.
+
+83
+00:04:36.869 --> 00:04:38.440
+And the genea
+
+84
+00:04:38.540 --> 00:04:39.850
+is very
+
+85
+00:04:40.000 --> 00:04:44.809
+uh entrenched within every activity, every task that you do.
+
+86
+00:04:45.070 --> 00:04:48.589
+So that changes the me earlier mechanics of
+
+87
+00:04:48.869 --> 00:04:53.089
+uh you will have a very thorough documentation, step by step instruction.
+
+88
+00:04:53.100 --> 00:04:54.089
+No, you will not.
+
+89
+00:04:54.750 --> 00:04:59.000
+You will have to figure out mechanics on how to automate your task,
+
+90
+00:04:59.010 --> 00:05:00.730
+how to automate your activities,
+
+91
+00:05:00.739 --> 00:05:04.079
+how to quickly move from one activity to the next activity
+
+92
+00:05:04.209 --> 00:05:05.790
+without changing the context.
+
+93
+00:05:06.480 --> 00:05:11.720
+And these are very evolving. Not everything is thorough and put on paper,
+
+94
+00:05:12.000 --> 00:05:14.170
+you will learn yourself as you go through it.
+
+95
+00:05:14.429 --> 00:05:17.019
+And all of these at the end of the day
+
+96
+00:05:17.369 --> 00:05:18.940
+improves productivity
+
+97
+00:05:19.200 --> 00:05:22.369
+and reduces cost. So that's the bottom line.
+
+98
+00:05:22.829 --> 00:05:24.010
+That's the expectation.
+
+99
+00:05:24.019 --> 00:05:28.380
+So you should learn, what are these use cases that you can automate using gen A I,
+
+100
+00:05:28.910 --> 00:05:30.920
+how to apply responsible A I
+
+101
+00:05:31.309 --> 00:05:34.579
+and prepare yourself to adopt the new ways of working.
+
+102
+00:05:36.049 --> 00:05:39.510
+Third, if you look at the landscape of the tooling,
+
+103
+00:05:39.529 --> 00:05:42.170
+it's that is also evolving very fast.
+
+104
+00:05:42.619 --> 00:05:47.239
+Many LLM models. What are these different type of LLM models? When should I use?
+
+105
+00:05:47.250 --> 00:05:47.899
+Which one?
+
+106
+00:05:48.179 --> 00:05:50.790
+When should you fine tune versus when should you use?
+
+107
+00:05:50.799 --> 00:05:52.690
+Prompt engineering and prompt tuning,
+
+108
+00:05:53.200 --> 00:05:55.459
+uh which ecosystem tools you should use?
+
+109
+00:05:55.470 --> 00:05:57.779
+What's the best one applicable to your work?
+
+110
+00:05:57.790 --> 00:06:00.890
+What are the implications from legal and security angle?
+
+111
+00:06:01.119 --> 00:06:03.299
+What are the new skills that you will require?
+
+112
+00:06:03.309 --> 00:06:05.829
+Whether it is prompt engineering, vector data stores,
+
+113
+00:06:05.839 --> 00:06:08.640
+embeddings and how to apply that so on and so forth.
+
+114
+00:06:09.000 --> 00:06:11.579
+So you need to understand the basics of all.
+
+115
+00:06:11.589 --> 00:06:14.049
+You will not go through detail in each of them.
+
+116
+00:06:14.160 --> 00:06:18.380
+But once you understand the basics and foundation based on your project work,
+
+117
+00:06:18.390 --> 00:06:22.850
+you will be able to go through it in detail later on and apply and use it.
+
+118
+00:06:24.429 --> 00:06:24.809
+Four,
+
+119
+00:06:25.839 --> 00:06:29.299
+everything comes down to improving productivity and your efficiency.
+
+120
+00:06:29.799 --> 00:06:33.190
+We have done more than 100 pilots in quarter one
+
+121
+00:06:33.549 --> 00:06:37.660
+and the objective of the pilots was to understand what is
+
+122
+00:06:37.670 --> 00:06:40.459
+the applicability of JA I on our day to day work.
+
+123
+00:06:41.190 --> 00:06:44.910
+Uh once it is applied, what is the productivity improvement,
+
+124
+00:06:44.920 --> 00:06:46.769
+we will be able to get out of that
+
+125
+00:06:47.269 --> 00:06:50.809
+and then going back and revising our productivity guidelines
+
+126
+00:06:50.820 --> 00:06:53.970
+which has already been revised for application maintenance,
+
+127
+00:06:53.980 --> 00:06:55.450
+infrastructure, engineering
+
+128
+00:06:55.600 --> 00:06:58.850
+and si custom and si platforms is coming up soon
+
+129
+00:06:59.720 --> 00:07:04.100
+now that the productivity guidelines have been revised every new contract,
+
+130
+00:07:04.109 --> 00:07:06.260
+every new deal that we are working on
+
+131
+00:07:06.589 --> 00:07:08.450
+will have JA I Embedded
+
+132
+00:07:08.910 --> 00:07:11.160
+and it will come with an incremental productivity.
+
+133
+00:07:11.170 --> 00:07:13.220
+On top of what we used to offer earlier,
+
+134
+00:07:13.670 --> 00:07:17.500
+even our existing engagements with clients existing contracts.
+
+135
+00:07:17.510 --> 00:07:20.420
+We have already started discussions with clients on
+
+136
+00:07:20.679 --> 00:07:23.700
+getting to the next step of applying JA I automation.
+
+137
+00:07:24.720 --> 00:07:26.410
+So what are you required to do?
+
+138
+00:07:26.420 --> 00:07:31.609
+You have to gain experience on what are the it use cases using the accenture assets
+
+139
+00:07:32.089 --> 00:07:35.540
+and understand how these can help you improve the productivity.
+
+140
+00:07:37.200 --> 00:07:38.220
+And finally,
+
+141
+00:07:38.230 --> 00:07:42.070
+once you take what will be the takeaway when you go back to your projects,
+
+142
+00:07:42.079 --> 00:07:43.799
+the expectations are very high.
+
+143
+00:07:43.829 --> 00:07:47.140
+If we don't do this, now, somebody else will do it and grab the work.
+
+144
+00:07:47.679 --> 00:07:52.220
+It is expected that accenture being the leader in the
+
+145
+00:07:52.410 --> 00:07:53.140
+entire
+
+146
+00:07:53.350 --> 00:07:54.140
+landscape,
+
+147
+00:07:54.500 --> 00:07:58.220
+we will be applying this now and proactively taking this to our clients.
+
+148
+00:07:58.579 --> 00:08:01.380
+So you have to get ready to identify the
+
+149
+00:08:01.390 --> 00:08:05.019
+A I and JA I automation opportunities within your work
+
+150
+00:08:05.410 --> 00:08:08.510
+and start on the automation journey in your own engagements.
+
+151
+00:08:08.809 --> 00:08:11.890
+Don't expect anybody from outside or a central
+
+152
+00:08:11.899 --> 00:08:14.059
+team will come and implement anything for you.
+
+153
+00:08:14.470 --> 00:08:17.790
+The central team is here to enable you on how to adopt,
+
+154
+00:08:17.799 --> 00:08:19.869
+how to apply how to use the assets.
+
+155
+00:08:20.250 --> 00:08:22.790
+But you have to figure out what are the use
+
+156
+00:08:22.799 --> 00:08:26.510
+cases and start the journey on your own engagements.
+
+157
+00:08:27.279 --> 00:08:31.899
+So that's the expectation from all of you with that. I wish you a very happy learning,
+
+158
+00:08:32.260 --> 00:08:35.340
+enjoy the continuous learning and keep that throughout the year.

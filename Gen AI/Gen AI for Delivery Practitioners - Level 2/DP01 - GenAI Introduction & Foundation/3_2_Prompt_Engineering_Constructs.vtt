@@ -1,0 +1,189 @@
+WEBVTT
+
+0
+00:00:14.250 --> 00:00:17.780
+This video is about the basic construct of prompts.
+
+1
+00:00:18.379 --> 00:00:20.379
+There are three fundamental steps
+
+2
+00:00:20.540 --> 00:00:22.010
+in formulating prompts
+
+3
+00:00:22.280 --> 00:00:23.020
+content
+
+4
+00:00:23.860 --> 00:00:24.879
+instructions
+
+5
+00:00:25.340 --> 00:00:26.530
+and examples.
+
+6
+00:00:29.389 --> 00:00:31.409
+Content is the information
+
+7
+00:00:31.579 --> 00:00:35.740
+that is provided to the large language model. For task execution.
+
+8
+00:00:36.650 --> 00:00:41.790
+It could be a passage from a document tabler data like CSV
+
+9
+00:00:42.319 --> 00:00:42.549
+etc.
+
+10
+00:00:43.599 --> 00:00:45.939
+And this can be presented as a prompt
+
+11
+00:00:48.069 --> 00:00:51.119
+instructions are used to convey the tasks the
+
+12
+00:00:51.330 --> 00:00:53.119
+LM models need to accomplish.
+
+13
+00:00:53.619 --> 00:00:55.930
+This is done by utilizing the gen
+
+14
+00:00:56.049 --> 00:00:57.099
+A I patterns
+
+15
+00:00:57.310 --> 00:01:00.159
+that was already discussed in the previous sessions.
+
+16
+00:01:00.630 --> 00:01:01.759
+For instance,
+
+17
+00:01:02.090 --> 00:01:03.270
+answer a question.
+
+18
+00:01:03.689 --> 00:01:07.000
+What are the major steps to reprocess? An invoice
+
+19
+00:01:07.849 --> 00:01:11.790
+generate a project management plan for an upcoming release.
+
+20
+00:01:12.190 --> 00:01:14.319
+Summarize the call conversation
+
+21
+00:01:14.569 --> 00:01:15.750
+between a user
+
+22
+00:01:15.980 --> 00:01:17.589
+and a service desk agent
+
+23
+00:01:18.430 --> 00:01:20.769
+analyze and process the sales data
+
+24
+00:01:21.050 --> 00:01:22.889
+provided in a CS V file.
+
+25
+00:01:23.730 --> 00:01:26.410
+In order to ensure the output is formatted
+
+26
+00:01:26.550 --> 00:01:31.569
+and tailored. The way required examples may need to be provided in the prompt.
+
+27
+00:01:31.819 --> 00:01:32.970
+For example,
+
+28
+00:01:33.250 --> 00:01:36.050
+provide a concise summary in bullet points.
+
+29
+00:01:36.970 --> 00:01:42.160
+Provide more details on the aspects or dimensions of interest to focus on
+
+30
+00:01:42.300 --> 00:01:43.089
+such as
+
+31
+00:01:43.349 --> 00:01:46.349
+pay attention to the legal compliance aspects
+
+32
+00:01:46.480 --> 00:01:47.989
+in the policy document.
+
+33
+00:01:48.660 --> 00:01:51.870
+Provide information on what needs to be extracted
+
+34
+00:01:52.239 --> 00:01:53.139
+for instance,
+
+35
+00:01:53.430 --> 00:01:56.919
+extract sl a compliance data for incidents
+
+36
+00:01:57.089 --> 00:02:00.750
+for the last six months for the provided CSV file
+
+37
+00:02:01.389 --> 00:02:06.819
+format, the output in a concise bulleted list or in a tabular format
+
+38
+00:02:07.410 --> 00:02:08.339
+in summary
+
+39
+00:02:08.529 --> 00:02:10.979
+content provides the task information
+
+40
+00:02:11.839 --> 00:02:13.410
+instructions utilize genai
+
+41
+00:02:13.710 --> 00:02:15.729
+patterns for task execution.
+
+42
+00:02:16.149 --> 00:02:20.320
+And examples focus on enhancing content, understanding
+
+43
+00:02:20.479 --> 00:02:23.940
+and pinpoint aspects or extraction details
+
+44
+00:02:24.149 --> 00:02:27.300
+and specifies the desired output format to
+
+45
+00:02:27.309 --> 00:02:31.619
+ensure the responses align with specific requirements.
+
+46
+00:02:32.600 --> 00:02:33.460
+Thank you.

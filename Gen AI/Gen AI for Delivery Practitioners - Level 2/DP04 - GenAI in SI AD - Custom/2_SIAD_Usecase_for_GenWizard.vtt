@@ -1,0 +1,3965 @@
+WEBVTT
+
+0
+00:00:11.850 --> 00:00:13.300
+So this is a landing page of general Z
+
+1
+00:00:13.850 --> 00:00:14.869
+OK. Um
+
+2
+00:00:16.219 --> 00:00:17.729
+They just get get get started
+
+3
+00:00:20.149 --> 00:00:20.600
+to raj.
+
+4
+00:00:20.799 --> 00:00:24.989
+Will this be helpful for in a DB migration kind of the activities or
+
+5
+00:00:25.000 --> 00:00:27.579
+kind of transforming one application is one
+
+6
+00:00:27.590 --> 00:00:29.889
+programming language to another programming language.
+
+7
+00:00:30.569 --> 00:00:34.930
+Yes, it will. So for DB to uh let me answer that 22 direction.
+
+8
+00:00:35.040 --> 00:00:38.860
+So DB migration if it is from one database to another database,
+
+9
+00:00:39.169 --> 00:00:41.209
+today, we support oracle
+
+10
+00:00:41.569 --> 00:00:41.880
+to post
+
+11
+00:00:42.060 --> 00:00:42.200
+grade,
+
+12
+00:00:42.380 --> 00:00:42.680
+post
+
+13
+00:00:42.860 --> 00:00:43.659
+grade is supported.
+
+14
+00:00:43.860 --> 00:00:46.080
+We have side based to I think that also to post
+
+15
+00:00:46.209 --> 00:00:47.419
+grade, I believe. But oracle to post
+
+16
+00:00:47.569 --> 00:00:48.569
+grade, we definitely have,
+
+17
+00:00:48.880 --> 00:00:53.110
+we we also have from an application text stack we have today
+
+18
+00:00:53.409 --> 00:00:56.790
+you can from uh you know classical Java,
+
+19
+00:00:56.869 --> 00:01:00.889
+you can convert to a migrate to a higher Java environment or you can even go to Python
+
+20
+00:01:01.250 --> 00:01:06.470
+for classical Visual Basic. We be uh you know, anything less than the core version,
+
+21
+00:01:07.099 --> 00:01:08.760
+you can convert to a core version.
+
+22
+00:01:09.180 --> 00:01:14.870
+You can also convert from uh VB to Python and those kind of text are also supported
+
+23
+00:01:15.400 --> 00:01:16.139
+um coal
+
+24
+00:01:16.580 --> 00:01:17.620
+to
+
+25
+00:01:17.930 --> 00:01:18.169
+coal
+
+26
+00:01:18.500 --> 00:01:21.019
+to um Java we did
+
+27
+00:01:21.260 --> 00:01:22.879
+and it is there in our uh
+
+28
+00:01:22.989 --> 00:01:25.739
+you know as a uh pilot use case
+
+29
+00:01:26.019 --> 00:01:27.370
+it is getting production
+
+30
+00:01:27.569 --> 00:01:29.440
+as I speak to you. So that is also that,
+
+31
+00:01:30.040 --> 00:01:32.279
+so there are these text stacks that we do, even,
+
+32
+00:01:32.290 --> 00:01:36.209
+even we even have P SQL uh getting reversing
+
+33
+00:01:36.400 --> 00:01:36.650
+in it
+
+34
+00:01:37.089 --> 00:01:39.190
+and converting to a post that I said earlier.
+
+35
+00:01:40.750 --> 00:01:41.309
+OK. Because we
+
+36
+00:01:41.720 --> 00:01:41.790
+discuss
+
+37
+00:01:42.230 --> 00:01:46.650
+with the client one is the DV migration that is the same uh record to post.
+
+38
+00:01:46.919 --> 00:01:49.529
+And another one is A C++ two Java
+
+39
+00:01:49.970 --> 00:01:52.449
+uh C++ Java. We support that is also a lot.
+
+40
+00:01:53.349 --> 00:01:53.739
+OK.
+
+41
+00:01:54.389 --> 00:01:56.610
+Pro C C++ also is support, correct.
+
+42
+00:01:57.129 --> 00:01:57.699
+OK.
+
+43
+00:01:58.330 --> 00:01:58.849
+OK.
+
+44
+00:01:58.860 --> 00:02:01.629
+So what do you see here is the website is full of
+
+45
+00:02:01.639 --> 00:02:04.940
+uh all the various the five key things that we talked about.
+
+46
+00:02:05.129 --> 00:02:08.460
+I'm not going to drain into the living knowledge base or the hyper product,
+
+47
+00:02:08.729 --> 00:02:10.389
+which already would have been covered.
+
+48
+00:02:10.490 --> 00:02:11.360
+Now, let me start with
+
+49
+00:02:11.869 --> 00:02:12.309
+Tech Deion.
+
+50
+00:02:12.619 --> 00:02:14.399
+So the key message here is
+
+51
+00:02:14.880 --> 00:02:15.960
+so generally we,
+
+52
+00:02:16.320 --> 00:02:18.910
+we really aim for zero tickets,
+
+53
+00:02:19.190 --> 00:02:21.210
+but that is not the reality and
+
+54
+00:02:21.449 --> 00:02:22.869
+there are tickets where
+
+55
+00:02:23.419 --> 00:02:26.850
+uh frequent dec occurring tickets, automation is there.
+
+56
+00:02:26.860 --> 00:02:29.720
+But then there are things gets really complicated as
+
+57
+00:02:30.220 --> 00:02:33.289
+when there are tickets which require a court remedy.
+
+58
+00:02:34.210 --> 00:02:37.330
+So, so finding the root cause of the issues
+
+59
+00:02:37.710 --> 00:02:40.160
+and then finding impacted code,
+
+60
+00:02:40.410 --> 00:02:41.949
+generating that
+
+61
+00:02:42.529 --> 00:02:43.110
+and
+
+62
+00:02:43.570 --> 00:02:45.789
+fixing it is gonna take a lot of time.
+
+63
+00:02:46.360 --> 00:02:49.789
+Now, what we have done with this living knowledge that is established is
+
+64
+00:02:50.600 --> 00:02:53.740
+you would have seen that we already uploaded a code yesterday, we
+
+65
+00:02:53.880 --> 00:02:53.899
+know
+
+66
+00:02:54.110 --> 00:02:54.500
+I share that
+
+67
+00:02:55.119 --> 00:02:56.139
+you upload a code,
+
+68
+00:02:56.550 --> 00:02:58.500
+the code gets complete explanation,
+
+69
+00:02:58.649 --> 00:03:02.410
+gus multiple iteration and creates a knowledge base.
+
+70
+00:03:02.649 --> 00:03:03.830
+And we would have created
+
+71
+00:03:04.240 --> 00:03:08.809
+a um a topology, the topology of the application and we would also create a wiki.
+
+72
+00:03:08.830 --> 00:03:12.009
+So that is an understanding of the current application
+
+73
+00:03:12.210 --> 00:03:15.039
+now with that knowledge. What can I do?
+
+74
+00:03:15.259 --> 00:03:15.660
+Right.
+
+75
+00:03:16.029 --> 00:03:17.050
+So that's where
+
+76
+00:03:17.449 --> 00:03:20.300
+here we will show AC R or problem ticket
+
+77
+00:03:20.750 --> 00:03:23.520
+which how I'm going to find the root cause on it
+
+78
+00:03:23.990 --> 00:03:26.960
+and how quickly within a matter of a few minutes
+
+79
+00:03:27.419 --> 00:03:29.600
+in real time, it finds all this
+
+80
+00:03:29.839 --> 00:03:32.259
+and shows a traceability of impacted code,
+
+81
+00:03:32.589 --> 00:03:36.080
+impacted test cases, impacted automation, test scripts
+
+82
+00:03:36.309 --> 00:03:37.220
+as well as the
+
+83
+00:03:38.100 --> 00:03:38.330
+we
+
+84
+00:03:38.460 --> 00:03:39.440
+sent us the stories.
+
+85
+00:03:40.779 --> 00:03:45.139
+Historically, we used to have a, a cast tool as a third party software, right?
+
+86
+00:03:45.149 --> 00:03:48.470
+OK, which actually used to do this uh tech depth analysis. OK.
+
+87
+00:03:48.500 --> 00:03:51.330
+At an architect level, locate a functional point, design
+
+88
+00:03:52.000 --> 00:03:53.679
+aspects and all those things, right?
+
+89
+00:03:54.350 --> 00:03:55.089
+So
+
+90
+00:03:55.330 --> 00:03:55.869
+uh
+
+91
+00:03:55.970 --> 00:04:00.039
+is there some way it's also integrated there or it's just playing an individual
+
+92
+00:04:00.789 --> 00:04:03.039
+in? So, so we cast integration is still
+
+93
+00:04:03.279 --> 00:04:08.050
+panic, that's said to be done. But to call out the difference that we make over what ca
+
+94
+00:04:08.250 --> 00:04:08.919
+can provide us
+
+95
+00:04:09.699 --> 00:04:10.009
+CC
+
+96
+00:04:10.190 --> 00:04:13.610
+does the analysis. It's a one static analysis, it shows where the tech di
+
+97
+00:04:13.929 --> 00:04:13.960
+does
+
+98
+00:04:14.520 --> 00:04:17.399
+now. Important aspect is right? That knowledge,
+
+99
+00:04:17.940 --> 00:04:20.399
+that knowledge is not stored anywhere. It's a static right
+
+100
+00:04:20.548 --> 00:04:23.079
+now. Here we have the knowledge. So in this case,
+
+101
+00:04:23.329 --> 00:04:25.869
+I already have uploaded a application
+
+102
+00:04:26.750 --> 00:04:31.529
+and I got the topology generated for that application which you saw here yesterday.
+
+103
+00:04:31.790 --> 00:04:33.769
+We have gone through the details of what these
+
+104
+00:04:34.100 --> 00:04:35.829
+user stories features,
+
+105
+00:04:36.350 --> 00:04:38.510
+uh test cases, test scripts,
+
+106
+00:04:38.869 --> 00:04:40.010
+like the code that got inju
+
+107
+00:04:40.220 --> 00:04:40.769
+was this,
+
+108
+00:04:41.100 --> 00:04:43.730
+I was able to get the full explanation of the code. In
+
+109
+00:04:43.929 --> 00:04:47.149
+this case, it's ac code. I think somebody has C plus which is AC one.
+
+110
+00:04:47.540 --> 00:04:48.989
+And I was able to,
+
+111
+00:04:49.149 --> 00:04:52.600
+I can even translate it to a program of my choice.
+
+112
+00:04:52.709 --> 00:04:52.730
+So
+
+113
+00:04:52.950 --> 00:04:56.000
+we support Python Java. These are some of the things that I can generate.
+
+114
+00:04:56.700 --> 00:04:58.350
+So you can see the generated code.
+
+115
+00:04:58.640 --> 00:05:01.750
+This is one thing I can do which I won't be able to do in other tools
+
+116
+00:05:02.260 --> 00:05:06.510
+which is you are translating to a different technology file by file.
+
+117
+00:05:07.200 --> 00:05:11.700
+But the use case that I'm focused on currently is with that knowledge that I have
+
+118
+00:05:12.059 --> 00:05:14.660
+and the wiki that is general existing application. I'm now
+
+119
+00:05:14.769 --> 00:05:17.059
+punching in a problem ticket.
+
+120
+00:05:17.350 --> 00:05:19.829
+There is and how do I do it? Is there is a assist here.
+
+121
+00:05:19.989 --> 00:05:21.779
+So here if you expand this assist,
+
+122
+00:05:21.880 --> 00:05:23.100
+you can enter
+
+123
+00:05:23.549 --> 00:05:25.769
+what is the impact analysis of a particular
+
+124
+00:05:25.880 --> 00:05:27.510
+uh problem ticket?
+
+125
+00:05:27.730 --> 00:05:29.100
+And when you enter this,
+
+126
+00:05:29.420 --> 00:05:31.500
+it goes through it, it does the analysis
+
+127
+00:05:32.019 --> 00:05:35.100
+and it will say you can go and check the analysis of that.
+
+128
+00:05:35.660 --> 00:05:36.209
+And
+
+129
+00:05:36.459 --> 00:05:38.559
+if I open it, it has created that.
+
+130
+00:05:39.019 --> 00:05:41.279
+Now let me go open that
+
+131
+00:05:41.440 --> 00:05:42.500
+topology,
+
+132
+00:05:42.890 --> 00:05:44.320
+the same topology
+
+133
+00:05:44.470 --> 00:05:46.779
+it is showing me the impacted
+
+134
+00:05:47.609 --> 00:05:47.910
+beach
+
+135
+00:05:49.320 --> 00:05:50.410
+the user stories,
+
+136
+00:05:51.250 --> 00:05:52.470
+the de scripts,
+
+137
+00:05:52.750 --> 00:05:54.119
+some of the code files
+
+138
+00:05:54.859 --> 00:05:56.970
+as far as the uh test cases.
+
+139
+00:05:57.250 --> 00:05:59.040
+Now, if I click on one of the code file,
+
+140
+00:05:59.700 --> 00:06:03.670
+you see here, there is a blue and a green uh functions.
+
+141
+00:06:03.869 --> 00:06:05.320
+So blue are the
+
+142
+00:06:05.619 --> 00:06:07.720
+updates to an existing function.
+
+143
+00:06:08.359 --> 00:06:10.760
+The green is a completely new function that needs
+
+144
+00:06:10.769 --> 00:06:12.760
+to be created for this particular problem ticket.
+
+145
+00:06:13.260 --> 00:06:17.239
+Now, if I click on this, I actually get the code that is needed.
+
+146
+00:06:17.790 --> 00:06:18.339
+Now,
+
+147
+00:06:19.820 --> 00:06:21.480
+we can integrate this with your GIT
+
+148
+00:06:21.679 --> 00:06:22.739
+and create a branch
+
+149
+00:06:22.869 --> 00:06:24.880
+and upload this git into the branch.
+
+150
+00:06:25.220 --> 00:06:28.920
+Now as a developer, because I've done this, I've done this impact analysis.
+
+151
+00:06:28.929 --> 00:06:31.540
+I I found what are the changes here from a code level?
+
+152
+00:06:31.660 --> 00:06:32.959
+Now as a developer,
+
+153
+00:06:33.209 --> 00:06:34.970
+I can check out my G
+
+154
+00:06:35.089 --> 00:06:38.709
+get this code back into my ID and then use the github
+
+155
+00:06:38.850 --> 00:06:39.049
+co
+
+156
+00:06:39.209 --> 00:06:41.760
+plots of the world to understand it. Remedy if I need it.
+
+157
+00:06:42.290 --> 00:06:44.000
+If this looks perfectly fine,
+
+158
+00:06:44.440 --> 00:06:46.019
+the human in the group that we are talking about,
+
+159
+00:06:46.200 --> 00:06:47.179
+you just check in,
+
+160
+00:06:47.190 --> 00:06:49.220
+push it to your next set of to a higher
+
+161
+00:06:49.230 --> 00:06:51.820
+environment to proceed with your other level of testing.
+
+162
+00:06:52.149 --> 00:06:53.299
+This is for the developer.
+
+163
+00:06:53.679 --> 00:06:55.579
+Similarly, as a tester,
+
+164
+00:06:56.260 --> 00:07:00.809
+if I want to go and look at what test cases, the existing test cases,
+
+165
+00:07:00.959 --> 00:07:05.350
+what are the steps that I need to add over and above what I need already? Had,
+
+166
+00:07:05.730 --> 00:07:07.820
+it looks and highlights those changes.
+
+167
+00:07:08.130 --> 00:07:11.750
+Again. Green are new tests, blue or changes to an existing step.
+
+168
+00:07:11.760 --> 00:07:14.019
+In this case, it has added a few steps.
+
+169
+00:07:14.140 --> 00:07:16.200
+Now I can upload this back to my
+
+170
+00:07:16.529 --> 00:07:17.299
+gas of the world
+
+171
+00:07:17.489 --> 00:07:19.839
+or you know HP A LS of the world
+
+172
+00:07:20.410 --> 00:07:21.929
+then my scripts.
+
+173
+00:07:22.029 --> 00:07:23.910
+So today we support Selenium
+
+174
+00:07:24.220 --> 00:07:24.260
+test.
+
+175
+00:07:24.640 --> 00:07:26.670
+That's that, that's the language we support today
+
+176
+00:07:26.950 --> 00:07:29.720
+and it looks at those automation scripts and it just call
+
+177
+00:07:29.730 --> 00:07:31.739
+out the changes needed for them because it's a change that
+
+178
+00:07:32.200 --> 00:07:34.709
+now as a test automation, I can download this
+
+179
+00:07:34.980 --> 00:07:37.820
+and make it part of my script and then just execute it
+
+180
+00:07:38.519 --> 00:07:42.320
+as well as I can also understand as a product owner or business analyst.
+
+181
+00:07:42.329 --> 00:07:47.140
+I can also see what user stories are, our features are impacted with that change.
+
+182
+00:07:47.519 --> 00:07:49.299
+Now, you can also
+
+183
+00:07:49.440 --> 00:07:50.489
+understand
+
+184
+00:07:51.079 --> 00:07:54.220
+what are the architectural components of that
+
+185
+00:07:54.230 --> 00:07:57.149
+application is impacted because of this.
+
+186
+00:07:57.359 --> 00:07:58.149
+This is
+
+187
+00:07:58.380 --> 00:08:00.140
+gives you that view also.
+
+188
+00:08:00.609 --> 00:08:04.109
+So all these happens within a few minutes and we
+
+189
+00:08:04.119 --> 00:08:05.859
+have tried it in a couple of our pilots.
+
+190
+00:08:06.130 --> 00:08:08.609
+Of course, it's getting refined as I speak to you.
+
+191
+00:08:08.700 --> 00:08:11.709
+But this was made possible because of that
+
+192
+00:08:11.890 --> 00:08:13.380
+knowledge base that we have the vector
+
+193
+00:08:13.970 --> 00:08:14.600
+that we have
+
+194
+00:08:14.790 --> 00:08:18.649
+and the prompts embedding to those knowledge and making it contextual
+
+195
+00:08:18.850 --> 00:08:19.869
+to get this outcome.
+
+196
+00:08:20.649 --> 00:08:23.149
+Now, you can imagine typically if I have to do this
+
+197
+00:08:23.619 --> 00:08:26.769
+for a problem ticket and fixing issues and
+
+198
+00:08:26.779 --> 00:08:29.649
+then I define the only the testing scenarios either
+
+199
+00:08:29.850 --> 00:08:32.489
+and then executed and implement takes months.
+
+200
+00:08:32.729 --> 00:08:34.510
+Here, it gives you that uh
+
+201
+00:08:34.640 --> 00:08:36.469
+edge to do it quickly.
+
+202
+00:08:36.900 --> 00:08:38.900
+So this is one use case
+
+203
+00:08:39.320 --> 00:08:42.659
+with that knowledge, what do I do on an existing application?
+
+204
+00:08:43.039 --> 00:08:44.070
+And I would do this
+
+205
+00:08:44.469 --> 00:08:45.419
+when I want to
+
+206
+00:08:45.599 --> 00:08:46.729
+not modernize it
+
+207
+00:08:46.919 --> 00:08:50.729
+or I want to maintain and remove my tech tips on my existing application.
+
+208
+00:08:51.479 --> 00:08:56.179
+Now, my broader use cases, how do I completely modernize
+
+209
+00:08:56.479 --> 00:08:58.020
+into a new architecture?
+
+210
+00:08:58.469 --> 00:08:59.580
+So whatever
+
+211
+00:09:00.190 --> 00:09:03.169
+knowledge that we created the the reverse engineered
+
+212
+00:09:03.179 --> 00:09:05.549
+user stories are already there in my requirements.
+
+213
+00:09:05.890 --> 00:09:08.969
+Now, I may want to add additional user requirements.
+
+214
+00:09:09.349 --> 00:09:11.679
+I may want to add additional uh set of user stories.
+
+215
+00:09:11.690 --> 00:09:14.799
+I may want to generate additional ones. I may want to generate, I can do that.
+
+216
+00:09:15.090 --> 00:09:18.780
+Now remember whenever you generate and you, you want to,
+
+217
+00:09:19.229 --> 00:09:21.609
+you can use the same assist behavior
+
+218
+00:09:21.940 --> 00:09:24.440
+and you can say generate those additional stories. For me,
+
+219
+00:09:24.770 --> 00:09:28.609
+it asks me what are those functional nonfunctional areas that I need to select?
+
+220
+00:09:29.260 --> 00:09:32.840
+And this integrates with our B PM. So some of the
+
+221
+00:09:33.080 --> 00:09:36.020
+process areas gets refined with this
+
+222
+00:09:36.309 --> 00:09:37.640
+and then we generate story.
+
+223
+00:09:37.950 --> 00:09:39.869
+Now one key call it I want to make is
+
+224
+00:09:40.510 --> 00:09:42.599
+you can also generate story in charge GP T.
+
+225
+00:09:42.789 --> 00:09:44.440
+So what is so different with this
+
+226
+00:09:44.960 --> 00:09:45.369
+one?
+
+227
+00:09:46.049 --> 00:09:47.960
+If you are doing from a reverse
+
+228
+00:09:48.109 --> 00:09:49.159
+engineer code into this?
+
+229
+00:09:49.169 --> 00:09:52.099
+The embedding is already understood because it understood
+
+230
+00:09:52.109 --> 00:09:55.659
+the context and is giving those generated additional stories
+
+231
+00:09:56.030 --> 00:09:57.760
+second is our BPH
+
+232
+00:09:58.150 --> 00:09:58.960
+or our B PM.
+
+233
+00:09:59.340 --> 00:10:03.909
+So our business process hierarchy is used behind the scenes to refine these props
+
+234
+00:10:04.570 --> 00:10:07.159
+to get more contextual user stories.
+
+235
+00:10:07.299 --> 00:10:09.510
+Second is if you look at our prompts,
+
+236
+00:10:09.940 --> 00:10:14.239
+we use a, a principle called inverse Q which means it looks for
+
+237
+00:10:14.809 --> 00:10:17.229
+uh those prompts are itself has got the logic
+
+238
+00:10:17.239 --> 00:10:20.940
+to check various things as part of creating more
+
+239
+00:10:21.369 --> 00:10:23.390
+appropriate and valid user stories.
+
+240
+00:10:23.400 --> 00:10:28.450
+So prompts our business process hierarchy and the existing living knowledge base
+
+241
+00:10:28.809 --> 00:10:31.710
+is a key differentiator, how we can get more
+
+242
+00:10:32.320 --> 00:10:33.979
+contextualized user stories.
+
+243
+00:10:34.549 --> 00:10:35.099
+Now,
+
+244
+00:10:35.109 --> 00:10:37.270
+in case you're studying a pure green
+
+245
+00:10:37.289 --> 00:10:40.179
+field project with no reverse engineering and all
+
+246
+00:10:40.450 --> 00:10:42.659
+in that case, you would first start with the requirement.
+
+247
+00:10:43.099 --> 00:10:46.679
+The only in that context, what would be your differentiated company
+
+248
+00:10:46.799 --> 00:10:48.090
+to charge piece of the world is
+
+249
+00:10:48.500 --> 00:10:49.609
+you have a BPH.
+
+250
+00:10:49.619 --> 00:10:53.219
+So we use our BPH, we know which project you are, which industry you are,
+
+251
+00:10:53.229 --> 00:10:54.500
+which business process you are.
+
+252
+00:10:54.510 --> 00:10:57.169
+And then we use that to refine and embed the props,
+
+253
+00:10:57.409 --> 00:10:59.929
+which should not be as accurate as the earlier one.
+
+254
+00:10:59.940 --> 00:11:00.739
+Because earlier when you had a
+
+255
+00:11:00.750 --> 00:11:03.330
+reverse engineering knowledge of the existing system
+
+256
+00:11:03.609 --> 00:11:05.789
+here, it will reach that over a period of time.
+
+257
+00:11:06.309 --> 00:11:08.270
+But remember whatever you generate and whatever you
+
+258
+00:11:08.280 --> 00:11:10.619
+confirm goes back to the same knowledge base.
+
+259
+00:11:10.630 --> 00:11:11.950
+That's why it's called living knowledge base.
+
+260
+00:11:12.890 --> 00:11:13.750
+Any questions here?
+
+261
+00:11:16.119 --> 00:11:18.190
+So are you seeing the current uh open E
+
+262
+00:11:18.539 --> 00:11:21.690
+I or OK, or um Google L MS, right. OK.
+
+263
+00:11:21.700 --> 00:11:23.940
+Is it not helping in terms of generating and
+
+264
+00:11:23.950 --> 00:11:26.349
+mapping it to the uh the business process models?
+
+265
+00:11:26.359 --> 00:11:26.770
+I mean,
+
+266
+00:11:27.840 --> 00:11:29.549
+you can, you can generate
+
+267
+00:11:29.909 --> 00:11:33.520
+and you can, so if you go to a playground and you can, you can generate differently,
+
+268
+00:11:33.750 --> 00:11:35.669
+but what is the level of accuracy? Right?
+
+269
+00:11:36.049 --> 00:11:40.000
+The accuracy improves when you have even more contextualized,
+
+270
+00:11:40.010 --> 00:11:41.270
+embedding in your prompts
+
+271
+00:11:41.619 --> 00:11:44.510
+and these kind of uh you know, the quality checks applied
+
+272
+00:11:44.840 --> 00:11:49.729
+then uh generally uh you know, just going with the uh uh you know, standard props
+
+273
+00:11:52.559 --> 00:11:56.820
+in this scenario, same example, right. OK. If I go back to that architecture view,
+
+274
+00:11:57.530 --> 00:12:00.260
+so I would like to ask OK, to just OK,
+
+275
+00:12:00.390 --> 00:12:02.119
+modify this architecture, OK,
+
+276
+00:12:02.130 --> 00:12:05.229
+microservices or something modernized architecture
+
+277
+00:12:05.919 --> 00:12:05.929
+uh
+
+278
+00:12:06.059 --> 00:12:08.789
+based on the knowledge that is available, right?
+
+279
+00:12:08.799 --> 00:12:11.219
+Will it be able to do that and give it to me that view
+
+280
+00:12:11.619 --> 00:12:13.380
+in case in case if client wants to
+
+281
+00:12:14.150 --> 00:12:15.729
+moderate moderator?
+
+282
+00:12:16.750 --> 00:12:17.369
+Yeah, they can,
+
+283
+00:12:17.549 --> 00:12:18.929
+they they can modernize
+
+284
+00:12:19.359 --> 00:12:21.450
+if we have some of these knowledge and insights.
+
+285
+00:12:21.590 --> 00:12:24.309
+Now, I want to also call it the patterns that we have,
+
+286
+00:12:24.580 --> 00:12:26.820
+we have few set of patterns that we have today.
+
+287
+00:12:27.260 --> 00:12:30.539
+Uh There is still work in progress to increase the coverage of patterns,
+
+288
+00:12:30.549 --> 00:12:31.940
+architecture patterns support
+
+289
+00:12:32.460 --> 00:12:36.890
+plus the coverage support for custom client provided architecture patterns,
+
+290
+00:12:36.969 --> 00:12:38.940
+those are few still work in progress.
+
+291
+00:12:38.950 --> 00:12:41.929
+But today we have few sets of architecture patterns supported today.
+
+292
+00:12:43.260 --> 00:12:45.320
+So this will get extended as I expect you.
+
+293
+00:12:45.849 --> 00:12:52.109
+So is this um what showcases more for uh the custom code that you write, right?
+
+294
+00:12:52.119 --> 00:12:53.440
+Custom applications.
+
+295
+00:12:53.929 --> 00:12:57.419
+Uh Do you have something similar for the platforms like SAP and all?
+
+296
+00:12:57.849 --> 00:13:01.950
+Yeah. So that is a session after this, they will cover the SAP flow for sure.
+
+297
+00:13:03.669 --> 00:13:07.070
+Just one quick question. So when we say brown field, uh it is
+
+298
+00:13:07.320 --> 00:13:09.669
+I have 20 application upstream downstream.
+
+299
+00:13:09.880 --> 00:13:10.469
+So
+
+300
+00:13:10.580 --> 00:13:11.549
+I will be doing
+
+301
+00:13:11.780 --> 00:13:13.950
+all application reverse engineering for my knowledge
+
+302
+00:13:14.179 --> 00:13:14.450
+space
+
+303
+00:13:14.630 --> 00:13:15.299
+or
+
+304
+00:13:15.400 --> 00:13:16.900
+uh my existing
+
+305
+00:13:17.210 --> 00:13:20.599
+uh you know uh design documents, my existing architecture,
+
+306
+00:13:20.609 --> 00:13:24.270
+my whatever available sets of documents for these 20 applications,
+
+307
+00:13:24.409 --> 00:13:28.809
+I will then give it to my knowledge base and that that will help you to, you know,
+
+308
+00:13:28.820 --> 00:13:30.049
+uh set up the base kind of
+
+309
+00:13:30.799 --> 00:13:32.539
+you. You can, you can do that
+
+310
+00:13:32.929 --> 00:13:35.760
+or generally what we have noticed is code
+
+311
+00:13:35.770 --> 00:13:38.340
+is the best knowledge than any other knowledge because
+
+312
+00:13:38.640 --> 00:13:40.590
+and as long as they maintain those archi
+
+313
+00:13:40.750 --> 00:13:43.780
+those artifacts to the to the date, then no worries.
+
+314
+00:13:44.200 --> 00:13:47.979
+But we all know that code can't line. So that's why we lay on code.
+
+315
+00:13:48.099 --> 00:13:48.900
+But yes,
+
+316
+00:13:49.190 --> 00:13:51.080
+those artifacts if we have great.
+
+317
+00:13:51.090 --> 00:13:54.099
+But what the bare minimum need is the access to the code.
+
+318
+00:13:54.520 --> 00:13:58.219
+So if you dump load the dot code from there, it can generate all this.
+
+319
+00:13:59.239 --> 00:14:01.929
+So the recommendation is all all application landscape.
+
+320
+00:14:01.940 --> 00:14:03.549
+Let's do a reverse engineering,
+
+321
+00:14:03.599 --> 00:14:06.140
+set up the base and then work on top of that
+
+322
+00:14:06.200 --> 00:14:08.299
+because tomorrow if you want to do an impact analysis,
+
+323
+00:14:08.309 --> 00:14:08.640
+right?
+
+324
+00:14:08.650 --> 00:14:09.539
+You may have
+
+325
+00:14:09.830 --> 00:14:10.989
+a ream downstream connection,
+
+326
+00:14:11.280 --> 00:14:13.010
+you want to make a change to another application.
+
+327
+00:14:13.020 --> 00:14:15.030
+If financially have an impact on another application,
+
+328
+00:14:15.409 --> 00:14:17.940
+you won't be able to do if you don't have in just those storage.
+
+329
+00:14:18.340 --> 00:14:18.859
+Exactly.
+
+330
+00:14:18.869 --> 00:14:21.969
+My second part of the question was then the test case, what we have generated,
+
+331
+00:14:22.080 --> 00:14:24.039
+you know, it has to uh it is a
+
+332
+00:14:24.289 --> 00:14:24.830
+test case, right?
+
+333
+00:14:24.840 --> 00:14:27.440
+It will always have a three or four component depend on your impact.
+
+334
+00:14:27.450 --> 00:14:30.840
+So how do we, you know, cater that and also on the test data part?
+
+335
+00:14:31.049 --> 00:14:34.030
+So my uh I mean, there will be a lot of uh hesitate,
+
+336
+00:14:34.260 --> 00:14:34.489
+right?
+
+337
+00:14:34.500 --> 00:14:38.119
+I mean, directly opening up the code to us uh or at least for the pilot,
+
+338
+00:14:38.130 --> 00:14:39.869
+I know whatever it is rather than
+
+339
+00:14:40.000 --> 00:14:42.520
+giving uh uh a kind of uh documents to us.
+
+340
+00:14:42.530 --> 00:14:44.989
+Basically the uh available documents around it. Yeah.
+
+341
+00:14:45.210 --> 00:14:45.599
+So
+
+342
+00:14:45.849 --> 00:14:46.729
+yeah, you see that's why
+
+343
+00:14:47.179 --> 00:14:47.440
+that's why,
+
+344
+00:14:48.369 --> 00:14:51.820
+yeah, that's why the the the the general statement, the thing is that the the
+
+345
+00:14:52.109 --> 00:14:52.869
+knowledge base,
+
+346
+00:14:53.400 --> 00:14:54.299
+it it sits where that
+
+347
+00:14:54.690 --> 00:14:56.520
+is installed. OK. So we had,
+
+348
+00:14:56.719 --> 00:14:57.789
+we had few clients
+
+349
+00:14:58.280 --> 00:15:01.349
+who had given quote to us and when we say given to us,
+
+350
+00:15:01.679 --> 00:15:04.179
+they are given to the project team to do it.
+
+351
+00:15:04.750 --> 00:15:06.820
+Remember even in the SAS instance
+
+352
+00:15:07.200 --> 00:15:07.820
+of general
+
+353
+00:15:08.039 --> 00:15:08.099
+that
+
+354
+00:15:08.869 --> 00:15:11.440
+the knowledge base is dedicated for each client,
+
+355
+00:15:11.520 --> 00:15:14.229
+the knowledge base is not shared with any client
+
+356
+00:15:14.460 --> 00:15:17.469
+number one though the knowledge base resides in the essential network.
+
+357
+00:15:18.030 --> 00:15:21.049
+Another option is I'm sure you would have seen the deployment options, right
+
+358
+00:15:21.260 --> 00:15:21.549
+gene
+
+359
+00:15:21.710 --> 00:15:24.039
+that can be installed in a client managed cloud also,
+
+360
+00:15:24.340 --> 00:15:27.369
+which means the knowledge base will sit in the client managed block,
+
+361
+00:15:27.429 --> 00:15:28.539
+it doesn't go anywhere else.
+
+362
+00:15:28.969 --> 00:15:29.669
+So
+
+363
+00:15:29.969 --> 00:15:31.280
+whether you give
+
+364
+00:15:31.429 --> 00:15:35.169
+with Cora documentation, the client always resides where the gene
+
+365
+00:15:35.440 --> 00:15:36.270
+is deployed.
+
+366
+00:15:37.280 --> 00:15:39.590
+So that way it should not be any big change
+
+367
+00:15:39.719 --> 00:15:41.070
+to the client because
+
+368
+00:15:41.409 --> 00:15:43.159
+the knowledge base is sitting within gen
+
+369
+00:15:43.450 --> 00:15:44.669
+where it is hosted.
+
+370
+00:15:45.849 --> 00:15:47.739
+And our recommendation is to go with code
+
+371
+00:15:47.750 --> 00:15:49.739
+because that is what is the latest and greatest
+
+372
+00:15:50.229 --> 00:15:52.390
+as long as you are 100% artist
+
+373
+00:15:52.820 --> 00:15:56.760
+uh to a great extent, you have higher confidence that the the documents are updated
+
+374
+00:15:57.099 --> 00:15:58.510
+because as
+
+375
+00:15:58.640 --> 00:15:59.849
+you say, right J
+
+376
+00:16:00.010 --> 00:16:02.919
+A or any A for the matter purely depends on the data.
+
+377
+00:16:03.299 --> 00:16:05.080
+So if the knowledge is not up to date
+
+378
+00:16:05.390 --> 00:16:08.260
+and you're going to expect the impact on all this is coming from it, you should,
+
+379
+00:16:08.270 --> 00:16:11.960
+you should be ready to get a very lower accuracy and things like that.
+
+380
+00:16:12.380 --> 00:16:14.280
+So that's why we wanna make sure that uh
+
+381
+00:16:14.419 --> 00:16:15.640
+we start with the right note.
+
+382
+00:16:17.419 --> 00:16:18.260
+OK. Now
+
+383
+00:16:18.669 --> 00:16:19.419
+Rajesh
+
+384
+00:16:19.619 --> 00:16:20.580
+uh one question,
+
+385
+00:16:21.140 --> 00:16:21.479
+yeah.
+
+386
+00:16:21.909 --> 00:16:23.710
+So does it support a multi
+
+387
+00:16:23.820 --> 00:16:24.679
+programming things?
+
+388
+00:16:24.690 --> 00:16:28.570
+I mean, suppose the application has uh some parts written in Java,
+
+389
+00:16:28.580 --> 00:16:30.890
+some part is in C++ or some in the node
+
+390
+00:16:31.000 --> 00:16:31.140
+J
+
+391
+00:16:31.989 --> 00:16:33.690
+and want to do
+
+392
+00:16:33.820 --> 00:16:35.059
+the reverse engineering.
+
+393
+00:16:35.469 --> 00:16:36.049
+Hm
+
+394
+00:16:36.669 --> 00:16:37.479
+people will support.
+
+395
+00:16:37.969 --> 00:16:39.299
+So we do support multi
+
+396
+00:16:39.510 --> 00:16:40.109
+text stack
+
+397
+00:16:40.659 --> 00:16:41.200
+and
+
+398
+00:16:41.880 --> 00:16:45.400
+the, the, the language that we support today, we support Python VB
+
+399
+00:16:45.770 --> 00:16:48.859
+uh C#, we support Java, we support
+
+400
+00:16:49.090 --> 00:16:51.380
+uh uh PL SQL, we support uh
+
+401
+00:16:51.799 --> 00:16:54.780
+uh C C++ and what, what else we have
+
+402
+00:16:55.820 --> 00:16:56.650
+Angler? So we got
+
+403
+00:16:56.780 --> 00:16:56.880
+two
+
+404
+00:16:56.989 --> 00:16:57.010
+of
+
+405
+00:16:58.669 --> 00:17:03.500
+OK. And uh the second question is uh how it decides the target architecture?
+
+406
+00:17:03.510 --> 00:17:04.430
+Because the,
+
+407
+00:17:04.709 --> 00:17:07.300
+because every client has their own architectures and all.
+
+408
+00:17:07.430 --> 00:17:08.949
+Yeah. Yeah. So I'm I'm coming to that.
+
+409
+00:17:08.959 --> 00:17:12.439
+So this use case of architecture, if you can just pack that question, I can show you
+
+410
+00:17:13.020 --> 00:17:15.858
+today when you modernize into the new architecture,
+
+411
+00:17:16.209 --> 00:17:18.770
+we generally support three types of architecture.
+
+412
+00:17:19.069 --> 00:17:22.979
+One is a functional architecture based on the user stories that you created.
+
+413
+00:17:23.608 --> 00:17:27.829
+It allows you to edit this functional architecture by these layers.
+
+414
+00:17:28.260 --> 00:17:30.930
+Now these are the layers that the system is uh
+
+415
+00:17:31.150 --> 00:17:35.500
+supports today. Now remember you can also edit
+
+416
+00:17:35.890 --> 00:17:40.540
+and you can change these layers, you can make changes to any of us completely.
+
+417
+00:17:40.640 --> 00:17:42.449
+You have full as a functional,
+
+418
+00:17:42.719 --> 00:17:46.050
+you have that uh full uh you know uh full power into that.
+
+419
+00:17:46.599 --> 00:17:48.219
+Again, remember the human and the lobe.
+
+420
+00:17:48.500 --> 00:17:50.300
+Once you confirm this,
+
+421
+00:17:50.469 --> 00:17:53.020
+then what I can do is I can generate an application accurate
+
+422
+00:17:53.160 --> 00:17:53.760
+with that.
+
+423
+00:17:54.260 --> 00:17:54.900
+Now,
+
+424
+00:17:55.050 --> 00:17:58.930
+how do I do that is when I do here, it asks a series of questions
+
+425
+00:17:59.589 --> 00:18:01.459
+here is where we decide whether you want to
+
+426
+00:18:01.469 --> 00:18:04.729
+have a microservice based architecture or even driven architecture
+
+427
+00:18:04.989 --> 00:18:09.930
+hosting model. We want to have it as a pass on prem hybrid or particular cloud.
+
+428
+00:18:10.479 --> 00:18:14.150
+Then what type of cloud you want to select? So you give all this option
+
+429
+00:18:14.489 --> 00:18:16.170
+and then finally say generate.
+
+430
+00:18:16.760 --> 00:18:20.300
+Now with this information, it generates application architecture
+
+431
+00:18:20.770 --> 00:18:22.290
+like function architecture,
+
+432
+00:18:22.550 --> 00:18:24.880
+I can also edit application architecture
+
+433
+00:18:25.349 --> 00:18:27.839
+and you can again make change to this interaction sub derived.
+
+434
+00:18:28.719 --> 00:18:30.260
+Now remember
+
+435
+00:18:30.469 --> 00:18:31.739
+after this is done,
+
+436
+00:18:31.869 --> 00:18:33.660
+you we allow you to choose the genus,
+
+437
+00:18:33.800 --> 00:18:36.849
+allows you to choose a text stack by each of the layers.
+
+438
+00:18:37.030 --> 00:18:40.780
+So you can decide your target, the layer should be in angular or react
+
+439
+00:18:41.020 --> 00:18:43.310
+your integration layer can be uh do
+
+440
+00:18:43.599 --> 00:18:45.160
+Python Java any of this,
+
+441
+00:18:45.410 --> 00:18:48.140
+you can choose all this and even data layer, you can choose it,
+
+442
+00:18:48.560 --> 00:18:50.500
+then you can go back
+
+443
+00:18:51.010 --> 00:18:53.500
+and use this information to generate your
+
+444
+00:18:54.239 --> 00:18:55.380
+technical architecture.
+
+445
+00:18:55.959 --> 00:18:58.140
+Now when I say general technical architecture,
+
+446
+00:18:59.000 --> 00:19:02.010
+it creates that infrastructure as a code,
+
+447
+00:19:02.189 --> 00:19:04.510
+the whole architecture gets created as a code.
+
+448
+00:19:04.949 --> 00:19:08.959
+And when I click here, see I see this this one I chose Azure. So it becomes an
+
+449
+00:19:09.219 --> 00:19:09.260
+Azure
+
+450
+00:19:09.479 --> 00:19:10.229
+cloud native.
+
+451
+00:19:10.510 --> 00:19:12.359
+Each of these are objects.
+
+452
+00:19:12.859 --> 00:19:16.739
+So from here what I do, I generate the terra forms
+
+453
+00:19:17.150 --> 00:19:18.650
+for infrastructure as a code.
+
+454
+00:19:18.790 --> 00:19:21.969
+So we completely convert the architecture as a code with this.
+
+455
+00:19:22.209 --> 00:19:23.180
+How do I do that
+
+456
+00:19:23.339 --> 00:19:24.739
+once I'm fine with this,
+
+457
+00:19:25.040 --> 00:19:26.670
+I click here today provision.
+
+458
+00:19:27.160 --> 00:19:28.829
+So we use some of our
+
+459
+00:19:29.209 --> 00:19:30.680
+automate services and gen
+
+460
+00:19:31.150 --> 00:19:32.099
+combination
+
+461
+00:19:32.310 --> 00:19:33.939
+to create infrastructure support,
+
+462
+00:19:33.949 --> 00:19:36.410
+configure that environment in this case of cloud
+
+463
+00:19:36.569 --> 00:19:36.729
+metal
+
+464
+00:19:37.180 --> 00:19:39.420
+and we create a dev environment
+
+465
+00:19:39.430 --> 00:19:42.339
+with those required infrastructure components ready.
+
+466
+00:19:43.310 --> 00:19:47.319
+This is how we start with architecture creation in the modernized way.
+
+467
+00:19:47.780 --> 00:19:50.280
+Then we proceed to design document
+
+468
+00:19:50.750 --> 00:19:52.099
+user interface. So the
+
+469
+00:19:52.280 --> 00:19:53.319
+code code
+
+470
+00:19:53.540 --> 00:19:55.030
+across this architecture layer,
+
+471
+00:19:55.040 --> 00:19:57.180
+that's why the code generation is across this architecture lay.
+
+472
+00:19:57.790 --> 00:20:00.150
+Then we generate test case and description and tested
+
+473
+00:20:00.780 --> 00:20:02.780
+each one of these you can go and walk through. So,
+
+474
+00:20:03.150 --> 00:20:06.989
+so today that is the choice we leave it to the users to decide
+
+475
+00:20:07.189 --> 00:20:09.640
+depending on the type of application they want to create.
+
+476
+00:20:10.349 --> 00:20:13.719
+But that's a good input. We can look at bring how we can bring that.
+
+477
+00:20:14.780 --> 00:20:19.430
+No, it's just one question over here. So that's a great example. You sh uh
+
+478
+00:20:20.010 --> 00:20:23.800
+you have shown like how it gets uh generated for
+
+479
+00:20:23.949 --> 00:20:24.150
+Azure.
+
+480
+00:20:24.739 --> 00:20:30.130
+You said in the beginning, I think we you have a uh use case for oracle to post
+
+481
+00:20:30.349 --> 00:20:31.479
+SQL as well, right?
+
+482
+00:20:32.170 --> 00:20:33.760
+So for that,
+
+483
+00:20:33.770 --> 00:20:36.790
+like there will be certain features definitely like
+
+484
+00:20:36.800 --> 00:20:40.160
+which are non supported from source to target,
+
+485
+00:20:40.510 --> 00:20:41.050
+right?
+
+486
+00:20:41.189 --> 00:20:47.530
+So do we have uh uh a mechanism to identify which are non supported features,
+
+487
+00:20:47.540 --> 00:20:49.530
+for example oracle, non supported features in post
+
+488
+00:20:49.680 --> 00:20:49.739
+gri
+
+489
+00:20:49.890 --> 00:20:51.170
+sequel and then
+
+490
+00:20:51.410 --> 00:20:54.060
+how to convert those?
+
+491
+00:20:54.069 --> 00:20:58.780
+I mean custom code for those non supported features to be put it into post gri
+
+492
+00:20:58.969 --> 00:20:59.670
+sequel?
+
+493
+00:20:59.880 --> 00:21:00.290
+We have
+
+494
+00:21:00.699 --> 00:21:01.630
+functions and stores.
+
+495
+00:21:01.959 --> 00:21:05.310
+I think there is uh I'm not an expert for some of these, but I do know
+
+496
+00:21:05.609 --> 00:21:06.550
+that uh
+
+497
+00:21:06.790 --> 00:21:08.390
+there are those who are right
+
+498
+00:21:08.609 --> 00:21:11.439
+from one DB to another DB. So these are not supported.
+
+499
+00:21:11.670 --> 00:21:16.750
+So what we have done especially for article to um you know, progresses, we are mapped
+
+500
+00:21:16.930 --> 00:21:18.859
+some of them to functions or pro
+
+501
+00:21:19.020 --> 00:21:20.030
+just vice versa.
+
+502
+00:21:20.680 --> 00:21:24.469
+And we have shown that after that convention, this is how it is being done.
+
+503
+00:21:25.069 --> 00:21:27.689
+Now, after the migration is complete,
+
+504
+00:21:28.219 --> 00:21:31.849
+you will need to review and see whether those dishes are fine or not
+
+505
+00:21:32.239 --> 00:21:34.199
+or if that needs to be further remediated.
+
+506
+00:21:34.410 --> 00:21:35.109
+But you
+
+507
+00:21:35.319 --> 00:21:38.900
+what this exact challenge we encountered when we did the article to pay a
+
+508
+00:21:39.020 --> 00:21:40.140
+second for our pilot.
+
+509
+00:21:40.469 --> 00:21:41.849
+And when we did this,
+
+510
+00:21:41.859 --> 00:21:45.030
+we did this kind of mapping through the props and
+
+511
+00:21:45.040 --> 00:21:47.479
+generate those components to move to the right place.
+
+512
+00:21:47.489 --> 00:21:51.729
+A simple example is even Cobalt for that matter, right? We even did assembler
+
+513
+00:21:52.010 --> 00:21:55.540
+assembler to Java. Now assembler will have a lot of low
+
+514
+00:21:55.660 --> 00:21:58.550
+level memory movements computations
+
+515
+00:21:58.750 --> 00:22:01.160
+which Java doesn't directly support
+
+516
+00:22:01.599 --> 00:22:04.479
+as a one on one because that is completely high level language.
+
+517
+00:22:04.489 --> 00:22:06.890
+It is a low level language. So we had to do that
+
+518
+00:22:07.050 --> 00:22:11.729
+mapping as part of our prompt refinement and adding additional services to it.
+
+519
+00:22:12.270 --> 00:22:13.280
+Now one few call
+
+520
+00:22:13.410 --> 00:22:14.510
+out in this area is
+
+521
+00:22:15.750 --> 00:22:18.170
+not everything can be achieved through prompts. OK.
+
+522
+00:22:18.180 --> 00:22:21.750
+There are prompts you can generate through your test case, the scripts,
+
+523
+00:22:21.760 --> 00:22:22.869
+user stories.
+
+524
+00:22:23.079 --> 00:22:27.060
+Some of the simple code creations you can do through prompts.
+
+525
+00:22:27.339 --> 00:22:28.520
+This prompt will be
+
+526
+00:22:29.229 --> 00:22:30.569
+predominantly helpful,
+
+527
+00:22:30.810 --> 00:22:31.589
+but then
+
+528
+00:22:32.050 --> 00:22:35.739
+to get to a higher level of efficiency. And these kind of complex use cases,
+
+529
+00:22:35.910 --> 00:22:39.349
+you will need those additional services created,
+
+530
+00:22:39.579 --> 00:22:41.199
+which will do those mapping to move
+
+531
+00:22:41.209 --> 00:22:44.640
+to unsupported functionality to a supported functionality
+
+532
+00:22:44.920 --> 00:22:45.640
+plus
+
+533
+00:22:45.930 --> 00:22:48.790
+the vector DB more and above that to contextualize it.
+
+534
+00:22:49.040 --> 00:22:50.449
+So combination of
+
+535
+00:22:51.010 --> 00:22:51.890
+the prompts
+
+536
+00:22:52.160 --> 00:22:56.130
+the services, the vector DB brings you the higher power.
+
+537
+00:22:57.000 --> 00:22:59.400
+Now certain places you may not need the service
+
+538
+00:22:59.410 --> 00:23:01.469
+prompt and the vector DB is more than enough.
+
+539
+00:23:03.800 --> 00:23:04.359
+Got it.
+
+540
+00:23:04.369 --> 00:23:07.589
+So if I'm interested to particularly know about
+
+541
+00:23:07.599 --> 00:23:09.939
+this directory to post the SQL pathway,
+
+542
+00:23:09.949 --> 00:23:10.550
+like uh
+
+543
+00:23:10.739 --> 00:23:12.219
+who do I reach out to?
+
+544
+00:23:13.229 --> 00:23:13.849
+Uh so
+
+545
+00:23:14.349 --> 00:23:18.319
+pretty as you said in the L A session, there'll be a list of PO CS will be shared.
+
+546
+00:23:18.640 --> 00:23:19.109
+So for J
+
+547
+00:23:19.739 --> 00:23:19.859
+I
+
+548
+00:23:19.959 --> 00:23:20.560
+ad who's
+
+549
+00:23:20.719 --> 00:23:20.790
+over
+
+550
+00:23:20.890 --> 00:23:23.510
+shared, you can I mean I lead the oral engineering.
+
+551
+00:23:23.520 --> 00:23:26.430
+So you know me but they will share the Poct.
+
+552
+00:23:26.790 --> 00:23:28.300
+OK. Thank you. Thank you so much.
+
+553
+00:23:29.199 --> 00:23:31.839
+So this requirement tab that we have, right? OK.
+
+554
+00:23:32.719 --> 00:23:34.489
+I mean I'm talking, it's like
+
+555
+00:23:35.280 --> 00:23:40.209
+fresh all together uh a new implementation OK? Or be it an RFP document, for example.
+
+556
+00:23:40.219 --> 00:23:43.780
+OK. Can I, can I input my RFP document here?
+
+557
+00:23:44.199 --> 00:23:45.849
+Yeah, you can do your specs,
+
+558
+00:23:47.280 --> 00:23:47.810
+you can.
+
+559
+00:23:48.040 --> 00:23:48.750
+But so question
+
+560
+00:23:48.880 --> 00:23:50.979
+here is uh you can upload
+
+561
+00:23:51.489 --> 00:23:52.020
+and
+
+562
+00:23:52.150 --> 00:23:54.680
+you want to generate user studies from it or you want
+
+563
+00:23:54.689 --> 00:23:56.920
+to generate some of the other things from using that?
+
+564
+00:23:57.339 --> 00:23:59.790
+Yeah, I want to get a quick summary summarize for you. OK?
+
+565
+00:23:59.800 --> 00:24:02.739
+For example, if there is a 3040 pages document, OK.
+
+566
+00:24:02.770 --> 00:24:06.109
+Uh for us to act quickly to look at what is in scope and
+
+567
+00:24:06.989 --> 00:24:09.310
+get summarized view. OK.
+
+568
+00:24:09.780 --> 00:24:11.319
+What, what has been in scope
+
+569
+00:24:11.510 --> 00:24:13.849
+or? All right. So can that be achieved here?
+
+570
+00:24:15.010 --> 00:24:19.630
+Uh No. So the question is if we have a specification documents
+
+571
+00:24:20.069 --> 00:24:21.510
+which are received and you want to
+
+572
+00:24:21.829 --> 00:24:24.209
+generate user stories, you want to generate, I'm
+
+573
+00:24:24.449 --> 00:24:24.500
+talking
+
+574
+00:24:24.619 --> 00:24:24.969
+about, I'm talking
+
+575
+00:24:25.109 --> 00:24:26.589
+about typical RFP.
+
+576
+00:24:27.729 --> 00:24:31.800
+OK? Let's take any RFP related to modernization, for example, right? A clean
+
+577
+00:24:31.900 --> 00:24:32.219
+scope,
+
+578
+00:24:32.969 --> 00:24:36.270
+right? OK. I input that RFP document here.
+
+579
+00:24:36.839 --> 00:24:38.359
+Will that help me to give
+
+580
+00:24:38.530 --> 00:24:38.540
+uh
+
+581
+00:24:38.760 --> 00:24:39.520
+uh a
+
+582
+00:24:39.750 --> 00:24:42.810
+functional level, technical level break up? Bit down,
+
+583
+00:24:43.079 --> 00:24:43.290
+Rajesh,
+
+584
+00:24:43.520 --> 00:24:44.579
+it just summarizes a
+
+585
+00:24:44.689 --> 00:24:48.020
+use case from the RFP large document if you
+
+586
+00:24:48.030 --> 00:24:50.630
+can summarize to some template and all like that.
+
+587
+00:24:51.380 --> 00:24:56.000
+OK. So summarization of RFP, we'll have to see, I don't think we support today,
+
+588
+00:24:56.410 --> 00:24:58.949
+but if you have received some of the specification
+
+589
+00:24:58.959 --> 00:25:01.229
+documents as part of RFP and you want to
+
+590
+00:25:01.540 --> 00:25:04.459
+generate some of this and see what it is, then you can do that,
+
+591
+00:25:05.170 --> 00:25:08.439
+you need to extract that uh from the RFP and that can be
+
+592
+00:25:08.949 --> 00:25:10.040
+suggested correct.
+
+593
+00:25:10.849 --> 00:25:15.010
+But RPS is loading it today in this uh in this version, we don't have it.
+
+594
+00:25:15.369 --> 00:25:16.780
+But we can look at
+
+595
+00:25:17.150 --> 00:25:20.109
+if the portion of that is on the specification on that, we can
+
+596
+00:25:20.520 --> 00:25:21.560
+load that and check
+
+597
+00:25:21.750 --> 00:25:22.010
+it.
+
+598
+00:25:22.770 --> 00:25:23.079
+Yeah,
+
+599
+00:25:23.469 --> 00:25:25.750
+I just have one question. Uh
+
+600
+00:25:26.239 --> 00:25:30.359
+Sondra. So referring to your comment on the uh
+
+601
+00:25:30.770 --> 00:25:34.349
+uh knowledge base remaining uh on the client in the,
+
+602
+00:25:34.359 --> 00:25:36.410
+on the client environment of the ecosystem.
+
+603
+00:25:36.920 --> 00:25:37.510
+It is
+
+604
+00:25:37.810 --> 00:25:40.310
+uh it is still uh getting exposed to the
+
+605
+00:25:40.569 --> 00:25:43.430
+uh underlying uh LLM models.
+
+606
+00:25:44.530 --> 00:25:44.819
+No,
+
+607
+00:25:44.920 --> 00:25:45.910
+not, not, not as
+
+608
+00:25:46.050 --> 00:25:46.060
+a,
+
+609
+00:25:46.310 --> 00:25:46.819
+not as us.
+
+610
+00:25:47.369 --> 00:25:48.300
+So I'll tell you.
+
+611
+00:25:48.410 --> 00:25:49.670
+So the knowledge base,
+
+612
+00:25:49.989 --> 00:25:52.189
+I mean, that's got a lot of information in that. OK.
+
+613
+00:25:52.520 --> 00:25:54.599
+Now what we go to LL MS
+
+614
+00:25:54.729 --> 00:25:55.439
+only proms
+
+615
+00:25:56.489 --> 00:25:58.369
+in the prompts, there will be embeddings.
+
+616
+00:25:58.670 --> 00:26:02.969
+Now what needs to be embedded? You can decide as part of your prompt templates.
+
+617
+00:26:03.859 --> 00:26:05.959
+Now that embedding goes to the LLM.
+
+618
+00:26:06.319 --> 00:26:06.709
+Now
+
+619
+00:26:06.900 --> 00:26:06.930
+Azure
+
+620
+00:26:07.160 --> 00:26:09.239
+Open clearly said they're not maintaining
+
+621
+00:26:09.380 --> 00:26:11.530
+or sustaining any of the problems that we send
+
+622
+00:26:11.630 --> 00:26:14.569
+after that is processed, it becomes stateless.
+
+623
+00:26:14.670 --> 00:26:17.260
+So the embedding goes to the LLM,
+
+624
+00:26:17.599 --> 00:26:19.130
+then the response comes back
+
+625
+00:26:19.390 --> 00:26:21.500
+then whatever needed from that again is a
+
+626
+00:26:21.699 --> 00:26:22.969
+knowledge based. So now this
+
+627
+00:26:23.170 --> 00:26:25.400
+will be vast or living melody will be huge
+
+628
+00:26:25.819 --> 00:26:28.729
+that all that is not going to go to your uh
+
+629
+00:26:28.890 --> 00:26:28.920
+Azure
+
+630
+00:26:29.130 --> 00:26:29.180
+Open
+
+631
+00:26:29.369 --> 00:26:30.800
+or any of the LLM for that matter,
+
+632
+00:26:31.140 --> 00:26:33.810
+it is only the relevant embedding that gets put into the
+
+633
+00:26:34.010 --> 00:26:35.250
+plan goes into the
+
+634
+00:26:35.449 --> 00:26:35.479
+Azure
+
+635
+00:26:35.650 --> 00:26:36.390
+Open A relevant
+
+636
+00:26:36.680 --> 00:26:37.910
+and the response gets back
+
+637
+00:26:38.410 --> 00:26:40.199
+yesterday, Jakir gave that link of the
+
+638
+00:26:40.359 --> 00:26:42.270
+Azure Open A article, right where they're
+
+639
+00:26:42.560 --> 00:26:43.290
+saying
+
+640
+00:26:43.430 --> 00:26:48.479
+that data will not be stored, data will not be shared all those things. Yeah.
+
+641
+00:26:48.599 --> 00:26:51.349
+Yeah, I understand that So my, my question is,
+
+642
+00:26:51.369 --> 00:26:53.319
+although even though those embeddings,
+
+643
+00:26:53.780 --> 00:26:54.780
+uh uh do
+
+644
+00:26:55.300 --> 00:26:56.719
+we need to take any
+
+645
+00:26:56.979 --> 00:26:58.359
+uh permission
+
+646
+00:26:58.459 --> 00:27:00.709
+or any sign off internally,
+
+647
+00:27:01.109 --> 00:27:03.250
+uh not client site, but internally
+
+648
+00:27:03.609 --> 00:27:05.920
+because that could also be having some
+
+649
+00:27:06.300 --> 00:27:07.569
+uh information, right?
+
+650
+00:27:07.579 --> 00:27:10.890
+Which shouldn't really be, even though he's not having a state.
+
+651
+00:27:12.339 --> 00:27:12.869
+No, no. So there
+
+652
+00:27:12.969 --> 00:27:12.989
+is,
+
+653
+00:27:15.260 --> 00:27:18.810
+yeah, see from a legal perspective, as well as from security perspective,
+
+654
+00:27:19.099 --> 00:27:21.609
+we have the standard sow verbage
+
+655
+00:27:21.760 --> 00:27:22.989
+vetted with our legal team.
+
+656
+00:27:23.489 --> 00:27:25.699
+What we normally do is whenever you want to do a gens
+
+657
+00:27:26.219 --> 00:27:27.160
+or any general a
+
+658
+00:27:27.969 --> 00:27:29.979
+inections into your projects or a contract,
+
+659
+00:27:30.180 --> 00:27:31.569
+you need to have that
+
+660
+00:27:32.130 --> 00:27:35.290
+uh sow uh that are legal people
+
+661
+00:27:35.729 --> 00:27:40.750
+from uh the J A who would be working with your contract legal to
+
+662
+00:27:40.939 --> 00:27:43.589
+make sure that those verbage is clearly called out
+
+663
+00:27:43.989 --> 00:27:44.849
+there. The words
+
+664
+00:27:45.000 --> 00:27:47.569
+are taken care to ensure that these things happen,
+
+665
+00:27:47.910 --> 00:27:50.040
+but OK, very clearly,
+
+666
+00:27:50.390 --> 00:27:52.339
+Azure opening is something we are certifying.
+
+667
+00:27:52.849 --> 00:27:55.790
+Now, if you are going to go with completely a different LLM model,
+
+668
+00:27:55.800 --> 00:27:57.560
+your client has a different LLM model,
+
+669
+00:27:58.020 --> 00:28:00.869
+then our recommendation is to work with LL MC OE
+
+670
+00:28:01.229 --> 00:28:04.910
+to ensure that they are also confirming that there is no state maintained
+
+671
+00:28:05.430 --> 00:28:06.170
+like the way a zero
+
+672
+00:28:06.400 --> 00:28:06.469
+point
+
+673
+00:28:06.579 --> 00:28:08.199
+Microsoft was clearly made it
+
+674
+00:28:08.400 --> 00:28:08.750
+in the,
+
+675
+00:28:09.040 --> 00:28:09.920
+in the wording.
+
+676
+00:28:10.270 --> 00:28:11.880
+In fact, when we even deploy Genard,
+
+677
+00:28:12.199 --> 00:28:14.849
+we put those into the security documents
+
+678
+00:28:15.260 --> 00:28:16.530
+when we connect with the clients,
+
+679
+00:28:16.540 --> 00:28:19.650
+security people before we go over the actual implementation.
+
+680
+00:28:20.349 --> 00:28:23.790
+So my recommendation is to take that route so that you're covered that way.
+
+681
+00:28:24.380 --> 00:28:27.530
+OK. And another quick question is you also mentioned that
+
+682
+00:28:27.790 --> 00:28:30.439
+uh in, in terms of the target architecture,
+
+683
+00:28:30.819 --> 00:28:31.560
+uh
+
+684
+00:28:31.930 --> 00:28:36.890
+currently, there is no provisioning of uh asking for that kind of input.
+
+685
+00:28:36.949 --> 00:28:39.209
+But then if let's say we are using the
+
+686
+00:28:39.479 --> 00:28:42.010
+uh ecosystem tools such as
+
+687
+00:28:42.339 --> 00:28:42.599
+uh
+
+688
+00:28:42.729 --> 00:28:42.760
+gi
+
+689
+00:28:43.290 --> 00:28:43.920
+Copilot or Etter
+
+690
+00:28:44.199 --> 00:28:44.729
+have nine
+
+691
+00:28:45.140 --> 00:28:48.400
+uh will that not understand the context from the,
+
+692
+00:28:48.739 --> 00:28:51.890
+the code base itself or the open files
+
+693
+00:28:52.160 --> 00:28:54.270
+uh and then generate or recommend the
+
+694
+00:28:54.280 --> 00:28:57.089
+code accordingly according to the existing architecture?
+
+695
+00:28:57.540 --> 00:29:01.000
+Does is that not leveraged by the Gen Gen wizard as well?
+
+696
+00:29:02.060 --> 00:29:05.959
+No, I didn't get your question. But let me understand what you're saying. So today
+
+697
+00:29:06.459 --> 00:29:09.479
+Jen Wizard can understand the entire context of your application
+
+698
+00:29:09.489 --> 00:29:12.040
+because there's a full knowledge information about your application.
+
+699
+00:29:12.839 --> 00:29:13.300
+What
+
+700
+00:29:13.400 --> 00:29:13.500
+github
+
+701
+00:29:13.880 --> 00:29:14.709
+copilots are the
+
+702
+00:29:15.040 --> 00:29:15.790
+tins of the world
+
+703
+00:29:15.930 --> 00:29:18.349
+has is they have the knowledge of that particular
+
+704
+00:29:18.359 --> 00:29:20.900
+code that the developers opened in their ID.
+
+705
+00:29:21.449 --> 00:29:23.760
+So you have two class files or three objects,
+
+706
+00:29:24.170 --> 00:29:26.060
+whatever is opened, it has that knowledge.
+
+707
+00:29:26.069 --> 00:29:29.020
+So it's going to give you recommendations, keeping that knowledge in mind.
+
+708
+00:29:30.699 --> 00:29:33.530
+Those uh copilots don't have full
+
+709
+00:29:33.540 --> 00:29:36.040
+knowledge about your architecture of the application
+
+710
+00:29:36.329 --> 00:29:38.800
+because you are not investing any such information to those.
+
+711
+00:29:39.430 --> 00:29:40.709
+That's the power that
+
+712
+00:29:40.910 --> 00:29:41.060
+gene
+
+713
+00:29:41.380 --> 00:29:43.540
+has, which has an end to end view. Whereas
+
+714
+00:29:43.719 --> 00:29:48.170
+where they bring the biggest powers for that object that you open,
+
+715
+00:29:48.430 --> 00:29:49.410
+whether the code is
+
+716
+00:29:49.800 --> 00:29:53.829
+uh relevant to the context of the code. Whether any vulnerabilities are there,
+
+717
+00:29:54.099 --> 00:29:56.010
+whether any fixes needs to be identified?
+
+718
+00:29:56.150 --> 00:29:59.170
+They are very powerful in that and even unit as generation
+
+719
+00:29:59.530 --> 00:30:00.839
+other things are very powerful there.
+
+720
+00:30:01.449 --> 00:30:04.050
+So to me, they are at an assemble and component level
+
+721
+00:30:04.670 --> 00:30:06.180
+there. Is there a return application beyond?
+
+722
+00:30:07.930 --> 00:30:10.489
+OK. Got it. Thank you. Thanks for clarification.
+
+723
+00:30:10.930 --> 00:30:15.670
+So uh you know, you mentioned about uh the the files which are open, right?
+
+724
+00:30:15.680 --> 00:30:18.329
+Uh in the copilot, you know, it's able to read it.
+
+725
+00:30:18.489 --> 00:30:22.810
+Now, my question is that the jars which are present? Ok. So we have a scenario
+
+726
+00:30:22.939 --> 00:30:27.189
+where you know the the we have a vendor jars which have been provided, right?
+
+727
+00:30:27.199 --> 00:30:29.989
+Based on that we do the customization on top of it.
+
+728
+00:30:30.180 --> 00:30:34.739
+So will you be able to read the cus uh the vendor jars and uh share the, you know,
+
+729
+00:30:34.750 --> 00:30:36.709
+the suggestions or generate the code?
+
+730
+00:30:37.699 --> 00:30:41.790
+No, uh today, we don't read the jar files information.
+
+731
+00:30:42.359 --> 00:30:45.689
+But what we if they are standard jars,
+
+732
+00:30:45.810 --> 00:30:48.869
+let's say you are referring to some third party libraries
+
+733
+00:30:49.250 --> 00:30:52.439
+which you don't have access to the code, but the libraries you use in your code.
+
+734
+00:30:52.569 --> 00:30:56.920
+If those third party libraries are something that the LLM models are aware of,
+
+735
+00:30:56.930 --> 00:30:59.540
+then the code generation would help you
+
+736
+00:30:59.660 --> 00:31:00.650
+to address that.
+
+737
+00:31:01.040 --> 00:31:02.760
+However, if it is,
+
+738
+00:31:02.920 --> 00:31:05.109
+let's say client has created that library
+
+739
+00:31:05.520 --> 00:31:06.770
+and you are referring that L
+
+740
+00:31:07.000 --> 00:31:07.040
+Klein
+
+741
+00:31:07.449 --> 00:31:08.949
+has their own object library
+
+742
+00:31:09.170 --> 00:31:12.660
+and you are creating applications so you're crying your objects on top of it.
+
+743
+00:31:13.609 --> 00:31:13.819
+J
+
+744
+00:31:14.010 --> 00:31:15.510
+Visa can do is it can read.
+
+745
+00:31:15.520 --> 00:31:17.390
+If you have that library code,
+
+746
+00:31:17.400 --> 00:31:21.000
+you can read it and then give you even more better code recommendations
+
+747
+00:31:21.380 --> 00:31:24.310
+which your LLM wouldn't because LLM wouldn't have been trained
+
+748
+00:31:24.469 --> 00:31:25.869
+with the client library.
+
+749
+00:31:26.369 --> 00:31:28.869
+But jars, we don't read it today.
+
+750
+00:31:28.880 --> 00:31:31.680
+We only need a source code to understand the reference.
+
+751
+00:31:31.750 --> 00:31:34.410
+But if they are standard third party jars,
+
+752
+00:31:34.619 --> 00:31:35.270
+then
+
+753
+00:31:35.459 --> 00:31:39.229
+the LL MS if they are trained, we would get the recommendations accordingly.
+
+754
+00:31:40.229 --> 00:31:42.729
+Recently, we did one use case for song. OK.
+
+755
+00:31:42.739 --> 00:31:45.489
+The song, they have content full as one of the system.
+
+756
+00:31:45.709 --> 00:31:49.949
+So we need to generate code to consume the content, full systems api
+
+757
+00:31:50.250 --> 00:31:50.880
+Now
+
+758
+00:31:51.140 --> 00:31:54.670
+we weren't aware of their content, full product, which is third party product,
+
+759
+00:31:54.810 --> 00:31:56.810
+but then LLM was trained in that.
+
+760
+00:31:56.819 --> 00:32:00.410
+So we were able to use that information to call those a pas
+
+761
+00:32:00.599 --> 00:32:02.579
+in the code and we were able to generate those code.
+
+762
+00:32:03.939 --> 00:32:04.880
+That's one example,
+
+763
+00:32:04.890 --> 00:32:07.079
+I'm calling out where we don't know the source code
+
+764
+00:32:07.089 --> 00:32:09.300
+of the content because that's a third party product.
+
+765
+00:32:09.420 --> 00:32:09.930
+But
+
+766
+00:32:10.150 --> 00:32:11.790
+like how SAP has
+
+767
+00:32:11.900 --> 00:32:16.619
+a work day has that product. A pas were already trained in LL MS.
+
+768
+00:32:16.630 --> 00:32:20.680
+We were able to generate quote, consuming those a pas for that particular contract.
+
+769
+00:32:21.750 --> 00:32:25.930
+Yeah, thanks Rajesh, thanks. So, so in in such case, OK, the accuracy level, right?
+
+770
+00:32:25.939 --> 00:32:29.609
+OK. I mean from the coverage perspective when you scan through the code, right? OK.
+
+771
+00:32:29.800 --> 00:32:33.969
+Will it help us to understand in terms of? OK, how much coverage
+
+772
+00:32:34.770 --> 00:32:39.900
+uh and and the respective gap of the accuracy level? Right? OK. What it is really
+
+773
+00:32:40.010 --> 00:32:42.209
+triggering to? Right? OK. Will it help us to give that
+
+774
+00:32:42.369 --> 00:32:43.719
+a detailed analysis? Also
+
+775
+00:32:44.229 --> 00:32:48.430
+it will give, so if you look at all our uh uh scans, right, look at here,
+
+776
+00:32:48.800 --> 00:32:50.630
+we provide this accuracy
+
+777
+00:32:50.829 --> 00:32:53.750
+and we also provide accuracy by each of the topology
+
+778
+00:32:53.869 --> 00:32:56.079
+for this. This is uh one version minus
+
+779
+00:32:56.260 --> 00:32:58.709
+the current version for each of this code file.
+
+780
+00:32:58.959 --> 00:33:01.069
+What is the level of understanding
+
+781
+00:33:01.540 --> 00:33:03.380
+the living knowledge base has
+
+782
+00:33:03.599 --> 00:33:05.359
+that number would be displayed here for you.
+
+783
+00:33:05.979 --> 00:33:08.959
+And generally, what we have noticed is scripting languages
+
+784
+00:33:09.319 --> 00:33:10.760
+has got a higher accuracy
+
+785
+00:33:11.290 --> 00:33:14.040
+like javascript angular Python,
+
+786
+00:33:14.449 --> 00:33:14.660
+PL
+
+787
+00:33:14.770 --> 00:33:16.119
+SQL those things.
+
+788
+00:33:16.459 --> 00:33:17.369
+But if you look at object
+
+789
+00:33:17.489 --> 00:33:19.280
+oriented programming languages, we do
+
+790
+00:33:19.449 --> 00:33:20.359
+Net Java,
+
+791
+00:33:20.579 --> 00:33:22.319
+the accuracy is a little bit lower
+
+792
+00:33:22.839 --> 00:33:24.000
+and for mainframe,
+
+793
+00:33:24.010 --> 00:33:26.239
+it's even more lower because they don't have
+
+794
+00:33:26.250 --> 00:33:28.630
+much training on the mainframe code from,
+
+795
+00:33:28.650 --> 00:33:29.630
+especially from Mazur
+
+796
+00:33:29.900 --> 00:33:29.939
+open
+
+797
+00:33:30.739 --> 00:33:30.849
+temper.
+
+798
+00:33:31.449 --> 00:33:35.069
+So you will get this accuracy number depending on the text track, it will vary.
+
+799
+00:33:35.829 --> 00:33:38.040
+Uh I just wanted to check uh could gen wizard
+
+800
+00:33:38.180 --> 00:33:39.780
+help with um
+
+801
+00:33:39.939 --> 00:33:42.239
+rewriting uh Java application
+
+802
+00:33:42.650 --> 00:33:45.530
+uh into a Power apps uh application.
+
+803
+00:33:46.319 --> 00:33:49.890
+No, we haven't tried the Power apps yet.
+
+804
+00:33:50.439 --> 00:33:52.660
+Uh We can read the java application reversing
+
+805
+00:33:52.790 --> 00:33:54.579
+it but converting to a Power Apps.
+
+806
+00:33:55.109 --> 00:33:56.619
+Uh we haven't tried it yet.
+
+807
+00:33:58.430 --> 00:34:00.160
+OK? OK. And uh
+
+808
+00:34:00.390 --> 00:34:03.180
+is DB two post post grades uh possible.
+
+809
+00:34:03.189 --> 00:34:07.369
+Um Is that available DB 22, post grade, DB 22, post grade is not available,
+
+810
+00:34:07.380 --> 00:34:11.010
+but it is possible because we did side A with BQL.
+
+811
+00:34:11.020 --> 00:34:11.520
+So
+
+812
+00:34:11.899 --> 00:34:13.570
+DB two can very well be extended.
+
+813
+00:34:14.560 --> 00:34:15.129
+Ok,
+
+814
+00:34:15.389 --> 00:34:16.139
+great, thanks.
+
+815
+00:34:17.260 --> 00:34:18.699
+Uh That is so Gen Vizard
+
+816
+00:34:18.830 --> 00:34:19.969
+is uh with Azure A
+
+817
+00:34:20.899 --> 00:34:23.320
+uh right? As, as guarantee this product.
+
+818
+00:34:23.780 --> 00:34:27.050
+Yeah, currently it is now we are also bringing in Aws bedrock,
+
+819
+00:34:27.668 --> 00:34:34.478
+right? So if customer has a different one, is it uh we will be able to use that?
+
+820
+00:34:34.489 --> 00:34:36.989
+Integrate it and how much effort it takes it is. Uh
+
+821
+00:34:37.750 --> 00:34:40.399
+uh so we can integrate. So
+
+822
+00:34:40.659 --> 00:34:42.820
+see the the two things that changes
+
+823
+00:34:43.250 --> 00:34:45.699
+which is tightly bound with LLM is the prompts.
+
+824
+00:34:46.110 --> 00:34:47.050
+The prompt
+
+825
+00:34:47.208 --> 00:34:51.129
+is completely bound to a a model within an LLM provider.
+
+826
+00:34:51.649 --> 00:34:54.929
+If you change it, you need to refine the prompt, right? For example, if I
+
+827
+00:34:55.219 --> 00:34:57.030
+some of the prompts as this prompts
+
+828
+00:34:57.179 --> 00:34:59.469
+may work, they may not work also
+
+829
+00:34:59.629 --> 00:34:59.860
+or that
+
+830
+00:35:00.260 --> 00:35:03.209
+this is a prompt that I use for generating my design document.
+
+831
+00:35:03.459 --> 00:35:04.449
+Now, this prompt
+
+832
+00:35:04.889 --> 00:35:05.850
+may not work as a s
+
+833
+00:35:06.080 --> 00:35:06.500
+let's say
+
+834
+00:35:06.610 --> 00:35:06.860
+it is Bero
+
+835
+00:35:07.159 --> 00:35:07.689
+or even
+
+836
+00:35:07.949 --> 00:35:08.790
+Lama or Saman
+
+837
+00:35:08.929 --> 00:35:09.050
+Nova.
+
+838
+00:35:09.570 --> 00:35:12.320
+So you will need to refine this prompt. That is one word.
+
+839
+00:35:12.600 --> 00:35:16.199
+Second is I mentioned about that see prompt
+
+840
+00:35:16.489 --> 00:35:19.659
+that is service vector. Now vector is not going to change
+
+841
+00:35:19.850 --> 00:35:20.669
+your vector
+
+842
+00:35:20.840 --> 00:35:23.020
+or your knowledge graph is not going to change that is can
+
+843
+00:35:23.250 --> 00:35:23.260
+A
+
+844
+00:35:23.389 --> 00:35:23.610
+ASIS
+
+845
+00:35:23.909 --> 00:35:25.679
+but in some of the services
+
+846
+00:35:25.969 --> 00:35:29.870
+you will need to refine for that uh be because the prompt is changing,
+
+847
+00:35:30.139 --> 00:35:32.550
+the output would change, the accuracy would change.
+
+848
+00:35:32.649 --> 00:35:35.000
+So some of the services have to be remediated in that case.
+
+849
+00:35:35.129 --> 00:35:37.350
+So that will be the effort that we apply if
+
+850
+00:35:37.360 --> 00:35:39.840
+you have to move to a completely different LLM model.
+
+851
+00:35:40.300 --> 00:35:41.399
+Now, the effort,
+
+852
+00:35:41.860 --> 00:35:47.429
+it purely depends on the model. Uh I I, we don't have a one direct answer to you.
+
+853
+00:35:47.590 --> 00:35:51.429
+The reason why I'm saying there is a simple example is even within Aws bedrock,
+
+854
+00:35:51.459 --> 00:35:55.350
+there are a number of models, certain models, accuracies are very high.
+
+855
+00:35:55.360 --> 00:35:58.229
+So we probably just have to refine the prompter. We are good to go.
+
+856
+00:35:58.600 --> 00:36:00.820
+But there are certain models where the accuracy is not great for
+
+857
+00:36:00.830 --> 00:36:04.439
+the same uh code of CM use case that we are getting in
+
+858
+00:36:04.729 --> 00:36:06.149
+GP D four and as an open hand.
+
+859
+00:36:06.620 --> 00:36:09.050
+So depending on that there will be additional work needed.
+
+860
+00:36:09.060 --> 00:36:10.899
+So we really have to see what that
+
+861
+00:36:11.179 --> 00:36:13.750
+element that you want to integrate, then we can estimate for.
+
+862
+00:36:14.050 --> 00:36:15.560
+But it is technically doable.
+
+863
+00:36:16.139 --> 00:36:19.159
+There is one more point in terms of the
+
+864
+00:36:19.510 --> 00:36:19.580
+uh
+
+865
+00:36:19.969 --> 00:36:20.209
+eight
+
+866
+00:36:20.449 --> 00:36:20.629
+ton
+
+867
+00:36:21.290 --> 00:36:21.760
+is very, very
+
+868
+00:36:22.090 --> 00:36:22.149
+point.
+
+869
+00:36:22.800 --> 00:36:25.639
+So token limit is nothing because if you look at uh
+
+870
+00:36:25.860 --> 00:36:26.520
+bedrock
+
+871
+00:36:26.770 --> 00:36:29.669
+bedrock only supports 4000 limit token and the
+
+872
+00:36:30.169 --> 00:36:31.159
+support 8000,
+
+873
+00:36:31.560 --> 00:36:34.629
+I think there are only one or two which is supporting 100 K.
+
+874
+00:36:34.709 --> 00:36:37.989
+So if you look at uh reverse engineering of big applications, right?
+
+875
+00:36:38.090 --> 00:36:41.540
+Four K and eight K token is not going to help you at all because
+
+876
+00:36:41.840 --> 00:36:44.179
+you are going to chunk your code way a lot,
+
+877
+00:36:44.189 --> 00:36:46.620
+the more you chunk more you're going to lose the
+
+878
+00:36:46.909 --> 00:36:48.939
+the full logical aspect of it.
+
+879
+00:36:49.350 --> 00:36:52.659
+So the higher the token support the better for you for accuracy,
+
+880
+00:36:53.169 --> 00:36:57.610
+right? Rajesh. So, so this is where we are also having a um challenge, right? Ok.
+
+881
+00:36:57.620 --> 00:37:00.870
+I think um was I want to ask this question also to this group.
+
+882
+00:37:01.399 --> 00:37:01.550
+Uh
+
+883
+00:37:02.000 --> 00:37:02.600
+And uh
+
+884
+00:37:02.850 --> 00:37:06.909
+so we did one use case, OK. Where we have used some text person model, right? Ok.
+
+885
+00:37:06.919 --> 00:37:10.979
+Which is a pump based model, right? Ok. To build one use case, right?
+
+886
+00:37:11.429 --> 00:37:14.250
+But what we have tried is ok, we,
+
+887
+00:37:14.629 --> 00:37:17.209
+we see that this is getting failed. Ok?
+
+888
+00:37:17.219 --> 00:37:20.219
+I mean as and when that model is getting tweaked by the
+
+889
+00:37:20.800 --> 00:37:23.459
+uh LLM providers, right? Ok. We see
+
+890
+00:37:23.830 --> 00:37:26.919
+the results are not as expected, right? Ok.
+
+891
+00:37:26.929 --> 00:37:30.320
+We, we did, we did only with small piece of smaller piece of code,
+
+892
+00:37:30.590 --> 00:37:33.330
+right? Ok. But um yeah, I mean this is where
+
+893
+00:37:33.580 --> 00:37:36.540
+we want to look at it and see how we can able to scale this across, right? Ok.
+
+894
+00:37:36.550 --> 00:37:40.060
+Because the token generation is also another challenge that we are looking at.
+
+895
+00:37:40.479 --> 00:37:43.760
+So who can help us in case if we need to just do some
+
+896
+00:37:44.500 --> 00:37:47.139
+impact analysis and look at from a scalability perspect to
+
+897
+00:37:47.300 --> 00:37:47.479
+here.
+
+898
+00:37:48.389 --> 00:37:50.830
+Yeah. So uh I mean, definitely the POC
+
+899
+00:37:51.040 --> 00:37:51.199
+Financial
+
+900
+00:37:51.449 --> 00:37:53.850
+can reach so too. But uh to answer your point,
+
+901
+00:37:54.030 --> 00:37:55.209
+if let's say
+
+902
+00:37:55.320 --> 00:37:55.610
+that
+
+903
+00:37:55.750 --> 00:37:57.810
+palm, I, I don't know the details of the model,
+
+904
+00:37:57.820 --> 00:38:00.209
+but we can have a offline discussion with you on that.
+
+905
+00:38:00.590 --> 00:38:03.580
+But uh if the token limit is only so much
+
+906
+00:38:03.800 --> 00:38:05.590
+and your chunking is not going to help you,
+
+907
+00:38:05.739 --> 00:38:08.729
+you will have to look at a different model within that provider
+
+908
+00:38:09.129 --> 00:38:10.629
+or you will need to look
+
+909
+00:38:10.790 --> 00:38:12.449
+at the chunking can only do so much
+
+910
+00:38:13.090 --> 00:38:16.409
+the high, more number of chunks, it's gonna impact your quality of outcome.
+
+911
+00:38:17.199 --> 00:38:17.790
+Hm
+
+912
+00:38:17.939 --> 00:38:21.689
+So do we have any repository or something which is available, which talks about? OK.
+
+913
+00:38:21.699 --> 00:38:23.389
+Which model for what? OK.
+
+914
+00:38:23.399 --> 00:38:26.540
+And I mean, something, something available there or I mean,
+
+915
+00:38:28.020 --> 00:38:29.929
+so we, we are also gathering that as
+
+916
+00:38:30.409 --> 00:38:34.689
+because as you all know, J A is changing every other day with what is coming out.
+
+917
+00:38:34.979 --> 00:38:35.679
+Um
+
+918
+00:38:36.050 --> 00:38:40.840
+But more importantly, is it worthwhile to start something which is
+
+919
+00:38:41.090 --> 00:38:42.199
+more private?
+
+920
+00:38:42.409 --> 00:38:47.120
+I would suggest that we should go with, you know, uh vendors who are proven,
+
+921
+00:38:47.209 --> 00:38:48.810
+especially when it comes to Azure
+
+922
+00:38:49.520 --> 00:38:50.040
+opening
+
+923
+00:38:50.239 --> 00:38:51.040
+there. Generally
+
+924
+00:38:51.409 --> 00:38:51.479
+Lama
+
+925
+00:38:51.739 --> 00:38:51.929
+Saban
+
+926
+00:38:54.129 --> 00:38:54.800
+bedrock
+
+927
+00:38:55.280 --> 00:38:55.310
+Azur
+
+928
+00:38:55.560 --> 00:38:56.110
+prayer
+
+929
+00:38:56.290 --> 00:38:58.449
+being well discussed and well explored
+
+930
+00:38:58.659 --> 00:38:59.659
+even by our
+
+931
+00:39:00.050 --> 00:39:00.389
+coe
+
+932
+00:39:02.540 --> 00:39:04.260
+va I just Google one.
+
+933
+00:39:04.419 --> 00:39:04.770
+Yeah,
+
+934
+00:39:06.489 --> 00:39:07.250
+vertex is still
+
+935
+00:39:08.209 --> 00:39:08.600
+good one,
+
+936
+00:39:08.889 --> 00:39:08.979
+good
+
+937
+00:39:09.149 --> 00:39:09.209
+one.
+
+938
+00:39:10.449 --> 00:39:12.810
+If there is no question, I want to make it one very key call
+
+939
+00:39:13.010 --> 00:39:14.520
+barring this built to operate, right?
+
+940
+00:39:14.850 --> 00:39:15.570
+See one
+
+941
+00:39:15.750 --> 00:39:16.949
+big deviation,
+
+942
+00:39:16.959 --> 00:39:19.620
+a big change in the direction that built to
+
+943
+00:39:19.629 --> 00:39:21.760
+operate is bringing in as part of modernization is
+
+944
+00:39:22.110 --> 00:39:24.750
+remember to our discussions, right?
+
+945
+00:39:24.790 --> 00:39:27.679
+We have been talking about either pure transformation
+
+946
+00:39:27.689 --> 00:39:29.489
+work or we are talking about AM SI
+
+947
+00:39:29.600 --> 00:39:29.669
+S.
+
+948
+00:39:30.250 --> 00:39:31.560
+What this built operate
+
+949
+00:39:31.699 --> 00:39:34.179
+is it brings that together, which means
+
+950
+00:39:34.520 --> 00:39:36.979
+as they transform into the new architecture,
+
+951
+00:39:37.830 --> 00:39:41.449
+I want to make sure that I have automation back along with it
+
+952
+00:39:41.810 --> 00:39:45.959
+because no matter what your architecture is, you are going to have failure points,
+
+953
+00:39:46.219 --> 00:39:47.989
+you are going to have interaction,
+
+954
+00:39:48.000 --> 00:39:51.979
+failures right across either infra layer or across services
+
+955
+00:39:52.080 --> 00:39:53.399
+or hard hardware
+
+956
+00:39:54.580 --> 00:39:55.469
+components.
+
+957
+00:39:55.699 --> 00:39:59.179
+So how do I ensure that I get that visibility
+
+958
+00:39:59.189 --> 00:40:03.340
+as I do my transformation work at my lower environment,
+
+959
+00:40:03.590 --> 00:40:05.510
+that's what built to operate, helps you with.
+
+960
+00:40:06.100 --> 00:40:09.590
+And if you look at this, it brings some of our best observ
+
+961
+00:40:10.719 --> 00:40:13.520
+text tracks that we have where we are very strong at AM SI
+
+962
+00:40:13.629 --> 00:40:13.649
+S
+
+963
+00:40:13.879 --> 00:40:13.899
+now
+
+964
+00:40:14.060 --> 00:40:17.959
+bringing that absorbability into my lower environment as I modernize
+
+965
+00:40:18.239 --> 00:40:20.060
+and finding those insights
+
+966
+00:40:20.459 --> 00:40:21.840
+at the topology level
+
+967
+00:40:22.120 --> 00:40:22.600
+and
+
+968
+00:40:22.770 --> 00:40:25.919
+fixing those and making it as part of my solution
+
+969
+00:40:26.409 --> 00:40:28.229
+is what this build operates.
+
+970
+00:40:28.699 --> 00:40:29.330
+So
+
+971
+00:40:29.689 --> 00:40:32.189
+I don't, we didn't cover a lot of this.
+
+972
+00:40:32.350 --> 00:40:34.760
+But when you have time, please go through this
+
+973
+00:40:35.100 --> 00:40:35.600
+uh this,
+
+974
+00:40:35.610 --> 00:40:40.080
+this is completely changes the way you run your transformation going forward,
+
+975
+00:40:40.209 --> 00:40:42.040
+especially when you're doing a new
+
+976
+00:40:42.179 --> 00:40:42.189
+uh
+
+977
+00:40:42.290 --> 00:40:45.489
+green field transformation or as well as for your brown field,
+
+978
+00:40:45.600 --> 00:40:48.320
+you're converting to a new architecture and building a system
+
+979
+00:40:48.610 --> 00:40:52.879
+because many of the drifts issues and the issues that you find,
+
+980
+00:40:53.300 --> 00:40:56.439
+we typically we can only cover so much with our standard set of
+
+981
+00:40:56.639 --> 00:40:57.120
+test, right?
+
+982
+00:40:57.439 --> 00:41:00.520
+But here what built up it does it covers the infra layer network
+
+983
+00:41:00.530 --> 00:41:05.189
+layer app layer across and find your failures at the topology level,
+
+984
+00:41:05.699 --> 00:41:07.739
+generates those insights
+
+985
+00:41:07.919 --> 00:41:11.399
+and gets into your ID for the developers to show you
+
+986
+00:41:11.560 --> 00:41:14.489
+what the issues are and what fix you need to apply using Gena.
+
+987
+00:41:15.260 --> 00:41:17.540
+So that way when I go to production,
+
+988
+00:41:17.550 --> 00:41:20.620
+I also have automation solution bundled along with my product
+
+989
+00:41:20.800 --> 00:41:21.770
+to get to a,
+
+990
+00:41:22.030 --> 00:41:24.739
+you know, most highly operable solution in production.

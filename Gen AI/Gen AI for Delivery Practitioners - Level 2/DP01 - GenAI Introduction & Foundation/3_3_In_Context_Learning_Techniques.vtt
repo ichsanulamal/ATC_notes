@@ -1,0 +1,501 @@
+WEBVTT
+
+0
+00:00:14.619 --> 00:00:15.199
+Now
+
+1
+00:00:15.659 --> 00:00:17.799
+when we look at the examples, right?
+
+2
+00:00:17.809 --> 00:00:20.760
+So there are three, you need to look at three aspects, right?
+
+3
+00:00:20.770 --> 00:00:23.969
+The with respect to the in context learning technique,
+
+4
+00:00:23.979 --> 00:00:26.319
+these in context learning techniques,
+
+5
+00:00:26.329 --> 00:00:29.879
+it actually helps in interpreted the outputs.
+
+6
+00:00:30.059 --> 00:00:33.159
+And there are three in context learning techniques,
+
+7
+00:00:33.360 --> 00:00:35.770
+namely there is a zero shot learning technique,
+
+8
+00:00:36.060 --> 00:00:37.919
+there's a one shot learning technique
+
+9
+00:00:38.130 --> 00:00:40.159
+and there is a few short learning technique.
+
+10
+00:00:40.540 --> 00:00:42.630
+Now when we look at the zero shot, right,
+
+11
+00:00:42.700 --> 00:00:46.000
+so zero shot is primarily you go when you go
+
+12
+00:00:46.009 --> 00:00:49.919
+ahead and provide a instruction to the large language model,
+
+13
+00:00:49.930 --> 00:00:52.159
+even without any an example,
+
+14
+00:00:52.409 --> 00:00:54.599
+right? It is still able to understand
+
+15
+00:00:54.909 --> 00:00:57.729
+your the instruction, the context and provide some
+
+16
+00:00:57.930 --> 00:01:01.279
+accurate output. Now that's what we saw, right?
+
+17
+00:01:01.290 --> 00:01:04.080
+When we looked at this particular example,
+
+18
+00:01:04.468 --> 00:01:08.978
+like with respect to what is the capital letter in the country? India.
+
+19
+00:01:09.109 --> 00:01:13.098
+So we did not train the model without any examples,
+
+20
+00:01:13.109 --> 00:01:17.418
+it was still able to provide the output because it has already been pre trained
+
+21
+00:01:17.558 --> 00:01:20.878
+with billions of parameters. So that is zero short learning.
+
+22
+00:01:20.999 --> 00:01:25.899
+Now one shot learning is say for example, you provide an input,
+
+23
+00:01:26.349 --> 00:01:26.849
+right?
+
+24
+00:01:26.989 --> 00:01:29.709
+Why? Uh so when you give an instruction,
+
+25
+00:01:29.900 --> 00:01:36.769
+you might want to give uh you know, get an output based on a single example.
+
+26
+00:01:36.779 --> 00:01:39.370
+Say, for example, you might want to generate
+
+27
+00:01:39.559 --> 00:01:41.809
+uh ticket data template
+
+28
+00:01:42.550 --> 00:01:45.970
+with fields like uh you know the ticket description,
+
+29
+00:01:46.139 --> 00:01:50.489
+the um assigned to the priority of the ticket.
+
+30
+00:01:50.580 --> 00:01:54.709
+Or you might want to, you know, specify you uh you know the uh
+
+31
+00:01:54.860 --> 00:01:56.059
+uh summarize
+
+32
+00:01:56.239 --> 00:01:59.230
+the document in 200 words
+
+33
+00:01:59.779 --> 00:02:01.169
+and bullet it,
+
+34
+00:02:01.559 --> 00:02:01.949
+right.
+
+35
+00:02:01.959 --> 00:02:07.639
+So like that, when you give the prompt that way, so you by just giving one example,
+
+36
+00:02:07.870 --> 00:02:10.800
+it will be in a position to give your output.
+
+37
+00:02:11.008 --> 00:02:14.729
+Then there is another one which is the few short learning where
+
+38
+00:02:14.740 --> 00:02:18.750
+in which the model will be able to predict the outcome.
+
+39
+00:02:18.759 --> 00:02:25.190
+After a few examples say, for example, you are having a uh d uh defect data.
+
+40
+00:02:25.199 --> 00:02:26.479
+Now in your defect data,
+
+41
+00:02:27.072 --> 00:02:32.182
+you might have different types of defects. So you might take a few defect data,
+
+42
+00:02:32.322 --> 00:02:39.042
+you might classify the defects like uh defect A is a configuration defect defect.
+
+43
+00:02:39.052 --> 00:02:44.582
+B is more of a design defect defect. C is more of a testing defect like that.
+
+44
+00:02:44.593 --> 00:02:47.442
+You might go ahead and make some classifications.
+
+45
+00:02:47.453 --> 00:02:51.412
+Now, after you give those, then what will happen is after seeing a few
+
+46
+00:02:51.636 --> 00:02:52.175
+example,
+
+47
+00:02:52.455 --> 00:02:55.485
+the large language model will go will be in a
+
+48
+00:02:55.496 --> 00:02:59.455
+position to generalize for the remaining defects that flowing.
+
+49
+00:02:59.746 --> 00:03:03.895
+So when we actually look at uh you know uh the uh
+
+50
+00:03:03.906 --> 00:03:08.365
+data and examples So we need to be aware of these three
+
+51
+00:03:08.505 --> 00:03:09.255
+aspects.
+
+52
+00:03:09.425 --> 00:03:12.016
+We are the three in context learning techniques,
+
+53
+00:03:12.126 --> 00:03:14.735
+namely the zero shot one shot
+
+54
+00:03:14.895 --> 00:03:16.576
+and the few shot learnings.
+
+55
+00:03:17.449 --> 00:03:17.869
+Now
+
+56
+00:03:18.210 --> 00:03:22.070
+we'll see what are the best practices for better prompt writing.
+
+57
+00:03:22.320 --> 00:03:24.660
+So when we actually write a prompt,
+
+58
+00:03:24.779 --> 00:03:28.619
+we need to provide as much context as possible
+
+59
+00:03:28.740 --> 00:03:30.669
+in the prompt to avoid hallucination
+
+60
+00:03:31.199 --> 00:03:33.080
+in the example that I showed you, right.
+
+61
+00:03:33.250 --> 00:03:39.119
+So when we gave the context, so for example, the keys are lost and provide the step,
+
+62
+00:03:39.270 --> 00:03:42.860
+the output that was generated was much different
+
+63
+00:03:42.869 --> 00:03:46.199
+as compared to my access key to the github
+
+64
+00:03:46.410 --> 00:03:51.160
+copilot application is lost, right? So the response was totally different.
+
+65
+00:03:51.270 --> 00:03:54.320
+Similarly, we need to be very explicit.
+
+66
+00:03:54.330 --> 00:03:58.440
+So we need to ask the LM to think step by step or debate,
+
+67
+00:03:58.449 --> 00:04:02.229
+the pros and cons before providing an exam uh uh response.
+
+68
+00:04:02.240 --> 00:04:03.589
+Say for example,
+
+69
+00:04:03.729 --> 00:04:05.250
+if you're in a work,
+
+70
+00:04:05.259 --> 00:04:09.220
+if you're a part of an application maintenance or an infrastructure
+
+71
+00:04:09.460 --> 00:04:13.649
+outsourcing project, then uh you might be encountering scenarios
+
+72
+00:04:13.809 --> 00:04:14.720
+where uh
+
+73
+00:04:14.979 --> 00:04:17.130
+mm there there could be issues, right?
+
+74
+00:04:17.140 --> 00:04:22.989
+An application uh may not be opening because the CP utilization might be going high,
+
+75
+00:04:23.000 --> 00:04:23.279
+right?
+
+76
+00:04:23.290 --> 00:04:24.929
+The performance might be degraded.
+
+77
+00:04:25.130 --> 00:04:25.750
+Now,
+
+78
+00:04:26.570 --> 00:04:29.630
+when we uh when there is an issue that is raised,
+
+79
+00:04:29.750 --> 00:04:33.010
+then um and when we ask the uh
+
+80
+00:04:33.380 --> 00:04:39.470
+when we uh craft a prompt to provide the resolution for that particular uh issue,
+
+81
+00:04:39.480 --> 00:04:41.070
+then it might probably, you know,
+
+82
+00:04:41.079 --> 00:04:46.619
+provide a response to go ahead and restart the server as the CPU utilization is high.
+
+83
+00:04:46.989 --> 00:04:49.410
+But then if the application is a critical
+
+84
+00:04:49.420 --> 00:04:52.399
+application just going ahead and restarting the server,
+
+85
+00:04:52.510 --> 00:04:55.760
+it might not be uh appropriate, right?
+
+86
+00:04:55.779 --> 00:05:02.350
+So we need to tell the LLM to debate on the pros and cons as to what is the impact, right?
+
+87
+00:05:02.359 --> 00:05:05.049
+Or if the application has to be restarted,
+
+88
+00:05:05.149 --> 00:05:08.519
+so then the LLM will go look at the criticality. Uh
+
+89
+00:05:08.660 --> 00:05:11.049
+I need to look at all the aspects before it
+
+90
+00:05:11.059 --> 00:05:14.350
+will be in a position to give the appropriate answer.
+
+91
+00:05:14.609 --> 00:05:18.910
+Then we'll also need to provide the examples and that's what we also saw, right?
+
+92
+00:05:19.089 --> 00:05:23.690
+Uh We need to provide example as to where exactly we need to focus on or we need to
+
+93
+00:05:23.700 --> 00:05:26.209
+provide examples as to how the output should look
+
+94
+00:05:26.220 --> 00:05:29.230
+like in terms of a list or tabular format.
+
+95
+00:05:29.239 --> 00:05:33.359
+Or, you know, if uh whether the uh example needs to be, you know,
+
+96
+00:05:33.369 --> 00:05:37.239
+if it needs to be generated as per a particular template like that,
+
+97
+00:05:37.519 --> 00:05:40.589
+also, we need to focus on setting constraints.
+
+98
+00:05:40.980 --> 00:05:44.190
+So when we are actually summarizing an output of success,
+
+99
+00:05:44.299 --> 00:05:48.079
+he was telling about summarizing uh uh a document, right?
+
+100
+00:05:48.089 --> 00:05:53.040
+So when we are going ahead and summarizing, we might want to, you know, summarize it,
+
+101
+00:05:53.089 --> 00:05:54.480
+you know, by specifying
+
+102
+00:05:54.660 --> 00:05:58.350
+uh you know, the number of words summarize in 250 words
+
+103
+00:05:58.600 --> 00:06:04.519
+or summarize by only focusing on the legal aspects or security aspects.
+
+104
+00:06:04.529 --> 00:06:05.399
+So when we just give,
+
+105
+00:06:05.410 --> 00:06:07.779
+when we limit the length or when we force
+
+106
+00:06:07.790 --> 00:06:10.799
+it to focus on specific aspects of the problem,
+
+107
+00:06:10.809 --> 00:06:11.440
+then
+
+108
+00:06:11.750 --> 00:06:13.899
+our responses will be more accurate.
+
+109
+00:06:15.019 --> 00:06:18.309
+Uh And also we need to bear in mind the token costs and
+
+110
+00:06:18.320 --> 00:06:23.269
+all those things then that we might need to try with different formats,
+
+111
+00:06:23.290 --> 00:06:23.600
+right?
+
+112
+00:06:23.609 --> 00:06:27.190
+We might need to ask question, make a statement, you know, so you were,
+
+113
+00:06:27.200 --> 00:06:28.230
+you saw as well, right?
+
+114
+00:06:28.239 --> 00:06:32.029
+So when I just asked the question, so what is the capital then why, you know,
+
+115
+00:06:32.040 --> 00:06:36.320
+I when I made a statement, right, as an English professor,
+
+116
+00:06:36.964 --> 00:06:39.285
+what is the capital?
+
+117
+00:06:39.535 --> 00:06:43.765
+So you might want to try different formats, put different personas,
+
+118
+00:06:43.875 --> 00:06:47.625
+you know, to get the different to output and then you might want to uh you know,
+
+119
+00:06:47.635 --> 00:06:49.584
+as you get the responses,
+
+120
+00:06:49.765 --> 00:06:52.434
+you know, uh from a responsible A I perspective,
+
+121
+00:06:52.445 --> 00:06:57.434
+when we go ahead and validate the outputs, we might want to see, right,
+
+122
+00:06:57.445 --> 00:06:58.804
+how the output is
+
+123
+00:06:59.415 --> 00:07:03.345
+and that's where uh uh you know, if it is not proper, we, we end up
+
+124
+00:07:03.475 --> 00:07:06.345
+re uh refining the prompts continuously.

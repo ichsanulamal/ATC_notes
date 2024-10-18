@@ -1,0 +1,109 @@
+WEBVTT
+
+0
+00:00:00.009 --> 00:00:03.859
+Generate requirement specifications is the generation of all applicable user
+
+1
+00:00:03.869 --> 00:00:07.269
+stories for each sub process within a client's process hierarchy.
+
+2
+00:00:07.280 --> 00:00:09.260
+For all personas that are involved,
+
+3
+00:00:09.329 --> 00:00:12.949
+gen wizard can generate user stories for a process hierarchy.
+
+4
+00:00:13.170 --> 00:00:16.829
+The output will also contain acceptance criteria and story points.
+
+5
+00:00:16.840 --> 00:00:20.989
+All right, let's go through the steps of creating requirement specifications.
+
+6
+00:00:21.000 --> 00:00:25.110
+Firstly, log in to gen wizard and click on the get started button.
+
+7
+00:00:25.420 --> 00:00:28.239
+Make sure your workspace and projects set up are done.
+
+8
+00:00:28.250 --> 00:00:31.270
+Then click on the project you've created or create a new one.
+
+9
+00:00:31.469 --> 00:00:35.840
+Next on the left pane select the generate requirement specifications,
+
+10
+00:00:35.849 --> 00:00:39.680
+option under discover and envision in the total enterprise reinvention section
+
+11
+00:00:40.590 --> 00:00:44.869
+in the chatbot text area. Click on the send button against the prefilled prompt.
+
+12
+00:00:44.880 --> 00:00:48.080
+Please generate user stories for business processes.
+
+13
+00:00:48.240 --> 00:00:52.110
+This will generate user stories for the most recent process hierarchy.
+
+14
+00:00:52.119 --> 00:00:53.750
+After which they will be listed.
+
+15
+00:00:53.759 --> 00:00:57.700
+Each user story can be edited if required based on specific information
+
+16
+00:00:57.709 --> 00:01:01.380
+about the client in an RFP or inputs gathered during workshops,
+
+17
+00:01:01.400 --> 00:01:04.830
+conformity to invest Q principles can be checked by publishing,
+
+18
+00:01:04.839 --> 00:01:08.430
+clicking on the readiness link and navigating to our RR A application
+
+19
+00:01:08.819 --> 00:01:12.559
+select one user story and click on publish user stories.
+
+20
+00:01:13.260 --> 00:01:16.019
+Next click on notification bell icon.
+
+21
+00:01:16.269 --> 00:01:19.080
+Once the user stories are loaded to your project,
+
+22
+00:01:19.089 --> 00:01:20.919
+you can click on the link to view the data,
+
+23
+00:01:21.180 --> 00:01:23.599
+it will redirect you to our R A application
+
+24
+00:01:23.769 --> 00:01:24.660
+experience,
+
+25
+00:01:24.669 --> 00:01:27.319
+the ability to generate all applicable user stories for
+
+26
+00:01:27.330 --> 00:01:30.279
+a business process hierarchy in minutes using gen wizard.

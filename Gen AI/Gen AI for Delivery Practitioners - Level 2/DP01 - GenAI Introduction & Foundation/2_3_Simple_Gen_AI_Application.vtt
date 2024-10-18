@@ -1,0 +1,101 @@
+WEBVTT
+
+0
+00:00:14.199 --> 00:00:18.719
+What you're seeing on screen is actually with respect to a github uh
+
+1
+00:00:18.950 --> 00:00:24.309
+Copilot. If it is a Java Prog program, right, we might be making use of an
+
+2
+00:00:24.430 --> 00:00:28.620
+eclipse which is an integrated development environment.
+
+3
+00:00:28.959 --> 00:00:30.860
+If we are using Python,
+
+4
+00:00:31.100 --> 00:00:36.580
+then we might be making use of a Jupiter as an integrated development environment.
+
+5
+00:00:36.750 --> 00:00:37.419
+Now,
+
+6
+00:00:37.939 --> 00:00:39.299
+uh these
+
+7
+00:00:39.450 --> 00:00:40.669
+integrate ID es
+
+8
+00:00:41.209 --> 00:00:46.659
+they have plugins. Now um the you know, the copilots can
+
+9
+00:00:46.889 --> 00:00:49.869
+uh can easily plug into the ID E.
+
+10
+00:00:49.880 --> 00:00:55.319
+So typically when a developer, you know, they go ahead and uh write, you know,
+
+11
+00:00:55.330 --> 00:00:56.900
+they write a function, right.
+
+12
+00:00:56.979 --> 00:01:01.880
+So they will be able to, so the moment they start typing a function or write a text,
+
+13
+00:01:01.889 --> 00:01:05.709
+say convert hexadecimal to uh color code, right?
+
+14
+00:01:05.720 --> 00:01:07.040
+So then it will
+
+15
+00:01:07.855 --> 00:01:08.444
+um
+
+16
+00:01:08.614 --> 00:01:11.964
+you know, it will start uh writing that code.
+
+17
+00:01:11.974 --> 00:01:14.794
+So it is it's basically a pair programming.
+
+18
+00:01:14.864 --> 00:01:20.084
+So through copilot will be quick in a position to quickly uh you know,
+
+19
+00:01:20.095 --> 00:01:21.444
+generate the code.
+
+20
+00:01:21.455 --> 00:01:23.035
+It also helps in
+
+21
+00:01:23.175 --> 00:01:25.084
+uh remediating that code
+
+22
+00:01:25.254 --> 00:01:28.504
+and also it helps in, you know, the test case generation.
+
+23
+00:01:28.514 --> 00:01:34.385
+So this is um with this is a simple gen A I application for code generation.
+
+24
+00:01:34.394 --> 00:01:36.644
+And completion that we are seeing over here.

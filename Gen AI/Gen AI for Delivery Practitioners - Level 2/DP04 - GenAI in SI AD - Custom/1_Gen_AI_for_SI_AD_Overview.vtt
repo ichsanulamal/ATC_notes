@@ -1,0 +1,741 @@
+WEBVTT
+
+0
+00:00:14.989 --> 00:00:17.620
+Good afternoon, good evening, good morning people.
+
+1
+00:00:17.979 --> 00:00:22.829
+So I just want to quick before going to the hands on and and the messaging on each of the
+
+2
+00:00:23.000 --> 00:00:23.110
+genre
+
+3
+00:00:23.370 --> 00:00:23.399
+that
+
+4
+00:00:23.809 --> 00:00:25.610
+the ad si ad use cases
+
+5
+00:00:25.809 --> 00:00:28.290
+just want to quickly brush up that uh you know,
+
+6
+00:00:28.299 --> 00:00:30.620
+you all know there are six broader models of genre,
+
+7
+00:00:30.819 --> 00:00:31.200
+right,
+
+8
+00:00:31.459 --> 00:00:35.250
+where we are modern engineering platform implementation, modern operations,
+
+9
+00:00:35.540 --> 00:00:36.630
+migration, modernization,
+
+10
+00:00:36.639 --> 00:00:39.880
+knowledge transition and uh for delivery service man is yet to come.
+
+11
+00:00:40.099 --> 00:00:43.209
+Now in this, we will focus on the modern engineering, the very first one.
+
+12
+00:00:44.950 --> 00:00:45.430
+So
+
+13
+00:00:45.700 --> 00:00:49.009
+the top two layers is what is going to
+
+14
+00:00:49.279 --> 00:00:53.169
+focus on the custom si the modern engineering archetype.
+
+15
+00:00:53.240 --> 00:00:55.849
+The second is the migration modernization, archetype
+
+16
+00:00:55.959 --> 00:00:59.180
+platform implementation is a follow up session from this
+
+17
+00:00:59.189 --> 00:01:01.049
+where there will be another session to cover that.
+
+18
+00:01:01.060 --> 00:01:01.950
+So I will skip that.
+
+19
+00:01:02.130 --> 00:01:03.250
+So the top two
+
+20
+00:01:03.610 --> 00:01:04.290
+the
+
+21
+00:01:04.569 --> 00:01:08.489
+the the key uh you know messaging that we have here is remember
+
+22
+00:01:09.250 --> 00:01:12.150
+we have five broader things that we want to achieve with Gen Gen,
+
+23
+00:01:12.379 --> 00:01:13.930
+right? One is living knowledge base.
+
+24
+00:01:14.589 --> 00:01:18.519
+So you got a living knowledge base, then you have the
+
+25
+00:01:18.910 --> 00:01:20.610
+hyper automation done with that.
+
+26
+00:01:20.790 --> 00:01:23.849
+Then the logical next step that we would do is pali
+
+27
+00:01:24.379 --> 00:01:25.400
+is also
+
+28
+00:01:25.720 --> 00:01:28.000
+to do a tech depth remediations, right?
+
+29
+00:01:28.129 --> 00:01:30.839
+So tech depth remediations, how do you do is
+
+30
+00:01:31.050 --> 00:01:32.569
+with that knowledge base?
+
+31
+00:01:32.819 --> 00:01:35.559
+We use the, if you look, look at the tickets
+
+32
+00:01:35.699 --> 00:01:38.959
+or the problem tickets, how do I quickly do a quote?
+
+33
+00:01:38.970 --> 00:01:41.599
+I don't identify the issues, root causes
+
+34
+00:01:41.800 --> 00:01:43.209
+and then how do I remedy it?
+
+35
+00:01:43.370 --> 00:01:44.889
+So you have use cases from that
+
+36
+00:01:45.349 --> 00:01:48.970
+and you try to maintain and make sure that the application is running fast.
+
+37
+00:01:48.980 --> 00:01:49.949
+No worries there.
+
+38
+00:01:50.330 --> 00:01:54.260
+Apparently your broader aspect is to get to the target architecture,
+
+39
+00:01:54.269 --> 00:01:55.440
+which is how you
+
+40
+00:01:55.790 --> 00:01:58.819
+modernize it right now migrate in modernization.
+
+41
+00:01:58.830 --> 00:02:01.870
+The one question is how to migrate us, just get the knowledge
+
+42
+00:02:02.190 --> 00:02:03.910
+I can just translate it as is
+
+43
+00:02:04.459 --> 00:02:05.050
+or
+
+44
+00:02:05.209 --> 00:02:07.480
+apparently I may want to fix issues.
+
+45
+00:02:07.849 --> 00:02:10.169
+The third thing is I would completely want to modernize.
+
+46
+00:02:10.179 --> 00:02:11.509
+Now when you come to modernize
+
+47
+00:02:11.800 --> 00:02:15.320
+with that existing knowledge, you may want to add additional user stories,
+
+48
+00:02:15.330 --> 00:02:18.919
+you want want to generate user stories or you may completely go with
+
+49
+00:02:18.929 --> 00:02:22.199
+a green field flow which has nothing to do with migration modernization.
+
+50
+00:02:22.500 --> 00:02:23.929
+So you have two approach,
+
+51
+00:02:24.149 --> 00:02:25.330
+you completely want to modernize
+
+52
+00:02:25.440 --> 00:02:27.839
+it a cloud native architecture or you want
+
+53
+00:02:27.850 --> 00:02:30.009
+to completely create a brand new system from
+
+54
+00:02:30.240 --> 00:02:31.240
+from ground.
+
+55
+00:02:31.690 --> 00:02:35.940
+The second architect is leased but the first architect is predominantly done.
+
+56
+00:02:36.350 --> 00:02:39.440
+So there you would starting from adding the additional
+
+57
+00:02:39.449 --> 00:02:41.779
+user studies that is needed for your modernized architecture.
+
+58
+00:02:42.089 --> 00:02:44.169
+Then you also would generate your architecture
+
+59
+00:02:45.039 --> 00:02:46.740
+end to end uh architecture.
+
+60
+00:02:46.919 --> 00:02:48.100
+When I say architecture here,
+
+61
+00:02:48.110 --> 00:02:51.089
+this there are a few sets of pattern that is supported today.
+
+62
+00:02:51.210 --> 00:02:55.529
+Of course, there is work being done to support a broader set of patterns,
+
+63
+00:02:55.539 --> 00:02:56.699
+architecture patterns.
+
+64
+00:02:57.080 --> 00:03:00.050
+Then you also will be able to generate design documents.
+
+65
+00:03:00.059 --> 00:03:03.550
+Uh You will, you will have a very low level design documents generated.
+
+66
+00:03:03.970 --> 00:03:05.619
+You will be able to generate sort code,
+
+67
+00:03:05.850 --> 00:03:08.059
+you'll be able to generate
+
+68
+00:03:08.229 --> 00:03:11.990
+uh user interface using the style sheets or with fig screens,
+
+69
+00:03:12.000 --> 00:03:13.110
+whichever is available,
+
+70
+00:03:13.410 --> 00:03:17.910
+then you will be able to generate code. Now here is where I just want to touch upon.
+
+71
+00:03:18.110 --> 00:03:20.580
+There is a broader, you know misconception.
+
+72
+00:03:20.919 --> 00:03:25.490
+When we say generate code, obviously, you know, people relate to github copilots,
+
+73
+00:03:25.500 --> 00:03:25.869
+tab
+
+74
+00:03:26.100 --> 00:03:28.050
+names or you know code of the world,
+
+75
+00:03:28.380 --> 00:03:28.940
+but
+
+76
+00:03:29.190 --> 00:03:34.149
+I normally call them as code recommended than a code generator. Why I say that is
+
+77
+00:03:34.600 --> 00:03:39.539
+uh of course, I'm sure a lot of you have come across the developer's life cycle
+
+78
+00:03:39.699 --> 00:03:40.410
+where
+
+79
+00:03:40.619 --> 00:03:41.720
+we have the DS, right?
+
+80
+00:03:41.729 --> 00:03:43.020
+That's where most of the time the developers
+
+81
+00:03:43.029 --> 00:03:45.279
+spend their time in the development environment.
+
+82
+00:03:45.490 --> 00:03:46.330
+So there
+
+83
+00:03:46.580 --> 00:03:50.130
+you have a code, you have a class file or you have an object,
+
+84
+00:03:50.179 --> 00:03:54.020
+then you are going to ask questions related to that context.
+
+85
+00:03:54.199 --> 00:03:59.220
+So for that object for that context is where you're going to get the code remediated
+
+86
+00:03:59.559 --> 00:04:01.869
+or codes recommended from the get
+
+87
+00:04:02.070 --> 00:04:02.130
+up
+
+88
+00:04:02.449 --> 00:04:03.910
+copilots or any of those
+
+89
+00:04:04.020 --> 00:04:04.710
+pilots or
+
+90
+00:04:04.949 --> 00:04:05.660
+copilots of the world.
+
+91
+00:04:06.000 --> 00:04:08.649
+But here when we say generate code, what we mean is
+
+92
+00:04:09.039 --> 00:04:09.789
+the entire
+
+93
+00:04:10.029 --> 00:04:11.639
+architectural components, right?
+
+94
+00:04:11.649 --> 00:04:13.580
+Which is starting from your presentation layer,
+
+95
+00:04:13.940 --> 00:04:16.149
+your business layer, your data layer.
+
+96
+00:04:16.670 --> 00:04:18.108
+If your architecture is that
+
+97
+00:04:18.480 --> 00:04:22.859
+it cuts across all this layer that generates code using your architecture pattern,
+
+98
+00:04:23.470 --> 00:04:26.730
+your uh design documents and your user stories.
+
+99
+00:04:27.279 --> 00:04:28.070
+That is how
+
+100
+00:04:28.380 --> 00:04:28.700
+gene
+
+101
+00:04:28.899 --> 00:04:30.320
+does code generation.
+
+102
+00:04:31.070 --> 00:04:31.799
+Then at
+
+103
+00:04:31.989 --> 00:04:36.019
+the same time, we partner with our uh you know, ecosystem and vendors, right,
+
+104
+00:04:36.029 --> 00:04:37.350
+like Microsoft, which is
+
+105
+00:04:37.660 --> 00:04:38.100
+Copilot
+
+106
+00:04:38.279 --> 00:04:40.130
+or uh you know code whisperer
+
+107
+00:04:40.390 --> 00:04:41.500
+or code of the world.
+
+108
+00:04:41.510 --> 00:04:44.589
+Now, how we partner with them is that this code is generated right now,
+
+109
+00:04:44.600 --> 00:04:48.250
+then the developer would take the code, they need to remediate the code.
+
+110
+00:04:48.260 --> 00:04:52.320
+The code remediation is going to happen at the each function level, class level.
+
+111
+00:04:52.440 --> 00:04:55.670
+Then you leverage the copilots to understand the code and remediate it.
+
+112
+00:04:55.679 --> 00:04:56.989
+That's how we partner with them.
+
+113
+00:04:57.529 --> 00:04:58.420
+Apparently
+
+114
+00:04:58.529 --> 00:05:00.910
+what the testers will do. They will generate test case,
+
+115
+00:05:01.440 --> 00:05:03.720
+they generate test scripts, automation, scripts,
+
+116
+00:05:03.859 --> 00:05:04.820
+test data,
+
+117
+00:05:05.149 --> 00:05:07.619
+then all gets binded and then you
+
+118
+00:05:08.619 --> 00:05:12.760
+test to run the whole C A CV pipeline to deploy the application and launch it.
+
+119
+00:05:13.200 --> 00:05:14.399
+So that is how
+
+120
+00:05:14.809 --> 00:05:17.709
+from uh uh uh uh from um uh
+
+121
+00:05:18.149 --> 00:05:22.230
+you know, reverse engineering to modernizing it to a new architecture or you
+
+122
+00:05:22.380 --> 00:05:26.220
+just a ground you know from ground up Greenfield implementation apps.
+
+123
+00:05:26.440 --> 00:05:29.209
+So this is what these each of these boxes are
+
+124
+00:05:29.220 --> 00:05:32.399
+talking about between the modern engineering and migrator modernization.
+
+125
+00:05:32.410 --> 00:05:33.390
+Two architects.
+
+126
+00:05:33.690 --> 00:05:37.059
+Yeah. Uh as part of migration and modernization, do you have
+
+127
+00:05:37.410 --> 00:05:41.269
+an existing use case for uh uh containerization?
+
+128
+00:05:42.609 --> 00:05:47.709
+Yes, we have done that. So what we do is for a couple of our pilot clients,
+
+129
+00:05:48.089 --> 00:05:48.820
+we have containerized
+
+130
+00:05:49.519 --> 00:05:49.630
+when I
+
+131
+00:05:49.739 --> 00:05:49.779
+say
+
+132
+00:05:50.200 --> 00:05:50.380
+conization
+
+133
+00:05:50.769 --> 00:05:51.880
+is a way to deploy it.
+
+134
+00:05:52.200 --> 00:05:54.929
+But the key is if you have a legacy application monolith,
+
+135
+00:05:55.309 --> 00:05:57.420
+you want to completely modernize it.
+
+136
+00:05:57.730 --> 00:05:58.739
+That is possible.
+
+137
+00:05:59.239 --> 00:06:02.089
+But if your question is only about conization, there are, you know,
+
+138
+00:06:02.100 --> 00:06:03.950
+definitely no need to follow just a general way,
+
+139
+00:06:03.959 --> 00:06:05.779
+you can even do an automation way to do it.
+
+140
+00:06:06.809 --> 00:06:09.420
+But but the key thing here is remember
+
+141
+00:06:09.970 --> 00:06:12.989
+the the biggest benefit of doing that living knowledge basis
+
+142
+00:06:13.130 --> 00:06:13.959
+earlier,
+
+143
+00:06:14.600 --> 00:06:17.890
+we that mean today, most of the applications are in a particular text stack,
+
+144
+00:06:18.119 --> 00:06:20.489
+the people who implement it will have the knowledge in it.
+
+145
+00:06:20.760 --> 00:06:23.989
+Of course, there are systems who have got good knowledge base created,
+
+146
+00:06:24.000 --> 00:06:26.429
+but there are systems where you don't have good knowledge there.
+
+147
+00:06:26.609 --> 00:06:29.829
+Now, if you have to move to another architecture,
+
+148
+00:06:30.380 --> 00:06:32.640
+you have to sit and reverse engineer it, then what you,
+
+149
+00:06:32.649 --> 00:06:35.750
+what what the project does is they again create a set of
+
+150
+00:06:35.850 --> 00:06:39.549
+understanding all that existing system, then they recreate another, they want
+
+151
+00:06:39.660 --> 00:06:40.579
+a new architecture
+
+152
+00:06:40.950 --> 00:06:45.320
+again over a period and that knowledge is also gone because uh how,
+
+153
+00:06:45.329 --> 00:06:48.170
+how disciplined the projects are are the clients are
+
+154
+00:06:48.179 --> 00:06:50.440
+to maintain those documentation is a big question mark.
+
+155
+00:06:50.609 --> 00:06:53.040
+Whereas this living knowledge that we have been
+
+156
+00:06:53.369 --> 00:06:55.350
+highlighting an area for discussion is
+
+157
+00:06:56.100 --> 00:07:01.880
+that is the full understanding of your system without any technology dependent.
+
+158
+00:07:02.600 --> 00:07:06.140
+The power of that is today, you want to completely move into
+
+159
+00:07:06.500 --> 00:07:06.700
+Kafka
+
+160
+00:07:06.809 --> 00:07:08.059
+even based architecture
+
+161
+00:07:08.230 --> 00:07:10.660
+or you completely want to go to
+
+162
+00:07:10.959 --> 00:07:13.940
+uh uh you know, another could say
+
+163
+00:07:14.320 --> 00:07:15.679
+a native architecture
+
+164
+00:07:15.799 --> 00:07:19.540
+or if you want to build it in a zoo native architecture, you pick and choose
+
+165
+00:07:20.200 --> 00:07:21.540
+with that knowledge,
+
+166
+00:07:21.859 --> 00:07:23.500
+the whole system gets generated
+
+167
+00:07:23.839 --> 00:07:24.290
+and
+
+168
+00:07:24.709 --> 00:07:27.500
+it's not only about generation from there on see,
+
+169
+00:07:27.510 --> 00:07:31.420
+I normally say whenever you start with a green field or even a new project,
+
+170
+00:07:31.429 --> 00:07:36.540
+new complete build after you sprint zero or sprint one for that matter.
+
+171
+00:07:36.850 --> 00:07:38.630
+Once the first version go to even a devo
+
+172
+00:07:38.790 --> 00:07:39.709
+test environment,
+
+173
+00:07:39.890 --> 00:07:42.059
+it becomes brownfield from there because you already have
+
+174
+00:07:42.070 --> 00:07:43.820
+a system in place though it may not have hit
+
+175
+00:07:44.170 --> 00:07:45.019
+the production.
+
+176
+00:07:45.339 --> 00:07:48.660
+Any subsequent c that comes is going to be a brownfield for that,
+
+177
+00:07:49.029 --> 00:07:49.489
+right?
+
+178
+00:07:49.500 --> 00:07:52.369
+So which means any change that happens on that system,
+
+179
+00:07:52.380 --> 00:07:54.570
+the data goes back into knowledge base.
+
+180
+00:07:54.579 --> 00:07:57.649
+So which means at any point, my living knowledge base is the
+
+181
+00:07:57.959 --> 00:07:59.690
+secret source of my application
+
+182
+00:08:00.519 --> 00:08:02.500
+and I can choose what my target
+
+183
+00:08:02.880 --> 00:08:04.019
+AA and tomorrow change
+
+184
+00:08:04.309 --> 00:08:07.910
+very easily. That that's a whole differentiator that this brings up.
