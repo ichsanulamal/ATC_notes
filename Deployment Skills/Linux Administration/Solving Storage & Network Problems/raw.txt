@@ -1,0 +1,274 @@
+CompTIA Linux+: Solving Storage & Network Problems
+The Linux storage and network subsystems are crucial for Linux functionality. Many techniques are available to solve storage and network problems, such as the inability to mount file systems and TCP/IP configuration issues. In this course, I will start by covering common Linux storage and network problems and their potential resolutions. I will then troubleshoot storage and network hardware devices in a Linux host. Next, I will troubleshoot storage capacity issues by resizing partitions and filesystems and look at how to manage Linux swap space. Lastly, I will troubleshoot Linux network configuration problems and solve Apache web server problems. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+Table of Contents
+    1. Video: Course Overview (it_osltrb_02_enus_01)
+
+    2. Video: Storage and Network Hardware Troubleshooting (it_osltrb_02_enus_02)
+
+    3. Video: Troubleshooting Storage and Network Hardware (it_osltrb_02_enus_03)
+
+    4. Video: Resizing Partitions and Filesystems (it_osltrb_02_enus_04)
+
+    5. Video: Managing Linux Swap Space (it_osltrb_02_enus_05)
+
+    6. Video: Troubleshooting OS Network Configuration Issues (it_osltrb_02_enus_06)
+
+    7. Video: Troubleshooting the Apache Web Server (it_osltrb_02_enus_07)
+
+    8. Video: Course Summary (it_osltrb_02_enus_08)
+
+1. Video: Course Overview (it_osltrb_02_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Dan Lachance. [Video description ends]
+Hi, I'm Dan Lachance. The Linux storage and network subsystems are crucial for Linux functionality. There are many techniques that can be used to solve storage and network problems, such as the inability to mount filesystems as well as TCP/IP configuration issues.
+
+In this course I'll start by covering common Linux storage and network problems along with their potential resolutions. I will then troubleshoot storage and network hardware devices in Linux host.
+
+Next, I'll troubleshoot storage capacity issues by resizing partitions and filesystems, followed by managing Linux swap space.
+
+Lastly, I will troubleshoot Linux network configuration problems and solve Apache web server issues.
+
+This course can be used to prepare for the Linux+ XK0-005 certification exam.
+
+2. Video: Storage and Network Hardware Troubleshooting (it_osltrb_02_enus_02)
+
+After completing this video, you will be able to list common storage and network hardware issues.
+list common storage and network hardware issues
+[Video description begins] Topic title: Storage and Network Hardware Troubleshooting. Your host for this session is Dan Lachance. [Video description ends]
+Another aspect of troubleshooting hardware in a Linux environment will be to work with storage-related hardware.
+
+Whether that storage is locally present in the server so with storage controllers and the attached storage devices, whether they’re internal external, or maybe they’re available over a network. And, of course, we have to think about the troubleshooting related to hardware at the network level, whether we're dealing with problems with network interface cards, whether they’re physical or virtual within the Linux OS, or the connectivity to other resources through network switches, through routers using DNS name resolution, using DHCP for IP address assignment.
+
+There's quite a wide array of potential problems that could arise at the network level beyond just hardware. Let's start by talking about storage hardware. So we know then that storage can be locally within the server physically or connected externally, such as through USB.
+
+Of course, in a virtual machine environment, we’re talking about virtual disks. That also includes cloud computing, where you might deploy Linux VMs. They would use virtual disk files stored in the cloud environment that are associated with or attached to the virtual machine. At the physical storage hardware level, it could be an internal Hard Disk Drive or HDD with the physical spinning metal platters with read and write heads, or could be Solid State Drives SSDs with no moving parts or some kind of external USB attached media.
+
+Now, one of the things to watch out for here is incompatibility issues. But there may be times when you plug in an external mass storage device, whether it's a physical Linux server or a virtual machine that will use physically plugged-in USB storage devices. I've had cases where I sometimes have to switch it to a different USB port in the physical host for it to be recognized properly.
+
+Of course we also have storage available over the network in the form of Network-Attached Storage or NAS. A NAS is a storage appliance on the network that you plug in, or it might be a wireless type of device that contains an array of disks. And that file storage is accessible over the network, such as from Linux hosts using standard file-sharing protocols like SMB or NFS.
+
+That’s where a Storage Area Network or a SAN is different because it doesn't use standard file-sharing protocols for accessibility. Instead, it works at the storage block level. For example, if you have an iSCSI SAN, then according to the Linux host, it thinks that iSCSI storage is available as a local mass storage device or if you have a fiber channel SAN, same thing.
+
+It appears as local storage available to that host. Of course, when you configure things like a fiber channel San, you can carve out disk space that should be only visible to certain Linux hosts. So when it comes to troubleshooting, the first thing we have to be aware of is what type of storage the Linux host is using. Ideally, we will have up-to-date documentation or a frequently updated inventory scan of Linux devices so that we know what to expect in terms of the storage when we are troubleshooting those machines.
+
+At the network hardware level we have to think about. Network Interface Cards or NICs, whether they are physical. So whether it's a wired Ethernet card, for instance, or a Wi-Fi card, it might even be a Bluetooth adapter. We have to also think about the fact that if it's a virtual machine, then it’s a virtual NIC, a virtual network adapter In the cloud, for example, you might also have a configuration associated with that adapter for a public IP address if that's what you need.
+
+So there are a lot of components that we have to think about, especially with virtualization. It's still virtual hardware, which is why it falls under the realm of this discussion. Then, of course, we have NIC bonding.
+
+NIC bonding allows you to take multiple network interface cards and use them together within a Linux host for a number of purposes. One of which would be NIC teaming, where you can get the aggregated bandwidth available through both network interfaces. Of course, also for fault tolerance in case one of those network interfaces fails. One common problem that I've run into many times on the security side of things is having Linux compatibility problems with Wi-Fi cards, including those that you might plug in to a laptop through a USB connection where you need packet injection supported.
+
+If you're performing a lot of security penetration testing, then this is going to be one of the features that you're going to need. Certain Linux distributions are known to work just fine with no problems with certain chipsets embedded within wireless network adapters. So sometimes it takes a bit of research to find the compatible devices, depending on what it is that you need to accomplish.
+
+A Hardware Security Module or an HSM is a cryptographic device that is designed to safely store things like cryptographic keys, but it's also involved in the cryptographic life cycle, like with key generation or certificate issuance. Your Linux host, if you’re using HSMs, might be connected to an HSM through an internal adapter card or an external USB connection on the Linux host. Depending on the type of HSM you're using, you might have to enable SELinux before you can start working with the certificate subsystem available for PKI certificates through the HSM.
+
+And, of course, in the cloud, HSM is available as a managed service where you don't have to worry about it being physically connected at the hardware level to a Linux host. So we've talked about hardware compatibility, just like with a Windows machine in the Linux world, it pays to make sure that the hardware that you're going to be using is certified for your Linux distribution.
+
+Here we've got a screenshot of the Ubuntu certified hardware web page. So ensuring that the chipsets on motherboards, Wi-Fi cards, Bluetooth adapters, network interface cards, sound cards, high-end video cards, all of this is very important. Of course, it's going to depend on what you plan on using that device for. If you’re going to use a Linux host for a high-end video editing and processing, then you're going to want to pay special attention to mass storage devices that have a lot of space, fast CPUs, and, of course, a compatible high-end video adapter card that’s capable of dealing with video rendering.
+
+In our next screenshot, we are issuing the cat command to view the contents of /proc for running processes /net /dev. So for a network device, this is giving us some details on things like number of bytes received and sent, any errors, any network collisions for packets, and so on. You can have this listed for each network device. In our screenshot, we’ve got the lo or the loopback device it’s showing here as colon and below we have another network interface device, an Ethernet card by the name of ens33.
+
+As Linux technicians there are a number of storage and network troubleshooting commands we should be aware of. At the storage level, we have to know how to mount and unmount filesystems, how to list block devices, including SCSI devices so we know what’s available in a host. We should know how to use the fdisk command to view and manage disk partitions as well as how to use the probe command to inform the kernel of recent disk partition changes without rebooting the host.
+
+The fsck or filesystem check command to check for corruption. And at the networking level, standard commands like ip a to view IP addressing. The ping command to see if a remote device is responding. Although these days, be aware of any firewalls between your device and what you're pinging that might block ICMP traffic. The tracert command also uses ICMP, tracert is different because it shows you each router that your transmission goes through to arrive at a final target. Older Linux distributions will also use the interface configure ifconfig command where you can specify an interface name and you can bring it up or down.
+
+And if you want to be able to test your DNS name resolution, you can also run commands like nslookup: name server lookup.
+
+3. Video: Troubleshooting Storage and Network Hardware (it_osltrb_02_enus_03)
+
+Learn how to troubleshoot storage problems such as file system mounting and bringing network cards up.
+troubleshoot storage problems such as file system mounting and bringing network cards up
+[Video description begins] Topic title: Troubleshooting Storage and Network Hardware. Your host for this session is Dan Lachance. [Video description ends]
+Let's take a few minutes to talk about how you might troubleshoot storage and network hardware on a Linux host. [Video description begins] A web page named ubuntu.com/certified displays on the screen. [Video description ends]
+
+In this particular discussion, the focus is going to be on the Ubuntu Linux distribution and the only reason for that is because when you have a specific distribution that you will be working with and potentially troubleshooting, the first thing you should do is plan out the hardware that will be used for that Linux host. Now, of course, we’re really talking about if you’re installing Linux on a physical machine, if it's running as a virtual machine, then of course you configure virtual hardware resources accordingly.
+
+But assuming we're working from a physical server standpoint on which Linux will be installed, this is very important. So here I’ve gone to ubuntu.com/certified. The idea is that I can plan out, for example, by clicking the servers link and then by scrolling down I can browse through, I can search, I can filter out what I'm looking at. I can determine what hardware is guaranteed and is known to work correctly with this distribution of Linux.
+
+Now sometimes we don't have that luxury, even if we're dealing with physical servers. In other words, we inherit servers either already have Linux installed or that we must install Linux on and we don't have the choice of making sure all of the hardware is certified. But it's one starting point to think about.
+
+Here, I've switched to VMware Workstation, which I have running on my on premises computer. Here I've got a number of virtual machines including Ubuntu Linux. The point of course being that we can edit the virtual machine, virtual hardware settings. [Video description begins] The instructor clicks on the Edit the virtual machine settings link to open a dialog box named Virtual Machine Settings. The dialog box is divided into two parts: the left-hand side displays the name of the Device and the Summary and the right-hand side provides the additional settings regarding the Device selected. [Video description ends]
+
+So if we wanted to modify some details related to virtual disks or Add new disks, we could do that. If we wanted to modify the amount of Memory. All of this is one aspect of troubleshooting Linux in terms of not having enough hardware resources that shows up as performance degradation, of course. And then of course, working at [Video description begins] He clicks on Cancel button and moves to Linux CLI. [Video description ends] the Linux command line can help us along with troubleshooting, storage and network issues or memory issues, whatever the case might be.
+
+The first thing I’m going to do here is run the sudo dmesg command to get a log of kernel listed events. I'll pipe that to the more command. Here, [Video description begins] The command reads: sudo demsg | more [Video description ends] I get some details about the fact that the kernel is detecting that this is a virtual machine running on a Microsoft Hyper-V hypervisor. Indeed that's the case. This is actually an Ubuntu Linux virtual machine running in the Microsoft Azure cloud.
+
+Then other things such as the fact that at the disk level or the storage level Secure boot is enabled, which of course is used to check the validity or the signature of operating system files to ensure that malicious files haven't been planted or have become corrupt. Then we get some details about the detected CPU hardware. Then we'll have some references to mass storage devices being detected.
+
+For example, sdc, among other devices like sdd, sdb, sdr, the first mass storage block device would be listed as sda. We’ll get messages further down here about those SCSI disks being attached to the host and therefore being available. It doesn’t mean the filesystems don't need to be checked, perhaps if there's corruption, but it does mean that the Linux kernel knows about those devices. I'll press Q to get out of here.
+
+The point is that if there are any problems, we'll have some error messages related to those types of things. Everything looks good, in this particular case. Of course, you could also pipe the dmesg command to the grep line filtering tool and perhaps, let's say look for a network interface like eth0 if we’re troubleshooting network hardware. But in this case it found entries, but there are no problems shown. [Video description begins] The command reads: sudo demsg | grep eth0 [Video description ends]
+
+There's a handful of other commands we should be aware of. For example, sometimes it can be difficult to track what is causing a performance issue on a host. It could be a lack of disk space, for instance. So if I run disk free or df - lowercase h for human readable, here
+
+I have all of my filesystems known by the kernel shown here with the Size, what's Used, what's available, the percentage in Use, and the mount point, such as the root filesystem here, just shown here as a /. [Video description begins] The command reads: df -h [Video description ends] Naturally, when we get very low on disk space, it becomes a problem where the performance of the machine could suffer, especially if you're dealing with swap space, which is basically used as additional memory, although it’s much slower than physical RAM. But we’ll talk about swap space.
+
+So we don't have an issue with disk space here. Also, besides running dmesg, we can also run list block, lsblk --scsi, for example, to list discovered devices. So here we’ve got sda through to sdd. [Video description begins] The command reads: lsblk --scsi [Video description ends] Of course, we can run fdisk against one of those to see how it's carved out in terms of partitions, sudo let’s say fdisk -l for list /dev /sdc [Video description begins] The command reads: sudo fdisk -l /dev/sdc [Video description ends] and here we'll get some details such as the Size of the disk and then how it's been carved out and what types of filesystems we've got there.
+
+Something else that might cause a problem at the storage level is the /etc/fstab file, where we’ve got entries [Video description begins] The command reads: cat /etc/fstab [Video description ends] on persistent mount points. In this case using things like device IDs, which is being used to mount the root filesystem of type ext4.
+
+Then of course we've got the listed options for that mount, which might include other things like read only depending on how it's being used. You wouldn't want that for the filesystem all the time, of course, that is the root filesystem or whether you're supporting user or group quotas that's not listed here. Whether or not it should be included in the dump utility or for filesystem checking.
+
+And of course, if we have an error in the reference to the user ID or the device mapping, then we’re going to have a problem with automounting. So if you create new disk partitions and new mount points for maybe additional data storage locations, you'll have to make sure you add an entry to fstab for it to be mounted every time the host boots up.
+
+Of course we can always use the mount command. Let’s say I’ll | that to grep. Maybe I’m looking for sdc. [Video description begins] The command reads: mount | grep sdc [Video description ends] So the command of course will show me what is currently mounted successfully and how it’s been mounted, such as /dev/sdc1 which is our root filesystem mounted in rw mode and so on. So the fact that it's mounted is good, it means it's accessible.
+
+So if the system didn't perform a filesystem check, let's say, of a corrupted filesystem on boot or it's become corrupted while the server was running, I can also run sudo fsck filesystem check and as long as it’s not mounted I can point to /dev/sdd1. [Video description begins] The command reads: sudo fsck /dev/sdd1 [Video description ends] Let's say for example, that given partition and because it's a tiny disk partition in my particular example and there are no problems, we have no error messages returned.
+
+We could add a -a to that to automatically fix any detected corruption. [Video description begins] The command reads: sudo fsck /dev/sdd1 -a [Video description ends] Now this is all fine and dandy. If the storage on your Linux host is well enough to boot in the first place to get to this point. As a Linux tech, you must make sure you always have available to you some alternative way of booting up the machine, whether it's the installation media, whether you burn it to a physical DVD, if you're taking care of physical servers or whether you've got an ISO image that you use for virtual machines on premises, or maybe you're booting from a USB thumb drive or something like that, you need an alternative way to boot the machine if it won't boot.
+
+So you can get into the Linux operating system to troubleshoot issues.
+
+4. Video: Resizing Partitions and Filesystems (it_osltrb_02_enus_04)
+
+Find out how to use the resize2fs command to resize usable disk space.
+use the resize2fs command to resize usable disk space
+[Video description begins] Topic title: Resizing Partitions and Filesystems. Your host for this session is Dan Lachance. [Video description ends]
+In this demo, I'm going to focus on how to resize partitions and how to work with filesystems on those disk partitions.
+
+The first way we'll take a peek at this is from the perspective of a Linux host with a GUI. Here I'm using Ubuntu desktop, but it certainly isn’t limited to just using Ubuntu to do this. The first thing I’ll do here on my Ubuntu desktop system is I’ll go into the Menu to show applications button over here on the left, and I'm going to search up, let's say, the word disk. [Video description begins] The instructor clicks on the menu icon, located at the bottom left corner of the Ubuntu Linux desktop. In the search bar located at the top of the screen he types the word disk. [Video description ends]
+
+So here I've got a number of options, all of which are very important, like just going into the filesystem to manage files, maybe permissions and copy files around that kind of thing. Creating a Startup Disk always crucial for troubleshooting Linux machines that will not start up. Getting Disk Usage Analytics and what we’re interested in here, just Disks.
+
+So if I click on Disks, it will show me my detected disk devices over on the left. So I’ve got an 86 GB Hard Disk, a 21 GB Hard Disk, a Floppy Drive, CD/DVD, and so on. [Video description begins] He clicks on the Disks icon under the search bar and a window displaying details about the disks opens. It is divided into two panes: The left pane consists of the list of disks available and the right pane displays the details of the disk selected. [Video description ends] If I were to select, for example, my 86 GB Hard Disk, when I click it on the left, on the right, it shows me how that has been carved out in terms of partitions.
+
+So it’s a GUID Partition Table or a GPT disk as opposed to MBR or Master Boot Record, which is limited to only four partitions. And if I select my first partition here, I’ve got the Size here around 1.0 MB. It’s /dev/sda1, and it’s used as a BIOS Boot Partition. Then I’ve got another partition where the size is about 538 MB, 530MB are free, so it's only 1.4% full. It looks like it is a FAT type of file system Mounted at /boot/efi on /dev/sda2.
+
+And then I’ve got my main Root Filesystem here. I’ve got about 68 GB of free space. So that partition is only about 20.7% full, and the Partition Type is a Linux Filesystem. Now, having that Linux Filesystem selected, if I click the gear or cog or configuration icon, whatever you would like to refer to it as,
+
+I get some options to Format the Partition, to Edit the Partition or the Filesystem on that partition, Resize, Check the Filesystem, Repair, Edit the Mount Options, and so on. [Video description begins] The other options are Take Ownership, Create Partition Image, Restore Partition Image, and Benchmark Partition. [Video description ends] So if I were to choose, let’s say Resize, it tells me that when you resize a file system, you'd better be careful in first of all, make sure you have a recent backup because you never know what will go wrong when you embark on partition level operations. [Video description begins] By clicking on the Resize option a window opens under the name of Resize Volume. It has a slide bar that shows the Minimal Size and the Current Size of the Disk. It is followed by three fields, namely, Partition Size, Free Space Following, and Difference. The Cancel button is located at the top-left of the window and the Resize button is located at the top-right side. [Video description ends]
+
+So to resize the volume, I can either extend it if there's free space available. In this case there's not. But I can also shrink it if I'm not using all of the space in the partition and I don't need all that space. So as I drag the slider here, of course it’s adjusting the Partition Size, the Free Space Following, and the Difference. In this case, because it’s the Root Filesystem, we would have to boot through alternative means and make sure it's not mounted before this happens.
+
+So I’ll just Cancel this, but I will click my second Hard Disk shown on the left. Currently, it’s got 1 Partition that’s using the entire disk. Now, currently, it’s Mounted, but what I could do is click the little stop button here, which will unmount it so it’s no longer mounted. It says Not Mounted.
+
+And if I go into that same configuration icon and choose Resize, if for example, I want to shrink that Partition again, I would just use the slider. It adjusts the numbers and because it’s Not Mounted, it’s going to be very easy to do this. I’ll click Resize and it’s done.
+
+Even visually, we get a sense of that very quickly. Now that's great if you've got a Linux host with the GUI, but 9/10 a Linux server won’t. But what I'm going to do here is switch over to a terminal window because we should have a sense of which commands we need to issue and in what order, in order to manipulate the size of Filesystems.
+
+So as an example, the first thing I’ll do is run sudo umount to unmount /dev/sdb1 then I’ll run sudo e2fsck to do a Filesystem check of /dev/sdb1. That’s got to be done first before we run commands like resize2fs of /dev/sdb1. And what I can do is I can even specify if I really want to maybe that I want this to be 1200M, capital M so about 1.2 gig.
+
+Now notice it says, well, you need to run e2fsck with the - lowercase f, first. Okay, we're going to go ahead and do that. And now when we go back to do our Resize, it now shows us measured in 4K blocks that we've got it resized. [Video description begins] To resize the disk space using CLI the following commands are entered. Command 1 reads: sudo umount /dev/sdb1 Command 2 reads: sudo e2fsck /dev/sdb1 Command 3 reads: sudo e2fsck -f /dev/sdb1 Command 4 reads: sudo resize2fs /dev/sdb1 1200M. [Video description ends] So if, for example, I were to go back into the Disk GUI tool, I could choose to select that Filesystem and mount it.
+
+Now it’s Mounted at Data 1. And so now if, for example, I were to look for the word folder and then just go into my GUI Files browsing tool, if I go to Other Locations, there’s Data 1 and notice it’s now only about 1.0 GB in size, so we can Resize Filesystems as needed using the GUI or using the Command Line. [Video description begins] To check whether the partition size of the disk is successfully changed in Ubuntu GUI, he clicks on Menu button, types folders in the search bar to open the GUI Files window. From the left-hand side he clicks on Other Locations to view the size of Data 1. [Video description ends]
+
+5. Video: Managing Linux Swap Space (it_osltrb_02_enus_05)
+
+Discover how to manage Linux swap space during and after OS installation.
+manage Linux swap space during and after OS installation
+[Video description begins] Topic title: Managing Linux Swap Space. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, we're going to focus on managing Linux swap space.
+
+So what is swap space anyhow? Because you have the same kind of concept and we have for decades with Windows operating systems as well. [Video description begins] The Ubuntu Linux CLI displays on the screen. [Video description ends]
+
+So first of all, swap space is used when memory, physical memory RAM has been exhausted. What happens is the operating system can then take the least frequently accessed 4k memory blocks in physical memory, swap it out to disk, thus freeing physical RAM which is thousands of times quicker than disks, for something that currently needs to be processed. So in Linux, swap space can be a file or it can be its own entire disk partition.
+
+A lot of Linux distributions will use an entire swap partition and you can set this up when you are installing Linux or you can set it up after the fact, which is the case for us here. So the first thing I'm going to do here in Linux is I'm going to run the free command, free -m. The reason I am doing this is because one of the things besides the physical memory details that are being shown here is the swap space. [Video description begins] The command reads: free -m [Video description ends]
+
+Notice, in this particular installation, there is no swap space. Okay, So let's say that we have determined because we've been troubleshooting performance on the host that periodically perhaps we might benefit from swapping things out to disk from memory because we have peak workloads, but we don’t want to install additional RAM in a physical server.
+
+Let’s say, because really if it's a virtual machine or a cloud based VM, it might be just easier to bump up the amount of RAM. So for example, here in VMware Workstation where I've got an Ubuntu Linux virtual machine,
+
+I can click the Edit virtual machines link on the left and from Memory I could bump it up depending on what I needed. Of course, bearing in mind that that might take away memory from other virtual machines. Depending on the virtual machine solution you’re using, [Video description begins] The instructor opens the Virtual Machine Settings window. Under Hardware section, Memory is selected from the left pane. The details about Memory displays on the right pane. [Video description ends] however, dynamic memory can be configured so that virtual machines with a lot of memory that don't currently need it can make it available for other virtual machines on that same host that do.
+
+And of course, as we know here in the cloud, in the Microsoft Azure portal, if we open up a virtual machine, we could always click on Size in the left-hand navigator and resize the virtual machine so that it includes more RAM. [Video description begins] He opens the Microsoft Azure portal to display the RAM of the virtual machines. He clicks on Ubuntu2 VM and selects Size from the left-hand navigator. The main right-hand side pane displays the few VMs and their RAM, Type, vCPUs and so on. [Video description ends] Now, of course, that might be okay for a single virtual machine, but that's going to add up in terms of increased cost per month, if you do this for a multitude of virtual machines.
+
+Sometimes swapping to a degree might be a better solution. Often what I've been tasked with this, I’ve had to test it to see if swapping is a reasonable solution or if we just need to really just bump up the RAM itself. Let’s say, that we don’t want to do that. So in this case, what I’m going to do now is I’m going to run sudo fdisk -l.
+
+Let’s get a listing of what we’ve got for disk devices. Let’s see, /dev/sdc: 30 GiB, but it's been carved up to run our Linux environment itself, but there's no swap partition or anything like that, at least not on that device.
+
+If I kind of scroll back up to our output, we also have a 7 GiB sdd drive and it looks like there's nothing that's been carved out on it. That's perfect. What we're going to do is basically configure that partition of swap space. Well, we're going to make a partition on it.
+
+Really, what I mean, as sudo fdisk /dev/sdd in our case, and I’m going to type in the letter n for new for new partition, of course. And I'll just press enter to accept the default for a primary partition, the starting and ending sectors. I want to use the entire space. I also get a message, though, in this case that says partition number one contains a ext4 signature. There must have been a file system there previously. Do you want to remove the signature? We do. I'll type in the letter y for yes. The signature will be removed by a write command. Okay, w for write. Back at the command prompt.
+
+Now let's take a look at our work though. Meaning I want to run sudo fdisk -l for /dev/sdd. Okay, good. [Video description begins] The command reads: sudo fdisk -l /dev/sdd [Video description ends] We do have our sdd1 partition, so that’s stuck when we issued the w or the write command for the partition table changes. Good stuff. What I would like to do is create swap space in that newly created partition. One way we can do that is in this manner we can run sudo make swap which is spelled mkswap.
+
+All I do is point to my partition /dev/sdd1. Enter. Okay. [Video description begins] The command reads: sudo mkswap /dev/sdd1 [Video description ends] And it knows that it’s about 7 GiB in size. That’s good as sudo swapon -v for verbose, /dev/sdd1. I want to turn it on the swap space so it's usable right now. Okay. Looks good. [Video description begins] The command reads: sudo swapon -v /dev/sdd1 [Video description ends]
+
+No errors or anything. So now what's interesting is that if we run the free command once again, but with the - lowercase m, notice now that what’s showing up is that we now have swap space that will be used by our system in the form of approximately 7 GiB of space.
+
+6. Video: Troubleshooting OS Network Configuration Issues (it_osltrb_02_enus_06)
+
+In this video, find out how to solve common TCP/IP configuration issues including DNS name resolution.
+solve common TCP/IP configuration issues including DNS name resolution
+[Video description begins] Topic title: Troubleshooting OS Network Configuration Issues. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, I'm going to focus on how to troubleshoot network configuration problems in Linux.
+
+We'll start first here in Ubuntu desktop by taking a quick peek at how we might do that using the GUI. If we have it installed on Linux, as we know on most Linux servers, that's usually not the case. So we'll have to go through some command line tools as well that are related to taking a look at network configurations to help troubleshoot them.
+
+First of all, here in the GUI, I'm just going to click in the upper right in Ubuntu desktop on my network icon. Here I’ve got a Wired network connection that is currently Connected. I can also click Settings here. Now this takes me into all of my settings, but I can click Network on the left. Here’s my Wired connection Connected at 1000 Mb/s , no VPN setup, and I can also configure a Network Proxy server through which [Video description begins] The other options on the left-hand side navigation pane are Bluetooth, Background, Appearance, Search, Multitasking, Sharing, Online Accounts, Sound, and so on. [Video description ends]
+
+I must go through to gain access, for example, to the Internet. But I'm not going to do those two things. But what I will do is click the gear or configuration icon for my Wired network connection. [Video description begins] A window opens named Wired with two buttons on the sides: Cancel and Apply. The menu bar contains Details, Identity, IPv4, IPv6, and Security. Details tab is currently active. The list of details of the wired connection is displayed following 3 check boxes: Connect automatically, Make available to other users, and Metered connection: has data limits or can incur chargers. There is a button at the down left-hand side of the window named Remove Connection Profile. [Video description ends] So here we've got the details, the current assigned IP address, including IPv4 and IPv6. So for IPv6, we’ve got a link local address assigned that’s got the fe80 prefix.
+
+So if IPv6 is enabled, you always have an address starting with that prefix. If you configure an IPv6 address manually or through DHCP, you’ll have an additional one shown besides the one that starts with fe80. Here’s my 48 bit hexadecimal Hardware or MAC Address of my network card, my Default Router gateway and my DNS servers. If I click on IPv4, notice it’s currently set to receive the IP settings via DHCP; Dynamic Host Configuration Protocol over the network. [Video description begins] The other radio buttons under IPv4 Method are Local-Link Only, Manual, Disable, and Shared to other computers. DNS and Routes are set to Automatic with toggle buttons respectively. [Video description ends]
+
+Of course, we could Manually configure IP Addresses, DNS servers and Routes as well. If I go to IPv6, I get the same types of things as well, so I can specify Automatic DHCP only and whatnot. Now if you’re wondering what these Shared to other computers options are for, on the Windows side, that’s kind of like Internet connection sharing where on a LAN other devices do not have an internet connection, can get one by going through your internet connection on your machine, whether you have a Wired or a wireless connection that allows you to do so.
+
+So I'll click Cancel and we're going to go out to a terminal window to the command line. Now I happen to still be on Ubuntu desktop, but it doesn't make a difference if we are on a desktop or a server. What's important is having a knowledge of the commands. There are some basic ones that we already know like ip a. So all of my network interfaces are shown, like my local loopback adapter.
+
+My ethernet interface here is 33 along with their configurations like the IP information for IPv4 and also for IPv6. If you've got a lot of network interfaces like in a Multihomed server, you might be interested in just running ip a for IP address, show dev and in this case I’ll just focus on ens33. [Video description begins] The command reads: ip a show dev ens33 [Video description ends] So then I'm zooming into a single network interface to take a look at its configuration, which can help me troubleshoot.
+
+Of course, bringing that interface down and up is sometimes important. So if I were to run ip link set ens33 down, it would bring the interface down. I'm not going to do that here, but I could also. Bring the interface up by simply changing the word down to the word up. Now, if you're doing things at the command line, it can also be important to understand that you can use a text editor like nano.
+
+So I’ll prefix that with sudo to open up the /etc/netplan and then you can open up a configuration file in here. Notice it’s got the yaml file extension. [Video description begins] The command reads: sudo nano /etc/netplan/01-network-manager-all.yaml [Video description ends] This is where you have an option of manually configuring your network settings, for example to use DHCP or not. For example, I could add some keywords here.
+
+For example, I could add some keywords like ethernet: followed on the next line by ens33: followed by what should be dhcp4 : no. So then I would specify specific IP addresses using the addresses keywords and in the square brackets, for example, I could specify whatever IP it is that I want to assign here and then specify the number of bits in the network mask. So we could configure it in this way. [Video description begins] The command reads: addresses: [192.168.2.55/24] [Video description ends]
+
+I'm going to get out of there. Save the buffer? No. But once you've actually made the changes to the netplan file, you would put those changes into effect simply by running sudo netplan apply and it would read the settings. Assuming there are no syntax or configuration errors, your new configuration at the network level will be put in place. Now, of course, the other thing to bear in mind is that if we're troubleshooting connectivity issues by name, we might want to try to ping.
+
+So if I ping www.google.com, we’re getting a reply. So we know that DNS name resolution is working, but the reality is ping doesn’t work a lot on the Internet. Instead, when you're testing DNS name resolution, you should be using tools like Nameserver Lookup; nslookup where you would type in for example, www.google.com and you’re going to get a Non-authoritative answer, which means your local DNS server didn't actually have the record, but it went out and found it and it returns the addresses both for IPv4 from a DNS A record and for IPv6 via a quad-a record. [Video description begins] The command reads: nslookup > www.google.com The Address at IPv4 reads: 142.250.64.68 The Address at IPv6 reads: 2607:f8b0:4006:806::2004 [Video description ends]
+
+I'll press Q to quit. I'll type in exit to get out of there. You can also use the dig DNS tool, for example, dig www.google.com. It’s a little bit different than nslookup in that it’s not interactive by default, but here we get some details back about getting an answer here.
+
+We’re getting the A record for IPv4 notice that the dig command, depending on the version of you're using in your distribution of Linux, which is shown up at the top here, may not report back any IPv6 information and you might actually need that if you're troubleshooting those kinds of issues.
+
+7. Video: Troubleshooting the Apache Web Server (it_osltrb_02_enus_07)
+
+In this video, you will learn how to solve common Apache web server problems.
+solve common Apache web server problems
+[Video description begins] Topic title: Troubleshooting the Apache Web Server. Your host for this session is Dan Lachance. [Video description ends]
+Let's take a few minutes to talk about what to think of when you are troubleshooting the Apache web server. [Video description begins] The Ubuntu CLI interface displays on the screen. [Video description ends]
+
+The first thing we're going to do here is make sure that the Apache web server is installed. Now, there are a couple of ways of doing that, one of which is just to try to install it. It'll tell us if it's there. So let’s say sudo apt install apache2. Well, it says apache2 is already the newest version.
+
+Now if we want to make sure that's true, we can also make sure that our list of package repositories is up to date with sudo apt update. And from here we can also choose instead to run sudo apt upgrade. So anything that we have installed that has upgrades available, [Video description begins] The command reads: sudo apt upgrade. [Video description ends] we can choose to upgrade which may or may not include in our case, Apache. So for Python it says there's a new version and for docker, I'm not going to do that, so I'll just choose No, because I'm only interested in the Apache web server. [Video description begins] The instructor types n. [Video description ends]
+
+Of course, we can also check to see since it's installed, is it running, sudo service apache2 status. Okay, indeed, it is active and running. If I were to do an ip a here, I have an IP address for my ethernet interface. A private IP of 10.0.0.10 so I could run curl http://10.0.0.10 and it returns back the default html apache2 web page. All we're proving is that yes, the default Apache web server is up and running and available and the default of course is on port 80. One of the things I've had to troubleshoot is the fact that, oh, port 80 is already in use. For example, sudo service apache2 stop.
+
+Let’s go ahead and run sudo apt install docker.ioi [Video description begins] The command reads: sudo apt install docker.ioi [Video description ends] Let’s go ahead then and run sudo apt install docker.io. I want to run a docker containerized app that will have an http web server stack. Once that’s done, I’m going to run sudo docker pull and
+
+I want to pull down from socker hub online a docker container image called caddy. [Video description begins] The command reads: sudo docker pull caddy [Video description ends] And I’m going to run sudo docker run -d detached kind of in the background and -p. I want to map port 80 in the container to port 80 on the local host and caddy, the container image we want to run. If I run sudo docker.ps our caddy [Video description begins] The command reads: sudo docker run -d -p 80:80 caddy [Video description ends] docker containerized application is running on port 80.
+
+Therefore we stopped the Apache web server, remember? So sudo service apache2 stop just to verify, we can just check the status of it. It's not running. [Video description begins] The command reads: sudo service apache2 status [Video description ends] However, if I do a curl once again of http://10.0.0.10. Well it looks like the Caddy web page is now being returned, so therefore if I run sudo service apache2 start knowing that it's defaulting to port 80 as well, which is already in use, we know it's not running.
+
+So if we go ahead and start it, it failed so we could run journalctl -xe to read the log details. But we really know that it's because port 80 is in use. That can be hard to troubleshoot if you are just looking for another web server stack in the host OS because it doesn't exist, it’s a docker container. So if I were to run sudo docker ps again, notice the name it assigned is called exciting_wu, sudo docker stop exciting_wu. So now if we do a docker ps it’s not running. [Video description begins] The command reads: sudo docker stop exciting_wu [Video description ends]
+
+If we try to start the Apache web server with sudo service apache2 start no errors this time. If we check the status up and running because port 80 wasn’t consumed. Now that's just a simple thing to troubleshoot but it actually can be quite difficult to find if you're not aware that docker might be running a containerized app with a web server.
+
+Of course, another problem can be if another technician perhaps modified the normal Apache configuration, let's say, to change the port number. So if I change directory /etc/apache2 and do an ls, notice we’ve got a ports.conf here. If I run an sudo nano for ports.conf, this is where we can change the listening port from 80 to something else.
+
+Or if we're using SSL for 443 to something else, it's important to know where to check this. Naturally, you can refer to a URL over port 80 or 443 without specifying the port number. If the URL has http, it’s pointing to 80 by default, https 443. Otherwise you'd have to specify it on the command line.
+
+I’ll just close out of here. And if I type where is apache2 to get more information on the actual program files, notice the apache2 binaries under /usr/sbin/apache2. If we do an ll of /usr/sbin/apache2 and once again the read and write and execute permissions are set for everyone. The owning user and group are set as root. [Video description begins] The command reads ll /usr/sbin/apache2 [Video description ends]
+
+I can also run ps aux | that to egrep and look for ‘(Apache | httpd)’. [Video description begins] The command reads: ps aux | egrep '(apache | httpd)' [Video description ends] Why is this important? Because this will show me under which user account the Apache daemon is running. Notice we’ve also got a user here www -data. So what’s happening is the root account is used initially to initiate the apache2 web server daemon so it can do things like bind to the appropriate port numbers.
+
+But then after that the running of the server is handled with the www-data user account. If I were to run pstree, notice that we get the apache2 server running as root initially and then we've got some subordinate apache2 daemons and items that are running under it. So if I run pstree - lowercase p this becomes more apparent. [Video description begins] The command reads: pstree -p [Video description ends]
+
+Here we've got the parent Apache 2 process running as root with the parent PID and then the subordinate PIDs. Why is that important? [Video description begins] The parent PID is 31144 and the subordinate PID is 31145. [Video description ends] Because we don't want to remove, for example, the www -data user account thinking it’s not in use by anything. It’s required for Apache to function properly.
+
+So these are just a few simple things to keep in mind when it comes to troubleshooting things like the Apache web server.
+
+8. Video: Course Summary (it_osltrb_02_enus_08)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. [Video description ends]
+So in this course, we’ve examined how to solve Linux storage and network problems. We did this by exploring how to troubleshoot storage and network hardware, how to resize partitions and file systems, and also how to manage Linux swap space.
+
+We also talked about how to troubleshoot OS network configuration issues and also how to troubleshoot common Apache web server problems.
+
+In our next course, we'll be moving on to identify and solve Linux problems related to user accounts, permissions, and Linux OS backups.
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

@@ -1,0 +1,478 @@
+CompTIA Linux+: Solving CPU, Memory, Boot, & Performance Issues
+The standard troubleshooting methodology provides a structured and repeatable approach to quick and effective problem resolution. Linux subsystems such as CPU, memory, and boot configurations can be monitored to facilitate troubleshooting. In this course, I will start by describing the standard troubleshooting methodology as a structured approach to problem solving, followed by listing and troubleshooting common CPU and memory problems. I will then manage Linux process CPU time using nice priority values. Finally, I will vertically scale a Linux server by modifying the underlying hardware resources and configuring horizontal scaling with an autoscaling load balancer. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+Table of Contents
+    1. Video: Course Overview (it_osltrb_01_enus_01)
+
+    2. Video: Troubleshooting Methodology (it_osltrb_01_enus_02)
+
+    3. Video: CPU and Memory Troubleshooting (it_osltrb_01_enus_03)
+
+    4. Video: Viewing Memory Performance (it_osltrb_01_enus_04)
+
+    5. Video: Viewing CPU Performance (it_osltrb_01_enus_05)
+
+    6. Video: Managing Linux Process CPU Time (it_osltrb_01_enus_06)
+
+    7. Video: Troubleshooting Linux Boot Problems (it_osltrb_01_enus_07)
+
+    8. Video: Vertically Scaling Linux for Performance (it_osltrb_01_enus_08)
+
+    9. Video: Scaling Linux Horizontally with Load Balancing (it_osltrb_01_enus_09)
+
+    10. Video: Course Summary (it_osltrb_01_enus_10)
+
+1. Video: Course Overview (it_osltrb_01_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for the session is Dan Lachance. [Video description ends]
+Hi, I'm Dan Lachance. The standard troubleshooting methodology provides a structured and repeatable approach to quick and effective problem resolution. Linux subsystems such as CPU, memory, and boot configurations can be monitored to facilitate troubleshooting.
+
+In this course, I'll start by describing the standard troubleshooting methodology as a structured approach to problem solving, followed by listing and troubleshooting common CPU and memory problems. I will then manage Linux process CPU time using nice priority values. Next, I will vertically scale a Linux server by modifying the underlying hardware resources followed by configuring horizontal scaling with an autoscaling load balancer. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+
+2. Video: Troubleshooting Methodology (it_osltrb_01_enus_02)
+
+Upon completion of this video, you will be able to outline the steps used when troubleshooting problems.
+outline the steps used when troubleshooting problems
+[Video description begins] Topic title: Troubleshooting Methodology. Your host for the session is Dan Lachance. [Video description ends]
+Linux technicians must be able to solve problems in a timely manner. One way to make this happen is to truly understand and implement the troubleshooting process, where we have five major steps. Number one is to identify the problem. Two is to establish a theory of probable cause. Three is to test that theory. Four would be then to establish a plan of action if the theory turns out to have been correct, and step five would be to verify correct functionality and to document the result. Let's go into more details, looking at each of these steps as part of the troubleshooting methodology.
+
+Number one, identify the problem. What we're talking about here is truly determining whether or not there is an issue in determining whether it has occurred before. If something has occurred before, we might be able to refer to a knowledge base or older documentation to solve the issue quickly. We then need to think about what or who is affected by the problem, in other words, what is the problem scope? Do we have a single Linux host that's misbehaving, or do we have a network-wide issue that affects a multitude of Linux hosts on a given network? We then have to consider, can the problem be duplicated. If you can duplicate the problem, if you can repeat the problem, then you know you have the issue figured out, which lends itself to being on the way to solving the problem.
+
+In step two, establish a theory of probable cause. The first thing to consider is to check the easiest and most obvious potential causes first. For example, if we have a Linux server that is sluggish in terms of performance when normally it's not, sometimes a simple reboot is all that's needed. There might have been some kind of a process that had a memory leak that consumed too many resources. If we have network connectivity problems, sometimes just bringing a network interface down or bringing it back up will solve the problem. Of course, at the physical level, checking that cables are plugged in for wired networks, can go a long way in solving those types of problems first.
+
+Do the easy stuff first. Now if we have a theory as to what the problem is, what the source or the root cause is, we might want to refer to knowledge base articles, whether in-house or third party, to see if we have a way to solve the issue. You might have an internal ticketing system, for example, where you add tags or metadata that you can search on in the future when you have similar types of problems.
+
+The third step in the troubleshooting process is to test a theory. Once you've determined that, your theory might be correct and indeed might be the cause of the problem. So, you need to then prioritize theories by whichever you determine would be the most likely cause of the problem. And sometimes that's much easier said than done. And usually, we're under pressure to solve a problem quickly with the Linux host. And while it might be tempting to change a bunch of things at once and reboot to see if the machine works, it's very important to change only one thing at a time when you are testing. Only then will you truly know where the problem lies. And so, you can prevent it in the future.
+
+In step four of the troubleshooting process, establish a plan of action. We first have to consider having a backout plan. So, once you've gone through, identified the problem, the scope in terms of who and what is affected and come up with a theory that is likely and then you tested the theory, and you think you know what the problem is and let's say for example there's a configuration flaw the way we've deployed numerous Linux hosts.
+
+Well, before we go to correct that, we want to have a backout plan, what if while we're trying to solve the problem, we introduce new problems? In the case of Linux virtual machines, perhaps this means first taking a snapshot of those virtual machines or those virtual machine disks that we can quickly revert to in the event of a problem while we deploy our solution. And as is the case with most change management processes in an organization, we have to document the changes, acquire approval to deploy the changes and have a schedule set of when those changes will take place.
+
+Now sometimes if all you're doing is solving a quick problem on a single Linux host, you might not need to go through the formal processes to establish a plan of action. But on a larger scale, it's certainly relevant. And once the solution has been put in place or as part of acquiring approval of the change process, you would communicate that solution to affected stakeholders. Certainly, if they will be affected due to downtime or some kind of an outage, maybe you're solving a problem on a Linux server that many users depend on, you will need to make sure they know about it ahead of time.
+
+Finally, the last step of the troubleshooting process is to verify that things work, verify functionality, and document the solution, the detailed steps that were undertaken to result in this positive outcome. So, we can test functionality after we implement the solution, you also want to make sure that you haven't introduced new problems. We can then, where it makes sense, implement preventative measures so that this problem doesn't happen in the future, or if it does, its impact is lessened. And of course, the solution must be documented.
+
+Often that'll be on some kind of a knowledge base, usually an internal knowledge base that is referred to by technicians when the problem arises again in the future if it does.
+
+3. Video: CPU and Memory Troubleshooting (it_osltrb_01_enus_03)
+
+After completing this video, you will be able to list common CPU and memory performance problems.
+list common CPU and memory performance problems
+[Video description begins] Topic title: CPU and Memory Troubleshooting. Your host for the session is Dan Lachance. [Video description ends]
+Linux technicians need to be proficient when it comes to troubleshooting problems in a Linux host in many forms, including related to CPU and memory. So, let's focus here then on CPU and memory troubleshooting. If we think about this, generally speaking, there really aren't often many problems with hardware configurations, and what I mean by that is at the physical hardware configuration level.
+
+In the olden days, and you might remember this if you were doing IT support certainly in the 1990s, there were times when you had to adjust jumpers, physically, jumper blocks to finish a circuit on a card between pins, or you had to flip dip switches on cards or disk devices. It just doesn't work that way anymore, at least not often. Most components are solid-state in their entirety. There aren't external configuration settings instead, it's configured either through the BIOS or the UEFI firmware, or strictly through software. So, that's what I mean when I say hardware configurations unto themselves physically are just not as common as they used to be in terms of problems. At the same time, hardware failure is rare.
+
+Most hardware components, whether you're talking about processors or CPUs, memory chips, network interface cards, and so on, they are pretty resilient to failure as long as they're running at the correct temperature, for instance. If a data center is overheating, then of course, you're shortening the lifespan of those types of components. So, really our focal point isn't going to be on the physical configuration of CPU chips and memory chips. While that's important that it be done correctly, we're really focusing on the software side because that's where you're going to have the problems usually, and that's why we're going to focus on CPU and memory troubleshooting within the Linux OS.
+
+So, what kind of potential issues do we have related to hardware? One of the big problems is incompatibility issues with the Linux operating system. Now, this really depends on a number of factors, such as what specific hardware you're talking about, certain types of RAM chips, certain types of adapter cards, certain types of processors, that would be relative to the version of the Linux distribution that you are using.
+
+If you're using one of the mainstream type of Linux distributions like Red Hat Enterprise Linux, SUSE Linux, Ubuntu Linux. There is widespread support for pretty much any type of hardware you'll find out there. What's more likely to be a problem is a lack of proper heating, ventilation, and air conditioning HVAC. In other words, the environment is much too warm where Linux hosts are running, or if they're running, is virtual machines on the hypervisors that they are running on. Because at the end of the day, we need physical CPUs and physical RAM chips to accommodate our Linux virtual machines or Linux physical servers and desktops. So, when things get too hot, then CPU throttling usually kicks in first and this is automated with most CPUs these days.
+
+CPU throttling means it degrades CPU performance to try to keep the temperature consistent or below a certain level. The faster a CPU runs, the more heat it generates and that's why throttling kicks in. And as we've mentioned, overheating can reduce component life expectancy. If you can keep things at or slightly below room temperature in a data center or in a server room where there are racks of equipment, then you're doing well. In Linux, we can use the dmesg command, that's spelled dmesg to view kernel log events.
+
+Now this means the kernel, the Linux kernel's view of what hardware is available and how it's configured. Notice here towards the top of our messages here next to smpboot, its listing CPO0 as being an AMD Ryzen type of processor. And as we look further down through the logged messages next to the label smpboot, we have references to CPUs being discovered and being brought into service by the Linux kernel.
+
+In this screenshot, there are no errors. This is normal behavior and so everything is good. Now we can also use the ps for process - lowercase aux commands which allows us to view all running processes for all users, even those not tied to a user login session. So, in other words, process is running in the background as daemons.
+
+When we use the ps command, one of the columns that gets returned is the %CPU utilization. Here, all of the values on this screenshot are showing 0. Same for the %MEM utilization, they're almost all at 0. In other words, the Linux host on which this ps command was issued is doing just fine when it comes to performance related to CPU and memory utilization. But if you do see values here, how do you know if they're within an acceptable range or not? You're only going to know that if you have established a standard performance baseline for this particular host.
+
+It's going to vary. If this is a busy database server that handles hundreds of concurrent user connections or more, which includes users querying a database, adding records to a database, and whatnot, you might expect then that the CPU will be busier than what is shown here, and that there will be more memory utilized by those related processes for the database. And maybe a web server component if that's how users are accessing the database. So, we need to establish performance baseline that is specific to the workload utilization on the host. That is crucial. Otherwise, a lot of these commands and their output is meaningless.
+
+We can also use the Linux top command to view the top processes that are consuming the most resources. In the leftmost column, we have the process ID or the PID. We have the USER under which that process is running, and then we have a number of columns such as the NI, the nice value where -20 is a high-priority item and up to +19 would be the lowest priority item. We'll learn more about how to set the nice value on processes if you need to later on in another demo.
+
+Moving across in the columns, we also have what's important here, the %CPU and the %MEM utilization. The ps command will show you all processes. The top command is different because it'll show you the top-consuming processes and the screen updates in real time. You can change the delay, but you'll notice that it does change as you look at it, and so it can be very valuable if you've got memory hogs, for example, or workloads that are putting a strain on the CPU periodically, you'll see it here in the top output.
+
+Naturally, if you have problems with the CPU being overloaded or memory being overloaded consistently even across reboots of the host, maybe the workload usage has changed, and you need to accommodate it with more underlying horsepower. Whether it's physical CPUs and RAM, or if you're in the cloud resizing the underlying virtual machine settings. Here we've got a screenshot in the Microsoft Azure Cloud where we've gone into the properties of a virtual machine called Ubuntu1.
+
+On the left in the navigator, I've clicked on Size, and on the right, this is where I can select the appropriate size as it's called, which determines the underlying horsepower, the number of virtual CPUs, and the amount of RAM. So, you can adjust this, of course, to accommodate your running workload.
+
+4. Video: Viewing Memory Performance (it_osltrb_01_enus_04)
+
+In this video, find out how to use common Linux tools such as /proc/, top, and free commands to analyze memory statistics.
+use common Linux tools such as /proc/, top, and free commands to analyze memory statistics
+[Video description begins] Topic title: Viewing Memory Performance. Your host for the session is Dan Lachance. [Video description ends]
+It's really important that Linux technicians have the ability to know which commands to issue to view memory performance, and that's going to be the focal point of this demo. The first thing we're going to do here in Linux is start by changing directory to /proc.
+
+[Video description begins] A Terminal window titled 'cblackwell@Ubuntu2:~' appears. It displays the following command line: cblackwell@Ubuntu2:~$. The following command is entered: cd /proc. [Video description ends]
+
+
+The proc directory, if we do an ls, is where we've got subdirectories for each process ID or each PID, that is currently running that is known by the kernel. But we also have a number of files here that have statistics about how the system is doing.
+
+One of the interesting things here is the meminfo file. So, the meminfo file is just a text file. I'll just go ahead and clear the screen and I will cat meminfo and we'll pipe that to more just in case there's more than one screen full of data.
+
+[Video description begins] The command reads: cat meminfo | more. [Video description ends]
+
+So, here we have a series of memory statistics such as the total amount of memory vs. the amount of free memory. So, the amount of MemFree or free memory is really just the total accumulation of physical memory that's not being used at all. MemAvailable is what is available for starting processes and applications.
+
+We've also got a stat here called Dirty. Dirty memory refers to data in memory that hasn't yet been committed to disk. I will press q to get out of here. Now that's a lot of the same type of stuff that you might see if you were to issue the free command.
+
+[Video description begins] The command reads: free. [Video description ends]
+
+You get fewer details, but it still is related to showing you how much memory you have in total and what's free on the system, and what's available. Of course, don't forget that in the proc directory you've got a process ID directory in blue for each and every running process.
+
+[Video description begins] The command inserted reads: ls. [Video description ends]
+
+Here, in Linux, I can also issue commands such as top.
+
+[Video description begins] The command reads: top. [Video description ends]
+
+The top will give me the top running processes which means the ones that are using the most resources and notice that the output is changing periodically. We can press D for delay to change the default screen delay or refresh rate from 3.0 seconds to something different like 1. So, now every 1 second, notice the output display for this is changing.
+
+The reason this can be very important is because one of the columns here, one of the metrics that's being shown, is the %MEM. So, from here we get a sense of how much memory is being used at the individual process level. Of course, we can also use the ps command such as ps -aux to view all running processes regardless of user or even those not tied to a user terminal, and we can pipe that to more.
+
+[Video description begins] The command reads: ps -aux | more. [Video description ends]
+
+And once again, aside from other metrics that are shown here, we also have the %MEM shown.
+
+The difference here compared to top is it's not showing us necessarily the top consumers of resources, and it's certainly not updating it in real-time like top does. So, I'll press q to quit out of that. And we can also run htop, which is more of an interactive version of the top command, where at the bottom we have a menu of what we can press to do certain things. For example, F6 allows me to sort by, so, if I press F6 on the keyboard, I can select which field or column I want to sort by, in this case, let's say %MEM.
+
+[Video description begins] The command reads: htop. [Video description ends] 
+
+So, now everything is shown here with the top consumers of memory always being shown at the top and it's going in descending fashion down through the list. And of course, if I use my right arrow key, I can see more of the actual Command here. So, I have a sense of what it is that is consuming those memory resources such as the Docker daemon. I'm going to go ahead and press q to quit out of that. There are also some other interesting concepts to be aware of here, one would be limiting how much memory is available even at the user level.
+
+If I were to run the ulimit command, notice for the user, of course, I'm currently signed in as, it says unlimited. ulimit can be configured so that there is only a certain amount of memory available for a particular user. So, that might be a concern if you have a server being used by multiple software developers for example. But bear in mind if a user in Linux is let's say, executing a shell script that has the user-id bit set, remember that script runs as the creator or the owner of the script, I should say, and not as the person invoking it. So, that can affect memory utilization. It can be hard to track as well.
+
+[Video description begins] The command reads: ulimit. [Video description ends] 
+
+Another aspect of viewing memory metrics for Linux would be at the virtual machine level, in this case in the Microsoft Azure Cloud.
+
+[Video description begins] The Microsoft Azure home page appears. There is a toolbar at the top. It contains a search bar, a settings icon, a notification icon, and so on. Below, a section labeled Azure services appears. It includes: Create a resource, Virtual machines, Subscriptions, All resources, and so on. Under Azure services, there is a section called Resources. It displays 2 tabs: Recent and Favorite. The items in the Recent tab are listed in a table with 3 column headers: Name, Type, and Last Viewed. [Video description ends]
+
+Here I've already signed into the Microsoft Azure portal. From the left-hand navigator, I can go ahead and click on Virtual machines to get a list of Virtual machines. One of which I have running here, and it's called Ubuntu2.
+
+[Video description begins] A page titled 'Virtual machines' appears. It displays various options at the top such as Create, Switch to classic, Reservations, Manage view, and so on. Below, a table appears with several column headers such as Name, Type, Subscription, Resource group, Location, and so on. [Video description ends]
+
+When I click on the name of a virtual machine, it opens up its navigation bar in the left-hand side of the screen.
+
+[Video description begins] A page labeled Ubuntu2 appears. The navigation pane on the left displays various options in different sections such as Settings, Monitoring, Automation, and so on. The Monitoring section contains options such as Insights, Alerts, Metrics, Diagnostic settings, and so on. The main pane displays a few options at the top like Connect, Start, Restart, and so on. A section labeled Essentials appears next followed by a command bar with several tabs like Properties, Monitoring, Capabilities, Recommendations, and others. The Monitoring tab displays a section labeled Performance and utilization. There is a hyperlink labeled 'See all Metrics' at the top. Below, it displays several graphs of Platform metrics like VM Availability (Preview), CPU (average), Disk bytes (total), and so on. [Video description ends]
+
+Well, one of the things that I can do is on the Overview page, which is automatically selected on the far right, I can scroll down, and I can click Monitoring.
+
+There are some default items that are enabled here for us to check out, like the overall Virtual Machine Availability, the CPU utilization, and of course, things like the number of Disk bytes activity in total for reading and writing. But where's memory? Well down below that I have a link that says Show more metrics, but even when I click that I get Network traffic total, Disk operations/sec, well up at the top in your Performance and utilization, here I can click the See all metrics view. This is kind of like if I were to scroll down to the left-hand navigator down under Monitoring and just click Metrics. That's where it took me. And what I can do is from the list of metrics, I can choose things like Available Memory in Bytes and here it gets plotted on the graph.
+
+[Video description begins] The Metrics page of the Virtual machine is displayed. The main pane displays a few options at the top like New chart, Refresh, Share, Feedback, and Local Time. A heading called Chart Title appears next along with several filter options. Below, a table appears with four fields: Scope, Metric Namespace, Metric, and Aggregation. The Metric Namespace, Metric, and Aggregation fields provide drop-down lists with various options. An empty graph appears next. [Video description ends] 
+
+We always want to be careful and determine what the Aggregation is. So, what's the function run against it? Normally we're primarily interested with memory metrics in the overall average utilization over time. Speaking of time, notice a time frame is the Last 24 hours, but I can click on that. I can choose, let's say the Last 30 minutes if that's where I perhaps had a problem with performance on the host and I suspect it's memory related or I might even go much longer than that and say the Last 30 days. Then I get an overall picture that pretty much shows me the memory utilization has been pretty consistent, although it's gone down just a shade. Now this can also be important for you to establish a baseline of what's normal for the workload running in this particular Linux host.
+
+5. Video: Viewing CPU Performance (it_osltrb_01_enus_05)
+
+During this video, you will learn how to use commands such as top, mpstat, lscpu, and uptime to analyze processor statistics.
+use commands such as top, mpstat, lscpu, and uptime to analyze processor statistics
+[Video description begins] Topic title: Viewing CPU Performance. Your host for the session is Dan Lachance. [Video description ends]
+We all know that CPU stands for Central Processing Unit. It's essentially the brains of the machine, whether it's a physical or virtual CPU or a collection of CPUs and cores. But what's important is understanding how to be able to determine how the CPU is performing. Is it properly accommodating the workload or workloads running on the Linux host?
+
+So, one of the things that we can do to view CPU performance in Linux is to use standard commands like top.
+
+[Video description begins] A Terminal window titled 'cblackwell@Ubuntu2:/' is open. It displays the following command line: 'cblackwell@Ubuntu2:/$. The following command is entered: top. [Video description ends]
+
+The top command as we know, because we can also use this to refer to other things like memory utilization shows us the top running processes at least by process ID or PID and the user that spawned it and among other things shown here in the column headers, we've also got the %MEM utilization. This makes it very easy for us to determine who the memory hog is.
+
+Now, notice that the delay is every 3 seconds by default. You can press the D button to change the delay, let's say to every 1 second if you want it updated more frequently or perhaps less frequently. But I'm going to press q because you might also be interested in using htop.
+
+[Video description begins] The command reads: htop. [Video description ends]
+
+It's essentially the top command, it just looks a little bit different. It's a little more interactive in that at the bottom we've got keys that we can press such as F6 for sorting. So, I'm interested in that.
+
+If I press F6, I get a list of my columns over on the left-hand side of the screen and I can use my arrow keys to go through and select what I'm interested in sorting by. I want to sort by Percent_CPU. So, the most busy or CPU-intensive processes will show up here. But notice here in htop, aside from the user under which a process is running and the PID and the other things shown here. Notice we also have the command that we can take a look at, and this can be very important so that we can determine what it is exactly that seems to be chewing up our CPU time slices. Of course, at the top we have an overall CPU indicator, it's only at about 1, maybe 2% thereabouts.
+
+So, naturally, this Linux host is not busy. And just because the CPU utilization might spike periodically to 70 to 80, maybe even 90%, we have to consider that perhaps it's just doing its job, it's computing, and maybe that's normal when there are, for example, many users connected performing database queries. In order to determine what's acceptable and normal and what's abnormal and unacceptable, you have to have a baseline for performance for the CPU and for memory that you can gauge against when things are running properly so you know what's normal and what's not.
+
+You don't want to hit the panic button just because the CPU is spiking periodically at 85% for a few seconds at a time. I'll press q to quit out of htop. We can also use of course the ps, the process command. I'll just pass it -aux in lowercase letters to view all processes.
+
+[Video description begins] The command reads: ps -aux. [Video description ends]
+
+Now if I scroll back up through the output, this does not update in real-time like top and htop do, but we do have a listing of %MEM utilization for a particular given running process. Again, this is not a busy Linux server, but of course, you can also use output redirection to write that to a file if you need to for historic purposes.
+
+So, I could use that previous command and use the greater than symbol output redirection and maybe even the double greater than sign to append if I want to keep a running list, maybe ps_statst.txt and so now if I cat that file, it has an information within it, so if I need to e-mail it to somebody or something like that, we can do that quite easily.
+
+[Video description begins] The command reads: ps -aux >> ps_stats.txt. The following command reads: cat ps_stats.txt. [Video description ends]
+
+We can also type in uptime, just to get some details about how long the server has been up, and the load average overall is shown here at different time samples.
+
+[Video description begins] The command reads: uptime. [Video description ends]
+
+So, by looking at this we know that again this Linux host is not very busy when it comes to CPU utilization. We can use the lscpu command list CPU command to get details related to the CPU subsystem within this host.
+
+[Video description begins] The following command was inserted: lscpu. [Video description ends]
+
+So, we have the Architecture, so 64-bit. We have the number of CPU(s) here, shown here as 1, the number of Thread(s) per core, the number of Core(s) per CPU socket, the Vendor in this case, GenuineIntel and we have the specific Model name shown here as well, the speed rating in megahertz, which is going to be important because naturally, a higher-rated CPU can do more things more quickly than a slower one. But again, depending on your workload, it might not matter if you bump up let's say from 2600 MHz to 3000.
+
+Really depends on the workload and how CPU-intensive it is. Now, in this case, notice that we have full virtualization, so this is a virtual machine running on a Microsoft hypervisor. We also have the CPU-specific amount of cache, the L1, L2, and L3 cache dedicated for caching CPU instructions but there are other important commands as well, for example, mpstat.
+
+[Video description begins] The command reads: mpstat. [Video description ends]
+
+This gives us statistics on all of our CPUs, and of course, depending on how many we have, we'll determine how much we have here in output.
+
+We've got 164-bit CPU, we have the Linux kernel version here, and of course, we have things like the CPU utilization, so it's mostly idle for all CPU cores. The problem when you have a very overworked machine that as a CPU that's very busy is that issuing these commands themselves can take time before you get anything back and that's one of the conundrums with this. If it makes sense, and you won't have too many people affected negatively, sometimes simply rebooting the server will do the trick, and there are many ways you can do that, including sudo init 6 to switch to run level 6, which means restart. And of course, if we've got a virtual machine, whether it's running on-premises or in the cloud, we can view the memory stats even outside of the OS.
+
+[Video description begins] The Microsoft Azure home page appears. [Video description ends]
+
+Here in the Microsoft Azure portal in the Microsoft Azure Cloud, on the left, I'll expand out the navigator, go to Virtual machines, click on my Ubuntu Linux running virtual machine, wherein the Overview page, if I just kind of scroll down a bit on the right and then click on the Monitoring heading. There are a couple of metrics that are monitored here automatically, including the CPU (average), which we can see is quite low here. 
+
+[Video description begins] A page titled 'Virtual machines' appears. It displays various options at the top such as Create, Switch to classic, Reservations, Manage view, and so on. Below, a table appears with several column headers such as Name, Type, Subscription, Resource group, Location, and so on. [Video description ends]
+
+[Video description begins] A page labeled Ubuntu2 appears. The navigation pane on the left displays various options in different sections such as Settings, Monitoring, Automation, and so on. The main pane displays a few options at the top like Connect, Start, Restart, and so on. A section labeled Essentials appears next followed by a command bar with several tabs like Properties, Monitoring, Capabilities, Recommendations, and others. The Monitoring tab displays a section labeled Performance and utilization. It displays several graphs of Platform metrics like VM Availability (Preview), CPU (average), Disk bytes (total), and so on. [Video description ends]
+
+It's under 3% overall, but if we were to click on that to zoom into it, we can also control the time frame, default of which is set to the Last 24 hours.
+
+[Video description begins] The Metrics page of Azure Monitoring appears. It displays a few options at the top like New chart, Refresh, Share, Feedback, and Local Time. A heading called 'CPU (average)' appears next along with several filter options. Below, a graph is displayed. [Video description ends]
+
+Maybe I'm just interested in the Last 30 minutes of CPU utilization so, I can see whether it was a spike. Or maybe, I'm interested in the Last 7 days' worth of CPU activity. So, this can always be very important when you want to be able to track CPU utilization, especially if you want to establish a performance baseline.
+
+6. Video: Managing Linux Process CPU Time (it_osltrb_01_enus_06)
+
+In this video, discover how to configure Linux process priorities using the nice and renice commands.
+configure Linux process priorities using the nice and renice commands
+[Video description begins] Topic title: Managing Linux Process CPU Time. Your host for the session is Dan Lachance. [Video description ends]
+In this demo, we're going to be focusing on how to manage Linux process CPU time. In other words, can we somehow control at a prioritization level, how many CPU time slices are given to specific running processes that might be more high priority? And the answer is yes, we can do that. And that's where the nice value comes in for a given running process.
+
+Now, what's the nice value about? Let's start by taking a look. Let's issue the ps -aux, those are lowercase letters command.
+
+[Video description begins] A Terminal window titled 'cblackwell@Ubuntu2:~' appears. It displays the following command line: cblackwell@Ubuntu2:~$. The following command is entered: ps -aux. [Video description ends]
+
+When I do that, I get the standard output and what that means is it includes some of the columns like the USER under which a process is running, the PID, %CPU, and %MEM utilization, and so on. Of course, the command, but we don't have the nice value, but we can control the output of the ps command.
+
+I can run ps -eo and let's say I'm interested in the process ID, so the pid column, comm column, and the nice value, so, ni. There's no spaces between those.
+
+[Video description begins] The command reads: ps -eo pid, comm, ni. [Video description ends]
+
+So, I have now in my output the PID, the COMMAND, and the NI value which really controls the priority it has with relation to CPU time. Now, what does that mean?
+
+Well, having a -20 value means that that given process has the highest nice priority value. In other words, it will get more time from the CPU than a process that has a nice value of 0. The lowest nice priority value is +19. OK, so this is an interesting way to see that, there might be some cases when you're troubleshooting Linux and you want to give a given process, whether it's a long-running script, a background daemon, or whatever the case is, a higher nice value, a higher priority.
+
+Now if we run the top command, you'll notice that by default its output does include an NI column heading, so it's got the nice value shown here automatically. I'll press q to quit out of that. The same thing is true if we were to run the htop, interactive version of the top command where we still have the nice value shown here. So, again, q for quit. So, how do we control what the nice value is? Well, we could look at the man page for the nice command. 
+ 
+[Video description begins] The command reads: top. [Video description ends]
+
+ [Video description begins] The command reads: htop. [Video description ends]
+
+[Video description begins] The command reads: man nice. [Video description ends]
+
+So, run a program with modified scheduling priority as it relates to the CPU. But we also have a man page for the renice command.
+
+[Video description begins] The command reads: man renice. [Video description ends]
+
+So, if we want to set the nice value for something that's already running with a given nice value, so to alter the priority of an existing running process. So, down in the examples, notice that they are specifying the nice value and they're also specifying with the -p the process ID as well as the process specified here rate at the command line after the new nice value 987. And then we're also changing the nice value for any processes that are running as either user daemon or user root. We're setting it to a value of +1. OK, I'll press q to quit out of that.
+
+The next thing I want to do is take a look at a script I've already got created here, it's just simply called test.sh.
+
+[Video description begins] The command reads: cat test.sh. [Video description ends]
+
+The only thing in this script is the bang line where it points to bin/bash, clearing the screen, and then sleeping for 3 minutes. What I want to do is I want to spawn this with a specific nice value, and I'll do that with the nice command and then what we'll do is we'll send it to the background so, we get back our command prompt and we can verify it's actually running and using the configured nice value.
+
+So, how are we going to do this? Well, I'm going to run sudo nice -n, where I'll specify the nice value of 5. Remember -20 is high priority, +19 is low, and then I'll specify the command, in this case, ./ for current directory and I'll refer to test.sh.
+
+[Video description begins] The command reads: sudo nice -n 5 ./test.sh. [Video description ends]
+
+Now it's running in the foreground, I can press Ctrl+Z to get my command prompt back.
+
+Now I'm going to run the ps command once again, process command -eo and I'm going to tell it I want the comm, and the nice value columns shown, that's all I want. And to make it easier to spot what we need to see, I will pipe that to grep and I'll put in test.sh.
+
+[Video description begins] The command reads: ps -eo comm,ni | grep test.sh. [Video description ends]
+
+So, notice that test.sh is showing up as the command and the nice value is showing up here with the value of 5, as per our configuration with the nice command. But we can also use the renice command to modify an existing command's nice value.
+
+So, I'm going to run the same ps command except what I've added here is that I want the process ID.
+
+[Video description begins] The command reads: ps -eo comm,ni,pid | grep test.sh. [Video description ends]
+
+For example, if I want to renice a specific process ID, I can do that with sudo renice -n, let's say I want to use a value of -2 -p and I can give it the process number. The process ID number, in this case, 13732.
+
+[Video description begins] The command reads: sudo renice -n -2 -p 13732. [Video description ends]
+
+Enter. So, the old priority is showing here as being 5, where the new priority is 2.
+
+If we use our up arrow key to bring up one of the ps commands, notice that that process ID has successfully had its nice value, or its scheduling priority set to the new value of -2. Bear in mind that these changes are only in effect while the system is up and running, so either you can change it with the renice command to a different nice value or you can restart. Of course, you could have a startup file like a script that would set the nice value for a given process. This is normally designed as kind of a short-term fix when you want to make sure a running process gets its proper share of CPU time.
+
+7. Video: Troubleshooting Linux Boot Problems (it_osltrb_01_enus_07)
+
+Learn how to solve Linux boot-time issues, including system repair, using bootable installation media.
+solve Linux boot-time issues, including system repair, using bootable installation media
+[Video description begins] Topic title: Troubleshooting Linux Boot Problems. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, we're going to chat about how to troubleshoot Linux boot problems. Now boot problems can be related to hardware, such as failed disks at the hardware level. However, in reality, most times it's a software issue, maybe a file system item has become corrupt, or a technician has repartitioned disks or changed mount points in such a way that the system can no longer boot correctly.
+
+One thing that you should always have in your toolkit and ready is a bootable way to get into Linux. Usually, that is available automatically from the installation media for most Linux distributions. For example, with Ubuntu Linux, if I were to download a server install image, it's an ISO file, I can boot from that ISO image, or I can write at the DVD whatever the case is, I can boot from it and I can choose to go into a rescue mode.
+
+[Video description begins] A page titled Ubuntu 22.04.3 LTS (Jammy Jellyfish) appears. Below, it contains a section labeled Select an image. It contains 2 options: Desktop image, and Server install image. Both these tabs contains links, such as 64-bit PC (AMD64) desktop image, and 64-bit PC (AMD64) server install image. Below, there is a table with the following column headers: Name, Last modified, Size, and Description. [Video description ends]
+
+Let me demonstrate how that works. Here on my on-premises system, I am using VMware Workstation where I've already got Ubuntu 64-bit installed.
+
+[Video description begins] A page titled Ubuntu 64-bit (2) - VMware Workstation appears. Below, it contains the File menu toolbar and a few icons alongside. Under this, there are various tabs labeled Home, Windows 10 x64(2), Ubuntu Desktop, Ubuntu Server, Ubuntu 64-bit (2), and so on. The navigation pane on the left contains the header: Ubuntu 64-bit (2). Below, there are 2 options labeled Power on this virtual machine and Edit virtual machine settings. There are 2 sections underneath: Devices and Description. The main pane displays a black screen with a section below labeled: Virtual Machine Details. [Video description ends]
+
+Within the virtual machine, if I click Edit virtual machine settings, notice if I click on CD/DVD, that it's going to be connected when the virtual machine is powered on and I'm actually pointing to the ISO image for Ubuntu that I've downloaded. It's the same type of thing you would do to install Linux initially within a virtual machine environment such as this.
+
+[Video description begins] A pop-up window titled Virtual Machine Settings appears. It contains 2 tabs labeled Hardware, and Options. The Hardware tab is active. Below, it contains a table with 2 column headers: Device, and Summary. There are 2 sections on the right, labeled as Device status, and Connection. [Video description ends] 
+
+If I just power on the virtual machine as per usual, then I get the standard GRUB menu options to Try or Install Ubuntu Server, Boot from the next volume, go into the UEFI Firmware Settings. However, here's what's interesting. If I were to power this off and then power the virtual machine back on, but as soon as I see my BIOS message if I press Ctrl+X, it takes me into this GRUB menu that gives me some advanced options, that's not normally what we see in the GRUB menu.
+
+[Video description begins] A black screen appears with the header: GNU GRUB version 2.06. Below, it displays 4 options: Try or Install Ubuntu Server, Ubuntu Server with the HWE kernel, Boot from next volume, and UEFI Firmware Settings. [Video description ends]
+
+[Video description begins] The same screen titled GNU GRUB version 2.06 now displays an option labeled Advanced options for Ubuntu under the header Ubuntu. It further displays various options to select from. [Video description ends] 
+
+Now, the keystroke you press exactly will vary depending on the distribution of Linux that you're using, that you're booting from, or whichever tool you happen to be using. At any rate, I'm going to go into the Advanced options for Ubuntu. Notice that I've got options here for different Linux kernel versions in recovery mode, so I'm going to select one of them and press Enter. So, even if the machine will not boot from disk, this is still going to work. So, here I have a Recovery Menu, where I have a number of very important options. I can resume a normal boot.
+
+[Video description begins] The page now displays a header: Recovery Menu (filesystem state: read-only). It contains various options below, such as resume, clean, grub, root, and so on. [Video description ends]
+
+Well, presumably if you haven't yet tried to solve a boot issue, you can't do that. We can use the clean option to try to free up space on the disk. We can repair broken packages that might have become corrupt over time. We can check the file systems for corruption. We can update the grub boot loader if there's been a configuration change made to that, maybe because of disk partitioning that has changed. We could drop to a root shell prompt.
+
+Now I can go into a command prompt, it tells me I'm in emergency mode. Now, one of the things you'll want to do here because the root partition normally is mounted in read-only mode when you're in rescue mode. Now that you're signed in, you can use mount -o for option, you want to remount, with read/write rw, so not just read-only, but read-writable, and then specify the root file system with a slash. After you do that, you could then issue the mount --all command to mount all other file systems after the root file system has been mounted in ReadWrite mode.
+
+Now this is fine if you have local access, let's say to a virtual machine environment or even a physical Linux host. When it comes to remotely managing a large amount of Linux hosts, such as in a data center, hardware remote control becomes important. So, you could force a reboot and do all these things without the operating system even running. You might also consider running commands like file system check. If we look at the man page, then we'll get the details about how to use this command line along with all of its command line options. I'll press q to quit out of that.
+
+[Video description begins] A page titled cblackwell@Ubuntu2: ~ appears. Below, the following command is added: man. [Video description ends] 
+
+If I simply press Enter after typing in fsck, it's going to assume I'm pointing to my root file system which here is on /dev/sda1 and it says wait a minute, this is mounted, and you can cause problems if the filesystem is mounted when you run this. 
+
+
+[Video description begins] The command reads: fsck. [Video description ends]
+
+So, ideally, the filesystem will not be mounted when we run filesystem check, so I'll type in no here. Of course, you would use the umount command if you wanted to unmount a filesystem. And again, depending on who you're signed in as, you might have to prefix that with sudo.
+
+At that point, you would then be able to run filesystem check against the filesystem because maybe the corruption is what's causing the boot problems. Now, sometimes the problem is the grub boot loader. Maybe it's pointing to the wrong root file system, especially if you've messed around with the partitions or maybe installed a second or even a third operating system for dual or triple booting. Remember that you can always run sudo fdisk -l to view your disk partitioning, in this case, such as for device sda and the partition is sda1.
+
+[Video description begins] The following command is added: sudo fdisk -l. [Video description ends] 
+
+So, if you've booted through for example a boot CD, maybe the installation is CD in recovery mode and you're at a terminal. You can try to reinstall grub if you suspect there's a problem with the grub booting software itself running sudo grub-install, specify --boot-directory, so you can specify the root file system and tell it that that comes from device /dev/sda and we don't want to specify the partition number of 1, we just point to sda as grub gives us a boot menu and the whole idea is that we could boot two different partitions if we need to.
+
+I'm not going to do this as I have a functional Ubuntu system, but once you've done this, you would then test it by rebooting, and ideally, you'll be able to boot properly where if previously you had problems booting due to grub, they will have been solved potentially with this command.
+
+[Video description begins] The following command is added: sudo grub-install --boot-directory=/ /dev/sda. [Video description ends]
+
+8. Video: Vertically Scaling Linux for Performance (it_osltrb_01_enus_08)
+
+During this video, discover how to adjust underlying hardware resources.
+adjust underlying hardware resources
+[Video description begins] Topic title: Vertically Scaling Linux for Performance. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, we're going to talk about how you can vertically scale Linux to improve performance. Now, what does vertical scaling mean? What it means is that we are adjusting the underlying horsepower for various subsystems, whether it's storage, networking, processor, or CPU, increasing the amount of RAM. All of those things, if we are adding it, means we are scaling up.
+
+We're scaling vertically but vertically can also mean down because you can scale down by removing some of those hardware resources, whether they're physical or virtual, depending on what your workloads running in Linux require. But before you can do this, before you can vertically scale Linux, you first need to know what you have for resources such as the amount of RAM in Linux and how it's being used and whether or not it really is suffering from a performance degradation. Let's think about this.
+
+First things first, here in Linux, I'm going to begin by running top.
+
+[Video description begins] A terminal window titled cblackwell@Ubuntu2: ~ appears. Below, the following command is added: top. [Video description ends]
+
+Let's see the top running processes. We already know how to use this command in the sense that it updates by default every 3 seconds to show us the top consumers on this machine, such as for CPU utilization and memory utilization. Now, in this particular example, we're hovering in the 0.3 to 1% CPU utilization, somewhere around there. There's not an issue with that. We definitely don't need to scale up when it comes to the CPU. It's barely being used.
+
+Of course, you want to make sure you check this on an average over time. Maybe, it's the middle of the night in your time zone right now, and no one's using whatever workload is running on this server. And that's why this needs to be done over time and determine what the normal baseline during normal usages for the CPU being used. That just makes sense, doesn't it? How busy does the server look when it's actually being used for what it's supposed to be used for? The same thing is true with %MEM.
+
+We don't want to scale up the amount of RAM if we don't really need it unless we anticipate a need because we know we're going to be running a new vamped-up version of an app on this server and it needs more juice. Now, if this is a physical Linux server, how do you scale it up? It means either reconfiguring things at the hardware level, or you can only do that to a limited degree, adding more hardware resources, adding a faster CPU if the socket on the motherboard can accommodate it, or if it's a multiprocessor motherboard, adding more CPUs to sockets if they're not already populated. We'd be upgrading the amount of RAM for the RAM chips in the motherboard slots if the motherboard supports it. You could physically upgrade or vertically scale in that way.
+
+Now let's say we've got a virtual machine environment on-premises. In my example, it's VMware Workstation, but the concepts are the same regardless of what you're using. You can modify the amount of virtual hardware resources that are visible to the guest operating system in the virtual machine.
+
+[Video description begins] A page titled Ubuntu Server - VMware Workstation appears. Below, it contains the File menu toolbar and a few icons alongside. Under this, there are various tabs labeled Home, Windows 10 x64(2), Ubuntu Desktop, Ubuntu Server, Ubuntu 64-bit (2), and so on. The navigation pane on the left contains the header: Ubuntu Server. Below, there are 2 options labeled Power on this virtual machine and Edit virtual machine settings. There are 2 sections underneath: Devices and Description. The main pane displays a black screen with a section below labeled: Virtual Machine Details. [Video description ends]
+
+So, if I edit my virtual machine settings, it shows me the device configuration for this particular virtual machine, such as the amount of memory or RAM. Here, it's currently set to 4 GB.
+
+Now having that selected on the left, on the right, I can drag up the slider. There's going to be a limit of course, which is dependent upon the amount of physical memory you have available. But when it comes to virtual machines, you also have to think about other virtual machines that might be running at the same time. Some virtual machine solutions will allow you to configure dynamic memory, where if one virtual machine makes a call for more memory, it can be allocated by reducing the amount of memory available to more idle virtual machines running on the same hypervisor host.
+
+In the same way, I could also click Processors here on the left to determine the number of processors I want visible to this OS and whether I want virtualization support, but that's on-premises. 
+
+[Video description begins] A pop-up window titled Virtual Machine Settings appears. It contains 2 tabs labeled Hardware, and Options. The Hardware tab is active. Below, it contains a table with 2 column headers: Device, and Summary. It contains a list of items like Memory, Processors, Display, and so on. The Memory option is highlighted. There is a section on the right, labeled Memory. It contains a field labeled Memory for this virtual machine. Below, it displays a slider with various options against it. [Video description ends]
+
+[Video description begins] The Processors option is highlighted now. On the right, there are 2 sections displayed. Processors, and Virtualization engine. [Video description ends]
+
+What about in the cloud? This is where cloud computing is really pretty neat. Essentially, a data center that we might have managed and worked in on-premises has been moved into someone else's data center, some other environment that's accessible over a network. In general terms, that's part of what cloud computing is about. You're running IT services on someone else's hardware, wherever it happens to exist. But we can resize.
+
+Here in the Microsoft Azure portal, in the left-hand navigator, I'm going to go to virtual machines.
+
+[Video description begins] The Microsoft Azure home page appears. It contains a Search bar at the top with a few icons like Notification icon, Settings icon, and more. On the left, there is an icon navigation bar. It contains options like Create a resource, Home, Dashboard, All services, All resources, Virtual machines, and so on. The page displays 2 sections labeled Azure services, and Resources. The Azure services section contains various options like Create a resource, Virtual machines, Subscriptions, and so on. The Resources section contains 2 tabs: Recent, and Favorite. The Recent tab is active. It contains a table with 3 column headers: Name, Type, and Last Viewed. [Video description ends]
+
+ Now when I say resize, what we're talking about in this particular example is scaling up or scaling down a virtual machine's resources. If I click on a virtual machine here to open up its properties, in the left-hand navigator, we have the word Size. 
+
+[Video description begins] A page titled Virtual machines appears. Below, it contains various buttons, such as Create, Switch to classic, Reservations, Manage view, and so on. Under this, there is a search bar for different filter options. There is a table underneath, with various column headers like Name, Type, Subscription, Location, and so on. [Video description ends]
+ 
+This is where the horsepower is determined. Notice we have a column that shows the number of virtual CPUs for a given size that we might choose to select, and also the RAM in GiB. So, maybe I need 8 virtual CPUs and 32 gig of RAM.
+
+[Video description begins] A page titled Ubuntu2 | Size appears. The navigation pane on the left contains options like Overview, Activity log, Tags, Networking, Connect, Disks, Size, and so on. The Size option is highlighted. The main pane displays a search bar for different filter options and a table with various column headers like VM Size, Type, vCPUs, and so on. The table contains various items like DS1_v2, D2s_v3, D2as_v4, and so on. [Video description ends] 
+
+If I've checked my performance counters over time and it seems like the server is stressed with the current workload, you always scale down too. Now naturally, in the cloud when you are scaling up vertically, which also can include the number of input-output operations per second at the disk subsystem level for throughput. But when you scale up, you will be charged more when the virtual machine is running.
+
+So, having 8 virtual CPUs and 32 gigs of RAM vs. 2 virtual CPUs and 8 gigs of RAM, there will be a price difference. You could then choose to resize your virtual machine. Will it affect any of the workloads running on it? Usually yes, and it might need to restart it. But at any rate, when it comes to vertically scaling Linux for performance purposes, these are the various things that we need to think about.
+
+9. Video: Scaling Linux Horizontally with Load Balancing (it_osltrb_01_enus_09)
+
+Find out how to configure autoscaling for a load balancer with Linux virtual machines.
+configure autoscaling for a load balancer with Linux virtual machines
+[Video description begins] Topic title: Scaling Linux Horizontally with Load Balancing. Your host for this session is Dan Lachance. [Video description ends]
+In this demonstration, we're going to talk about how we can scale Linux horizontally using load balancing. Now, scaling means we are either adding or removing something. When we talk about horizontal scaling, we are talking about adding additional Linux-based virtual machines to support a given workload, whatever that is, whether it's big data number crunching, whether it's running a busy web app, whatever it is.
+
+Now we can do that with a load balancer in the cloud. It's not the only way this can be done, of course, but that's what we will be doing here. Now you might ask, what does that have to do with troubleshooting? Plenty, because normally you will arrive at the conclusion that there just aren't enough virtual machines running concurrently to support our peak workload times. So, once performance has degraded, you've arrived at that conclusion, you can then do something about it. So, we're going to go ahead and build a load balancer configuration with a backend pool consisting of two Ubuntu Linux virtual machines.
+
+Here in the Microsoft Azure portal, I've already navigated to the Virtual machines view and here we've got two virtual machines and I'll just click the Refresh button that are now showing as up and running. Now let's assume both of them have a web server stack, whether it's Nginx, whether it's the Apache web server, whatever it is, and the same website or app content. So, I'm going to start here by clicking Create a resource in the upper left and I'm going to search for load balancer, and I'll choose Load Balancer and for Microsoft Azure service, I'll click Load Balancer for that, and I'll click Create.
+
+[Video description begins] A page titled Virtual machines appears within the Microsoft Azure portal. Below, it contains various buttons, such as Create, Switch to classic, Reservations, Manage view, and so on. Under this, there is a search bar for different filter options. There is a table underneath, with various column headers like Name, Type, Subscription, Location, and so on. It contains 2 items: Ubuntu1, and Ubuntu2. The left-hand navigator displays options like Create a resource, Home, Dashboard, All services, All resources, Virtual machines, and so on. [Video description ends]
+
+ [Video description begins] A page titled Create a resource appears. The navigation pane on the left contains options like Get Started, Recently created, AI + Machine Learning, Analytics, Compute, and so on. The main pane contains a search bar with a list of items categorized into 2 sections: Popular Azure services, and Popular Marketplace products. [Video description ends]
+
+[Video description begins] A page titled Marketplace appears. The navigation pane on the left contains various sections. The first section contains 2 options: Get Started, and Service Providers. The second section labeled Management also contains 2 options: Private Marketplace and Private Offer Management. The other 2 sections are My Marketplace and Categories. The main pane contains a search bar and various tabs like Load Balancer, Software Load Balancer, and Program Kemp LoadMaster ADC Load Balancer. [Video description ends]
+
+[Video description begins] A page titled Load Balancer appears. It contains a field labeled Plan and a Create button at the top. Below, there are various tabs like Overview, Plans, Ratings + Reviews, and so on. [Video description ends]
+
+Now when I deploy a resource in the cloud and I'm deploying a load balancer configuration here, I have to put it in a Resource group that organizes related resources. So, I've already got a resource group called HQ for headquarters, I'll put it there. We need a name for the load balancer. 
+
+[Video description begins] A page titled Create load balancer appears. Below, there are various tabs like Basics, Frontend IP configuration, Backend pools, Inbound rules, Tags, and so on. The Basics tab is active. It contains 2 sections like Project details, and Instance details. The Project details contains fields like Subscription, and Resource group. The Instance details section contains fields like Name, Region, SKU, and so on. [Video description ends]
+
+How about LinuxApp1LB1? We'll have this running in the East US region. I'm not going to change the SKU which is going to be a Standard type of load balancer. If this is a public-facing load balancer for an app then I would choose Public. But you can also have a load-balanced app, which in the backend uses a few virtual machines, that's for an Internal line of business app, but in this case, we'll choose Public and the Tier, we'll leave it on Regional and I'll click Next.
+
+So, the Frontend IP configuration, we're going to click Add to add one and I'll call it FrontEndConfig1. It's going to be for IPv4 with an IP address. We can either choose an existing public IP address or we can create a new one. I'll choose Create new, call it LB1 for load balancer1 PubIP, and then I'll go ahead and click OK and Add. That's our frontend configuration.
+
+[Video description begins] The Frontend IP configuration tab is active now. It contains a button labeled Add a frontend IP configuration. Below, there is an empty table with 2 column headers: Name, and IP address. [Video description ends]
+
+ [Video description begins] A pane titled Add frontend IP configuration is displayed on the right. It contains fields like Name, IP version, IP type, Public IP address, and Gateway Load balancer. The Public IP address item contains a link: Create new which further displays a pop-up titled Add a public IP address. It contains fields like Name, SKU, Tier, Assignment, and so on. [Video description ends] 
+
+So, clients that will be using an app, if it's a client type of app, they need to be directed to this Public IP address, for example through a DNS A or AAAA record, in this case, A for IPv4 because this is where the load balancer will sort of act as a funnel and take incoming app requests and distribute it to the least busy backend virtual machine. So, let's click Next for the backend pools.
+
+[Video description begins] The Backend pools tab is active now. It contains a button labeled Add a backend pool. Below, there is an empty table with various column headers like Name, Resource Name, IP address, and so on. [Video description ends]
+
+We don't have one yet. I'll click Add a backend pool, I'll call it BE for backend Pool1. I've already got a virtual network that will be tied to and for IP configurations down below, I'll click Add.
+
+[Video description begins] The page now displays the header Add backend pool. It contains 3 fields: Name, Virtual network, and Backend Pool Configuration. Below, there is a section labeled IP configurations. It contains 2 buttons underneath: Add, and Remove. Below this, there is an empty table with several column headers like Resource Name, Resource group, Type, and so on. [Video description ends]
+
+Now this allows me to determine who in terms of virtual machines will be a member of the backend pool. There's our two Ubuntu Linux servers. They're shown here with their IPv4 private internal IP addresses here in the Azure cloud and I want to save this backend pool, so I'll click Save. So, we've got the Frontend IP, we've got the Backend pool, I'll click Next for Inbound rules and I'll add a load balancing rule, call it LBRule1 for IPv4. So, when we get requests coming to our FrontEndConfig1, I want the Backend pool we configured to receive those requests at the end of the day to service it for the client over TCP.
+
+[Video description begins] The page now displays the header Add IP configurations to backend pool. Below, it contains a collapsible section labeled Virtual machine (2). It displays 2 items: Ubuntu1, and Ubuntu2 with checkboxes. [Video description ends]
+
+[Video description begins] The Inbound rules tab is active now. It contains a section: Load balancing rule. It has a button labeled Add a load balancing rule. Below, there is an empty table. Underneath, there is a section called Inbound NAT rule. [Video description ends] 
+
+We can choose the Frontend port, let's say 443, and also the Backend port that the app is truly listening on. Ports don't have to be the same. Now we also have to set up a Health probe. Now we also have to set up a Health probe where the load balancer can keep track of which backend virtual machines are up and running and healthy and thus, can service requests for the app. I'll click Create new, call it HP1 for health probe 1.
+
+[Video description begins] A pane titled Add load balancing rule is displayed on the right. It contains fields like IP version, Frontend IP address, Backend pool, Protocol, Health probe, and so on. The Health probe field contains a link: Create new. It contains fields like Name, Protocol, Port, and so on. [Video description ends]
+
+Let's say we'll just have it periodically, maybe every 20 seconds, basically connect it to TCP port 80 in the backend to make sure we get a response and I'll click Save.
+
+Now I don't need to configure an Outbound port rule or anything like that. So, at this point, we would just create the load balancer. OK, let's go ahead and do that.
+
+[Video description begins] The other tabs: Outbound rules, Tags, and Review + create are selected one after the other. [Video description ends]
+
+OK, after a few moments, the load balancer deployment is complete. We can choose to Go to the resource to view its properties but at any point in the future, if you go to the All resources view and if you filter the name of resources here, let's say for lin, there's the LinuxApp1LB1, the load balancer. If I click on it, and if I click the Frontend IP configuration on the left, there's the configuration. We have an assigned public IP address.
+
+[Video description begins] A page titled Microsoft.LoadBalancer-20230817134021 | Overview. The navigation pane on the left contains options like Overview, Inputs, Outputs, and Template. The main pane contains various buttons at the top, such as Delete, Redeploy, Download, and so on. Below, it contains 2 collapsible sections labeled Deployment details, and Next steps. Underneath, there is a button called Go to resource. [Video description ends] 
+
+[Video description begins] A page titled All resources appears. It contains various buttons at the top, such as Create, Manage view, Refresh, and so on. Under this, there is a search bar. A table appears below, with column headers like Name, Type, Resource group, and so on. It contains various items. [Video description ends] 
+
+If I go to Backend pools, there's the Backend pool with our two Ubuntu Linux virtual machines. However, what we've done is manually scaled this. We can go at any point in time to add or remove virtual machines, but that's manual, it's not autoscaling. In Azure, you can also create what's called a virtual machine scale set.
+
+[Video description begins] A page titled LInuxApp1LB1 | Frontend IP configuration appears. The navigation pane on the left contains options like Overview, Activity log, Tags, Frontend IP configuration, Backend pools, and so on. The main pane displays various buttons at the top. Below, there is a search bar and a table with 3 column headers: Name, IP address, and Rules count. [Video description ends]
+
+[Video description begins] The Backend pools option is highlighted on the left pane now. The main pane contains 2 buttons: Add, and Refresh at the top. Below, it contains 2 collapsible sections. One of them: BEPool1 (2) contains 2 items under it. [Video description ends]
+
+When you go to create a virtual machine scale set, and you can use this for a load balancer if you want to. Under the Scaling part of this configuration, this is where you can configure your Scaling policy, so you can set the initial instance count, how many virtual machine instances should we have and then if you click Custom for the Scaling policy, you can set the Maximum number of instances and at which point it will trigger adding VM instances like the % of CPU utilization for a certain number of minutes.
+ 
+[Video description begins] A page titled Virtual machine scale set appears. Below, it contains a field titled Plan and a Create button next to it. [Video description ends]
+
+ [Video description begins] A page titled Create a virtual machine scale set appears. Below, there are various tabs like Basics, Spot, Disks, Scaling, and so on. The Scaling tab is active. It contains various sections like Scaling, Scale-In policy, Scale out, Scale in, and so on. [Video description ends] 
+
+Also, in Azure, if I were to go to create a different type of resource, let's say an app service which is a web application hosted in Azure. When you go to configure an app service, it's automatically scaled for you, although you do have some control of it if you need that fine-grained control over the configuration.
+
+10. Video: Course Summary (it_osltrb_01_enus_10)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary [Video description ends]
+So, in this course, we've examined how to solve problems related to CPU, memory, storage, and networking on a Linux host. We did this by exploring how to troubleshoot using the troubleshooting methodology by covering the methodology steps as well as taking a look at common CPU and memory performance problems.
+
+We then viewed memory and CPU performance on a Linux host. We managed Linux process CPU time, and we also troubleshot Linux boot problems. Next, we vertically scaled Linux for performance and we scaled Linux horizontally using load balancing. In our next course, we'll move on to solve Linux storage and network related problems.
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

@@ -1,0 +1,234 @@
+CompTIA Linux+: Troubleshooting with systemd
+systemd is a valuable Linux troubleshooting tool for many types of Linux components, such as application crashes and network services. The systemd timer facility can be used to schedule Linux jobs instead of using CRON. In this course, I will start by covering how systemd works in and identify relevant terminology, such as service units. I will then manage Linux services using systemd and troubleshoot domain name system (DNS) name resolution problems using systemd. Lastly, I will schedule jobs using the systemd timer. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+Table of Contents
+    1. Video: Course Overview (it_osltrb_04_enus_01)
+
+    2. Video: Linux systemd and Service Units (it_osltrb_04_enus_02)
+
+    3. Video: Managing Linux Services with systemd (it_osltrb_04_enus_03)
+
+    4. Video: Troubleshooting DNS Using systemd (it_osltrb_04_enus_04)
+
+    5. Video: Managing systemd Timer (it_osltrb_04_enus_05)
+
+    6. Video: Course Summary (it_osltrb_04_enus_06)
+
+1. Video: Course Overview (it_osltrb_04_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Dan Lachance. [Video description ends]
+Hi, I’m Dan Lachance. systemd is a valuable Linux troubleshooting tool for many different types of Linux components, such as application crash core dumps and network services.
+
+The systemd timer facility can also be used to schedule Linux jobs as opposed to using CRON scheduling.
+
+In this course, I’ll start by covering how systemd works, in addition to identifying terminology such as service units.
+
+I will then manage Linux services using systemd, followed by troubleshooting DNS name resolution problems with systemd.
+
+And lastly, I will schedule jobs using the systemd timer. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+
+2. Video: Linux systemd and Service Units (it_osltrb_04_enus_02)
+
+After completing this video, you will be able to outline how systemd can be used for logging and managing Linux targets using control groups.
+outline how systemd can be used for logging and managing Linux targets using control groups
+[Video description begins] Topic title: Linux systemd and Service Units. Your host for this session is Dan Lachance. [Video description ends]
+Let’s talk about Linux systemd and units. First of all, what is systemd? systemd is a tool built into modern Linux distribution that lets you manage Linux services.
+
+What does that mean? Well, starting, stopping them, checking their status, setting them to start automatically on boot. But systemd does a lot more than just that.
+
+And it can also be used for troubleshooting things like application crashes. So systemd then supersedes older equivalent tools in older Unix environments like SysV init and BSD init.
+
+Now units, this is an important aspect of systemd. These are entities, these are objects in the Linux OS that can be managed by systemd.
+
+What are some of the unit types? Well, they include services, and this is commonly where systemd is used in most modern Linux environments to manage things like background Daemons, maybe for the Apache web server or for logging purposes or any other type of service.
+
+There are systemd socket unit types for network communications. Target unit types, which are essentially like groups to group different units together. There are device unit types for kernel devices. There are mount point unit types that you can manage with systemd as well.
+
+There’s also automount for the automatic mounting of file systems in the Linux host. There are timer unit types so you can have timers that trigger other items. For Linux swap file systems, there are swap unit types.
+
+Then there are path unit types where the trigger for a service to start would be a file system change.
+
+There’s a slice unit type that’s a little bit different than the target unit type we talked about. Now, it does also group units together but in a hierarchy. And then finally, the catchall is called a scope unit type, which is used for managing services that aren't controlled by systemd.
+
+And then we have the systemd-coredump utility. Now that might be present in some Linux distributions automatically or you might have to install some tools to get that. But its purpose is to debug application crashes.
+
+When an application crashes, in order to properly debug it, you would need to be able to have a memory map of exactly what was happening at the time of the crash. And so, the core dump file would contain memory information from when the crash occurred.
+
+Now, we don’t want to get caught up with memorizing this specific command, systemd-coredump, because different Linux distributions will have some different mechanisms. But the underlying concept is the same; do we want to capture core dumps? Where should they be stored, and for which components?
+
+systemd consists of a couple of commonly used utilities, one of which is the systemctl command. We have actually seen some references to that already. So this is used to manage systemd services, such as to stop a web server or set it to start on boot.
+
+For logging, you can use the journalctl command to view the systemd journal or log entries.
+
+Some common examples of how you might use systemd tools at the command line would include using systemctl. For example, systemctl, which is one-word, status apache2, will show me the status of that Daemon. We could run systemctl stop apache2, of course, to stop it, or you could use the word start there to start it up.
+
+And to make sure that service or that Daemon launches automatically on boot up, you could also run things like systemctl enable apache2. As you might guess, you could change enable to disable if you no longer want to service that starts automatically to continue doing so.
+
+You can even run systemctl reboot to reboot the system or you could replace reboot with the word poweroff. You can also run systemd-analyze followed by the word blame. The purpose of that is to show you how long it took for each startup service to initialize. That can be very helpful when troubleshooting, why does it now all of a sudden seem to take longer than before to boot up a Linux host?
+
+For example, here we have a screenshot of the systemd-analyze blame syntax. What we’ve got listed back here in the left-hand column is the number of seconds it took upon start up for the given service which is shown on the right. These are all service units. For example, docker.service seems to have taken the longest to start up. And as we go down through the list, we have a descending-ordered list.
+
+And it’s in descending order based on the amount of time it took for that service to start up. [Video description begins] The header of the page reads: systemd-analyze blame. A screenshot of a table is displayed on it. On the left pane, the time taken by the services is given. On the right pane, the names of the services are shown. Such as: 26.978s docker.service, 5.935s apt-daily.service, 1.535s cloud-config.service, and so on. [Video description ends]
+
+Now when you're looking at this, you might say, okay, well, docker.service took 26.978 seconds. Is that normal? You need to have a baseline. It is very difficult to troubleshoot when there’s absolutely no baseline to go with.
+
+Some things are glaringly obvious, like the CPU at 90 or 100% for extended periods of time. But when it comes into the fine-tuned details, it does become quite difficult. So, make sure you establish a baseline of normal activity for all these types of things.
+
+Our last syntax example here is a screenshot of systemctl list-units --failed. So do we have any systemd units that are not functional for some reason? Here in our screenshot output, the logrotate.service, that’s a service unit, is shown here as having failed. Now, this is important because we can then further investigate it by starting to review related log files. [Video description begins] In the screenshot, a table is presented. There are five headers with the following message: UNIT: logrotate.service, LOAD: loaded, ACTIVE: failed, SUB: failed, and DESCRIPTION: Rotate log files. [Video description ends]
+
+3. Video: Managing Linux Services with systemd (it_osltrb_04_enus_03)
+
+Learn how to use the journalctl and systemctl commands to manage Linux logs and services.
+use the journalctl and systemctl commands to manage Linux logs and services
+[Video description begins] Topic title: Managing Linux Services with systemd. Your host for this session is Dan Lachance. [Video description ends]
+In this demo, we’re going to take a look at how to manage Linux services using systemd.
+
+Now, you might recall that systemd is just another way that we can manage various types of components of the Linux OS, such as service units or Daemons. There are other ways to do this, specifically in Ubuntu Linux. [Video description begins] A blank Linux host page is open with the header: cblackwell@Ubuntu2: ~. The first line of command reads: cblackwell@Ubuntu2 : ~$ [Video description ends] However, we're going to focus on systemd.
+
+Now this can be great for standard management, but also, it can help with troubleshooting.
+
+Let’s start by issuing the systemctl command, list -units and then --type=service and then --state=active. So which active services does our Linux machine know about? [Video description begins] A new page opens with a populated table as an output. It has columns with header names, such as: UNIT, LOAD, and so on. [Video description ends]
+
+So there’s all kinds of stuff here, like the cron.service, the keyboard-setup.service, the rsyslog.service, the ssh.service, and so on. So, these are loaded and active. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Now, of course, we also have the option of using our up-arrow key to go back to that previous command and changing --state=active to --state=failed. You could also use --failed on the command line, but let’s go ahead and do this, Enter. All right! So this is telling me then that we’ve got a problem with the logrotate.service. This is important because it’s a quick way for us to see where there might be a problem so that we know where to focus our attention from this point forward.
+
+So what I might do then is now run the sudo journalctl command, view journalctl log entries, pipe that to grep, looking perhaps for logrotate. We could even pipe that to more to stop after the first screen full. So we could poke through the log entries, seeking any issues that pop out at us.
+
+Now also take note of, I’ll just quit out of that, if we do not pipe that output to more than logrotate, which is our filter here with grep, will show up highlighted in red. As we can see, there are many logged entries related to logrotate. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+Other things we can do related to systemd includes basic system or service management, such as systemctl status, let’s say, apache2, assuming the Apache web server is installed. Well, it’s showing here as being inactive. [Video description begins] The presenter clears the screen to run the new command. [Video description ends] So using our up-arrow key, we can bring up that command and change the word status to start.
+
+Now here I get this message about authentication. [Video description begins] The message on the screen reads: Authentication is required to start 'apache2.service'. [Video description ends] What I really should be doing here is prefixing that, of course, with sudo. I’m now logged in as root. [Video description begins] The presenter clears the screen to run the new command. He runs the command: cblackwell@Ubuntu2: ~$sudo systemctl start apache2. [Video description ends]
+
+And now if I check the status once again, of course, the Apache web server is showing as running. We could also use sudo systemctl to enable a given service like apache2, [Video description begins] The presenter clears the screen to run the new command. [Video description ends] or in fact, disable it if you no longer want it running.
+
+Now, of course, if you don't want something running, if that's going to be for the longer term, you really should uninstall all of the related components to reduce the attack surface or the potential attack surface. That's just a standard part of hardening any system.
+
+You can also use, sudo systemctl to terminate troublesome services or Daemons just like you would do it at the kill command level, and that's actually what you would pass as the next parameter to systemctl as kill. Maybe -s for signal 9, which means kill right away, kind of abruptly. But if it’s not responding anyhow, that’s the next thing to try, and then specify the service name. In this case, if we check the status of Apache2.
+
+Now other things you can do here, also include working with things, like runlevels. If I run sudo systemctl get -default, it will return the default run level, in this case, graphical.target. We could also run sudo systemctl, isolate and specify another target like multi-user.target. If I use the runlevel command, for example, we were previously on runlevel 5, which was the graphical.target, so the potential to run the GUI if you wish.
+
+But we are currently now runlevel 3, which is multiple users with network support. So you can use systemctl to also manipulate that.
+
+But all we’ve done here with systemctl isolate is temporarily switched to that runlevel. We haven’t modified the default. So, if I run the get-default trailing syntax on that, it’s still set to graphical.target.
+
+You can also run standard things like sudo systemctl reboot or poweroff. And interestingly enough, of course, you can also force the machine to go into rescue mode. Now why would you do that? The machine would have to be well enough for you to issue that command in the first place. Well, it depends on the level of problems you’re having on your machine and how it’s running.
+
+Sometimes this can be handy to force it to run into that, or you might use it for training purposes. If you have new Linux technicians and you want to get some experience working in rescue mode environments.
+
+Also, so you can run sudo systemd-analyze blame. This is important, of course, as we know because it will list, in this case, the service unit and how long it took to start up. [Video description begins] A table with two columns appears as an output. On the left pane, the time taken by the services is displayed. On the right pane, the names of the services are shown. Such as: 26.978s docker.service, 5.935s apt-daily.service, and so on. [Video description ends] Given that we have a baseline, it’s pretty easy for us to determine if this is normal or not.
+
+But the fact that you would issue that command would tell us that things are probably not normal. There’s probably a performance issue if you’re even bothering to do this, that, or you’re just curious or you’re establishing a baseline.
+
+But regardless of the reason, it’s important to have an understanding as a Linux technician for management and for troubleshooting as to how systemd works.
+
+4. Video: Troubleshooting DNS Using systemd (it_osltrb_04_enus_04)
+
+Find out how to use systemd-resolved to troubleshoot DNS problems.
+use systemd-resolved to troubleshoot DNS problems
+[Video description begins] Topic title: Troubleshooting DNS Using systemd. Your host for this session is Dan Lachance. [Video description ends]
+Troubleshooting DNS issues comes in many forms. There are plenty of commands that we can use to determine why DNS may or may not be working. DNS, of course, is used most commonly to resolve DNS names. FQDNs to IP addresses, which is really what most people and apps depend on.
+
+Rarely will user, for example, in a web browser interface type in the IP address of the site they want to go to. That’s definitely not the norm. [Video description begins] A blank Linux host page is open. The first line of command reads: cblackwell@Ubuntu2: ~$ [Video description ends]
+
+The first thing we would do when troubleshooting DNS issues is do the basics, ip a. So is the appropriate network interface like Ethernet 0 up and running? Do we have a valid IPv4 or IPv6 address? [Video description begins] The IPv4 address reads: 10.0.0.10/24. The IPv6 address reads: 00:22:48:2d:06:bb. The presenter clears the screen to run the new command. [Video description ends]
+
+And also, if I run commands like ip route, do we have a default route configured that will allow us, for example, when needed, to get out of the local area network?
+
+You might not always need to do that, even for internal name resolution on one subnet. [Video description begins] The presenter highlights the default route on the screen. It reads: 10.0.0.1. [Video description ends] It really depends on the environment, but it is something very basic worth doing. And part of the troubleshooting methodologies to try the simple stuff first that might actually be the cause of the problem.
+
+When it comes to troubleshooting DNS, instead of pinging things by name, you’re probably better off running tools like nslookup, name server lookup, where you can type in things like www.skillsoft.com, if you want to be able to query IPv4a records to see if you get a response or not.
+
+Here we have a number of non-authoritative answers from other DNS servers. So at this point, we know that it’s working. [Video description begins] The output on the screen displays three DNS servers' names and addresses. The names are the same: www.skillsoft.com. The Addresses are different. For example, the first address reads: 18.191.63.135. [Video description ends] So I’ll type exit to get out of nslookup.
+
+Now the other thing that we should consider is that if we go into /etc/systemd, so the systemd service manager in here, we could use a text editor. So I’ll sudo nano into a file called resolved.conf, the DNS config file. [Video description begins] A new page opens with the header: GNU nano 4.8 resolved.conf. A list of ten file names is displayed on it, such as: #DNS, #Domains, and so on. [Video description ends] Now a lot of these are commented out, but we could specify our own settings here.
+
+For example, I could remove the # symbol in front of DNS= and I could specify various IP addresses for different DNS name resolution servers. And I could specify multiple DNS server IP addresses, each separated by a space. [Video description begins] The presenter types the DNS address: 192.55.66.45 8.8.8.8 [Video description ends]
+
+You could also specify DNS domain names that you want specifically queried for DNS servers. I’m going to press ctrl+X to get out of here, but I will not save my changes.
+
+But when you do save your changes to put them into effect, what you’ll normally do than to put it into effect is you’ll run sudo systemctl restart, and then specify, in this case, systemd-resolved.service, to restart it.
+
+Now, if we were to cat /etc/resolv, with no e, .conf, it’ll have the configuration for DNS that we would have configured potentially in the other file we were just looking at, and it writes it here. Notice here it says at the top: This file is managed by systemd-resolved. Do not edit. Now that wasn’t always the case!
+
+You might find this is the case in the resolv.conf file on newer distributions. But some older Unix or Linux environments still expect manual configurations for DNS to be in the resolv.conf file.
+
+You can also at the command line run things like sudo resolvectl, and maybe query, let’s say skillsoft.com. So this would be another way to test and verify whether DNS name resolution is working correctly. It just gives us different types of input that we might expect from other DNS tools like nslookup or even dig.
+
+There are times when you want to make sure when you’re testing DNS that you don’t have negative responses from recent, previous DNS queries that have been cached in memory on the Linux host. And so to do that you can flush the DNS cache from memory on this machine.
+
+You can do that with, sudo resolvectl flush-caches. After that is when you would start testing your name resolution such as querying for skillsoft.com.
+
+Sometimes, if you catch it at the right moment, and you previously had a negative DNS response, maybe because of an incorrect DNS server entry that you had configured, after flushing the caches, you might then get successful responses.
+
+So it’s important then, as a Linux technician to be aware of the role that systemd plays in modern Linux distributions when it comes to DNS name resolution.
+
+5. Video: Managing systemd Timer (it_osltrb_04_enus_05)
+
+Discover how to configure scheduling with systemd timer instead of using cron.
+configure scheduling with systemd timer instead of using cron
+[Video description begins] Topic title: Managing systemd Timer. Your host for this session is Dan Lachance. [Video description ends]
+systemd can be used as a replacement for scheduling things like CRON jobs. Now, traditionally CRON has been used on Linux and Unix systems as we know, to schedule things where the trigger is time-based, running it every few minutes, every hour, or certain days of the month.
+
+But on modern Linux systems, you’ll find that systemd is more and more often being used to schedule things like clean-up tasks on Linux hosts or running of custom shell scripts. You'll find that's being used more and more often than CRON jobs are now. [Video description begins] A blank Linux host page is open with the header: cblackwell@Ubuntu2: ~. The first line of command reads: cblackwell@Ubuntu2: ~$ [Video description ends]
+
+But one of the great things about working with systemd timer units is that you have some additional features; otherwise not readily available when using CRON scheduling. Things like waiting a certain amount of time after an event.
+
+Like maybe you have two shell scripts, and you want the second shell script to run 20 minutes after the first one completes, however long the first one takes and whatever time that would end up happening to be.
+
+We can view some of the default systemd timers by issuing the command sudo systemctl status and then *timer anything that starts with any text but has timer in it. So these all end, as we see here, with .timer as opposed to .service.
+
+Notice there’s some file system checking timers, there’s a logrotate.timer, and notice these are all showing as being active and waiting. Notice the trigger is shown, and the trigger here would be another service, so it ends with .service, another different type of systemd unit.
+
+So let's go ahead and create our own custom little timer configuration. [Video description begins] The presenter clears the screen to run the new command. [Video description ends] I’m going to start by going into the /etc/systemd/system directory. If I do an ls here, we’ve got a number of systemd service files here and really different types of systemd units, like mounts and so on.
+
+I’m going to use the nano editor here, so sudo nano to create a file here called test1.service. [Video description begins] A blank page opens with the header: GNU nano 4.8 test1.service. [Video description ends] The section headers here are declared with an [ ], so I’ll start with unit where I’ll specify a property within that section, Description=My first systemd timer test.
+
+Then, further down, I’ll add another section called Service, which will again be enclosed in [ ]. Property under there will be type, in this case, =oneshot to one configuration.
+
+ExecStart will be the next item on the line, on its own line. ExecStart= / and let’s say we just want to run, usr/bin/ and we want to run the free command.
+
+And then another section here called [Install], WantedBy will be the keyword,= and I want this to be available in the multi-user.target runlevel, runlevel 3, in other words. Close out and save that file. [Video description begins] The presenter clears the screen to run the new command. [Video description ends]
+
+If I do an ls of things that start with the word test* in this current directory, it returns back, test1.service. From here I can run commands like sudo systemctl status, and in this case, it’s called test1.service.
+
+All right, there’s our little description: My first systemd timer test. Loaded but currently inactive. Okay, so not running. Q for quit.
+
+So then if I start my little test service and then if I check the journalctl log using -S, so since today -u, I’ll specify my test1.service. If I have issued the free command, which I did a few moments ago, then the results of that command will show here. [Video description begins] From the list of output on the screen, three lines of free command are displayed. First free command line reads: Aug 21 18:49:37 Ubuntu2 free [125768] : total used. The second line reads: Aug 21 18:49:37 Ubuntu2 free [125768] : Mem: 3440056 493676 43. The third line reads: Aug 21 18:49:37 Ubuntu2 free [125768] : Swap: 0 0. [Video description ends]
+
+Okay! So, the next thing I’m going to do is I’m actually going to configure the timer unit. So I’m already in the /etc/systemd/system directory. So I'm just going to run sudo nano again. But this time, I’m going to create a file called test1.timer.
+
+Last time, we created the service type of unit, this time it’s a timer type of unit. [Video description begins] A blank page opens with the header: GNU nano 4.8 test1.timer Modified. [Video description ends]
+
+So I'll use the unit keyword and square brackets at the top with a description. Putting some kind of a description after the equal sign. [Video description begins] The Description reads: Testing the test1.service unit. [Video description ends]
+
+Requires=, this is where I’m going to put in test1.service. So it requires test1.service. Then I’ll put in a Timer header section, again enclosed in [ ] because it’s a header. The Unit=test1.service.
+
+And then this is where the timing comes in OnCalendar, so it’s O for on and C for calendar. So after the = I’ve got *-*-* so that takes care of the day of the week. So every day of the week and the year, month, day. But then we have to specify the hours, minutes, and seconds. So I’ve got a space between that section, and * that’s for hours, :* for minutes, :00 for seconds.
+
+So what this really means is I want to run this once every minute, for testing purposes only, of course. And then, I’ll add one more header unit in here called Install, under which I’ll add WantedBy=timers.target, so it’s registered as a timer item. So I'll control and save that.
+
+Then I’ll go back into my test1.service file, and under the unit header at the top, I’ll make sure I add Wants=test1.timer. So it's not necessarily required, but it's linked to it in that way. So I’ll clear the screen.
+
+And I’m going to run sudo systemctl restart, not start; it’s already started, we checked that! I want to restart my test1.service unit because I have configured it and made a change, so I’ll go ahead and do that.
+
+Now, if we run our journalctl commands since today of our test1.service, but we add a -f, which means we’ll be able to see real-time updates.
+
+It means follow. What we’re going to start noticing is that every one minute it’s going to be actually executing the free command. We're already starting to see that happening here. So this is why we say we can use systemd timer units as a way of scheduling things to run in Linux instead of using CRON.
+
+Now this is going to be important, for example, from a troubleshooting perspective, if you’re expecting to go in and find a scheduled CRON job somewhere that’s maybe consuming resources when really it might not be that at all, instead, it might be a systemd timer unit.
+
+6. Video: Course Summary (it_osltrb_04_enus_06)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. Your host for this session is Dan Lachance. [Video description ends]
+So in this course, we’ve examined how to troubleshoot and solve various Linux problems using systemd.
+
+We did this by exploring what Linux systemd is and we talked about service units, and also how to manage Linux services with systemd.
+
+We also talked about troubleshooting, using systemd as it relates to DNS. And we also managed systemd timer units.
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

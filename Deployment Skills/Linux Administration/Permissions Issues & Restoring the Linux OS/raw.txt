@@ -1,0 +1,577 @@
+CompTIA Linux+: Permissions Issues & Restoring the Linux OS
+Problems arising from user account configuration and file permissions assignments are sometimes seen only over time. Backing up and restoring Linux hosts can solve these and many other problems. In this course, I will describe common user and file permissions problems in Linux and potential solutions, followed by troubleshooting user account and file permissions issues. I will then manage user-elevated permissions with sudo and the SUID file system bit. Next, I will configure file system quota limits for users and groups and revert cloud and on-premises Linux servers to previous states. Lastly, I will backup and restore a cloud-based Linux virtual machine. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+Table of Contents
+    1. Video: Course Overview (it_osltrb_03_enus_01)
+
+    2. Video: Common User and File Permissions Issues (it_osltrb_03_enus_02)
+
+    3. Video: Troubleshooting User and File Permissions (it_osltrb_03_enus_03)
+
+    4. Video: Managing sudo and SUID Elevated Permissions (it_osltrb_03_enus_04)
+
+    5. Video: Resetting a Forgotten Root Password (it_osltrb_03_enus_05)
+
+    6. Video: Configuring User and Group File System Quota Limits (it_osltrb_03_enus_06)
+
+    7. Video: Reverting to a Cloud Linux Virtual Machine Disk Snapshot (it_osltrb_03_enus_07)
+
+    8. Video: Reverting to an On-premises Linux Virtual Machine Snapshot (it_osltrb_03_enus_08)
+
+    9. Video: Backing Up and Restoring Cloud Linux Virtual Machines (it_osltrb_03_enus_09)
+
+    10. Video: Course Summary (it_osltrb_03_enus_10)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_osltrb_03_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. The host for this session is Dan Lachance. [Video description ends]
+Hi, I'm Dan Lachance. Problems arising from user account configuration and file permissions assignments can sometimes arise only over time. Backing up and restoring Linux hosts can solve these and many other problems that may arise.
+
+In this course, I will begin by describing common user and file permissions issues in Linux, along with potential solutions followed by troubleshooting user account and file permissions issues.
+
+I will then manage user elevated permissions with sudo and the SUID file system bit.
+
+And next I will configure user and group file system quota limits, followed by reverting cloud and on premises Linux servers to previous states.
+
+Lastly, I will backup and restore a cloud based Linux virtual machine. This course can be used to prepare for the Linux+ XK0-005 certification exam.
+
+2. Video: Common User and File Permissions Issues (it_osltrb_03_enus_02)
+
+After completing this video, you will be able to list common user and file permissions problems.
+list common user and file permissions problems
+[Video description begins] Topic title: Common User and File Permissions Issues. The host for this session is Dan Lachance [Video description ends]
+Another important thing to be able to troubleshoot in a Linux ecosystem is dealing with user and file permissions issues.
+
+When it comes to users, one of the things we have to think about is - do those users exist locally just on a single Linux host? So is their account /etc/passwd or are we talking about centralized network accounts - maybe on an LDAP server, maybe in the cloud, maybe in a Microsoft Active Directory environment?
+
+How do you troubleshoot accounts will really be dictated by whether it's a local or a network based type of account. When it comes to file permissions issues, we also have to think about - are we only using standard file permissions in Linux? That would be the standard read, write, and execute; and things like the group ID bit, the sticky bit. Or are we also using extended access-control lists or ACLs, where we can assign multiple users and multiple groups with different sets of permissions to a single file object.
+
+On the Linux user account side of things, we have the option of resetting a forgotten password. We can do this using gooey tools, which come in many different varieties. Of course we can always use the standard password command - passwd in Linux to reset Linux user passwords. Of course, if you're not signed in with the root account, you would have to prefix the passwd command with sudo with elevated privileges to be able to make those types of changes to other people's accounts.
+
+Then we have to think about whether an account is locked. Linux technicians can choose to lock a user account, for example, maybe if the user is on vacation for a few weeks, or if a user is on maternal or paternal leave - that kind of thing. This can be done in many ways, including using the passwd command or the usermod command.
+
+Now in the /etc/shadow is where we have password hashes, And as we'll see in a screenshot shortly, when a user account is disabled, an exclamation mark appears as the first character before the password hash. And that's what disallows login using that user account.
+
+The other thing to think about is whether the account exists in the first place. Of course we can check for that in /etc/passwd or /etc/shadow and we want to make sure that account is accessible from that Linux host. That really means if we have a network based account, do we have network access to be able to authenticate remotely to that account that exists elsewhere on a server.
+
+[Video description begins] A screen shot of a Linux host page with multiple lines of code is set to appear. The host explains certain commands from the code on screen. [Video description ends]
+
+In our screen shot, the first command that was issued is, sudo usermod - L mbishop
+
+[Video description begins] The first two lines of code reads as follows. Line 1: cblackwell@ubuntuserver1: /proc/sys/dev$ sudo usermod -L mbishop . Line 2: cblackwell@ubuntuserver1 : /proc/sys/dev$sudo tail /etc/shadow [Video description ends]
+
+In other words, we are locking the bishop account. So then the next command under that is sudo tail /etc/shadow
+
+And if we locate the mbishop user account, notice that the first character of the password hash is an exclamation mark; because the password, because the user account has been locked or disabled. The next command is sudo usermod -U mbishop
+
+[Video description begins] The host now points to another line of code that reads as follows: cblackwell@ubuntuserver1: /proc/sys/dev$ sudo usermod -U mbishop. [Video description ends]
+
+And then the username is mbishop. And now if we take a look at /etc/Shadow at mbishop’s account, there is no longer an exclamation mark in front of the password because the account is now enabled. So as long as the user knows their password, they are good to sign in.
+
+Another thing to troubleshoot, especially if there isn't great documentation on how a Linux host is configured or if you’ve inherited Linux hosts that you didn’t set up in the first place; is the presence of entries within /etc/security/access.conf
+
+[Video description begins] A screen shot of an instance of the /etc/security/access.conf in the Linux interface is shown. First two lines of the code read: Line 1: ALL EXCEPT root:ttyl Line 2: Disallow console logins to all but a few accounts. Other lines of the code mimic this pattern for different users. [Video description ends]
+
+This is a file that can allow or deny specific users and groups from accessing the Linux system. So it can prohibit accounts from logging in to local text based terminals as well as across the network. On the file permissions issues, we have to think about the symptoms.
+
+For example, if a user is unable to delete a file, usually means they don't have the correct permissions. So you would need read and write to delete a file. Or if the sticky bit is enabled at the permission level for a sub-directory, it means users can only delete their own files. And maybe that's why the user thinks they should be able to delete other people's files when in fact the sticky bit is preventing that from happening.
+
+If users have permission denied to files or directories, maybe we would use the ll, the long listing command, to view user and group ownership of files, to make sure the correct permissions are set.
+
+If the correct user or group isn't set as the owner of a file or a directory, it can be set with the chown, the change owner command, or the chgrp, the change group command.
+
+Or if permission is denied to do something such as accessing some part of the file system, maybe the user forgot to prefix the command with sudo to run it with elevated privileges. Not anyone can do that. The user has to have been added to the /etc/sudoers file. Linux admins can do that. They can add users to the sudoers file with the visudo command.
+
+And when it comes to running shell scripts, remember that users will need read and execute to be able to get into the sub-directory where those scripts exist.
+
+And then of course they need read and execute to be able to read and execute, or run the script itself.
+
+So in our last screen shot, where we have a problem of being unable to run a shell script.
+
+[Video description begins] The screenshot displays code in the Linux interface. The first four lines are as follows Line 1: cblackwell@ubuntuserver1: ~ $ Is hello.sh Line 2: hello.sh Line 3: cblackwell@ubuntuserver1: ~$ . /hello.sh Line 4: - bash: .hello.sh: Permission Denied [Video description ends]
+
+In our screen shot, when the hello.sh script is attempted to be run, a permission denied message is returned.
+
+[Video description begins] The host now points to another command that is run within the same code. Line 5: cblackwell@ubuntuserver1: ~ $ sudo chmod +x hello.sh Line 6: cblackwell@ubuntuserver1 : ~$ . /hello.sh Line 7: What is your name? Line 8: Dan Line 9: Welcome to the ubuntuserver1 Dan! Line 10: Today is Thu Jun 15 01:27:54 PM UTC 2023. [Video description ends]
+
+So the next command is sudo chmod +x hello.sh so adding the execute permission for all to hello.sh And then when the hello.sh is invoked the next time, it works correctly.
+
+3. Video: Troubleshooting User and File Permissions (it_osltrb_03_enus_03)
+
+In this video, you will learn how to solve common user and file system permissions issues such as login problems and insufficient permissions.
+solve common user and file system permissions issues such as login problems and insufficient permissions
+[Video description begins] Topic title: Troubleshooting User and File Permissions. The host for this session is Dan Lachance. [Video description ends]
+In this demo, we're going to take a look at a few things that you might want to consider when you are troubleshooting user and file permissions issues in Linux. [Video description begins] A blank Linux host page is open. The title reads cblackwell@Ubuntu2: ~ The host runs commands on the page against the command prompt which is the title of the page, followed by a $ sign. [Video description ends]
+
+The first thing we'll do is talk about the user side of things to look out for. First of all, making sure the user account is not locked or disabled, which means it can't be logged into.
+
+For example, if I were to create a user, let’s run sudo useradd jgold Now what we can do is also run sudo passwd, spelled passwd of course, jgold and we can specify and confirm a password for that account.
+
+We could also have done it on the command line when we used the useradd command. But I’m doing it this way. So I’ll specify and confirm a password. So it says password updated successfully, not a problem.
+
+So therefore if we run sudo tail /etc/shadow then user jgold is shown here. [Video description begins] A long set of code lines are returned by the system as the host tails the shadow file. He indicates the password hash for jgold as it appears at the end of the code, before running a new command. [Video description ends] And of course, as we know, the next field denoted here with a : is the password hash. Notice it starts with $6
+
+If we were to run sudo passwd -l for lock and then jgold. Okay, it says password expiry information changed. [Video description begins] The host clears the screen with the clear command. [Video description ends]
+
+So therefore if we tail the shadow file again, notice that the first character is no longer just $6, but rather the first character is an exclamation mark which invalidates the password hash. It's not going to match what the user types in,
+
+and that's fine. And we of course can re-enable the account or unlock it with sudo passwd -u for unlock, in this case, jgold. Okay. And then if we tail it, we’re back in business. [Video description begins] The host runs the sudo passwd -u jgold command before clearing the screen. [Video description ends] [Video description begins] New set of lines appear as the host tails the shadow. He points towards the password hash for jgold at the end of the code, that starts with a $ sign without any exclamation mark. [Video description ends] That's the first thing to think of.
+
+But the other thing that might cause a problem with user log in on a Linux host is if we were to run sudo nano / and point to /etc/security/access.conf
+
+[Video description begins] The host runs this command on a new Linux host page. [Video description ends]
+
+The access.conf file allows you to specify users or groups that should be prevented from logging into the machine. So either allowed or denied.
+
+[Video description begins]The command opens a new GNU nano 4.8 file titled /etc/security/access.conf [Video description ends]
+
+As we go further down through this file, also notice that we've got examples that are commented out with the # symbol of how you would allow access for users like root from a particular network. 
+
+[Video description begins] The host points to a line of code that reads +:root:192.168.201. [Video description ends]
+
+You can also specify ipv6 addressing as well.
+
+[Video description begins] The host now points to a line of code that reads: +:john: : :ffff:127.0.0.0/127 [Video description ends]
+
+So entries in here could prevent users from signing in remotely over the network. And so that's an important consideration if you’re troubleshooting user based issues. [Video description begins] The host clears the screen to open a new blank Linux page. [Video description ends]
+
+Although it is rare, another consideration is if we run sudo nano /etc/nologin
+
+[Video description begins] The command opens another GNU nano 4.8 file. The title bar displays /etc/nologin while the rest of the page is empty, except for some commands at the bottom. [Video description ends]
+
+If there is a no login file here, we can create a message such as perhaps specifying that logins are temporarily disallowed for everyone except for user root.
+
+So if this file is present, only the root account is allowed to sign in. So there might be a temporary thing you might put in place if you're performing some kind of a maintenance on a server. But it’s something that we should know about when it comes to troubleshooting.
+
+On the file permissions side of things, of course, it’s always important to use ll long listing for [Video description begins] The host runs the ll command on a blank Linux page to open rows of directories. [Video description ends] the directory you’re in or whatever directory you’re interested in, so that you can get a listing of the permissions as well as the owning user and the owning group.
+
+ [Video description begins] He points to a random code line in the middle of the screen which reads drwxr-xr-x 3 cblackwell cblackwell [Video description ends]
+
+For example, I’m going to start by running sudo passwd root
+
+[Video description begins] The command run by the host reads sudo passwd root [Video description ends]
+
+I want to set the root password. Of course, you only need to do that if you don't already know it and you have to be given the privilege to do this. So I'm going to go ahead and set it now. That in itself can be an important tip.
+
+If you have users that are able to use sudo and you have a forgotten root password, you can simply log in as the user that has the sudo privileges required to run the password command and just reset the root password, assuming the system will boot in the first place.
+
+So now if I run su - to do a full login as user root and specify the password for that account. If I were to make a directory, let's say on the root called budgets. [Video description begins] The host runs the command root@Ubuntu2:~# mkdir /budgets [Video description ends]
+
+Now if I do an ls - ld a long listing, but don’t go into the directory, but show me the details of the directory called budgets. The root user created it and therefore is the owning user. And also the root group is the owning group and the permissions are read, write, execute; basically for the root account.
+
+But everyone else has read and execute which they would need to enter the directory. So let’s run chmod o for other minus execute, I will remove the execute permission for /budgets.
+
+[Video description begins] The host points to the code line returned by the system which reads drwxr-xr-x 2 root root 4096 Aug 20 18:42 /budgets [Video description ends]
+
+Let’s do our ls - ld. Okay, notice the execute permission is gone.
+
+[Video description begins] The host runs the commands chmod o-x /budgets and ls - ld /budgets to have the system return the same code line as before, but this time it starts with drwxr-xr-- [Video description ends]
+
+Now in order for the user to change into a sub-directory, they need read and execute. Notice here only read is present for other.
+
+Let's see what happens if we exit out as root. If I run, whoami logged in as someone else, cblackwell change directory to /budgets. [Video description begins] cd /budgets command is run [Video description ends] Permission denied.
+
+Therefore if I go back in as root and if I use [Video description begins] su - command is run. [Video description ends] the up arrow key to go back to our chmod command, but this time I change o-x to o+x So we’re going to add the execute permission back to budgets.
+
+Exit out. We’re back as user cblackwell, change directory to budgets. This time it works. [Video description begins] The system returns /budgets$ as a response to the host's command. [Video description ends]
+
+So if an error was set at the permissions level for a directory where only read is granted, yet the intent was to allow users into the directory, that won't work. Execute needs to be there as well. [Video description begins] The host runs a command to clear the screen. [Video description ends]
+
+Another important thing to consider is the owning user or group. [Video description begins] The host runs a command that reads /budgets$ cd. Many directory names are displayed in rows. [Video description ends]
+
+So if I've got a shell script here, let’s say called test.sh owned by user root and the owning group is root, I want to change that. So it’s owned by someone else like cblackwell [Video description begins] He points to a line of code on the screen which reads -rwxr-xr-x 1 root root 28 Aug 17 13:36 test.sh* [Video description ends]
+
+So sudo change owner chown to cblackwell for test.sh [Video description begins] sudo chown cblackwell test.sh command is run [Video description ends]
+
+Clear the screen and do an ll again for test.sh Indeed cblackwell is now the owning user.
+
+[Video description begins] The same line of code that the host pointed to earlier now reads -rwxr-xr-x 1 cblackwell root 28 Aug 17 13:36 test.sh* [Video description ends]
+
+Which means, that account would have the user permissions in this case read, write, execute. This can be especially important if you're troubleshooting background services or daemons that need certain permissions to the file system in order to access the file system to behave correctly.
+
+4. Video: Managing sudo and SUID Elevated Permissions (it_osltrb_03_enus_04)
+
+Find out how to configure sudo and SUID for elevating standard user permissions.
+configure sudo and SUID for elevating standard user permissions
+[Video description begins] Topic title: Managing sudo and SUID Elevated Permissions. The host for this session is Dan Lachance. [Video description ends]
+In this demonstration, we’re going to take a look at, sudo for running elevated privileged commands, but also the special user ID bit, the SUID bit. This can be important when troubleshooting.
+
+When determining why a regular user might not be able to run more privileged commands, or why a regular user might not have the appropriate permissions to run things like a script.
+
+Let’s get started here by looking briefly at sudo. [Video description begins] A blank Linux host page titled cblackwell@Ubuntu2: ~ is open. [Video description ends]
+
+When I type in whoami, it shows who I’m currently logged in as. If I’m logged in as root, then of course nothing is restricted. But we want to limit how often we log in as root for security and safety purposes. Instead, we want to ideally be logged in as a regular user here, such as cblackwell and then use things like sudo so we can run privileged commands.
+
+If I were to run, let’s say fdisk -l to list my disk devices and how they're carved out in terms of partitions, I just get a bunch of permission denied messages because logged in as cblackwell, I don’t have the correct permissions to go into /dev and go into these devices.
+
+However, of course we know if we prefix it with sudo, if we are allowed to do that, not everyone can just put sudo in front of any command. But if this user cblackwell has the ability to do that, then prefixing fdisk with sudo works.
+
+[Video description begins] The screen transitions to a GNU nano 4.8. file titled /etc/sudoers.tmp [Video description ends]
+
+Now of course we can use the sudo visudo command to edit the sudoers file. This is where we could specify users, for example, that should be able to be logged in from any station and have the ability to run either all commands or a subset of commands.
+
+[Video description begins] The cursor points to a line of code which reads root ALL=(ALL:ALL) ALL [Video description ends]
+
+So for example, if we look at the root user here,  the first all means from any station, from any Linux computer or any IP address, and then we are allowing all commands to be run.
+
+So of course we can modify this file and add additional users to limit what they can or cannot do. The interesting part of this as well is that if we do have a user with sudo privileges to run, for example, the passwd command, they could even run that against the root account to set a root password or to reset it, for example, if it gets forgotten, which happens from time to time.
+
+[Video description begins] The host runs the sudo passwd root command. [Video description ends]
+
+Or if you inherit a system and you don’t know the root password, but you can sign in as a user with sudo permissions. Okay, so I can update the root password in that way.
+
+Now let’s take a second to talk about the special user ID bit value. First thing we'll do here is run sudo nano against a file I’ve already created called test.c
+
+[Video description begins] The host runs the sudo nano test.c command which opens up a GNU nano 4.8. file titled test.c [Video description ends]
+
+Now this is a C program that includes some standard libraries and all it’s really doing is compiling the script name that I tell it.
+
+[Video description begins] The host points to a line of code on the screen. It reads system("./test.sh"); [Video description ends]
+
+Now, we’ll take a look at the script in a moment. I’ve got a script called tesh.sh that I need to run with elevated privileges of whoever the owner of the file is.
+
+Let me demonstrate this a little bit further.
+
+[Video description begins] A blank Linux host page reappears. [Video description ends]
+
+If I were to cat test.sh, all it’s doing,  it’s got a shebang line clearing the screen, running fdisk -l which we know requires elevated privileges. [Video description begins] A command to clear the screen is run. [Video description ends]
+
+However, if I do an ll a long listing of tests.sh, we've got the set owner or the special user ID bit set.
+
+[Video description begins] The system returns a code line which reads -rwsr-xr-x 1 root root 28 Aug 21 13:53 test.sh* The host refers to it as he talks further. [Video description ends]
+
+We know this because in the owning user permission set we have a lowercase s which implies that the special user ID bit has been set. Plus execute is there. The owner here is root. Now root can definitely run fdisk, but the user I’m logged in as, cblackwell, cannot.
+
+So you would think if I ran ./ current directory test.sh it should run as owner root. Well, technically this is only true for binaries. See, here with the script, we get a permission denied message.
+
+That’s why if I go back to our little C program, what I’m doing is I’m going to compile the test.sh into a C program. We'll set the user ID bit and we'll test how it behaves. Now you might have to run sudo apt install gcc to install a standard C compiler if you don't have one. I’ve already got it installed so we can test this out on our own.
+
+[Video description begins] The host runs a command which reads gcc test.c -o test.bin [Video description ends]
+
+So, I can run sudo gcc test.c is my source file, -o for output. I want to create test let’s say, .bin for binary. Okay. Just like that, we’ve now got a new file called test.bin that’s a compiled binary that contains the contents of our script.
+
+Currently the owner is cblackwell. Let’s run sudo change owner to, let’s say root for test.bin or an sudo change mode chmod to 4755.
+
+The first four means we want to turn on the user ID bit. The next seven is read, write, execute. Four plus two plus one for the owning user root. And then five means read and execute for the owning group and everyone else.
+
+And of course we want to apply that to the test.bin file. Now here's what's interesting. I don’t need to use sudo. If I run ./test.sh again, remember how that failed? We had a permission denied even though it's configured to run as the owning user. Scripts just don't do that. Binaries do.
+
+./test.bin worked fine. The fdisk command ran with the permissions of the owning user.
+
+So that's something important when it comes to troubleshooting. Most Linux distributions, modern ones anyhow, will not allow the running of scripts with whoever is listed as the owning user. for security reasons. You might find some older Unix or Linux systems that will do that, but that would be kind of rare in this day and age.
+
+So that's something else to think about when it comes to running elevated privileged commands.
+
+5. Video: Resetting a Forgotten Root Password (it_osltrb_03_enus_05)
+
+In this video, discover how to Resetting a Forgotten Root Password.
+reset a forgotten root password on-premises and in the cloud
+[Video description begins] Topic title: Resetting a Forgotten Root Password. The host for this session is Dan Lachance. [Video description ends]
+In this demonstration, we’re going to talk about what you can do when you need to reset a forgotten root password. [Video description begins] A blank Linux host page, titled cblackwell@Ubuntu2: ~$ is open. [Video description ends]
+
+We all know that root is the super admin account on a Linux or a Unix host. It has ultimate privileges. Sometimes you need to sign in as root, even though we have other mechanisms like the sudoers file. But what can we do about a forgotten root password?
+
+Well, there are some dependencies. The first obvious one is do you know the signing credentials for other users that have the appropriate sudo privileges? As an example here, I'm signed in currently as cblackwell. Now that's in my command prompt. This can also be verified with the whoami command.
+
+Okay, so if I were to run sudo nano so we can open up and take a peek at the /etc/sudoers file. [Video description begins] The host runs the command sudo nano /etc/sudoers [Video description ends] Now you should use the visudo command to edit this file, [Video description begins] A new file titled GNU nano 4.8 file is open. It has a lot of text, and the host scrolls down to point to a few. [Video description ends] which is what it tells us on the first line.
+
+But all I'm interested in pointing out here is we've got root shown here. We've got percent admin, which means the admin group and %sudo. So whoever are members of those groups will be able to run all commands from all locations.
+
+[Video description begins] The cursor points to a line in the code which reads: %admin ALL = ( ALL )ALL [Video description ends]
+
+If I were, let’s say to run sudo cat /etc/group so the Linux group file, and let’s say we pipe that to grep and look for sudo, notice that cblackwell is a member of the sudo group.
+
+[Video description begins] The host runs command on the Linus host page, which reads sudo cat /etc/group | grep sudo [Video description ends]
+
+[Video description begins] The system returns a code line which reads sudo:x:27:cblackwell [Video description ends]
+
+If we do the same thing for the admin group, cblackwell is not in that group, but that’s okay. So that is going to match with what is in the sudoers file. So therefore, what this is telling us then, based on what we saw, is that cblackwell would be able to run sudo password passwd against root and then set it. Now that's one option.
+
+Another option is when you boot from the installation media, as soon as you see the hardware logo on the machine or the virtual machine logo like VMware, if you have access to this, you can press and hold shift, so that you can then get into the Ubuntu. [Video description begins] GNU GRUB version 2.06 is open. A dialog box displays Ubuntu as the first option and Advanced options for Ubuntu as the second option. [Video description ends]
+
+In this case, advanced options menu, where you can go into recovery mode. So this would allow you then to be able to reset the root password at the command line and do whatever it is that you need to do. For example, here I have the option second from the bottom to drop to
+
+a root shell prompt. Now for legibility. I'm going to issue the rest of the commands here in a regular SSH shell. But assuming you've entered a rescue or recovery mode on your Linux host and drop down to a root shell, you’ll be logged in directly as root, which of course we can always verify with whoami.
+
+Now what we would want to do is be assured that we can set the root password to something we know so that we don't have to drop down into some kind of a special rescue mode in order to do stuff. We want to be able to just authenticate with the root credentials that we will then know. You always want to make sure you can issue the mount command to do this, that your root file system is mounted in read write mode.
+
+So here in this case /dev/sdc1 is mounted on the root / and it’s mounted in read write mode. Depending on what kind of a recovery mode versus a rescue mode that you’re working in, will determine if that's the case. If it's not, you can just run mount -o for options remount and then specify your mount point like the root file system. [Video description begins] The host runs the command mount -o remount / [Video description ends]
+
+After that, it's business as usual. And all I mean by that is what would you normally type in to set the password for the user you're signed in as? passwd, we would specify the password and then confirm it and then you are good to go.
+
+So you will have reset the root password to something that you know. So again, you need access to the host to do this, whether it's physical or virtual in the cloud. You might not have this kind of access to a virtual machine running in a data center somewhere. But of course, if you’ve got a virtual machine disk snapshot or some kind of a back up, you might be able to restore to that point in time to where you did know
+
+the root password, if that situation applies. Here in the Microsoft Azure Cloud, [Video description begins] The screen transitions into a Microsoft Azure environment, [Video description ends] if we've got a Linux based virtual machine that we've forgotten the credentials for, we can click on it to open up its properties and in the left hand navigation menu, and there are plenty of options here, but way down under Help you will find Reset password.
+
+You could specify the username and the password and confirm that you want to reset it to. And that's for password based authentication.
+
+If you're using SSH, then you can also reset the SSH public key to allow authentication. Maybe if you lost the private key file on the Linux technician station.
+
+So there are many options then when it comes to dealing with a forgotten root password, in Linux.
+
+6. Video: Configuring User and Group File System Quota Limits (it_osltrb_03_enus_06)
+
+In this video, find out how to configure user and group file system quotas using edquota and quotacheck.
+configure user and group file system quotas using edquota and quotacheck
+[Video description begins] Topic title: Configuring User and Group File System Quota Limits. The host for this session is Dan Lachance. [Video description ends]
+In this demonstration, I'll be configuring user and group file system quota limits. What we're talking about here is trying to impose some kind of a restriction [Video description begins] A blank Linux host page is open. The title reads cblackwell@Ubuntu2: ~ [Video description ends] on how much disk space can be used.
+
+So to get started here in Ubuntu Linux, I'm going to start with sudo apt update to make sure my package list repository listing is up to date after which I'm going to run sudo apt install quota. It asks you sure you want to install it? It's going to take some disk space and what not. I do want it so I'll type in the letter y for yes.
+
+So I have the quota management tools that I need to impose these disk capacity restrictions. So I’m going to start by running quota command -- version. Looks like it knows what I’m talking about.
+
+It’s returning the version number. Excellent. We’re ready to move on. Now, one of the first things I should think about are which file systems I want quotas enabled on and whether it's for users or groups.
+
+I’m going to run sudo nano /etc/fstab which has my automated mount points upon every boot up of this system like the root file system. After the ext4 file system type, the next column are options.
+
+So what I’m going to add after that is a ,usrquota, grpquota. User and group quotas. I want that specified as being an option when that file system is mounted. Okay, I'm just going to go ahead and save that file.
+
+[Video description begins] The screen transitions back into the Linux host page. [Video description ends] Now, currently if I run sudo mount and if we take a look at the root file system, the mount options are shown here.
+
+[Video description begins] The cursor points to one of the many lines of code on the screen that the system generates in response to the sudo mount command. It reads /dev/sdc1 on / type ext4 (rw, relatime, discard). [Video description ends]
+
+But notice of course we don't have our user or group quota. So instead of rebooting, I’m just going to run sudo mount -o for option, remount and then I’ll just put in the root file system. [Video description begins] The host runs the sudo mount -o remount / command [Video description ends]
+
+Let's run our mount command again. Okay. [Video description begins] The system response now reads /dev/sdc1 on / type ext4 (rw, relatime, discard,quota,usrquota,grpquota) [Video description ends]
+
+Notice this time now that we’ve remounted, that user quota and group quota are showing as being in effect currently. Perfect. That’s what we want. The next thing I’ll do is run [Video description begins] The screen transitions back into an empty Linux host page.
+
+[Video description ends] sudo quotacheck - lowercase u for users, g for group, lowercase m for not wanting to remount anything and read-only mode; and I’ll specify the file system here, / for the root file system. Enter! [Video description begins] sudo quotacheck -ugm / command is run. [Video description ends]
+
+Now I’ll do an ls of the root file system. [Video description begins] ls / command is run. [Video description ends] Notice the presence of these files that result from recorded check command. Of course aquota.group and aquota.user
+
+Okay, if I run sudo tail / etc/passwd [Video description begins] sudo tail /etc/passwd [Video description ends] we'll get a list of some user accounts. We've got a user here called jgold that I want to post some limits on. So sudo edquota -u for user, and of course in this case I want to set it for jgold. [Video description begins] sudo edquota -u jgold command is run. [Video description ends]
+
+That opens up a temporary file where we modify these quota details for given users. And of course for groups as well. In this case, for user jgold. [Video description begins] A GNU nano 4.8 file with three lines of code is open. Line 1 reads Disk quotas for user jgold (uid1001) : Line two lists the filesystems like blocks, soft, hard, and more; while line three lists the figures for /dev/root [Video description ends]
+
+So down below we have the file system. So our root file system. And we have the option of specifying both soft and hard limits. Now, as you might guess, a hard limit is a fixed or absolute limit where once that disk space is reached, that's it. There's no more file space that can be allocated on this file system. In this case, for user jgold.
+
+A soft limit is a little bit different because they have a grace period where they'll get a warning that they are about to approach a hard limit. So maybe for a soft limit here I’ll specify 409600, which is approximately a four gig soft limit. And for the hard limit, approximately five gigs. So a 512000 we’ll put here, and I’ll control x to save that file. [Video description begins] The screen transitions back to the Linux host page. [Video description ends]
+
+And I’m also going to run sudo quotaon let’s say u for user, v for verbose, maybe for the root file system or just for /home. Now that would apply if home was its own mount point on its own disk partition, [Video description begins] sudo quotaon -uv /home command is run. [Video description ends] which in some cases, in some installations, it would be. In this case it’s not. And we know that because we've only got it enabled for our root file system.
+
+So now I’ll run sudo repquota -au Notice what this is doing is sort of giving me a little report. For example, for user jgold, we have a listing under the used column of the used number of storage blocks. And then there's our configured soft and hard limits.
+
+Now, I didn't specify a specific grace period. Remember, that applies to the soft limit that allows the soft limit to be exceeded for a period of time.
+
+That period of time is the grace limit, but in this way we then have the option of configuring these settings to control disk consumption.
+
+I’ll clear the screen. I’m going to do a tail of /etc/group I’m going to run sudo groupadd usergroup1 If I run sudo edquota - g, lowercase g for group, usergroup1, we can then specify the same types of things but at the group level.
+
+So cumulatively for members of the group, if we set a hard limit for blocks for example, then that would not be able to be exceeded by the combination of space used by members of, in this case, usergroup1.
+
+7. Video: Reverting to a Cloud Linux Virtual Machine Disk Snapshot (it_osltrb_03_enus_07)
+
+Discover how to revert to a cloud-based virtual machine disk snapshot.
+revert to a cloud-based virtual machine disk snapshot
+[Video description begins] Tpic title: Reverting to a Cloud Linux Virtual Machine Disk Snapshot. The host for this session is Dan Lachance. [Video description ends]
+In this demonstration, I'll be going through how to work with virtual machine disk snapshots in the cloud. Specifically, when I say in the cloud here, I'm talking about Microsoft Azure. But the same concepts apply to other mainstream cloud platforms like Google Cloud Platform or Amazon Web Services.
+
+[Video description begins] The Microsoft Azure interface is open. The top of the page is lined with Azure services, including Virtual machines , while recent files populate the bottom. There is a navigation bar on the left. [Video description ends]
+
+We want to have a way that we can revert back to an earlier point in time if we run into trouble, such as when we're testing new configurations.
+
+So the first thing I'll do here in the Azure portal is I'll click Virtual machines. [Video description begins] The Virtual machines tab opens, dispalying two machines - Ubuntu1 and Ubuntu2 in a vertical list. The host clicks on the latter to open the Ubuntu2 virtual machine. [Video description ends]
+
+I'll then click on the virtual machine in question where I'm interested in exploring disk snapshots.
+
+When you're in the properties of a virtual machine here in Microsoft Azure on the left, one of the things you can click on is Disks. And here on the right will then have the operating system disk shown.
+
+You certainly need to have at least one of those for this VM to work and you may optionally also have some additional data virtual disks created for the virtual machine. Now when I click on the operating system disk, which is a link, it takes me into the properties of that resource.
+
+It's a separate object in the Microsoft Azure Cloud and having the Overview page selected on the left. Notice at the top I've got a Create snapshot option, to create a snapshot of the OS disk. So I can go ahead and do that. Really doing here is creating another new cloud resource, another object in the cloud.
+
+You're creating a snapshot, so therefore you have to deploy it into a resource group, which is just a collection of related cloud resources.
+
+You have to give it a name. I’m going to call this Ubuntu2_OSDisk_Snapshot Now at this point I can choose whether I want a Full or a complete read only copy of the OS disk, or just Incremental - which uses less storage space.
+
+That really only keeps a copy of the difference between this current snapshot and the last snapshot, if we have another one. But I'll leave this one on full and that's all I'm going to do here, so I'll just go ahead and click next.
+
+It wants to encrypt it using a platform managed key. I could also have a customer manage key, but I’ll just leave it on default. I'll enable public access from all networks. That's set as an automatic option.
+
+I'm just going to keep going through here until I get to the point where the validation has passed and I'll click the create button in the bottom left so it states that the deployment is in progress.
+
+Now, depending on how big the disk is and how full it is, of course, will determine how long this takes, of course. Also how busy the underlying servers in some data center somewhere for the cloud-provider are.
+
+At any rate, when it’s finished, I’m going to click Go to resource, which takes me into the properties, not of the original OS disk of course, but of the snapshot. So having this is kind of like having a back up, at this point in time, of that OS disk.
+
+Now we could also go to the All resources view from the left hand navigator, if we want to be able to find those snapshots here.
+
+For example, one of the things we could do is filter by the name of it, but we could also filter by the type. Currently the type equals all. Well, I could scroll down in the SS and select the check mark box for snapshot, and apply it. And the only thing I'm looking at now are snapshots.
+
+Now how would we use it? So we get that it’s kind of a back up and it can be very important to do this, under a variety of different circumstances. But how do you use it? If you need it, you want to revert back to it.
+
+Well, one way is if you go into your Virtual machine and open up its properties and go back into Disks on the left, remember how we had the link here for the OS disk and the data disks? Well, you don't want to follow the link for the OS disk this time. Instead, what you can do is choose Swap OS Disk.
+
+[Video description begins] The host clicks on the Swap OS Disk option placed above the OS disk. [Video description ends]
+
+But when you go to the choose disk dropdown list, the snapshot is not there. Well, they're not supposed to be. Well, what would you do then? What's the purpose? Here's what happens. What you would do is go back to home and create a resource.
+
+I'll type in the word managed. We create a managed disk, so I'm creating a new disk. So this is from Microsoft Managed Disks. Click on it. Create. When you create a managed disk, for the source type, which is set to none by default, an empty disk.
+
+Instead, what you could do is choose snapshot. Let's go ahead and fill this out. So I’m going to set HQ as the Resource group. The disk name will be Ubuntu2_NewOSDiskTest for our example and for the source snapshot, there’s our Ubuntu2_OSDisk_Snapshot. Perfect.
+
+If I click Review + create in the bottom left, it’s going to validate my selection, and past Create. So what I'm doing is creating a new disk based on the snapshot. Then I’ll be able to swap out the OS Disk.
+
+That's one way that you can essentially revert back to a previous point in time, created from a snapshot. Let’s go back to our Virtual machines view, back into Ubuntu2, back into Disks, and yes again back into Swap OS Disk. Only this time it shows up in the list.
+
+That’s one option. Another interesting option is - let’s say I go back to my All resources. Maybe I’ll filter my resources for the word test. There’s our Ubuntu2_NewOSDiskTest
+
+That's the managed disk that was created from the snapshot. If we open up its properties, in the Overview page on the right, notice we have a Create VM button up at the top. That’s another alternative option, depending on what your needs are, to just build a whole new VM from that disk, from that point in time.
+
+So having an idea of what is available is important in your palette of options so you can choose the best way to deal with things like reverting to an earlier point of time for a virtual OS disk.
+
+8. Video: Reverting to an On-premises Linux Virtual Machine Snapshot (it_osltrb_03_enus_08)
+
+Learn how to revert to an on-premises virtual machine snapshot.
+revert to an on-premises virtual machine snapshot
+[Video description begins] Topic title: Reverting to an On-premises Linux Virtual Machine Snapshot. The host for this session is Dan Lachance. [Video description ends]
+In this demonstration, we're going to focus on how to work with snapshots using an on-premises virtual machine solution. [Video description begins] The home page of Ubuntu Desktop is open. [Video description ends]
+
+In this particular example, I’ve got Ubuntu desktop running on-premises within VMware Workstation. But it really doesn’t matter what the solution is specifically that you're using for virtualization. Conceptually working with VM snapshots is pretty standard.
+
+So here in my on-premises virtual machine, [Video description begins] The cursor points to a navigation bar on the top of the page. The workstation option on the top left is selected, which leads to a drop-down menu bar. [Video description ends] if I go to my menu system and go to VM settings, this is where I get a list of my virtual hardware, [Video description begins] The Virtual Machine Settings dialog opens. [Video description ends] the amount of memory, number of processors, the disks.
+
+And we're talking here not about taking a snapshot just of the disk contents, which might be what you would do when you take a snapshot of a virtual machine disk in the cloud. We're talking about taking a snapshot, of course, of the contents of the disk files at that point in time, but also retaining the configuration of the virtual machine as we are working on here.
+
+The fact that it's got a certain amount of memory, a certain number of processors, the configuration for all of this virtual hardware; and of course, if the virtual machine is up and running as this one is, it will also retain the state of what's happening in memory so that when you bring the snapshot back, you are exactly where you were when you took or created the snapshot. [Video description begins] The host clicks on cancel on bottom right of the dialog, and the cursor is back on the home page. [Video description ends]
+
+So here in VMware Workstation, I can go to VM, I can then choose Snapshot.
+
+[Video description begins] The cursor hovers over the Snapshot drop down, listing Options like, Take Snapshot and Snapshot Manager. The menu also has a Revert to Snapshot option, but it is disabled. [Video description ends]
+
+I can take an individual snapshot. I can also go to the Snapshot Manager to get kind of an idea of where I am in my history of snapshots. This virtual machine doesn't have any.
+
+[Video description begins] The Snapshot Manager dialog box opens. It displays the snapshots already taken on the top and the option to Take Snapshot on the bottom right. [Video description ends]
+
+So the only thing I have here is You Are Here, and from here I can choose to take a snapshot. It wants a name. Maybe I'm about to test a configuration for App1. So, Before App1 Config. I can put in details such as the date, maybe specify a detailed description of what this contains, and any configuration settings within this specific snapshot. So you put in whatever makes sense for you.
+
+[Video description begins] When the host clicks on Take Snapshot, another dialog asking for the name and description of the snapshot opens up. He populates the details before clicking on Take Snapshot on the bottom right. [Video description ends]
+
+And you want to be consistent when you do this. Because over time, if you use a lot of virtual machines and you take periodic snapshots or if they're configured to be taken automatically, you might end up with a lot of snapshots.
+
+You want to make sure each of them is clear in terms of what it was taken for and what kind of configuration exists within it. Okay, now I’ll click Take Snapshot. Now bear in mind that in most virtual machine solutions, when you create additional snapshots, all you're doing is picking up the changes from the previous one.
+
+Now, if I kind of get out of my full screen mode under the View menu here.
+
+[Video description begins] The host unchecks the Full Screen Mode, after clicking on the View button on the menu bar at the top. [Video description ends]
+
+Notice in the bottom left here in VMware Workstation, it's telling me it's saving the state and we're currently at about 17% . So as you might imagine, the first time you take a snapshot is the longest time it will usually take for this task to complete.
+
+Once the snapshot is complete, you can continue using the virtual machine and rest assured you've got a copy or a snapshot that you could revert to. Let's go back into the VM menu here, back into Snapshot Manager.
+
+So if I select my snapshot when I do down at the bottom, I get the name that shows up, plus all of the description metadata, which can be very important, of course.
+
+[Video description begins] The host clicks on Before App1 Config on the Snapshot Manager dialog box. [Video description ends]
+
+Now we can take additional snapshots at any point in time. So if I call this just Snapshot2, Take Snapshot, and close out, we now see it's saving the state. It should be quicker than the initial snapshot as not much has changed. Let’s go back into VM, Snapshot, and Snapshot Manager yet again.
+
+[Video description begins] The cursor hovers over the Snapshot drop down again. The Revert to Snapshot option is now enabled. [Video description ends]
+
+Now notice now that we have a couple of snapshots, we have revert options, that are new menu items, that show up here. Notice that we also have an AutoProtect button here, where we can specify a frequency where we want snapshots taken automatically. Whether it’s daily, half -hourly, hourly ;and you can determine the maximum number of Autoprotect Snapshots.
+
+[Video description begins] The host clicks on the AutoProtect button from the bottom right, to open a subsequent dialog box. [Video description ends]
+
+When you do enable that, I’ll just cancel out of here, you can then choose Show AutoProtect snapshots, as you might guess, and they'll show up here and you can select it and you even choose to revert to it.
+
+[Video description begins] Show AutoProtect snapshots options is selected from the bottom left of the page, reflecting the Snapshots created automatically at the top of the dialog box. [Video description ends] So, for example, if I were to go back and just select another snapshot,
+
+I could choose the Go To button to revert to it. [Video description begins] The cursor points to the Go To option on the bottom of the Snapshot Manager. [Video description ends] Notice here we also have a Clone option. [Video description begins] The host clicks on the Clone option on the bottom right of the Snapshot Manager to open another dialog. [Video description ends]
+
+Now, cloning is a little bit different because you are essentially taking a copy of the VM. Now here it says, We can't do this because the virtual machine is up and running.
+
+You can take a snapshot of a running VM, but not a clone. So if you know, you just want to have a copy of the VM that is separate and independent from this source VM, a clone makes sense. But if you want some, what would be considered back up protection maybe before a major configuration change or just periodically, to be safe snapshots would be
+
+the solution. Bear in mind that snapshots take disk space and so if you're not careful on a hypervisor host that might run many different virtual machines where you've enabled snapshots, even AutoProtect snapshots, you’re going to want to make sure that you monitor disk capacity, on a regular basis, to make sure you aren’t running out of disk space.
+
+[Video description begins] The host closes both the Clone dialog and the Snapshot Manager. The cursor is back on the lon [Video description ends]
+
+Another thing to consider is that while the VM is running and you take a snapshot, things are still happening in the VM and you might find it takes a little bit longer than if it were not running.
+
+That's not always the case, but it’s a consideration where it makes sense. If you can afford to have downtime, then you can also shut down the virtual machine and take a snapshot of it from that state as well. So let's go ahead and do that.
+
+I'm not going to power it off. That's a little abrupt. I'm instead going to choose shutdown guest to go through the normal shutdown procedure.
+
+And now if I go into VM, Snapshot, and Snapshot Manager - let’s just accept the defaults by clicking Take Snapshot, Snapshot3, close out. It’s pretty quick, so if I do it again VM, Snapshot, Snapshot Manager; we got Snapshot3. Let’s take another snapshot.
+
+Nothing has changed, so Snapshot4. It’s very quick. So there’s less going on because the VM OS is not running, so it's less for it to think about.
+
+9. Video: Backing Up and Restoring Cloud Linux Virtual Machines (it_osltrb_03_enus_09)
+
+During this video, you will learn how to use the cloud to backup and restore a Linux virtual machine.
+use the cloud to backup and restore a Linux virtual machine
+[Video description begins] Topic title: Backing Up and Restoring Cloud Linux Virtual Machines. The host for this session is Dan Lachance. [Video description ends]
+The Microsoft Azure Cloud has its own methods of backing up cloud based data, such as backing up virtual machines. Our focus here is going to be backing up and having the ability to understand how to restore Linux based Virtual machines in the Microsoft Azure Cloud.
+
+First things first. [Video description begins] The Microsoft Azure Cloud interface is open. The top of the page is lined with Azure services, including All resources, Virtual machines, and more. Recent files populate the bottom. There is a navigation bar on the left. [Video description ends]
+
+We need to have a Recovery Services vault. If I go to the All resources view, here's all my cloud resources within my Azure subscription, but it says currently at the top, Type equals all. Well, how about we filter the type of objects here? So, we're only looking at Recovery Services vaults, if we even have any.
+
+If not, we can create one by clicking the create button over here in the upper left. But I'm going to click Type equals all and I’m going to scroll down to the Rs and next to Recovery Services vault, notice we’ve got a 1 in parentheses. That means that we have one of those types of objects. Otherwise Recovery Services vault wouldn’t even be in this list. So I’ll put the check mark in the box to the left of that and I’ll click Apply.
+
+So now we’re only viewing Recovery Services vault. Notice that it's in the East US location. You want to make sure that the resources you want to backup and the Recovery Services vault are in the same location. East US here.
+
+So here it is. It’s called vault143. In the left hand navigator, let’s go to the virtual machines view because from here I have a list of virtual machines and of course, the location or the region. In this case, both of mine are in East US.
+
+Also from the perspective of the properties of a virtual machine, so I’ll just open up the virtual machine in the left hand navigator, in the VM properties.
+
+[Video description begins] The host clicks on Ubuntu2 to open up the Ubuntu2 tab [Video description ends]
+
+I can scroll all the way down under operations and one of the things I’ll have is Backup.
+
+Notice here it automatically selected the only vault we have in the same region, East US, that’s vault143. So we could create a new vault if we really wanted to. Certainly we'd have to do that if we didn't already have one that was created. We can also choose the backup policy type. However, I'm going to cancel that because we can also look at that from the perspective of the Recovery Services vault. [Video description begins] The host clicks on All resources from the left navigation bar. [Video description ends]
+
+So I’ll just filter the list here in All resources for vault. there it is, vault143. So from within here, I could also choose to go to backup on the left, where the interface is different, of course, because it doesn't know that we want to backup a VM necessarily.
+
+So therefore, it says Where is your workload running? The default is Azure. And so down below, I can choose to backup Microsoft Azure Virtual Machines, file share, SQL servers, and so on. I can also from the list at the top select from a variety of Azure stack options which are for on-premises Azure services that look and feel like the actual cloud based services. That doesn't apply to us.
+
+I’ve also got On-Premises where we could specify that we want to backup file servers, Hyper-V Virtual Machines, VMware Virtual Machines, SQL Server, SharePoint, and so on. And this is all on-premises. Now, as you might guess, you're going to have to install a software agent on, for example, your on-premises file server. So it knows to talk to this Recovery Services vault for backup. But that doesn't apply in this case.
+
+So I'm going to go back at the top of the list where it says, Where is your workload running? I’m going to choose Azure again and Virtual machine is what I want. Down below, I’ll click the backup button. It wants us to select the policies. [Video description begins] The Configure backup page opens. It has two radio buttons, Standard and Enhanced, as options for the Policy sub type. [Video description ends]
+
+So how often do we want to have a backup of the Virtual machine? I’m going to choose an Enhanced backup type where we can have multiple backups per day, and I’ll leave the EnhancedPolicy selection to its default. So full backup every four hours starting at 8:00 in the morning for 12 hours. That’s 8:00 Universal time. Retaining recovery snapshots for seven days and the backup point itself for 30.
+
+Down below, we need to specify one or more virtual machines as subjects to be backed up. So I'll click the Add button and I'm going to put a check mark next to Ubuntu2 and I’ll click OK.
+
+Okay, so Ubuntu2 has been added here. Notice it knows that there are three disks in that virtual machines properties. [Video description begins] Ubuntu2 is listed under Virtual machines section of the Configure backup tab. [Video description ends]
+
+The OS disk of course, which you can't deselect, but we could choose to deselect our data disks if there are any, attached to the VM. So here of course there are two of them. I want them backed up as well. We can also turn on the check mark.
+
+Should we also Include future disks that might be added in the future? What a great option. I'm going to leave that on. Okay. I'm going to go ahead and click Enable backup. Okay, so the deployment is complete. So I can choose to Go to resource.
+
+Well, all I really want to do here though, is go back into my Recovery Services vault. And in the properties of it, I'm not going to go to backup this time. But under the Protected items heading, in the left-hand navigator, I’ll click Backup items. Notice next to Azure Virtual Machine, the Backup Item Type shows in this case, 2.
+
+Well, that's because I have an old backup from another virtual machine. But notice Ubuntu2 shows here. It says Backup Pre-check Passed. But under the Last Backup Status column there’s a warning icon, like a yield icon, that says Warning (initial backup pending) and we can click the View details link to the right, to get a little bit more details about that.
+
+Notice we can also click the Backup now button up at the top. So I'm going to go ahead do that. I’ll accept the default retention date and click OK.
+
+So we could wait for the schedule to kick-in. But of course we can perform an on demand backup at any point in time. Up here, in the upper right, in my bell or notification icon; if I click on it, it’s triggering a backup for Ubuntu2.
+
+Okay. So it triggered the backup. It says, monitor the progress in the backup jobs page. I can even actually look at that from the virtual machines perspective.
+
+So you can do it from the vault, from the Virtual machine. If I go into that virtual machine and kind of scroll down and select backup in the left hand Navigator, we can click on the link here for the new Microsoft Azure Backup Center, where on the left we can click Backup jobs and notice that for Ubuntu2, the configuration of the backup has completed, but the actual backup itself and that will depend on how many disks are attached to the VM, how full they are.
+
+It's currently showing as being in progress. So in the future, once the backup is completed, we’ll have the option of going into virtual machines properties, into backup, and we’ll have the option of running Restore VM or File Recovery.
+
+[Video description begins] The host points to Restore VM and File Recovery options next to the Backup Now button in the Ubuntu2 backup tab. The options are currently disabled, but shall become active once the backup in progress finishes. [Video description ends]
+
+10. Video: Course Summary (it_osltrb_03_enus_10)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. The host for this session is Dan Lachance. [Video description ends]
+So in this course we've examined how to identify and solve Linux problems relating to user accounts, permissions, and Linux OS backups.
+
+We did this by exploring how to troubleshoot common user and file permissions problems, how to manage sudo and SUID elevated permissions, and also how to reset a forgotten root password.
+
+We then worked with configuring user and group file system quotas and also we looked at how to revert to a cloud-based and an on-premise virtual machine snapshot.
+
+Lastly, we took a look at how to back up and restore cloud-based Linux VMs. In our next course, we're going to go ahead and take a look at how to troubleshoot systemd related items in Linux.
+
+Course File-based Resources
+•	Managing sudo and SUID Elevated Permissions
+Topic Asset
+© 2024 Skillsoft Ireland Limited - All rights reserved.
