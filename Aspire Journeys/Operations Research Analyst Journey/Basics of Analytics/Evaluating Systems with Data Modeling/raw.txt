@@ -1,0 +1,366 @@
+Evaluating Systems with Data Modeling
+Organizations rely on various kinds of data, including big data, to fully understand their customers and business operations. Modeling data systems can help businesses better organize and access data. To do so, they need that data to be easy to access and understand. Data modeling plays a critical role in both. In this course, you´ll learn about data modeling, the benefits it can bring to an organization, and the various levels at which data modeling can be applied. You’ll explore the different types of data models and learn about the data modeling process.
+
+Table of Contents
+    1. Video: Evaluating Systems with Data Modeling (bs_dgt88_a01_enus_01)
+
+    2. Video: What Is Data Modeling? (bs_dgt88_a01_enus_02)
+
+    3. Video: Benefits of Data Modeling (bs_dgt88_a01_enus_03)
+
+    4. Video: Stages of Data Modeling (bs_dgt88_a01_enus_04)
+
+    5. Knowledge Check: Reviewing Your Skills in Data Modeling
+
+    6. Video: Types of Data Models (bs_dgt88_a01_enus_05)
+
+    7. Video: The Data Modeling Process (bs_dgt88_a01_enus_06)
+
+    8. Knowledge Check: Applying Your Data Modeling Skills
+
+    Course HTML Resources
+
+1. Video: Evaluating Systems with Data Modeling (bs_dgt88_a01_enus_01)
+
+Data modeling – the process of examining the structure and organization of a data system – plays a critical role by illustrating the ways that data is accessed and used. In this video, you'll learn about the key concepts that will be covered in this course.
+
+discover the key concepts covered in this course
+[Video description begins] Topic title: Evaluating Systems with Data Modeling. [Video description ends]
+
+Organizations rely on a wide variety of data to fully understand their customers, employees, and business operations. And they need that data to be easy to access and understand. Data modeling, the process of examining the structure and organization of a data system, plays a critical role in this by illustrating the various parts of an information system, the flow of the data in the system, and the ways that data is accessed and used.
+In this course, you'll learn about data modeling, the benefits it can bring to an organization, and the various stages at which data modeling can be applied. You'll also explore the different types of data models and learn about the data modeling process.
+
+2. Video: What Is Data Modeling? (bs_dgt88_a01_enus_02)
+
+As big data and analytics become ever more prevalent, the kind and number of tools and systems businesses use to manage and present it have exploded. In this video, you'll learn the key aspects of data modeling.
+
+identify key aspects of data modeling
+[Video description begins] Topic title: What Is Data Modeling? [Video description ends]
+
+As the world embraces big data and analytics to gain insight from the mountains of data collected by businesses and other organizations, the kind and number of tools and systems used to manage all that data have exploded right along with the amount of data itself.
+Knowing how to access and understand the data has become a major concern. To that end, the business world has turned to data modeling to help make sense of it all. And to make sense of data modeling, it's useful to understand some of its key characteristics. To begin with, data modeling is the process of structuring and organizing data to manage enterprise information in a standard, consistent, and predictable way. It's used to determine how a business information system stores data and how that data can be accessed to support business needs.
+
+The term "data model" is used to refer to both the actual structure underlying a data system and the graphic illustration of it. Simply put, a data model diagrams the components, relationships, attributes, and flow of data in an information system, usually in a standard format. Another aspect of data modeling is that it can generally be applied when planning new systems to help create optimal data use and access. It can also be used to analyze and make improvements to existing systems, exposing any underlying design flaws that impede full access and utilization. In the same way that builders need blueprints to construct a house, data models help companies build the best data systems for supporting their particular business activities and needs.
+
+In modern business, information is an essential strategic asset, and its value greatly increases when data is easy for business stakeholders to access, understand, and work with. Business needs continually change to keep pace with advancing technology, and data models have evolved to keep pace and address new digital opportunities. Some data models are better suited to particular activities than others. One may offer greater speed of operations while another allows more flexibility and scalability.
+
+Data warehouses require the ability to search vast amounts of data quickly. Mobile communications and smartphone apps require fast syncing at a global scale. Content platforms must manage large volumes of ever-changing content. All of these can be addressed by the right model. Building an information system based on the right data model helps ensure an enterprise's data can be used to meet business needs now and in the future.
+
+3. Video: Benefits of Data Modeling (bs_dgt88_a01_enus_03)
+
+Data modeling helps support the ready access and understanding of your company’s data across the enterprise. In this video, you'll explore the benefits of data modeling.
+
+recognize the benefits of data modeling
+[Video description begins] Topic title: Benefits of Data Modeling. [Video description ends]
+
+Data modeling helps support the ready access and understanding of your company's data across the enterprise. As a result of that understanding, it provides a number of benefits. Data modeling helps a company take advantage of available data to identify business issues and opportunities. These, in turn, help the organization achieve its overall business objectives. Consistent enterprise-wide data use is a business necessity. The right data model could ensure all stakeholders across the organization have access to the same wide variety of consistent information, such as product, customer, cost, and revenue data.
+Consistent data access can help improve product development, marketing, and sales efforts, for example, by targeting customers more effectively, making it easier to tailor offers, or improving customer support. Data modeling also benefits organizations by increasing consistency in documentation and system design across an enterprise. It helps streamline data use across business sectors by creating a map of what data is needed, ensuring data is defined and stored in a way that shows how data elements interact.
+
+Data modeling can be applied to examine existing systems to reveal possible underlying structural problems. Large companies are complex and may have many separate databases, each pertaining to a particular department or sector. Marketing may store data on customers and contacts, operations may need to store data regarding orders and inventory, and HR will store work history and other data on employees. Not only does this tend to silo information, but these different data systems have often been built or upgraded at different times, making integration difficult or impossible.
+
+Across poorly integrated systems, a single product may be defined in several different ways, or there may be no way to connect all the information from a single customer into a unified view. Data modeling can help remodeled systems to run more efficiently, allow consistent data use across dissimilar systems, or permit the integration of new data types. As a further benefit, data modeling also helps developers and business users of information systems work together more closely. This allows them to develop models that arrange enterprise data in the most useful way. Because data models are graphic, they allow nontechnical stakeholders to understand and provide meaningful input into the design of complex systems.
+
+Having a common diagramming method and common language facilitates better communication. Business stakeholders and developers can agree on what data is represented, what it means, and how it can be used. Finally, data modeling also supports digital business. Every individual digital interaction generates data, and many types of digital transformation require that widely varied, high- quality data is delivered quickly, in useful form. The right data model will be able to support data monetization. It facilitates moving to a more customer-centric system, utilizing the cloud, leveraging product data to make design improvements, and capitalizing on other digital opportunities.
+
+Large-scale data analytics requires well-designed information systems capable of collecting and handling high volume, high-velocity information. This enables better analysis, insight, predictions, process automation, and decision making. Some of the greatest opportunities in big data analytics involve capturing traditional legacy data sources that have previously gone untapped. Data modeling can be used to help organizations go deeper into their existing data. Certain data models are best for extracting vast amounts of information from unstructured data like text documents and pictures. Others can be better for leveraging social media and behavioral data. Each of these benefits has trickle-down effects, that allow data modeling to positively impact nearly every aspect of an organization, providing synergy to how the business operates and how it uses data in a way that everyone can understand.
+
+4. Video: Stages of Data Modeling (bs_dgt88_a01_enus_04)
+
+There's value for any business professional in knowing and understanding all stages of data modeling. In this video, you will learn about the three stages of data modeling.
+
+recognize stages of data modeling
+[Video description begins] Topic title: Stages of Data Modeling. [Video description ends]
+
+There are three distinct stages of designing an information system, and each requires a different level of data model. These data model types reflect the increasing level of each successive stage. The design process typically moves from idea to general plan to detailed blueprint via a conceptual model, a logical model, and then a physical model. The process typically begins with data professionals and business stakeholders working together on a conceptual data model, or CDM.
+Conceptual data models provide a big-picture view of the kinds of data that can be stored in the database, how data interrelates, and the overall data structure that the business requires. A conceptual model is a high-level nontechnical overview of the business problem, the various entity types, and how they're related. It involves envisioning the various elements and relationships and determining initial requirements such as security and access. At the conceptual level, data technicians and business stakeholders explore these concepts before getting to any of the specifics of implementation. The concern is the type of information that's involved and the direction that data flows.
+
+A conceptual model for an e-commerce information system could show data entities for customer, order, product, and supplier, and the flow of data between the entities. Attributes for customer could include name, phone number, email, or any other pertinent information. Attributes for order might be item number, description, quantity, and price. The next stage of data model development is a logical data model, or LDM. This model converts the conceptual data model into a more definitive structure. Unlike conceptual modeling, logical modeling provides details on all entities, all relationships between entities, and all their attributes. It does so using a formal data modeling notation system such as the Unified Modeling Language, or UML.
+
+Systems like UML provide a standard means of visually depicting the design of an information system. Although a bit more technical, the language and level of detail used at the logical stage should still be understandable and useful to those using the information. At the logical data model stage, attributes for the customer data entity would be more detailed, and might appear as first name, last name, middle initial, phone number, e-mail, or any other pertinent information. Where the conceptual model indicates only the general data flow from the customer to the order form, the logical model will specify exactly what data will flow for any given database system.
+
+Additionally, the entities of the LDM should align with their counterparts in the conceptual model, although it may take more than one logical model to address an entire conceptual model. The final stage of information system design involves transforming the logical data into a physical data model, or PDM. Physical modeling provides detailed guidance on implementing data into the specific database management system, or DBMS, that will be used. This includes organizing the data into tables, stating relationships between tables, and establishing access, performance, and storage details such as naming conventions. The PDM specifies primary and foreign keys, constraints such as character limits, and the appropriate form for dates and phone numbers per the requirements of the chosen platform. The physical model should be so detailed that data professionals can build the actual database from it. The customer section of a PDM might indicate FirstName varchar (30), meaning that the first name entry to the database can be up to 30 characters long and include various characters like numbers, letters, or special characters. This is the level of detail necessary at the physical model stage. This three-stage top down approach, moving from conceptual to logical and ending with the physical model, is appropriate for building new systems from scratch. But when applying data modeling to understand and fix current systems, a bottom-up approach is used to expose the data model.
+
+Data professionals start by looking at the physical model and then find the logic behind it to understand how to fix system issues such as omitted critical data in reports, incorrect or inconsistent results, or an inability to accommodate new business requirements. Business professionals are generally only involved at the conceptual and logical model stages, with the more complex physical modeling left to technical professionals. However, there is value for all business professionals in knowing and understanding the three stages of data modeling.
+
+5. Knowledge Check: Reviewing Your Skills in Data Modeling
+discover the key concepts covered in this course
+identify key aspects of data modeling
+recognize the benefits of data modeling
+recognize stages of data modeling
+Question 1: Multiple Choice
+As the world becomes more data driven, data modeling is becoming even more important as a tool to access and understand data.
+
+ 
+
+What are the key aspects of data modeling?
+
+Options:
+1.
+It diagrams components, relationships, attributes, and data flow
+2.
+It can be applied to new systems or to existing systems
+3.
+It’s the process of structuring and organizing data
+4.
+It helps companies build the best data system for their needs
+5.
+It can be applied only when planning new systems
+6.
+It used design experience to map the best customer journey
+Answer
+1.
+It diagrams components, relationships, attributes, and data flow
+2.
+It can be applied to new systems or to existing systems
+3.
+It’s the process of structuring and organizing data
+4.
+It helps companies build the best data system for their needs
+Feedback:
+Option 1:
+This option is correct. A key aspect of data modeling is its ability to diagram the components, relationships, attributes, and flow of data in an information system, usually in a standard format.
+Option 2:
+This option is correct. Data modeling can generally be applied when planning new systems to help create optimal data use and access, and it can also be used to analyze and make improvements to existing systems.
+Option 3:
+This option is correct. A key characteristic of data modeling is that it’s the process of structuring and organizing data to manage enterprise information in a standard, consistent, and predictable way.
+Option 4:
+This option is correct. Building an information system based on the right data model helps ensure an enterprise’s data is used to meet their particular business activities and needs, now and in the future.
+Option 5:
+This option is incorrect. A key aspect of data modeling is that it's not limited to new data systems: it can be also used to analyze and make improvements to existing systems.
+Option 6:
+This option is incorrect. Data can be used to help map the customer experience, but customer design experience is not a key aspect of data modeling.
+Question 2: Multiple Choice
+Data modeling helps support access and understanding of data across an enterprise
+
+ 
+
+What benefits can data modeling provide?
+
+Options:
+1.
+Captures new data without retrieving legacy source data
+2.
+Helps developers and business stakeholders work together
+3.
+Supports digital business
+4.
+Increases consistency in documentation and system design
+5.
+Helps identify business issues and opportunities
+6.
+Keeps all information from a single customer in a discrete view
+Answer
+2.
+Helps developers and business stakeholders work together
+3.
+Supports digital business
+4.
+Increases consistency in documentation and system design
+5.
+Helps identify business issues and opportunities
+Feedback:
+Option 1:
+This option is incorrect. Some of the greatest opportunities in big data analytics involve capturing traditional legacy data sources that have previously gone untapped.
+Option 2:
+This option is correct. One of data modeling’s benefits is that it helps developers and business users of information systems work together more closely. Because data models are graphic, they allow nontechnical stakeholders to understand and provide meaningful input into the design of complex systems.
+Option 3:
+This option is correct. Every individual digital interaction generates data, and the right data model supports every aspect of it, from data monetization to becoming more customer-centric, making design improvements, and capitalizing on other opportunities.
+Option 4:
+This option is correct. One way data modeling benefits organizations is by increasing consistency in documentation and system design. It helps streamline data use across business sectors by creating a map of what data is needed, ensuring data is defined and stored in a way that shows how data elements interact.
+Option 5:
+This option is correct. Data modeling helps a company take advantage of available data to identify business issues and opportunities. The right data model can ensure all stakeholders across the organization have access to the same wide variety of information, such as product, customer, cost, and revenue data.
+Option 6:
+This option is incorrect. Data modeling can help systems run more efficiently, allowing consistent data use across dissimilar systems, for example, by connecting all the information from a single customer into a unified view.
+Question 3: Matching
+Match characteristics of each data model stage to the stages they describe. Model stages may have more than one match.
+
+Options:
+A.
+Specifies what data will flow for any given database
+B.
+Is diagrammed in formal modeling notation, but at a level of detail understandable to business users
+C.
+Is high-level and nontechnical
+D.
+Shows the details necessary to implement the model in a specific DBMS
+E.
+Documents initial requirements
+Targets:
+1.
+Logical data model
+2.
+Physical data model
+3.
+Conceptual data model
+Answer
+1:
+Option A, Option B
+2:
+Option D
+3:
+Option C, Option E
+Feedback:
+Target 1:
+The LDM converts the conceptual model into a more definitive structure with details on data entities, relationships, and attributes in a formal data modeling notation system, but still in a useful form for business users of the information. It specifies what data will flow for any given database.
+Target 2:
+The PDM gives detailed guidance on implementing the data into the specific database management system (DBMS) that’s been chosen. It provides guidance at a level of detail that would allow data professionals to build the database.
+Target 3:
+The CDM is a high-level, nontechnical overview of the kinds of data stored, how the data interrelates, and the data structure the business requires. It involves determining initial requirements, such as security and access.
+6. Video: Types of Data Models (bs_dgt88_a01_enus_05)
+
+Data models vary based on how data will need to be used and the type of database needed to support them. In this video, you will learn to distinguish between the key types of data models.
+
+distinguish between the key types of data models
+[Video description begins] Topic title: Types of Data Models. [Video description ends]
+
+Data modeling varies greatly by the type of database, the purpose of the modeling, and the desired level of detail. To get a general sense of how it is used, let's look at the steps of a typical top-down data modeling process for a relational database. In order to understand the process steps, first it must be understood that the structure of a relational database is modeled using an Entity Relationship Diagram, or ERD.
+ERDs are basically flowcharts that describe a data system's objects, its attributes, and their relationships and interactions among them. They use a defined set of structures, symbols, lines, and text to illustrate data relationships. Although they can vary, most will follow a similar process. Step one in constructing an ERD is to identify the various objects of interest about which data will be stored. These are the "nouns" of this process. For example, for a manufacturing company, these might be client, product, material, project, and facility. In the ERD, entities are represented by rectangles, each of which corresponds to a table in the database.
+
+The second step is to identify the important attributes for each entity. In a relational database table, each attribute has a column. For instance, the table for the "Client" entity might have columns for customer ID, first name, last name, and so on. In the ERD, these attributes are listed inside the entity rectangle for "Client" as a list of singular nouns.
+
+Step three is to identify the relationships among the entities. The data entities of the ERD have the same relationships as their real-life counterparts. Clients have addresses, buy products, and so on. Relationships are represented by a solid line connecting any two rectangles, with the name of the relationship written above the line. These will be verbs like has, owns, creates, places, or makes. So, the customer rectangle would have labeled lines connecting it to other related data entities such as product, sales rep, order, and so on. ERDs are created using a standard modeling language, typically the Unified Modeling language, or UML. The UML provides standards for indicating the direction and other properties of the relationship, such as whether one entity is the parent and the other a child of it. Some relationships will need to be indicated in both directions, while others may not. By this point in the process, there's plenty of information in the ERD to construct a conceptual data model, which typically stops at a high-level view of the entities, their basic attributes and relationships, and the general flow of data between them.
+
+To continue constructing the logical and physical models, step four is to map attributes to entities completely in the appropriate level of detail. For logical models, this means identifying the entities, attributes, and relationships as they would generally appear in a database. For the physical model, the specific rules and conventions of the chosen system are applied. For instance, if the intended system is Oracle, the client's first name attribute would look something like FIRST_NAME varchar2 (20 BYTE).
+
+Step five in the process is to decide on the degree of normalization and assign keys. Normalizing a relational database is a way of reducing data redundancy, an important consideration for storage and for lessening the chance of inconsistent data. But, because a highly normalized database means information is stored in only one place, reducing redundancy comes at a performance cost. Normalization relies on the use of key values – unique identifiers assigned to groups of data to represent relationships between them.
+
+Key values are fundamentally either natural or surrogate. Natural keys are unique numerical identifiers that already exist as an attribute of an entity, like a Social Security or Tax Identification number. If a customer has more than one unique identifier, one of them may be considered the "primary" key and the other an "alternate" key. Both would typically be underlined in an ERD. If the data doesn't lend itself to each entity having a suitable natural key, a surrogate key can be created. Surrogate keys are arbitrarily designated unique identifiers, with no natural business meaning. As a result, they introduce a new column into the relational table.
+
+Step six of the modeling process is to finalize and validate the data model. Typical problems to watch for include complex attributes, attributes confused with entities, or incorrectly assigned relationships between entities. Once corrected or adjusted, as needed, the model is complete. A complete and accurate ERD can serve as a model for your company's databases and information retrieval. It helps your business organize and access its data, so that it can be used enterprise-wide to strengthen performance, better understand and serve customers, and provide a solid, factual base for making strategic and operational decisions.
+
+7. Video: The Data Modeling Process (bs_dgt88_a01_enus_06)
+
+To get a general sense of how data modeling is used, it helps to look at the steps of a typical top-down data modeling process. In this video, you'll examine the key steps of the data modeling process.
+
+sequence the key steps of the data modeling process
+[Video description begins] Topic title: The Data Modeling Process. [Video description ends]
+
+There are six different types of data models used throughout the conceptual, logical, and physical data model stages. These models vary based on how data will need to be used and the type of database needed to support them. It's useful to take a closer look at each model type. Hierarchical data modeling, an approach used in older computer applications, organizes data in a tree-like structure similar to an organizational chart, where each record is connected to a single parent above it.
+Hierarchical models are adequate for handling one-to-one and one-to-many relationships, but can't support many-to-many relationships. They're also relatively inefficient for record searches. Although they're still used in certain applications such as Hypertext Markup Language, they have mostly given way to more flexible models. Network data models expand on the hierarchical model approach. They use a similar tree-like structure involving "sets" of records, which allows for many-to-many relationships, multiple parent nodes, redundancy of data, and multiple paths from an ancestor to a descendant.
+
+The network model is more flexible, allowing records to be located by "key" values – arbitrary names that identify an item of data. However, operations here still move relatively inefficiently from one to the next, just as in the hierarchical model, and this model can't account for some of the more complex data relationships. These two tree-like structures mostly gave way to relational data models in the 1980s, which remain a popular choice today, especially for point-of-sale systems.
+
+In relational databases, data is arranged in columns and rows as a table, or "relation." The columns of each table contain the attributes of a specific entity, while the rows contain the data for a particular instance of the entity. For example, an online retail database might contain a relation table called "Customer", with columns for First Name, Last Name, Middle Initial, Street Address, and so on. The rows of the table would then contain entries for each customer.
+
+Relational databases are commonly used in business because they're flexible, adaptable, and scalable, and they work well for maintaining data integrity and minimizing redundancy. Within the database, tables can be normalized, meaning each piece of data can be broken down to the smallest useful piece to save storage space. Since the operations of a relational database don't have to move through a hierarchical structure, performance is much improved over earlier models. This ease of use for making complex queries across tables is part of why the relational model is so popular.
+
+A more recent approach, dimensional data models, are designed for faster retrieval of data from data warehouses, generally holding a terabyte or more, and data marts which hold less than 100 gigabytes. A dimensional model can be thought of as a cube where height, length, and depth represent three distinct dimensions, such as product, date, and sales. Each query is like a slice of the cube showing these three dimensions at a particular intersection. Dimensional modeling allows high speed, multi-dimensional analysis on large volumes of data via Online Analytical Processing, or OLAP. Unlike relational models, which focus on reducing redundancy for efficient storage, dimensional models may allow greater redundancy for faster information retrieval.
+
+Dimensional systems are built on either the star schema or the snowflake schema, named for the patterns they form when diagrammed. In a star schema, data is organized into fact tables surrounded by associated dimension tables, making a star-like pattern when charted. The snowflake schema is similar, but with additional layers of information in dimension tables, forming a more complex branching structure, like its namesake.
+
+Other database systems are nonrelational or NoSQL, such as key-value stores and document databases. These are both known for their flexibility and performance. In a document data model, data is stored as a collection of documents and their associated metadata – the basic summary information about the data each document contains. Document databases keep related data together in a semi-structured way based on their metadata. Since the documents are stored using JavaScript Object Notation, a common data format with a diverse range of functionalities, locating and working with specific data is easier. Document data models facilitate rapid communication between mobile and web apps and servers. Their flexible, semi-structured nature allows them to evolve, which makes them ideal for content management systems such as blogs and video platforms, where documents are unique and change over time.
+
+A completely different approach, object-oriented data modeling, is associated with object-oriented programming, which became popular in the 1990s. Object-oriented programming isn't concerned with logic and functions. Instead, real-world problems are represented as "objects" that include both data and functions. Objects are grouped in "classes" that have associated features. Programmers like this approach because it allows complex data sets to be saved, retrieved, and reused to build new programs easier and faster. It also offers greater accuracy, better program security, more thorough data analysis, and less chance of accidental data corruption, so it tends to be used in areas like engineering design, physics, molecular biology, and telecommunications systems. Having a familiarity with the types of data models available, and their strengths, weaknesses, and best uses, lets you determine which one is the most suitable for your business needs.
+
+8. Knowledge Check: Applying Your Data Modeling Skills
+distinguish between the key types of data models
+sequence the key steps of the data modeling process
+Question 1: Matching
+Match each key type of data model to its description.
+
+Options:
+A.
+Relational
+B.
+Document data
+C.
+Dimensional
+D.
+Network
+E.
+Hierarchical
+F.
+Object-oriented
+Targets:
+1.
+Most common for business, the structure puts data in tables with attributes
+2.
+Nonrelational/NoSQL database in which data is stored as a collection with associated metadata
+3.
+Designed for faster retrieval of data from data warehouses, with structures including star and snowflake schemas
+4.
+Simple tree-like arrangement, adequate for explaining one-to-one and one-to-many relationships
+5.
+Flexible structure involving sets of records and key values
+6.
+Allows complex data sets to be saved, and represents real-world problems as items with data and functions
+Answer
+1:
+Option A
+2:
+Option B
+3:
+Option C
+4:
+Option E
+5:
+Option D
+6:
+Option F
+Feedback:
+Target 1:
+In relational databases, data is arranged in columns and rows as a table, or “relation.” The columns of each table contain the attributes of a specific entity, while the rows contain the data for a particular instance of the entity.
+Target 2:
+In a document data model, data is stored as a collection of documents and their associated metadata – the basic summary information about the data each document contains. Document data models facilitate rapid communication between mobile and web apps and servers.
+Target 3:
+Dimensional modeling allows for high speed, multidimensional analysis on large volumes of data via Online Analytical Processing, or OLAP. Dimensional systems are built on either the star schema or the snowflake schema, named for the patterns they form when diagrammed.
+Target 4:
+A key type of data model is hierarchical, which represents relationships in a tree-like format. In hierarchical models, each record has a single root or parent which maps to one or more child tables. These models are adequate for one-to-one and one-to-many relationships, but can't support many-to-many relationships.
+Target 5:
+A network data model type is flexible, allowing records to be located by key values. Network data models use a tree-like structure that involves sets of records, which allows for many-to-many relationships, multiple parent nodes, redundancy of data, and multiple paths from an ancestor to a descendant.
+Target 6:
+Object-oriented databases can support more complex data relationships, as they represent real-world problems as “objects” that include both data and functions. This approach allows complex data sets to be saved, retrieved, and reused to build new programs easier and faster.
+Question 2: Ranking
+Sequence the key steps in a typical top-down data modeling process.
+
+Options:
+A.
+Finalize and validate the data model
+B.
+Identify the data objects of interest
+C.
+Identify the relationships among data entities
+D.
+Identify the attributes for each entity
+E.
+Decide on degree of normalization and assign keys
+F.
+Map attributes to entities completely
+Answer
+1.
+Identify the data objects of interest
+The first step in the data modeling process is to identify the data objects of interest – the entities about which data will be stored. These are the objects or concepts you want to track data about, the "nouns" of the project.
+2.
+Identify the attributes for each entity
+Entities have attributes, which are details you want to track about the entities, so identifying the important attributes of each entity is the second step in the data modeling process.
+3.
+Identify the relationships among data entities
+Entities, along with their attributes, are connected, so identifying their relationships is the third step in the data modeling process. Relationships between entities can be one-to-one, one-to-many, or many-to-many.
+4.
+Map attributes to entities completely
+Step four is to map attributes to entities completely in the appropriate level of detail. This means identifying the entities, attributes, and relationships as they would generally appear in a database and applying the specific rules and conventions of the chosen system.
+5.
+Decide on degree of normalization and assign keys
+Step five in the data modeling process is to decide on degree of normalization and assign keys. Normalization is the process by which anomalies are avoided and redundancy is eliminated. Normalization uses key values – unique identifiers assigned to groups of data to represent relationships between them.
+6.
+Finalize and validate the data model
+Finalizing and validating the data model is the sixth and final step in the data modeling process. Typical problems to watch for include complex attributes, attributes confused with entities, and incorrectly assigned relationships between entities.
+Course HTML Resources
+•	Glossary: Evaluating Systems with Data Modeling
+conceptual model	A high-level view of the needs of an organization.
+database	An organized set of data stored and accessed electronically. Complex databases are often built using formal design and modeling techniques.
+data modeling	The process of representing data objects and their relationships that provides a common set of semantics for analysis and implementation.
+document database	Also known as a document-oriented database or document store, a computer program and data storage system designed for storing, retrieving, and managing document-oriented information, also known as semi-structured data.
+hierarchical model	A data modeling system where data is organized in a tree-like structure similar to an organizational chart, where each record is connected to a single parent above it.
+key-value store	Also known as a key-value database, a data storage system designed for storing, retrieving, and managing associative arrays, where records are stored and retrieved using a key that uniquely identifies the record.
+logical model	A detailed description of entities and relationships, usually in the form of tables, in a database.
+model	A physical representation of a subject, such as a process or requirement, used to illustrate information.
+network model	A flexible way of representing data objects and their relationships using a tree-like structure that allows for many-to-many relationships, multiple parent nodes, redundancy of data, and multiple paths from an ancestor to a descendant.
+NoSQL	A mechanism for storage and retrieval of data modeled differently from the tabular relations used in relational databases. See also SQL.
+object oriented	A database management system in which information is represented in the form of objects that mirror those used in object-oriented programming languages.
+physical model	A model derived from the conceptual data model. Includes table structures, columns, foreign and primary keys, and relationships.
+relational	A system of data storage that stores and provides access to data points that are related to one another.
+snowflake schema	A logical arrangement of tables in a multidimensional database where the entity relationship diagram has layers of information in dimension tables, forming a complex branching structure that resembles a snowflake shape.
+SQL	Abbreviation for Structured Query Language, a domain-specific language used in programming and designed for managing data held in a relational database management system.
+star schema	A dimensional modeling system where data is organized into fact tables surrounded by associated dimension tables, making a star-like pattern when charted.
+© 2024 Skillsoft Ireland Limited - All rights reserved.

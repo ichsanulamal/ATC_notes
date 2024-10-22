@@ -187,3 +187,263 @@ However, it's not just up to the organizational leadership team to contribute to
 Leaders and managers should set these expectations for their teams and direct reports. Third, push for ongoing improvements. Always be on the lookout for ways to improve business work and processes through better data and analytics. Look for opportunities at the intersections of functions, not just within your own. Also, actively engage others, work with the analysts. Engage them to help you make the most of your data and analytics. And if you are the business expert on an analytics project, all the better. You can be active throughout from framing the problem to measuring the results. And serving as a model and inspiration for others, fostering knowledge and enthusiasm for the benefits of analytics.
 
 Finally, continue your learning and development. Aim to learn about analytics, both on the job and by reading, studying, and talking with others whose work is shaped by analytics. Employing these best practices in your organization enables you to put your analytics literacy to work. As the roles and importance of enterprise data and analytics continue to grow, the value of your analytical literacy and capability will grow as well.
+
+8. Knowledge Check: Building Analytics Literacy
+Enterprises increasingly rely on analytics for effective decision-making, optimization, and innovation, resulting in an increased demand for an analytically literate workforce. This course covers the benefits of building your analytics literacy, as well as techniques for doing so. This course also covers some common analytics pitfalls, and best practices for supporting effective analytics practices in your organization. This course was developed with subject matter provided by the International Institute for Analytics. (www.iianalytics.com)
+
+Objectives
+discover the subject areas that will be covered in this course
+recognize the benefits of building your analytics literacy
+distinguish between types of analytics
+sequence the four steps in the analytics development process
+identify the stages of business analytics application advancement
+recognize the most common mistakes in using analytics
+recognize best practices for establishing and supporting an analytical organizational culture
+Question 1: Multiple Choice
+What are the benefits of being literate in analytics?
+
+Options:
+1.
+You become better able to "speak" analytics
+2.
+Your enterprise becomes more forward-thinking
+3.
+Your data has fewer errors
+4.
+You're able to identify opportunities for using analytics
+5.
+You become more effective in using analytics
+6.
+You need to collect less data
+Answer
+1.
+You become better able to "speak" analytics
+2.
+Your enterprise becomes more forward-thinking
+4.
+You're able to identify opportunities for using analytics
+5.
+You become more effective in using analytics
+Feedback:
+Option 1:
+This option is correct. As you become more familiar with analytics terms and techniques, you'll become better able to talk about the advantages of analytics.
+Option 2:
+This option is correct. Analytics literacy can help your organization become more forward-thinking, fact-based, and analytical.
+Option 3:
+This option is incorrect. Data analytics involves reducing errors in how you analyze data, not errors in the data itself.
+Option 4:
+This option is correct. The more you learn about analytics, the better you'll understand how they can be applied to your organization.
+Option 5:
+This option is correct. The more literate you become in analytics techniques, the more effective your data analysis skills will become.
+Option 6:
+This option is incorrect. As you become more literate in analytics, you'll better understand how much data you need to make data-based business decisions, but it doesn't reduce the amount of data you need.
+Question 2: Matching
+Match each type of analytics with its characteristic.
+
+Options:
+A.
+Predictive
+B.
+Descriptive
+C.
+Diagnostic
+D.
+Prescriptive
+Targets:
+1.
+Identifies what actions should be taken by considering "what if" scenarios
+2.
+Explores the reasons for data patterns and trends, producing insight into what happened
+3.
+Highlights what's likely to happen next through business forecasting
+4.
+Is about what happened, when, where, and involving whom
+Answer
+1:
+Option D
+2:
+Option C
+3:
+Option A
+4:
+Option B
+Feedback:
+Target 4:
+Prescriptive analysis answers the question “What should happen next?”
+Target 4:
+Diagnostic analysis answers the question “Why did it happen?”
+Target 4:
+Predictive analysis answers the question “What is going to happen next?”
+Target 4:
+Descriptive analysis answers the question “What happened?”
+Question 3: Ranking
+Sequence the steps in the analytics development process.
+
+Options:
+A.
+Build and test models
+B.
+Frame the problem or opportunity
+C.
+Gather and prepare the data
+D.
+Deploy analytics
+Answer
+1.
+Frame the problem or opportunity
+Framing the problem or opportunity is the first step. It may be a problem with the performance of a business process, or an opportunity to innovate and attract more customers.
+2.
+Gather and prepare the data
+Step two is to gather and prepare data. To succeed, you need to be imaginative. For example, you may start with, “What data have we got?” but quickly move to, “What data is needed to answer our questions?”
+3.
+Build and test models
+In step three, you're ready to build and test models in search of the best way to represent the business situation and its solution.
+4.
+Deploy analytics
+The fourth step is deploying analytics. This happens in various ways. For example, if the analytics support specific business decisions, the outputs may be packaged with visualization tools for decision makers.
+Question 4: Ranking
+Sequence the stages of business analytics application advancement.
+
+Options:
+A.
+Predictive action
+B.
+Data foundation
+C.
+Optimization
+D.
+Segmentation
+E.
+Differentiated action
+Answer
+1.
+Data foundation
+The first stage is data foundation. Data analytics must start with good data – for example, detailed data about customers.
+2.
+Segmentation
+In stage two, segmentation, customers or other entitles are grouped – or segmented – to recognize their differences. For example, customers can be grouped into different customer segments.
+3.
+Differentiated action
+Stage three is differentiated action. Different groups are treated differently – for example, you treat each customer segment differently.
+4.
+Predictive action
+In stage four, you predict what's likely to happen and act accordingly. For example, based on the data, you could come up with an action plan for each customer segment.
+5.
+Optimization
+In the fifth stage, the business process is optimized, perhaps in real time. For example, you improve the value you deliver to each customer in order to meet business objectives.
+Question 5: Multiple Choice
+What are the most common challenges in analytics?
+
+Options:
+1.
+Using improper tools or selection methods
+2.
+Mistaking statistically significance for business significance
+3.
+Mistaking correlation for causation
+4.
+Using control groups
+5.
+Having insufficient data
+6.
+Ignoring outliers
+7.
+Tracking and analyzing too many metrics
+8.
+Using external consultants rather than in-house staff
+9.
+Lacking an objective
+10.
+Drawing conclusions prematurely
+Answer
+1.
+Using improper tools or selection methods
+2.
+Mistaking statistically significance for business significance
+3.
+Mistaking correlation for causation
+5.
+Having insufficient data
+6.
+Ignoring outliers
+7.
+Tracking and analyzing too many metrics
+9.
+Lacking an objective
+10.
+Drawing conclusions prematurely
+Feedback:
+Option 1:
+This option is correct. It helps to have analysts with different experience on a project team so a greater variety of methods – and viewpoints – can be applied.
+Option 2:
+This option is correct. You need to bear in mind the business impact of implementing any analytics recommendations.
+Option 3:
+This option is correct. Just because two data elements are related doesn't mean that one causes the other.
+Option 4:
+This option is incorrect. Control groups are an essential part of the data testing and validation process.
+Option 5:
+This option is correct. If you have insufficient data, you can't carry out a comprehensive data analysis.
+Option 6:
+This option is correct. Outliers may be early warning signals, so you shouldn't ignore them.
+Option 7:
+This option is correct. If you're overwhelmed with data, you'll find it difficult to unearth the key, relevant data.
+Option 8:
+This option is incorrect. External consultants are needed for more complex data analysis, especially when in-house expertise may be lacking.
+Option 9:
+This option is correct. Any data analytics process must have a clear objective to guide it.
+Option 10:
+This option is correct. You need to test your assumptions and hypotheses regularly.
+Question 6: Multiple Choice
+Identify ways you can encourage an analytical culture in your organization.
+
+Options:
+1.
+Push for ongoing improvements
+2.
+Set expectations
+3.
+Consult with management only
+4.
+Continue learning and development
+5.
+Ensure everyone becomes an analytics expert
+6.
+Actively engage others
+7.
+Use data and analytics consistently
+Answer
+1.
+Push for ongoing improvements
+2.
+Set expectations
+4.
+Continue learning and development
+6.
+Actively engage others
+7.
+Use data and analytics consistently
+Feedback:
+Option 1:
+This option is correct. Always be on the lookout for ways to improve business work and processes through better data and analytics.
+Option 2:
+This option is correct. You can set expectations for your colleagues to be analytical too. Engage them in fact-and-analytics-based discussions.
+Option 3:
+This option is incorrect. You should consult with relevant people across the entire organization, not just management.
+Option 4:
+This option is correct. Aim to learn about analytics, both on the job and by reading, studying, and talking with others whose work is shaped by analytics.
+Option 5:
+This option is incorrect. Although you should encourage your colleagues to become analytics literate, you shouldn’t expect them to become experts.
+Option 6:
+This option is correct. Work with analysts, for example, engaging them to help you make the most of your data and analytics.
+Option 7:
+This option is correct. You can set an example by seeking and generating new data.
+Course HTML Resources
+•	Glossary: Analytics Literacy for Business Professionals
+data foundation	The core data that forms the basis of an analysis. 
+descriptive analytics	A type of data analysis that examines what story the data is telling. It tells analysts what happened.
+diagnostic analytics	A type of data analysis that examines the reasons behind data trends and patterns. It tells analysts why something happened.
+optimization	The process of improving business procedures and practices based on insights gleaned from data analysis. 
+predictive analytics	A type of data analysis that examines what is likely to occur, based on current data trends. It tells analysts what will happen next.
+prescriptive analytics	A type of data analysis that examines what actions should be taken, based on current data trends. It tells analysts what should happen next.
+segmentation	The process of grouping similar data together in order to identify trends among segments.
+© 2022 Skillsoft Ireland Limited - All rights reserved.

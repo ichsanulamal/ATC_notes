@@ -1,0 +1,315 @@
+Basic Analytical Methods
+A fundamental understanding of statistical analysis methods increases your ability to effectively communicate with data analyst professionals so you can better employ analytics associated with your work. In this course, you'll learn fundamental concepts in distribution, deviation, correlation, regression, and clustering statistical analysis methods. This course was developed with subject matter provided by the International Institute for Analytics. (www.iianalytics.com)
+
+Table of Contents
+    1. Video: Basic Analytical Methods (bs_dgt61_a01_enus_01)
+
+    2. Video: Understanding Distribution (bs_dgt61_a01_enus_02)
+
+    3. Video: Understanding Deviation (bs_dgt61_a01_enus_03)
+
+    4. Video: Understanding Correlation (bs_dgt61_a01_enus_04)
+
+    5. Video: Understanding Regression (bs_dgt61_a01_enus_05)
+
+    6. Video: Understanding Clustering (bs_dgt61_a01_enus_06)
+
+    7. Knowledge Check: Understanding Effective Statistical Analysis Methods
+
+    Course HTML Resources
+
+1. Video: Basic Analytical Methods (bs_dgt61_a01_enus_01)
+
+After completing this video, you will be able to discover the subject areas that will be covered in this course.
+
+Objectives
+discover the subject areas that will be covered in this course
+[Video description begins] Course title: Basic Analytical Methods. [Video description ends]
+
+With a fundamental understanding of statistical analysis methods, business professionals can better employ the analytics associated with their work. They can understand and trust the analytics that they use, and they can collaborate more effectively with analytics and data science professionals who support their work. This course introduces the essential statistics concepts so that you can "speak the language" of basic analytics. You'll learn fundamental concepts in distribution, deviation, correlation, regression, and clustering statistical analysis methods.
+
+2. Video: Understanding Distribution (bs_dgt61_a01_enus_02)
+
+After completing this video, you will be able to distinguish between the three measures of central tendency
+
+Objectives
+distinguish between the three measures of central tendency
+[Video description begins] Topic title: Understanding Distribution. [Video description ends]
+
+It's helpful for most business professionals to understand and have a nodding familiarity with five fundamental methods of statistical analysis. These are often the building blocks of more advanced analytical methods, and this understanding will increase your confidence in evaluating and employing analytics associated with your work, making you more comfortable and effective in working with the professional analysts who may develop data and analytics to support you. A shared vocabulary always improves communication and understanding. If you studied statistics some time ago, this may serve as a refresher course. And depending on your interest, this may serve as the foundation for exploring these methods in more detail, and for learning about more complex analytical methods. Let's first focus on distribution.
+
+So, what exactly is distribution? Well, it is about how often things happen. It measures the frequency of occurrences using a scale. Apparel retailers, for example, want to know the distribution of customer shirt sizes along the scale from extra-small to extra-large. And they want to know the distribution of sales online versus in-store. Simple frequency distributions are usually represented in pie charts and bar charts. What does distribution tell you? Businesses report on distributions all the time as a way of understanding what happened in the past. In analytics, you are most interested in probability distributions. What are the possibilities? And where is any occurrence likely to land? In distribution, you need to pay attention to the three measures of central tendency. These are known as three M's. The first is the mean, or the numerical average of all occurrences.
+
+The second M is the median, or the midpoint on the scale where 50% of occurrences are below and 50% above. And finally, the third M is the mode, which is the point on the scale with the highest number of occurrences. In fact, there can be more than one mode. There are three common patterns of distribution. The first is uniform, which simply means there's no variation. If you roll a single die, the odds of getting each number are the same – one in six. If you roll it enough times, the distribution of results will be even across the six possibilities. Uniform distributions are important to notice, but they may not reveal much on their own.
+
+The second distribution pattern is binomial, which means there are only two options. If the retailer's only sales channels are online and in-store, that's a binomial distribution. These distributions are often important to track over time and analyze in combination with other variables. For example, how does customer location affect the distribution? And the third distribution pattern is normal. This follows the pattern of the familiar, bell curve. Most occurrences are fairly close to the average, but some are farther away, forming "tails" at the high and low ends of the scale. Many natural phenomena, such as the height or weight of a population, follow a normal distribution.
+
+Distribution curves vary a great deal. In a perfectly normal distribution, the mean, median, and mode are all the same. They are represented at the peak of the curve. If we are measuring the height of professional basketball players, however, the curve shifts with the peak at a higher value on the x-axis. The mode is greater than the median, and the median is greater than the mean. Visually, the mode shifts to the right. But this is actually called a "left skew" because the tail on the left is bigger. Conversely, if we are measuring the height of professional jockeys, the opposite would happen. The curve would be right skewed. Unusual distributions can tell a story. Consider this graph of student grades on a midterm exam.
+
+On a scale from A+ to F, the distribution has two peaks, an A- and C, with a trough in between. A- represents the efforts of students taking the class for a grade, C the efforts of those taking it pass/fail. That's called a bimodal distribution, because it has two modes. Distribution analysis is very useful because it provides insight into the frequency and patterns of business events. However, keep in mind that all of these methods rely upon good and sufficient data. Probably the most common error in statistical analysis is drawing conclusions based on a data sample that is too small or skewed to adequately represent the characteristics of the population being studied. When using any data analytics method, it's important to keep this in mind.
+
+3. Video: Understanding Deviation (bs_dgt61_a01_enus_03)
+
+After completing this video, you will be able to recognize ways deviation can be indicated
+
+Objectives
+recognize ways deviation can be indicated
+[Video description begins] Topic title: Understanding Deviation. [Video description ends]
+
+In building an understanding of the fundamental methods of statistical analysis, deviation is another basic analytics concept to be familiar with. It measures how far things are from the average. A simple indicator of deviation, is the range. What are the lowest and highest occurrences on the scale? Those can be good reference points. However, a couple of "outliers" can extend the range without really affecting the distribution. Deviation is also represented in percentile distributions, as is common with test scores. What is the range of scores achieved by the highest quintile, or top 20 percent, of test takers? What is the range for the second quintile? And so on.
+
+In analytics, the foundation method is the standard normal deviation. The symbol for standard deviation is a lower case Greek letter sigma. On a normal distribution bell curve, a standard deviation of 1 include 68 percent of occurrences. For example, suppose the average height of American females is 5 foot 5 inches and the standard deviation is 3 inches. Then 68 percent are between 5 foot 2 inches and 5 foot 8 inches. The range goes from 3 inches below and 3 inches above the average height. A standard deviation calculation tells us what value range, plus and minus around the average, accounts for two-thirds of the population. A standard deviation of 2 includes 95 percent of occurrences. Think of it as the additional 27 percent that are a step removed from the average. And a standard deviation of 3 includes 99.7 percent of occurrences – the entire set except for the most extreme outliers.
+
+Standard deviation curves are all bell-shaped. However, they can look very different based on the scale. If occurrences are clustered around the mean, the standard deviation range is small, the graph's peak is higher, and the two tails are thinner. If the distribution is more spread out, the standard deviation range is larger, the graph's peak lower, and the tails are more pronounced. But whatever the scale and shape, the first standard deviation includes approximately two-thirds, or 68 percent of the occurrences. Why even have a "standard" for representing deviation? So that different distributions have a way to be normalized and analyzed together, even though the shapes of their curves may be different.
+
+Closely related to deviation is variance. Standard deviation is calculated based on the collective variances of all occurrences. Variance is not a matter of range or average difference, but a bit more a mathematically complex. And it's very useful. Consider this example. Suppose a restaurant offers two featured meals. One is a steady seller, averaging 300 orders a week, plus or minus 50. The other also averages 300 orders a week, but it's all over the map. Some weeks it's just 75, some 150, and sometimes 450. The averages are the same, at 300, but the variances are vastly different. In many applications, variance is a measure of volatility and hence of risk.
+
+The variance of meal number two complicates how the restaurateur orders ingredients. If the variance is in the price of a financial instrument, that volatility increases risk to both buyer and seller. In addition to understanding how occurrences deviate from the average, it's also useful to understand how groups of things vary from each other. To do this, you perform a means comparison. How do the average and distribution of one set of things differ from those of another? For example, suppose you want to price "market baskets" of equivalent items in two grocery chains in order to determine where you want to shop. You can price the basket of items at multiple locations of each chain on multiple occasions, perhaps weekly for several months.
+
+You could just look at the results in time sequence, which might tell its own story. Or you could plot all of the "market basket occurrences" of each chain as a distribution curve. What does this tell you? The standard deviation may not be large, but prices change, including temporarily with product promotions. If you simply overlay the two curves one has a lower average price. You should shop there, right? Not necessarily. This is because you're dealing with samples, not every item each store offers. And other factors, like the timing of product promotions, may have influenced the results. Therefore, you need to determine whether or not the differences between the two groups of market basket occurrences are statistically significant. Means comparisons tests do just that. There are several varieties, including common methods like t-Tests and analysis-of-variance or ANOVA, tests. Deviation analysis helps provide insight into how much business objects and events differ from the norm.
+
+4. Video: Understanding Correlation (bs_dgt61_a01_enus_04)
+
+After completing this video, you will be able to recognize the different types of data correlation
+
+Objectives
+recognize the different types of data correlation
+[Video description begins] Topic title: Understanding Correlation. [Video description ends]
+
+A great deal of statistical analysis involves examining relationships between two or more variables. Doing so starts with whether and how two variables track together, or simple covariance. A positive covariance means that the two variables move together. As one variable goes up, the other variable also goes up. Consider these examples. In hot weather, ice cream sales rise and snow shovel sales fall. The variables of temperature and ice cream sales have positive covariance. The higher the temperature, the higher the level of ice cream sales. Temperature and snow shovel sales have negative covariance. As one variable goes down, the other goes up.
+
+The higher the temperature, the lower the level of snow shovel sales. A zero covariance means that the two variables are entirely independent. Temperature and screwdrivers sales may have no relationship at all. A more precise measure of the relationship between two variables is correlation. It uses a scale of plus 1 to minus 1. A positive correlation of 1, indicates that the variables track together, and that one variable is perfectly explained by the other. A negative correlation of minus 1 indicates that the variables track together perfectly, but in opposite directions. In other words, one variable falls as the other rises, as in the temperature and snow shovel sales example. As with covariance, a zero correlation means the two variables are uncorrelated.
+
+In other words, they are independent. For example, if the correlation between temperature and ice cream sales is plus 0.85, that's getting close to plus 1, so the relationship is very strong. But if the correlation is plus 0.15, that's very weak. The variables move in the same direction, but the connection is less pronounced. This is therefore less reliable if you are planning ice cream supply. This measurement of relationship, such as plus 0.72 or minus 0.44, is called the correlation coefficient. It is represented mathematically by a lower case italic letter r. When analysts refer to an r value, they're talking about the strength of relationship between variables. An easy way to remember this is that the word "relationship" starts with the letter r. And the higher the r, the stronger the relationship.
+
+Correlations are easily visualized using scatter plot diagrams with one variable on each axis. Suppose you are analyzing the relationship between tenure, or length of time in a job, and salary in an organization's employees. Are long-tenured people rewarded for their experience and loyalty? Or are their salaries "compressed" in comparison with new hires at high starting salaries? The scatter plot has one point for each employee. You can see that they progress pretty consistently from low to high in both tenure and salary. In fact, you can easily visualize the straight line that describes the path through the data. The upward slope of the line indicates a positive correlation.
+
+A downward slope would have indicated a negative correlation. In other words, new hires being paid more. And a scatter plot with occurrences widely spread out would indicate no correlation between salary and tenure. They are uncorrelated. If the occurrences in any data set are closely clustered around the implied line, then the correlation is strong. It may be approaching plus 1. If they are more loosely clustered, the correlation is weaker, perhaps plus 0.45. The correlation coefficient r is calculated by first establishing the line that best describes the shape of the data. This is known as the fitted line. You then measure how far each data point is from the fitted line. And you check how scattered the data points along the y-axis in our case, salary. If the data points are scattered across the whole range of salaries, from low to high, and they are close to the fitted line, then we have very high correlation. Perhaps r equals plus 0.95.
+
+In contrast, if the scatter along the fitted line is larger relative to the scatter along the y-axis, then the correlation is weaker. Perhaps r equals plus 0.54. So you can see that the fitted lines for two sets of data may look the same, but the strength of correlation can be quite different. It all depends on the slope of the line, and how closely the data points follow it. By the way, if the fitted line is simply horizontal, the variables are unrelated and the r value is zero. Here's another way to think about the correlation coefficient r. It expresses the data in a scatterplot, and the relationship between two variables, as one standard number. Standard means comparable. Therefore, you can look similarly at the strength of relationship between employees' ranks and salaries by examining the r value in each case.
+
+What correlates more closely with salary – tenure or rank? This leads to an important consideration. It's a mistake to take correlation to mean causation. Two variables may track together closely, but that doesn't mean that one causes the other. For examples, studies have shown a correlation between people's height and their self-esteem. But being relatively tall does not cause self-esteem. There are clearly other, and no doubt stronger, factors behind how we view ourselves. And, of course, the converse is absurd, having high self-esteem doesn't cause people to grow taller. Another important thing to keep in mind is that the meaning and usefulness of a correlation depends on the context. In scientific fields, where variables can be measured precisely, you're often looking to determine and understand very high correlations approaching plus 1. But in the social sciences, where the data is messier and the variables involve human behavior, a correlation coefficient of plus 0.6 may be quite significant. Understanding correlation analysis is useful as it provides insight into the relationships between business variables.
+
+5. Video: Understanding Regression (bs_dgt61_a01_enus_05)
+
+After completing this video, you will be able to distinguish between regression types
+
+Objectives
+distinguish between regression types
+[Video description begins] Topic title: Understanding Regression. [Video description ends]
+
+When working with data analytics, just because two variables track together does not conclusively mean that one causes the other, as in the common maxim, "correlation is not causation." However, it's important to understand how strongly variables may influence one another. Think about the field of medicine, for example. How much does hypertension increase the chances of a stroke? How much effect does body weight have on cholesterol level? And what about the field of business? What effect does customer satisfaction have on sales? What's likely to happen to sales if you increase, or decrease, the marketing budget? How much do changes in raw material costs influence the production costs of a manufacturer? Regression analysis helps answer questions like these. It does not prove absolute causation, but rather quantifies how much influence on average a given variable has on a specific business event or outcome. So, then, is regression the same as correlation? No. In correlation, you just track the relationship between two variables.
+
+Regression is similar, but the variables have roles. In regression, one of the variables is designated the dependent variable that is being influenced by, or is dependent on, one or more independent variables. The working assumption is that the independent variable is influencing the dependent one. For example, if your dependent variable is customers' purchase of a specific product, the independent variables might be price, selection, promotion, time of year, or many others depending upon the product. Regression can be chartered in a fashion similar to correlation. The dependent variable is by convention on the y-axis. And the independent variable is on the x-axis.
+
+Given a scatterplot of occurrences, the best fitted line is determined. In fact, described as a linear equation. Then you look at the scales. What effect does each incremental change in the independent variable have on the dependent variable? Suppose you are exploring the influence of customer satisfaction on sales. Sales is the dependent variable, and customer satisfaction is the independent variable. You start with a representative sample of surveyed customers. Then you plot their combinations of satisfaction score on a scale of zero to ten and total purchases in the last year. Linear regression shows how much sales grow with an increase of one point in satisfaction. The chart here shows, as you'd expect, a positive relationship between the variables.
+
+A one-point rise in satisfaction corresponds to a $50 rise in annual sales per customer. In other words, rising satisfaction helps cause rising sales. If the line were sloped downward, we'd have a negative relationship. The slope of the line offers a quick look at the strength of influence – steeper means stronger. But it all depends, of course, on the measurement scales used on the two axes. Regression provides causal analysis. In other words, how much does customer satisfaction influence sales? It is also regularly used in forecasting and predictions based on trends. For example, if you analyze the influence of marketing spending on sales, you can forecast sales at different levels of marketing spending. Regression analysis enables you to predict the future value of the dependent variable. Analysts use a variety of regression methods.
+
+The main types are linear regression, multiple linear regression, and non-linear regression. We just used basic linear regression to analyze the effect of a single independent variable. What impact does customer satisfaction have on sales? Sales is the dependent variable, and satisfaction is the independent variable. Multiple linear regression uses two or more independent variables to quantify and predict an outcome. So, for example, you might want to examine the combined effects of satisfaction score and proximity to a store on annual sales per customer. By using regression to analyze multiple variables, individually and in combination, you can start to answer broader business questions.
+
+For example, "What variables have the greatest impact on our sales?" The third type of analysis is non-linear regression. This works with data that describes a curve rather than a straight line. In other words, there is no linear relationship between the variables. The sales situation might be more complex than you originally thought. If raising satisfaction from a score of 8 to 9 drives much more sales on average than raising it from 4 to 5, the data describes an exponential curve. Forcing a straight line on it would give us misleading results in this case. In this case, there is no linear relationship between the variables. Regression analysis is helpful to understand because it provides insight into how business variables influence each other. In other words, it helps you identify performance drivers.
+
+6. Video: Understanding Clustering (bs_dgt61_a01_enus_06)
+
+After completing this video, you will be able to identify the key goals of effective clustering
+
+Objectives
+identify the key goals of effective clustering
+[Video description begins] Topic title: Understanding Clustering. [Video description ends]
+
+Another basic, but important, method of analysis is cluster analysis, which is also known by a number of other terms, such as classification analysis, numerical taxonomy, or simply clustering. It groups objects such that they are similar to other objects in their clusters and dissimilar to the objects in other clusters. Clustering has many applications. For example, marketers commonly divide customers and prospects into segments for purposes of targeted product promotions and advertising. And they can develop and understand useful customer "personas" based on combinations of characteristics. Products can then be bundled to appeal to those customer segments. Another example is customer service. These interactions can be clustered for purposes of incoming call routing and service improvement. And employees and jobs can be clustered for purposes of more effective training and assignment.
+
+Financial services, and other kinds of firms can segment their most profitable customers for special treatment and services. And insurers can segment policy holders who have high claims costs. And law enforcement agencies use cluster analysis to identify "hot spots" for particular types of crime, and then deploy their resources accordingly. In short, any important business entity or event with a significant population can be clustered to better understand patterns and distributions. Clustering is also a common preliminary step to analyzing groups with other algorithms, including machine learning and image analysis. In addition, clustering provides additional insights into the distributions of things. But it is fundamentally different from the other methods we have discussed in that it is unsupervised.
+
+The analyst selects the data objects to be clustered and the attributes or variables describing them. But no attribute is selected as the dependent variable or organizing principle. The clusters are algorithmically discovered. So clustering is a means of pattern recognition and data mining. Clustering is easily visualized if we use just two variables and a scatterplot. However, clustering often uses many variables. No matter how many dimensions there are, the goal is the same. It is to minimize the intra-cluster "distances" so that objects in a cluster are as similar as possible, and maximize the inter-cluster "distances" so that clusters are as distinct as possible. It's important to know that clustering is an objective, not a specific method. In fact, there are a variety of clustering methods used individually and in combination.
+
+The objective is to produce high-quality clusters. That means, as we've said, that there is a lot of similarity within each cluster, and little similarity between clusters. High-quality also means that the clusters expose hidden patterns in things like customer need and behaviors. Compared to the other analytical methods, the clustering process is much more subjective, especially when it comes to selecting the population of objects to cluster, the variables that describe them and the clustering method to use. The selection is often based on prior research and analysis. And the data preparation can include assigning weights to variables of known importance.
+
+Given that subjectivity, clustering entails experimentation and iteration. It can be difficult to tell when clustered objects are "similar enough" and the clustering itself is "good enough." So it can be hard to decide when you are done, at least for now, and ready to act upon the results. There can be pragmatic concerns about cluster size and the number of clusters. It's probably not useful to have 80% of customers in one cluster and 20% across three others – unless, of course, the customer base is extremely homogeneous. And the mathematically optimal number of clusters returned by a specific method may be too many or too few for the business need. Perhaps, after some experimenting, having a half dozen customer segments seems workable. A maximum of six segments can then be set as a clustering parameter. Understanding clustering is beneficial because it provides insight into how business objects and events form natural groups that can receive individualized treatment.
+
+7. Knowledge Check: Understanding Effective Statistical Analysis Methods
+A fundamental understanding of statistical analysis methods increases your ability to effectively communicate with data analyst professionals so you can better employ analytics associated with your work. In this course, you'll learn fundamental concepts in distribution, deviation, correlation, regression, and clustering statistical analysis methods. This course was developed with subject matter provided by the International Institute for Analytics. (www.iianalytics.com)
+
+Objectives
+discover the subject areas that will be covered in this course
+distinguish between the three measures of central tendency
+recognize ways deviation can be indicated
+recognize the different types of data correlation
+distinguish between regression types
+identify the key goals of effective clustering
+Question 1: Matching
+Match each measure of central tendency with its definition.
+
+Options:
+A.
+Mode
+B.
+Median
+C.
+Mean
+Targets:
+1.
+The highest number of occurrences in a range
+2.
+The numerical average in a range
+3.
+The numerical midpoint in a range
+Answer
+1:
+Option A
+2:
+Option C
+3:
+Option B
+Feedback:
+Target 3:
+The mode is the point on the scale with the highest number of occurrences. For example, in a group of programmers, the mean salary might be $60,000, but most programmers might actually be paid $65,000. A number of entry-level programmers might be bringing down the mean value of the group.
+Target 3:
+As the numerical average of all occurrences, the mean enables you to make general statements about a group – for example, the mean salary among a group of programmers.
+Target 3:
+The median is the midpoint on the scale, where 50% of occurrences are below the median and 50% are above.
+Question 2: Multiple Choice
+Identify the ways in which deviation may be represented.
+
+Options:
+1.
+Average
+2.
+Percentile distribution
+3.
+Range
+4.
+Cluster
+Answer
+2.
+Percentile distribution
+3.
+Range
+Feedback:
+Option 1:
+This option is incorrect. Deviation aims to find out how far items are from the average.
+Option 2:
+This option is correct. The range can be broken into different percentage groups, such as quintiles of 20%.
+Option 3:
+This option is correct. The range is based on the lowest and highest occurrences on the scale.
+Option 4:
+This option is incorrect. Clusters are used to group similar items together, not show deviance from the norm.
+Question 3: Matching
+Match each type of data correlation with the corresponding description of the graph.
+
+Options:
+A.
+Negative
+B.
+Uncorrelated
+C.
+Strong
+D.
+Positive
+E.
+Weak
+Targets:
+1.
+Data points are widely spread out on the graph
+2.
+Data points form an upward slope on the graph
+3.
+Data points form a downward slope on the graph
+4.
+Data points are clustered closely together on a slope
+5.
+Data points are clustered loosely together on a slope
+Answer
+1:
+Option B
+2:
+Option D
+3:
+Option A
+4:
+Option C
+5:
+Option E
+Feedback:
+Target 5:
+When data points are spread out, it means they're uncorrelated. In other words, the variables are independent of each other.
+Target 5:
+An upward slope means that as one variable goes up, so does the other. This is positive correlation.
+Target 5:
+Negative correlation causes a downward slope, meaning that as one variable goes up, the other goes down.
+Target 5:
+A strong correlation means a change in one variable has a strong, obvious impact on the other variable. This leads to the data points being tightly clustered.
+Target 5:
+A weak correlation means a change in one variable has a weak, less obvious impact on the other variable.
+Question 4: Matching
+Match each regression type with its description.
+
+Options:
+A.
+Multiple linear regression
+B.
+Non-linear regression
+C.
+Linear regression
+Targets:
+1.
+Analyzes the effect of a single independent variable
+2.
+Works with data that describes a curve rather than a straight line
+3.
+Uses two or more independent variables to quantify and predict an outcome
+Answer
+1:
+Option C
+2:
+Option B
+3:
+Option A
+Feedback:
+Target 3:
+Linear regression is used when you have one dependent variable and one independent variable – for example, if considering the impact of temperature on clothing sales.
+Target 3:
+Non-linear regression is used when there is no linear relationship between variables – for example, customers’ names and clothing sales.
+Target 3:
+Multiple linear regression is used when you have one dependent variable and two or more independent variables, such as the impact of temperature and season on clothing sales.
+Question 5: Multiple Choice
+Identify the key goals of effective clustering.
+
+Options:
+1.
+Minimizing intra-cluster distances
+2.
+Maximizing inter-cluster distances
+3.
+Maximizing the size of clusters
+4.
+Minimizing the number of clusters
+Answer
+1.
+Minimizing intra-cluster distances
+2.
+Maximizing inter-cluster distances
+Feedback:
+Option 1:
+This option is correct. This ensures that objects in a cluster are as similar as possible.
+Option 2:
+This option is correct. This ensures that each cluster is as distinct as possible.
+Option 3:
+This option is incorrect. The focus is on the characteristics of the items in the cluster, not the number of items.
+Option 4:
+This option is incorrect. The focus is on the characteristics of the clusters, not the number of clusters.
+Course HTML Resources
+•	Glossary: Basic Analytical Methods
+clustering	An analytical method that groups similar objects into clusters and puts objects that are dissimilar into other clusters.
+correlation	A precise measure of the relationship between two variables, using a scale from -1 to +1 to indicate the strength of the relationship.
+deviation	A measure of how far items are from the average, or mean, in a range. See also mean.
+distribution	A measure of how often something happens. It measures the frequency of occurrences using a scale.
+inter-cluster distance	The distance between two clusters on a graph. The goal of clustering is to maximize inter-cluster distance. See also clustering.
+intra-cluster distance	The distance between items in a cluster on a graph. The goal of clustering is to minimize intra-cluster distance. See also clustering.
+mean	The numerical average point in a range. 
+median	The numerical midpoint in a range.
+mode	The highest number of occurrences of a variable in a range.
+non-linear regression	A type of regression analysis that works with data that describes a curve rather than a straight line – in other words, where there is no linear relationship between the variables. See also regression.
+regression	A type of analysis that does not prove absolute causation, but rather quantifies how much influence on average a given variable has on a specific business event or outcome. 
+© 2022 Skillsoft Ireland Limited - All rights reserved.
