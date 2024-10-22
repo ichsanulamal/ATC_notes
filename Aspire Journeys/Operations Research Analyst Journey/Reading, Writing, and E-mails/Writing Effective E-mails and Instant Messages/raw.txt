@@ -1,0 +1,445 @@
+Writing Effective E-mails and Instant Messages
+Email has become an indispensable communication tool for organizations, and plays a vital role in how they conduct business and maintain their operations. As a result, one of the most important communication skills to have in the workplace today is email etiquette. It can help ensure you get messages across quickly, appropriately, and concisely.
+
+In this course, you’ll learn some tried and tested guidelines for writing emails. You’ll explore the fundamental elements of written communication that every email should contain, and the importance of keeping emails concise. The course also covers the etiquette associated with using instant messaging programs as an extension of email.
+
+Table of Contents
+    1. Video: Writing Effective E-mails and Instant Messages (bs_acm02_a01_enus_07)
+
+    2. Video: E-mail Etiquette: Tone and Formatting (bs_acm02_a01_enus_01)
+
+    3. Video: E-mail Etiquette: Answering an E-mail (bs_acm02_a01_enus_02)
+
+    4. Video: E-mail Components: From Who? About What? (bs_acm02_a01_enus_03)
+
+    5. Video: E-mail Components: Framing and Writing Your Message (bs_acm02_a01_enus_04)
+
+    6. Video: Who Has Time for Long E-mails? (bs_acm02_a01_enus_05)
+
+    7. Video: Using Instant Messaging at Work (bs_acm02_a01_enus_06)
+
+    8. Knowledge Check: Writing E-mails and Instant Messages
+
+    Course HTML Resources
+
+1. Video: Writing Effective E-mails and Instant Messages (bs_acm02_a01_enus_07)
+
+No Objectives
+[Course title: Writing Effective E-mails and Instant Messages.] E-mail and instant messaging, or IM, are such a regular part of our working lives that it's tough to imagine how anyone ever got any business done without them. They make it quick and easy to communicate with people both inside and outside an organization. But they can also end up complicating your life if used improperly. In this course, you'll learn about techniques for making the most effective use of both e-mail and IM.
+
+2. Video: E-mail Etiquette: Tone and Formatting (bs_acm02_a01_enus_01)
+
+It's easier to fire off a quick e-mail than hold a face-to-face meeting or pick up the phone. But this simple solution can end up taking more time, particularly if your e-mail is unclear. Following basic rules of e-mail etiquette will ensure your messages are professional and make the right impression.
+recognize the appropriate use of basic rules of etiquette related to the tone and formatting of e-mails
+[Topic title: E-mail Etiquette: Tone and Formatting.] It's easier to fire off a quick e-mail than hold a face-to-face meeting or pick up the phone. But this simple solution can end up taking more time, particularly if your e-mail is unclear. Following basic rules of e-mail etiquette will ensure your messages are professional and make the right impression.
+
+First, be aware of tone. Make sure your e-mail reads in a way that's appropriate for your message and speech. The speaker's tone and body language let you know how to interpret their statements. For example, a sarcastic tone can reverse the usual meaning of a phrase like, oh great. Tone is hard to convey in text. If the intentions or emotions in your message could be misunderstood, find a less ambiguous way to phrase it. Consider a message like this. Get the report to me by 5 PM or I'll miss my deadline. It's a little abrupt, isn't it? The sender seems angry. Adding a few words and using a question, rather than a command, can transform the tone from threatening to appreciative.
+
+Consider who you're communicating with. How well do you know the other person? What's their style of communication? Use language that's appropriate for your message and the receiver. Many of the conventions of business letter writing had been lost in the move to e-mail. But it still makes sense to use a formal, respectful tone when you're communicating with someone for the first time. You can suggest more subtle nuances of tone using emoticons or emojis. These are icons you create either using keyboard characters or selecting from a menu. A smiling or frowning face, for example, to communicate mood. [An example of an E-mail displays. It reads as following: Let's discuss what happened in the meeting this morning. Sonya's comments were just great.] Consider how emoticons can transform the meaning of an e-mail message. Adding a happy face shows the writer was sincerely impressed or pleased by Sonya's remarks. A frowning face implies a sarcastic tone. Emoticons maybe appropriate in an informal message to a friend or peer, but they shouldn't be a regular feature of business correspondence.
+
+Another basic e-mail rule is to avoid using inappropriate formatting. You might feel that writing text in all upper case characters gives your e-mail an urgent tone, but the reader will get the impression that you're shouting. Similarly, underlining or bold text can read as aggressive emphasis. Use plain sentence-case text in business e-mails. This approach maintains a neutral and professional tone and lets the readers focus on the message.
+
+The final rule is use proper composition to ensure your e-mails are clearly understood and professional. It's hard to follow a message when the points don't flow logically and the text is fairly dense. Grammatical errors, such as incorrectly used punctuation or misspellings, don't help. Make your e-mails easy to follow. Restructure your message to group logically related points. Space out separate ideas or topics appropriately. Use numbers or bullets to present list items.
+
+Keeping these rules in mind will help ensure the message received will be the same one you meant to send.
+
+3. Video: E-mail Etiquette: Answering an E-mail (bs_acm02_a01_enus_02)
+
+In this video, find out how to recognize the appropriate use of basic rules of etiquette related to answering emails.
+recognize the appropriate use of basic rules of etiquette related to answering e-mails
+[Topic title: E-mail Etiquette: Answering an E-mail.] Understanding tone, formatting, and composition helps you convey your intended message. But that's not all there is to e-mail etiquette. Maybe you've received an e-mail reminding you to respond to an earlier e-mail, or your failure to respond to an e-mail quickly delayed solving a problem. Perhaps you created new problems by responding too quickly without proofreading what you said. Let's look at ways to avoid these situations.
+
+First, answer e-mails within a reasonable time. Aim to respond to e-mails within 24 hours, if not by the end of the working day. Failing to respond promptly isn't just discourteous, it also risks creating a costly delay if your input is needed to solve a problem. Remember, the longer you leave your reply, the less useful it's likely to be. Say you've received an e-mail from a client requesting proofs. If you take several days to respond, the client may become frustrated and annoyed and end up contacting a competitor.
+
+Answer all questions posed to you in e-mails. Sending a timely reply won't really help the recipient if your response isn't complete. Try to anticipate follow-up questions the recipient will have, and answer these up front to avoid a lot of back and forth e-mailing. Suppose Paul e-mails you asking if a basic website should be created to promote a new product, and how long this would be likely to take. Your reply addresses only the first issue. Now Paul has to e-mail you again to get the missing answer. If you'd really looked at what he was asking, you would've answered both questions. And you might have even anticipated another likely question, and added information about how long a more complex site might take to develop.
+
+Another bit of e-mail etiquette you should make a habit, is adding a signature to your business e-mails. A signature includes your contact information and is appended automatically after the body of any e-mail message you send. Adding a signature lends a professional touch, and makes it easier for recipients to contact you. Your signature should contain your name, position, the name or logo of your company, and your full contact details. This allows the recipient to choose their form of response, a reply, a phone call, or even a fax.
+
+The last step before sending an e-mail message is to proofread your message. This will help you catch and correct any errors before you hit send. Always proofread your message with the recipient in mind. Imagine you're in a rush and you compose a quick e-mail requesting an update from your colleague, but your quick e-mail ends up costing you a lot more time when its garbled message later requires clarification. Taking one more minute to correct the errors in your mail before sending it results in a far more professional message.
+
+Adopting these techniques will help prevent some of the most common problems of e-mail correspondence.
+
+4. Video: E-mail Components: From Who? About What? (bs_acm02_a01_enus_03)
+
+Learn how to identify appropriate ways to use the "From" field and subject line in emails.
+identify appropriate ways to use the "From" field and subject line in e-mails
+[Topic title: E-mail Components: From Who? About What?] Every e-mail you write should contain certain elements. A clear subject line, for one thing, and a professional looking address in the from field. Using these and other elements correctly, as well as following the basic rules of e-mail etiquette, will help you create e-mail messages that people will open and read. Let's start with the from field.
+
+When you send a message, most e-mail applications automatically display your e-mail address in the from field. In some applications, you can also specify exactly what the from field displays. The name in the from field is what will be seen by recipients, and it can be an important influencer in their decision to open the e-mail. That's why it's worth giving some thought to the name you use for your business e-mail account. For example, if you use a nickname in the from field, your recipient may not recognize the e-mail as coming from you. It's best to include your full first and last name. This is more professional than including only a first name or nickname, and helps ensure recipients will recognize who the e-mail is from. If you're thinking about using just your company name, remember that the from field of an e-mail should make it clear to the recipients exactly who sent the message. Using a company name doesn't do this. The e-mail message could originate from anyone who works for your company. And don't enter your contact details. Remember, if you use a signature, all that information will be included there.
+
+Another key element of every e-mail is the subject line. A good subject line can mean the difference between your e-mail being opened or ignored. Treat the subject line as an opportunity to make it clear what your message is about. Don't leave the recipient in any doubt about its relevance. Keep the subject line short, so it's easy to read and doesn't get cut off in the recipient's inbox. Aim for a maximum of five to seven words. If the correspondence develops, remember that you may need to update the subject line in your response to reflect a change in focus. In the example, Jenna Tallon is a sales advisor who is replying to Joseph's query. By default, the subject field now shows that Jenna is replying to Joseph's e-mail. It also includes the original subject line. Jenna can also update the subject line to make the purpose of her e-mail clearer. In this case, she adds the original subject line, to make it clear her e-mail outlines a possible solution.
+
+First impressions are important. And with e-mail, this first impression will likely come from the from field and the subject line. These two seemingly small parts of an e-mail can mean the difference between getting a quick reply and having to write another message, prodding the recipient for a response.
+
+5. Video: E-mail Components: Framing and Writing Your Message (bs_acm02_a01_enus_04)
+
+In this video, you will learn how to recognize effective ways to write the parts of an email message.
+recognize effective ways to write the parts of an e-mail message
+[Topic title: E-mail Components: Framing and Writing Your Message.] Once you've come up with a subject line that makes clear what your e-mail is about, you can open your message with a greeting that acknowledges the intended recipient. Depending on the level of formality required, your greeting can be formal, such as Dear Ms. Smith, or more informal, as in, Hi Jane. If you're not sure how to interact with someone, try to avoid being too informal. Take your cue from the way the person chooses to sign off her own e-message and address her in that way. Let's say you know your client's name is Joseph Baker, but he chooses to sign his e-mails as J Baker. Referring to him by his first name at this point may be presumptuous. Instead, use Hello Mr. Baker.
+
+The message body is the core of an e-mail. It's where you present the most important content, applying the rules for e-mail etiquette. If you want your e-mail message to be understood and well received, write it clearly and logically with appropriate formatting, no errors, and using an appropriate tone given the message and the recipient. Suppose you're writing an e-mail in response to a customer's complaint. You begin by apologizing for the problem your client is experiencing. Next, you deal with the client's query clearly and concisely. In this case, you might also choose to answer an anticipated question about what the client should do if your proposed solution doesn't work.
+
+The final component of an e-mail, the closing, is where you wrap up the points you've made, and conclude in a manner that's consistent with the tone of your message. Use phrases like Best wishes, Warm regards, Thank you for your time, or I look forward to hearing from you, to make your message appear less abrupt and insistent. If the message is slightly more formal, you may use Best regards or Sincerely. The right closing marks the end of your message and demonstrates consideration for your e-mail's recipient. Leaving out a closing can make the message seem abrupt and even incomplete. Adding something like Best wishes softens the tone and confirms the message is complete.
+
+And finally, think about setting your e-mail application to add a signature with your full contact details. This will make it easy for the recipient to choose their form of response. From the opening to the sign off, each part of your e-mail contributes to the overall interpretation of your message. So pay attention to each element and choose the most appropriate words for your message and recipient.
+
+6. Video: Who Has Time for Long E-mails? (bs_acm02_a01_enus_05)
+
+During this video, you will discover how to identify guidelines for keeping e-mails concise.
+identify guidelines for keeping e-mails concise
+[Topic title: Who Has Time for Long E-mails?] There are lots of reasons to keep your e-mails concise. For one, research shows that the longer the e-mail message, the less likely it is to receive a response. It's tempting to add detail when you're writing an e-mail, but it's almost always better to be brief and to the point.
+
+A concise message saves time for both the sender and recipient. It avoids information overload, making it more likely the recipient will reply. Consider some guidelines you can apply to help keep your e-mail messages concise. In your e-mails, try to convey a single core point. Decide what it is you want to communicate, and maintain a tight focus on that one issue. This will make your messages easier to write and to read. If you have to communicate several points, consider making each point in a separate e-mail message.
+
+Above all, get to the point quickly. Remember that when people are busy, they want to know what you're trying to communicate as fast as possible. So don't give them irrelevant information.
+
+Use a simple greeting too. By overdoing it with pleasantries and small talk, you risk losing the reader's attention. Messages are more focused and easier to read when your sentences are short and simple. Try to keep each sentence to no more than 15 or 20 words. If this is difficult, try refining or breaking down your ideas before expressing them.
+
+Use bulleted lists to group related points. This is a good way to make your remarks stand out, and it encourages the reader to respond to each one. If you really want to be concise, you'll have to consider the dreaded thank you e-mail. How many of the e-mails you send and receive are an unnecessary thank you for an unexceptional task? Thank you messages waste the time of the sender and the recipient. If you really feel someone has made an effort, send a handwritten card or make a phone call.
+
+Whatever the subject of your message, one way to control length is to make sure that the message fits completely within the preview pane in your e-mail application. If a full message fits in the preview pane and you can see where it ends, you're more likely to take the time to read the entire message. Another tip, don't attach unnecessary files to your e-mails. Attachments are a regular source of computer viruses, and large attachments can be slow to download and time consuming to read. If you must include attachments, make sure your virus scanner is up to date, so that you are not also sending viruses. Compress the files, and generally try to restrict the total file size of the e-mail to less than 10 megabytes.
+
+Keeping these guidelines in mind will result in you writing fewer, shorter, and more effective e-mails.
+
+7. Video: Using Instant Messaging at Work (bs_acm02_a01_enus_06)
+
+Discover how to recognize appropriate usage of basic rules of etiquette for instant messaging.
+recognize appropriate usage of basic rules of IM etiquette
+[Topic title: Using Instant Messaging at Work.] Instant messaging, often called IM or just chat, is firmly established alongside e-mail as a key communications tool and the modern office environment. Instant messaging gives you the ability to communicate in real time through text conversations. Some instant messaging applications also offer web cam support, which allows you to see and be seen by the other party. As useful as instant messaging is, however, there are pitfalls too. Used incorrectly, it can be a constant, nagging presence that disrupts your own or other's focus. Or it can sometimes become a tangled dialog that confuses rather than clarifies an important topic.
+
+IM conversations are usually brief and on a single topic. Avoid problems by applying most of the rules of e-mail etiquette. For instance, compose your instant message logically and clearly. And make it easy for readers to follow. Instant messaging also has its own rules and conventions. One basic rule is that you respect contacts' status indicators and only send messages when people are available. Your instant messaging software will let you know if a contact is available to receive your messages. If contacts are offline or have a busy status indicator, don't try to contact them.
+
+Instant messages may feel disposable, but they can be saved and kept or even passed on to others. They can also be viewed by anyone near the computer where the messages are received. So make sure whatever you're writing is appropriate for a business environment. Treat an instant messaging session like any face-to-face interaction, and always start with a greeting. Your greeting lets the recipient know that you're beginning a conversation. It's less abrupt than charging right into a message. When you have something to say in an instant message, take the time to write it in full. And then send the message all at once. Splitting what you want to communicate across several shorter messages could be confusing. The recipient may try to reply to each message before getting the next one. If there'll be a delay while you compose a message, however, inform the person on the other end. You don't want him thinking you're simply not responding. And if you're not at your computer, don't stay logged in. If you don't log off, you'll keep receiving messages from contacts. And your lack of response may come off as rude. You also run the risk of others reading your messages while you're out.
+
+Follow these guidelines along with the accepted rules of e-mail etiquette, and you'll make the most effective use of instant messaging.
+
+8. Knowledge Check: Writing E-mails and Instant Messages
+Email has become an indispensable communication tool for organizations, and plays a vital role in how they conduct business and maintain their operations. As a result, one of the most important communication skills to have in the workplace today is email etiquette. It can help ensure you get messages across quickly, appropriately, and concisely.
+
+In this course, you’ll learn some tried and tested guidelines for writing emails. You’ll explore the fundamental elements of written communication that every email should contain, and the importance of keeping emails concise. The course also covers the etiquette associated with using instant messaging programs as an extension of email.
+
+recognize the appropriate use of basic rules of etiquette related to the tone and formatting of e-mails
+recognize the appropriate use of basic rules of etiquette related to answering e-mails
+identify appropriate ways to use the "From" field and subject line in e-mails
+recognize effective ways to write the parts of an e-mail message
+identify guidelines for keeping e-mails concise
+recognize appropriate usage of basic rules of IM etiquette
+Question 1: Matching
+Classify each example of e-mail use as either appropriate or inappropriate. Each category may match to more than one example.
+
+Options:
+A.
+Inappropriate
+B.
+Appropriate
+Targets:
+1.
+"Thanks for stopping by my desk and helping with that last project. I'm sure I couldn't have done it without you :-)."
+2.
+"These problems is going to have to be handled soon. Missing information on application forms, incorrect address details for clients. Forms being categorized wrongly."
+3.
+"I'm afraid I won't be able to attend the meeting tomorrow due to a dental appointment. I'll ask Tim to go over what was covered with me."
+4.
+"Do you need ALL the proofs TODAY?"
+Answer
+1:
+Option B
+2:
+Option A
+3:
+Option B
+4:
+Option A
+Feedback:
+Target 1:
+It's appropriate to use an emoticon like a smiling face to convey tone in an informal e-mail thanking a colleague.
+Target 2:
+This message is inappropriate because it doesn't use effective composition. It includes grammatical errors, including incomplete sentences. Also, it would have been better to present the problems requiring attention as a bulleted or numbered list.
+Target 3:
+This message is simple and to the point. It uses an appropriate tone, doesn't include inappropriate formatting, and is properly composed.
+Target 4:
+The use of uppercase in this message makes the writer's question appear aggressive, which is inappropriate in a business communication.
+Question 2: Matching
+Categorize each scenario as either appropriate or inappropriate, based on the rules of etiquette for answering e-mails. Each category may match to more than one scenario.
+
+Options:
+A.
+Appropriate
+B.
+Inappropriate
+Targets:
+1.
+Before responding to an e-mail query from her team, Sally re-reads her message to check for errors
+2.
+Sally includes her name, position, and contact details at the bottom of her messages
+3.
+Sally receives an e-mail from a client with four questions, but she only answers the first three
+4.
+Sally postpones answering an e-mail on Friday because she is busy; she eventually replies on Wednesday
+Answer
+1:
+Option A
+2:
+Option A
+3:
+Option B
+4:
+Option B
+Feedback:
+Target 1:
+This is an appropriate way to answer an e-mail. A basic rule is to proofread your e-mail messages before sending them. This can help you identify and correct any errors that would otherwise make the messages unprofessional or difficult to follow.
+Target 2:
+Adding a signature that includes your full contact details is an appropriate practice. It makes it easier for message recipients to contact you.
+Target 3:
+Not answering all questions posed in an e-mail you receive is inappropriate. This makes it necessary for the person who contacted you to e-mail you again for requested information. This wastes time and is unprofessional.
+Target 4:
+This is an inappropriate way to answer an e-mail. A basic rule of e-mail etiquette is to respond promptly to messages you receive. Typically you should respond within a maximum of 24 hours.
+Question 3: Multiple Choice
+As an architect, Leonard needs to e-mail a potential client to inform him about some of the options for adding an extension to his home.
+
+Identify examples of appropriate ways Leonard can use the From field and subject line in his e-mail.
+
+Options:
+1.
+From: Leonard Anderson
+2.
+From: L. Anderson
+3.
+From: Leonard
+4.
+Subject: A few things we could do to facilitate the extension you're planning for your home
+5.
+Subject: Options
+6.
+Subject: Options for the proposed extension
+Answer
+1.
+From: Leonard Anderson
+6.
+Subject: Options for the proposed extension
+Feedback:
+Option 1:
+This is a correct option. It's best to include your full name in the From field of an e-mail, to help ensure the recipient recognizes who the e-mail is from.
+Option 2:
+This option is incorrect. It's preferable to include your full name in the From field of an e-mail. This helps ensure the recipient knows how to address you in responses.
+Option 3:
+This is an incorrect option. Especially for a new client, it's important to include your full name in the From field of an e-mail. Including just your first name may lead to confusion if the client knows another person with the same name. It also represents a level of informality that's inappropriate.
+Option 4:
+This is an incorrect option. At 15 words, this subject line is too long to be effective. Part of the text is likely to be cut off in the recipient's inbox.
+Option 5:
+This is an incorrect option. Just the word "Options" isn't sufficient to give the recipient a good idea of what will be covered in the e-mail.
+Option 6:
+This is a correct option. This subject line is short and clearly identifies the purpose of the e-mail message.
+Question 4: Matching
+You're writing to a potential client, Ross Durman, concerning the possibility of providing a performance guarantee if he signs a contract to use your firm to service his transport fleet. You have not met Ross face to face, although you have spoken once on the telephone.
+
+Identify the most appropriate examples for the greeting, body, and closing of the e-mail. Not all examples are appropriate.
+
+Options:
+A.
+Greeting
+B.
+Not appropriate
+C.
+Body
+D.
+Closing
+Targets:
+1.
+Hello Ross Durman
+2.
+Dear Mr. Durman
+3.
+If the contract is signed, we guarantee to provide a vehicle breakdown service and replacement vehicles until repairs are completed.
+4.
+We GUARANTEE we'll provide a vehicle breakdown service and replacement vehicles UNTIL REPAIRS ARE COMPLETED
+5.
+Warm regards
+6.
+Bye
+Answer
+1:
+Option B
+2:
+Option A
+3:
+Option C
+4:
+Option B
+5:
+Option D
+6:
+Option B
+Feedback:
+Target 1:
+This greeting is not appropriate. While it's slightly more formal than addressing the client using only his first name, the phrasing is clumsy and sounds unprofessional.
+Target 2:
+This is an appropriate greeting for the message. It's safest to assume a formal tone when writing to someone you do not know well.
+Target 3:
+This is an appropriate e-mail body. It is properly formatted and free of errors.
+Target 4:
+This e-mail body is not appropriate. Writing e-mail content in capitals is grammatically incorrect and gives the impression that you are shouting.
+Target 5:
+This is an appropriate e-mail closing. This phrase closes the message in an appropriate, conventional manner.
+Target 6:
+This closing is inappropriate. Given the context, simply saying "Bye" is too informal. It would also be inconsistent with the tone used in the message body.
+Question 5: Multiple Choice
+You need to send an organization-wide e-mail explaining changes to the company's timekeeping policies.
+
+Which guidelines can help you keep your e-mail concise?
+
+Options:
+1.
+Cover only a single point in the message
+2.
+Try to fit the full message of the e-mail in the preview pane to ensure it's not too long
+3.
+Use large attachments
+4.
+Try to put as much related information as possible into long sentences
+5.
+Get to the point of the e-mail quickly and don't lose focus
+Answer
+1.
+Cover only a single point in the message
+2.
+Try to fit the full message of the e-mail in the preview pane to ensure it's not too long
+5.
+Get to the point of the e-mail quickly and don't lose focus
+Feedback:
+Option 1:
+This is a correct option. Decide what it is you want to communicate and maintain a tight focus on that one issue. This will make your messages easier to write and read.
+Option 2:
+This is a correct option. If a full message fits in the preview pane and you can see where it ends, your readers are more likely to take the time to read the entire message.
+Option 3:
+This is an incorrect option. Attachments are a regular source of computer viruses. In addition, large attachments can be slow to download and time consuming to read.
+Option 4:
+This is an incorrect option. A long sentence containing many related points is often more concisely presented as a bullet list. Ideally, you should keep sentences in e-mail messages at 15 to 20 words maximum.
+Option 5:
+This option is correct. It's important to get straight to the point, rather than spending too much time on pleasantries or irrelevant facts.
+Question 6: Matching
+Categorize each use of instant messaging as either appropriate or inappropriate. Each category may match to more than one example.
+
+Options:
+A.
+Appropriate
+B.
+Inappropriate
+Targets:
+1.
+Simone starts her message with "These figures weren't easy to put together..."
+2.
+John leaves his messaging software running so he can receive messages while he's out on a lunch break
+3.
+Simone responds to Kevin but decides not to comment on a joke about their supervisor
+4.
+John writes "That could take me a bit of time to answer, so please hold on"
+5.
+Kevin sees that Simone has set her status to "Busy," so he decides to wait before sending her a message about a new client's contract
+Answer
+1:
+Option B
+2:
+Option B
+3:
+Option A
+4:
+Option A
+5:
+Option A
+Feedback:
+Target 1:
+Before she starts her message, Simone should include a greeting to the recipient. It is inappropriate to jump right into the message.
+Target 2:
+Staying logged on when you're not actually at your computer is inappropriate because your contacts won't know why you're not responding.
+Target 3:
+Simone is ensuring that she sends only appropriate content in her message. It's important to avoid anything potentially offensive or derogatory.
+Target 4:
+It's appropriate for John to take the time to compose and send a full response, and to let his contact know to expect a pause before the message is sent.
+Target 5:
+Kevin is respecting his contact's status indicator, which is an appropriate practice.
+Course HTML Resources
+•	Glossary: Writing Effective E-mails and Instant Messages
+addressing
+
+The process of specifying who must receive a communication. In an e-mail, the To, Cc, and Bcc fields enable the sender to specify the addresses of recipients.
+
+Bcc
+
+Abbreviation for blind carbon copy, the address field in an e-mail used to list one or more recipients who must receive a copy of the message sent to the a primary recipient. Unlike entries in the Cc field, those included in the Bcc field won't display to all message recipients.
+
+blind carbon copy
+
+See Bcc.
+
+carbon copy
+
+See Cc.
+
+Cc
+
+Abbreviation for carbon copy, the address field in an e-mail used to specify recipients who must receive copies of the e-mail. These addresses will be visible to all other recipients.
+
+direct recipient
+
+A person to whom a communication is directly addressed. In an e-mail, the addresses of any direct recipients must be entered in the To field.
+
+duplication
+
+In relation to e-mail communication, the practice of copying someone with an e-mail message sent to a direct recipient when this is unnecessary. It may involve inappropriately copying a message over the direct recipient's head – for example, to a manager.
+
+escalation
+
+Raising the priority of an issue, often by copying a person in authority with an e-mail sent to a direct recipient.
+
+filters
+
+User-defined rules in an e-mail system that enable routing of certain types of e-mail directly to folders in a user's e-mail account, bypassing the inbox.
+
+inbox
+
+The folder that contains all received e-mails in a user's e-mail application.
+
+spam
+
+Unsolicited junk e-mail, such as product advertisements or mass marketing e-mails.
+
+subject line
+
+A title identifying the content or purpose of an e-mail message. It's entered in the Subject field of the e-mail.
+
+thread
+
+An original message and any replies.
+
+To
+
+The address field in an e-mail used to specify the addresses of direct recipients, who must respond or react directly to the message.
+
+© 2016 Skillsoft Ireland Limited
+
+
+•	Job Aid: Rules of E-mail and Messaging Etiquette
+Use this job aid to review the rules for using e-mail and instant messaging effectively.
+To use e-mail effectively, you should adhere to seven basic rules:
+
+Always monitor the tone of e-mail messages – Ensure you use a tone that's appropriate for the person you're addressing and the purpose of a message. Write clearly and unambiguously to prevent accidentally implying a tone that's inappropriate. In informal messages, you may use emoticons to convey mood.
+Avoid inappropriate formatting – Avoid using uppercase letters and underlining or bolding text. This is unprofessional and may be interpreted as aggressive.
+Use proper composition – Check that points flow clearly and logically, and that messages don't contain basic errors in spelling, grammar, and punctuation.
+Answer messages you receive within a reasonable time – Answer e-mail messages you receive promptly, within a maximum of about 24 hours.
+Answer all questions in e-mails you receive – Ensure you check what information has been requested and provide this in a single response. Also anticipate additional information that may be required and include this to help prevent the need for "back and forth" correspondence.
+Create a signature for your e-mails – Configure a signature for all your e-mail messages that includes your full name, position, and contact details, to make it easier for recipients to contact you.
+Proofread your e-mails – Check e-mails once you've written them and correct any errors, instead of sending them immediately.
+To use instant messaging effectively, you should follow the same basic rules that apply for using e-mail. In addition, it's important to adhere to five rules specific to instant messaging:
+
+Respect the status indicators of contacts – Status indicators show whether someone is ready to accept an instant message. If a contact indicates that they do not wish to be disturbed, respect this. If an issue is particularly urgent, you should consider contacting the person by telephone.
+Ensure that your instant message is appropriate – Your message should not include content that would be inappropriate or embarrassing if it were read by people other than the intended recipient. Remember that communication via instant messaging is not necessarily private, and that anything you say can be kept and forwarded to others. You should avoid offensive or derogatory language, and keep messages professional at all times.
+Include a greeting before jumping into a conversation – Just as you would if you were beginning a face-to-face conversation, you should greet the person you're addressing. As well as being polite, a greeting acknowledges your contact and prepares this person to enter a conversation.
+Send a message all at once – Avoid breaking a single message into separate parts because this may make the message confusing. Rather take a bit of time to complete an initial message or reply, and then send the full message all at once. However, it's important that you inform your contact to expect a delay in response if you need time to compose your message.
+Don't stay logged on if you are not at your computer – Remember to log off the instant messaging service whenever you need to leave your computer. If you don't do this, contacts may get the impression that you're simply ignoring their messages.
+Course: Writing Effective E-mails and Instant Messages
+Topic: E-mail Etiquette: Tone and Formatting
+
+© 2016 Skillsoft Ireland Limited
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

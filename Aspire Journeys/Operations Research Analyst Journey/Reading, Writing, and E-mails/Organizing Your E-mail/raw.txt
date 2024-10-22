@@ -1,0 +1,420 @@
+Organizing Your E-mail
+In the modern business environment, it’s easy to feel overwhelmed by the volume of written communication that you need to process every day. To keep up, you need strong communication skills to sort, file, respond to, or delete all emails that you receive during your business day.
+
+In this course, you’ll learn some vital communication techniques for managing and writing emails effectively. The course covers email etiquette tips on how to use folders and filters to organize emails for increased efficiency, as well as guidelines on what emails to delete. You’ll also explore how to recover important information should you lose an email.
+
+Table of Contents
+    1. Video: Organizing Your E-mail (bs_acm02_a03_enus_07)
+
+    2. Video: Managing Business E-mail (bs_acm02_a03_enus_01)
+
+    3. Video: Keeping Personal E-mail Separate (bs_acm02_a03_enus_02)
+
+    4. Video: Deleting E-mails (bs_acm02_a03_enus_03)
+
+    5. Video: Organizing E-mail: Using Folders (bs_acm02_a03_enus_04)
+
+    6. Video: Organizing E-mail: Using Filters (bs_acm02_a03_enus_05)
+
+    7. Video: Searching for E-mail Information (bs_acm02_a03_enus_06)
+
+    8. Knowledge Check: Managing E-mail Effectively
+
+    Course HTML Resources
+
+1. Video: Organizing Your E-mail (bs_acm02_a03_enus_07)
+
+Objectives
+No Objective Provided
+[Course title: Organizing Your E-mail.] E-mail has dramatically increased the volume of communications and the amount of information that you need to process every day. To keep up, you must sort, file, respond to, or delete every e-mail that comes to you during a business day. In this course, you'll learn techniques for managing e-mail effectively. How to use folders and filters to organize e-mails for increased efficiency, guidelines on what e-mails to delete, and how to recover important information if you lose an e-mail.
+
+2. Video: Managing Business E-mail (bs_acm02_a03_enus_01)
+
+Objectives
+recognize how to manage time by organizing business e-mails
+[Topic title: Managing Business E-mail.] When you're looking for an important document in a stack of papers you haven't filed properly, you quickly realize that a little bit of organization could have saved you a lot of time and frustration. What's true for your filing cabinet is equally true for your e-mail inbox. A cluttered e-mail inbox will not only frustrate you, it can also hinder your productivity and distract you from other obligations. So let's consider ways to organize your business e-mails in order to manage your time and work effectively and efficiently.
+
+The first rule is to keep your inbox as empty as possible. It seems obvious to say, but the fewer e-mails you have in your inbox, the less you have to deal with. Keeping your inbox free of clutter also means it's easier to identify the messages that demand your immediate attention. One way to keep your inbox as empty as possible is to handle business-related e-mail as soon as it arrives.
+
+Another way to reduce your inbox size is to regularly delete junk e-mails and old e-mails that you don't need any more. You can also organize incoming e-mail into different categories or subjects, each with its own folder in your e-mail client. From there, you can decide which e-mails need to be handled and at what time. This should streamline your inbox, leaving it with only relevant e-mail messages that you need immediately, or that require a response. Deleting unnecessary e-mails and organizing your e-mail are good ways to deal with the messages you've already received. But what about cutting off some of the flow before it reaches you?
+
+Try to prevent your inbox from becoming jammed up by eliminating the sources of unnecessary e-mails. If you're on e-mail lists or have subscribed to news groups, you probably receive many e-mails you don't really need. Product alerts and newsletters or e-zines can also add to the pile. Despite the assurances you're given that your e-mail address will be kept private, subscribing to these services can increase the chances that you'll receive more spam. Don't subscribe to services that will result in e-mails arriving in your business mailbox, unless you really needed them for your work. You can usually unsubscribe from a service by using the service's website, or by sending an e-mail.
+
+Even if you need a service, you can usually restrict the communications you receive. For example, specify that you don't want to receive any promotional content. Or opt to receive a daily digest instead of several individual messages. Following these simple techniques will help you avoid the problem of serious e-mail overload.
+
+3. Video: Keeping Personal E-mail Separate (bs_acm02_a03_enus_02)
+
+During this video, you will learn how to identify approaches to personal e-mail that can save time.
+Objectives
+identify approaches to personal e-mail that can save time
+[Topic title: Keeping Personal E-mail Separate.] Work related e-mail messages alone can clog up your e-mail account. But when you add in personal e-mails, it becomes harder to spot the important business messages. This just adds confusion and wastes time.
+
+If you're getting personal e-mails when you're at work, the first step to better management is to set up separate business and personal e-mail accounts. Separating these accounts keeps your business and personal e-mails, and those parts of your parts of your life, separate. It also enables you to use your time at work more efficiently. Your personal e-mail can be handled at another time, when you're not working. Check to see if your company's e-mail program supports multiple inboxes. You may be able to get permission to set up two separate accounts, each with its own e-mail address, one for business and one for personal e-mail.
+
+Remember though, you really shouldn't be dealing with personal communications during work hours. Your employer may be legally entitled to check your e-mail. And if personal messages you receive are sensitive or offensive, they may end up causing you embarrassment or even disciplinary action. Whether your personal account is set up at work or at home, you need to ask your personal contacts not to e-mail you at your business account. People will probably appreciate that your business account is for work only and that all personal e-mails, especially forwarded e-mails, should go to your personal account. You can also help to manage your work hours more effectively if you designate a time for handling personal e-mail. Read, organize and reply to personal e-mail outside of work hours, so you keep focused when you need to get your work done.
+
+Following these steps can help you manage the time you spend on e-mail at work, allowing you to focus only on business related messages without distractions.
+
+4. Video: Deleting E-mails (bs_acm02_a03_enus_03)
+
+Discover how to determine whether to keep or delete an email.
+Objectives
+determine whether to keep or delete an e-mail
+[Topic title: Deleting E-mails.] If you look at your e-mail inbox, you'll probably notice only a few of the e-mails are truly important. When you are feeling swamped, you may be tempted to start deleting anything unnecessary, but then you risk accidentally deleting important e-mails. So, how do you decide which e-mails you can delete? Let's look at those types of e-mail that are ripe for deletion.
+
+First up are those e-mails that need just a quick read, but no further action from you. For example, a short thank you note from a colleague contains nothing you need for future reference. And doesn't require a reply Read it and then delete it. You can also delete e-mails that aren't required anymore. For example, reminders for meetings that have already passed or newsletters of no real value. However, be careful not to delete e-mails you may need for future reference. For instance, some project related e-mails may be needed even after a project closes.
+
+Another category of e-mails to delete are messages that are not work related, such as jokes, and friendship forwards. These kinds of e-mails not only clutter your e-mail account, but are also more likely to contain material that may be offensive. Cut these e-mails off that source by asking senders to stop putting you on these messages. If that doesn't work, set your e-mail client to delete messages automatically from specified senders.
+
+Spam is the most obvious type of e-mail to delete. These unsolicited advertisements or junk mail [such as Great offer, Good deals, Buy one get one free, and 10 steps to success.] can jam up your inbox. Creating frustration and thwarting productivity. You can usually identify spam by reading the subject line, or the first few lines of an e-mail. These often tell you that the e-mail is an unsolicited promotional offer. As a rule, delete spam as soon as you receive it.
+
+Be wary of unsolicited e-mails that use garbled subject lines Including special characters to try to draw your attention. Confusing or tricky subject lines [such as !!**Open this**!!] can be a ploy to peak your curiosity, enticing you to open the message. If you do open the message your computer may very well end up infected with a virus. Avoid this potential trap completely by deleting these e-mails without opening them.
+
+Along the same lines, it's particularly important to delete messages from unknown senders that have suspicious subject lines. [such as What's your favorite ice cream?, Please confirm your online banking password, and What's your favorite drink?.] These e-mails could be spam or worse, they could infect your computer with viruses. If the subject line seems odd to you and you don't know the sender. Delete the e-mail immediately without opening it. If you've already opened an e-mail and you feel even slightly suspicious, don't open any attachment it may contain. Opening an attachment could allow a virus or other malicious software to run on your computer.
+
+One of the best ways to make your business e-mail easier to manage is to delete these and other unnecessary messages from your mailbox. Doing this can help defeat e-mail anxiety, and give you a sense of control.
+
+5. Video: Organizing E-mail: Using Folders (bs_acm02_a03_enus_04)
+
+In this video, you will learn how to use the e-mail folder structure effectively.
+Objectives
+recognize how to use the e-mail folder structure effectively
+[Topic title: Organizing E-mail: Using Folders.] Deleting e-mails you don't need can help you avoid being overwhelmed by e-mail. But how can you prevent the important messages you hold on to from turning into a bewildering pile of information?
+
+The most effective solution is to organize your e-mail using folders. E-mail programs consist of an inbox and basic folders for outgoing, sent, deleted, and draft e-mail messages. But to manage your e-mail more efficiently, create additional folders. [such as folders under Inbox and under Sent.] Let's explore a few guidelines for creating folders that will make your e-mail easier to manage.
+
+Stop thinking of the Inbox as a place to store e-mail. Instead, treat it as a temporary holding place before you categorize your e-mails into folders that accurately reflect their area of relevance. Each folder you create should have a particular purpose and be named accordingly. Don't select a purpose so specific that it applies to very few e-mails. Nor should it be so general [such as folders named Admin, Tasks on hold, and Upcoming meetings.] that the folder becomes full enough to resemble an extra inbox.
+
+Try to create a balanced number of folders, fitting your needs. Having too many, or too few, will make it more difficult to organize your e-mail. What are the action items you deal with? Make these action items the basis of the folders and folder names you create. If you're a writer, for example, you might base your folder structure on the phases of your document review cycle. So you'd create folders named, For Editing, Edits to Implement, and Completed Documents.
+
+Folders can also be named based on the subjects of the different sorts of e-mail you regularly receive. For instance, you may create separate folders for each client or project you're working on. A folder for administrative e-mail, one for e-mails about company events, and one for newsletters and subscriptions. Treat the e-mail you send in the same way as incoming e-mail. File sent items into folders relating to their purposes. You might want to organize sent and received mail relating to the same purpose into the same folder. Or perhaps create a separate folder with the same name within your Sent folder. You also want to avoid clogging up your mailbox with too many messages that are out of date.
+
+A folder won't help much if it contains hundreds of old messages. Fortunately, e-mail applications have an automatic archiving feature that saves you from having to root out old messages and store them somewhere else yourself. Once you enable the archiving feature, it automatically moves items you no longer use into a separate storage folder. You can decide when an e-mail message in your mailbox is ready for archiving. You can also decide if and when you want the archiving feature to operate automatically. Once you get the hang of folders and archiving, you'll be able to clear a path to a more user friendly inbox.
+
+6. Video: Organizing E-mail: Using Filters (bs_acm02_a03_enus_05)
+
+During this video, you will learn how to use filters effectively to organize your e-mail.
+Objectives
+use filters effectively to organize e-mail
+[Topic title: Organizing E-mail: Using Filters.] Using a clear set of folders to organize your e-mail makes managing your e-mail quicker and easier. But it defeats the purpose if you have to spend too much time sorting all the e-mail in your inbox and filing it to the right folders. Fortunately, a solution is available in the form of filters.
+
+Filters are rules you can establish to move certain kinds of e-mail directly to the folders in which they belong. There are a number of different ways to specify which e-mails must be routed to a particular folder. You can specify that all messages from a particular e-mail address must be routed to a relevant folder. For instance, most of your e-mail traffic comes from either your manager or your organization's main client. So you set up separate folders to receive the e-mail messages from these two addresses. You can also set any e-mail that includes certain words in its subject line or body to be routed to a folder on a particular subject. E-mails can also be routed to folders based on who the message is addressed to. For example, you may use one folder for e-mails addressed to you only and another for e-mails that use a company-wide distribution list.
+
+How do you filter in a way that avoids e-mails getting misrouted, mixed up with unrelated e-mails, or even lost? Well, there are some guidelines you can follow to set up effective filters. First, use precise terms as the criteria for filtering incoming e-mail. It's worth taking a little time and investing some careful thought in specifying accurate terms to use in your filters. Filtering your e-mail based on the sender's e-mail address is easy. But it isn't always an effective way to manage your messages, especially if you get lots of e-mails on different subjects from a particular person. It often makes more sense to use filter terms specific to your e-mail folders. For example, you could specify that all messages containing a term like leave or vacation are routed to your Days off folder. Or all e-mails on a particular project are routed to a folder with that project name. Bear in mind, using specific words to filter e-mails is effective only if you know e-mails you receive about a specific subject will actually contain these terms. You may need to ask people who e-mail you to use those specific words in their e-mail subject lines. Suppose you're managing a project for a company called Diallonic. You ask your colleagues to use the word Diallonic in the subject line for all their product-related e-mails. This will enable you to route all relevant messages directly to a Diallonic project folder.
+
+Follow these guidelines to set up effective filters that automate e-mail organizing for you.
+
+7. Video: Searching for E-mail Information (bs_acm02_a03_enus_06)
+
+In this video, find out how to identify techniques to use to find email information.
+Objectives
+identify techniques to use to find e-mail information
+[Topic title: Searching for E-mail Information.] Using techniques for managing your inbox will make dealing with your business e-mails a lot easier, but they won't solve every problem. For example, what if you misplace an e-mail containing important information? Let's examine three ways of dealing with the common problem of mislaid e-mails.
+
+First, try searching for the e-mail by entering a keyword or phrase you know it contains into the search feature of your e-mail program. When the search is complete, the results are displayed in the form of a list of all e-mails that meet your search criteria. That's useful, but sometimes a search still leaves you with a mountain of mails to check. How do you make your search effective? It's a good idea to keep your search terms as precise as possible. This refines search results, making it easier to locate your mislaid e-mail. For example, if you're looking for an e-mail from Mike Smith, Mike Smith is the most precise search term. If you use a less precise search term, such as Smith alone, you could end up with some irrelevant results from other people with the surname Smith. Forgetting an exact spelling that was used in an e-mail can make it difficult to enter a precise search term. You can get around this using a character known as a wildcard, which is a substitute for another unknown character. The wildcard can be any symbol but is usually denoted by an asterisk. Let's say you can't recall whether a client's surname is spelled as Smith, with an i, or Smyth, with a y. Replacing the disputed letter with an asterisk will produce a list of all e-mails from people who spell the surname in either way. Bear in mind however, not all e-mail programs accept wildcards.
+
+Another way to locate a lost e-mail is to use your e-mail program's built-in sorting mechanism to help you find a particular e-mail. In the folders of most e-mail programs, e-mail is displayed in a list with several columns. These columns contain important information, such as the sender's name, the e-mail subject, and the date the e-mail was received. When you click the column header, the e-mail program rearranges the listed e-mails according to the category of information you've clicked. If you only know the date the e-mail arrived, for example, you click on the Date column, allowing you to browse the rearranged list, looking for e-mails received on that date.
+
+Finally, if neither of these approaches help you find the missing e-mail, you can always contact the original sender and ask this person to resend the e-mail.
+
+These tips will help you avoid the frustration you may feel when an important e-mail slips through the net and your otherwise organized inbox.
+
+8. Knowledge Check: Managing E-mail Effectively
+In the modern business environment, it’s easy to feel overwhelmed by the volume of written communication that you need to process every day. To keep up, you need strong communication skills to sort, file, respond to, or delete all emails that you receive during your business day.
+
+In this course, you’ll learn some vital communication techniques for managing and writing emails effectively. The course covers email etiquette tips on how to use folders and filters to organize emails for increased efficiency, as well as guidelines on what emails to delete. You’ll also explore how to recover important information should you lose an email.
+
+Objectives
+recognize how to manage time by organizing business e-mails
+identify approaches to personal e-mail that can save time
+determine whether to keep or delete an e-mail
+recognize how to use the e-mail folder structure effectively
+use filters effectively to organize e-mail
+identify techniques to use to find e-mail information
+Question 1: Multiple Choice
+What methods are best practices for managing time through handling your business e-mail?
+
+Options:
+1.
+Use your inbox to store business-related e-mails until you have time to deal with them at the end of the day
+2.
+Cancel subscriptions to business newsgroups that don't enhance your work
+3.
+Scan and sort e-mails soon after they come in
+4.
+Ask your favorite industry web site to send you notifications every time a new article is published
+Answer
+2.
+Cancel subscriptions to business newsgroups that don't enhance your work
+3.
+Scan and sort e-mails soon after they come in
+Feedback:
+Option 1:
+This is an incorrect option. To avoid e-mail cluttering up your inbox, you should handle business-related messages as soon as you receive them.
+Option 2:
+This is a correct option. Unsubscribing from unnecessary newsgroups eliminates sources of unnecessary e-mail.
+Option 3:
+This is a correct option. To keep your inbox as empty as possible, you should prioritize e-mails that need responses, delete spam, and direct incoming e-mails into different categories.
+Option 4:
+This is an incorrect option. To keep your inbox as empty as possible, you should choose the least demanding communication options – for example, a daily digest of new articles instead of individual messages for each new article.
+Question 2: Multiple Choice
+Which methods for handling your personal e-mail are best practices for managing your time?
+
+Options:
+1.
+Ask a colleague to forward the previous weekend's sports scores to your business account
+2.
+Set up a separate Internet-based e-mail account for personal e-mails
+3.
+Move personal messages to a "Personal e-mail" folder in your business account
+4.
+Set aside the first ten minutes of your lunch break to reply to personal e-mail
+5.
+Ask your cousin to send family pictures to your personal e-mail account instead of your business account
+Answer
+2.
+Set up a separate Internet-based e-mail account for personal e-mails
+4.
+Set aside the first ten minutes of your lunch break to reply to personal e-mail
+5.
+Ask your cousin to send family pictures to your personal e-mail account instead of your business account
+Feedback:
+Option 1:
+This is an incorrect option. Regardless of the sender, e-mails that are not directly related to your work should be sent to a personal e-mail account, not your business account.
+Option 2:
+This option is correct. You can make your work time more efficient by establishing separate business and personal e-mail accounts.
+Option 3:
+This is an incorrect option. Personal e-mail should be sent to a separate, personal e-mail account. It should not be moved to a folder within your business account.
+Option 4:
+This option is correct. By establishing set times outside your work hours to handle personal e-mail, you ensure you can focus on work-related e-mail at other times.
+Option 5:
+This is a correct option. You can manage your work time better by ensuring you won't be distracted by personal e-mails in your business account.
+Question 3: Matching
+Match each e-mail subject line to whether you should keep or delete the message. Each category may have more than one match.
+
+Options:
+A.
+Important: New working hours for permanent staff
+B.
+Did you see the game last night?
+C.
+Is your home really safe from intruders? We have the ultim!76atehs>Q=! security system 4 u!!!
+D.
+FW: An article about the company in the newspaper!
+E.
+Input required: Latest salary negotiations
+Targets:
+1.
+Keep
+2.
+Delete
+Answer
+1:
+Option A, Option E
+2:
+Option B, Option C, Option D
+Feedback:
+Target 2:
+You should keep messages that contain important work-related information. This applies to e-mails about new working hours and e-mails about salary negotiations to which you may have to reply.
+Target 2:
+You should delete messages that are clearly not work-related – such as e-mails about sports – even if they're from work colleagues. You should also delete messages with partially garbled subject lines that appear to be spam, such as security system offers. Additionally, you should delete messages that are not required, do not contain information you need in the future, and do not require a response, such as articles about the company in the newspaper.
+Question 4: Multiple Choice
+As a writer for an online healthy living magazine, you work on articles about health-related topics and interviews with health professionals. Most of your e-mail concerns your articles or interviews, edits to implement, or updates and feedback from your editor. Within your e-mail account, you've set up folders for articles, important e-mails, and e-mails from the editor. Your editor has recently made responding to readers' e-mails a priority.
+
+How can you make your folder structure more effective?
+
+Options:
+1.
+Replace the "E-mails from the editor" folder with two folder: "Edits to implement" and "Updates from the editor"
+2.
+Create a folder for interview-related e-mail correspondence
+3.
+Within the articles folder, create subfolders for different article subjects – for example, diabetes, exercise, diet, cancer, and heart disease
+4.
+Keep your "Important e-mails" folder
+5.
+Create a feedback folder
+Answer
+1.
+Replace the "E-mails from the editor" folder with two folder: "Edits to implement" and "Updates from the editor"
+2.
+Create a folder for interview-related e-mail correspondence
+3.
+Within the articles folder, create subfolders for different article subjects – for example, diabetes, exercise, diet, cancer, and heart disease
+Feedback:
+Option 1:
+This is a correct option. Creating an "Edits to implement" folder clearly separates important and urgent e-mails from e-mails that communicate information that doesn't need to be acted upon urgently.
+Option 2:
+This is a correct option. It's a good idea to organize types of e-mails you send and receive frequently into folders. A folder specifically for interviews has a clear purpose and could make it easier for you to track the requests you've sent and the replies you receive.
+Option 3:
+This is a correct option. It's a good idea to create and name folders based on the subjects of e-mails they'll contain. In this example, you use separate folders to store e-mails related to the different subjects of the articles you write.
+Option 4:
+This is an incorrect option. A folder named "Important e-mails" is too general. It doesn't describe the purpose or subject matter of the e-mails it should hold, or make it clear how these e-mails relate to your work.
+Option 5:
+This is an incorrect option. A feedback folder could end up creating confusion if it contains feedback from readers and feedback from your editor. Given the priority assigned to replying to readers' feedback, it would be more useful to create a specific "Readers' feedback" folder.
+Question 5: Multiple Choice
+As a manager of a project-driven team, your inbox is swamped with e-mails from your team members, CEO, and clients. After setting up folders for the different types of e-mail, you set up filters.
+
+Which e-mail filters would be effective for you?
+
+Options:
+1.
+Use the names of clients as filter terms for all project e-mails that are to be stored in the different client folders
+2.
+Use the filter term "Monthly financial performance reports" to filter the monthly financial reports that your financial officer sends you
+3.
+Use the filter term "Update" for all project, company, and team member update e-mails
+4.
+Ask your team members to include the words "Personal feedback update" in all e-mails they send as updates on their professional development
+5.
+Ask your CEO to include the word "IMPORTANT" in all e-mails she sends you
+Answer
+1.
+Use the names of clients as filter terms for all project e-mails that are to be stored in the different client folders
+2.
+Use the filter term "Monthly financial performance reports" to filter the monthly financial reports that your financial officer sends you
+4.
+Ask your team members to include the words "Personal feedback update" in all e-mails they send as updates on their professional development
+Feedback:
+Option 1:
+This is a correct option. Using filter terms specific to your e-mail folders helps to ensure that project e-mail is routed to the correct client or project's folder.
+Option 2:
+This is a correct option. Using precise terms for your filters minimizes the risk of e-mail being misrouted, mixed up with unrelated e-mails, or lost.
+Option 3:
+This is an incorrect option. You should not use general terms for your filters, especially if many different people could use the term. Filter terms should be specifically tailored for each type of update you receive by e-mail.
+Option 4:
+This is a correct option. Asking your senders to use specific words in their e-mail subject lines helps ensure that e-mail is routed to the correct subject folders.
+Option 5:
+This is an incorrect option. You should not use general terms for your filters, especially if many different people could use the term. Instead, you could set a filter to direct the CEO's e-mails to a "Mail from CEO" folder.
+Question 6: Matching
+You are looking for an e-mail from your former employer that contained a reference. You received the e-mail just before you were hired for your current position five years ago.
+
+Match each example of searching for this e-mail to the technique the example describes.
+
+Options:
+A.
+Use the sorting options in your e-mail program to display e-mails received in the month before you started your current position five years ago
+B.
+You enter the word "reference" in the search box in your e-mail
+C.
+You e-mail your manager asking if he has a copy of his orientation e-mail that he could resend to you
+Targets:
+1.
+E-mail the person directly to get the information again
+2.
+Input precise search terms into the search feature in your e-mail program
+3.
+Use your e-mail program's built-in sorting feature, which lets you sort the e-mails in any folder into a particular order
+Answer
+1:
+Option C
+2:
+Option B
+3:
+Option A
+Feedback:
+Target 3:
+If using your e-mail's search feature or sorting options doesn't help you find the missing e-mail, you can always contact the original sender and ask this person to resend the e-mail.
+Target 3:
+Entering terms in your e-mail program's search box is a good way to find misplaced messages. Keeping your search terms as precise as possible will refine the search results, making it easier to locate the e-mail.
+Target 3:
+Arranging e-mails to display messages received in a specific month is a use of the sorting feature. E-mail is usually displayed in a list with several columns that contain important information such as the sender's name, the e-mail's subject, and the date the e-mail was received. Clicking the column header rearranges e-mails according to the category of information you've clicked.
+Course HTML Resources
+•	Glossary: Organizing Your E-mail
+Glossary of organizing your email
+addressing
+
+The process of specifying who must receive a communication. In an e-mail, the To, Cc, and Bcc fields enable the sender to specify the addresses of recipients.
+
+Bcc
+
+Abbreviation for blind carbon copy, the address field in an e-mail used to list one or more recipients who must receive a copy of the message sent to the a primary recipient. Unlike entries in the Cc field, those included in the Bcc field won't display to all message recipients.
+
+blind carbon copy
+
+See Bcc.
+
+carbon copy
+
+See Cc.
+
+Cc
+
+Abbreviation for carbon copy, the address field in an e-mail used to specify recipients who must receive copies of the e-mail. These addresses will be visible to all other recipients.
+
+direct recipient
+
+A person to whom a communication is directly addressed. In an e-mail, the addresses of any direct recipients must be entered in the To field.
+
+duplication
+
+In relation to e-mail communication, the practice of copying someone with an e-mail message sent to a direct recipient when this is unnecessary. It may involve inappropriately copying a message over the direct recipient's head – for example, to a manager.
+
+escalation
+
+Raising the priority of an issue, often by copying a person in authority with an e-mail sent to a direct recipient.
+
+filters
+
+User-defined rules in an e-mail system that enable routing of certain types of e-mail directly to folders in a user's e-mail account, bypassing the inbox.
+
+inbox
+
+The folder that contains all received e-mails in a user's e-mail application.
+
+spam
+
+Unsolicited junk e-mail, such as product advertisements or mass marketing e-mails.
+
+subject line
+
+A title identifying the content or purpose of an e-mail message. It's entered in the Subject field of the e-mail.
+
+thread
+
+An original message and any replies.
+
+To
+
+The address field in an e-mail used to specify the addresses of direct recipients, who must respond or react directly to the message.
+
+© 2016 Skillsoft Ireland Limited
+
+
+•	Job Aid: E-mail Management Best Practices
+Use this job aid to review the best practices for managing your e-mail.
+There are two categories of e-mail that can be managed using established best practices: business and personal.
+
+E-mail accounts used exclusively for business
+
+Keep your inbox as empty as possible
+To prevent e-mail build-up, handle business-related e-mails as soon as you receive them. In your e-mail client, set up folders for different categories of e-mail. Then sort incoming e-mails into the categories – move each new e-mail into the relevant folder and decide which e-mails need to be handled and at what time.
+
+It also helps to regularly delete spam and old e-mails that you don't need anymore.
+
+Eliminate sources of unnecessary e-mail
+Unnecessary e-mail can come from e-mail lists, newsgroups, product alerts, and newsletters or e-zines. Subscribing to these services can clog up your mailbox, and leave you vulnerable to receiving junk e-mail, known as spam.
+
+If you are already subscribed to such services, you should unsubscribe, unless the service adds real value to your work performance. If you're considering subscribing to such a service, proceed with caution, subscribing only if you genuinely believe the service will assist your work.
+
+Additionally, when using such services, choose communication options that are least demanding on your e-mail – for example, a daily digest instead of individual messages.
+
+E-mail accounts used for business and personal e-mail
+
+Establish separate business and personal e-mail accounts
+To better manage your work time and e-mail, it's best to establish separate business and personal e-mail accounts. By restricting personal e-mail to a personal account, your work inbox receives messages that are strictly work related.
+
+If your company's e-mail program supports multiple inboxes, and your company allows it, you can set up a personal e-mail account – with its own e-mail address – on your work computer. However, it's best to be cautious when doing so because, by using company equipment for personal e-mail, your company may have legal rights to view your personal e-mails.
+
+Ask personal contacts not to e-mail your business account
+Explain to your personal contacts that your business account is for work only and ask them to send all personal e-mails – especially forwarded e-mails – to your personal account. This helps you manage your working time, because your business inbox will receive only business-related e-mail.
+
+Designate a time for handling personal e-mail
+Establish a set time, outside of company time, to read, sort, and reply to personal e-mail. For example, you could deal with personal e-mail before you start work, at break times, or at the end of the day. By sticking to set periods, personal e-mail is handled in its own time and does not interrupt your work whenever a new personal e-mail is received.
+
+Course: Organizing Your E-mail
+Topic: Managing Business E-mail
+
+© 2016 Skillsoft Ireland Limited
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

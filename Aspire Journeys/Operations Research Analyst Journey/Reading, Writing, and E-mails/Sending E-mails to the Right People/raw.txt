@@ -1,0 +1,425 @@
+Sending E-mails to the Right People
+Sending an email to the wrong person, or excluding the right person, hinders effective communication and is a sign of poor email etiquette. Because email is so central to how organizations do business today, writing emails effectively – and getting them to the right people – is one of the most important communication skills to have.
+
+In this course, you’ll learn a vital facet of written communication: how to address and distribute emails. You’ll be introduced to best practices for deciding who to send emails to and how to flag emails appropriately. The course also covers proper etiquette for forwarding emails and using reply and reply all. In addition, it highlights some poor copying practices to avoid.
+
+Table of Contents
+    1. Video: Sending E-mails to the Right People (bs_acm02_a02_enus_07)
+
+    2. Video: Using the To Field (bs_acm02_a02_enus_01)
+
+    3. Video: Using the Cc and Bcc Fields (bs_acm02_a02_enus_02)
+
+    4. Video: Flagging E-mails (bs_acm02_a02_enus_03)
+
+    5. Video: Targeting E-mail Replies (bs_acm02_a02_enus_04)
+
+    6. Video: Forwarding E-mails (bs_acm02_a02_enus_05)
+
+    7. Video: Poor Copying Practices (bs_acm02_a02_enus_06)
+
+    8. Knowledge Check: Addressing and Distributing E-mails
+
+    Course HTML Resources
+
+1. Video: Sending E-mails to the Right People (bs_acm02_a02_enus_07)
+
+Objectives
+No Objective Provided
+[Course title: Sending E-mails to the Right People.] Do you ever get frustrated by an endless chain of irrelevant e-mails? By simply paying better attention to how you address and redistribute your e-mails, you can help avoid inbox overload. And ensure your messages are easy to act on, because they've been sent to the right people in the right way. In this course, you'll learn how to address and flag e-mail messages appropriately. How best to respond to e-mail messages. Best practices for forwarding messages. And reasons not to copy over someone's head.
+
+2. Video: Using the To Field (bs_acm02_a02_enus_01)
+
+Objectives
+identify tips for using the To field when sending e-mail
+[Topic title: Using the To Field.] It's hard to imagine a working day that doesn't involve e-mail. Even holidays and sick days often require you to check your inbox, to make sure you haven't missed something crucial. There are downsides, however, to people's reliance on this medium.
+
+E-mail's speed and ease of use mean that messages are often composed quickly and delivered after very little reflection. But the content of your e-mails, and crucially, the recipients you include, require planning and thought. If you want to be taken seriously at work, you have to take how you communicate seriously too. Let's look at a few problems first. In particular, those that can arise when you pre-address e-mails, don't include direct recipients in the To field, or include too many recipients in the To field.
+
+The problem with pre-addressing your e-mails is that it makes it too easy to send an inappropriate or unprofessional message, which could have lasting consequences. It seems obvious to say, but you should always review an e-mail message carefully before sending it. Many people don't do this. They're all pushed for time. However, this final review can save you from having to spend time trying to patch up a broken relationship caused by a hasty reply. So don't enter a recipient in the To field until you've written and reviewed your e-mail. If you're replying to a message from someone else, delete the recipient from the To field before composing your response to eliminate the possibility of accidentally sending an incomplete or rash message.
+
+Business messages are often relevant to more than one recipient. Direct recipients are individuals who have to act on your message or reply directly. Put their addresses into the To field of your e-mail. Suppose you've completed an order for a new server on behalf of your company. You want to confirm the order in an e-mail to Rob, the head of procurements, so you put his address in the To field. You also believe that it's necessary to inform Matt in IT of the confirmation, as he'll be the person installing the server when it arrives. You add Matt to the To field.
+
+Ever receive an e-mail where it's unclear who should take action because everyone is in the To field? This is a common problem. The solution? Don't include too many direct recipients in the To field. If you overdo the number of direct recipients, they may not take responsibility for replying to the e-mail, because each may think that someone else will respond. There's also a risk that each recipient may wait to see how others respond before replying. With the result that nobody responds, or everyone weighs in behind the most influential personality.
+
+Make sure your direct recipients are people who are directly involved, who understand what their role is in relation to your message. You'll be more clear about what you're asking for in your e-mail messages if you're clear about who needs to be included in the To field.
+
+3. Video: Using the Cc and Bcc Fields (bs_acm02_a02_enus_02)
+
+In this video, you will learn how to use the Cc and Bcc fields appropriately in an email.
+Objectives
+use the Cc and Bcc fields appropriately in an e-mail
+[Topic title: Using the Cc and Bcc Fields.] The Cc, or carbon copy address field, and the Bcc, or blind carbon copy address field, are useful e-mail features, but are often misused. You can create a nuisance by Cc'ing people unnecessarily. Cause offense by Cc'ing over the head of someone. Or even generate scandal by confusing the Cc and Bcc fields, and revealing addresses you'd intended to keep secret. Let's consider basic etiquette rules in relation to these fields.
+
+First, use the Cc field to copy someone from whom you don't require a direct response. Be aware that any addresses you add to this field can be read by other recipients. Use the Cc field sparingly. Always ask yourself, why you're copying someone. Is it really important to copy this person, or are you just adding unnecessarily to the list of e-mails they will have to read? Too much copying confuses recipients, jams up their e-mail inboxes, and wastes people's time. And if you overuse the Cc field, your e-mails may end up being ignored.
+
+One good reason to use the Cc field, is to keep the recipient visibly in the loop regarding discussions. And maybe, for example, that your company has processes that demand this type of visibility. Another good reason for using Cc field is FYIing, to keep people informed, enabling them to track discussions and monitor situations without being directly involved. Also, don't use the Cc field to copy over someone's head.
+
+Say you're not happy with the role your manager has assigned you on a project. You write him an e-mail, making this point. But then you include his manager in the Cc field. You have just escalated the situation before your boss has even had a chance to respond to your complaint. What about Bcc? When do you use this field? Use it when you want to include recipients in an e-mail without disclosing them to direct or Cc recipients, thereby protecting the address and privacy of the party and the Bcc field.
+
+Suppose you're an HR manager informed a candidate for an upcoming interview. You may include the panel interviewers in the Bcc field. You want the interviewers to know the applicant has been informed of the date, time, and place for the interview. But you don't want the applicant to know who will be conducting the interview or what their addresses are.
+
+Before using the Bcc field, ask yourself why you need to copy anyone secretly. Think about your motives and make sure your intentions are respectable. People often consider their e-mails private, even when they don't say so explicitly. If you really have a good reason to copy someone on a message, consider using the Cc field or e-mailing other recipients separately. Following this guidance on using the Cc and Bcc fields correctly can help you avoid some of the worst problems that result from e-mail communications.
+
+4. Video: Flagging E-mails (bs_acm02_a02_enus_03)
+
+During this video, you will learn how to set the priority status of emails appropriately.
+Objectives
+set the priority status of e-mails appropriately
+[Topic title: Flagging E-mails.] All of your e-mail messages are important. But some may be more important than others. Indicating the priority status of an e-mail [such as High Importance or Low Importance] can help you communicate better. Most e-mail systems allow you to set the message priority when you compose a message.
+
+How you set the status of an e-mail decides the priority flag it receives in the recipient's inbox. E-mails automatically receive normal priority when they are created. When you give an important e-mail a high priority flag, however, that e-mail will stand out and be noticed. You can also set a low priority flag for e-mails that are unimportant or that don't demand a reply. Priority settings can be important when your message requires someone's attention urgently, or alternatively, when you feel the recipient shouldn't divert themselves from other priorities to look at your e-mail. Let's examine best practice for using these settings.
+
+Don't overuse high priority flagging. High priority is only useful for urgent e-mails that may demand immediate action. Using this flag helps to get your e-mail noticed and read in a business environment where people deal with many e-mails daily. But don't cry wolf and misuse the high priority flag for a message of normal or low priority just to get a quick reply. If you're seen as someone who regularly overstates the priority of your messages, you may not be able to get someone to read your e-mail when the message is genuinely urgent.
+
+The low priority flag can be used for sending an e-mail that isn't urgent, or is casual. Use it for a when you can get around to it kind of e-mail. Or for issues not directly related to work. Imagine you want to send three e-mails. The first, to a colleague, has the subject line Team building ideas for next year. The second e-mail is an urgent schedule change request. And the third, to a security company requesting a quote for a conference that is due to take place in six months' time. How would you set the priority status for each message? Due to its urgency, you might set the status e-mail requesting a schedule change to high priority to ensure that it's addressed immediately.
+
+The team-building e-mail is not as important and is more exploratory than urgent. So you give it a low priority flag to let your colleague know that it doesn't require attention or a response, and can be read at any time. Finally, because the request for a quote is not urgent, you leave the status setting on this e-mail as normal priority. Recipients can see that the message is neither very urgent nor casual and unimportant. And that they are free to reply at their convenience. Setting the priority of all your e-mail messages appropriately will help ensure you get the responses you require when you need them.
+
+5. Video: Targeting E-mail Replies (bs_acm02_a02_enus_04)
+
+In this video, find out how to recognize when to reply effectively to e-mails.
+Objectives
+recognize how to reply effectively to e-mails
+[Topic title: Targeting E-mail Replies.] Suppose your manager is looking for your private opinion on a performance report she's sending to an employee. She includes you in the Bcc field of her e-mail. You compose your response but, without thinking, hit Reply to all. The employee gets to see your opinion. But also the fact that you were secretly copied on the manager's original mail.
+
+Who you send e-mail messages to is important because it can affect, and sometimes disrupt, work and business relationships. Consider some best practices for using Reply and Reply to All. You've probably been at the receiving end of e-mails from annoyed colleagues asking why you've included them or didn't include them on a particular e-mail. Nobody wants to have to take the time to figure out if the message is directly relevant to them. Always edit the addresses in the Cc field, so that you copy only people who require the information you include in your response.
+
+When replying, update the subject line of your e-mail to reflect the content of your response. Updating the subject line will make it easy for recipients to identify what your message is about, and to find it in their inboxes. Reusing the same subject line repeatedly can mean recipients confuse your response with previous e-mails with the same subject lines. The recipient may have to open lots of messages to find yours.
+
+Always include the original thread of the e-mail below your response. The thread is a record of all the communication that has occurred before your current response. It covers the original message and any previous replies. By default, the thread appears below your new reply. Don't delete the thread or compose a completely new e-mail message to respond. If there's no thread, recipients may have to search for and read other e-mails to figure out what you're referring to.
+
+Choosing the Reply to All option means that your response to an e-mail will automatically be addressed to all recipients of the original message. Reply to All is a powerful feature, but it's often used incorrectly, roping a bunch of people into a response that just isn't relevant to them. Best practice for replying to all is to avoid overusing it. Use it only if everyone included in the To and Cc fields needs to read the response. And if you've been included in the Bcc field of an e-mail, avoid using Reply To All. The last thing you want is to reveal your identity, and the fact that you were secretly copied.
+
+Using reply to all to send personal messages of thanks or agreement isn't a good idea. Instead, send thank you and me too replies to the direct recipient. Following these best practices in your e-mail replies will make your communications more effective.
+
+6. Video: Forwarding E-mails (bs_acm02_a02_enus_05)
+
+Learn how to identify best practices for forwarding email.
+Objectives
+identify best practices for forwarding e-mail
+[Topic title: Forwarding E-mails.] Forwarding e-mails is a fast way to pass on information to others, but it can create problems if used incorrectly. For example, if the e-mail you forward isn't of use to the people you send it to, you are adding needlessly to the stack of e-mails they have to get through. If it includes content that may offend, forwarding it could upset recipients and damage your organization's reputation. Let's consider guidelines for forwarding e-mails.
+
+As a general first step, always ask the author of an e-mail if you may forward it to others. With all the communications traffic in a workplace today, some people lose sight of the fact that business e-mail is confidential. Forwarding a message carelessly can violate the privacy of your company and your colleagues. It can also reveal private information like company e-mail addresses to people who shouldn't have access to them. Before forwarding an e-mail, ask yourself, why am I forwarding this information? If the information isn't relevant to the recipient's work, don't forward it.
+
+There are certain kinds of e-mail you should never forward, including Internet mass marketing e-mails, also known as spam. Look out for chain-letter e-mails which usually promise rewards if you forward them or terrible consequences if you don't. When you forward an e-mail, some e-mail applications add forwarding symbols such as right-pointing arrows at the start of each line of the original message. Always delete these forwarding symbols and other forwarding headers from your message before forwarding it as they make an e-mail confusing for recipients. An e-mail that you have cleaned up is more likely to be taken seriously.
+
+Do you ever receive a forwarded e-mail and find yourself puzzled about its relevance to you? It's always a good idea to explain why you think the e-mail you're forwarding is relevant to the recipient. Add a personal comment or greeting above the message. How do you respond when you're one among dozens of people targeted by an e-mail? Probably slowly and indifferently, if at all. Avoid forwarding messages to many recipients at once, because you can't include a personal comment explaining the relevance of the message to each recipient.
+
+When you forward an e-mail to other people, the addresses of previous recipients display by default in the message pane immediately above the original message. Delete these addresses before forwarding the e-mail to protect their privacy. If you have to forward an e-mail to different recipients who don't know one another, add all the recipients' addresses to the Bcc field. This ensures you don't reveal the recipients' addresses. Add your own address to the To field so that you can send the e-mail. Applying these best practices demonstrates respect for the people you communicate with and can help ensure your message is professional and easy to follow.
+
+7. Video: Poor Copying Practices (bs_acm02_a02_enus_06)
+
+In this video, you will learn how to recognize examples of when it's inappropriate to copy an e-mail behind someone's back.
+Objectives
+recognize examples of when it's inappropriate to copy an e-mail over someone's head
+[Topic title: Poor Copying Practices.] You're unhappy with a colleague's response to a proposal you made, so you e-mail him again, this time copying his manager and the CEO. You may feel you had no alternative, but by copying over someone's head you've just engaged in a form of manipulation. This approach may achieve results but it won't win you any friends. You will come off as self-serving and may turn a simple situation into a nasty personal attack.
+
+Before you copy people on e-mails ask yourself why you're copying them. The only good reason to copy someone is to keep them visibly informed. So what are inappropriate motives for copying a message over someone's head? Consider these examples.
+
+A colleague, Stephen, says something that embarrasses you in a meeting with a client. Back at your desk, you fire off an angry e-mail to Stephen and copy the message to your manager. You're clearly acting from the wrong motive, copying over your colleague's head just because you're angry. Some people may copy over someone's head in order to promote themselves or make themselves look good. An example might be copying a manager on e-mails sent outside work hours to highlight that you're working overtime. If it's truly important information, tell your manager directly. It's clearly inappropriate to try to manipulate someone into doing what you want by revealing your intentions to other recipients.
+
+Let's say you e-mail a colleague with an informal request to prioritize work on your project over another. Don't copy your manager in this case. You'd be using your manager's seniority to manipulate your colleague into agreeing. Suppose you need to e-mail a member of your team about their poor performance. The only likely reason you'd copy their colleagues is to humiliate them. Don't engage in this kind of unprofessional and unethical behavior, designed to embarrass. Nor do you want to engage in duplicating. This occurs when you copy a superior, such as a manager, as additional proof of an issue that's already been documented.
+
+Duplication is something you might try if you're looking to escalate an issue to get a result. For example, by re-sending an e-mail to a colleague who hasn't answered your queries but including your manager on the duplicated e-mail. Sometimes, more than one motive is at play. For instance, someone sends you an e-mail and copies other managers in an attempt to humiliate you and manipulate you into agreeing to a proposal.
+
+There are exceptions when you may copy over someone's head, such as when you're praising rather than criticizing, when you have the main recipient's permission to copy, or when it's demanded by a formalized work process. In general, however, if you have an issue with someone, speak to this person directly rather than using e-mail and copying superiors. It can take courage to deal with an issue face-to-face, but it's more professional and effective. Keep these guidelines in mind when you're considering copying over somebody's head.
+
+8. Knowledge Check: Addressing and Distributing E-mails
+Sending an email to the wrong person, or excluding the right person, hinders effective communication and is a sign of poor email etiquette. Because email is so central to how organizations do business today, writing emails effectively – and getting them to the right people – is one of the most important communication skills to have.
+
+In this course, you’ll learn a vital facet of written communication: how to address and distribute emails. You’ll be introduced to best practices for deciding who to send emails to and how to flag emails appropriately. The course also covers proper etiquette for forwarding emails and using reply and reply all. In addition, it highlights some poor copying practices to avoid.
+
+Objectives
+identify tips for using the To field when sending e-mail
+use the Cc and Bcc fields appropriately in an e-mail
+set the priority status of e-mails appropriately
+recognize how to reply effectively to e-mails
+identify best practices for forwarding e-mail
+recognize examples of when it's inappropriate to copy an e-mail over someone's head
+Question 1: Multiple Choice
+What are some appropriate tips for using the To field in a business e-mail?
+
+Options:
+1.
+Don't preaddress e-mails
+2.
+Always include your manager's e-mail address in this field
+3.
+Review your e-mail message carefully before sending it
+4.
+Don't include too many recipients in this field
+5.
+Put your own e-mail address in the To field
+Answer
+1.
+Don't preaddress e-mails
+3.
+Review your e-mail message carefully before sending it
+4.
+Don't include too many recipients in this field
+Feedback:
+Option 1:
+This is a correct option. The problem with preaddressing your e-mails is that it makes it too easy to send an inappropriate or unprofessional message, which could have lasting consequences.
+Option 2:
+This is an incorrect option. It's not a good practice to always address e-mails to your manager. The message may have no relevance to your manager. If you are arguing a point with a colleague, including your manager could be perceived as escalating.
+Option 3:
+This is a correct option. A final review can save you from having to spend time trying to patch up a broken relationship caused by an ill-considered reply or a message that is full of errors.
+Option 4:
+This is a correct option. If you overdo the number of direct recipients, they may not take responsibility for replying to the e-mail because each may think that someone else will respond.
+Option 5:
+This is an incorrect option. The To field is for the intended recipient of your e-mail. Your e-mail address will automatically appear in the From field.
+Question 2: Matching
+Pauline, a realtor, is sending an e-mail to a potential buyer of a large property. Her partner has also been dealing with the potential buyer and needs to be kept informed. Because the property is the most expensive one on the books, the vice president of the real estate agency wants to view all correspondence without signaling his involvement.
+
+Match the e-mail address fields to the appropriate entries. Not all entries will have a match.
+
+Options:
+A.
+Bcc field
+B.
+Cc field
+Targets:
+1.
+Pauline's real estate partner
+2.
+The vice president of the real estate agency
+3.
+The potential buyer of the property
+Answer
+1:
+Option B
+2:
+Option A
+3:
+Feedback:
+Target 3:
+Pauline's partner should be included in the Cc field of the message. He has asked to be kept in the loop, and Pauline might need his help handling the sale.
+Target 3:
+The vice president should be included in the Bcc field, which will enable him to track the correspondence surrounding the sale without alerting the potential buyer.
+Target 3:
+The potential buyer is the direct recipient of the e-mail, so this person's address must go in the To field, not in the Cc or Bcc field.
+Question 3: Matching
+Match each e-mail to the priority status it should be assigned.
+
+Options:
+A.
+An e-mail about the venue for a trade show being held next year
+B.
+An e-mail to a packaging company informing them that you need to delay an urgent shipment while waiting on delivery of specialized boxes
+C.
+An e-mail providing a regular weekly update of sales figures
+Targets:
+1.
+Normal
+2.
+Low
+3.
+High
+Answer
+1:
+Option C
+2:
+Option A
+3:
+Option B
+Feedback:
+Target 3:
+A regular weekly e-mail update would be normal priority, which is the default flag for all e-mails.
+Target 3:
+The low priority flag is suitable only for casual or unimportant e-mails, such as an e-mail about an event that's not happening until next year.
+Target 3:
+An e-mail to a packaging company about an urgent shipment would be high priority because it requires urgent attention. An important shipment is on hold until the matter is resolved.
+Question 4: Multiple Choice
+Ayana receives an e-mail from Sandra as a Bcc recipient. The e-mail is sent to Peter, informing him that he must attend a disciplinary hearing.
+
+Which examples demonstrate best practices for replying to this e-mail?
+
+Options:
+1.
+She changes the subject line to "Hearing agenda query"
+2.
+She uses Reply All when thanking Sandra for dealing with the situation
+3.
+She replies only to Sandra
+4.
+She includes Peter as a Cc recipient
+Answer
+1.
+She changes the subject line to "Hearing agenda query"
+3.
+She replies only to Sandra
+Feedback:
+Option 1:
+This is a correct option. Ayana should update the subject line so it accurately describes the content or purpose of her response.
+Option 2:
+This option is incorrect. Ayana should reply only to Sandra. The other original recipients of the e-mail don't need to receive a thank you message that's intended for her.
+Option 3:
+This option is correct. By replying only to Sandra, Ayana avoids revealing to Peter that Sandra secretly sent her a copy of the message.
+Option 4:
+This option is incorrect. By including Peter in the Cc field, Ayana would reveal to Peter that she was secretly copied on the original message. This would be unprofessional.
+Question 5: Multiple Choice
+You are forwarding an e-mail that you think has business potential to your manager, Alison. The e-mail has been forwarded a number of times before reaching you.
+
+What are the best practices you need to apply before forwarding the e-mail?
+
+Options:
+1.
+Begin the e-mail with a personal message such as "Hi, Alison. I'm exploring this company as a possible new customer for us. What do you think?"
+2.
+Delete the addresses of previous recipients.
+3.
+Add links to web sites offering interesting business information.
+4.
+State in the subject line that the message is not spam or a hoax.
+5.
+Edit out the forwarding symbols.
+Answer
+1.
+Begin the e-mail with a personal message such as "Hi, Alison. I'm exploring this company as a possible new customer for us. What do you think?"
+2.
+Delete the addresses of previous recipients.
+5.
+Edit out the forwarding symbols.
+Feedback:
+Option 1:
+This is a correct option. You should add a personal message to greet Alison and make it clear why you think she may be interested in the e-mail.
+Option 2:
+This option is correct. To show respect for people's privacy, you should remove the addresses of previous recipients of the e-mail.
+Option 3:
+This option is incorrect. Aside a greeting and a personal introduction, it's unnecessary to add extra information to an e-mail you forward.
+Option 4:
+This option is incorrect. Using a subject line to specify that an e-mail is not spam or a hoax may make the recipient suspect that the e-mail actually is one of these things. Instead, the subject line should identify the purpose or content of the message.
+Option 5:
+This is a correct option. You should clean up the e-mail message by deleting forwarding symbols. This will make it easier for Alison to read.
+Question 6: Multiple Choice
+Which examples of copying an e-mail over someone's head are inappropriate?
+
+Options:
+1.
+E-mailing your contact at a supplier about a delivery you need urgently and copying your contact's manager
+2.
+Copying your manager when e-mailing a team member to congratulate him for handling a tough sales negotiation
+3.
+Copying your manager when you e-mail your colleague to criticize her performance in a presentation
+4.
+Copying a manager with an e-mail confirming that you've submitted a report to a colleague after you've already e-mailed the colleague your report
+5.
+E-mailing your manager a leave request and copying the human resources manager, per company protocol
+6.
+Copying your manager on an e-mail about a solution that you've found to a customer's problem
+Answer
+1.
+E-mailing your contact at a supplier about a delivery you need urgently and copying your contact's manager
+3.
+Copying your manager when you e-mail your colleague to criticize her performance in a presentation
+4.
+Copying a manager with an e-mail confirming that you've submitted a report to a colleague after you've already e-mailed the colleague your report
+6.
+Copying your manager on an e-mail about a solution that you've found to a customer's problem
+Feedback:
+Option 1:
+This is a correct option. In trying to apply pressure to a supplier by copying her manager, you're using manipulation for selfish purposes.
+Option 2:
+This option is incorrect. It's acceptable to copy an e-mail over your colleague's head if the message you send is complimentary.
+Option 3:
+This option is correct. Copying your manager in this example is a way to humiliate the person being criticized.
+Option 4:
+This is a correct option. This example involves inappropriate duplication – copying a manager as further proof of an issue that's already been documented.
+Option 5:
+This option is incorrect. Copying the HR manager to comply with company policy is appropriate in this situation.
+Option 6:
+This option is correct. Copying your supervisor unnecessarily about your achievements so that they'll be noticed is an example of copying someone for self-promotion.
+Course HTML Resources
+•	Glossary: Sending E-mails to the Right People
+addressing
+
+The process of specifying who must receive a communication. In an e-mail, the To, Cc, and Bcc fields enable the sender to specify the addresses of recipients.
+
+Bcc
+
+Abbreviation for blind carbon copy, the address field in an e-mail used to list one or more recipients who must receive a copy of the message sent to the a primary recipient. Unlike entries in the Cc field, those included in the Bcc field won't display to all message recipients.
+
+blind carbon copy
+
+See Bcc.
+
+carbon copy
+
+See Cc.
+
+Cc
+
+Abbreviation for carbon copy, the address field in an e-mail used to specify recipients who must receive copies of the e-mail. These addresses will be visible to all other recipients.
+
+direct recipient
+
+A person to whom a communication is directly addressed. In an e-mail, the addresses of any direct recipients must be entered in the To field.
+
+duplication
+
+In relation to e-mail communication, the practice of copying someone with an e-mail message sent to a direct recipient when this is unnecessary. It may involve inappropriately copying a message over the direct recipient's head – for example, to a manager.
+
+escalation
+
+Raising the priority of an issue, often by copying a person in authority with an e-mail sent to a direct recipient.
+
+filters
+
+User-defined rules in an e-mail system that enable routing of certain types of e-mail directly to folders in a user's e-mail account, bypassing the inbox.
+
+inbox
+
+The folder that contains all received e-mails in a user's e-mail application.
+
+spam
+
+Unsolicited junk e-mail, such as product advertisements or mass marketing e-mails.
+
+subject line
+
+A title identifying the content or purpose of an e-mail message. It's entered in the Subject field of the e-mail.
+
+thread
+
+An original message and any replies.
+
+To
+
+The address field in an e-mail used to specify the addresses of direct recipients, who must respond or react directly to the message.
+
+© 2016 Skillsoft Ireland Limited
+
+
+•	Job Aid: Addressing and Flagging Best Practices
+Use this job aid to review e-mail addressing and flagging best practices.
+Addressing e-mails
+
+Using the address fields appropriately will help ensure that you send e-mails only to the people who need them, and that recipients understand why you've mailed them.
+
+You use the To field
+
+when you're sending a message directly to one or more people, and the names must be visible to all recipients
+you expect a direct response from the recipient
+You use the Cc field
+
+when it's really necessary and important for one or more recipients to receive copies of an e-mail you send
+when it will be clear to recipients why you've chosen to copy them
+when someone must be kept visibly in the loop of a discussion
+when someone requires the information in an e-mail but doesn't need to respond to it directly
+You use the Bcc field
+
+only when it's necessary to protect the privacy of recipients' addresses and identities, but when it's important they receive copies of an e-mail you send
+when your motives for using the Bcc field are appropriate
+Flagging e-mails
+
+By default, an e-mail you send has a Normal priority status. However, you should flag certain e-mails:
+
+flag e-mails that require urgent responses as high priority
+flag casual or unimportant e-mails as low priority
+Course: Sending E-mails to the Right People
+Topic: Using the To Field
+
+© 2016 Skillsoft Ireland Limited
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.
