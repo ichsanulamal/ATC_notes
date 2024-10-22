@@ -1,20 +1,22 @@
 import os
 
 # Define the header and file name
-h1 = "Independence and Relationships"
+h1 = "Business Process and Continuous Improvement"
 file_name = "index.md"
 
 # Define the list of topics
 topics = [
-    'Developing Personal Accountability',
-    'Becoming Your Own Best Coach',
-    'Creating a Solid Support Base through Peer Relationships',
-    'Building a Circle of Connections for Networking Success',
-    'Building a Win-win Relationship with Your Manager',
-    'Being an Effective Team Member',
-    'No More Excuses: The Five Accountabilities for Personal and Organizational Growth',
-    'Five Keys to Powerful Business Relationships'
-    
+    'Enabling Business Process Improvement',
+    'Exploring Business Process Automation',
+    'Using Lean to Perfect Organizational Processes',
+    'Using Lean to Improve Flow and Pull',
+    'Using Lean to Reduce Waste and Streamline Value Flow',
+    'Applying Value Stream Mapping in Lean Business',
+    'Six Sigma Techniques for Improvement',
+    'Basics of Process Mapping, 2nd Edition',
+    'Lean Thinking: Banish Waste and Create Wealth in Your Corporation',
+    'Creating a Lean Culture: Tools to Sustain Lean Conversions, Third Edition',
+    'The Lean Strategy'
 ]
 
 # Create the markdown content
