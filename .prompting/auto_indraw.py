@@ -1,18 +1,20 @@
 import os
 
 # Define the header and file name
-h1 = "Communication and Listening"
+h1 = "Independence and Relationships"
 file_name = "index.md"
 
 # Define the list of topics
 topics = [
-    'Conveying Your Message without Words',
-    'Expanding Your Communication Skill Set',
-    'Enhancing Communication through Listening',
-    'Overcoming Barriers to Effective Listening',
-    'Listening to Engage, Empower, and Influence',
-    'Just Listen: Discover the Secret to Getting Through to Absolutely Anyone',
-    'How to Speak so People Really Listen'
+    'Developing Personal Accountability',
+    'Becoming Your Own Best Coach',
+    'Creating a Solid Support Base through Peer Relationships',
+    'Building a Circle of Connections for Networking Success',
+    'Building a Win-win Relationship with Your Manager',
+    'Being an Effective Team Member',
+    'No More Excuses: The Five Accountabilities for Personal and Organizational Growth',
+    'Five Keys to Powerful Business Relationships'
+    
 ]
 
 # Create the markdown content
