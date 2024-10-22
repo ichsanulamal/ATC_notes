@@ -1,19 +1,18 @@
 import os
 
 # Define the header and file name
-h1 = "Reasoning, Decision Making, and Critical Thinking"
+h1 = "Communication and Listening"
 file_name = "index.md"
 
 # Define the list of topics
 topics = [
-    "Problem Solving: Defining and Stating the Problem",
-    "Problem Solving: Generating Solutions",
-    "Problem Solving: Choosing and Implementing the Right Solution",
-    "Outwitting Your Cognitive Bias",
-    "Using Accounting & Financial Information: Analyzing, Forecasting & Decision-Making",
-    "Secrets of Power Problem Solving",
-    "The Little Black Book of Decision Making: Making Complex Decisions with Confidence in a Fast-Moving World",
-    "Six Thinking Hats"
+    'Conveying Your Message without Words',
+    'Expanding Your Communication Skill Set',
+    'Enhancing Communication through Listening',
+    'Overcoming Barriers to Effective Listening',
+    'Listening to Engage, Empower, and Influence',
+    'Just Listen: Discover the Secret to Getting Through to Absolutely Anyone',
+    'How to Speak so People Really Listen'
 ]
 
 # Create the markdown content
