@@ -1,7 +1,7 @@
 import os
 
 # Get the current working directory
-current_directory = os.getcwd()
+current_directory = "C:\\Users\\muhammad.amal\\Documents\\proj\\ATC_notes\\Aspire Journeys\\Operations Research Analyst Journey\\Reasoning, Decision Making, and Critical Thinking"
 
 # Loop through all items in the current directory
 for folder_name in os.listdir(current_directory):
@@ -18,4 +18,4 @@ for folder_name in os.listdir(current_directory):
         
         with open(index_file_path, 'w') as index_file:
             # Write the header to index.md
-            index_file.write(f"# {folder_name}\n")
+            index_file.write(f"# {folder_name}")
