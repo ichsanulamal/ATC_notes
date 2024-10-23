@@ -1,14 +1,20 @@
 import os
 
 # Define the header and file name
-h1 = "Introduction to Big Data with PySpark"
+h1 = "AIfDS Activate"
 file_name = "index.md"
 
 # Define the list of topics
 topics = [
-    'Intro to Big Data',
-    'PySpark RDDs',
-    'PySpark SQL'
+    'An Introduction to Generative AI Concepts',
+    'Generative Modeling Foundations',
+    'Getting Started with Large Language Models (LLMs)',
+    'Exploring the Depths of Large Language Models in Generative AI',
+    'Leveraging Generative AI for Business',
+    'Artificial Intelligence and Machine Learning',
+    'Deep Learning and Neural Networks',
+    'An Introduction to GPT Models',
+    'Considerations for Using AI Responsibly'
 ]
 
 # Create the markdown content

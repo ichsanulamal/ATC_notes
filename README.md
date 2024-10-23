@@ -1,5 +1,7 @@
 # ATC Notes
 
+[[CliftonStrengths/index]]
+
 hackerrank.com Welcome to
 Accenture MyWizard - Aptitude Test
 
