@@ -1,0 +1,518 @@
+Getting Started
+MLflow plays a crucial role in systemizing the machine learning (ML) workflow by providing a unified platform that seamlessly integrates different stages of the ML life cycle. In the course, you will delve into the theoretical aspects of the end-to-end machine learning workflow, covering data preprocessing and visualization. You will learn the importance of data cleaning and feature engineering to prepare datasets for model training. You will explore the MLflow platform that streamlines experiment tracking, model versioning, and deployment management, aiding in better collaboration and model reproducibility. Next, you will explore MLflow's core components, understanding their significance in data science and model deployment. You'll dive into the Model Registry that enables organized model versioning and explore MLflow Tracking as a powerful tool for logging and visualizing experiment metrics and model performance. Finally, you'll focus on practical aspects, including setting up MLflow in a virtual environment, understanding the user interface, and integrating MLflow capabilities into Jupyter notebooks.
+Table of Contents
+    1. Video: Course Overview (it_mlflowdj_01_enus_01)
+
+    2. Video: Introducing MLflow (it_mlflowdj_01_enus_02)
+
+    3. Video: The Machine Learning Workflow (it_mlflowdj_01_enus_03)
+
+    4. Video: Understanding Model Deployment (it_mlflowdj_01_enus_04)
+
+    5. Video: MLflow Concepts and Components (it_mlflowdj_01_enus_05)
+
+    6. Video: The Features of MLflow (it_mlflowdj_01_enus_06)
+
+    7. Video: Model Signature (it_mlflowdj_01_enus_07)
+
+    8. Video: MLflow Tracking (it_mlflowdj_01_enus_08)
+
+    9. Video: Installing MLflow (it_mlflowdj_01_enus_09)
+
+    10. Video: Installing MLflow in a Virtual Environment (it_mlflowdj_01_enus_10)
+
+    11. Video: Viewing the MLflow User Interface (UI) and Directory Structure (it_mlflowdj_01_enus_11)
+
+    12. Video: Setting up an MLflow Virtual Environment for Jupyter (it_mlflowdj_01_enus_12)
+
+    13. Video: Course Summary (it_mlflowdj_01_enus_13)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_mlflowdj_01_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+Hi and welcome to this course, getting Started with MLflow. My name is Vitthal Srinivasan, and I will be your instructor for this course. MLflow plays a crucial role in systematizing the machine learning workflow by providing a unified platform that seamlessly integrates different stages of the ML lifecycle. Its tracking capabilities allow you to easily log and monitor experiments, track model runs, hyperparameters, and performance metrics. MLflow's Model Registry facilitates organized model versioning, enhancing collaboration, and streamlining the MLflow workflow for efficient development and deployment of machine learning models.
+In this course, you will delve into the theoretical aspects of the end-to-end machine learning workflow, because these steps map closely to MFflow features. You will be introduced to the MLflow platform that streamlines experiment tracking, model versioning, and deployment management. Next, you will explore MLflow's core components, the Model Registry that enables organized model versioning and MLflow Tracking, a powerful tool for logging and visualizing experiment metrics and model performance. Finally, you will focus on practical aspects, setting up MLflow in a virtual environment, understanding the user interface, and integrating MLflow capabilities into Jupyter notebooks.
+
+By the end of this course, you will have a strong foundation in MLflow, enabling you to efficiently manage the entire machine learning lifecycle, from tracking experiments to deploying models. In conclusion, this course will provide you with a solid foundation in MLflow, equipping you with the knowledge and skills to manage the entire ML lifecycle effectively.
+
+2. Video: Introducing MLflow (it_mlflowdj_01_enus_02)
+
+After completing this video, you will be able to provide an overview of Mlflow.
+provide an overview of Mlflow
+[Video description begins] Topic title: Introducing MLflow. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We are going to spend a lot of working hands-on with MLflow in the demos to come, but before we get into the weeds, let's talk about the big picture a little bit. MLflow is a versatile, expandable, open-source platform for managing workflows and artifacts across the entire machine learning lifecycle. You can think of the most common use of machine learning where you have a data set.
+
+Building machine learning models using Python is incredibly interactive, you have a very fast feedback loop, and it's pretty easy to get something going really quickly. But like with many other rapid prototyping tools, very quickly you lose track of all of the models that you've run, all of the datasets that you've tried them on, and all of the resulting metrics. This is exactly where MLflow comes into its own. It offers a standard, robust way for you to try many different candidate models on many different datasets and in standard, predictable workflows. So, every time you run a model, you will end up logging the model as well as its results in terms of the parameters, the metrics, and a lot more.
+
+MLflow supports many common ML libraries including scikit-learn, TensorFlow, PyTorch, XGBoost, statsmodels, and even LLMs. You can use it with pretty much any library, algorithm, or deployment tool, although it has special integrations with Databricks. We'll spend some time using MLflow on Databricks as well as deploying MLflow models to Microsoft Azure. You can as easily deploy these models for serving onto any of the major hyperscalers.
+
+MLflow has been thoughtfully designed so that it has features to support every stage of the classic machine learning workflow. It also has a variety of tools and functionalities that help ML engineers track experiments as well as to manage and deploy models. You can build and load in models that were written in Python, R, or Java, and in addition, it's trivially simple to access MLflow models via REST APIs.
+
+In one of the demos that comes ahead, we'll see how to deploy a model and place it before an Azure endpoint so that clients can use it for prediction. The folks who've developed MLflow are the same folks who've developed Databricks as well as Apache Spark, so, they truly know this domain incredibly well. They've designed MLflow keeping in mind the requirements of various personas, as they call them. First is the Data governance officer. MLflow can help such an individual by tracking experiments and models. There's monitoring, auditability, and general ease of compliance any time you use MLflow.
+
+What does MLflow have to offer to a data engineer? Well, MLflow makes it easy to package and organize machine learning code. It helps you to recreate models based on the dependencies in the environment in which they were created and manage configurations. It's also easy to set up models for serving. For the data scientists, MLflow is valuable because it helps to log and track experiments. You can think of an experiment as a container for individual runs of a model. There's also built-in support for hyperparameter tuning as well as for model evaluation.
+
+For ML engineers, MLflow is great because it makes it easy to package, version, and deploy models in various different environments. There's model serving functionality, a Model Registry, and it's possible to have aliases for models as well as model versioning. MLflow is not directly designed to add value to the business stakeholder, however, there are indirect benefits that flow through, notably the transparency and visibility. Another business-friendly aspect of MLflow is that along with the model artifacts, it is possible, and indeed it's common, for the outputs of a model to be represented in visual form. Because these artifacts are all tracked,
+
+the business can then go back to those visualizations and compare and track models and arrive at informed answers to the question why is the model making this particular prediction? Possibly the most attractive feature of MLflow is that it offers all of this through every step of the machine learning workflow. MLflow has been built and designed in a way that's consistent with this workflow. Take for instance something like hyperparameter tuning, you will find that within MLflow, there's something known as a run, and specifically for hyperparameter tuning, there's a way to have nested runs with a top-level run, which in turn spawns off many child runs. These child runs can then be easily monitored, tracked, and searched and it's then easy to find the model which gave the best results of all of those child runs.
+
+Similarly, for model validation, MLflow has an API which allows you to specify a candidate model as well as a baseline model, and the candidate model will be rejected unless it outperforms the baseline along specific metrics and by specified amounts. Architecturally, MLflow consists of five main components, MLflow Tracking, which allows users to record and query experiments. Every time a model runs, that's recorded as one run, and runs are collected in objects or entities known as experiments. Each run will track model parameters and hyperparameters, metrics, and artifacts which could include the models, the input datasets, and output visualizations.
+
+MLflow Models is another top-level component. This allows us to manage and deploy ML models. A model which was used in a run of an experiment can be registered and such a model is then going to become a part of the Model Registry that serves as a centralized repository. Models can be versioned, aliased, and easily shared and deployed. These three components, MLflow Tracking, Models, and the Model Registry work closely together. The two other components are logically somewhat distinct.
+
+MLflow Projects is a standard format, really a directory structure which can be used for organizing and packaging ML code, data, and dependencies. Projects can then be nicely pipelined into more elaborate workflows. Finally, we have MLflow Recipes. Until very recently these were known as MLflow Pipelines. This is a feature which allows you to very quickly and easily use prebuilt templates for tasks such as regression and classification and then make use of a declarative format, a recipe.yaml file which will interact with code in a Git repo.
+
+MLflow recipes offer rapid prototyping, quick iteration, caching of intermediate results, and consequently make it a lot faster to ship code through to production.
+
+3. Video: The Machine Learning Workflow (it_mlflowdj_01_enus_03)
+
+Upon completion of this video, you will be able to outline the use of the machine learning (ML) workflow.
+outline the use of the machine learning (ML) workflow
+[Video description begins] Topic title: The Machine Learning Workflow. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+MLflow is a platform that exists solely in order to make it easy to manage the machine learning workflow. In the demos that come up ahead, we will be focused on MLflow, but inevitably, we will also end up discussing a lot of machine learning concepts. So, it's just as well for us to all be on the same page. This material might already be familiar to you, in which case you can skip past or just use it as a quickly jog your memory. Here is a fairly standard representation of the classic machine learning workflow.
+There are seven steps as shown here, data preparation, exploratory data analysis or EDA, feature engineering, model training, model validation, deployment, and then monitoring. Let's spend a minute talking about each one of these in turn. Data preparation can be thought of as the process of gathering, cleaning, transforming, and preparing data, so that the data can then be used in a machine learning model for training, most importantly, and then also for evaluation. This step is in many ways the most grungy, but also the most important of all of these steps, because like any other form of computing, machine learning models are garbage in, garbage out and it can actually be worse than that. If we end up with the wrong choice of data, we might end up with a machine learning model that's biased, possibly in dangerous or unethical ways.
+
+Data preparation itself can be decomposed into a number of subtasks. Data collection, where the data is obtained from various sources, which may be databases, APIs, files, or external datasets, and this step may include extraction, ingestion, scraping, and so on. Then comes the process of data cleaning. Handling missing values, outliers, and figuring out how to deal with inconsistencies. This step again is important because the decisions that we make at training time will need to be mimicked at prediction time.
+
+In the data cleaning process, we might use techniques such as imputation, duplicate removal, or handling outliers appropriately and dealing with inconsistent data formats. Data transformation is the next sub-step. Here the data will be converted into a format where it's directly usable by an ML algorithm. This might overlap with feature engineering where new features are created based on domain knowledge or mathematical transformations. However, the data transformation might not be as major as an actual feature engineering task, it might just involve common transformations such as scaling, normalization, one-hot encoding, or label encoding.
+
+Feature selection and feature extraction are another important step. Here we might apply techniques such as dimensionality reduction in the form of principal components analysis, or we might go with statistical tests or correlation analysis, all of which will help us to either determine which features deserve a spot in our model or how we can transform those features so that the information content in them is readily accessible to the model.
+
+Another standard step in data preparation is data splitting. Here, we split the prepared data into training and testing datasets, and often into a validation data set as well. The training set is used to train the ML model, the validation set, if present, helps tune hyperparameters and to evaluate different model variants, and the testing dataset helps to assess the final model's performance on unseen or out-of-sample data.
+
+Finally, all of these steps that we just discussed ideally should be packaged up into a nice pipeline. This data preprocessing pipeline ideally then encapsulates the sequence of the transformations as well as the data cleaning operations in a reproducible and efficient manner. This can then be used at prediction time because the same set of steps need to be performed on data for prediction as during the training process.
+
+Next in the machine learning workflow comes EDA or exploratory data analysis. This is where we analyze our data and try and get insights which will help us during the process of model building. The aim here is to mine insights, find patterns or anomalies, anything noteworthy that might come in handy while constructing the model. Exploratory data analysis or EDA itself can be broken into many subtasks. Data familiarization, where we examine the structure, shape, dimensions, and statistical properties of the data. Visualization, where there is a wealth of standard plots, charts, histograms, boxplots, heatmaps, and others to understand what the data looks like and to begin to get other relationships. Then comes statistical analysis. Here, we might compute summary statistics such as the mean, median, standard deviation, look for central tendencies. These are all univariate measures, but we could extend this to bivariate measures such as correlations or multivariate measures such as correlation and covariance matrices.
+
+Next, we might start to look at the relationship between the individual features, that is the X variables and the target, or whatever it is that we are trying to predict or explain. Here, we might analyze feature distributions or missing values, examine data quality, and also look for class imbalance. For instance, in order to identify sources of bias in our ML models. We might also undertake some hypothesis testing where we form preliminary opinions known as hypothesis, and then use statistical tests such as t-test, chi-square, or ANOVA, in order to validate assumptions that we might be making while picking models.
+
+Finally, while it might seem out of place, it's very important to keep documenting and reporting findings throughout the EDA process. The EDA process serves as a reference for future model development. It's not only going to be required this one time in the model that we build but also in future iterations and in warning us in advance where our model's shortcomings might lie.
+
+4. Video: Understanding Model Deployment (it_mlflowdj_01_enus_04)
+
+After completing this video, you will be able to recognize how model deployment works in Mlflow.
+recognize how model deployment works in Mlflow
+[Video description begins] Topic title: Understanding Model Deployment. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+Let's keep going with our quick discussion of the steps in the classic machine learning workflow. We've now gotten to feature engineering, which as the name would suggest, can be thought of as creating or engineering new features from existing raw features. Features here are, of course, the X variables. This term is typically used for cases where we extract or transform features. It's a little more active than merely selecting or combining existing features, although all of that also is a part of feature engineering.
+Feature selection is important because it helps to reduce the dimensionality as well as to eliminate irrelevant or redundant features. Feature extraction is a little more active. Here, we convert existing features into new ones. For instance, we might extract the day, month, or year from a timestamp. Then we get to one-hot encoding and label encoding, which need to be applied to categorical variables which might be in string format. They have to be converted into numeric representations that the models can understand.
+
+One-hot encoding works best for nominal data where the different values do not have any ordering relationship. Label encoding, on the other hand, preserves ordering relationship, such as for instance the case of one, two, three, and four-star reviews. Scaling and normalization change the mean and standard deviation of different X variables along different dimensions and can help to significantly improve the performance of some ML models. In the handling of missing values, we might go with technique such as imputation, where we replace missing values with estimated values, or we might create separate indicator variables from missing values. Decisions will also need to be made about how to handle outliers and novelties. This could influence the training of the model quite significantly.
+
+Special processing steps might be required for temporal and sequential features as well as in specific domains. For instance, while dealing with temporal features, autocorrelations are a powerful tool. While working with text representations, we will likely want to employ techniques such as tokenization, n-grams, word embeddings, and other forms of dimensionality reduction that are specific to working with text. Then comes model training, where we try and find the best model for a given training data set. The term best model here, of course, is pretty subjective. There are different functional forms for different types of models that we have to choose from, that's model selection. Then we have decisions about how to initialize the parameters of the model in whatever functional form we've gone with.
+
+In some techniques, such as in the world of neural networks, correctly initializing a model can lead to dramatic improvements in performance. Then comes the training loop, in which we follow a numeric optimization process in order to find the best values of the model parameters in order to minimize some kind of loss function on the training data. And finally, there's hyperparameter tuning, which strictly speaking is not quite a part of model training but is intimately associated with it. You can think of a hyperparameter as some property of a model which remains constant during the training process. On the other hand, the model parameters are trained or optimized during the training process.
+
+However, the common workflow is to have many different models, candidate models and then tweak the properties or hyperparameters and see which one of them does best after training. By the end of the training process, we have at least one model which can be used to actually make predictions, and it's now time to try out that model with new and unseen data. And this leads us into the phase of model validation.
+
+Here we've got to decide upfront what evaluation metrics to rely on. For classification models, for instance, these might include accuracy, precision, recall, and F1 score. For a regression model, these might be the mean square error, the mean absolute error, or other characteristics which cannot be reduced to a single number such as the lift curve of a classifier. Then we actually perform the model evaluation where we take the trained model, run it on a new validation dataset and see what values we get for the metrics. Based on those values, we might try out many different models and pick specific versions. This is the hyperparameter tuning that we just referred to.
+
+We've got to be mindful here of overfitting and underfitting. Overfitting is where a model does extremely well on the training data, but that performance does not generalize well to the validation dataset. Overfitting and underfitting are closely tied to the bias-variance trade-off. Some powerful tools that help during model validation include cross-validation, where we divide the dataset into multiple folds and train and evaluate the model on different combinations of these folds. Validation curves and learning curves, which tell us how models perform with differing hyperparameters, are also important in this context.
+
+Once we have a model that's proven itself through the validation phase, it's time to make it available for use in the real world. This is deployment and this is where the model is made available for inference. This involves making decisions about the model packaging to begin with because the trained ML model needs to be packaged along with its dependencies and ideally the preprocessing pipelines as well as all required libraries. The packaging has to ensure that the model and its dependencies can be easily distributed and deployed across different environments. Ideally, the model should be available for inference in interactive mode, that is, with a human as well as via APIs.
+
+Developing the APIs in order to deploy the model could be a lot of work, but this is where various technologies and cloud platforms, and tools like MLflow come in handy. The trained model is now going to be deployed in a serving environment where it can handle prediction requests. This might require setting up frameworks such as TensorFlow Serving or tools like FastAPI or Flask. In recent years, there has been a spate of incidents of models which perform well early in their life cycle, but whose performance degrades over time and that's why it's really important to remember that when a model is deployed out into production, that's hardly the end of its life cycle.
+
+There's a lot more that still has to be done and this is where considerations around CI and CD, such as Continuous Integration and Continuous Deployment come into play. How are version control mechanisms going to be used to manage different versions of this model? Will it be easy to roll back to a previous version if issues or regressions are found? What's the feedback loop? How will incorrect outputs and predictions be fed back into the model training and development? That feedback loop is closed via model monitoring and that in a sense gets us to the end of this ML lifecycle.
+
+Monitoring is a continuous and extremely important part of the model development lifecycle. It's important that the monitoring process set up a cadence to detect data drift. Data drift is when the characteristics of the incoming data change and deviate from the data which was used in the training process. Monitoring for data drift will help to identify potential shifts before the impact on the model's performance becomes crippling.
+
+At that point, the model can be relatively easily retrained or updated. It's also important for the monitoring process to log and monitor model performance metrics, including evaluation metrics. The values of those metrics should then be benchmarked against those which were obtained during model development and validation. Error analysis is also important. Prediction errors or misclassifications should be flagged, and there should be a systematic approach to identifying why they arose. In critical use cases, it's probably a good idea to have alerting and thresholds which monitor the model's output and performance and send out alerts when predefined performance thresholds are breached or when specific types of anomalies are detected. This allows for proactive responses to issues before they balloon out of control.
+
+And finally, it's critically important to have a continuous cycle of model update and retraining. All of the steps that we've discussed as a part of the monitoring process should merely serve to determine how urgent this process is, but all models need to be periodically updated and retrained. We've very quickly gone through the important parts of the machine learning life cycle and now we'll talk a little bit more about the features of MLflow and its components before we turn to the hands-on aspects.
+
+5. Video: MLflow Concepts and Components (it_mlflowdj_01_enus_05)
+
+Upon completion of this video, you will be able to outline MLflow concepts and components.
+outline MLflow concepts and components
+[Video description begins] Topic title: MLflow Concepts and Components. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+We've now discussed the machine learning workflow in some detail and during that conversation, we were careful to describe that workflow as MLflow views it. Now let's turn our attention to the more specific concepts and components within MLflow. We will be working with these different components in the demos coming up ahead.
+At a high level, MLflow has five large components. There's the MLflow Tracking component which is the bread and butter. This allows users to record and query experiments. MLflow Tracking will help you keep track of your model's parameters more precisely, these are actually the model hyperparameters because the parameters are going to be found during training. You can also compute various performance metrics on the training data, the test data, and the validation data, and all of these will be logged as a part of MLflow tracking. It's also possible to store artifacts.
+
+Artifacts can be thought of as models or datasets or visualizations. In fact, any blogs, that is any file-like components, non-structured data that you would like to log associated with a particular run of a model. The basic building blocks of MLflow Tracking are MLflow experiments and runs and we'll get to that in a moment. MLflow Tracking is great for allowing reproducibility and comparison of different model runs.
+
+The second really important component of MLflow is MLflow Models. When you use the MLflow UI, you'll notice that there are two tabs that are displayed most prominently, Experiments and Models. Experiments is for MLflow Tracking and Models is for MLflow Models. This component helps users to manage and deploy the ML models that were built and run as a part of MLFlow Tracking. Within tracking, models are stored as artifacts, but within models, it's the model itself which is the top-level entity.
+
+MLflow can deal with many different types of models, TensorFlow, PyTorch, scikit-learn, XGBoost, statsmodel, and more. You can version your models, you can have tags and stages associated with those models, and that in turn brings us to the third component which is the Model Registry. The Model Registry can be thought of as a centralized back-end repository for managing models throughout their life cycle. The bits which have to do with collaboration, versioning, and the control of model deployment stages lie somewhere within Model Registry. Although you will access them largely from the Models component of the MLflow UI. These three components, MLflow Tracking, MLflow Models, and the Model Registry work extremely closely together and are relatively tightly integrated with each other. The remaining two components are more loosely coupled.
+
+There's MLflow Projects which provides a standard format for organizing and packaging ML code, data, and dependencies. MLflow Projects will allow users to define the structure of a project and thereby make it easier to capture project dependencies as well as to share ML experiments across different environments. Now if you were to visit the MLflow docs right now as of the end of June in 2023, you'd find that in some parts of the documentation, it refers to four top-level components while in others it talks about five.
+
+The fifth component, which has only recently been upgraded to full top-level status in the docs is MLflow Recipes. Until recently these used to be known as MLflow pipelines. Recipes form a framework which allow data scientists to quickly develop models and deploy them to prediction. They are meant to be a lot more robust than ordinary ad hoc ML workflows, but at the same time provide quick start, fast iteration, and ease of shipping into production.
+
+6. Video: The Features of MLflow (it_mlflowdj_01_enus_06)
+
+After completing this video, you will be able to recognize the features offered by Mlflow.
+recognize the features offered by Mlflow
+[Video description begins] Topic title: The Features of MLflow. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+We have now briefly touched upon each of the five top-level main components in MLflow. Let's go through these in detail starting with the first and most important which is MLflow tracking. As the name would suggest, the tracking component allows users to keep track of different runs of different models.
+The basic building blocks within MLflow tracking are known as experiments and runs, and as you will see in the MLflow UI, the experiments tab is pretty much the starting point for any MLflow exploration. Runs and experiments as their names would suggest, or run the idea of an experiment is that you try out different models, you run each of those models and you see which of them did the best. So, an experiment can be thought of as a logical grouping of model runs.
+
+The experiment is a container of sorts, and it contains within it multiple runs. Let's now talk about these runs in a little more detail. Each MLflow run is a collection of parameters, metrics, tags, and artifacts, all associated with the single-model training process for one machine learning model. So, one run has one model, and that model is being trained and evaluated as a part of the run. As the model runs, lots of details are being logged on the MLflow tracking server. As a result, each run effectively captures the entire execution context of the machine learning code.
+
+There's even a feature called Autolog which will do all of this for you with very little actual code written. The run will allow tracking and logging of evaluation metrics, model parameters, artifacts, and tags. These terms have specific meanings in the context of MLflow. In particular, it's worth noting that parameters here refer to model hyperparameters. In the case of a random forest model, for instance, this would measure things like the number of estimators or the max depth of each tree. This would not refer to the individual parameters which compose each tree. So, these are really hyperparameters.
+
+Artifacts can be thought of as any unstructured data. These could be binaries, such as images or text files, or other kinds of files including datasets, or most commonly the packaged-up model directory. The model itself is an artifact, and there are specific formats for storing and accessing models. Effectively, every run is going to capture a lot of metadata about the model, the data that was used to train the model, the evaluation dataset, the metrics, and so on. As a result of all of this metadata, the run captures versioning information of the code as well as the dependencies.
+
+We shall see, for instance, that in the model artifact, we also have conda.yaml and requirements.txt files, which will allow others to load that model and recreate the environment within which to run it. Remember that runs are contained within experiments. In fact, it's also possible to have nested runs, as we shall see when we get to the hyperparameter tuning portions of the demos. We then can access the information for all runs within an experiment using the UI or also using the client APIs. And in this way, it's possible to compare different models by specifying metrics and metrics criteria.
+
+For instance, you could have a large number of runs within an experiment. Each of those runs would make use of a different kind of model, and each of those runs would maybe compute its F1 score. Then we can use the UI or programmatically find the model with the best F1 score. It's possible to set a threshold and only find those models which have an F1 score above the threshold. It's worth emphasizing here yet again that the run effectively logs lots of metadata and details, and it also logs a lot of binary components such as the model itself. In this way, the run allows reproducibility of results as well as sharing of models.
+
+So, using MLflow, you can easily reproduce a run simply by referencing its associated code, parameters, and artifacts. All of these will be nicely available in one directory, which will have the same format across MLflow. Let's detail some of the information captured in runs. There is the code version. If this MLflow is being run from an MLflow project, this will be the Git commit hash that was used for the run.
+
+Next, the run tracks the start and end time of each run, the source name of the file which is used to launch the run, or the project name and entry point if the run is an MLflow project. Various parameters, these are key-value input parameters, as we've discussed, these are really hyperparameters of the model. Keys, as well as values, need to be strings, this is important. You cannot specify binary objects as values.
+
+Metrics are another important bit that's tracked by each run. These include value metrics, so the value is going to be numeric. Each metric can be updated through the course of the run, and as we shall see, even runs which end in exceptions or error conditions will still be sure to log metrics as they go along. Metrics might be for instance the model's loss function as it's converging during training. The MLflow records will allow you to visualize the full history of the metric. There are also artifacts which as we've discussed can be thought of as output files. These could be in any format. By default, models are going to be logged in the MLflow model format, but you can also record images such as PNGs and data files such as part K-files as artifacts. Zooming one level out, remember that runs are contained within experiments, so, an experiment is the primary unit of organization in MLflow.
+
+Every MLflow run must belong to an experiment, and even in the MLflow UI, we shall see that experiments form the starting point into the exploration. Each experiment lets us organize, visualize, search, and compare runs. We can view all of the metrics, parameters, and artifacts of each run. There is also metadata about each run as well as information across runs. Again, the classic workflow is that there's one experiment which tries out many different candidate models and then picks the best one.
+
+The MLflow experiment object allows you to track metrics parameters, artifacts, and all of the metadata associated with the runs. As we've already discussed, it is then trivial to search and sort runs within an experiment. Experiments also support versioning and comparison. In this way, you can have versions of different runs within the same experiment, you can iterate over models, and you can also have nested runs where there is a parent or a top-level run which in turn spawns off many nested runs for hyperparameter tuning. Because an experiment has a standard UI, a standard look and feel, and standard APIs, experiments are a great way to organize runs and also for collaboration.
+
+They are a structured way to manage different runs and you can also manage different experiments and categorize and group related runs. Finally, in a real-world setting, it's becoming more and more important for models and AI and ML code in general to support auditing and clear reproducibility. MLflow experiments help with this because they capture all relevant information needed to recreate a run or an experiment. Along the way, MLflow will also capture the lineage of artifacts, allowing you to trace back to the original data and code that generated them.
+
+In a real-world context, where auditing and compliance are becoming more and more important, this is an important and attractive feature. It's also worth discussing MLfow tracking and how it interacts with the personas that MLflow is designed to support. The two main personas likely to use MLflow tracking are the data scientist and the MLOps engineer. For the data scientists, MLflow's tracking will help to log and track experiments and all of the hyperparameters and metrics that we've already discussed. They can then easily compare and reproduce experiments, collaborate with each other and share models, and also optimize model selection and hyperparameter choices.
+
+If the data scientist is careful to include the data processing and preparation along with the artifacts and the other logged information, then that information can be easily shared. The other persona most likely to work with MLflow tracking is the MLOps engineer. The MLOps engineer will pick up the model from the Model Registry. How did the model get into the Model Registry? Well, it was reviewed and selected by the data scientist who then went ahead and registered it. And in this way, MLflow tracking serves as an excellent interface between the data scientist and the MLOps engineer.
+
+The Model Registry also makes it easy for the ops teams to deploy models and monitor their performance and that in turn provides valuable feedback which goes back to the data scientist, who can then begin again to further optimize the data as well as the training process, and then the cycle continues. A new and improved model will be reviewed and selected, registered with the Model Registry, and so on.
+
+7. Video: Model Signature (it_mlflowdj_01_enus_07)
+
+Upon completion of this video, you will be able to outline how MLflow signatures work.
+outline how MLflow signatures work
+[Video description begins] Topic title: Model Signature. Your host for this session is Vitthal Srinivasan. [Video description ends]
+Let's keep going with our exploration of the main components of MLflow. We've spoken about MLflow tracking at length. Now let's talk about the MLflow models component. An MLflow model is a standard format. This is used for packaging up machine learning models so that they can be used in a variety of downstream tools. For instance, you can serve up an MLflow model for real-time prediction using a REST API. You can also choose to use such a model for batch prediction using, say, Apache Spark.
+
+As we shall see in the demos, every model associated with every run is going to be logged in a specific format. There are conventions within this format which include different flavors such as the Python flavor, the scikit-learn flavor, and so on. These flavors then make it very easy for downstream tools to load and consume these models. We're going to spend lots of time in the demos exploring the storage format of a model. Every MLflow model is effectively contained within a directory, and that directory is going to have one file called MLmodel, which details the flavors and some of the most important information, and then the model pickle file or whatever serialized format is used to write out the model itself. That's the object from within Python or R, the conda.yaml, a python env.yaml, and a requirements.txt.
+
+The MLmodel file defines the flavors that this particular model supports and there is a really large number of built-in model flavors in MLflow. There are two generic language-specific flavors, Python function, and R function, and then additional flavors for different families or ML frameworks such as PyTorch, TensorFlow, scikit-learn, Spark MLlib, and many more.
+
+The model directory will always contain three additional environment files, these are known as the environmental creation files. These are conda.yaml, python_env.yaml, and requirements.txt. These are going to be created any time a model is logged, any user who wishes to recreate all of the dependencies and simply do so by reloading those dependencies using conda or virtualenvs we'll go through the contents of these files in excruciating detail in the demos that lie ahead.
+
+In those demos, when we explore the MLmodel file, we will also find there a model signature as well as an example of the inputs to be passed into the file. We'll see that there are some fine points and nuances around the model signature and the types that are passed in. These can sometimes lead to certain warnings but MLflow in general is very very transparent about the model signature as well as the type of the inputs. Anyone who reads the MLmodel file then can easily figure out how to actually interact with this model for inference. MLflow models tie closely to the MLflow tracking component and they also are intimately connected with third component of MLflow that we are now going to talk about, which is the Model Registry. This is exactly what its name implies. It can be thought of as a centralized repository where we can view different models, and this also includes a set of APIs as well as the user interface to manage the entire life cycle of the model.
+
+As we shall see in the demos, there are various stages such as archived, production, and staging and we can separately access models which are at different stages by using the name of the model along with the associated stage. The Model Registry helps tremendously with auditability and compliance because it allows the tracking of model lineage. What experiment and run produced this model? Also, we can control model versioning as well as the stage transitions as well as model annotations.
+
+There are a number of different Model Registry concepts, and it's worth talking about each of these in turn. To begin with, there's the model. Note that this is not yet a registered model, this is just some model which was logged from MLflow tracking, that is, it's the part of some run within some experiment. Such a model can be logged in the artifact's directory of the corresponding run and then it can be accessed using the run ID of that particular run.
+
+The next step up for a model is for it to be registered with the Model Registry. Once a model has been registered, it has a unique name, it can be versioned, it has associated transitional stages such as production, staging, and so on. Model lineage is tracked, and the other metadata associated with the model is tracked as well. So, clearly, a registered model is where the model enters the Model Registry. Any registered model can have multiple versions. When a new model is added to the Model Registry, it starts out as version 1. Then, if new models are registered to the same model name, that version number will be incremented. For a given registered model and a version, there can be exactly one stage at any point in time. This stage could be none, staging, production, or archive.
+
+These are the four allowed values for the model stage. And once again each distinct model version can be assigned any one stage at any point in time. We can use the UI or the APIs in order to transition that model and version from one stage to another stage. It's important to remember that the stage is associated with the version and not with the model as a whole. So, you could have model with version 1 which is currently in production, and version 2 which is still in staging. In addition, it's possible for models to be annotated and to have descriptions. We will see that you can annotate a top-level model as well as each version individually using markdown and the description, of course, can be used to include any relevant information.
+
+Finally, there are model aliases which can be used to point to specific model versions of a registered model. Then you can easily access that particular version using the alias rather than remembering what the version number happens to be. That does it for the big three components of MLflow; MLflow tracking, models, and the Model Registry. Now, let's very quickly introduce the two other MLflow components.
+
+The idea behind MLflow projects is to combine projects into larger workflows. So, just like a model in MLflow is represented by a directory which has the specific conventional format and some standard files. In similar fashion, an MLflow project is also a directory which will always have some standard files within it. There will be, for instance, an ML project file which is analogous to an ML model file, there will be a conda.yaml file, and so on. These projects or directories can then be chained together in a standard way into larger workflows, and that chaining is supported using the APIs.
+
+Finally, we have MLflow recipes. As we've already discussed, these were known as MLflow pipelines until pretty recently. These are meant to be a quick way for data scientists to get up and started. There are predefined templates for common tasks such as a regression modeling for instance, and as a result, the amount of boilerplate code is drastically reduced. At the heart of the idea of the recipe is a recipe.yaml file which effectively defines each of the steps in the pipeline, i.e., the recipe. This recipe.yaml file can interact with a Git source repo, so, you can think of MLflow recipes as a way to achieve rapid prototyping of machine learning pipelines and workflows.
+
+8. Video: MLflow Tracking (it_mlflowdj_01_enus_08)
+
+After completing this video, you will be able to provide an overview of MLflow Tracking.
+provide an overview of MLflow Tracking
+[Video description begins] Topic title: MLflow Tracking. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+We will now circle back to another conversation about MLflow tracking. We've already discussed this component in detail. However, our emphasis now is going to be on how state is maintained within MLflow tracking. To zoom out just a little bit, recall that there are five important components of MLflow. MLflow tracking is the first and, in many ways, the most important of them.
+Remember that MLflow tracking has as its basic building block the experiment object, and the experiment in turn is a container for individual run objects. It's the run that maintains a lot of the state, and that's what we'd like to talk about now. As we've seen, runs contain parameters, metrics, artifacts, and they can also contain datasets, and run must always belong to an experiment. Runs are going to be grouped into experiments, and we can also have nested runs where we have a parent run which spawns off child runs, such as for hyperparameter tuning.
+
+The question we are now looking to answer is where is all of this state stored? And it turns out that there are three different possible ways in which runs might be recorded. The first place where run info might be recorded is in the local file system in a directory called mlruns. This is what will be used as the storage for runs if we kick off the MLflow UI, The MLflow UI is in turn going to bring up the MLflow tracking server but again, because of the order in which this happens, the MLflow UI will bring up the tracking server while specifying the use of the mlruns directory.
+
+Another option is the use of a SQLAlchemy-compatible database such as SQLite, PostgreSQL, or MySQL. This could happen if we explicitly bring up the MLflow tracking server and specify a connection string to this database. And the third possible manner in which a run might be recorded is remotely to a tracking server. This would be a centralized server which tracks all executions. In this instance, we might have the server running on a cloud platform such as Microsoft Azure. In particular, we might run data bricks on one of the hyper scalars and then access the tracking server while it runs on that cloud platform.
+
+At this point, it's important to draw a distinction between the two different types of data that are recorded as a part of runs and also the two components of storage which are used to record those two types. On the one hand, we have structured information such as parameters, metrics, tags, nodes. These mostly consist of key-value pairs. These are all stored on something known as the backend store. Then we have artifacts such as models, image files, or data set files. These could also include in-memory objects, model summaries, and in general, could be BLOBs of any sort, and these are going to reside on the artifact store. Let's keep this distinction in mind as we run through some different configurations of backend storage.
+
+The simplest form is localhost. This is the configuration that we've worked with in the early demos in these courses. We have the user ML code and the MLflow client APIs which run on the local machine. There's a local artifact repository as well as local file storage. The mlruns directory on the local file system serves as the persistent storage, and there we have individual directories for each run and effectively both the backend store and the artifact store share a directory on the local file system.
+
+This is the simplest configuration, and this is how it will work if you kick off MLflow UI, that in turn will bring up the MLflow tracking server. Things can get one level more complicated if we add in a database such as SQLite. Here, artifacts will still be stored in the mlruns directory, but now all of the metrics, parameters, and other backend store information will exist on this relational database.
+
+SQLite is a special case of using a database for the backend store because it is an embedded database and is pretty much tied to the local file system as well. In order for this configuration to prevail, we'll have to kick off the MLflow server along with the appropriate connection information. That's why in the block diagram, up above you can see that all of the artifacts reside in the mlruns directory, and all of the backend storage is in mlruns.db all of those exist on the local file system.
+
+One further step up would be to have localhost with the tracking server and in addition, we'd point the backend store to a real relational database. Now the architecture gets a lot more complex. You can see, for instance, that we have a tracking server as well as a file store that communicates with our ML code via REST APIs, and those in turn reside on top of a layer which is the local artifact repository which in turn interacts with the true underlying artifact storage.
+
+In this block diagram, you can see that the user ML code and the MLflow client APIs truly are at an arm's length from the tracking server, and they interact with the tracking server via REST APIs. However, it's important to note that the client and the server both have access to the shared underlying storage. This particular architecture is something that we will implement by running MLflow locally as well as with MLflow running on data bricks on Microsoft Azure. Even more complex configurations are possible. You could have a remote tracking server backend and artifact stores as you can see in this block diagram.
+
+Now storage is separated for the client and the server, and this architecture is truly distributed. The remote host which hosts the tracking server would abstract away the relational database via a SQLAlchemy layer and use REST APIs in order to store and log backend and artifact information. And finally, taking things up yet another further notch, we could also have proxied storage and artifact access. So, if you now look closely at the remote host component, you can see that the tracking server has an artifact proxy and, in that way, the end users will not have direct access to the remote object store anymore. It's a good idea to be aware of all of these different possible configurations within MLflow tracking. We won't be implementing this proxied storage. However, we will run through several of the other examples that we've just discussed.
+
+9. Video: Installing MLflow (it_mlflowdj_01_enus_09)
+
+Learn how to explore the MLflow install documentation.
+explore the MLflow install documentation
+[Video description begins] Topic title: Installing MLflow. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+Let's begin our exploration of MLflow from the very beginning. Here we are in a blank browser tab. Let's begin by navigating the URL where we can download and get started with installing MLflow. Here's the URL on screen now, mlflow.org/docs/latest/index.html.
+
+[Video description begins] A page titled New Incognito tab appears. It contains a URL bar at the top with a few icons like Back, Forward, Refresh, and so on. There is a header on the page that reads: You've gone Incognito. [Video description ends]
+
+Over on the top left corner, you can see that there's a little drop-down with a lot of different versions listed in there. As of when this video was created, which is late in June of 2023, the latest version is 2.4.1. However, we are actually not going to go with this version, and here's why. This particular version 2.4.1 was released just a few days ago, and at this point in time, all of the demos in this code had been developed and thoroughly tested on the previous version 2.3.2.
+
+[Video description begins] A page titled MLflow Documentation appears. It contains a URL at the top that reads mlflow.org/docs/latest/index.html. Below, there is a drop-down field labeled 2.4.1 (latest). The navigation pane on the left contains a Search bar at the top. Below, there are various items listed below the header MLflow. A few of them are What is MLflow?, Concepts, MLflow Tracking, MLflow Models, and so on. The main pane displays the header MLflow Documentation and some links below. A few of them are MLflow Plugins, Command-Line Interface, Search Runs, R API, REST API, and so on. Below, it has a button labeled NEXT. [Video description ends] 
+Now, we took the precaution of running all of our demos on the latest version as well, and most of them seem to work just fine. However, as of when this video was recorded, there were some quirks in the Azure deployment of MLflow, which led to some issues. It's quite possible that by the time you view this video, those quirks will have been resolved and hopefully that will be the case but, in any event, for now, we will stick with 2.3.2.
+
+[Video description begins] A drop-down appears with options like 2.3.2, 2.2.2, 2.1.1, 2.0.1, and so on. [Video description ends]
+
+So, we select that from the drop-down down and move on.
+
+Let's take a moment to orient ourselves with the contents of this page. Up top, as you can see, we are informed that MLflow is an open-source platform for managing end-to-end machine learning lifecycles. Then we have four primary functions or components of MLflow listed out, MLflow tracking, MLflow Projects, MLflow Models, and the MLflow Model Registry. These are going to become very familiar to us in the journey up ahead.
+
+Down below, as you can see, MLflow is stated to be library-agnostic. It can be used with any machine learning library and any programming language because all of its APIs are available in REST form. Then we can scroll down, there's a list of useful links here, and then at the very bottom, there's a Next button. Let's click on that. That takes us into a page titled What is MLflow? There's more useful information here, pretty high level and you can see here that there are details of MLflow Tracking and the other components that we just discussed.
+
+We satisfy ourselves that MLflow has pretty comprehensive documentation and then we scroll back up towards the top and on the center-left, we click on the link button, Quickstart: Install MLflow instrument code & view results in minutes. That takes us to another page and somewhere midway through that page, we find what we are looking for. That's the Install MLflow section. We click on the Customize and troubleshoot MLflow installation and that takes us to the specific commands that we need to run. 
+
+[Video description begins] The main pane now displays the header: What is MLflow?. It contains a section: MLWORKFLOW AND PERSONAS below with a graphic. There are various other sections like What is MLflow used for?, Who uses MLflow?, MLflow use cases, and so on. It has a section: Next steps which contains 2 buttons labeled: PREVIOUS, and NEXT. [Video description ends]
+
+[Video description begins] The Quickstart: Install MLflow, instrument code & view results in minutes is highlighted on the left pane. The main pane displays the same header with some information below. Underneath, it contains various other sections like Install MLflow, Add MLflow tracking to your code, and so on. The Install MLflow section contains a link: Customize and troubleshoot MLflow installation. [Video description ends]
+
+Sometimes while installing packages, our eyes tend to glaze over at all of these commands, but here we've encountered something truly important, so, let's wake up and pay attention. You can see here that we are being urged to ensure that we install MLflow in a virtual environment. This is no idle warning. If you do not directly set up your virtual environment and associate that virtual environment with your Jupyter Notebooks, all manner of hard-to-detect complications will ensue. As the docs tell us here, MLflow strongly recommends using a virtual environment manager on Mac machines. This recommendation holds on all platforms, but it is especially important to use a virtual environment on Mac OS X because the system python version varies depending on the installation and whether you've installed the Xcode command line tools.
+
+As the docs further tell us, the default environment manager for MLflow is virtualenv, but other choices are conda and venv. Down below we have some additional information about MLflow's availability in Python, R, and Java. We are going to take this warning to use a virtual environment very seriously. Let's now switch over to a terminal window and get started with the installation process. 
+
+[Video description begins] The main pane now displays the header: Customize and troubleshoot MLflow installation. Below, it contains various sections, such as Python library options, Python and Mac OS X, Python, R and Java, Save and serve models, and so on. The Python library options section contains a table with column headers: Name, pip install command, and Description. [Video description ends]
+
+Let's begin by creating a folder called projects. Then let's cd into the projects directory and create a subdirectory there called mlflow. This is where we will do all of our work, and indeed this is where we will also create our virtual environment.
+
+So, we cd into the mlflow directory, and then we start by running a few basic commands.
+
+
+[Video description begins] A Terminal window appears. The following commands are added: mkdir projects. cd projects/. mkdir mlflow. cd mlflow/. [Video description ends]
+
+It's always a good idea to make sure that we are on the same page with regards to python version numbers, so, here's python -- version. You can see that we currently have 3.10.9. Then let's also run pip --version. You can see that we have 22.3.1.
+
+[Video description begins] The following command is added: python --version. Python 3.10.9. The next command reads: pip --version. pip 22.3.1 from /Users/loonycorn/anaconda3/lib/python3.10/site-packages/pip (python 3.10). [Video description ends]
+
+Next, let's do the same for jupyter and this gives us a number of version numbers corresponding to the different libraries and you'll see here that ipykernel, that's the second entry in this listing, is going to be particularly relevant to us when it comes time to associate our virtual environment with our Jupyter Notebook.
+
+Now in case you do not have Jupyter set up, then it's easy enough to get started. 
+
+[Video description begins] The next command reads: jupyter --version. It presents a list of packages under the line: Selected Jupyter core packages.... Ipython : 8.10.0, ipykernel : 6.19.2, ipywidgets : 7.6.5, jupyter_client : 7.3.4, jupyter_core : 5.2.0, jupyter_server : 1.23.4, jupyterlab : 3.5.3, nbclient : 0.5.13, nbconvert : 6.5.4, nbformat : 5.7.0, notebook : 6.5.2, qtconsole : 5.4.0, traitlets : 5.7.1. [Video description ends]
+
+Just switch over to a browser, hit the URL that you now see on screen, which is anaconda.com, and that in turn will take you to the Anaconda homepage, accept the cookies, and then click on into the download page. You can see the bright green Download button there and that will set you on the path, Download and install all of the required libraries. 
+
+[Video description begins] A page titled ANACONDA appears. The URL displays the address: anaconda.com. It contains 5 tabs below, such as Enterprise, Pricing, Solutions, Resources, and About. Under this, there is a header: Unleash Your Innovation. Below this, there are 2 buttons: Start Coding Now, and Download. [Video description ends]
+
+You can see here from the drop-down, the web page has detected that we are on a Mac machine, and it offers us a couple of choices for the kind of libraries that we wish to download. If you are performing these steps on a Windows machine, of course, the choices will be relevant to Windows instead of Mac.
+
+[Video description begins] The Download drop-down offers 2 options: Download for Mac (Intel), and Download for Mac (M1/M2). [Video description ends]
+
+In any case, for now, let's assume that you do happen to have Jupyter set up and so, we'll switch back to the Terminal window and pick up with the MLflow installation. We run MLflow --version and the returned response tells us that mlflow the command was not found. This confirms that we do not yet have MLflow set up here, and that's what we'll have to change in the next demo.
+
+[Video description begins] The Terminal window appears again. The following command is added: mlflow --version. -bash: mlflow: command not found. [Video description ends]
+
+10. Video: Installing MLflow in a Virtual Environment (it_mlflowdj_01_enus_10)
+
+Find out how to install MLflow in a virtual environment.
+install MLflow in a virtual environment
+[Video description begins] Topic title: Installing MLflow in a Virtual Environment. Your host for this session is Vitthal Srinivasan. [Video description ends]
+You might recall that we had ended the previous demo by running the command mlflow --version and we had seen from the response that we do not have MLflow configured or installed at this point. In this demo, we are going to change that and the first thing that we need to do here is create the virtual environment within which we are going to set up MLflow. Remember again, that from the docs we were strongly urged to install and set up MLflow within a virtual environment.
+
+Here's the command that helps us get started.
+
+[Video description begins] A Terminal window appears. The following command is added below: mlflow --version. The highlighted output below reads: bash: mlflow: command not found. [Video description ends]
+
+You can see it on screen now, python3 -m venv and then mlflow_venv. Just to be clear, in this command mlflow_venv is the name of the virtual environment that we are creating. Let's dwell for a moment on the rest of this command as well. venv is a Python module, so the python3 -m venv is a way of directing whatever comes after that into the venv module.
+
+Here we are specifying the name of the virtual environment, and that's what we'd like to bring into existence. Let's take a step back. A virtual environment is exactly what its name suggests. It's like a sandbox. It's specifically a directory which contains Python as well as all of the system libraries and the correct environment variables so that once you activate that virtual environment, any Python commands that you run are being directed at the version of Python present in that virtual environment. You can then go ahead and add libraries and configure that environment exactly as you like. Here, that virtual environment is called mlflow_venv and when we run this command, the net effect is going to be that a new folder is going to be created and within that folder, we are going to have a new copy of Python and then we can activate that virtual environment.
+
+On screen now, you can see that we've run the ls-l command and that confirms that this new folder mlflow_venv has indeed come into existence. Now before we go any further, a quick note about multiple versions of Python. What if you have multiple versions of Python running on this machine? How can you associate a specific version with this particular virtual environment? Well, in that case, you need to pass in one additional flag that is the --python= flag, and you then have to specify the path to the python executable.
+
+In this particular instance, we only happen to have one version of Python up and running, and that's why it's fine for us to omit it. In any case, coming back to this virtual environment called mlflow_venv that we've created, at this point the command has already copied over the Python interpreter as well as the pip package manager into this directory. At this point, if you run a Python command, would it work with the copy of Python present in the virtual environment or with the parent version that we have by default outside? The answer is that at this point on screen now, it still would point to the outside version.
+
+[Video description begins] The following lines of code are highlighted: python3 -m venv mlflow_venv. The next command reads: ls -l, drwxr-xr-x 6 loonycorn staff 192 Jun 25 15:17 mlflow_venv. A command displays at the bottom that reads: python3 -m venv --python=/path/to/python_venvexecutable mlflow_venv. [Video description ends] 
+
+We only will switch over to this virtual environment after we activate the virtual environment and the command to do that is in turn visible on screen now. source, then the name of the virtual environment mlflow_venv/bin/activate. That's the syntax if you are on a Unix-based system. If you happen to be on Windows, then you've got to run the activate.bat batch file and that command is visible on screen in the form of an annotation. The syntax of both of these commands, both the Unix version and the Windows version, ought to make it clear that when we run the activate command, we are effectively executing a script file. That's why we make use of source when we are on Unix.
+
+This script file is called activate and it's present inside the bin directory and that bin directory in turn is inside the virtual environment directory here, that part is mlflow_venv/bin/activate. Another point worth keeping in mind is that as soon as we run this command, the prompt changes. As you can now see, on screen, we have the name of the virtual environment, that's (mlflow_venv) and then (base), followed by the traditional path that's ~/projects/mlflow>. This is an important little tell because you might run into situations where you're not quite sure whether the Python that you're using is inside a virtual environment or not, and the form of the prompt is a useful indication.
+
+Now, all of the environment variables have been reconfigured so that any Python commands that we run are going to be redirected to the Python interpreter present within mlflow_venv. This file activate, which is present inside the bin directory, was placed there when we created the virtual environment. Where there is a /bin directory, there is also likely to be a /lib directory, and indeed that's the case in every virtual environment. It's inside that lib directory that Python and the standard Python libraries have been copied over.
+
+As an aside, there's also an include directory that's created in there.
+
+[Video description begins] The next command reads: source mlflow_venv/bin/activate. A command appears at the bottom that reads: mlflow_venv\Scripts\activate.bat, This is the command to run on Windows. The next command is highlighted. It reads: (mlflow_venv) (base) ~/projects/mlflow>. [Video description ends]
+
+In any case, now that we have activated our virtual environment, any Python commands that we run are going to be run against this particular version. And here you can see that when we run python --version, we have version 3.10.9, that happens to be exactly the same as the version of Python that we had running outside the virtual environment, and the same should be the case for you as well.
+
+In similar fashion, let's run jupyter --version, and once again, all of the version numbers that we see should match those which we had in the previous demo. After all, all of the libraries inside this virtual environment are simply copied over from the outside environment. What if we'd like to deactivate our virtual environment and go back to using the outside default Python installation? Well, that's simple enough. 
+
+[Video description begins] The following lines of code are highlighted: python --version, Python 3.10.9. The next command reads: jupyter --version. It presents a list of packages under the line: Selected Jupyter core packages.... Ipython : 8.10.0, ipykernel : 6.19.2, ipywidgets : 7.6.5, jupyter_client : 7.3.4, jupyter_core : 5.2.0, jupyter_server : 1.23.4, jupyterlab : 3.5.3, nbclient : 0.5.13, nbconvert : 6.5.4, nbformat : 5.7.0, notebook : 6.5.2, qtconsole : 5.4.0, traitlets : 5.7.1. [Video description ends]
+
+You simply run the deactivate command and all of the changes which were executed when we ran the activate script are going to be undone. Also visible on screen now is the command that you ought to run if you are on a Windows machine. This is simply the deactivate.bat batch file corresponding to the activate.bat batch file, which kicked off the virtual environment.
+
+If you're wondering why we can now run deactivate without prefacing it with the full path, remember that all of these changes are being run after we've set the corresponding environment variables. So, we do not need the full path in order to run deactivate, but we do usually require the full path in order to activate. After that little segue into the internals of virtual environments, let's come back to MLflow.
+
+[Video description begins] The following command is highlighted now. It reads: deactivate. A command appears at the bottom that reads: mlflow_venv\Scripts\deactivate.bat, This is the command to run on Windows. [Video description ends]
+
+ Let's once again activate our MLflow virtual environment. The command is the same as the one we looked at a moment ago, source mlflow_venv/bin/activate.
+
+Now let's go ahead and install all of the libraries that we anticipate requiring. We begin by running a pip install pandas. 
+
+[Video description begins] The following command is highlighted now. It reads: source mlflow_venv/bin/activate. A command appears at the bottom that reads: mlflow_venv\Scripts\activate.bat, This is the command to run on Windows. [Video description ends]
+
+This is going to install pandas inside our virtual environment and then in similar fashion, we go ahead, and pip install seaborn, and then shortly thereafter, we do the same for matplotlib. Here we are on screen, now you can see the results of the pip install matplotlib command. Next, let's go ahead and install mlflow, and we do this by explicitly specifying the version number 2.3.2. This process also goes through smoothly.
+
+Remember, this installation is occurring inside the virtual environment. It's extremely important that we run all of these commands only after having created our virtual environment and then activated that virtual environment. And by the end of this process, the MLflow installation is complete. We had begun this demo by unsuccessfully running the command mlflow --version. Let's try again and this time we have more satisfactory results. You can see that we do have version 2.3.2 installed. We can also run mlflow --help to get more information about the different options and the commands.
+
+[Video description begins] The following command is added: mlflow --version. The output highlighted reads: mlflow, version 2.3.2. The next command reads: mlflow --help. [Video description ends]
+
+11. Video: Viewing the MLflow User Interface (UI) and Directory Structure (it_mlflowdj_01_enus_11)
+
+In this video, discover how to view the MLflow User Interface (UI) and directory structure.
+
+view the MLflow User Interface (UI) and directory structure
+[Video description begins] Topic title: Viewing the MLflow User Interface (UI) and Directory Structure. Your host for this session is Vitthal Srinivasan. [Video description ends]
+Let's pick up a right from where we left off at the end of the last demo. There we had successfully installed MLflow inside our virtual environment and we had then run mlflow --help. Here, on screen now is the output of the help command. You can see that that in turn lists various subcommands that we can use with MLflow. We can see here for instance that MLflow artifacts can be used to upload, list, or download artifacts from MLflow.
+
+MLflow server can be used to run the MLflow tracking server. Our first order of business is going to be to start up the MLflow server, but we'll do that in a rather roundabout fashion. We will not run MLflow server, instead, we are going to launch a client and that is something that we'll do by running mlflow ui. [
+
+Video description begins] A Terminal window appears. The following command is added below: mlflow --help. Below, a set of lines are highlighted from the output. A few of them are: artifacts Upload, list, and download artifacts from an MLflow..., and server Run the MLflow tracking server. [Video description ends]
+
+This not only will launch the MLflow server, but it will also open up a nice user-friendly interface.
+
+As you might imagine, this command is going to bring up a nice user interface. This is effectively a client which accesses the underlying MLflow REST APIs and that allows us to track visually all of the different components in our little MLflow universe. From the log messages visible on screen now, we can see that mlflow ui can be accessed on port 5000 of localhost. That's the IP address 127.0.0.1.
+
+So, let's switch over to a browser and hit that URL localhost:5000 and indeed here is the MLflow client UI.
+
+[Video description begins] The following command is added: mlflow ui. Below, the output displays a set of lines. The highlighted line reads: [2023-06-25 15:21:45 +0530] [28997] [INFO] Listening at: http://127.0.0.1:5000 (28997). [Video description ends]
+
+ [Video description begins] The Incognito Browser appears. It contains a URL bar at the top. The following URL is added: http://localhost:5000/. [Video description ends]
+
+We can confirm that we have the correct version running from the top left, mlflow 2.3.2. Then you see that we have a couple of tabs, Experiments and Models. You see over on the left that we have a Default experiment. There aren't any runs listed in the center of the screen because we haven't run anything yet.
+
+[Video description begins] The MLflow window appears. It contains 2 tabs at the top, such as Experiments, and Models. The Experiments tab is active. The navigation pane on the left contains an item labeled Default under the header: Experiments. The main pane displays various elements under the header: Default. A few of them are: Table view, Chart view, Columns, State, and so on. [Video description ends]
+
+Up top, we can click on Models, that takes us into the Models tab.
+
+This is empty as well because we haven't created any models either. Let's keep this MLfow UI running and then turn back to a terminal prompt and run a few commands. We don't disturb the window where we ran MLflow UI and instead we click on the Shell button up top and open up a New Tab. In this new Terminal tab, we begin by exploring the directory structure.
+
+[Video description begins] The Models tab is active now. It displays the header: Registered Models. Below, it contains a button labeled Create Model. Under this, there is a table with column headers: Name, Latest Version, Staging, Production, Last Modified, and Tags. [Video description ends]
+
+ [Video description begins] The Toolbar at the top is highlighted. It contains items like Terminal, Shell, Edit, View, Window, and Help. The Shell option is highlighted. It provides options like New Window, New Tab, New Command, Close Window, and so on. [Video description ends]
+
+Before we go any further, however, let's take a moment to notice the prompt. If you look closely, you can see that we have the word base within parentheses, but we no longer have the name of our virtual environment. This is a hint to us that this new tab does not have our virtual environment activated. That's worth keeping in mind.
+
+In any case, let's now run the ls -l command.
+
+[Video description begins] The new Terminal window appears. The following command is highlighted below: (base) ~/projects/mlflow>. [Video description ends]
+
+You can see here that we now have two directories and not one. One directory is mlflow_venv, that's the virtual environment that we had created. The other is mlruns. mlruns was created for us by running mlflow ui. Let's cd into this newly created directory mlruns and run the ls -l command.
+
+[Video description begins] The following command is added: ls -l. The next line reads: drwxr-xr-x 7 loonycorn staff 224 Jun 25 15:19 mlflow_venv. The line below reads: drwxr-xr-x 5 loonycorn staff 160 Jun 25 15:21 mlruns. [Video description ends]
+
+Here we see that a couple of directories are visible. We have one called 0 and that corresponds to the default experiment. 0 is the experiment ID. models here is a folder which contains any models that we create and work with from within MLflow.
+
+Now a quick word here about MLflow UI and MLflow server.
+
+[Video description begins] The following commands are added: cd mlruns/, ls -l. The next line reads: drwxr-xr-x 3 loonycorn staff 96 Jun 25 15:21 0. The line below reads: drwxr-xr-x 2 loonycorn staff 64 Jun 25 15:21 models. [Video description ends]
+
+Remember that we ran the command mlflow ui that had the effect of launching the server and that in turn had the effect of creating this mlruns directory. What happens if we relaunch the MLflow server? Well, the answer is it's this self-same mlruns directory which will continue to be used. So, if we relaunch the server, we are going to continue working with this same mlruns directory that you see on screen now. It will not recreate it from scratch.
+
+So, this mlruns directory is only going to be created the first time around that the server is launched and, in our example, that server was launched when we run mlflow ui. In any case, let's quickly examine the contents of the experiment directory. Here, 0 corresponds to the experiment ID for the default experiment. We cd into it and run ls -l, and there is a yaml file. As you might imagine, this has metadata which associated with the metrics, parameters, tags, and run that this experiment encapsulates.
+
+[Video description begins] The following command is highlighted: (base) ~/projects/mlflow/mlruns>. The next command reads: cd 0, ls -l. The line below is highlighted. It reads: -rw-r--r-- 1 loonycorn staff 157 Jun 25 15:21 meta.yaml. [Video description ends]
+
+Let's cd back out into the top-level mlruns directory. Let's cd into the models directory and explore the contents of that. That is empty. There's nothing in here right now and that's something that we will change in the demos coming up ahead.
+
+[Video description begins] The following commands are highlighted: cd ../, cd models, ls -l. [Video description ends]
+
+12. Video: Setting up an MLflow Virtual Environment for Jupyter (it_mlflowdj_01_enus_12)
+
+Discover how to set up an MLflow virtual environment for Jupyter.
+set up an MLflow virtual environment for Jupyter
+[Video description begins] Topic title: Setting up an MLflow Virtual Environment for Jupyter. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+At this point, we have successfully created our virtual environment inside which we want MLflow to be installed. We then installed MLflow and even ran MLflow UI, that had the effect of kicking off MLflow Server and that's where we left off at the end of the last demo. Now, we are going to turn our attention to Jupyter and in this demo, we are going to see how to configure Jupyter such that we can run Jupyter Notebooks making use of the virtual environment inside which we have MLflow installed.
+A sneak peek of where we want to get to in this demo is visible on screen now. You can see that we have a Jupyter Notebook and over on the top right we have clicked on New and in the list of kernels, you can see that we have mlflow_venv. This is where we want to get to.
+
+[Video description begins] A page titled Jupyter appears. It contains 3 tabs below, such as: Files, Running, and Clusters. The files tab is active. It has 3 items below. There are 2 buttons at the top labeled Quit, and Logout. Under this, there are 2 more buttons labeled Upload, and New. The New drop-down offers options like Apache Toree - Scala, mlflow_venv, Text File, Folder, and so on. [Video description ends]
+
+Let's see how to get there starting from this blank terminal window that we see on screen now. Now the steps that are coming up might seem rather boring and mundane, but there are some of those steps, and one in particular that are really critical to get right. If you miss a step here, that can turn into a real gotcha because down the road, your Jupyter Notebooks will not be running within the virtual environment, that can sometimes be very easy to detect and sometimes very hard to detect.
+
+So, let's make sure that we get these steps right. We kick things off by running ls -l and you can see here that we've created in IPython Notebook, it's called TrackingExperiments.ipynb. That's an addition to the two directories which we had at the end of the last demo. One of those was mlruns and the other was our virtual environment mlflow_venv. At this point, we are not running inside our virtual environment and there are two ways of checking that this is the case.
+
+[Video description begins] The Terminal window appears. The following command is added: ls -l. The next line reads: -rw-rw-r--@ 1 loonycorn staff 47966 Jun 27 11:24 TrackingExperimentRuns.ipynb. The next code reads: drwxr-xr-x 7 loonycorn staff 224 Jun 27 11:39 mlflow_venv. The next line reads: drwxr-xr-x 5 loonycorn staff 160 Jun 15:21 mlruns. [Video description ends]
+
+The first is by looking at the prompt. You can see that the prompt does not include the name of the virtual environment and the second is by running mlflow --version. In our case, we have only installed mlflow inside the virtual environment and so, when we run mlflow --version outside that is with our default Python installation, we get back the response mlflow: command not found. In order to run mlflow, we've got to switch into our virtual environment and of course, the way to do that is by activating it.
+
+On a Unix platform, we do this by running source followed by mlflow_venv/bin/activate. And if you are on Windows, then the command is visible on screen now. This takes the form of running the activate.bat batch file. As soon as we activate this virtual environment, you can see that the prompt changes. It now contains the name of that virtual environment.
+
+Let's again pause and take note of just how critical this step on screen is. This command must have been run before we move on to the next command. Otherwise, down the road, the virtual environment in our Jupyter Notebook will not be the same as the one in the terminal, and all kinds of problems will result, in particular, as we get to the more advanced use cases where this mismatch is hard to detect. So again, please make sure that you really are confident that you've activated your virtual environment.
+
+One way to make sure of that is by rerunning the mlflow --version command.
+
+[Video description begins] The following lines are highlighted: mlflow --version. The next line reads: -bash: mlflow: command not found. The next command reads: source mlflow_venv/bin/activate. A command appears at the bottom that reads: mlflow_venv\Scripts\activate.bat, This is the command to run on Windows. [Video description ends]
+
+And this time when we run this command, we get back the actual version 2.3.2. We clearly are in the correct virtual environment. Now, we go ahead and associate Jupyter with this virtual environment, and the first step towards that is installing the ipykernel library. Now, ipykernel or the IPython kernel is a Python package which manages the communication between Jupyter, that is, between your notebook or JupyterLab interface and the Python kernel.
+
+[Video description begins] The following command is added again: mlflow --version. The next line reads: mlflow, version 2.3.2. [Video description ends] 
+
+We've run the command pip install ipykernel on screen now and you can see that that's gone through successfully. In this context, it makes sense for us to understand what exactly the kernel is. You can think of IPython, that is the notebook itself, as a kind of IDE. It has a shell and all of the functionality like app completion, syntax highlighting, command history, and so on. But all of the computation is happening in the kernel.
+
+Now, though the name ipykernel makes it seem like the kernel can only be a Python kernel, that's not strictly true. The kernel could also be an R kernel or a Julia kernel.
+
+[Video description begins] The following command is added: pip install ipykernel. The highlighted line reads: run: pip install --upgrade pip. [Video description ends]
+
+How do we get a list of all available kernels? The answer is using the command jupyter kernelspec list that you now see on screen. Jupyter will then search for kernels in some specified system directories and in this instance, after doing that search, it has found two kernels, python3 and apache_toree_scala.
+
+Now, if you look really closely at the python3 entry here, you can see that the corresponding path for the kernelspec refers to our virtual environment. You can see in their mlflow_venv/ share/ jupyter and so on. This tells us that we are on the right track. jupyter kernelspec list has indeed detected the python3 version that's present inside our virtual environment. In case you're wondering what the word spec refers to in this context, that's used because the kernel is specific to a programming language.
+
+So, here the python3 kernelspec is for python3, and the apache_toree_scala kernelspec is of course for scala. At this point, you might think that the python3 kernel that you see listed here is sufficient for us to proceed with, but that's actually not the case. This python3 is the default Python that's available in this directory. We've got to perform some additional steps and add in a new kernel here, and that kernel needs to be associated with our virtual environment. The python3 that you see on screen now is not.
+
+Now at this point, we know that Jupyter can see our virtual environment, but we still have to perform an additional step in order to make sure that it's available as a kernel to use in our Jupyter Notebooks. And that additional step takes the form that you see on screen now python -m ipykernel install and then --user and --name=mlflow_venv. Let's break this down. The python -m is simply a way of saying that whatever follows should be directed into the module ipykernel.
+
+That module then accepts the install command along with the associated flags. The first flag is user and the second is name which is set to be mlflow_venv. Now, ipykernel is the module that manages all of the available kernels in Jupyter. install is a command which tells it to install a specific kernel. The --user ensures that this is only done for the current user and not system-wide, and the --name=kernel name specifies the name of the kernel that's being installed.
+
+Once we run this command, we will have our virtual environment available as a kernel for use from within Jupyter Notebooks. At this point, if we now rerun the jupyter kernelspec list command, we find that we get back not two but three kernels and the new kernel in there is the one we just created, mlflow_ venv is the name and you also see the directory location of the corresponding kernel file.
+
+[Video description begins] The following command is added: jupyter kernelspec list. The next highlighted line reads: python3 /Users/loonycorn/projects/mlflow/mlflow_venv/share/jupyter/kernels/python3. The next line reads: apache_toree_scala /usr/local/share/jupyter/kernels/apache_toree_scala. The following command is added: python -m ipykernel install --user --name=mlflow_venv. The next line reads: Installed kernelspec mlflow_venv in /Users/loonycorn/Library/jupyter/kernels/mlflow_venv. [Video description ends]
+
+At this point, we can run the jupyter notebook command before we hit Enter, notice that the prompt still contains the name of our virtual environment mlflow_venv, telling us that we still are within this virtual environment. From here on in it's pretty smooth sailing.
+
+[Video description begins] The following command is added again: jupyter kernelspec list. The next highlighted line reads: python3 /Users/loonycorn/projects/mlflow/mlflow_venv/share/jupyter/kernels/python3. The next line reads: mlflow_venv /Users/loonycorn/Library/jupyter/kernels/mlflow_venv. The next line reads: apache_toree_scala /usr/local/share/jupyter/kernels/apache_toree_scala. The following command is added: jupyter notebook. [Video description ends]
+
+We will now access our Jupyter Notebook. We switch over to a browser and hit the server for our Jupyter Notebook by pasting in the URL localhost:8888/tree and you can see here that we have the directory and the Python notebook TrackingExperimentRuns.ipynb.
+
+At this point, you can click on the New button over on the top right and you see that three kernels are listed there, Apache Toree for Scala, Python 3 that's the default, and then the new kernel that we explicitly added in there. It's called mlflow_venv. We select this kernel and then click on TrackingExperimentRuns.ipynb.
+
+[Video description begins] The Incognito Browser appears. The URL bar displays the address: http://localhost:8888/tree. [Video description ends]
+
+ [Video description begins] The page titled Jupyter appears again. The New drop-down offers options like Apache Toree - Scala, Python 3 (ipykernel), mlflow_venv, and so on. [Video description ends]
+
+This is a simple enough notebook. For now, we are going to be focused only on the very first code cell. So, we click on kernel up top.
+
+Before we make any changes at all, please notice that in the top right, we have mlflow_venv as the kernel and we can change that by clicking on Kernel in the menu and there is a Changekernel command with the three kernels that we saw a moment ago.
+
+[Video description begins] The page now displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells with some lines of code inside. [Video description ends]
+
+ [Video description begins] The Kernel tab offers options like Interrupt, Restart, Restart & Run All, Change kernel, and so on. The Change kernel option further offers 3 options: Apache Toree - Scala, Python 3 (ipykernel), and mlflow_venv. [Video description ends]
+
+Let's not change the kernel for now and instead run the first code cell import mlflow and display the version and this successfully displays 2.3.2.
+
+Now, let's go back to the Kernel menu item and change the kernel [Video description begins] The command in the first input cell reads: import mlflow, mlflow._version_. The output for this command reads: '2.3.2'. [Video description ends] to be Python 3. This seems an intuitive enough choice, but when we now try and rerun the first code cell, you see that we get a ModuleNotFoundError: No module named 'mlflow'. This proves to us that MLflow is only available to us with the mlflow_venv kernel and that's why we had to go through all of these steps. Now, let's change that back to mlflow_venv, rerun this code cell, and we are back in business. The version number is displayed correctly as 2.3.2 and we can now move on with using mlflow from within our notebook. 
+
+Video description begins] The Kernel is set to Python 3 (ipykernel), and then tomlflow_venv. [Video description ends]
+
+13. Video: Course Summary (it_mlflowdj_01_enus_13)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary. [Video description ends]
+
+You have now reached the end of this course, getting started with MLflow. MLflow plays a crucial role in systematizing machine learning workflow by providing a unified platform that seamlessly integrates the different stages of the ML life cycle. With MLflow's tracking capabilities, data scientists can easily log and monitor their experiments, keeping track of various model runs, hyperparameters, and performance metrics. This systematic tracking ensures that there are no unexpected surprises related to model training and parameters and allows for easy comparison between different models, aiding in the selection of the best-performing ones.
+Furthermore, MLflows Model Registry facilitates organized model versioning, enabling data scientists to manage and deploy models efficiently across different environments. By providing a standardized approach to experiment tracking, model management, and deployment, MLflow enhances collaboration and streamlines the entire MLflow workflow, leading to more efficient development, reduced development time, and ultimately better and more reliable machine learning models.
+
+In this course, first, we delved into the theoretical aspects of the end-to-end machine learning workflow, which encompasses fundamental stages such as data preprocessing and visualization. The importance of meticulous data cleaning and effective feature engineering was highlighted in the data preprocessing stage to prepare the dataset for model training. Gaining a grip on the data through visualization and analysis is also as important as data cleaning. Throughout these theoretical stages, MLflow was introduced as a platform that potentially plays a vital role by providing a unified solution for systematic experiment tracking, model versioning, and deployment management.
+
+In this context, data scientists can envision streamlining their workflow, enhancing collaboration, and ensuring model reproducibility with MLflows assistance, leading to more efficient development and deployment of machine learning models. Next, we delve deeper into the core components of MLflow, including its essential features that contribute to systematizing the machine learning workflow. We started by introducing MLflow and its potential significance in the field of data science. Furthermore, we discussed how MLflow might aid in model development, simplifying the process and facilitating deployment in various production environments. We also explored the concepts of the Model Registry, which could enable organized model versioning and management.
+
+Additionally, we dived into MLflow Tracking as a powerful tool that could potentially allow data scientists to log, visualize, and compare experiment metrics and model performance efficiently. Finally, we explored the practical aspects of working with MLflow. We dived into the MLfow install process, gaining the necessary skills to set up MLflow in a virtual environment, ensuring a clean and isolated setup for our machine learning projects. We also explored the MLfow user interface and directory structure, understanding how to organize experiments and models effectively.
+
+We set up an MLflow virtual environment for Jupyter, enabling seamless integration of MLflow into our Jupyter Notebooks. In conclusion, this course has provided us with a solid foundation in MLflow, equipping us with the knowledge and skills to manage the entire machine learning life cycle effectively. With this strong foundation, we are well prepared to move on to creating and tracking ML models in MLflow in the course coming up ahead.
+
+Course File-based Resources
+•	Getting Started
+Topic Asset
+© 2023 Skillsoft Ireland Limited - All rights reserved.

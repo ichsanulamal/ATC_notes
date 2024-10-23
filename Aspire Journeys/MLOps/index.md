@@ -1,7 +1,7 @@
 # MLOps
 
-[[Track 1 Intro to MLOps/index]]
+[[Intro to MLOps/index]]
 
-[[Track 2 MLFlow/index]]
+[[MLFlow/index]]
 
-[[Track 3 Data Version Control/index]]
+[[Data Version Control/index]]

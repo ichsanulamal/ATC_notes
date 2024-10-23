@@ -1,0 +1,848 @@
+Tracking Deep Learning Models
+Deep learning models have revolutionized computer vision and natural language processing, enabling powerful image and text-based predictions. You will start with image-based predictions using TensorFlow. You will visualize and clean data to generate datasets ready for machine learning (ML). You will train an image classification model with TensorFlow and track metrics and artifacts using MLflow. You will register the model in MLflow for local deployment and deployment on Azure. Next, you will explore PyTorch Lightning to simplify deep learning model development and training. You will use it for image classification, setting up your model with little effort. You will then train an image classification model with MLflow for tracking, deploy it locally, and expose it for predictions using a REST endpoint. Finally, you will get an overview of large language models (LLMs) like Transformers. You will load a pre-trained Transformers-based sentiment analysis model from Hugging Face and use MLflow to track its performance and artifacts.
+Table of Contents
+    1. Video: Course Overview (it_mlflowdj_06_enus_01)
+
+    2. Video: Preprocessing Image Data for Machine Learning and Viewing the Images (it_mlflowdj_06_enus_02)
+
+    3. Video: Training and Running an Image Classification Model (it_mlflowdj_06_enus_03)
+
+    4. Video: Viewing Performance and Registering an Image Classification Model (it_mlflowdj_06_enus_04)
+
+    5. Video: Deploying a Model to Azure, Viewing It, and Making Predictions (it_mlflowdj_06_enus_05)
+
+    6. Video: Exploring PyTorch and Viewing Images for Machine Learning (it_mlflowdj_06_enus_06)
+
+    7. Video: Setting Up and Running an Image Classification Model (it_mlflowdj_06_enus_07)
+
+    8. Video: Viewing Model Performance, Serving It, and Making Predictions (it_mlflowdj_06_enus_08)
+
+    9. Video: Running a Sentiment Analysis Model and Viewing Logged Artifacts (it_mlflowdj_06_enus_09)
+
+    10. Video: Course Summary (it_mlflowdj_06_enus_10)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_mlflowdj_06_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for the session is Janani Ravi. [Video description ends]
+Hi and welcome to this course, tracking deep learning models. My name is Janani Ravi and I'll be your instructor for this course. Deep learning models have revolutionized computer vision and natural language processing which are great for image and text-based problems respectively. Typically, image-based problems are solved using Convolutional Neural Networks while text-based problems are attacked using Recurrent Neural Networks and Transformers.
+
+In this course, you will start with image-based predictions using TensorFlow. You'll train an image classification model, track metrics and artifacts using Mlflow. You will then register the model in MLflow for local deployment as well as deployment on Microsoft Azure. Next, you will use PyTorch Lightning for image classification, setting up your model with very little effort. You'll then train an image classification model with MLflow for tracking and deploy it locally and expose it for predictions using a REST endpoint.
+
+Finally, you'll get an overview of large language models (LLMs) like Transformers. You'll load a pre-trained Transformers-based sentiment analysis model from HuggingFace and use MLflow to track its performance and artifacts. In conclusion, after watching this course, you will know how to use deep learning models for image and text predictions and track their metrics using MLflow.
+
+2. Video: Preprocessing Image Data for Machine Learning and Viewing the Images (it_mlflowdj_06_enus_02)
+
+Find out how to preprocess image data for machine learning and view the images.
+preprocess image data for machine learning and view the images
+[Video description begins] Topic title: Preprocessing Image Data for Machine Learning and Viewing the Images. Your host for the session is Janani Ravi. [Video description ends]
+So far in this learning path, we've trained and tracked a variety of different models using MLflow. We've trained models in scikit-learn for both classification and regression. We've trained XGBoost models, we've trained stats models performing ordinary least squares regression, and we've also trained a time-series model using the Prophet time-series forecaster.
+
+[Video description begins] A Jupyter notebook titled 'ManagingTensorflowModels' is open on the browser. A toolbar at the top contains the following options: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. Below, numerous code cells are displayed. [Video description ends]
+
+With all of the model training, tracking, logging, and deploying experience that we have under our belt, it's now time for us to turn our attention to something a little more interesting. We'll see how we can build and train deep learning models using MLflow. Now, out in the real world, there are a number of different popular frameworks that can be used for training deep learning models. The most popular and widely used of these are TensorFlow and PyTorch.
+
+So, in this demo, we'll start off with TensorFlow and we'll see how we can manage and track TensorFlow models using MLflow. Now, it's quite likely that you're familiar with TensorFlow and have used it before. Here is a quick overview of what exactly TensorFlow is all about. This is an open-source machine learning framework for deep learning. It was originally developed at Google, and it's still today supported by Google engineers. But because TensorFlow is open-source, it also has a number of open-source community contributors, which makes it a very powerful and versatile features.
+
+TensorFlow is not just about building neural networks for deep learning. It provides a comprehensive ecosystem of tools, libraries, and resources for building and deploying machine learning models. It's designed to handle a wide range of tasks from simple linear regression to complex deep learning models. Now, with that little introduction under our belt, let's turn our attention to the TensorFlow model that we'll be training and tracking and deploying using MLflow.
+
+The deep learning model that we are about to train will perform image classification. That is, it will read in and train on a number of images and classify those images into 10 different categories. Now, image classification is best performed using Convolutional Neural Networks.
+
+[Video description begins] A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: Convolutional Neural Networks (CNNs). The second line reads: Process data in two dimensions, inspired by the visual cortex of the brain. [Video description ends] Convolutional Neural Networks are a special kind of deep learning algorithm designed for processing structured grid-like or two-dimensional data.
+
+Now two-dimensional data can be of any type. It can be images, video, or even audio. They are widely used in computer vision tasks including image classification and that's where we are going to be using Convolutional Neural Networks. Now, CNNs are inspired by the organization of the visual cortex of the human brain. CNNs or Convolutional Neural Networks are made up of two different kinds of deep learning layers.
+
+The first is the convolutional layer, which is responsible for extracting features from input images, different kinds of features and pooling layers. Pooling layers are responsible for aggregating the input from convolutional layers in order to give you the final output. Now let's turn our attention to the code. On the very first code cell, notice that I install and use a specific version of TensorFlow within our virtual environment. I'm using tensorflow==2.11.0.
+
+[Video description begins] Code cell 1 reads: pip install tensorflow==2.11.0. [Video description ends]
+
+Now the reason for this is as the versions of TensorFlow evolve, not all of them may be compatible with the version of MLflow that you have. Now tensorflow==2.11.0 is compatible and works with TensorFlow2.3.2 and 2.4.1. As your MLflow version evolves, it's quite likely that you might want to use newer versions of TensorFlow. But for this version and the version of MLflow that we have, everything should work perfectly. So, let's go ahead and pip install the tensorflow library.
+
+So that it's now available for us to use. Now let's confirm that we have the right version of TensorFlow, print out (tf.__ version__) and you can see that the version is 2.11.0.
+
+[Video description begins] Line 3 of code cell 2 is highlighted. It reads: print(tf.__version__). [Video description ends]
+
+Now, next thing is for us to import all of the libraries that we'll use. You are already familiar with MLflow and all of the other data processing libraries like pandas and numpy.
+
+[Video description begins] Code 3 is highlighted. Line 1 reads: import mlflow. Line 2 reads: import keras. Line 3 reads: import numpy as np. Line 4 reads: import matplotlib.pyplot as plt. [Video description ends]
+
+Observe the imports on lines 6, 7, and 8.
+
+[Video description begins] Line 6 reads: from keras.utils import to_categorical. Line 7 reads: from keras.models import Sequential. Line 8 reads: from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout. [Video description ends]
+
+The imports are for the TensorFlow libraries that we'll use from Keras. Now what is Keras? Keras is an open-source deep learning library written in Python, and it provides a high-level application programming interface that simplifies the process of building and training neural networks. The Keras API is what we'll use to work with TensorFlow. We'll use Keras to build a sequential model, that is where the layers are arranged one after the other in a sequence.
+
+And the layers that we'll use are convolutional layers, pooling layers, dense layers, flattening layers to convert from convolutional layers to linear form, and we'll also use the dropout layer to mitigate overfitting. The data that we are going to be using to train our image classification model is the fashion_mnist data.
+
+[Video description begins] Line 1 of code cell 4 reads: fashion_mnist = tf.keras.datasets.fashion_mnist. [Video description ends]
+
+The fashion_mnist dataset is supposed to be a drop-in replacement for the original MNIST dataset, which is a widely used benchmark dataset in the field of machine learning, specifically computer vision.
+
+MNIST stands for Modified National Institute of Standards and Technology. The fashion_mnist dataset comprises of 70,000 grayscale images of 10 different fashion items with 7000 images per class or categories. Each image is 28 pixels by 28 pixels and has the corresponding class labels. The fashion_mnist data is available as a part of the TensorFlow framework and can be accessed using fashion_mnist.load_data.
+
+This gives us the train_images and train_labels as well as the test_images and test_labels.
+
+[Video description begins] Line 3 of code cell 4 reads: (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data(). [Video description ends]
+
+Let's take a look at the shape of this dataset, and you can see that we have 60000, 28 by 28 images for training and 10000, 28 by 28 images for testing or evaluating our model.
+
+[Video description begins] Code cell 5 reads: train_images.shape, train_labels.shape, test_images.shape, test_labels.shape. [Video description ends]
+
+All of these images are fashion accessories, and we'll see what those images look like in just a bit. Now each of these images is either a T-shirt or a top, a Trouser, a Dress, a Coat, a Shirt.
+
+The ten classes or categories are set up here in this class_names list.
+
+[Video description begins] Code cell 6 is highlighted. Line 1 reads: class_names = [. Line 2 reads: 'T-shirt/top',. Line 3 reads: 'Trouser',. Line 4 reads: 'Pullover',. Line 5 reads: 'Dress',. Line 6 reads: 'Coat',. Line 7 reads: 'Sandal',. Line 8 reads: 'Shirt',. Line 9 reads: 'Sneaker',. Line 10 reads: 'Bag',. Line 11 reads: 'Ankle boot'. Line 12 displays a ]. [Video description ends]
+
+You can see them right here on screen. I'll now use matplotlib to plot one of these images and see what they look like. You can see that I access train_images at index 10. You can see this on line 3. And I also print out the title train_labels at index 10 and you can see that this is a T-shirt or a top. All of the images are grayscale images.
+
+[Video description begins] Line 3 of code cell 7 reads: plt.imshow(train_images[10]). Line 5 reads: plt.title(class_names[train_labels[10]]). [Video description ends] 
+
+They don't have color, which means that every pixel can be represented using a single number, usually expressed between 0 and 255. Deep learning frameworks are more robust when they process numeric values that are smaller in value, which don't have very wide ranges. This is specifically for numerical stability. Deep learning models often use numerical optimization algorithms under the hood that can be sensitive to the scale of input features.
+
+By normalizing the pixel values that we pass in to a small range that is between 0 to 1, the optimization process becomes more stable and less prone to numerical issues like vanishing or exploding gradients. Vanishing and exploding gradients prevent the model training from converging to a robust model, which is exactly why we divide the pixel values in the train as well as test_images by 255, as you can see from the active code cell.
+
+[Video description begins] Code cell 8 is highlighted. Line 1 reads: train_images = train_images / 255.0. Line 3 reads: test_images = test_images / 255.0. [Video description ends]
+
+All of the grayscale values in the images dataset will be now expressed in the range 0 to 1. Earlier we had used matplotlib to plot just one image and its corresponding label. Here I'm going to plot a grid of images. I'll plot a total of 16 images in a grid of 4 by 4. That's why you can see the plt.subplot 4 by 4 on line 4. plt.imshow on line 10 will actually display each of the training images that we are visualizing.
+
+cmap set to plt.cm.binary will display these images using grayscale or in black and white.
+
+[Video description begins] Line 3 of code cell 9 reads: for i in range(16):. Line 4 reads: plt.subplot(4, 4, i+1). Line 10 reads: plt.imshow(train_images[i], cmap = plt.cm.binary). [Video description ends]
+
+And here are what the images look like. You can see all 16 images, a sample of the training data that we are going to be using to train our image classification model. You can see that each image is a fashion accessory. They are all of the same size, 28 pixels by 28 pixels, and they are all in grayscale.
+
+We just normalized our image pixel values to be in the range 0 to 1. Let's confirm that this is indeed the case. Let's take a look at the array representation for each image.
+
+[Video description begins] Code cell 10 reads: train_images[2]. [Video description ends]
+
+Observe that every number in this image array representation is a value between 0 and 1. This image array is actually a Tensor object. A Tensor in the context of deep learning is just a multi-dimensional array used to represent numbers. In deep learning, Tensors are just the fundamental data structure that you'll use for all of your stages of deep learning.
+
+Primary means of representing input data, intermediate activations, model parameters, everything. And because this is a dataset meant for ML, this is all the preprocessing that we need to do with this data. A large part of the preprocessing that you might have to do with the real-world image dataset has already been done for us. For example, all of the images are of the same size. That's something we'd have to set up had we been starting from scratch. At this point, we're ready to move on, create an experiment MLflow, and start training our model.
+
+3. Video: Training and Running an Image Classification Model (it_mlflowdj_06_enus_03)
+
+Learn how to train an image classification model and run it.
+train an image classification model and run it
+[Video description begins] Topic title: Training and Running an Image Classification Model. Your host for the session is Janani Ravi. [Video description ends]
+Now that we have the data in the right format for our MLmodel, let's go ahead and set up our MLflow experiment. I call mlflow.create_experiment. The name of the experiment is 'fashion_images_prediction_tf'. This is the experiment to which we want to log all of our runs. So, I'm going to go ahead and set this as the current experiment.
+
+[Video description begins] A Jupyter notebook titled 'ManagingTensorflowModels' is open. Code cell 11 is displayed. Line 1 reads: experiment_id = mlflow.create_experiment(name = 'fashion_images_prediction_tf'). Line 3 reads: mlflow.set_experiment(experiment_name= 'fashion_images_prediction_tf'). [Video description ends]
+
+This will set up a new folder for tracking our experiment and all of the runs that we'll execute within this experiment under the mlruns folder. Now, because we're working with image data and we want to classify these images, a natural thing that you might want to do is to log these images as a part of the artifacts in your run. I'm going to show you how you can set these images up so that you can log images as a part of artifacts.
+
+In the active code cell, I'm going to consider one image that I've picked from the training data at random. This is the image at index 7.
+
+[Video description begins] Code cell 12 reads: fig1 = plt.imshow(train_images[7], cmap = plt.cm.binary). [Video description ends]
+
+I invoke plt.imshow to display these images and we'll use the plot.cmap.binary so that we can see it in the grayscale. You can see that this is an image of a top. In order to log these images as artifacts in our run, I'm going to convert these images so that they are no longer in the tensor format, but they are represented as an Image object from the PIL library.
+
+PIL here stands for Python Imaging Library or Pillow. The term Pillow is a fork for the original Python Imaging Library, and that is the de facto standard which is widely used in the Python community for working with images. On line 3 of the active code cell, I take the training image at index 7, multiply its pixel values by 255 so I get my pixel representations in the range 0 to 255 once again.
+
+resize the image to be 200 pixels by 200 pixels so that they are not very small. 28 by 28 is rather small. And then call Image.fromarray to get an image object representing this image and I display the image object here on screen. These Pillow image objects can be logged as artifacts in your run using the log_image function. On line 3, notice I call mlflow.log_image. But first I have to be within the run.
+
+[Video description begins] Line 1 of code cell 13 reads: from PIL import Image. Line 3 reads: im = Image.fromarray(np.uint8(train_images[7] * 255)).resize((200, 200)). [Video description ends] 
+
+I call mlflow.start_run( ): on line 1, and then I iterate over 30 odd images on line 2.
+
+[Video description begins] Line 1 of code cell 14 reads: with mlflow.start_run():. Line 2 reads: for i in range(100, 130):. Line 3 reads: mlflow.log_image(. Line 4 reads: Image.fromarray(np.uint8(train_images[i] * 255)).resize((200, 200)) ,. Line 5 reads: f'{class_names[train_labels[i]]}.png'. Line 6 displays a ). [Video description ends]
+
+For each image, I resize the image and convert it to an image object on line 4 and log it out with the name of its class, basically with the name of its category. So from 30 odd images, it's quite likely that we'll get one image for each category, and if you have multiple images of the same category, they'll be overwritten, so you'll get the most recent image.
+
+By looking at 30 odd images, this will give us hopefully a good representation of all 10 categories of images. Once I run this code, let's switch over and take a look at the run in the MLflow UI. Once we refresh this page, here you should see our new experiment right there. fashion_images_prediction using TensorFlow. And here is that run that we executed logging out image artifacts. Click through to the run and let's go straight to the Artifacts section.
+
+[Video description begins] A page labeled gaudy-eel-587 is displayed. The Artifacts section contains a directory labeled T-shirt on the navigation pane. Below, the following items appear: Ankle boot.png, Bag.png, Coat.png, Dress.png, Pullover.png, Sandal.png, Shirt.png, Sneaker.png, and Trouser.png. [Video description ends]
+
+Under the Artifacts, you'll see that out of the 30 images that we've sampled, we found at least one of each category and the latest image of each category is what is available here. If there were other images, they have been overwritten because we've specified the name of the image to be equal to the name of the class label. I specifically wanted to call out Mlflow's log_image functionality that allows you to log image data. Very useful if you're training a machine learning model that takes images as its input.
+
+Now you might wonder why that T-shirt folder exists on top. That's because the class_label is T-shirt/top. So, under the T-shirt folder, you'll find a top.png if you check. With all of these basics out of the way, let's head back to our Jupyter Notebook and train our image classification model, our Convolutional Neural Network. Here is the code for our training run right here in this active code cell.
+
+On line 1, we call mlflow.tensorflow.autolog so that we log out all of the parameters and metrics of this model automatically.
+
+[Video description begins] Line 1 of code cell 15 reads: mlflow.tensorflow.autolog(log_models = False). [Video description ends]
+
+Notice that I have explicitly set log_models to False. This is so that I can explicitly infer the signature of the input parameters to be passed into the model and log out the model signature. This will be important because we are going to be deploying this model on our local machine, using it for inference, and then we'll be deploying this model on Azure Machine Learning and using that Azure endpoint for inference as well.
+
+Now if you're going to be deploying and using a model for inference, you do need to have the model signature. That's why I'm going to explicitly log the model with the signature. I call mlflow.start_run( ) and store that in the tf_run: variable on line 3.
+
+[Video description begins] Line 3 reads: with mlflow.start_run() as tf_run:. [Video description ends]
+
+Now, the first thing to do is reshape the training data so that it's in a form that is acceptable to our Convolutional Neural Network.
+
+Now, Convolutional Neural Networks in TensorFlow expect your input tensor to have the batch_size as the first dimension, height and width of the images as the second and third dimensions, and number of channels in the image as the fourth dimension.
+
+[Video description begins] A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: [batch_size, height, width, channels]. The second line reads: [batch_size, height, width] -> [batch_size, height, width, channels]. [Video description ends]
+
+Now, the original shape of the train images tensor was to have batch_size as the first dimension and then the height and width of images. We need to reshape the original data so that we have batch_size, height, width, and number of channels that is going to be the fourth dimension of our tensor.
+
+And we need to do this for both the training as well as the test data. And this is exactly what the code does on lines 6 and 7. Reshape the original tensors so that they are in the form that is acceptable to our Convolutional Neural Network. Now the training labels are essentially values from 0 through 9 representing the ten classes or categories to which the images belong.
+
+[Video description begins] Line 6 reads: X_train = train_images.reshape((train_images.shape[0], 28, 28, 1)). Line 7 reads: X_test = test_images.reshape((test_images.shape[0], 28, 28, 1)). [Video description ends]
+
+Now, y_train and y_test, we represent as categorical values by calling the to_categorical function to convert the train as well as test_labels to categorical values. Next on line 13, we reshape a single image input that will be fed into our model. This is our input example.
+
+[Video description begins] Line 9 reads: y_train = to_categorical(train_labels). Line 10 reads: y_test = to_categorical(test_labels). Line 13 reads: input_example = np.expand_dims(X_train[0], axis = 0). [Video description ends]
+
+We are going to log out this input example so that as a part of our model artifacts we have a representation of what a single input example fed into our model looks like.
+
+We access the image at index 0 within our training data X_train of 0 and we call np.expand_dims so it adds another dimension at the very end. This is the dimension for the channel. The resulting shape of our input_example will be as on line 12. 1, that's because we have just a single image 28 by 28 height and width of the image. And the last one is for the number of channels. That is the dimension that we added by calling np.expand_dims.
+
+With our basic setup done, let's instantiate our model. We instantiate the Sequential model, meaning the layers of the model will be applied in sequence one after the other.
+
+[Video description begins] Line 12 reads: # input_example shape (1, 28, 28, 1). Line 15 reads: model = Sequential(). [Video description ends]
+
+On lines 18 through 27, we specify the first convolutional layer of our Convolutional Neural Network along with the pooling layer that follows the convolutional layer.
+
+[Video description begins] Line 18 reads: model.add(. Line 19 reads: Conv2D(. Line 20 reads: 32, kernel_size = (3, 3),. Line 21 reads: activation = 'relu',. Line 22 reads: kernel_initializer = 'he_normal',. Line 23 reads: input_shape = (28, 28, 1). Lines 24 and 25 display a ). Line 26 reads: model.add(MaxPooling2D(( 2, 2))). Line 27 reads: model.add(Dropout(0.25)). [Video description ends]
+
+We use the Conv2D object to instantiate the convolutional layer.
+
+This convolutional layer will apply 32 filters to the input image to get 32 feature images at the output. So, the output of this convolutional layer will have a depth of 32. The kernel_size that will be applied for convolution is a 3 by 3 kernel. That is what we slide over the input image. We'll use the 'relu' activation for this convolutional layer. The kernel_initializer specifies how each kernel will be initialized before it starts training, and we use 'he_normal' for kernel initialization.
+
+This initialization technique helps Convolutional Neural Networks converge faster. input_shape gives us the shape of each input image, which is 28 by 28 and the image has one channel because it's a grayscale image. After that we have a MaxPooling layer which is again a two-dimensional layer which works with a 2 by 2 kernel. And then finally we have a Dropout layer. Dropout layers intentionally turn off neurons during training to mitigate overfitting on the training data.
+
+After the first block of convolutional and pooling layers, we have a second block defined on lines 35 and 36.
+
+[Video description begins] Line 35 reads: model.add(Conv2D(128, (3, 3), activation = 'relu')). Line 36 reads: model.add(Dropout(0.4)). [Video description ends]
+
+This convolutional layer uses 128 filters, so you can see that there are more feature images created. So the depth of the output of this layer will be 128. It was 32 earlier. And then we use a 3 by 3 kernel activation='relu'. And then we use a Dropout layer after that. Finally, our two blocks of convolutional layers is followed by a linear layer.
+
+This is the standard architecture of a Convolutional Neural Network. This is the code defined on line 39 through 41 where we Flatten the convolutional output, pass that through a Dense linear layer with 128 units, or neurons, again with relu activation. Add one more Dropout layer with a Dropout percentage of 30%. And because we are performing classification, the last layer of this neural network is a 'softmax' layer. 
+
+[Video description begins] Line 39 reads: model.add(Flatten()). Line 40 reads: model.add(Dense(128, activation = 'relu')). Line 41 reads: model.add(Dropout(0.3)). [Video description ends]
+
+[Video description begins] Line 44 reads: model.add(Dense(10, activation = 'softmax')). [Video description ends]
+
+The softmax layer will output class probabilities for each possible class that this image can belong to, and the class of the category with the highest probability will be the prediction of this model. Once we've set up the basic configuration of the Convolutional Neural Network, we need to configure the training process of the model. For this, we use model.compile in the Keras API.
+
+[Video description begins] Line 46 reads: model.compile(. Line 47 reads: loss = keras.losses.categorical_crossentropy,. Line 48 reads: optimizer = keras.optimizers.Adam(),. Line 49 reads: metrics = ['accuracy']. Line 50 displays a ). [Video description ends]
+
+This is where we specify the loss function of the model. We use the categorical_crossentropy loss because this is a classification problem.
+
+The loss function quantifies how well the model performs during the training process. Lower the value of the loss, better the model. The optimizer determines how the model's weights or parameters are updated based on the loss. We use the Adam optimizer, which is a very popular and widely used optimizer that has proven to work well empirically. We finally specify the metric used to evaluate the model.
+
+We'll use 'accuracy', and then we start the training process by calling model.fit on the training data.
+
+[Video description begins] Line 52 reads: model.fit(X_train, y_train,. Line 53 reads: epochs = 10, batch_size = 32,. Line 54 reads: validation_data = (X_test, y_test)). [Video description ends]
+
+We'll run training for 10 epochs. That is, the entire dataset will be passed through the model 10 times. batch_size is 32, that is, 32 images will be fed in for each iteration of the epoch, and the validation_data is our test data. And then there is some familiar code.
+
+We infer the signature of the model using the infer_signature function on the test data, and then we explicitly log out the model by calling mlflow.tensorflow.log_model. Let's go ahead and kick start the training process.
+
+[Video description begins] Line 56 reads: signature = infer_signature(X_test, model.predict(X_test)). Line 58 reads:mlflow.tensorflow.log_model(. Line 59 reads: model, 'fashion_mnist_cnn',. Line 60 reads: signature = signature,. Line 61 reads: input_example = input_example. Line 62 displays a ). [Video description ends]
+
+Because we're training for 10 epochs on image data, the entire training process takes a few minutes to run through. And here we have it, a trained model.
+
+4. Video: Viewing Performance and Registering an Image Classification Model (it_mlflowdj_06_enus_04)
+
+In this video, discover how to view the performance of an image classification model and register the model.
+view the performance of an image classification model and register the model
+[Video description begins] Topic title: Viewing Performance and Registering an Image Classification Model. Your host for the session is Janani Ravi. [Video description ends]
+At the end of the last video, we completed training our image classification model written in TensorFlow. Let's head over to the ML UI and if you refresh, you'll find that we have a new run within our fashion_images_prediction_tf experiment.
+
+[Video description begins] The mlflow page appears. The title bar at the top offers 2 tabs: Experiments and Models. The Experiments tab is active now. The navigation pane on the left displays 2 items: Default and fashion_images_prediction_tf. The fashion_images_prediction_tf item is open on the main pane. It shows the header called Description. Below, a search bar appears along with several filter options such as Table view, Chart view, Sort, Columns, and so on. A table appears next with 5 column headers: Run Name, Created, Duration, Source, and Models. [Video description ends]
+
+Let's click through to the run and of course, we have all of the usual candidates here. We have the Parameters of the model. You can see the batch_size 32 that we used. We trained for 10 epochs, that's also logged here.
+
+As you scroll down, you can see that a whole bunch of other parameters have been autologged, giving us more information about how the model was configured. And then we have the Metrics of the model that we just trained. Now you should know that this dataset is a fairly simple one, which means even very simple Convolutional Neural Networks will give us great results. The accuracy of this model on the training data is 89.8% and the accuracy on the validation data is even better, 90.1%
+
+And here below, you can see all of the Artifacts that were logged out for this model. Now you'll find for deep learning models there will be many more Artifacts that are logged. This has to do with how exactly the model is serialized and saved out to disk. Now for TensorFlow model, the artifacts are logged using the TensorFlow SavedModel format. You can learn more about this format using this link that you see here on screen on tensorflow.org.
+
+[Video description begins] The Artifacts section displays a directory labeled fashion_mnist_cnn. It contains 2 folders labeled data and tensorboard_logs along with the following items:MLmodel, conda.yaml, input_example.json, python_env.yaml, requirements.txt, and model_summary.txt. The data folder further contains a folder called model and 2 items labeled keras_module.txt and save_format.txt. A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: TensorFlow SavedModel Format. The second line displays the following address: https://www.tensorflow.org/guide/saved_model. [Video description ends]
+
+
+A SavedModel is a complete TensorFlow program including all of the trained parameters of the model and the computation. The SavedModel format is such that you do not require the original model building code to run in order to use the SavedModel for predictions. The SavedModel is accessible to deployment functions using a variety of different APIs. The assets directory here contains additional files or resources that are necessary for the model's execution but are not TensorFlow variables or operations.
+
+The variables directory contains the SavedModel's variables, that is, the model parameters or the weights and biases of the model. Another file that's interesting is the saved_model.pb. This is a protocol buffer that stores the TensorFlow computation graph and the model architecture. The protocol buffer is a binary file that represents the structure of the model.
+
+Now, in addition to the SavedModel format, we have all of the usual Artifacts such as the MLmodel file. Within the MLmodel file, you can see that the model has been serialized using two flavors, the python_function flavor and the tensorflow flavor. Observe that our input_example, a single example of an image input to the model, has been logged to the artifact_path input_example.json. And there you can see the signature of the model.
+
+Notice that the input is of type 'tensor', that the tensor specification is for every element of the tensor to be of type 'float64' and the shape of the tensor is -1, 28 by 28, 1. The first dimension set to -1 means that the batch_size can be anything. So, you can have a batch_size of 10, 32, 64, anything, when you pass in images for prediction. The output is also a 'tensor' with its specification where every element is of type "float32" and the shape is -1, 10, that is, you have 10 outputs for each prediction, where the 10 outputs correspond to probability scores for each class or category.
+
+You're familiar with the other files here. What's new here is the input_example.json file which contains the specification for a single image input for prediction. This is the example that we logged out in our code. The other files for environment specification you're familiar with, so I'm going to quickly skip over those files. The tensorboard_logs are log files generated by TensorFlow's TensorBoard tool, which is used for visualizing and analyzing TensorFlow runs.
+
+And finally, we have a summary of the model that we just trained. This summary file gives us all of the layers in our model, all of the convolutional pooling, and linear layers, and the number of parameters in each layer. Now that model training, tracking, and logging is complete, let's use this model for predictions.
+
+I'm going to access the run_id of the model which is available in tf_run.info.run_id that is the run_id and I'll use this run_id to access the logged_model using the runs URL.
+
+[Video description begins] The Jupyter notebook titled 'ManagingTensorflowModels' appears. Code cell 16 reads: tf_run.info.run_id. [Video description ends]
+
+ This is the code on line 1 of the active code cell. We then load the Python flavor of the model by calling mlflow.pyfunc.load_model and then use this model for predictions on the test data and we'll print out the first 10 predictions.
+
+[Video description begins] Line 1 of code cell 17 reads: logged_model = f'runs:/{tf_run.info.run_id}/fashion_mnist_cnn'. Line 3 reads: loaded_model = mlflow.pyfunc.load_model(logged_model). Line 5 reads: predictions = loaded_model.predict(X_test). Line 7 reads: predictions[:10]. [Video description ends]
+
+Let's go ahead and execute this code, and here you can see that every prediction is an array with 10 elements, where each element is a probability score for that class or category. I feel it's a little overwhelming to look at 10 predictions in one go. So, let's look at the first prediction, prediction at index [0] and you can see it's an array with 10 elements where each element is a probability score. Just by eyeballing these scores, the highest probability score of 0.99 seems to be at index 9.
+
+[Video description begins] Code cell 18 reads: predictions[0]. [Video description ends] 
+
+Let's get the prediction using np.argmax and index into class_names, and you can see that index 9 corresponds to the prediction 'Ankle boot'.
+
+[Video description begins] Code cell 19 reads: class_names[np.argmax(predictions[0])]. [Video description ends]
+
+This is the label associated with the first prediction on the test data. Let's look at the predictions at index [17]. Once again, we get an array with 10 elements, where every element is a probability score. Let's find the highest probability score using np.argmax. That'll give us the index of the highest value.
+
+We'll use that index to look up the class_name. And the prediction for this image is that it's a 'Coat'. I'm going to set up a little helper function here called show that takes in the index position in the test data, and it'll display that image and the corresponding title.
+
+[Video description begins] Code cell 22 is highlighted. Line 1 reads: def show(idx, title):. Line 3 reads: plt.figure(). Line 4 reads: plt.imshow(X_test[idx].reshape(28, 28)). Line 6 reads: plt.axis('off'). Line 7 reads: plt.title('\n\n{}'.format(title), fontdict = {'size': 16}). [Video description ends]
+
+Next, we'll set up a little for loop going from index positions 200 all the way through to 250, not inclusive.
+
+For each of these index positions in the test data, we'll get the predicted_class and the actual _class and display the actual image along with the predicted as well as actual labels.
+
+[Video description begins] Line 1 of code cell 23 reads: for i in range(200, 250):. Line 3 reads: predicted_class = np.argmax(predictions[i]). Line 4 reads: actual_class = test_labels[i]. Line 6 reads: show(i, 'Model prediction {} (class{}), actual category{} (class{})'.format(. Line 7 reads: class_names[predicted_class], predicted_class,. Line 8 reads: class_names[actual_class], actual_class. Line 9 reads: )). [Video description ends]
+
+This will give us 50 different predictions and visually we can see whether the predictions are correct. And if you scroll down and take a look, you'll find that in most cases the predicted label is equal to the actual label. Now that we have a trained model, let's go ahead and register it with the Model Registry and we can then deploy this model to be served on a local server.
+
+Here we are on the MLflow Experiment page. Click through to the run which contains the model artifacts that we want to register. And here below in the Artifacts section, click on the button to Register our Model.
+
+[Video description begins] A dialog box titled 'Register Model' appears. A field called Model is displayed. It contains a drop-down list with 2 options: Create New Model and Models. At the bottom, 2 tabs appear: Cancel and Register. [Video description ends]
+
+Let's go ahead and Create New Model because we don't have a previous one and I'm going to call this the fashion_mnist_prediction_model. Click on the Register button and if you head over to the Models tab, you'll find that Version 1 of the model has been successfully registered.
+
+If you click through to the model, you'll find we have 1 Version. You can associate a Description or tags with this model. Let's click through to this Version and you'll find that this version doesn't really belong to any Stage. It has an Input signature, we have the Output signature. We have all of the details, but this model is currently in Stage None.
+
+[Video description begins] A page titled 'Version 1' is displayed. There are various details at the top in fields like Registered At, Source Run, Stage, and Last Modified. The field labeled Stage contains a drop-down list with 3 options: Transition to Staging, Transition to Production, and Transition to Archived. Below, 3 collapsible sections appear: Description, Tags, and Schema. [Video description ends]
+
+Let's Transition this model to the Staging stage because we are currently experimenting with this model. Once this transition is complete, let's head back to our Jupyter Notebook and here programmatically I'm going to move version 1 of our model to production.
+
+In order to do this, I instantiate the MlflowClient( ) on line 3 and I call client.transition_model_version_stage to move version 1 of our model to 'Production'. With our model now in the Production Stage, we are ready to use the model for deployment. Now, it doesn't necessarily need to be registered or in any of these stages before we deploy the model, but this is good practice.
+
+[Video description begins] Line 3 of code cell 24 reads: client = MlflowClient(). Line 5 reads: client.transition_model_version_stage(. Line 6 reads: name = 'fashion_mnist_prediction_model',. Line 7 reads: version = 1,. Line 8 reads: stage = 'Production',. Line 9 displays a ). [Video description ends] 
+
+It's only when a model is in the production stage, and it has undergone all of the tests that you apply to the model before you'll be ready to deploy the model in the real world. Now let's make sure we access the run_id of our model.
+
+[Video description begins] Code cell 25 reads: tf_run.info.run_id. [Video description ends]
+
+Here is the run_id of the model that we're about to deploy. Copy this run_id over. We'll use the run_id to access the serialized models' artifacts that we need for deployment. Now here I am within my terminal window within my virtual environment where I have MLflow installed.
+
+[Video description begins] A Terminal window appears. It displays the following command line: (mlflow_venv) (base) ~/projects/mlflow. The command inserted reads: ls -l. [Video description ends]
+
+This is my current working directory.
+
+I'll run ls -l here and you can see that I have the mlruns folder used by my MLflow UI. In order to serve this model locally, we'll use the mlflow models serve command and we'll specify the uri to the Artifact folder within our model run. We'll serve this model on our local machine, that is the machine on which we are running on port 1234.
+
+[Video description begins] The command reads: mlflow models serve -m runs:/38398d61c12a4b268a1ba01de85f234a/fashion_mnist_cnn --env-manager local --host 127.0.0.1:1234. [Video description ends]
+
+Once the model server is up and running, we can now switch back to our notebook and let's see how we can specify the test data for prediction. Now I'm going to pick the test data at index 7 and you can see the shape of the original data.
+
+[Video description begins] Code cell 26 reads: X_test[7].shape. [Video description ends]
+
+It's 28 by 28 by 1. Now this is not the shape in which our model expects its input. Remember we need an additional dimension for the batch_size. This is why I use np.expand_dims.
+
+[Video description begins] Code cell 27 reads: np.expand_dims(X_test[7], axis = 0).shape. [Video description ends]
+
+That will give us the resulting data with the shape 1 that is the batch_size, 28 by 28 height and width of the model and the last one is for number of channels. We get this new shape of the tensor, which is our same test image, but it has an extra dimension at index 0. Next, we need to get the json representation of the input data to send to our prediction endpoint and this I do by calling json.dumps.
+
+This is a json object with a single key 'instances' and the value is essentially a batch of images. Our batch contains just a single image.
+
+[Video description begins] Line 6 of code cell 28 reads: data = json.dumps({'instances': np.expand_dims(X_test[7], axis = 0).tolist()}). [Video description ends]
+
+This is the format of the json that our prediction endpoint expects. What I'm going to do is copy this json over and paste it into the placeholder that I have here that says <paste_json_here>.
+
+[Video description begins] Line 2 of code cell 29 reads: -d '<paste_json_here>'. [Video description ends]
+
+We've discussed the input signature of the model earlier.
+
+I just got my image data into the format that our model expects, and I've pasted it in and I'm now ready to hit 127.0.0.1:1234/invocations with my prediction data.
+
+[Video description begins] Line 1 of code cell 29 reads: !curl http://127.0.0.1:1234/invocations -H 'Content-Type: application/json' \. [Video description ends]
+
+The json comprises of a single key 'instances' whose value is a list of images for which we want label predictions. Now let's go ahead and hit Shift + Enter. The curl command will perform an http GET request on the prediction endpoint and get the predictions as a result.
+
+Remember the predictions are just an array of 10 elements with probability scores. Now I'm going to copy over the prediction string to the placeholder there on the next cell where I have <paste_prediction_string_here> and we'll parse the json of the prediction result that we got from our model endpoint. Now that we have the parsed result for predictions, we can now figure out what the actual prediction was.
+
+[Video description begins] Line 1 of code cell 30 reads: predictions = json.loads(. Line 2 reads: '<paste prediction string here>'). [Video description ends] 
+
+I simply call np. argmax, parse in the predictions array and look up the index in the class_name, and the prediction for this particular image is that it's a 'T-shirt or a top'.
+
+[Video description begins] Code cell 31 reads: class_names[np.argmax(predictions)]. [Video description ends]
+
+5. Video: Deploying a Model to Azure, Viewing It, and Making Predictions (it_mlflowdj_06_enus_05)
+
+In this video, you will learn how to deploy a model to Azure, view it, and use it for predictions.
+deploy a model to Azure, view it, and use it for predictions
+[Video description begins] Topic title: Deploying a Model to Azure, Viewing It, and Making Predictions. Your host for the session is Janani Ravi. [Video description ends]
+If you're working with a production system, you're going to be deploying your model to some kind of cloud-based endpoint and that's exactly what we'll see here in this demo. We'll see how you can deploy your TensorFlow model that you've just trained to an Azure endpoint. In an earlier demo in this learning path, we've already deployed a model to an Azure endpoint, and the steps that we're going to follow now are exactly the same as the steps that we followed earlier.
+
+In order to work with Azure Machine Learning, we'll need to install a bunch of Python libraries. These include azureml-core, azure-ai-ml, azure-identity, and azureml-mlflow.
+
+[Video description begins] The Jupyter notebook titled 'ManagingTensorflowModels' is open. Code cell 32 reads: pip install azureml-core. Code cell 33 reads: pip install azure-ai-ml azure-identity. Code cell 34 reads: pip install azureml-mlflow. [Video description ends]
+
+I'm going to go ahead, and pip install all of these libraries. Once all of these libraries have been successfully installed, the next step is for us to create an Azure Machine Learning Workspace.
+
+Now, just a little heads up about this little issue that Azure Machine Learning workspaces have been created programmatically. If this is the first time that you're using the Azure account and you're creating the workspace, then you might find that workspace creation using Workspace.create fails. Now, with a little bit of playing around and tweaking, the workaround that I found for this little bug that Azure has at the time of this recording, was to go to the Azure UI, create a test workspace and then immediately delete it.
+
+Now creating this test workspace sets up this additional resource group that Azure Machine Learning workspaces need, and that resource group contains like a Log Analytics workspace which for some reason is not created automatically when you use Workspace.create. 
+
+[Video description begins] A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: Workaround for Programmatic Workspace Creation. The second line reads: Create a test workspace using the Azure UI(can delete it right away). [Video description ends]
+
+If you find that this function fails when you're creating your own Azure workspace, my suggestion would be head over to the UI, create a test workspace, delete it right away, then come back to this notebook and run the code in this cell Workspace.create
+
+The name of this workspace is 'loony-mlflow-tf-ws'. Specify your own subscription_id. Then the resource_group for this workspace is 'loony-mlflow-rg'. This is a resource_group that has already been created, which is why I have set create_resource_group to False and the location of this workspace will be the 'eastus' region. Go ahead and hit Shift+Enter and wait for this workspace to be created.
+
+[Video description begins] Line 1 of code cell 35 reads: from azureml.core import Workspace. Line 3 reads: ws = Workspace.create(. Line 4 reads: name = 'loony-mlflow-tf-ws',. Line 5 displays the subscription id. Line 6 reads: resource_group = 'loony-mlflow-rg',. Line 7 reads: create_resource_group = False,. Line 8 reads: location = 'eastus'. Line 9 displays a ). [Video description ends]
+
+Now this command takes a little bit of time to run. You might have to wait two or three minutes. Let's head over to our Azure portal and here within Resource groups you can see loony-mlfow-rg and within this Resource group, you should be able to see the loony-mlflow-tf-ws.
+
+[Video description begins] A page titled 'loony-mlflow-rg' appears within Microsoft Azure. The navigation pane on the left displays several options like Overview, Activity log, Access control (IAM), and so on. The main pane displays several options at the top like Create, Manage view, Delete resource group, Refresh, and so on. Below, 2 tabs appear: Resources and Recommendations. The Resources tab displays a table with 3 column headers: Name, Type, and Location. [Video description ends]
+
+Hit Refresh and you should find the workspace available right there. In addition to the workspace, number of other resources have been created. That's all the resources that the workspace will be using. Now here we are in the workspace.
+
+Go ahead and launch Azure Machine Learning Studio.
+
+[Video description begins] A page titled 'loony-mlflow-tf-ws' appears. The main pane displays a section labeled Essentials at the top. It offers various information in fields like Resource group, Studio web URL, Location, Subscription, Key Vault, MLflow tracking URI, and so on. A tab labeled Launch studio appears below. [Video description ends]
+
+Anything that you want to do in ML in Azure, you'll need to Launch Studio. The next thing that we need to do is to register our model with this workspace and for that we need to head over to the local MLflow UI, go to Experiments, and there we have our fashion_images_prediction_tf experiment. Click through to the Run where the model Artifacts have been logged and here, you'll find the full path to the model Artifacts.
+
+We'll need this path on our local machine to the model Artifacts because this is what we'll reference when we register the model with Azure ML. 
+
+[Video description begins] A page labeled selective-quail-921 appears within mlflow. It displays various details at the top in fields like Run ID, Date, Source, Git Commit, User, Status, and so on. Below, five collapsible sections appear: Description, Parameters, Metrics, Tags, and Artifacts. The main pane in the Artifacts section displays a field labeled Full Path at the top. A header labeled MLflow Model appears next. [Video description ends]
+
+This model registration process will move the model Artifacts from our local directory to Azure ML, allowing us to set up our model behind a prediction endpoint. So copy this full path over and let's head back to our notebook. Now here in the active code cell, observe that we call Model.register on the model object imported from the azureml.core.model library.
+
+Model.register takes in three input arguments.
+
+[Video description begins] Line 3 of code cell 36 reads: model = Model.register(. Line 4 reads: workspace = ws,. Line 5 reads: model_path = '<model_path>',. Line 6 reads: model_name = 'fashion_mnist_classification'. Line 7 displays a ). [Video description ends]
+
+The first is the workspace where we want the model to be registered. Here we pass in a reference to the workspace that we created in the earlier code cell. The second input argument is the path to the model Artifacts. Now this is what I had copied over from the MLflow UI, so I'm going to go ahead and paste this in. You can see that this is the full path to our Artifacts folder under mlflow/mlruns.
+
+Then we have the name of the experiment, the name of the run /artifacts and fashion_mnist_cnn. Now the path that I've copied over is not exactly in the right format. Notice it has a file: backpack prefix. We need to get rid of this prefix because what we want is an absolute path to where the artifacts are stored. So that Model.register will copy the Artifacts from our local machine to Azure ML.
+
+And the third input argument to Model.register is the name of the model as we want it to appear in Azure Machine Learning, which is just fashion_mnist_classification. Go ahead and hit Shift+Enter to execute this code. This will take a few minutes, but soon your model will be registered. At each step, it's important to confirm that things have worked on the Azure end, so head over to the Azure portal and on the left navigation pane under Assets, you should find a link for Models.
+
+If you click on this link, you should find the model that we just registered in here. This is the fashion_mnist_classification model and this is version 1 of this model. At this point, we've registered our model successfully with Azure ML.
+
+[Video description begins] A page titled 'fashion_mnist_classification:1' appears within Azure AI | Machine Learning Studio. The navigation pane on the left contains various sections like Authoring, Assets, Manage, and so on. The Assets section contains several options like Data, Jobs, Components, Models, Endpoints, and so on. The main pane displays a command bar at the top with several options like Details, Versions, Artifacts, Endpoints, Jobs, Data, and so on. The Details option is active now. It displays a toolbar with the following options: Refresh, Archive, Deploy, and Share Model. Below, 5 sections appear: Attributes, Tags, Properties, and Description. The Attributes section provides various information in fields like Name, Version, Created on, Created by, Type, Asset ID, and so on. [Video description ends]
+
+Let's take a look at our registered model. If you scroll down to the bottom, you can see that there is an Asset ID associated with this model. If you click on Versions, you can see that we have just 1 version of this model registered, which is why this is version 1.
+
+And if you head over to the Artifacts tab, this is where you'll be able to see the Artifacts folder from our local machine that has been copied over to Azure ML during the process of model registration. If you expand this folder, you'll find that it's identical to the structure of the Artifacts folder on our local machine. So, we have all of the environment variables, the environment setup, the saved model format for our TensorFlow model available here, but the model has not been served behind an endpoint yet.
+
+That's why when you click on Endpoints, you'll find that it's empty. Let's head back to our notebook and fix this. Now from mlflow.deployments, I have imported the get_deploy_client that allows us to deploy our model to an endpoint. This deployment client requires a deployment configuration and I have set up a very simple one in the dictionary format on line 7. This only specifies the 'computeType' set to 'aci'.
+
+This bit of configuration will deploy our model to a prediction endpoint using Azure Container Instances. These are serverless containers available on Azure. Serverless containers allow you to provision containers without provisioning any infrastructure on which containers run.
+
+[Video description begins] Line 2 of code cell 38 reads: from mlflow.deployments import get_deploy_client. Line 7 reads: deploy_config = {'computeType': 'aci'}. [Video description ends]
+
+On line 10, I specify the name of this deployment configuration file, 'deployment_config.json', and on lines 12 and 13, we'll write out the contents of this file to our current working directory.
+
+Once this is done, we are now ready to deploy our model to an endpoint.
+
+[Video description begins] Line 10 reads: deployment_config_path = 'deployment_config.json'. Line 12 reads: with open(deployment_config_path, 'w') as outfile:. Line 13 reads: outfile.write(json.dumps(deploy_config)). [Video description ends]
+
+In order to do so, we need to specify the correct '<ws_tracking_url>' to instantiate our deployment client on line 4 of the next code cell and then set the tracking_uri correctly for ML flow. Now where will we get the '<ws_tracking_url>'?
+
+[Video description begins] Line 4 of code cell 39 reads: client = get_deploy_client('<ws_tracking_url>'). Line 7 reads: mlflow.set_tracking_uri('<ws_tracking_url>'). [Video description ends]
+
+Well, it's available on the Azure portal. So, switch over to the Azure portal and this is our loony-mlflow-tf-ws that we have created.
+
+And you can see off to the right of your screen you have a little section that says MLflow tracking URI. Copy this URI over. This is the tracking URI for our workspace which we'll specify in the placeholders that I have provided here. So, call get_deploy_client and pass in the '<ws_tracking_uri>' that we just copied over and do the same thing for the next bit of code mlflow.set_tracking_uri, pass in the URI that you copied over for your workspace.
+
+Remember your URIs will be a little different. And now we come to the last step in the Azure deployment process. You need to specify a config file that points to where your deploy-config-file is located. This I do on line 1 of the active code cell. The name of the model that we want to deploy to an endpoint is 'fashion_mnist_classification' version is 1. And then I create this deployment by calling client.create_deployment. The model_uri is simply f'models:/ the name of the model the (model_version).
+
+The deployment config is the config that I've set up and the name of the deployment endpoint is fmnist-aci endpoint.
+
+[Video description begins] Code cell 40 is displayed. Line 1 reads: config = {'deploy-config-file': deployment_config_path}. Line 3 reads: model_name = 'fashion_mnist_classification'. Line 4 reads: model_version = 1. Line 6 reads: client.create_deployment(. Line 7 reads: model_uri = f'models:/{model_name}/{model_version}',. Line 8 reads: config = config,. Line 9 reads: name = 'fmnist-aci-deployment',. Line 10 displays a ). [Video description ends]
+
+When you run this code cell, you'll be asked to authenticate yourself with the Azure portal. So, authenticate with your credentials and once that's done, you should be able to close this window and go back to your notebook. Now, this deployment process takes a fairly long time.
+
+It took about 20 to 30 minutes for the deployment process to run through. In the meanwhile, you can head over to the Azure portal, go to Endpoints, and you'll see that our deployment endpoint is in the process of being deployed using a container instance that is Azure Container Instances. Let's click through this deployment and you'll see that the Deployment state is currently Loading.
+
+[Video description begins] A page titled 'fmnist-aci-deployment' appears within Azure AI | Machine Learning Studio. The main pane displays a command bar at the top with several options like Details, Test, Consume, and Deployment Logs. The Details option is active now. It displays 3 sections: Endpoint attributes, Tags, and Properties. The Endpoint attributes section provides various information in fields like Service ID, Deployment state, Compute Type, Operation state, and so on. [Video description ends]
+
+You might see the state Unhealthy at points in between, but just wait patiently for the deployment to complete.
+
+Remember provisioning the infrastructure on which our container will run and deploying the artifacts, everything takes time, but at some point, you should be rewarded. In due course, your deployment will move to the Transitioning stage and then if you can go back to your notebook, if you see the Output like this with all of the details of your deployment, your deployment has succeeded. Now let's head back to the Azure portal and you can see the deployment is complete. Let's look at the deployment details. We are here on the deployment Details page.
+
+If you simply hit Refresh, you'll get the latest date of the deployment, and you can see that our endpoint attribute says that it's Healthy. We now have a REST API that we can hit to get predictions and how exactly we hit this REST API, that information is available here in this Consume tab. We have the REST endpoint that we need to hit and below that we have the code in Python, C#, and R for how exactly we can configure a request to this endpoint and receive responses.
+
+Now the Python code is what we're going to look at. What I've done here is simply copied this code over and pasted it in my notebook. I've already done this, so we'll just use the code in the notebook directly. Before that, we'll need the REST endpoint for this deployment. So, copy over this REST endpoint and let's go back to our notebook. I have a placeholder there for the '<REST_API>'. Paste the right REST API in. We can use the code directly as is. Now you're familiar with this code.
+
+There's a function here that allows us to bypass the server certificate verification on the client side.
+
+[Video description begins] Line 6 of code cell 41 reads: def allowSelfSignedHttps(allowed):. Line 8 reads: if allowed and \. Line 9 reads: not os.environ.get('PYTHONHTTPSVERIFY', '') and \. Line 10 reads: getattr(ssl, '_create_unverified_context', None):. Line 11 reads: ssl._create_default_https_context = ssl._create_unverified_context. [Video description ends]
+
+On lines 20 through 22, I have the actual data used for prediction. That is our image represented as a tensor. On line 26, we have the REST URI that we are going to hit. That's our prediction endpoint.
+
+[Video description begins] Line 20 reads: data = {. Line 21 displays the input data. Line 22 displays a }. Line 26 reads: url = 'http://4c4f57a9-fdd3-45c7-a552-21c55b77889c.eastus.azurecontainer.io/score'. [Video description ends]
+
+We set up the request on line 30 and we make the request on line 33. And we get the response.
+
+[Video description begins] Line 30 reads: req = urllib.request.Request(url, body, headers). Line 33 reads: response = urllib.request.urlopen(req). [Video description ends]
+
+The response is in the form of probability scores for each class label. It's pretty clear that getting a response in terms of probability scores is not that useful. How do we parse this? Well, that's in the next code cell. I'm just going to replace the REST endpoint and I'll show you the little bit of code that I've added to get the actual class label. The little extra code that I've added is on line 32. I get the result from the prediction endpoint called np.argmax after parsing the json of the result and use that to index class_names.
+
+Now when I run this code, I'll get the actual class label.
+
+[Video description begins] Line 32 of code cell 42 reads: print(class_names[np.argmax(json.loads(result))]). [Video description ends]
+
+The prediction for this particular image is that it's a Pullover. With this, we've completed the demo where we've successfully built and trained a TensorFlow model for image classification, deployed this model to a local endpoint, and deployed this model to Azure ML as well.
+
+6. Video: Exploring PyTorch and Viewing Images for Machine Learning (it_mlflowdj_06_enus_06)
+
+After completing this video, you will be able to outline the use of PyTorch and view images for machine learning.
+outline the use of PyTorch and view images for machine learning
+[Video description begins] Topic title: Exploring PyTorch and Viewing Images for Machine Learning. Your host for the session is Janani Ravi. [Video description ends]
+In this demo, we'll continue working with deep learning frameworks and MLflow, but this time around we won't use TensorFlow anymore, we'll switch to PyTorch. Once again, we'll train an image classification model where we construct the Convolutional Neural Network to classify images from the FashionMNIST dataset. We are familiar with the dataset.
+
+We know that it contains a total of 70000 images corresponding to 10 different fashion accessories. Each image is a 28 by 28 grayscale image. Grayscale because we need just a single intensity number to represent a pixel in that image. In the previous demo, we used TensorFlow to build a classification model. In this demo, we'll use the PyTorch deep learning framework. Just like TensorFlow, PyTorch is a widely used and very popular machine learning framework.
+
+[Video description begins] The Jupyter notebook titled 'ManagingPyTorchModels' is open. A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: PyTorch. The second line reads: Open-source machine learning framework originally developed by Facebook. [Video description ends]
+
+It's open-source just like TensorFlow is. PyTorch was originally developed by Facebook, and it's still supported by Facebook engineers. Just like with TensorFlow, PyTorch introduces the concept of tensors that are multi-dimensional arrays, similar to NumPy arrays but with additional support for GPU acceleration. PyTorch is widely used in the research community due to its flexibility and ease of use, and it integrates well with other Python libraries and frameworks such as NumPy, SciPy, and scikit-learn, allowing researchers to leverage the rich ecosystem of tools and resources available for deep learning.
+
+When PyTorch was first introduced, the framework was a huge improvement over the existing TensorFlow 1.X framework. TensorFlow 2, of course, is now on par with PyTorch, but today, when you use PyTorch, it's quite likely that you'll use PyTorch Lightning, as we will in this demo.
+
+[Video description begins] The panel now displays the following text in the first line: PyTorch Lightning. The second line reads: High-level interface for PyTorch that eliminates the boilerplate code needed for model training. [Video description ends] 
+
+PyTorch Lightning is a high-level interface for PyTorch that eliminates a lot of the boilerplate code that is associated with training deep learning models. Now, if you've worked with the original PyTorch framework, you know that you first construct the layers of your neural network, pass in the training data to make a forward pass to get predictions from your model, use these predictions to compute the loss, make a backward pass to update model parameters, and you do this over and over again for each iteration within each epoch.
+
+PyTorch Lightning seeks to eliminate much of this boilerplate code. It abstracts away all of the looping code that is needed for model training and validation loops. It also takes care of device placement, data loading, logging, everything. Working with PyTorch lightning is far easier than working with plain PyTorch. So go ahead and pip install the PyTorch Lightning library. Notice that we are installing a specific version of the library that's compatible with our current MLflow version.
+
+We'll work with PyTorch 2.0.2 that's compatible with MLflow 2.3.2. Now, in addition to the PyTorch Lightning library, we are going to be using other libraries from the PyTorch framework, specifically libraries that allow us to deal with images. Go ahead and pip install the torchvision library. torchvision is a PyTorch package that provides datasets, transforms, and pre-trained models for computer vision tasks.
+
+[Video description begins] Code cell 1 reads: pip install pytorch-lightning==2.0.2. Code cell 2 reads: pip install torchvision. [Video description ends]
+
+We'll be working with the FashionMNIST dataset available in the torchvision package. Once the installation is complete, let's set up the imports that we need for our model training and evaluation. In addition to all of the MLflow and data science libraries that we've seen before, we also import PyTorch specific libraries. These imports are on lines 5 through 20. Specifically on line 8, notice the import for by pytorch_lightning as pl and on line 13 the import for the FashionMNIST dataset that is available as a part of torchvision.datasets.
+
+[Video description begins] Line 5 of code cell 3 reads: import torch. Line 6 reads: import torchvision. Line 8 reads: import pytorch_lightning as pl. Line 10 reads: from torch.nn import functional as F. Line 11 reads: from torch.utils.data import DataLoader. Line 12 reads: from torchvision import transforms. Line 13 reads: from torchvision.datasets import FashionMNIST. Line 15 reads: try:. Line 16 reads: from torchmetrics.functional import accuracy. Line 17 reads: except ImportError:. Line 18 reads: from pytorch_lightning.metrics.functional import accuracy. Line 20 reads: import mlflow.pytorch. [Video description ends] 
+
+Now we are familiar with this data, so the first thing we do is set up the class_names list. This contains all of the categories to which our image data belongs. Go ahead and run this code.
+
+[Video description begins] Code cell 4 is highlighted. Line 1 reads: class_names = [. Line 2 reads: 'T_shirt/top',. Line 3 reads: 'Trouser',. Line 4 reads: 'Pullover',. Line 5 reads: 'Dress',. Line 6 reads: 'Coat',. Line 7 reads: 'Sandal',. Line 8 reads: 'Shirt',. Line 9 reads: 'Sneaker',. Line 10 reads: 'Bag',. Line 11 reads: 'Ankle boot'. Line 12 displays a ]. [Video description ends]
+
+The next step is to load in the FashionMNIST dataset. Instantiate the FashionMNIST object. I've done this on lines 1 through 3 of the active code cell. We'll download this data into the current working directory, that's why I pass in os.getcwd( ), as the first input argument.
+
+I want the training data, so train is True. I want to download the data, so download is True, and I want to transform the images so that they are represented as Tensors. That's why the transform says transforms.ToTensor. This just gets us the training data. After downloading it, we'll instantiate a DataLoader class. We'll do this on line 5. DataLoader is a utility class in PyTorch that helps in efficiently loading and processing data for training or inference.
+
+[Video description begins] Line 1 of code cell 5 reads: train_ds = FashionMNIST(. Line 2 reads: os.getcwd(), train = True, download = True, transform = transforms.ToTensor(). Line 3 displays a ). Line 5 reads: train_loader = DataLoader(train_ds, batch_size = 10). [Video description ends] 
+
+When we specify a batch_size of 10, this means when we iterate over the DataLoader, we'll get data in terms of 10 images per batch. Run this code. This will download the training data to our current working directory and also make it available within this program. Next, let's take a look at what this data looks like. I've defined the helper function called imshow that takes in a PyTorch tensor as an input argument.
+
+Within imshow, I access the numpy array corresponding to the tensor by calling img.numpy( ) and then plot this image using plt.imshow from matplotlib.
+
+[Video description begins] Line 1 of code cell 6 reads: def imshow(img):. Line 2 reads: npimg = img.numpy(). [Video description ends]
+
+This is on line 5. Now you may notice on line 5 that I'm doing some strange kind of transposition of the axes of the image that we are about to display. Now the reason for this is how PyTorch actually represents images when we want to feed those images into a Machine Learning model.
+
+[Video description begins] Line 5 reads: plt.imshow(np.transpose(npimg, (1, 2, 0))). A panel appears at the bottom of the screen. It displays 2 lines of text. The first line reads: Image Data in PyTorch [channels, height, width]. The second line reads: Matplotlib accepts images in the format [height, width, channels]. [Video description ends] 
+
+Image data in PyTorch is represented where the first dimension of the image is the number of channels, the second dimension is the height of the image, and the third dimension is the width of the image. So, if you're trying to display an image using matplotlib, well, this format will not work because matplotlib expects that the image data is passed to it in the format where height is the first dimension, width is the second dimension and number of channels is the third dimension.
+
+So, if we want to represent the image data that we've got from PyTorch torchvision in matplotlib, we have to do a few calisthenics. That is the np.transpose. np.transpose takes the PyTorch image and transposes its dimensions so that height comes first, width comes second, and channels comes third. That's exactly the code you see on line 5. And then we display that image using plt.show( ). We set a batch_size of 10.
+
+We set up an iterator to the train data loader. We access the images and labels in the first batch, so we get 10 images and corresponding 10 labels.
+
+[Video description begins] Line 7 reads: plt.show(). Line 9 reads: batch_size = 10. Line 10 reads: dataiter = iter(train_loader). Line 11 reads: images, labels = next(dataiter). [Video description ends]
+
+On line 13, I use torchvision.utils.make_grid which is a helper function that displays the images that we pass in as a grid. This grid will have 10 images per row. So, we'll have just one row with 10 images.
+
+We pass this grid into our helper function, imshow and just below the grid, we'll print out the labels corresponding to these 10 images.
+
+[Video description begins] Line 13 reads: imshow(torchvision.utils.make_grid(images, nrow = 10, normalize = True)). Line 15 reads: print(' '.join(f'{class_names[labels[j]]:5s}' for j in range(batch_size))). [Video description ends]
+
+Let's run this code and you'll be able to see 10 sample images from our dataset. And just below this grid of 10 images, we can see the labels or categories that correspond to these images. Now let's take a look at our image data. Let's take a look at the shape of the images as well as the labels. There are 10 images here in this batch.
+
+[Video description begins] Code cell 7 reads: images.shape, labels.shape. [Video description ends]
+
+So, you can see the first dimension is 10 corresponding to the batch. The second dimension is 1, corresponding to the number of channels in this image. And then we have 28 by 28. That's the height and width of the image. That's going to be the shape of the image tensor that we feed into our ML model. The shape of the label, that's just a single tensor with 10 elements. That's because we have a batch size set to 10. One label corresponding to each image.
+
+7. Video: Setting Up and Running an Image Classification Model (it_mlflowdj_06_enus_07)
+
+Learn how to set up an image classification model and run it.
+set up an image classification model and run it
+[Video description begins] Topic title: Setting Up and Running an Image Classification Model. Your host for the session is Janani Ravi. [Video description ends]
+Now that we've familiarized ourselves with PyTorch and we've also loaded in and examined the data that we are about to use, we can set up the MLflow experiment that's going to contain our training run. I call mlflow.create_experiment and specify the name fashion_images_prediction_pytorch. I then call mlflow.set_experiment to specify this experiment as the one that we'll use in this notebook. 
+
+[Video description begins] The Jupyter notebook titled ManagingPyTorchModels displays. It contains the following tabs: File, Edit, View, Insert, Cell, Kernel, Widgets, and Help. The main pane contains various input cells with few lines of code. The following line of Input cell 8 is now highlighted. Line 1 reads: experiment_id = mlflow.create_experiment(name = 'fashion_images_prediction_pytorch'). [Video description ends]
+
+[Video description begins] Line 3 reads: mlflow.set_experiment(experiment_name = 'fashion_images_prediction_pytorch'). [Video description ends]
+
+Once this is done, we can now turn our attention to the actual model. This is a Convolutional Neural Network to classify images. If you've worked with PyTorch before, but you haven't worked with PyTorch Lightning, you'll see that our model training code is going to be a lot cleaner with PyTorch Lightning. Now, the first thing I do here is define a class called FashionCNN that inherits from pl.LightningModule.
+
+This class is going to be the core component that represents our deep learning model. With PyTorch Lightning, you'll use this class derived from LightningModule to define your model's architecture, all of the layers in your model, what a forward pass through your model looks like, what your model's loss function is going to be, and any other custom methods that you need for training and evaluation. The lightning module provides a structured and standardized way to organize your model code within the PyTorch Lightning framework.
+
+[Video description begins] Line 7 of Input Cell 10 is now highlighted: class FashionCNN(pl.LightningModule):. [Video description ends] 
+
+Now we've defined the architecture of the Convolutional Neural Network that we are going to be using to classify images within the __init__ method. The __init__ method is defined on line 9 and it takes as an input argument the directory where the data should be stored, which is set to the current working directory by default. On lines 12 and 13, we set the member variables of this class data_dir to the data_dir passed in and the transform that we want to apply to the data, which is simply convert the data to a tensor format.
+
+[Video description begins] Line 9 reads: def __init__(self, data_dir = os.getcwd()):. Line 10 reads: super(FashionCNN, self).__init__(). [Video description ends]
+
+ [Video description begins] Line 12 reads: self.data_dir = data_dir. Line 13 reads: self.transform = transforms.ToTensor(). [Video description ends] 
+
+On lines 15 through 20, we define the first block of layers in our Convolutional Neural Network.
+
+[Video description begins] The following lines are now highlighted. Line 15 reads: self.layer1 = nn.Sequential(. Line 16 reads: nn.Conv2d(in_channels = 1, out_channels = 32, kernel_size = 3, padding =1), . Line 17 reads:nn.BatchNorm2d(32), . Line 18 reads:nn.ReLU(), . Line 19 reads: nn.MaxPool2d(kernel_size = 2, stride = 2). Line 20 reads:). [Video description ends]
+
+We use the nn.Sequential container class that allows us to define multiple layers together as a single block. Now the first layer is a two-dimensional convolutional layer.
+
+in_channels refers to the number of channels in the input images, and we know that the images are grayscale, so in_channels = 1 out_channels refers to the number of feature maps generated by this convolutional layer at the output. out_channels is set to 32. So, the output of this convolutional layer will be 32 feature maps deep. out_channels equal to the number of channels produced by the convolution. Now the kernel_size that we'll use to slide over the input image is set to 3, which means it will be a 3 by 3 kernel.
+
+And padding on the input image is set to 1 which means every image will have a single pixel of padding around its edges and then the convolutional kernel will slide over the input image. Now, following this convolutional layer, we have a 2d batch normalization layer on line 17. Batch normalization is a process that improves the training process of deep neural networks and helps with model convergence.
+
+It normalizes the input data by subtracting the mean of the mini batch of data passed in and dividing the output by the mini batch standard deviation. This normalization step ensures that the input to each layer of the network is centered and has a similar scale. The (32) passed in as an input to BatchNorm2d corresponds to the number of output channels in the convolutional layer, the one just before the batch normalization layer.
+
+The batch normalization layer is followed by a ReLU activation and which is then followed by a Max pooling two-dimensional layer. This layer uses a kernel_size of 2 and a stride of 2. On lines 22 through 27, we have another block of a convolutional layer, followed by batch normalization, followed by ReLU and then a max pooling layer. You can see that the convolutional layer takes in 32 input channels, that's from the previous convolutional layer and produces 64 channels at the output.
+
+[Video description begins] The following lines are now highlighted. Line 22 reads: self.layer2 = nn.Sequential(. Line 23 reads: nn.Conv2d(in_channels = 32, out_channels = 64, kernel_size = 3), . Line 24 reads:nn.BatchNorm2d(64), . Line 25 reads:nn.ReLU(), . Line 26 reads: nn.MaxPool2d( 2). Line 27 reads:). [Video description ends]
+
+This is then followed by BatchNorm2d where the input argument is 64 ReLU and MaxPool2d. In a typical CNN architecture, convolutional and pooling layer blocks are followed by a Linear layer. This we define on line 29.
+
+[Video description begins] Line 29 reads: self.fc1 = nn.Linear(in_features = 64*6*6, out_features = 600).[Video description ends]
+
+This is followed by a Dropout layer where we specify a Dropout of 25%. Remember, Dropout is used to mitigate the process of overfitting on the training data.
+
+[Video description begins] Line 31 reads: self.drop =nn. Dropout2d(0.25). [Video description ends] 
+
+25% of the training neurons will be turned off at any point during any iteration. And then finally, we have two more linear layers fc2 and fc3. This is on lines 33 and 34. And notice that the output of fc3 out_features is set to 10. This corresponds to the 10 possible categories into which an image can be classified.
+
+[Video description begins] Line 33 reads: self.fc2 = nn.Linear(in_features = 600, out_features = 120). Line 34 reads: self.fc3 = nn.Linear(in_features = 120, out_features = 10). [Video description ends] 
+
+The forward function in this class is the method that is called when we make a forward pass through the neural network. forward takes in the input x as an input argument and this input is passed through all of the layers of the deep learning model. On lines 37 through 46, observe that we pass the input x through each layer. 
+
+[Video description begins] Line 36 reads: def forward(self, x):. [Video description ends]
+
+The output of one layer is passed as an input to the next layer. On line 40, we use out.view to flatten the output of the convolutional layer before we pass it into the next linear layer.
+
+[Video description begins] Line 37 reads: out = self.layer1( x). Line 38 reads: out = self.layer2(out). Line 40 reads: out = out.view(out.size(0), -1). Line 42 reads: out = self.fc1(out). Line 43 reads: out = self.drop(out). Line 45 reads: out = self.fc2(out). Line 46 reads: out = self.fc3(out). [Video description ends] 
+
+The training_step function is invoked for every step of training for every iteration of training within an epoch. You can see that the training step accepts a batch of data as the input argument. The batch is a tuple. On line 51, you can see that we extract the x features and the y labels in each batch. On line 53, we make a forward pass through our model by passing in the training data x.
+
+[Video description begins] Line 50 reads: def training_step(self, batch, batch_nb):. Line 51 reads: x, y = batch. [Video description ends] 
+
+When we invoke self on x, we are actually invoking the forward method defined on line 36. The resultant output logits, we then use to compute the loss of the model. F.cross_entropy will compute the loss by comparing the predictions of the model with the actual y values in the data. We get the actual prediction by computing the class or category with the highest probability score. This is logits.argmax.
+
+We store that in the pred variable and then we use that to compute the accuracy of the model at this iteration, this is on line 57. 
+
+[Video description begins] Line 53 reads: logits = self( x). Line 54 reads: loss = F.cross_entropy(logits, y). Line 55 reads: pred = logits.argmax(dim = 1). [Video description ends]
+
+[Video description begins] Line 57 reads: acc = accuracy(pred, y, task = 'multiclass', num_classes = 10). [Video description ends]
+
+And on lines 59 and 60, we log the training loss and the training accuracy at this iteration.
+
+[Video description begins] Line 59 reads: self.log('train_loss' , loss, on_epoch = True). Line 60 reads: self.log('train_acc' , acc, on_epoch = True). [Video description ends]
+
+If you scroll down, you'll see that we have two more methods defined on this class, validation_step and test_step. Now the code within these methods is identical to the code that we saw in the training step. The difference here is that the validation_step is performed with validation data and the test_step will be performed with test data.
+
+[Video description begins] The following sets of commands are now highlighted. Set 1 contains the following lines. Line 64 reads: def validation_step(self, batch, batch_nb):. Line 65 reads: x, y = batch. Line 67 reads: logits = self( x). Line 68 reads: loss = F.cross_entropy(logits, y). Line 69 reads: pred = logits.argmax(dim = 1). Line 71 reads: acc= accuracy(pred, y, task = 'multiclass', num_classes = 10). Line 73 reads: self.log('val_loss' , loss, on_epoch = True). Line 74 reads: self.log('val_acc' , acc, on_epoch = True). Set 2 contains the following lines. Line 78 reads: def test_step(self, batch, batch_nb):. Line 79 reads: x, y = batch. Line 81 reads: logits = self( x). Line 82 reads: loss = F.cross_entropy(logits, y). Line 83 reads: pred = logits.argmax(dim = 1). Line 85 reads: acc = accuracy(pred, y, task = 'multiclass', num_classes = 10). Line 87 reads: self.log('test_loss' , loss, on_epoch = True). Line 88 reads: self.log('test_acc' , acc, on_epoch = True). Line 90 reads: def predict_step(self, batch, batch_nb, dataloader_nb = 0):. Line 91 reads: x, y = batch. Line 92 reads: return self( x). [Video description ends]
+
+With both the validation and test data, we make a forward pass through the model. With the current model's parameters, we get the logits output, use that to compute the cross_entropy loss, find the predictions of the model, and log out the loss and accuracy on validation and test data. At the very bottom here, we have a predict_step which only involves making a forward pass through the model and getting the predictions for the data that we've passed in.
+
+Let's scroll further down and see what other functions we have. configure_optimizers is the function where we specify what optimizer we want to train our neural network. Once again, we use the Adam optimizer with the learning rate of 0.02.
+
+[Video description begins] Line 95 reads: def configure_optimizers(self):. Line 96 reads: return torch.optim.Adam(self.parameters(), lr = 0.02). [Video description ends]
+
+The model parameters will be available via the self.parameters( ) function which we invoke. prepare_data this is the function used to set up the data that we'll use for training and validation.
+
+This is where we download the FashionMNIST dataset into the current working directory. train = True will download the training data. train = False will download the test data. The setup function is where we actually set up the training, validation, and test data. The setup function takes in the stage as an input argument.
+
+[Video description begins] Line 98 reads: def prepare_data(self):. Line 99 reads: FashionMNIST(os.getcwd(), train = True, download= True). Line 101 reads: FashionMNIST(os.getcwd(), train = False, download= True). [Video description ends] 
+
+[Video description begins] The following lines are now active. Line 103 reads: def setup(self, stage=None):. Line 104 reads: if stage == 'fit' or stage is None:. Line 105 reads: fmnist_full = FashionMNIST(. Line 106 reads: self.data_dir, train = True, transform = self.transform). Line 108 reads: self.fmnist_train, self.fmnist_val = \. Line 109 reads: random_split(fmnist_full, [55000, 5000]). Line 111 reads: if stage == 'test' or stage is None:. Line 112 reads: self.fmnist_test = FashionMNIST(. Line 113 reads: self.data_dir, train = False, transform = self.transform). [Video description ends]
+
+If stage is equal to 'fit', that's when we are training the model. That's when we'll set up the training and validation data.
+
+On lines 105 and 106, we access the full FashionMNIST training data. Notice train is equal to True. Then on lines 108 and 109, we randomly split the full data with 55000 images used for training and 5000 images for validation. if stage is equal to 'test' or None, we access the FashionMNIST test data. On line 113, you can see that train is equal to False and we store this data in self.fmnist_test.
+
+And finally, we have three dataloader functions, train_dataloader, val_dataloader, and test_dataloader which instantiate dataloader objects for the train, validation and test data respectively. I've set the batch_size to 64 for all three datasets and num_workers to 2 so that the data loading happens across two workers. All of the methods exposed by this class will be invoked by the PyTorch Lightning Trainer at the right moment to prepare the data, set up your data, call training, call validation, and call test.
+
+[Video description begins] The mentioned lines are now highlighted. Line 115 reads: def train_dataloader(self):. Line 116 reads: return DataLoader(self.fmnist_train, batch_size = 64, num_workers = 2). Line 118 reads: def val_dataloader(self):. Line 119 reads: return DataLoader(self.fmnist_val, batch_size = 64, num_workers = 2). Line 121 reads: def test_dataloader(self):. Line 122 reads: return DataLoader(self.fmnist_test, batch_size = 64, num_workers = 2). [Video description ends] 
+
+If you scroll a little further down, you'll find that I've set up a utility function called print_auto_logged_info which will essentially log out the run_id, artifacts, params, metrics, and other details of the run that you've just executed.
+
+[Video description begins] Line 125 reads: def print_auto_logged_info(run):. Line 127 reads: tags = {k: v for k, v in run.data.tags.items() if not k.startswith('mlflow' )}. Line 129 reads: artifacts = [f.path for f in MlflowClient().list_artifacts (run.info.run_id, 'model')]. Line 131 reads: print('run_id:{}' .format(run.info.run_id)). Line 132 reads: print('artifacts:{}' .format(artifacts)). Line 133 reads: print('params:{}' .format(run.data.params)). Line 134 reads: print('metrics:{}' .format(run.data.metrics)). Line 135 reads: print('tags:{}' .format(tags)). [Video description ends]
+
+Go ahead and execute this code. This will actually set up the model that you want to train and you are now ready to actually invoke training by executing code in the current active cell.
+
+Instantiate the FashionCNN object. This is on line 1. [Video description begins] The next input cell is now highlighted. Line 1 is now displayed: fmnist_model = FashionCNN().
+
+[Video description ends] This is our model. Instantiate a pl.Trainer and specify how many epochs you want to run training for. [Video description begins] Line 3 reads: trainer = pl.Trainer(max_epocs = 5). [Video description ends]
+
+Invoke mlflow.pytorch.autolog to auto log the parameters, metrics, and other details for this model training run. I've set log_models to False because I want to explicitly log the model out with a signature.
+
+[Video description begins] Line 5 reads: mlflow.pytorch.autolog(log_models = False). [Video description ends] 
+
+Within mlflow.start_run, trainer.fit will start the training process on your fashion Convolutional Neural Network and once the training process is complete, trainer.test( ) will actually evaluate the model. Since we don't have the training or test data available here to actually infer the signature, we'll need to explicitly specify the signature using Schema objects. The input_schema is simply a TensorSpec where we specify the shape of the input. -1, 1, 28, 28
+
+[Video description begins] Line 9 reads: trainer.fit(fmnist_model). Line 10 reads: trainer.test(). [Video description ends] .
+
+-1 refers to the batch_size, so the input batch_size can be anything, 1 refers to the number of channels, and 28 by 28 that's the height and width of input images. The output_schema is again a TensorSpec. -1, 10 is the shape of the tensor. -1, meaning it can predict for any number of input images in a batch. That's what -1 refers to. 10 refers to the 10 possible output classes or categories for which we get probability scores.
+
+[Video description begins] Line 12 reads: input_schema = Schema([TensorSpec(np.dtype(np.float32), (-1, 1, 28, 28))]). Line 13 reads: output_schema = Schema([TensorSpec(np.dtype(np.float32), (-1, 10))]). [Video description ends]
+
+On line 14, we instantiate a ModelSignature object with the input and output_schema as specified. And on line 16, we call mlflow.pytorch.log_model to explicitly log out the model with a signature. On line 18, we print out the details of the run using print_auto_logged_info. Go ahead and hit Shift+Enter and start the process of training your model.
+
+[Video description begins] Line 14 reads: signature = ModelSignature(inputs = input_schema, outputs = output_schema). Line 16 reads:mlflow.pytorch.log_model(fmnist_model, 'model-cnn', signature = signature). Line 18 reads: print_auto_logged_info(mlflow.get_run(run_id = run.info.run_id)). [Video description ends]
+
+Now training will take a few minutes to run depending on how powerful your machine is, but in due course you should see the test accuracy and loss on test data. The test_acc is 84.8% which is pretty good, and you can see just below that we have all of the information regarding the run that we just executed printed out to screen.
+
+8. Video: Viewing Model Performance, Serving It, and Making Predictions (it_mlflowdj_06_enus_08)
+
+Discover how to view model performance, serve it, and make predictions.
+view model performance, serve it, and make predictions
+[Video description begins] Topic title: Viewing Model Performance, Serving It, and Making Predictions. Your host for the session is Janani Ravi. [Video description ends]
+Now that we've finished training our model, let's head over to our MLflow UI. Click through to the fashion_images_prediction experiment. There is one run in there. Let's click through to the run and take a look at the Parameters and Metrics of this model. Remember that we used auto-logging to log the parameters and metrics and here you can see the model Parameters. For example, we ran for five epochs and that's clearly logged out here.
+
+Next, let's expand the Metrics section and you'll find that we have metrics for the training data, validation data, and test data. For example, training accuracy, train_acc is 87.3%, test accuracy test_acc is 84.9%, and val accuracy at the bottom is 85%. If you look at the Tags section, you'll see that one tag has been logged. Mode is set to testing.
+
+Now here below is what is interesting, the Artifacts folder. By default, it has been written out to a folder model-cnn. We know our model signature has been written out correctly because we have some information here under the Model schema section. We have the signature for the Inputs to the model, that is the images we pass in and we have the signature for the predictions from the model that is the Outputs. The data directory contains our serialized model in this model.pth file.
+
+This is a serialized file that contains the learned parameters, that is the weights and biases of a model. Now the other files here are familiar to us. The most important of course is the MLmodel file. You can see that the model has been logged out using the python_function and pytorch flavors. At the bottom, you can see our explicitly specified signature of the model, the signature of the input, which is just a batch of grayscale images 28 by 28, and the signature of the output, that is the probability scores for the 10 possible classes or categories.
+
+And as in the case of TensorFlow, the model_summary.txt file here is actually useful. It specifies the different layers in our model and the number of parameters in each layer. Now that we know what the Artifacts look like, let's head back to our code. We'll deserialize and load the Python flavor of our model and get predictions from this deserialized model. First, in the active code cell, we access one batch of test data.
+
+We set up the iterator over the test_dataloader on line 1. On line 3, we go to the next batch so that we are not making predictions on the first batch, but on the second batch. We get the test_imgs and test_labels in the current batch which we're going to use for predictions. And if we print out the shape, you'll see that there are 64 images here in this test data. Remember that this is just one batch of test data.
+
+[Video description begins] The Jupyter notebook titled 'ManagingPyTorchModels' is open. Code cell 12 is displayed. Line 1 reads: it = iter(fmnist_model.test_dataloader()). Line 3 reads: next(it). Line 5 reads: test_imgs, test_labels = next(it). Line 7 reads: test_imgs.shape, test_labels.shape. [Video description ends] 
+
+Next, I access the run_id of the last_active_run that is the run where we executed our PyTorch model.
+
+[Video description begins] Code cell 13 is highlighted. Line 1 reads: run_id = mlflow.last_active_run().info.run_id. Line 3 reads: run_id. [Video description ends]
+
+I have the run_id stored in a variable. I can now access the logged_model using the runs URI on line 1 of the active code cell. On line 4, we use mlflow.pyfunc.load_model to load the model from the artifacts directory and we use this loaded model for predictions on the batch of test data that we just accessed. This is on line 6 and then I print out the shape of the predictions. You can see that the shape is 64 by 10.
+
+[Video description begins] Line 1 of code cell 14 reads: logged_model = f'runs:/{run_id}/model-cnn'. Line 4 reads: loaded_model = mlflow.pyfunc.load_model(logged_model). Line 6 reads: predictions = loaded_model.predict(test_imgs.numpy()). Line 8 reads: predictions.shape. [Video description ends]
+
+For each of the 64 images in the input batch, we have probability scores across the 10 possible categories. Now here below we have the class_names at each index. I'll just print out the details so we can refresh our memory. Now let's get the prediction scores at index 4. Now, if you look at the predictions, you'll see that we have a number for each class or category. But they are not probability scores. That's because they are logits outputs.
+
+[Video description begins] Code cell 15 reads: class_names. Code cell 16 reads: predictions[4]. [Video description ends] 
+
+Logits are also known as log odds, and they are typically the unnormalized predictions of a model, while softmax is an activation function that transforms logits into a valid probability distribution over classes. Here we are working directly with the logits output. You can see that logit values are unconstrained. They can be positive or negative. But we can use them in the same way. I call np.argmax to find the highest logits value. And you can see the prediction for this image is that it's a 'Sneaker'.
+
+The logits output can be used directly for predictions where you don't necessarily need the probability scores for individual classes. For multi-class classification, you can find the highest logit value and use that as the predicted value of the model. Let's do the same thing for the image at index 60. Let's take a look at the logits output of our model. Remember the unnormalized output.
+
+[Video description begins] Code cell 17 reads: class_names[np.argmax(predictions[4])]. [Video description ends] 
+
+Once again, I call np.argmax index into class_names and you can see that the prediction for this image is that its a 'Dress'. Let's see a range of predictions for the different images at the input. For that I define a helper function called show which takes in the index of the image from the test images and the corresponding title. Within the show function, we call plt.iamshow to display the test image at the specified index. The title of the image is the title that we passed in, which will contain both the actual label as well as the predicted label.
+
+[Video description begins] Code cell 20 is highlighted. Line 1 reads: def show(idx, title):. Line 3 reads: plt.figure(). Line 4 reads: plt.imshow(test_imgs.squeeze()[idx].numpy()). Line 6 reads: plt.axis('off'). Line 7 reads: plt.title('\n\n{}'.format(title), fontdict = {'size': 16}). [Video description ends]
+
+Then we run a for loop from 0 to 63 and for each of these test images we get the predicted_class and the actual_class. For each index, we call the show helper function and print out the actual_label versus the predicted_label. Let's go ahead and run this and take a look at a sample of predictions from our model.
+
+[Video description begins] Line 1 of code cell 21 reads: for i in range(64):. Line 2 reads: predicted_class = np.argmax(predictions[i]). Line 3 reads: actual_class = test_labels[i]. Line 5 reads: show(i, 'Model prediction {} (class{}), actual category {} (class {})'.format(. Line 6 reads: class_names[predicted_class], predicted_class,. Line 7 reads: class_names[actual_class], actual_class. Line 8 reads: )). [Video description ends] 
+
+As you scroll and look, you'll see that most of the predictions here are correct. Our model has a pretty high accuracy after all, above 85%. Now that we have a trained model and we've also used it for predictions, let's go register this model with the Model Registry. I've headed over to the MLflow UI, I click on Register Model and because we don't already have an existing model, I Create a New Model called fmnist-image-predictor. Once you've successfully registered this model, you should be able to view this model in the Model Registry.
+
+So, head over to the Models tab and you should see the model that we just registered Version 1 of the model. Now by default, this model is not part of any specific stage.
+
+[Video description begins] The mlflow page is displayed on the browser. The title bar at the top offers 2 tabs: Experiments and Models. The Models tab is active now. It displays the header 'Registered Models' at the top. A tab labeled 'Create Model' appears below. A table appears next with several column headers like Name, Latest Version, Staging, Production, Last Modified, and so on. [Video description ends]
+
+So, if you click through to Version 1, you'll see that Stage is set to None. You can see the Schema of the Inputs and the Outputs right here. This is the structure of the input that we have to specify when we hit our locally served model. Now before we serve our model, I'm going to Transition this model to the Production stage.
+
+I want to say I'm satisfied with this model, and this is what I want to deploy to my local endpoint. For my local deployment, I'm going to access my model artifacts using the run_id.
+
+[Video description begins] Code cell 22 reads: run_id. [Video description ends]
+
+So, this is the run_id that we'll use. Let's just keep it on screen here while I switch over to my terminal window. I'm in my current working directory /projects/mlflow. If you run ls -l here this is where we have our notebook and the mlruns folder.
+
+And here is where I'm going to run mlflow models serve to serve our model. Notice my runs URI which needs the run_id and within that run, I reference the model-cnn folder that contains my model artifacts and I want my prediction endpoint to be available on localhost port 1234. Now let's switch back to our Jupyter Notebook and copy over the run_id that corresponds to this particular model's run. Copy this over and paste it in.
+
+[Video description begins] A Terminal window appears. It displays the following command line: (mlflow_venv) ~/projects/mlflow. The command inserted reads: ls -l. The next command reads: mlflow models serve -m runs:/<run_id>/model-cnn --env-manager local --host 127.0.0.1:1234. [Video description ends] 
+
+And once you hit Enter here, we should have a local deployment server running. We have our prediction endpoint. All that's left for us is to hit that endpoint. The first thing we need to do is to get the data in the right format for PyTorch. A single test image will have the dimensions 1, 28 by 28, but our prediction endpoint expects a batch of images.
+
+Now this is going to be a batch of a single image, so I call test_imgs[4].unsqueeze at dimension 0 to add an extra dimension at the beginning so that we get the resulting dimension 1, 1, 28, 28. You can see how we've changed the shape of our input to match
+
+[Video description begins] Line 4 of code cell 23 reads: # Unsqueeze adds an extra empty dimension at index 0 converting [1, 28, 28] -> [1, 1, 28, 28]. Line 5 reads: data = json.dumps({"instances": test_imgs[4].unsqueeze(dim = 0).tolist()}). [Video description ends] what our prediction endpoint expects in the comments on line 4. This tensor will be the value associated with the instances key and I'm going to print out the json that we'll feed into our prediction endpoint.
+
+The next step is for you to copy this json over. Make sure you hit Copy and in the next code cell you see I have a curl command to our model's endpoint.
+
+[Video description begins] Line 1 of code cell 24 reads: curl http://127.0.0.1:1234/invocations -H 'Content-Type: application/json' -d \. Line 2 reads: '<paste_output_here>'. [Video description ends]
+
+I'm going to paste the json output that I just copied into this placeholder. This way you can simply change the test image and get predictions for different images. Go ahead and hit your REST endpoint/ invocations and we've specified the image that we won't use for prediction in the body of the request.
+
+And if you hit Shift+Enter, you'll get the predictions in the form of logits values. Now how do we know the actual predicted label? We have the code for that right here. Make sure you copy over the predictions output from this curl request and paste that into the placeholder in the next code cell. Directly paste the predictions here.
+
+[Video description begins] Line 1 of code cell 31 reads: predictions = json.loads(. Line 2 reads: '<paste_predictions_here>'. Line 3 reads: )['predictions'][0]. Line 5 reads: predictions. [Video description ends]
+
+We load the predictions into a json dictionary, access the predictions key, and get the predictions at index 0.
+
+This will give us access to the logits array of predictions. We then call np.argmax to find the highest logits value and look up the class_name for that corresponding index.
+
+[Video description begins] Code cell 32 reads: class_names[np.argmax(predictions)]. [Video description ends]
+
+And the prediction here for this test image is a 'Sneaker'.
+
+9. Video: Running a Sentiment Analysis Model and Viewing Logged Artifacts (it_mlflowdj_06_enus_09)
+
+Find out how to run a sentiment analysis model and view logged artifacts.
+run a sentiment analysis model and view logged artifacts
+[Video description begins] Topic title: Running a Sentiment Analysis Model and Viewing Logged Artifacts. Your host for the session is Janani Ravi. [Video description ends]
+At the time of this recording, in the middle of 2023, the rage in artificial intelligence is large language models. Large language models, or LLMs, refer to models designed to generate or understand human language. LLMs are trained on large amounts of text data and can perform a variety of natural language processing tasks.
+
+This includes text generation, machine translation, sentiment analysis, and a lot more. With the growing importance of large language models, MLFlow has added to its repertoire the logging and tracking of LLMs. This was newly introduced as a part of MLFlow 2.3. MLFlow now has features that give the ability to manage and deploy LLMs and integrate LLMs into the rest of your ML operations.
+
+At the time of this recording, MLflow supports 3 new model flavors, HuggingFace Transformers, OpenAI functions, and LangChain. In this demo, we'll see how you can track and log information about a pre-trained transformer model pipeline. Transformers refer to a class of models and architectures that have revolutionized natural language processing or NLP tasks. Typically, NLP tasks require models that can capture information present in sequences, such as Recurrent Neural Networks.
+
+Transformers are a type of LLM that capture the contextual relationships between words or tokens in the sequence more effectively than traditional Recurrent Neural Networks. That's because transformers use a self-attention mechanism to weigh the importance of different words or tokens in a sequence. This allows the model to focus on different parts of the input sequence while making predictions.
+
+In this demo, we'll use a pre-trained model from the HuggingFace library to perform sentiment analysis. HuggingFace is a company and open-source community that focuses on natural language processing technologies. They provide a popular Transformers library which gives us state-of-the-art pre-trained models, tokenizers, and utilities for working with Transformer-based models in natural language processing. And it's this transformers library that we are going to install within our virtual environment using pip install transformers.
+
+We won't actually be training a Transformers model.
+
+[Video description begins] A Jupyter notebook titled 'Tracking LLMModels-Jupyter' is open on the browser. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells. The input cell 1 is highlighted. Line 1 reads: pip install transformers. [Video description ends]
+
+Instead, we'll simply access the model and log it out to our Artifacts folder. Let's first go ahead and create our experiment and I've called it 'sentiment_analysis_transformers' and we set this to be our current experiment in our notebook. Next, make sure you import the transformers library.
+
+[Video description begins] Input cell 2 is highlighted. Line 1 reads: import mlflow. Line 3 reads: experiment_id = mlflow.create_experiment (name = 'sentiment_analysis_transformers'). Line 5 reads: mlflow.set_experiment(experiment_name = 'sentiment_analysis_transformers'). [Video description ends]
+
+Now using the transformers library, I access a pre-trained model and I specify the model by name.
+
+This is the distilbert-base-uncased-finetuned-sst-2-english model. This is a pre-trained model made available by HuggingFace. This model is meant for text classification. If you're interested in learning more about this model, you can head over to the model's page here available at this URL link. All I've done here is instantiated the sentiment_analysis_pipeline and then I call mlflow.start_run.
+
+Now within the run, I'm not actually training the model, I'm simply calling mlflow.transformers.log_model. This function can be used to log the entire model pipeline or just the baseline model. Here I've logged the entire sentiment_analysis_pipeline for this pre-trained model. I've set the artifact_path to 'Sentiment Analyzer' and I've specified an input_example so that the model signature is logged out. The input example is simply a bit of text.
+
+'This is an amazing movie'. The MLflow Transformers flavor of the model that will be logged out supports automatic signature schema detection and passing of pipeline specific input formats. I'll now go ahead and hit Shift+Enter and this model's artifacts will be logged out. Now this is brand new functionality. Remember, it's quite possible that this functionality will change in later versions of MLflow.
+
+[Video description begins] Input cell 3 is highlighted. Line 1 reads: import transformers. Line 3 reads: sentiment_analysis_pipeline = transformers.pipeline(. Line 4 reads: model = ‘distilbert-base-uncased-finetuned-sst-2-english'). Line 6 reads: with mlflow.start_run(run_name = ‘Sentiment Analysis‘):. Line 7 reads: model_info = mlflow.transformers.log_model(. Line 8 reads: transformers_model = sentiment_analysis_pipeline ,. Line 9 reads: artifact_path =‘Sentiment Analyzer' ,. Line 10 reads: input_example =‘It is an amazing movie‘. Line 11 reads: ). [Video description ends] 
+
+Now let's click through to our experiment and see what the model artifacts look like. You can see that MLflow has clearly identified this as a transformer model. Notice transformers under the Models column. Click through and let's go straight to the model Artifacts. This is the only thing that we've logged out. Notice that the Model schema is automatically available. The Input to this model is a string, and the Output is also a string.
+
+For every model in the Transformers package, including this one that we've logged out, MLFlow collects a whole bunch of metadata to ensure that the exact requirements, versions of components, and reference information is available for this model. For example, under components, you get all of the details of the tokenizer that was used in order to process the language data used to train this model. tokenizer.json in fact contains all of the tokens, all of the words that this model understands.
+
+There is information here about the configuration that was used for the tokenizer and the vocabulary that this model supports. If you scroll down here, you'll find a number of different words in English and some other languages, Chinese characters as well. The pipeline folder here will contain details of the model's pipeline, including the model itself, and then we have our familiar MLmodel file. Observe that the model has been logged using a python_function flavor as well as the transformers flavor.
+
+If you'll look at the details under the transformers section, you'll find all of the metadata that is required for this particular model to be used. And if you scroll down and look here at the bottom, you'll find that the signature of the model has been automatically inferred. Another interesting detail that is logged as a part of model artifacts is the model_card for this particular transformers model.
+
+The model_card is a document provided by HuggingFace that serves as a standardized way to communicate important information about pre-trained models. It provides essential details about the model's intended use, capabilities, limitations, and ethical considerations. For every transformers model that you log, you'll find the associated model card in the artifacts. Now having looked at this, let's switch back to our notebook and actually use this pre-trained model for sentiment_analysis.
+
+Notice I call mlflow.pyfunc.load_model to load in the Python flavor of the model and then I call predict on the sentence, 'The weather is now so pleasant.' Well, this is clearly a positive sentence, and that's what our model tells us.
+
+[Video description begins] Input cell 4 is highlighted. Line 1 reads: sentiment_analysis_model = mlflow.pyfunc.load_model(model_info.model_uri). Line 3 reads: sentiment_analysis_model.predict( The weather now is so pleasant'). [Video description ends]
+
+It classifies it as 'POSITIVE'. Next, let's take a look at another sentence. 'The batting performance of the team was terrible.' Well, this is clearly a negative sentence. 'NEGATIVE' sentiment is expressed.
+
+[Video description begins] Input cell 5 is highlighted. Line 1 reads: sentiment_analysis_model.predict(' The batting performance of the team was terrible'). [Video description ends]
+
+'We are planning a fun picnic today.' Well, that's positive sentiment and you can see that it's 'POSITIVE'. Now what about this sentence?
+
+[Video description begins] Input cell 6 is highlighted. Line 1 reads: sentiment_analysis_model.predict(' We are planning a fun picnic today'). [Video description ends]
+
+'It was way too tiring a journey with not much to show for it.' Well, this is clearly a negative sentiment, and the model classifies it as such.
+
+[Video description begins] Input cell 7 is highlighted. Line 1 reads: sentiment_analysis_model.predict(' It was way too tiring a journey for not much to show for it '). [Video description ends]
+
+
+
+10. Video: Course Summary (it_mlflowdj_06_enus_10)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary [Video description ends]
+You have now reached the end of this course, tracking deep learning models. Deep learning models have revolutionized the fields of computer vision and natural language processing, enabling powerful image and text-based predictions. CNNs excel in tasks such as image classification, object detection, and image generation. They automatically learn hierarchical features from images, making them effective in capturing patterns and structure.
+
+For text-based prediction tasks, Recurrent Neural Networks, RNNs and Transformers play a vital role. RNNs are well suited for sequential data processing, making them suitable for tasks such as sentiment analysis, machine translation, and speech recognition. Transformers are widely used in text generation, question answering and sentiment analysis applications. We started this course off by performing image-based predictions using TensorFlow.
+
+We started by visualizing and cleaning the data to prepare datasets for machine learning. With the data prepared, we then trained an image classification model using TensorFlow. Leveraging MLflow, we tracked the model's metrics and artifacts allowing us to monitor and analyze the model's behavior for different images. Additionally, we registered the model in MLflow both locally and to Azure. We also accessed the model as an endpoint, allowing us to use the model for predictions.
+
+Next, we delved into the fundamentals of PyTorch Lightning, powerful deep learning framework that simplifies the development and training of Pytorch models. Lightning abstracts away boilerplate code, providing a high-level interface for researchers and practitioners to focus on model design and experimentation. We used PyTorch Lightning for image classification, learning how to set up and configure models effortlessly. We then trained the classification model using MLflow for tracking the model's metrics and artifacts.
+
+We deployed the model locally and used the local REST endpoints to make predictions. Finally, we got a very brief overview of the exciting world of large language models such as transformers. We read in a pre-trained transformers-based sentiment analysis model from HuggingFace and used it for predictions and saw how MLflow has the capabilities to track this model. Throughout this course, we built foundations in deep learning models for image-based and text-based predictions and with this knowledge we are now ready to move on to the final course in this learning path, using MLflow projects and recipes.
+
+Course File-based Resources
+•	Tracking Deep Learning Models
+Topic Asset
+© 2023 Skillsoft Ireland Limited - All rights reserved.

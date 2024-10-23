@@ -1,0 +1,716 @@
+Creating & Tracking ML Models
+With MLflow's tracking capabilities, you can easily log and monitor experiments, keeping track of various model runs, hyperparameters, and performance metrics. In this course, you will dive hands-on into implementing the ML workflow, including data preprocessing and visualization. You will focus on loading, cleaning, and analyzing data for machine learning. You will visualize data with box plots, heatmaps, and other plots and use the Pandas profiling tool to get a comprehensive view of your data. Next, you will dive deeper into MLflow Tracking and explore features that enhance experimentation and model development. You will create MLflow experiments to group runs and manage them effectively. You will compare multiple models and visualize performance using the MLflow user interface (UI), which can aid in model selection for further optimization and deployment. Finally, you will explore the capabilities of MLflow autologging to automatically record experiment metrics and artifacts and streamline the tracking process.
+Table of Contents
+    1. Video: Course Overview (it_mlflowdj_02_enus_01)
+
+    2. Video: Loading, Cleaning, and Visualizing Data for Machine Learning (it_mlflowdj_02_enus_02)
+
+    3. Video: Viewing Data Statistics with Pandas Profiling (it_mlflowdj_02_enus_03)
+
+    4. Video: Creating an MLflow Experiment (it_mlflowdj_02_enus_04)
+
+    5. Video: Creating an MLflow Run and Logging Artifacts (it_mlflowdj_02_enus_05)
+
+    6. Video: Creating a Run in a With Block and Viewing Run Info (it_mlflowdj_02_enus_06)
+
+    7. Video: Creating Multiple Runs for Different Models (it_mlflowdj_02_enus_07)
+
+    8. Video: Running Polynomial and Random Forest Regression Models (it_mlflowdj_02_enus_08)
+
+    9. Video: Comparing and Visualizing Models (it_mlflowdj_02_enus_09)
+
+    10. Video: Using MLflow Autologging (it_mlflowdj_02_enus_10)
+
+    11. Video: Viewing Autologged Metrics and Artifacts (it_mlflowdj_02_enus_11)
+
+    12. Video: Exploring the conda.yaml File (it_mlflowdj_02_enus_12)
+
+    13. Video: Configuring Autologging to Log Test Metrics (it_mlflowdj_02_enus_13)
+
+    14. Video: Comparing MLflow Models Using the UI (it_mlflowdj_02_enus_14)
+
+    15. Video: Course Summary (it_mlflowdj_02_enus_15)
+
+    Course File-based Resources
+
+1. Video: Course Overview (it_mlflowdj_02_enus_01)
+
+In this video, we will discover the key concepts covered in this course.
+discover the key concepts covered in this course
+[Video description begins] Topic title: Course Overview. Your host for this session is Vitthal Srinivasan. [Video description ends]
+With MLflow's tracking capabilities, you can easily log and monitor experiments, keeping track of various model runs, hyperparameters, and performance metrics. In this course, first you will delve into the end-to-end machine learning workflow, including data preprocessing and visualization. You will focus on loading, cleaning, and analyzing data for machine learning. You will visualize data with box plots, and heatmaps, and other plots. You will use the Pandas profiling tool to get a comprehensive view of your data. Next, you will dive deeper into MLflow Tracking and explore various features enhancing experimentation and model development.
+
+You will create MLflow experiments to group runs and manage them effectively. You will compare multiple models and visualize performance using the MLflow UI, aiding in model selection for further optimization and deployment. Finally, you will explore the powerful capabilities of MLflow autologging, automatically recording experiment metrics and artifacts, streamlining the tracking process. In conclusion, this course will equip you with the skills to create experiments and runs in MLflow.
+
+2. Video: Loading, Cleaning, and Visualizing Data for Machine Learning (it_mlflowdj_02_enus_02)
+
+Learn how to load, clean, and visualize data for machine learning.
+load, clean, and visualize data for machine learning
+[Video description begins] Topic title: Loading, Cleaning, and Visualizing Data for Machine Learning. Your host for this session is Vitthal Srinivasan. [Video description ends]
+In this demo, we are going to begin our exploration of one of the most important components of MLflow, that's MLflow Tracking. We pick up right from where we left off at the end of the last demo. Here, you can see over on the top-right that we have the correct kernel setup and associated with our Jupyter Notebook, there it is mlflow_venv. And you can also see that when we run our first code cell, we get the correct MLflow version.
+
+[Video description begins] A page titled Jupyter appears. The page displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells. The input cell 2 is highlighted. Line 1 reads: import mlflow. Line 3 reads: mlflow._version_. [Video description ends]
+
+That means that all is well with our environment. Let's now turn to actually doing something with MLflow. Now, we are going to focus on MLflow Tracking and in order to see where that fits into the big picture, let's zoom out just a little bit. In the previous demo, you might recall that while installing MLflow we had noted the docs telling us that MLflow tackles four primary components.
+
+Here, they are listed on screen now, MLflow Tracking, MLflow Projects, MLflow Models, and the MLflow Model Registry. If you look elsewhere in the documentation, you'll also see mention of a fifth component that is MLflow Recipes. These previously used to be known as MLflow Pipelines. For now, it's MLflow Tracking that we are focused on. As the docs tell us here, these are useful for tracking experiments to record and compare parameters and results. Effectively, an experiment is a container for runs of different models, and each of these terms has special significance in the MLflow world, an experiment, a run, and a model. With this context in mind, let's go ahead and return to our notebook. It'll take us a little while before we introduce MLflow because we are going to first spend some time setting up a dataset, exploring it and doing some basic machine learning before we configure our machine learning model as part of an experiment.
+
+In this code, you can see that we kick things off by importing pandas, seaborn, and matplotlib.pyplot. Also, keep in mind that we had installed these three libraries inside our virtual environment. Then, in the next code cell, you can see that we fetch_openml.
+
+[Video description begins] The input cell 3 is highlighted. Line 1 reads: import pandas as pd. Line 2 reads: import seaborn as sns. Line 3 reads: import matplotlib.pyplot as plt. [Video description ends]
+
+This is a library which is integrated with scikit-learn and it's interesting enough that we should talk a little bit about it. Let's switch over to a browser and hit the URL for openml, that's https://openml.org/. As the page there tells us, OpenML is an open platform for sharing datasets, algorithms, and experiments. And if you scroll down you can see that there's a lot that you can do with OpenML. For instance, you can train models and run pipelines.
+
+However, our usage of OpenML is going to be focused on the datasets. So, we scroll back towards the top, and there in the search bar, we search for a specific dataset. We search for the term Housing. Before we do that we make sure that the drop-down over on the right is set to Datasets. So, effectively we are going to search the OpenML Datasets for the word Housing. Now, remember that OpenML has an integration with scikit-learn, so the Datasets that we find listed here will be available for us to use from within scikit-learn with just a little bit of code. As you can see, there's a really large number of datasets available here. The one that we are going to use is the one called house_sales. There, you see it in the center of your screen. You can see that this has 21.6k rows and 18 columns. We will access this using the name house_sales from our scikit-learn code.
+
+Let's switch back over to our Jupyter Notebook. And there, we run the next code cell where we read in the house sales dataset into a pandas DataFrame. You can see here in code cell 4 that we begin by importing fetch_openml that's from sklearn.datasets. And then, we invoke the fetch_openml function on line 3. The input arguments include the name of the dataset house_sales, the version which is 1, as_frame which is set to True. This causes a pandas DataFrame to be returned. As an aside, if you set it to False, then you'll get back NumPy arrays. We also specify return_X_y to be False and parser to be auto. The parser just refers to how the data is going to be parsed and auto is going to default to pandas. The return_X_y input argument is more interesting.
+
+If we set that to True, then the return dataset will occur in the form of a bunch object. A bunch object is effectively a dictionary in which there are going to be separate keys for the target and the data. Here, the returned object has a property called data, which is going to be the pandas DataFrame. So, we call house_price_df.data and then invoke the head command on it. The results are visible down below.
+
+[Video description begins] The input cell 4 is highlighted. Line 1 reads: from sklearn.datasets import fetch_openml. Line 3 reads: house_price_df = fetch_openml (. Line 4 reads: 'house_sales', version = 1, as_frame = True,. Line 5 reads: return_X_y = False, parser = 'auto'. Line 6 reads: ). Line 8 reads: house_price_df.data.head(). [Video description ends]
+
+We scroll to the right and orient ourselves with the rows as well as the columns. Next, let's run through a few simple exploratory data analysis steps. We can see here that we begin by dropping some of the columns that we are not interested in, specifically date and zipcode, and we do this with inplace set to True.
+
+[Video description begins] The input cell 5 is highlighted. Line 1 reads: house_price_df.data.drop(columns = ['date', 'zipcode'], inplace = True). Line 3 reads: house_price_df.data.sample(5). [Video description ends]
+
+The transform dataset is visible down below. We sample five rows from it and then invoke the shape property.
+
+At this point, the pandas DataFrame has 18 columns and 21613 rows. Then, let's go ahead and drop duplicates.
+
+[Video description begins] The input cell 6 is highlighted. Line 1 reads: house_price_df.data.shape. The input cell 7 is highlighted now. Line 1 reads: house_price_df.data = house_price_df.data.drop_duplicates(). Line 3 reads: house_price_df.data.shape. [Video description ends]
+
+We now rerun shape and we can see that the number of rows has reduced, it's 21608, so we've lost five duplicate rows. Next, a little bit of data preprocessing. We add in a new column called age, which is simply 2015 minus the year in which the house was built. Now, this choice of 2015 is motivated by the age of this dataset. But even if you substitute a different number in here, it won't affect the model because all of these ages will be scaled accordingly. That's done on line 1 of this code cell. And then, on line 4, we add another column called renovation_age and that is 2015 minus the year in which the particular house was renovated.
+
+[Video description begins] The input cell 8 is highlighted. Line 1 reads: house_price_df.data['age'] = 2015 - house_price_df.data['yr_built']. Line 4 reads: house_price_df.data['renovation_age'] = 2015 - house_price_df.data['yr_renovated']. [Video description ends]
+
+Once again, as long as we choose the same number for all rows, that choice of 2015 will not affect the results.
+
+With these little changes out of the way, we sample some additional data and we can see that the columns age and renovation_age are indeed visible in this DataFrame way over on the right. Next, let's visualize some of our data. You can see here that we've invoked plt.subplots and constructed a seaborn histogram of the price. That's done via sns.histplot with x = 'price' and the data is house_price_df.data.
+
+[Video description begins] The input cell 9 is highlighted. Line 1 reads: fig1, ax1 = plt.subplots(figsize = (8, 6)). Line 3 reads: sns.histplot(x = 'price', data = house_price_df.data). Line 4 reads: plt.show(). [Video description ends]
+
+ In the resulting histogram, we can see that we have a very right tailed distribution. The peak is somewhere between 0 and 1,000,000, but then we have outliers all the way up to close to 8,000,000 on the y-axis. Now, the end goal of our ML model will be to predict this price variable. So, let's familiarize ourselves with it a little more.
+
+[Video description begins] The input cell 10 is highlighted. Line 1 reads: fig2, ax2 = plt.subplots(figsize = (8, 6)). Line 3 reads: sns.boxplot(y = 'price', data = house_price_df.data). Line 4 reads: plt.show(). [Video description ends]
+
+Here is a boxplot of the price data.
+
+This, as you can see, has the familiar box and whisker shape. We have a box towards the center of the distribution, and then we have the whiskers which extend outwards and the points beyond that with the outliers. Our focus for now is not on the data characteristics, but this type of EDA is always worth performing. Next, let's see if a categorical variable that is the waterfront column has an effect on the price.
+
+[Video description begins] The input cell 11 is highlighted. Line 1 reads: fig3, ax3 = plt.subplots(figsize = (8, 6)). Line 3 reads: sns.barplot(x = 'waterfront', y = 'price', data = house_price_df.data). Line 4 reads: plt.show(). [Video description ends]
+
+Here, we've invoked sns.barplot. The waterfront column has just two values, 0 and 1. And you can see that for each of those two values, we have data about the prices. And that makes it pretty clear that waterfront facing properties are indeed a lot more expensive. The heights of these bars give us the averages of the waterfront and non-waterfront facing properties.
+
+You can see that the average for waterfront equal to 0 is about half a million and the average for waterfront equal to 1 is somewhere between 1.5 and 1.75 million. The black lines in the center of each bar are error bars. They give us some measure of the uncertainty around the estimate. In any case, let's now move on and perform yet another visualization. This is a regression. We use sns.regplot. We pass in house_price_df.data as the first input argument. The x variable is the sqft of living space and the y variable is the price. This gives us a nice regression plot.
+
+[Video description begins] The input cell 12 is highlighted. Line 1 reads: fig4, ax4 = plt.subplots(figsize = (8, 6)). Line 3 reads: sns.regplot(data = house_price_df.data, x = 'sqft_living', y = 'price'). Line 4 reads: plt.show(). [Video description ends]
+
+You can see that there is a regression line with an error bar around it, and then we also have a scatter plot of each of the individual x, y points. It's pretty clear that there is indeed a direct relationship between the living space and the price.
+
+That should come as no surprise. Next, let's compute a correlation heatmap. In doing so, however, let's reduce the number of features, otherwise the heatmap becomes impossible to interpret. Here, you can see that we have a list called selected_features, where we have the names of the columns that we wish to include. Then, we invoke the .corr method on a subset of the data, so we have house_price_df.data. Then, within square brackets, we have the selected features, and then we invoke .corr on it. Remember that anytime you index into a pandas DataFrame with two pairs of square brackets, the returned value is going to be a pandas DataFrame. 
+
+[Video description begins] The input cell 13 is highlighted. Line 1 reads: selected_features = [. Line 2 reads: 'price', 'bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot',. Line 3 reads: 'sqft_basement', 'yr_built', 'yr_renovated', 'sqft_above', 'age', 'renovation_age']. Line 5 reads: cormap = house_price_df.data[selected_features].corr(). [Video description ends]
+
+And here, we do indeed have two pairs of square brackets. The first pair is visible explicitly on line 5, and the second pair is what encloses selected_features on lines of 1 and 3. We run this code and get back a nice heatmap. There are some pretty strong correlations in here. However, we will examine these in more detail in the next demo using something known as pandas profiling.
+
+3. Video: Viewing Data Statistics with Pandas Profiling (it_mlflowdj_02_enus_03)
+
+Find out how to view statistics about data with pandas profiling and use it to view correlations.
+view statistics about data with pandas profiling and use it to view correlations
+[Video description begins] Topic title: Viewing Data Statistics with Pandas Profiling. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We ended the last demo by constructing a correlation heatmap, and we performed that correlation analysis on a subset of the columns in our data. Here is the correlation heatmap, and you can see from the colors that there clearly are some very strong relationships in here. When faced with a very broad dataset like this one, which has a large number of columns, you might want to consider using the pandas_profiling library.
+
+[Video description begins] A page titled Jupyter appears. The page displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells. The command in the input cell 14 reads: pip install pandas_profiling. [Video description ends]
+
+Let's very quickly see how we can use that before we plunge into the heart of the MLflow portions of this course. As its name would suggest, pandas_profiling is a library that can be used to perform exploratory data analysis on pandas DataFrame objects. There really is a lot that this library can do.
+
+It can automatically generate reports, compute statistics, provide an overview of your dataset, and also deal with other situations such as missing values and multicollinearity. We aren't going to go into all of that in detail, but you can see here that we install pandas_profiling with a simple pip install. Then, on the next line, we perform a pip install of ipywidgets.
+
+[Video description begins] The input cell 15 is highlighted. It reads: pip install ipywidgets. [Video description ends]
+
+Now, ipywidgets is actually something that helps us to render interactive widgets, that is UI widgets within a Jupyter Notebook. By installing ipywidgets, we then can make use of ydata_profiling, which we do in the next code cell. We import ydata_profiling as pp, and then invoke pp.ProfileReport, and we pass in our pandas DataFrame house_price_df.data. When we view the returned object, we get a very rich report and this can only be rendered properly here because we just installed ipyvision. You can see that the report is a tabbed report.
+
+[Video description begins] The input cell 16 is highlighted. Line 1 reads: import ydata_profiling as pp. Line 3 reads: profile = pp.ProfileReport(house_price_df.data). Line 5 reads: profile. [Video description ends] 
+
+So, we have an Overview, details of the Variables, Interactions, Correlations, Missing values, and Sample. Scrolling down, you see that in the Overview section, we have Dataset statistics, information about the number of columns and rows. Over on the right, we have the Variable types, 17 Numeric and 3 Categorical, as well as information about Missing and Duplicate rows and cells. Scrolling down to the Variables section, you can see that we have a distribution for each variable along with correlation information. Here we are examining the price column. You can see that this has 4028 distinct values. And there's also a clickable link there which tells us what other columns have a HIGH CORRELATION with the price. Scrolling down, you can see that there is a More details option for each column. We click on that and here we have Statistics, Histogram information, and a lot more.
+
+You can see here, for instance, that the skew is indeed quite large for the price column. That's something that we already saw when we constructed a histogram. Remember that normally distributed data which is symmetric has a skew of 0. So, this Skewness of 4.023 is pretty right skew. Scrolling down, you can also see that we have a Histogram right here. This mirrors what we got in the previous demo with sns.histplot. In similar fashion, we could also explore the Common values, Extreme values, and more. In a real-world ML modeling exercise, it would make a lot of sense to explore these details for all of the columns in our dataset. Here, for instance, is an Interactions section with details of the interaction between the different variables. Let's scroll back up to the top and right next to the Overview tab, we see the Alerts tab.
+
+That's worth clicking on as well. We click on it and we see that there is a large number of Alerts here and most of these are worth paying attention to. The profiler tells us that price is highly correlated with sqft of living space and 3 other fields. bedrooms are highly correlated with the number of bathrooms and several other such relationships. Most of these are alerts of the type High correlation, but scrolling down, you can see that there are some others. Imbalance for instance. The waterfront and view columns are both highly imbalanced as one might expect. And then, we also have Zeros alerts for a couple of columns in there. The sqft of basement space and the year of renovation are both Zero for a large proportion of the rows in this dataset.
+
+It's a good idea to start with the alerts before returning to the variables in the Interactions section. With this information in mind, we go back down to the Interactions section, and you can see here that there is a way to choose a couple of columns and study the relationship between them. From the first control, let's pick the price column. So, we click on price from the first list and then sqft of living from the second list. You can see that the visualization over on the right updates as we click around and choose different pairs of variables. Here, for instance, you can see the relationship between price and floors is not as strong as the one between price and sqft of living. Scrolling down, we get to the Correlations section, and you can see here that there are two tabs, Heatmap and Table.
+
+The Heatmap is a really nice and comprehensive one, which includes all of the columns in our data. And we can also click on the Table pane in order to get that same information in tabular format. Now, these correlation coefficients could be affected quite a bit by missing values, and that's where the next section comes in handy. In the Missing values section, you can see that we have two panes, Count and Matrix. Here, we don't have any missing values and that's why the counts for each of the columns is the same and that's equal to the number of rows, that's 21608. The Matrix column is used to compute the nullity of the matrix. That's a slightly involved concept which involves eigenvectors and kernels, and we won't talk a lot more about it, but you should know that it is possible to view this from within this report.
+
+Next comes the Sample section where we can view the First and Last rows in each column. This is akin to performing a head and tail on each column in our dataset. The pandas profiler also allows you to export this report out to an HTML file. You can see that in this code cell on screen now, we have run profile.to_file and specified the name of an html file. If you now go back to the Jupyter File view, you can see that in our directory, we have this file house_price_profile_report.html, which is what we just examined from within our Jupyter Notebook. By this point, we've got most of the details that the pandas_profiling report had to offer. It's time to move on to the next demo, where we will introduce MLflow and set up our first experiment.
+
+[Video description begins] The input cell 17 is highlighted. Line 1 reads: profile.to_file("house_price_profile_report.html"). [Video description ends]
+
+4. Video: Creating an MLflow Experiment (it_mlflowdj_02_enus_04)
+
+Discover how to create an MLflow experiment and explore it using the MLflow user interface (UI).
+create an MLflow experiment and explore it using the MLflow user interface (UI)
+[Video description begins] Topic title: Creating an MLflow Experiment. Your host for this session is Vitthal Srinivasan. [Video description ends]
+The lifecycle of ML model development is pretty well understood by this point. Usually, we start out by exploring our dataset. That step is already done for us. Then, we move on to evaluating many different candidate models, training each of these models, and seeing how they do on a test dataset. And then, based on the performance on the test dataset, we generalize or productionize one or more of those ML models. This workflow is exactly what MLflow intends to help with and the component of MLflow, which helps with this is MLflow Tracking. The most important top-level abstraction or object in MLflow Tracking is the experiment. And you can see here in the first code cell on screen now that we are creating an experiment by invoking mlflow.create_experiment.
+
+We also pass in the name of the experiment, here that is kc_house_price_prediction.
+
+[Video description begins] A page titled Jupyter appears. The page displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells. The command in the input cell 18 reads: experiment_id = mlflow.create_experiment(name = 'kc_house_price_prediction'). [Video description ends]
+
+Now, before we run this code, let's quickly switch over to another browser window where we continue to have the MLflow UI running. You can see that at this point in the MLflow UI, we have no Experiments other than the Default experiment visible over on the center-left. And we also don't have any models. That's going to change as soon as we run this command in our Jupyter Notebook. So, we switch back over to Jupyter and execute that code cell. You can see now that we have code cell 18 that's gone through successfully. Let's switch back over to MLflow UI and hit refresh. And now, over on the center-left, you see that we have two experiments. We have the Default and we also have the kc_house_price_prediction. The center pane contains all of the runs associated with this prediction.
+
+You can see that we've now clicked onto the kc_house_price_prediction experiment, but there still aren't any runs in here. Those runs will only be added in after we actually create a model and execute some runs from our Python Notebook. There is one interesting little detail here however, and that's the Experiment ID, which we can see right below the name of the experiment, kc_house_price_prediction. If we look closely at the Artifact Location, we see that the Experiment ID is also a part of that Artifact Location. From this, it's pretty clear that a directory which has the same name as the Experiment ID has been created by MLflow in the mlruns directory. We'll have a lot more to say on the Artifact Location in a bit, but for now it's really the last part of that part that we care about. You note that that's the same as the Experiment ID. Next, let's switch over to a terminal prompt and run the ls -l command.
+
+We are in our top-level mlflow folder, and you see that we have the mlruns directory in there. Next, let's cd into mlruns and run ls -l here again, and as expected, we see that there is a new directory in here. This is the directory with the same name as the Experiment ID, which we saw in the MLflow UI a moment ago. You can see they're sandwiched between the directory 0, that's the Experiment ID of the Default experiment, and the models directory. Let's switch back over to our Jupyter Notebook and perform a few additional steps with our data. Remember that we had read in all of the data into a DataFrame, which was in house_price_df.data. From this, let's go ahead and drop a few columns. We drop the yr_built, yr_renovated, sqft_above, bathrooms, and sqft_living15.
+
+[Video description begins] A Terminal window appears. The following command is added: ls -l. The next two commands read as follows: cd mlruns, and ls -l. [Video description ends] 
+
+This is done on the basis of some of the correlations, which we observed in the previous demo. For instance, bathrooms is highly correlated with bedrooms and sqft_living15 is highly correlated with sqft_living. sqft_above also has a very high correlation with sqft_living. We do all of this with inplace set to True. Now, let's examine the shape of this reduced dataset.
+
+[Video description begins] The input cell 19 is highlighted. Line 1 reads: house_price_df.data.drop(columns = [. Line 2 reads: 'yr_built', 'yr_renovated', 'sqft_above', 'bathrooms', 'sqft_living15'], inplace = True). [Video description ends]
+
+And we can see that it still has the same number of rows, that's 21608. But the number of columns has reduced to 15. We can also examine the names of the columns in our DataFrame by running house_price_df.data.columns.
+
+[Video description begins] Line 1 of input cell 20 reads: house_price_df.data.shape. The input cell 21 is highlighted now. Line 1 reads: house_price_df.data.columns. [Video description ends]
+
+Next, let's quickly write out all of the feature names to a text file. That's done in the code cell on screen now. You can see that we first create a variable called features. This is a comma delimited list of the column names.
+
+And then, on line 6 of that code cell, we use a with statement in order to write out the features object to features.txt. The benefit of using an open statement like this of course, is that the file handle f is automatically closed when we get to the end of the with block.
+
+[Video description begins] The input cell 22 is highlighted. Line 1 reads: features = """'bedrooms', 'sqft_living', 'sqft_lot', 'floors',. Line 2 reads: 'waterfront', 'view', 'condition', 'grade',. Line 3 reads: 'sqft_basement', 'lat', 'long', 'sqft_lot15',. Line 4 reads: 'age', 'renovation_age'""". Line 6 reads: with open("features.txt", "w") as f:. Line 7 reads: f.write(features). [Video description ends]
+
+In just a moment, we will save the same features.txt file as an artifact of one of our runs. Before that, let's work with the experiment objects. On screen now, you can see that we've invoked mlflow.get_experiment and we've passed in the Experiment ID, which is 0. You might recall that that Experiment ID of 0 corresponds to the Default experiment. Then, we print out the Name, Artifact Location, Tags, Lifecycle_stage, and Creation timestamp.
+
+These are all obtained via the corresponding method invocations on lines 3 through 7 of this code cell, experiment.name, experiment.artifact_location, experiment.tags, experiment.lifecycle_stage, and experiment.creation_time.
+
+[Video description begins] The input cell 23 is highlighted. Line 1 reads: experiment = mlflow.get_experiment("0"). Line 3 reads: print("Name: {}".format(experiment.name)). Line 4 reads: print("Artifact Location: {}".format(experiment.artifact_location)). Line 5 reads: print("Tags: {}".format(experiment.tags)). Line 6 reads: print("Lifecycle_stage: {}".format(experiment.lifecycle_stage)). Line 7 reads: print("Creation timestamp: {}".format(experiment.creation_time)). [Video description ends]
+
+And you can see when we run this code that the Name is Default, the Artifact Location is a location within our MLflow top-level directory. Within that, its inside mlruns, and then the name of the enclosing directory is 0, which is the same as the ID of this experiment. At this point, the Tags is an empty dictionary, the Lifecycle_stage is active, and a Creation timestamp is visible as well. All of these properties are being invoked on the experiment object, which we obtained on line 1 by calling mlflow.get_experiment. Next, let's repeat these operations, but this time the experiment_id that we pass in is not going to be 0. Rather, it's going to be the experiment_id that we obtained right up top, where we created our kc_house_price_prediction experiment.
+
+So, we get back the same experiment object, and we call the same properties on it. And this time when we run this code, we see that the Name is kc_house_price_prediction.
+
+[Video description begins] The input cell 24 is highlighted. Line 1 reads: experiment = mlflow.get_experiment(experiment_id). Line 3 reads: print("Name: {}".format(experiment.name)). Line 4 reads: print("Experiment_id: {}" .format(experiment.experiment_id)). Line 5 reads: print("Artifact Location: {}".format(experiment.artifact_location)). Line 6 reads: print("Tags: {}".format(experiment.tags)). Line 7 reads: print("Lifecycle_stage: {}".format(experiment.lifecycle_stage)). Line 8 reads: print("Creation timestamp: {}".format(experiment.creation_time)). [Video description ends]
+
+ The Experiment_id is what we previously saw in the MLflow UI. That also happens to be the name of the directory that was created in mlruns. This proves that we were successfully able to create this experiment kc_house_price_prediction programmatically. Of course, you can also use the MLflow UI in order to create experiments. Next, let's call mlflow.get_tracking_uri(), and you can see that this returns a file directory.
+
+[Video description begins] The input cell 25 is highlighted. It reads: mlflow.get_tracking_uri(). [Video description ends]
+
+If you look closely, we see that this is just the mlruns directory that we saw in the terminal window a moment ago. Let's take a moment to understand what this Tracking URI is.
+
+Remember that MLflow has five main components, Tracking, Models, Model Registry, Projects, and Recipes. MLflow Tracking is what we are currently working with. Experiments and runs are encapsulated and tracked by MLflow Tracking. This requires a server, and that's called the MLflow Tracking server. That's the server which was started up when we brought up the MLflow UI in an earlier demo. As its name would suggest, the MLflow Tracking server is going to track parameters, metrics, and artifacts associated with all of the runs in our experiments. Where are all of these going to be stored? And the answer is that's determined by the Tracking URI. That could be on the local file system or on a remote file system, or even on a database of your choice. Here, when we ran MLflow UI, that started up the MLflow Tracking server with the tracking_uri set to the local file system.
+
+And that's what we see right here on screen, and that's where the URI starts with the file keyword. We'll have a lot more to say about the Tracking URI and the information that's stored there in the demos up ahead. That gets us to the end of this demo, in which we created our first experiment, and we also ensured that that experiment could be queried from the MLflow APIs. In the next demo, we'll move on to actually working with this experiment and setting up our first run.
+
+5. Video: Creating an MLflow Run and Logging Artifacts (it_mlflowdj_02_enus_05)
+
+In this video, learn how to create an MLflow run and log artifacts.
+create an MLflow run and log artifacts
+[Video description begins] Topic title: Creating an MLflow Run and Logging Artifacts. Your host for this session is Vitthal Srinivasan. [Video description ends]
+Experiment objects are top-level entities in the MLflow Tracking world. Any operations that we perform, such as running a model need to be done within the context of an experiment. Here, you can see in the first code cell that we invoke mlflow.set_experiment in order to set the experiment with the name kc_house_price_prediction as the currently active experiment.
+
+[Video description begins] A page titled Jupyter appears. The page displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells. The command in the input cell 26 reads: mlflow.set_experiment(experiment_name = 'kc_house_price_prediction'). [Video description ends]
+
+This is an important concept you have to keep in mind that within MLflow Tracking at any point in time, any run needs to be associated with an experiment. You can see in the next code cell that we invoke mlflow.start_run. If we were to try and do that without setting an active experiment, then MLflow would create an experiment for us and that would be treated as the default container for the runs. That's not what we want.
+
+We want to make sure that our kc_house_price_prediction experiment is used as a container, and that's why we have invoked mlflow.set_experiment in code cell 26. This returns the experiment object which has been set as the currently active one and you can see that from the return value. You also can see the artifact_location, creation_time, experiment_id. There it's the number which starts with 1922 and ends with 4366 and other details. Note that this experiment_id is the same one that we have seen multiple times by now in MLflow UI as well as in the mlruns directory. This experiment_id is clearly associated with this experiment kc_house_price_prediction. In the next code cell, we introduce yet another fundamental building block of MLflow Tracking, and that's the run.
+
+A run in MLflow Tracking is a collection of parameters, metrics, tags, and artifacts, and a run must always belong within an experiment. So here, when we invoke mlflow.start_run, a new run is going to be begun, and that run will exist within the context of the currently active experiment. A run is stateful. So, if we invoke mlflow.start_run to kick off the run, then we've also got to invoke mlflow.end_run, which we do in a code cell down below. We'll have more to say on that, but before that, let's focus on the invocation of mlflow.log_figure. On lines 3 and 4 of this code cell, we invoke mlflow.log_figure in order to write out two BLOBs. These are the files histogram_price.png and boxplot_price.png.
+
+[Video description begins] The input cell 27 is highlighted. Line 1 reads: mlflow.start_run(). Line 3 reads: mlflow.log_figure(fig1, 'histogram_price.png'). Line 4 reads: mlflow.log_figure(fig2, 'boxplot_price.png'). [Video description ends]
+
+As soon as we hit Shift+Enter in this code cell, these three lines will be executed.
+
+Now, if we switch over to the MLflow UI and hit refresh, we see in our kc_house_price_prediction that first off, we have a run in the table at the center of the screen. This run has an auto-assigned name legendary-wren-723. Let's click through into that run. And in this UI, we see that we have sections for Description, Parameters, Metrics, Tags, and then down towards the bottom, we have Artifacts. And within the Artifacts section, we see both of the images, which we just logged. We have the histogram_price.png as well as the boxplot_price.png. These are effectively BLOBs, which have been stored by MLflow on the tracking server. And what's more, we can actually examine these right here. We scroll down and click on the two images, and indeed we find that we have the exact images which we had plotted from within our Jupyter Notebooks.
+
+We can also see that we have the Full Path as well as the Size visible above the image. That's metadata associated with these artifacts. Let's head back to Jupyter and move to the next code cell in our notebook, where we invoke mlflow.end_run. A couple of points worth noting here.
+
+[Video description begins] The input cell 28 is highlighted. It reads: mlflow.end_run(). [Video description ends]
+
+If we try and start a new run without ending the previous run, MLflow will throw an exception. So, we've got to remember to call mlflow.end_run. Another point worth keeping in mind is that if we forget to explicitly invoke mlflow.start_run, then when we invoke API such as mlflow.log_figure, a default run will be created and associated with the currently active experiment. It's a good idea to have a strict sense of control over the experiment as well as the run, and that's why invoking mlflow.start_run and end_run is important.
+
+As we shall see in a moment that can be easy to forget and so we just make use of a with clause instead. We are jumping ahead a little bit. First, let's explicitly invoke mlflow.start_run yet again. This time the name of the run has been assigned when we invoke mlflow.start_run. Here, we go with the run_name exploratory_data_analysis. And that's because we'd like to have control over the name of the run. Then, as before, we invoke mlflow.log_figure, and this time we log five figures, all of which had been previously created during our EDA phase. And then, we wrap up by invoking mlflow.end_run. We hit Shift+Enter, and this code cell is executed successfully.
+
+[Video description begins] The input cell 29 is highlighted. Line 1 reads: mlflow.start_run(run_name = 'exploratory_data_analysis'). Line 3 reads: mlflow.log_figure(fig1, 'histogram_price.png'). Line 4 reads: mlflow.log_figure(fig2, 'boxplot_price.png'). Line 5 reads: mlflow.log_figure(fig3, 'boxplot_waterfront_vs_price.png'). Line 6 reads: mlflow.log_figure(fig4, 'regplot_sqft_living_vs_price.png'). Line 7 reads: mlflow.log_figure(fig5, 'correlation_heatmap.png'). Line 9 reads: mlflow.end_run(). [Video description ends]
+
+Let's switch back over to MLflow UI. We currently are still on the page associated with the previous run, the one called legendary-wren-723.
+
+But above the name of the run, we have a little link which takes us back to the experiment. Remember that the experiment is the container within which the run exists. So, we click on the experiment name kc_house_price_prediction. That takes us back out into the Experiments page, where we have the runs associated with this experiment, and we see that we do indeed have another run. In addition to legendary-wren-723 which was created 2 minutes ago, we also have exploratory_data_analysis which was created barely 14 seconds ago. This is the second run that we created from our notebook. Let's click on it. And now, once again, we scroll down into the Artifacts section, and we find not two, but five different figures. These correspond to the five invocations of mlflow.log_figure. We can quickly scroll through each of these in turn and satisfy ourselves that each of them has been correctly saved on the MLflow Artifact server, and indeed, each one of them does correctly appear.
+
+So, we've successfully logged images from this particular run in the Artifacts section. Now, let's head back to Jupyter and see how we can save an artifact, which is not an image. On screen now, you see that we have a code cell with two lines of code. First, we have mlflow.start_run, the run name is features_as_artifacts, and then we have a simple one-line invocation mlflow.log_artifact. This time we just pass in the one input argument that's the name of a file, and this is the features.txt file that we had previously created. This contains the names of all of the X columns that we plan to use in our model. mlflow.log_figure takes in two input arguments.
+
+[Video description begins] The input cell 30 is highlighted. Line 1 reads: mlflow.start_run(run_name = 'features_as_artifacts'). Line 3 reads: mlflow.log_artifact("features.txt"). [Video description ends]
+
+The first is the image object and the second is the file name that we want to save that image to on the Artifact server.
+
+However, in the case of log_artifact, we just pass in the one input argument, which is the file directory on the local path. Here, that's features.txt. We will switch over to the MLflow UI and verify that this has been successfully written in just a moment. But before that, let's see how we can access the currently active run. On screen now, you can see that we invoke mlflow.active_run, and we save the returned object in a variable called run. We then invoke run.info.run_id, and this gives us the Active run_id. And then, on line 5, we invoke end_run. Please remember that this invocation of end_run corresponds to the start_run when we created our features_as_artifacts run in the previous code cell.
+
+[Video description begins] The input cell 31 is highlighted. Line 1 reads: run = mlflow.active_run(). Line 3 reads: print('Active run_id: {}'.format(run.info.run_id)). Line 5 reads: mlflow.end_run(). [Video description ends]
+
+So again, we've got to remember to explicitly call end_run if we had explicitly called start_run to kick things off. We hit Shift+Enter, and we can see that the currently Active run_id is displayed to screen.
+
+This is an identifier that starts with 0d5 and ends with 360. With that in mind, let's switch over to the MLflow UI. There, you can see that we are still in the exploratory_data_analysis run. We click on the name of the experiment, kc_house_price_prediction just above that, and we now see that we have a new run in there that's features_as_artifacts. Let's click through into this particular run features_as_artifacts, and we can see right up top that the Run ID is the same number that we had seen in our Jupyter Notebook. It starts with 0d5 and ends with 360. Down in the Artifacts section, we see that we have one file that's features.txt, and we are able to preview this, and this does indeed contain the names of all of the columns in our X data. That gets us to the end of this demo, in which we successfully created and worked with runs. We'll continue working with runs in the demo coming up next.
+
+6. Video: Creating a Run in a With Block and Viewing Run Info (it_mlflowdj_02_enus_06)
+
+During this video, discover how to create a run using a with block and view run info.
+create a run using a with block and view run info
+[Video description begins] Topic title: Creating a Run in a With Block and Viewing Run Info. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+In the last demo, we spoke about how if we decide to call mlflow.start_run then we also need to remember to call mlflow.end_run otherwise, an exception will be thrown the next time we attempt to start a run. An easy way to get around this rather cumbersome requirement to remember to call end_run is to make use of the with clause.
+
+[Video description begins] A page titled Jupyter is open. The page displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells. [Video description ends]
+
+That's what's been done on screen now, you can see in this code cell that we have a with clause where we invoke mlflow.start_run. We pass in the run_name and we save the returned object in the variable called current_run.
+Everything that we do within the with clause is then able to make use of the current_run object. This of course is the familiar Python Context Manager construct. The with construct in Python will work with any object as long as that object supports some specific methods which have the names enter and exit. Those words enter and exit need to be preceded and followed by a double underscore, commonly known as a dundar. Within the body of the with block, you can see that we invoke log_figure multiple times on lines 3 through 7, and then we also invoke log_artifact on line 9. All of these invocations are similar to those that we had previously.
+
+Notice the indentation, when we get to the end of the with block, the contents of the exit method in the object will be called and in there, the run will call end_run.
+
+[Video description begins] The input cell 32 is highlighted. Line 1 reads: with mlflow.start_run(run_name = 'eda_plots_and_features_as_artifacts') as current_run:. Line 3 reads: mlflow.log_figure(fig1, 'histogram_price.png'). Line 4 reads: mlflow.log_figure(fig2, 'boxplot_price.png'). Line 5 reads: mlflow.log_figure(fig3, 'boxplot_waterfront_vs_price.png'). Line 6 reads: mlflow.log_figure(fig4, 'regplot_sqft_living_vs_price.png'). Line 7 reads: mlflow.log_figure(fig5, 'correlation_heatmap.png'). Line 9 reads: mlflow.log_artifact("features.txt"). [Video description ends]
+
+ And that's how when we use a with construct, we do not need to remember to call end_run. This will happen automatically for us. What happens if an exception is thrown within the body of the with block? Never fear, even in this case the end_run method will still be called.
+
+We'll check in the UI for this run called eda_ plots_and_features_as_artifacts. But before we switch over, let's continue in Jupyter Notebook for a while. Next, we invoke mlflow.last_active_run. As you might imagine, this returns a run object, and we can see the details of this object on screen now.
+
+[Video description begins] The input cell 33 is highlighted. The code reads: mlflow.last_active_run(). [Video description ends]
+
+Within the tags dictionary, we see mlflow.runName and that's eda_plots_and_features_as_artifacts. We also have details about the mlflow.source.git.commit, source.name and source.type. You can see that the source type is 'LOCAL'. Then there's user information as well as the experiment_id, this is the experiment which the run belongs to. You see there? It's the identifier starting with 1922.
+
+It's worth keeping in mind that all mlflow server APIs can be accessed right here from within Jupyter Notebooks using a client. After all, MLflow APIs are available as REST endpoints. On-screen, now you can see that we invoke mlflow.MlflowClient, we get back a client object and then we invoke get_run on this client object. We've got to pass in the run_id that we are interested in, and we get that from current_run.info.run_id. We hit Shift+Enter and we are able to examine the contents of this data.
+
+[Video description begins] The input cell 34 is highlighted. Line 1 reads: client = mlflow.MlflowClient(). Line 2 reads: data = client.get_run(current_run.info.run_id).data. Line 4 reads: data. [Video description ends]
+
+You can see that this includes the metrics dictionary, which is empty, the params dictionary also empty, tags which include mlflow.runName and other information. In this way, you can see that we can query the MLflow server using this MlflowClient object to get information about runs and other entities within MLflow Tracking. We've done a lot. At this point, we have 4 runs associated with this one experiment. Let's switch back over to MLflow. We can see that we currently are in the previous run features_as_artifacts.
+
+Let's click on the experiment name right above that, which takes us back out to the outer level. We see all 4 runs listed here, including eda_plots_and_features_as_artifacts. Let's click through into this last run that we added in and scrolling down under the Artifacts section we see all of the artifacts, that includes our plots as well as the features.txt that we had written out in the course of our experiments. No pun intended. We currently are just looking at all of the runs associated with one experiment but remember that we have two experiments if you count the default.
+
+Let's switch back to Jupyter and see how we can get a list or an iterable of all of the experiments in the current mlflow setup. On-screen now, you can see that we have invoked mlflow.search_experiments and we've gotten back an iterable.
+
+[Video description begins] The input cell 35 is highlighted. Line 1 reads: experiments = mlflow.search_experiments(). Line 3 reads: experiments. [Video description ends]
+
+We print that out to screen and you can see that we have two Experiment objects in there. The output is delimited at the start and the end by square brackets indicating that this is a list. Within that list, we have two Experiment objects, and within the outputs of those, we see the experiment_ids.
+
+The first element has the experiment_id which starts with 1922 and ends with 4366. The second is the default experiment and that's why it's experiment_id='0'. We now have a good handle on the run and the experiment objects and the different APIs that we can use in order to query them from within Jupyter. Let's now move on to building and using models in the context of an experiment and we'll get to that in the demo coming up ahead.
+
+7. Video: Creating Multiple Runs for Different Models (it_mlflowdj_02_enus_07)
+
+Find out how to run an ML model, view info, and create runs.
+run an ML model, view info, and create runs
+[Video description begins] Topic title: Creating Multiple Runs for Different Models. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+Let's take a step back and think about the usual ML workflow. You start out with the dataset, you explore it, preprocess it in a few ways, and then you try out a large number of candidate models. You see which of those candidate models performs best on the test dataset, and based on that performance on the test dataset, you go ahead and promote that model in some fashion. Maybe you deploy it to production and you version it and check it into a registry. This is exactly what the MLflow workflow is all about as well.
+In this demo, we are going to start on a similar set of steps.
+
+[Video description begins] A page titled Jupyter appears. The page displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted and mlflow_venv. An icon toolbar appears next. Below, various input cells are displayed. [Video description ends]
+
+On-screen now, you can see that we have a lot of code which implements Simple Linear Regression. Let's quickly walk through this code. On lines 1, 2, and 3, we have the import statements. These are pretty familiar train_test_split, LinearRegression, and then the metrics, that's mean_absolute_error, mean_squared_error, and the r2 score. This distinction between the metrics and the model will come up again and again while working with MLflow.
+
+On line 6, we have our with construct. We invoke start_run. The run name is Simple Linear Regression, and the variable is called lr_run. On lines 8 and 9, we set up the X and the y variables. The y variable is just the price. The X variables include all of the variables other than the price that's why we invoke drop and pass in columns equal to price. Then we extract one specific X variable that's X_sqft_living before invoking train_test_split, that's done on lines 13 and 14.
+
+Remember that this is Simple Linear Regression and that's why we have just the one X variable which is X_sqft_living. That's what we pass in as the first input argument to train_test_split, it's on line 14, test size is 0.3 and the random_state is 123. Then on line 16, we construct the LinearRegression object.
+
+[Video description begins] The input cell 36 is highlighted. Line 1 reads: from sklearn.model_selection import train_test_split. Line 2 reads: from sklearn.linear_model import LinearRegression. Line 3 reads: from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score. Line 6 reads: with mlflow.start_run(run_name = 'Simple Linear Regression') as lr_run:. Line 8 reads: X = house_price_df.data.drop(columns = ['price']). Line 9 reads: y = house_price_df.data['price']. Line 11 reads: X_sqft_living = X['sqft_living']. Line 13 reads: X_train, X_test, y_train, y_test = train_test_split(. Line 14 reads: X_sqft_living , y, test_size = 0.3, random_state = 123). [Video description ends]
+
+On line 17, we invoke fit, and then on line 19, we invoke predict. This predict method is of course invoked on the test data, which is why we pass an X_test.to_numpy.
+
+We've also got to reshape the data to make it compatible with lr models predict method. Then on lines 22 through 25, we invoke the training and test metrics to find the training_score, the mean_abs_error, root_mean_sq_error and the test_score.
+
+[Video description begins] Line 16 reads: lr_model = LinearRegression(). Line 17 reads: lr_model.fit(X_train.to_numpy().reshape(-1, 1), y_train). Line 19 reads: y_pred = lr_model.predict(X_test.to_numpy().reshape(-1, 1)). Line 21 reads: # Training and test metrics. Line 22 reads: training_score = lr_model.score(X_train.to_numpy().reshape(-1, 1), y_train). Line 23 reads: mean_abs_error = mean_absolute_error(y_test, y_pred). Line 24 reads: root_mean_sq_error = mean_squared_error(y_test, y_pred, squared = False). Line 25 reads: test_score = r2_score(y_test, y_pred). [Video description ends]
+
+The mean_abs_error and the root_mean_sq_error are obtained and measured on the test data that's why we pass in y_test as the first input argument on lines 23 and 24. This model is of course an extremely simple one, but it serves to demonstrate exactly how MLflow is used.
+
+You can see that starting line 28, we invoke the mlflow APIs mlflow.log_metric to pass in the training_score, the test_score, the mean_abs_error and the root_mean_sq_error. Finally, on line 33, we pass in a tag, so we invoke mlflow.set_tag. This takes in a key and a value. The key is Regressor, and the value is Simple Linear Regression Model. By the way, when you invoke mlflow.set_tag, the key has to be a string, but the value can be any object, however, it will be stringified if it's not a string. These invocations of mlflow.log_metric and mlflow.set_tag are a little different from the log image and log artifact methods which we had previously invoked because those were used to store BLOBs as metadata associated with the run.
+
+[Video description begins] Line 27 reads: # Log model metrics. Line 28 reads: mlflow.log_metric('Train_R2_score', training_score). Line 29 reads: mlflow.log_metric('Test_R2_score', test_score). Line 30 reads: mlflow.log_metric('Test_MAE', mean_abs_error). Line 31 reads: mlflow.log_metric('Test_RMSE', root_mean_sq_error). Line 33 reads: mlflow.set_tag('Regressor', 'Simple Linear Regression Model'). [Video description ends] 
+
+Here, the metadata that we are storing takes the form of a specific metric or a specific tag. Metrics relate to how a model has performed, as we shall see in just a bit. There is also a log param method which can be used to store the values of model parameters. In any case, let's now switch over to the MLflow UI and examine the contents of this run. Here we are in the kc_house_price_prediction experiment. Let's hit refresh so that the UI can catch up. Down below we have a list of runs and the first one there is Simple Linear Regression, the run we just created.
+
+Let's click through into that Simple Linear Regression run and we can see right away that we have 4 Metrics and 1 Tag. Let's expand the Metrics and the Tags sections. The Metrics include the Test_MAE, Test_R2_score, Test_RMSE_and Train_R2_score along with their associated values. Note that these names, for instance, Test_MAE are what we pass in as the first input argument to log metric. In similar fashion, we can expand the Tags drop-down, and there we see just the 1 Tag that's the key-value pair. The name of the Tag is Regressor, and the value is Simple Linear Regression Model.
+
+We have now successfully written out or logged Metrics as well as Tags. We did not store any Artifacts and that's why the Artifacts section is blank. Let's switch back to our Jupyter Notebook and continue with this process. In just a moment, we are going to try out yet another candidate model, the one for Multiple Linear Regression that you see towards the center of your screen. But before we do that, let's see how we can query Model Parameters and Metrics using the client object.
+
+In the first code cell visible on screen now, you can see that we invoke mlflow.tracking.MlflowClient and we get the client object and save it in a variable, before invoking get_run, We pass in lr_run.info.run_id as the one input argument. This returns the run object. Once we have the run object, we can invoke the .data.params pr,operty on it and this will allow us to print out the model parameters.
+
+Likewise, on line 5 of this code cell, we again invoke client.get_run and pass in our lr runs run id and what we get back now is the metrics, so, we display those out to screen as well. When we hit Shift+Enter, we see that the Model Parameters are an empty dictionary because of course, we did not log any Model Parameters, but the Metrics dictionary is most certainly not empty. 
+
+[Video description begins] The input cell 37 is highlighted. Line 1 reads: client = mlflow.tracking.MlflowClient(). Line 3 reads: print('Model Parameters', client.get_run(lr_run.info.run_id).data.params). Line 5 reads: print('Metrics', client.get_run(lr_run.info.run_id).data.metrics). [Video description ends]
+
+There you see all of the key-value pairs which we had passed in previously while invoking log metrics. These include the Train_R2_score, the Test_R2_score, the Test_RMSE, and the Test_MAE all with their corresponding values. And in this way, you can see that we have viewed the Parameters and the Metrics that we had set in our run, and we did that not only using the MLflow UI but also using the Mlflow client object right here from within Jupyter Notebook.
+
+Let's keep going with this process. Let's try out yet another type of model and this time along the way we will also log the Model Parameters. In the code cell on screen now, you can see that we have a run whose name is Multiple Linear Regression and once again we make use of the with construct. We save our run in the variable mlr_run. This time, right off the bat, we invoke mlflow.log_figure and then mlflow.log_artifact, that's on lines 4 and 5. The log_figure saves out the correlation_heatmap and the log_artifact is used to serialize the features.txt.
+
+Then, we set up our X and y variables. Because this is Multiple Linear Regression, we pass in all of the X variables when we invoke train_test_split on line 11. We instantiate our LinearRegression object on line 13, fit it on line 15, and invoke predict on that model object on line 17.
+
+[Video description begins] The input cell 38 is highlighted. Line 1 reads: with mlflow.start_run(run_name = 'Multiple Linear Regression') as mlr_run:. Line 3 reads: # Log artifacts for EDA and features. Line 4 reads: mlflow.log_figure(fig5, 'correlation_heatmap.png'). Line 5 reads: mlflow.log_artifact("features.txt"). Line 7 reads: X = house_price_df.data.drop(columns = ['price']). Line 8 reads: y = house_price_df.data['price']. [Video description ends] 
+
+[Video description begins] Line 10 reads: X_train, X_test, y_train, y_test = \. Line 11 reads: train_test_split(X , y, test_size = 0.3, random_state = 123). Line 13 reads: lr_model = LinearRegression(). Line 15 reads: lr_model.fit(X_train, y_train). Line 17 reads: y_pred = lr_model.predict(X_test). [Video description ends]
+
+Then on lines 20 through 23, we invoke the same Metrics which we had in the previous example. These include the training_score, mean_abs_error, root_mean_sq_error, and the test_score. This is a Multiple Regression Model and so, it's going to have a number of model parameters. These are obtained by invoking lr_model.get_params on line 26, and we log these using mlflow.log_params on line 27. This is the first time that we've invoked mlflow.log_params.
+
+Next, we are going to log our metrics.
+
+[Video description begins] Line 19 reads: # Metrics. Line 20 reads: training_score = lr_model.score(X_train,y_train). Line 21 reads: mean_abs_error = mean_absolute_error(y_test, y_pred). Line 22 reads: root_mean_sq_error = mean_squared_error(y_test, y_pred, squared = False). Line 23 reads: test_score = r2_score(y_test, y_pred). Line 25 reads: # Log params. Line 26 reads: params_reg = lr_model.get_params(). Line 27 reads: mlflow.log_params(params_reg). [Video description ends]
+
+However, we will not invoke Log metrics multiple times, rather, we'll just set up one dictionary containing all of our metrics. There you see it starting on line 30. Within our dictionary, we have keys corresponding to the metric names, and the values are of course the metric values. Then we invoke mlflow.log_metrics, that's on line 36 and we invoke mlflow.set_tag on line 38. The key-value pair here is Regressor and Multiple Linear Regression Model. We have a couple of debug prints to round things off.
+
+[Video description begins] Line 29 reads: # Log metrics as dictionary. Line 30 reads: metrics = {. Line 31 reads: 'Train_R2_score': training_score,. Line 32 reads: 'Test_R2_score': test_score,. Line 33 reads: 'Test_MAE': mean_abs_error,. Line 34 reads: 'Test_RMSE': root_mean_sq_error. Line 36 reads: mlflow.log_metrics(metrics). Line 38 reads: mlflow.set_tag('Regressor', 'Multiple Linear Regression Model'). [Video description ends]
+
+These print out all of the model parameters by invoking client.get_run. We pass in the run_id and then invoke .data.params. This will give us the 'Model Parameters' and in similar fashion, we get the Metrics from our run object.
+
+Once again, from the client we invoke client.get_run, pass in the run_id, and then invoke the .metrics property on the returned data, that's on line 41. Let's hit Shift+Enter.
+
+[Video description begins] Line 40 reads: print('Model Parameters', client.get_run(mlr_run.info.run_id).data.params). Line 41 reads: print('Metrics', client.get_run(mlr_run.info.run_id).data.metrics). [Video description ends]
+
+By the time the cell has run through, we will have constructed our Multiple Linear Regression model object. We will have logged a lot of its metadata to MLflow, and we also for good measure print out the values of the parameters and the metrics to screen right here. You can see that the Model Parameters contain a dictionary, positive is set to False, copy_X is True, fit_intercept is True, n_jobs is set to None.
+
+Let's quickly switch over to the MLflow UI. Once again, we hit refresh. We have a new run in their Multiple Linear Regression. Let's click through into this run and this time we have a full house. We have 4 Parameters, 4 Metrics, 1 Tag, we also have 2 Artifacts. We examine all of the Parameters, these include copy_X, fit_intercept, n_jobs, and positive exactly as expected. The Metrics continue to be the same that we had written out previously. The Tags include the one key-value pair where the key is Regressor and then scrolling down into the Artifact section we see the two files that we had written out. One of these is an image file for the correlation_heatmap and the other is the features.txt text file containing the column headers.
+
+8. Video: Running Polynomial and Random Forest Regression Models (it_mlflowdj_02_enus_08)
+
+Learn how to run polynomial and random forest regression models.
+run polynomial and random forest regression models
+[Video description begins] Topic title: Running Polynomial and Random Forest Regression Models. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+In the previous demo, we had a couple of runs corresponding to simple and multiple Linear Regression. In this demo, we will continue with this process of evaluating different candidate models. Here, for instance, on screen, you can see that we have a Polynomial Regression.
+Before we go deep into the mlfow portions of this code, let's take a minute to understand what this Polynomial Regression actually does. You can see that on line 5, we define the degree of the polynomial as 2.
+
+[Video description begins] A page titled Jupyter appears. The page displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells. The codes in the input cell 39 are highlighted. Line 3 reads: with mlflow.start_run(run_name = 'Polynomial Regression') as pr_run:. [Video description ends]
+
+Then on line 8, we construct a PolynomialFeatures object passing in the degree variable. Then on lines 10 and 11, we invoke poly.fit_transform and poly.transform. On line 10, we pass in the X _training data, and on line 11, it's the X_test data.
+
+[Video description begins] Line 5 reads: degree = 2. Line 8 reads: poly = PolynomialFeatures(degree = degree). Line 10 reads: poly_features_train = poly.fit_transform(X_train). Line 11 reads: poly_features_test = poly.transform(X_test). [Video description ends]
+
+What we get back from these two invocations are then passed into the actual LinearRegression object. So, for instance, poly_features_train which we get on line 10 is used in polylr_model.fit on line 15.
+
+The way the PolynomialFeatures object works, let's say you pass in a degree of 2 and then you fit transform by passing in two-dimensional data, let's say two variables x1 and x2.
+
+[Video description begins] Line 13 reads: polylr_model = LinearRegression(). Line 15 reads: polylr_model.fit(poly_features_train, y_train). Line 10 is highlighted along with line 13. A panel appears at the bottom of the screen. It displays 2 lines. The first line reads: Input = [x1, x2] Degree = 2. The following line reads: Output = [1, x1, x2, x1^2, x2^2, x1*x2]. [Video description ends]
+
+ The return value that's poly_features_train is now going to have the following values, 1, x1, x2, x1^2, x2^2, and x1*x2. In other words, the PolynomialFeatures is going to give you all combinations of polynomials of the x values passed in up to and including the degree. All of this expanded set of x variables will then be passed into the regression.
+
+Now of course, if we are going to do this for the training data, then we also have to remember to do it for the test data, and that explains the structure of this code. In terms of the big picture, we are continuing to evaluate different candidate models. In the previous demo, we started with a really simple linear regression model with just one x variable, we then moved on to Multiple Linear Regression, and now we are going further afield into Polynomial Regression. We'll also run through a few random forest regressors as well and once we've constructed all of these different candidate models, we'll see how we can programmatically search and sort the different models based on their metrics.
+
+This is where MLflow will really come into its own because it will allow us to programmatically find the best model based on a metric value. Then it's possible for us to register that model. That's not something that we'll do in this demo, but we will get to that very soon. In any case, let's pick up from where we left off at the end of the last demo. On-screen now, we have yet another regression model, this one a Polynomial Regression. We have the requisite import statement on line 1. The with construct starts on line 3. The name of our run here is pr_run and then we have the degree of the Polynomial Regression, which is 2, that's on line 5.
+
+We instantiate the PolynomialFeatures object on line 8 by passing in that degree, then we call poly.fit_transform passing in the training data, that's on line 10. And then we actually transform the test data, so that it too is in the polynomial form, that's on line 11. On line 13, we instantiate the LinearRegression object, and on line 15, we invoke fit, this time on the Linear Regression model. We pass in poly_features_train and y_train. Then on line 16, we invoke predict on this fitted Polynomial Regression model object, we pass in poly_features_test. Then we have the Metrics starting on line 19. These include the model score, mean_absolute_error, mean_squared_error, and r2_score.
+
+[Video description begins] The codes from lines 1 to 15 are highlighted again. Line 16 reads: y_pred = polylr_model.predict(poly_features_test). Line 19 reads: training_score = polylr_model.score(poly_features_train,y_train). Line 20 reads: mean_abs_error = mean_absolute_error(y_test, y_pred). Line 21 reads: root_mean_sq_error = mean_squared_error(y_test, y_pred, squared = False). line 22 reads: test_score = r2_score(y_test, y_pred). [Video description ends]
+
+We start with the logging in to mlflow on line 25, there we invoke mlflow.log_param. This time it's the degree of the polynomial that we are logging. On line 28, we construct our metrics dictionary. This has all of the metric names as the keys and the metric values.
+
+[Video description begins] Line 25 reads: mlflow.log_param('Degree of polynomial', degree). Line 28 reads: metrics = {. Line 29 reads: 'Train_R2_score': training_score,. Line 30 reads: 'Test_R2_score': test_score,. Line 31 reads: 'Test_MAE': mean_abs_error,. Line 32 reads: 'Test_RMSE': root_mean_sq_error. Line 33 reads: ). [Video description ends]
+
+Then we invoke mlflow.log_metrics passing in this dictionary on line 34, and again we invoke set tag on line 36.
+
+We round things off by printing out the Model Parameters as well as the Metrics on lines 38 and 39, once again by invoking client.get_run to get the active run and then invoking the params and metrics properties on the data object that's returned.
+
+[Video description begins] Line 34 reads: mlflow.log_metrics(metrics). Line 36 reads: mlflow.set_tag('Regressor', 'Polynomial Regression Model with degree 2'). Line 38 reads: print('Model Parameters', client.get_run(pr_run.info.run_id).data.params). Line 39 reads: print('Metrics', client.get_run(pr_run.info.run_id).data.metrics). [Video description ends]
+
+You can see that we are at the right of lines 38 and 39. This is a pretty standard template by now. Let's go ahead and run this. This will result in the addition of yet another run into our experiment.
+
+We switch back over to the MLflow UI, hit Refresh, and indeed we have the Polynomial Regression run appear at the top there. We click through and we see 1 Parameter, 4 Metrics, and 1 Tag. And in the Parameters, you can see that the Degree of the polynomial does indeed appear as 2. Likewise, we can also verify that the values of the Metrics are the same as those which we saw in the Jupyter Notebook. Let's keep going with this process of trying out different candidate models. We are back in the Jupyter Notebook. Here on screen now, you can see we have a Random Forest Regression with the default params. We won't go through the code in all of its details, but it has the same basic structure.
+
+Let's really quickly talk about the Random Forest Regressor as well as its basic building block, which is the decision tree. A decision tree will try and split the data on the basis of the values of the different x variables and for each split, it will try and come up with thresholds based on what works best in the training data. Decision trees make very few assumptions about the input data, but they also are quite prone to overfitting. In order to mitigate this problem, the Random Forest Regressor will construct a large number of decision trees. Those decision trees will be trained on different subsets of the data, make use of different x variables or a combination of both.
+
+Random Forests have a large number of parameters, and those parameters will effectively constrain the manner in which those individual decision trees are constructed. The Random Forest method is known as an ensemble learning method because it effectively constructs a large number of different decision trees. How are those decision trees different? Well, each of them is going to be trained on a different subset of the data and will also differ in different important aspects of its construction. Those degrees of difference are the parameters, and that's why the Random Forest object has a large number of parameters.
+
+In the code that you now see on screen, you can see on line 5, that we instantiate a RandomForestRegressor object, and then we directly invoke .fit on that object on line 7. In other words, we explicitly go with all of the default choices for all of the parameters that scikit-learn assigns. One point here that's worth noting is the way in which we invoke rf_model.get_params on line 16 and then invoke mlflow.log_params passing in all of those params on line 17.
+
+A Random Forest Regression object has a large number of model parameters.
+
+[Video description begins] The input cell 40 is highlighted. Lines 5, 7, 16, and 17 are highlighted. Line 5 reads: rf_model = RandomForestRegressor(). Line 7 reads: rf_model .fit(X_train, y_train). Line 16 reads: params_reg = rf_model.get_params(). Line 17 reads: mlflow.log_params(params_reg). [Video description ends]
+
+As we shall see, there are 17 in total, and by logging it in this fashion, we're going to get the values of all 17 of those model parameters. We run it and display the model parameters and metrics and of course, we have 1 additional run which is visible if we switch over to the MLflow UI, there is the Random Forest Regression with the default params. We can click through and very quickly satisfy ourselves that the Parameters are indeed right. You can see this time that there are 17 of them. That's a very large number, but that comes with the territory when you're working with Random Forest.
+
+Now, let's switch back to Jupyter one last time. Here we have again a Random Forest Regression, but this time we have tuned the parameters. What do we mean by that? Well, if you look at lines 3 through 6 on this code cell now, you can see that we've specified values for the variables n_estimators, max_depth, min_samples_split, and min_samples_leaf. And in this way, we are exercising a little more control over the regression model that's been constructed.
+
+[Video description begins] The input cell 41 is highlighted. Line 1 reads: with mlflow.start_run(run_name = 'Random Forest Regression tuned params') as rft_run:. Line 3 reads: n_estimators = 200. Line 4 reads: max_depth = 10. Line 5 reads: min_samples_split = 5. Line 6 reads: min_samples_leaf = 2. [Video description ends]
+
+Exactly as before, we then go ahead and Log params and Log metrics. You can see this time that the params are also logged in the form of a dictionary. That is done starting line 23, the dictionary has keys corresponding to the tuned values, n_estimators max_depth, and so on, and the corresponding values are the variables that we specified starting line 3. We invoke mlflow.log_params on line 29 and then mlflow.log_metrics on line 38.
+
+[Video description begins] Line 22 reads: # Log params. Line 23 reads: params = {. Line 24 reads: 'n_estimators': n_estimators,. Line 25 reads: 'max_depth': max_depth,. Line 26 reads: 'min_samples_split': min_samples_split,. Line 27 reads: 'min_samples_leaf': min_samples_leaf. Line 28 reads: }. Line 29 reads: mlflow.log_params(params). [Video description ends] 
+
+[Video description begins] Line 31 reads: # Log metrics. Line 32 reads: metrics = {. Line 33 reads: 'Train_R2_score': training_score,. Line 34 reads: 'Test_R2_score': test_score,. Line 35 reads: 'Test_MAE': mean_abs_error,. Line 36 reads: 'Test_RMSE': root_mean_sq_error. Line 37 reads: }. Line 38 reads: mlflow.log_metrics(metrics). [Video description ends]
+
+We dispense with printing the metrics and parameters out to screen.
+
+We run this code, switch back over to the MLflow UI, and click through into the newly added run, Random Forest Regression tuned params. And you can see here that in the list of params, we now have only 4 and not the 17 that we previously did, and these 4 have exactly the values that we had specified. For instance, max_depth is 10, min_samples_leaf is 2, and so on. We can also explore the Metrics and the Tags. We haven't written any Artifacts out. Now, let's switch back out into the Experiments view and there we'll experiment with some of the Columns in here. As we shall see in the next demo, the MLflow User Interface as well as the MLflow client APIs give us excellent ways in which to compare models on the basis of different metrics, and this view right here is going to show us how.
+
+9. Video: Comparing and Visualizing Models (it_mlflowdj_02_enus_09)
+
+Discover how to compare models and visualize them.
+compare models and visualize them
+[Video description begins] Topic title: Comparing and Visualizing Models. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We ended the previous demo by having created individual runs for many different types of models. As you can see on screen now, we have runs for a Random Forest Regression with tuned params, another for Random Forest Regression with default params, a Polynomial Regression, Multiple Linear Regression, and Simple Linear Regression.
+
+[Video description begins] A page called MLflow appears. It contains the following tabs: Experiments, Models, GitHub, and Docs. The Experiments tab is now highlighted. The left pane contains various projects. The main pane appears with the heading kc_house_price_prediction. It contains 2 view tabs: Table and Chart. Below, it contains the following columns: Run Name, Created, Duration, Source, and Models. [Video description ends]
+
+In this demo, we are going to see how MLfow allows us to pick the best-performing of these models. We can sort, we can search based on criteria and those criteria will be picked from the metadata that all of our models share. This is a truly powerful better functionality. You can imagine in the typical machine learning workflow that there are a large number of different candidate models. Those models will all be evaluated against some common test dataset and then you as the data scientist will want to pick the best performing of those models and MLflow makes it really easy to do so, even programmatically. That's what we'll explore in this demo.
+
+Let's pick up the action from where we left off at the end of the last demo. We are back in the MLflow UI. We are in the Experiments pane as you can see over on the top left, and within that, we have the kc_house_price_prediction experiment selected. We are just about to click on that Columns button, which you see at the center of the screen. That is going to allow us to customize the metrics that we display for all of the runs that are listed down below. This is a really surprising and powerful bit of functionality. We click on it, and you can see here that we have Attributes, Metrics, and Parameters as well as Tags and what's more, inside each of these categories, we have all of the values that were specified for any of the runs.
+
+For instance, we could select the Test_R2_score, that's in the list of Metrics and then scroll down and select the Regressor from the list of Tags. These columns will now be added to our table view, and these will give us a quick way to sort our runs. We've now clicked on the Sort button. You can see that's currently sorting by when the run was created. Scrolling down, you can see all of the other fields, there's the Train_R2_score there, and that's what we go with. The sort order changes. We are now sorting in descending order of the Train_R2_score so that the highest Train_R2_score appears right up top.
+
+[Video description begins] A drop-down appears with the following options: Created, User, Run Name, Source, and so on. [Video description ends]
+
+Notice also that in the tabular view down below, we also have the Test_R2_score as well as the Regressor tag. Based on the Train_R2_score, the best performing model is the Random Forest Regression with the default params, which has a Train_R2_score of 0.983. What if we'd like to sort by the Test_R2_score, well, that's easy enough. Simply click on the Sort button and go with the Test_R2_score in descending order. And you can see here that the best Test_R2_score is also for the Random Forest Regression with default params, that's 0.872. The Random Forest Regression with tuned params comes a close second with 0.854.
+
+This is very powerful functionality given that we can have a very large number of candidate models. What's even better is that we can do all of this programmatically. Let's switch back over to Jupyter and see how. [Video description begins] A page titled Jupyter appears. The page displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells. [Video description ends] On screen now, you can see that we've invoked mlflow.search_runs. The first input argument here is the experiment_id, the second is the order_by criterion. Here the order_by criterion is a list which has a single-element metrics.Test_R2_score, and then that's followed by the qualifier DESC for descending.
+
+We get back a nice pandas DataFrame of all of the runs in this particular experiment, you can see that the result has [Video description begins] The input cell 42 is highlighted. Line 1 reads: df_run_metrics = mlflow.search_runs(. Line 2 reads: [experiment.experiment_id], order_by = ['metrics.Test_R2_score DESC']). Line 4 reads: df_run_metrics. [Video description ends] 9 rows for the 9 runs, and you can see that they are sorted in descending order of the Test_R2_score. In order to verify that that's the case, we've got to scroll over towards the right. There you can see the column title, metrics.Test_R2_score and all of the values are in decreasing order starting from 0.872219.
+
+We can scroll towards the right and see that there is much more metadata that's also been returned in this nice DataFrame format. We can also delete runs from an experiment object. Here, you can see that we have a variable run_id_for_delete which we get by indexing into df_run_metrics, passing in 5 as the first input argument into lock, the second input argument is the run_id. We run this code and we see that the run id to delete that's returned is an identifier, which starts with caae and ends with 3509.
+
+Next, let's pass this run id into mlflow.delete_run.
+
+[Video description begins] The input cell 43 is highlighted. Line 1 reads: run_id_for_delete = df_run_metrics.loc[5, 'run_id']. Line 3 reads: run_id_for_delete. [Video description ends]
+
+You see that invocation there in code cell 44 and verify that it has indeed been deleted.
+
+[Video description begins] The input cell 44 is highlighted. Line 1 reads: mlflow.delete_run(run_id_for_delete). [Video description ends]
+
+ That's done by rerunning mlflow.search_runs and in the DataFrame that's returned, we can see that the number of rows is now 8 instead of 9, and what's more, the specific run id which we deleted is missing from the first column of the run ids. There's no run id in there which starts with caae and ends with 3509.
+
+It is also possible to search based on criteria.
+
+[Video description begins] The input cell 45 is highlighted. Line 1 reads: df_run_metrics = mlflow.search_runs(. Line 2 reads: [experiment.experiment_id],order_by = ['metrics.Test_R2_score DESC']). Line 4 reads: df_run_metrics. [Video description ends]
+
+Here you can see for instance that we have a filter string on line 2 of this code cell. The filter string reads metrics.Test_R2_score greater than 0.8. We also have an order_by clause in there, that order_by clause else mlflow that we like the results sorted in descending order of metrics.Test_R2_score. Then we go ahead and display the returned run metrics and we can see that this DataFrame has only two rows, and that's because we only have two runs where this particular metric satisfied our criterion of being greater than 0.8.
+
+[Video description begins] The input cell 46 is highlighted. Line 1 reads: df_run_metrics = mlflow.search_runs(. Line 2 reads: [experiment.experiment_id],filter_string = 'metrics.Test_R2_score > 0.8',. Line 3 reads: order_by = ['metrics.Test_R2_score DESC']). Line 5 reads: df_run_metrics[(. Line 6 reads: 'run_id','metrics.Test_R2_score','tags.Regressor']). [Video description ends] 
+
+This ability to sort and search different runs on the basis of metadata, including model parameters and model test metrics, is extremely powerful. In a production environment, it can be used to choose from amongst a large number of candidate models.
+
+10. Video: Using MLflow Autologging (it_mlflowdj_02_enus_10)
+
+In this video, discover how to use MLflow autologging.
+use MLflow autologging
+[Video description begins] Topic title: Using MLflow Autologging. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We ended the last demo by exploring the power of the search runs function. You can see that we specified a filter criterion and MLflow was able to return only those runs where the metric that we had specified was greater than 0.8.
+
+[Video description begins] A page titled Jupyter appears. The page displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells. [Video description ends]
+
+This kind of ability is incredibly powerful and even more powerful is the feature that we are going to talk about next, which is autologging.
+
+On screen now, you can see a code fragment which demonstrates autologging. As you can see on line 1 of this code cell we invoke mlflow.sklearn.autolog( ). What comes next looks pretty familiar to us. On line 3, we have a with block, you can see here that we call mlflow.start_run and we specify the run_name as 'Random Forest Regression tuned params autologged'. That last word is important. Within the body of this with statement, the code looks a lot simpler than in the previous iterations.
+
+[Video description begins] The input cell 47 is highlighted. Line 1 reads: mlflow.sklearn.autolog(). Line 3 reads: with mlflow.start_run(run_name = 'Random Forest Regression tuned params autologged') as rftal_run:. [Video description ends]
+
+On lines 5 through 8, we set up the various parameters such as the number of estimators, max_depth, min_ samples_split, and min_samples_leaf, and then on line 10, we instantiate a Random Forest Regressor passing in all of these parameters. 
+
+[Video description begins] Line 5 reads: n_estimators = 200. Line 6 reads: max_depth = 10. Line 7 reads: min_samples_split = 5. Line 8 reads: min_samples_leaf = 2. [Video description ends]
+
+On line 17, we invoke the fit method on our model, and then on line 18, we invoke the predict method on our trained model because the fit method trains the model and for that, we pass in the X_test data. On line 20, we invoke the score method in order to see how our model has done.
+
+[Video description begins] Line 10 reads: rf_model = RandomForestRegressor(. Line 11 reads: n_estimators = n_estimators,. Line 12 reads: max_depth = max_depth,. Line 13 reads: min_samples_split = min_samples_split,. Line 14 reads: min_samples_leaf = min_samples_leaf. [Video description ends] 
+
+Then on line 23, 24, and 25, we compute various metrics on the test data, mean_absolute_error, mean_squared_error, and r2_score. And finally, on line 27, we explicitly invoke an mlflow function for the first time in this code block when we invoke mlflow.set_tag. 
+
+[Video description begins] Line 17 reads: rf_model.fit(X_train, y_train). Line 18 reads: y_pred = rf_model.predict(X_test). Line 20 reads: training_score = rf_model.score(X_train,y_train). [Video description ends]
+
+[Video description begins] Line 23 reads: mean_abs_error = mean_absolute_error(y_test, y_pred). Line 24 reads: root_mean_sq_error = mean_squared_error(y_test, y_pred, squared = False). Line 25 reads: test_score = r2_score(y_test, y_pred). Line 27 reads: mlflow.set_tag('Regressor', 'RF tuned parameters with autolog'). [Video description ends]
+
+What's remarkable here is the code that we do not see. We do not see any invocations of mlflow.log_params or mlflow.log_metrics or even mlflow.log_artifact. All of that is being done under the hood for us and all that we needed to do in order to get all of this logging was to turn on autolog, which we did on line 1.
+
+MLflow Tracking is all about tracking the parameters, metrics, and artifacts of the different runs, and so, as you might imagine, autolog is an incredibly powerful part of MLflow tracking. It is however important for us to understand the quirks, and in order to understand those quirks it will help for us to learn how autologging works under the hood. Now, MLflow's documentation is pretty mum on the subject of how auto-logging is implemented, but from what we've been able to gather, MLflow registers hooks, that is function calls or callbacks using the Python sys.secprofile function. This is a way of intercepting calls to specific functions and interposing your own versions of those calls.
+
+MLflow has intercepted calls to the common functions in sklearn. That's why we had to turn on mlflow.sklearn.autolog on line 1 and then whenever we invoke a function such as instantiating a Random Forest Regressor for that matter, that is going to be instrumented by mlflow. With this background in mind, look carefully at line 22. The comment there tells us that the test metrics calculated on lines 23, 24, and 25 are not going to be autologged. Can you guess why that is? Well, it turns out that the real reason is that the functions mean_absolute_error, mean_squared_error, and r2_score had been imported before we turned on autolog, and that means that mlflow has not had a chance to intercept those and replace them with its function hooks.
+
+So, as we shall see in just a moment, if we want those function calls to also be autologged, we will have to re-import them after turning on autolog. We'll get to that in a moment. That's one of the quirks worth keeping in mind. Another quirk that we should be aware of will become apparent once we run this code. We've run it now and you can see that we have a warning. Let's scroll down and read the text of that warning. Note the Hint: Inferred schema contains integer columns. Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and cause a schema enforcement error. What's happening here is as follows.
+
+On line 10 of this code cell, we instantiate our RandomForestRegressor. That is autolog and mlflow will autolog that RandomForestRegressor object that is the model object as one of the artifacts of this run. We'll verify this for ourselves in just a moment. Now, while autologging that model object, mlflow also infers the signature of the model, and that signature, which was inferred on this model, has input types of type int. That turns out to be a potential problem at inference time or prediction time. Why is that? Well, because if those particular columns happen to be missing when data is submitted for inference, then mlflow will not know how to deal with these.
+
+After all, there's no way with an int type to signal a missing value. With floating point types, that is possible using values such as NANs or NULLs for instance. The net result is that if a model has ints in its signature, and if you then try and use that model for inference with missing values on those columns, a schema inference error is flagged. That is exactly what this warning is trying to tell us. Of course, it's an incredibly hard-to-understand warning, but it's perfectly legitimate.
+
+Let's keep going with what the warning tells us. As it tells us halfway through, the best way to avoid this problem is to infer the model schema based on a realistic data sample or training dataset that includes missing values. Now the reason that this problem has arisen in this case is because the input data that we have used to train our model does not contain missing values and that's why the inferred function signature had type int. So, one possible way of getting rid of this warning would be to modify our training dataset and explicitly introduce missing values in all of the int columns. That's pretty long-winded.
+
+Another way which is suggested here is to declare integer columns as doubles, that's float 64 whenever these columns may have missing values and we will do this in just a moment. We've now gone pretty deep into one specific warning. Remember that this warning only arose because we had turned on autolog, and that in turn was because autolog has intercepted the creation of our model object, and when that model object is created, it's logging that model object as a model artifact. As a part of that logging, it's trying to infer the model's signature and, in that process, it encountered data types of type int. With all of this preamble out of the way, let's now switch over to the MLflow UI and see what precisely was logged by autolog. That's something that we'll do in the demo coming up ahead.
+
+11. Video: Viewing Autologged Metrics and Artifacts (it_mlflowdj_02_enus_11)
+
+Find out how to view the autologged metrics and artifacts.
+view the autologged metrics and artifacts
+[Video description begins] Topic title: Viewing Autologged Metrics and Artifacts. Your host for this session is Vitthal Srinivasan. [Video description ends]
+The last demo was the particularly dense one, so, let's quickly recap some of the key concepts that we discussed. We introduced the concept of autologging, which is a powerful feature in MLflow tracking. We mentioned that autologging probably works by attaching function hooks of function callbacks to important function invocations in sklearn. And we also commented on two quirks of how autologging works.
+
+[Video description begins] A page titled Jupyter appears. The page displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells. The codes in the input cell 47 are recapitulated. Line 1 reads: mlflow.sklearn.autolog(). [Video description ends]
+
+The first was the fact that some of these test metric computations are not going to be logged. That's something we have yet to confirm. And second, by explaining that rather intimidating warning that we see at the bottom of the screen.
+
+[Video description begins] Line 23 reads: mean_abs_error = mean_absolute_error(y_test, y_pred). Line 24 reads: root_mean_sq_error = mean_squared_error(y_test, y_pred, squared = False). Line 25 reads: test_score = r2_score(y_test, y_pred). [Video description ends]
+
+ With all of this out of the way, let's now switch over to the MLflow UI and see what autologging actually recorded for this particular run. Here we are in the Experiment pane. You can see that currently, we have sorted by Test_R2_score, but let's change that and sort by created in descending order so that the most recently created run appears on top. There it is, the Random Forest Regression tuned params autologged. Let's click through into that.
+
+Here, we can see the usual headings, Description, Parameters, Metrics, Tags, and Artifacts.
+
+[Video description begins] A page titled mlflow 2.3.2 appears on the browser. The title bar at the top offers 2 tabs: Experiments and Models. The Experiments tab is active now. The navigation pane on the left displays 2 items: Default and kc_house_price_prediction. The kc_house_price_prediction item is open on the main pane. It shows the header called Description. Below, a search bar appears along with several filter options such as Table view, Chart view, Sort, Columns, and so on. A table appears next with 5 column headers: Run Name, Created, Metrics, and Tags. [Video description ends]
+
+[Video description begins] A page labeled Random Forest Regression tuned params autologged appears within mlflow. It displays various details at the top in fields like Run ID, Date, Source, Git Commit, User, Status, and so on. Below, five collapsible sections appear: Description, Parameters, Metrics, Tags, and Artifacts. [Video description ends]
+
+Now while looking at this, do keep in mind that the only explicit logging that was performed by us was one invocation of set tag. So, of the 3 Tags that you see listed there, only 1 was explicitly added by us, the other 2 were autologged. The same goes for the Metrics and the Parameters. We hadn't logged any Metrics or Parameters. So, all 6 Metrics and all 17 Parameters were written in there by autolog. And if you look closely at the Artifacts section, which is peeking out towards the bottom of the screen, you'll see that a model has been added in there, that too is the work of autolog.
+
+Let's quickly go through these sections one by one, starting with the Parameters. This is a Random Forest Regressor and so, all 17 Parameters have been written out. This is something that we've encountered once before when we created the Random Forest Regressor without tuning the params. So, effectively, all of the parameters of the Random Forest Regressor have been written out here. Next, let's move on to the Metrics. There are 6 Metrics, and all of these have been autologged. These include the RandomForestRegressor_score that's on X_train, the training_mean_absolute_error, the training_mean_squared_error, the training_r2_score, the training_root_mean_squared_error, and the training_score.
+
+Notice that none of the test metrics that we computed have been logged, we discussed this in the previous demo. In order to fix that, we will need to re-import the corresponding functions after turning on autolog. So, for now, the Metrics are only the training metrics. Scrolling down into the Tags section, we see that there are 3 Tags in there. The first of these is one that we wrote out. The key is Regressor, the value is RF tuned parameters with autolog. The other two tags were instrumented by autolog. It has the estimator_class. Notice that that is the fully qualified class name from sklearn and then we have the estimator_name which is a much more succinct RandomForestRegressor. All of this is very systematic and comprehensive, but nowhere close to as comprehensive as the logging of the model. That's done in the Artifacts section.
+
+We can see in the Explorer over on the left that there is a directory called model that contains a number of files MLmodel, conda.yaml, model.pkl, python_env.yaml, and requirements.txt. 
+
+[Video description begins] The Artifacts section contains 2 panes. The left pane displays a directory called model. It contains the following files: MLmodel, conda.yaml, model.pkl, python_env.yaml, requirements.txt, estimator.html, and metric_info.json. The main pane displays the title MLflow Model. Below, there are two columns: Model schema and Make Predictions. The Model schema column contains a table with 2 column headers: Name and Type. The Make Predictions column displays codes. [Video description ends]
+
+Then outside the model directory, there are a couple of files, estimator.html and metric_info.json. We're going to explore each of these in more detail, but first, let's look at the center pane. We have the Full Path, and that path corresponds to the artifact store of our MLflow Tracking server. Then over on the right you see we have a button Register Model and down below we are told that the code snippets below demonstrate how to make predictions using the log model. You can also register it to the model registry to version control and the starting point for that process would be clicking on that Register Model button.
+
+Let's scroll down just a little bit and first look at the sample code. There are two examples provided here, how to make predictions on a Spark DataFrame and on a Pandas DataFrame. What becomes clear from this is that MLflow has effectively serialized our model and it has also packaged it up so that all of the metadata and dependencies that we are going to need in order to actually run this model from scratch again are available. Looking at the two examples, you can see that in the first one, it makes use of mlflow.pyfunc.spark_udf. So, it's effectively converting our model into a spark_udf and then using that to make predictions on a Spark DataFrame. And in the second example with the Pandas DataFrame, you can see that the loaded_model is directly read in using mlflow.pyfunc.load_model.
+
+We then invoke the predict method on that loaded_model, that's the last line of code visible on screen now. By looking at these examples, we understand why MLflow needed to infer the signature of our model, and that signature is also nicely displayed at the center of the screen. You can see that MLflow has inferred that our model takes in 14 Inputs. Those inputs include, for instance, the number of bedrooms, the square feet of living space, square feet of lot size, floors, waterfront, and so on. And looking closely at those inputs, you can see that many of them, in fact, most of them in this example, are of Type long and that is what triggered that warning which we had discussed in the previous demo.
+
+We'll come back to that warning and see how to eliminate it. But first, let's orient ourselves with the model directory. Let's click on the Explorer over on the top left and then click through and understand each of those files. We'll get to that in the next demo.
+
+12. Video: Exploring the conda.yaml File (it_mlflowdj_02_enus_12)
+
+Learn how to work with the conda.yaml file and other logged artifacts.
+work with the conda.yaml file and other logged artifacts
+[Video description begins] Topic title: Exploring the conda.yaml File. Your host for this session is Vitthal Srinivasan. [Video description ends]
+
+Let's pick up right from where we left off at the end of the last demo. There we had noticed that autolog had effectively serialized our model and added it or logged it as one of the model artifacts. Here we are in the ML view UI looking at the Artifacts, and here is the model in front of us. We see that there is a directory called model, and within that, there are various files of which the simplest to understand is the model.pkl. That is simply the pickled file for the model object. [
+
+Video description begins] A page of ml view ui appears. The page displays Artifacts at the left side of the page. there is a directory of model is prsent under the artifacts. it contains various files ML model, conda.yaml, model.pkl, python_env.yaml,requirements.txt. [Video description ends]
+Now, of course, the pickle library is a Standard Python Library used for serializing and deserializing objects, so, our model has clearly been serialized here, but that's just the beginning, MLflow has done a lot more. This model directory that you see can be thought of as a standard format. As the MLflow docs tell us, this is a way of packaging up MLmodels which can then be used by a variety of downstream tools. As we shall see, these might include real-time inference through a REST API or batch inference using Apache Spark.
+
+Let's go through all of these files starting with the MLmodel file, the contents of which are visible on screen now. The first attribute there is the artifact_path and then we see the flavors section. That's important. You can see that this particular model supports two flavors, python function and sklearn. Each of these has a specific meaning in the MLflow world. A python function flavor indicates that this model can be loaded and invoked as a python function. We had seen an example of this in the previous demo in the code fragment, where Pyfunc had been used to load the model.
+
+The Python flavor makes this model available to more than just Python invokers, however. 
+
+[Video description begins] The main pane contain two parts first is artifact path and the second is flavors section. the flavors section highlights various lines of code. Line 1 reads: python_function:. Line 2 reads: env:. Line 3 reads: condo: conda.yaml. Line 4 reads: virtualenv: python_env.yaml. Line 5 reads: loader_module: mlflow.sklearn. Line 6 reads: model_path: model.pkl. Line 7 reads: predict_fn: predict. Line 8 reads: python_version: 3.10.9. [Video description ends]
+
+There are also other tools which support or work with python_function model flavors. As the docs tell us, there is an MLfow models serve command which we will get to in a future demo, and that can work with any model which supports the Python flavor. You can see within the python function section that the loader_module has to be specified as well, and that is mlflow.sklearn. There is also the model_path, which is simply model.pkl, that's the pickle file contained in the same directory.
+
+The name of the function to be used for prediction is also in there, predict_fn and that's the predict function and the python_version that was used while creating this model. In the env section, you can see that there are links to the conda.yaml and the python_env.yaml files. Those files are also a part of the same directory. You can see those in the explorer over on the top left. We'll explore those in just a moment as well.
+
+In addition, there is an MLflow deployments tool which can be used with the -T option in order to deploy such a model to Amazon SageMaker. The sklearn flavor makes it possible for this model to be one of the stages in an sklearn pipeline. 
+
+[Video description begins] Various lines of code is highlighted. Line 9 reads: sklearn: . Line 10 reads: code: null. Line 11 reads: pickled_model: model.pkl. Line 12 reads: serialization_format: cloudpickle. Line 13 reads: sklearn_version: 1.2.1. [Video description ends]
+
+You see that this file also defines the mlflow_version, that's 2.3.2, and then the run_id which is the id of the run which created the model. Next, we have the model signature, and this is the section which caused the warning which we had previously mentioned. You see in the signature section that there are two sections for inputs and outputs respectively. The inputs are specified in the form of a list, and for each list, we have a key-value pair.
+
+[Video description begins] Various lines of code is highlighted. Line 13 reads: mlflow_version: 2.3.2. Line 15 reads: run_id: 2e5f572c59a74a06b2c4b22aa42493fd. [Video description ends] 
+
+[Video description begins] Various lines of code is highlighted. Line 16 reads: signature. Line 17 reads: inputs: '[{"name":"bedrooms", "type ": "long"},{"name": "sqft_living", "type": . Line 18 reads: "long "}, { "name "}: "sqft_lot ", "type ": "long ", { "name ": "floors ", "type ": "double "},. Line 19 reads:{ "name ": "waterfront ", "type ": "long "},{ "name ": "view ", "type ": "long "},{ "name ": . Line 20 reads: "condition ", "type ": "long "},{name ": "grade ", "type ": "long "},{ "name ": "sqft_basement ",. Line 21 reads: "type": "long"}, {"name": "lat", "type": "double"}, {name": "long","type": "double"}, . Line 22 reads:{"name": "sqft_lot15","type": "Long"}, {"name": "age", "type": "long"},{"name":. Line 23 reads: " renovation_age","type": "long"}] ' [Video description ends]
+
+The first key is the name of that input and the second is the type. For instance, the first element in our inputs list is a dictionary for the bedrooms, so the name of that parameter is bedrooms, and the type is long. Likewise, the outputs section also has a list. Each element in that list is a dictionary, and within that, we have information such as the type and the tensor-spec. This might seem pretty verbose to you, but this is just a standard JSON representation of the signature of the model. Where did this signature come from? Well, it was inferred by MLflow and that inference is what caused all of the warnings because it led to the type long that you see from many of these parameters.
+
+Do keep in mind that this model was logged using autolog. We shall see in a subsequent demo how to log a model where we explicitly specify the signature and model signature inference will not come into play there. That does it for the contents of the MLmodel file. Let's now turn to some of the other files. Note before we do that that the conda.yaml and python_env.yaml files are referenced right here at the top of the screen. So, let's click on conda.yaml in the explorer on the top left. As we can see in the center pane, this has all of the details necessary to run this model in a conda environment. Notice all of the libraries listed under the pip section. Those libraries will be encountered yet again in the requirements.txt file, which is also present in the same directory.
+
+The next file in that list is the model.pkl file that can be viewed of course, because it's a binary file and then we move on to the python_env.yaml. This has all of the information required to restore the model environment using virtual env. You can see here version of python, the version of pip, setuptools, and wheel. There is also a dependencies section and that directs us to the last file within the model directory which is requirements.txt. This is a pretty standard requirements.txt file, it just has the names and version numbers of all of the required libraries. These will match all of the contents of the pip section from the conda.yaml file.
+
+Finally, there are two additional files left to explore, estimator.html which as you can see is a nice user-friendly representation of this model. In this case, we have a RandomForestRegressor. The representation very helpfully tells us that the max_depth is 10, min_samples_leaf is 2, and so on. The number of estimators here is 200. That's an important parameter. Let's click on the last file here and that is metric_info.json. As the name of this file would suggest, this is used to give context about all of the metrics which are logged as a part of this run.
+
+Remember that we had various metrics visible up above in the same section and this metric_info.json tells us when and how those were logged. Remember that we had commented on how it was only the training metrics which had been logged and none of the test metrics. Well, we can see why. In metric_info.json, you can see that the only key there is a RandomForestRegressor_score_X_train, and you can also see in the value that this was obtained by passing in X=X_train and y=y_train. We've now thoroughly explored all of the contents of the artifact that was logged by autologging. It's now time for us to use this knowledge in order to tie up some loose ends, which we will do in the next demo.
+
+13. Video: Configuring Autologging to Log Test Metrics (it_mlflowdj_02_enus_13)
+
+Find out how to configure autologging to log test metrics.
+configure autologging to log test metrics
+[Video description begins] Topic title: Configuring Autologging to Log Test Metrics. Your host for this session is Vitthal Srinivasan. [Video description ends]
+We noted at the end of the last demo that there are a couple of loose ends that we need to tie up and that's what we are going to take care of first. The two loose ends in question are first, the warning that we got when we tried to train our model with this run and second, the fact that only the training metrics were logged by autolog and not the test metrics. Let's attend to those one by one.
+
+The warning had to do with the fact that the input columns in our X data were of type long and not of type float. We can see this on screen now, where we've invoked the .info method on the pandas DataFrame house_price_df.data. To jog your memory, the warning was triggered by the fact that the inferred model signature took in inputs of type int64. Those were then recorded as being of type long.
+
+[Video description begins] A page titled Jupyter appears. The page displays the header: TrackingExperimentRuns. Below, it contains various tabs, such as File, Edit, View, Insert, Cell, Kernel, and so on. Adjacent to this, there are 2 buttons labeled: Trusted, and mlflow_venv. Below, there is an icon toolbar. Under this, there are various input cells. The command in the 48 input cell reads: house _price _df.data.info(). [Video description ends] 
+
+The reason that they were inferred as being of type long is because the inputs in the training data were of type int64. Why was this a problem? Well, because at inference time, if the values of these columns happen to be missing, there's no way for a missing value to be conveyed in a Column of type long or int64. And that's why if we encountered missing values at inference time, a schema enforcement exception would be triggered. This is easy enough for us to fix.
+
+We are simply going to explicitly convert each of these to be of type float64. In code cell 49, you can see that we print out the names of all of the columns, and then in the next code cell, we begin with a list of all of the integer-type columns. That list is on lines 1 through 5.
+
+[Video description begins] The Input Cell 49 highlights various lines. Line 1 reads: house _price_df.data.columns. [Video description ends] 
+
+Then on lines 7 and 8, we have a for loop in which we iterate over all of the columns in that list, and we explicitly convert each of them to be of type float.
+
+We do that by invoking the .astype (float) method on each of those columns. Notice how we index into house_price_df.data passing in [col]. That's the loop variable between the square brackets. Finally, we re-invoke house_price_df.data.info and now we can see for ourselves that each of these columns is of type float64. That will get rid of the warning and now let's also introduce a change to fix the other issue, namely the fact that the test metrics were not being logged.
+
+[Video description begins] The input Cell 50 highlights various lines. Line 1 reads: int_ columns = [ Line 2 reads: 'bedrooms',' sqft_ living',' sqft_lot',' waterfront', .Line 3 reads: 'view',' condition',' grade', 'sqft_ basement', 'lat',' long', Line 4 reads: 'sqft_ lot15',' age',' removation_ age' Line 5 reads: ] . Line 7 reads: for col in int_ columns:. Line 8 reds: house_ price_ df.data_ [col] = house_ price_ df.data_ [col].astype(float). Line 10 reads: house_ price_ df.data.info(). [Video description ends]
+
+In the code cell that you now see on screen, you can see that on line 1, we kick off the autologging by calling mlflow.sklearn.autolog. Then on line 3, we re-import the functions mean_absolute_error, mean_squared_error, and r2_score.
+
+Remember how autologging works.
+
+[Video description begins] The input Cell 51 highlights various lines. Line 1 reads: mlflow.sklearn.autolog(). Line 3 reads: from sklearn.metrics import mean_ absolute_ error,mean_ squared_ error,r2_ score. [Video description ends]
+
+Under the hood, MLflow is going to hook up function callbacks so that each time these functions are invoked, the corresponding instrumented versions will be invoked instead, and those instrumented versions will effectively log various metrics and tags to MLflow and then go on to call the underlying scikit-learn implementation. Because of this change where we've re-imported these functions on line 3, that is after turning on autolog.
+
+Now when we calculate our metrics starting on line 29 in that code cell, those metrics will be logged as a part of the model information.
+
+[Video description begins] Line 29 reads: mean_ abs_ error = mean_ absolute_ error(y_ test, y_ pred). Line 30 reads: root_ mean_ sq_ error = mean_ squared_ error(y_ test,y_ pred,squared = false). Line 31 reads: test_ score = r2_ score(y_ test,y_ pred). [Video description ends] 
+
+This code cell also makes use of a slightly different run name, Random Forest Regression tuned params and metrics autologged. So, the and metrics part is new. Let's scroll down just a little bit, so we get a clear view of the computation of the test metrics.
+
+[Video description begins] Line 5 reads: with mlflow .start_ run(run_ name = 'Random Forest Regression tuned params and metrics autologged' ). [Video description ends]
+
+That's on lines 29, 30, and 31. Then, as before, on line 33, we invoke mlflow.set_tag.
+
+[Video description begins] Line 33 reads: mlflow.set_ taq( 'Regressor' , 'RF tuned parameters and autologged metrics' ). [Video description ends]
+
+Now, when we hit Shift+ Enter, we find that no warning appears. So, that at least is proof that the first of the two issues we were seeking to address has indeed been fixed. To view whether the test metrics were logged, we'll need to switch over to the mlflow UI. So, let's do that. We can see from the Sort order that these runs are sorted by order of creation. So, the most recent run is on top.
+
+Let's click through into that run and right away we see that the number of metrics has increased to 8. Let's expand the Metrics and we can see there that we now do indeed have the test metrics. There they are, right up top. The mean_absolute_error_X_test, mean_squared_error_X_test, and r2_score_X_test.
+
+All of the training metrics continue to be logged as well. And that gets us to the end of this little demo. In the next demo, we'll see how the MLflow UI can be used in order to compare runs and visualize the performance of different candidate models.
+
+14. Video: Comparing MLflow Models Using the UI (it_mlflowdj_02_enus_14)
+
+Discover how to compare MLflow models using the UI.
+compare MLflow models using the UI
+[Video description begins] Topic title: Comparing MLflow Models Using the UI. Your host for this session is Vitthal Srinivasan. [Video description ends]
+In this demo, we are going to make use of MLflow's UI in order to compare the performance of two models along various different attributes. Let's scroll up to the top. You can see that we currently still are in the details of the last run that we had performed. We click on the Experiment name right up top, that's kc_ house_price_prediction. This takes us back out into the Experiments tab where we can see in the center that we have details for 10 matching runs. That number is also visible towards the very bottom of the screen.
+
+[Video description begins] A page labeled Random Forest Regression tuned params and metrics autologged appears within mlflow. It displays various details at the top in fields like Run ID, Date, Source, Git Commit, User, Status, and so on. Below, five collapsible sections appear: Description, Parameters, Metrics, Tags, and Artifacts. [Video description ends] 
+
+Now, let's click on the little check box next to one of the runs, and as soon as we do so, we'll see that the UI changes in appearance. Let's click on the Random Forest Regression default params and right away up top, you see that we have two new buttons, Rename and Delete. There's also a Compare button, but that's currently grayed out. Let's select yet another run. That's the Random Forest Regression tuned params and now you can see that the Rename button has been grayed out, but the Compare button has been activated.
+
+[Video description begins] A page titled mlflow 2.3.2 is displayed on the browser. The title bar at the top offers 2 tabs: Experiments and Models. The Experiments tab is active now. The navigation pane on the left displays 2 items: Default and kc_house_price_prediction. The kc_house_price_prediction item is open on the main pane. It shows the header called Description. Below, a search bar appears along with several filter options such as Table view, Chart view, Sort, Columns, and so on. There are 3 tabs available next: Rename, Delete, and Compare. A table appears below with 5 column headers: Run Name, Created, Duration, Source, and Models. [Video description ends]
+
+Let's click on Compare and this takes us into the Comparing Runs UI. This can take some getting used to, but it's incredibly powerful once you figure out all of the information that it's trying to get across. Before we explore this UI, notice that towards the top of the screen, there's a little blurb. We've made several improvements to the new runs comparison experience. Give it a try. The reason we are not going to give that a try, and why we are going to stick with this UI is because this is a pretty new version of MLflow as is, most users are likely to still be on versions which have only this UI, which you can currently see.
+
+[Video description begins] A page titled Comparing 2 Runs from 1 Experiment appears. It contains a message below. Under this, there is a collapsible section labeled Visualizations. There are 4 tabs below: Parallel Coordinates Plot, Scatter Plot, Box Plot, and Contour Plot. The Parallel Coordinates Plot tab is active. Below, it contains 2 fields: Parameters and Metrics. Adjacent to this, there is a graph displaying the data. [Video description ends]
+
+If you do happen to be using a very new version where these improved runs comparisons are available, by all means, please go ahead and try them out. Coming back to this UI, you can see that in the Visualizations section, there are tabs for Parallel Coordinates Plot, Scatter Plot, Box Plot, and Contour Plot. We currently are in the Parallel Coordinates Plot and there is a rather complex-looking visualization right up top. We will make sense of this, but in order to do so, first, right below that visualization, you see that we have the Run details and here there are two columns. We have the Random Forest Regression default params and the Random Forest Regression tuned params.
+
+These are the two runs that we are trying to compare. Scrolling down just a little bit, you can see that we have the Parameters, this is a superset of all of the parameters across both models. If you'd like to see only the difference, you can use that little slider which says Show diff only. The first parameter bootstrap has the value True, and you can see that True spans all across both runs. That's because both runs have that parameter values set to True.
+
+What if there is a parameter where the values differ? If we scroll down, we'll see an example of that. Look at n_estimators. You can see that n_estimators is 100 in the first column and 200 in the second column. In similar fashion, you can see that the two runs differ on the parameters min_samples_leaf and min_samples_split. That's about the params. Let's scroll down a little bit and look at the Metrics and here we see the values of the metrics for both of these runs.
+
+Remember that the first column is the Random Forest with the default parameters. We can also see that from the tags visible down below, that first column has a better Train_R2_score. That's 0.983. When we tuned the params, we got a lower Train_R2_score of 0.929. In similar fashion, the Test_R2_score of the RF default parameters was slightly better as well. You can see that that's 0.872. For the RF tuned parameters, it came down ever so slightly to 0.854. With these differences in mind, let's now scroll back up to the top and start customizing the Parallel Coordinates Plot. From the Parameters dropdown, let's choose a couple of meaningful parameters where these two runs actually differ, n_estimators and max_depth.
+
+Once we've selected these two values, then let's also choose some meaningful metrics. Train_R2_score is already in there. Let's add in the Test_R2_score. This now is the parallel coordinates plot in front of us, and let's try and make sense of it. The first vertical line, which is a Y-axis of sorts, represents the number of estimators. Remember, that the default Random Forest had n_estimators set to 100, so, you can see that on that Y-axis, the lowermost point is indeed 100.
+
+Now this default Random Forest had a max_depth of None, and that's why you see that there is a line which connects the point 100 on n_estimators with the point None on max_depth. That's the upward-sloping line between the first two vertical axes. Then we see that we have two more Y-axis corresponding to Train_R2_score and Test_R2_score. The default Random Forest had a Train_R2_score of 0.98279 and a Test_R2_score of 0.87222, and in this way, we can see that we have all of the details for this particular run. All we have to do is to follow all of the connected dots. That gave us all of the details for one run, that was the Random Forest with the default parameters.
+
+Let's now trace out the path for the other run. That was the tuned parameters Random Forest. There the number of estimators had been set 200. We had done so explicitly, and that's why in the very first Y-axis, we start out from the point where n_estimators is equal to 200. That's the topmost point on that Y-axis. While tuning those parameters we had specified that the max_depth is equal to 10 and that's why there is a line which goes from 200 on n_estimators to 10 on max_depth. That is the downward-sloping line which connects the first two vertical axes, that does it for the parameters for this run.
+
+The corresponding values of the metrics were a Train_R2_score of 0.92902 and a Test_R2_score of 0.85372. And once again in this fashion, by following the lines which correspond to this run, we can see that the default Random Forest outperformed the tuned Random Forest on both the Train_R2_score and the Test_R2_score. That does it for the parallel coordinates plot, which is quite hard to understand but also very powerful.
+
+The Scatter Plot, which is the next tab, is a lot easier to understand.
+
+[Video description begins] The Scatter Plot tab is active now. It contains 2 fields: X-axis and Y-axis and a graph. [Video description ends]
+
+Let's click through into that and you can see here that we have a much more familiar UI. We have an X-axis and a Y-axis. From the X-axis, let's choose the number of estimators and from the Y-axis, let's choose the Test_MAE. You can see in the center of the screen that here because we have just the two runs, we have just the two points in our Scatter Plot. We can also confirm that the axis labels match the choices from the drop-down. We have n_estimators on the X-axis and Test_MAE on the Y-axis.
+
+If we scroll down, we have the same details as previously, the run details, the parameters, and down below we come to the Metrics. By this point, we've gotten a good grasp of the visualization capabilities that the MLflow UI offers in order to compare different runs from the same experiment, and that also gets us to the end of this demo. In the next demo, we'll take a big step forward, moving on from tracking experiments and runs to the registration and deployment of models.
+
+15. Video: Course Summary (it_mlflowdj_02_enus_15)
+
+In this video, we will summarize the key concepts covered in this course.
+summarize the key concepts covered in this course
+[Video description begins] Topic title: Course Summary [Video description ends]
+You have now reached the end of this course, creating and tracking ML models in MLflow. The MLflow tracking system is organized with experiments and runs, offering a structured approach to manage and track machine learning experiments. Experiments group together related runs, enabling efficient organization and comparison of different model runs.
+
+At the start of the course, we focused on loading, cleaning, and analyzing data for machine learning. Our data preprocessing efforts included thorough data cleaning and efficient feature engineering to prepare the dataset for model training. Visualizations like boxplots and heat maps allowed us to gain valuable insights into the datasets distribution and correlations, providing a better understanding of the data characteristics. We also employed pandas-profiling, a powerful tool to generate detailed data statistics, and summaries, aiding in the exploratory data analysis process.
+
+Next, we created MLflow experiments, allowing us to group runs and manage them more effectively. Running experiments with different models and logging artifacts allowed us to track model performance and experiment results systematically. Additionally, we explored using the with block to prevent issues around not closing a run. By running polynomial and random forest regression models, we gained hands-on experience with the ability to compare multiple models and visualize their performance using the MLflow UI.
+
+Finally, we delved into the powerful capabilities of MLflow autologging. We automatically recorded experiment metrics and artifacts, reducing manual effort and streamlining the tracking process. The autologging functionality also logs numerous config files including conda.yaml, model.pkl, and ML model that give us insights into how the model is run by MLflow. We looked at all of these files and understood the information they contain.
+
+In conclusion, through this comprehensive course on MLflow tracking, we have built strong foundations in using MLflow to manage and track machine learning experiments. A solid grip on these concepts allows us to move on to deploying and registering ML models in the course coming up ahead.
+
+Course File-based Resources
+•	Creating & Tracking ML Models
+Topic Asset
+© 2023 Skillsoft Ireland Limited - All rights reserved.

@@ -2,4 +2,4 @@
 
 [[uncategorized]]
 
-[[Track 4 Data Scientist/index]]
+[[Data Scientist/index]]

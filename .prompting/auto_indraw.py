@@ -1,18 +1,18 @@
 import os
 
 # Define the header and file name
-h1 = "Learning and Development"
+h1 = "Design and implement data storage"
 file_name = "index.md"
 
 # Define the list of topics
 topics = [
-    'Building Success through Self-improvement',
-    'Unleashing Your Self-confidence',
-    'Becoming a Continuous Learner',
-    'How to Learn Effectively',
-    'Career Moves: Be Strategic About Your Future, Revised and Enhanced Edition',
-    'Learning Technologies in the Workplace: How to Successfully Implement Learning Technologies',
-    'Low-Hanging Fruit: 77 Eye-Opening Ways to Improve Productivity and Profits'
+    'Storage Accounts',
+    'Designing Data Storage Structures',
+    'Data Partitioning',
+    'Designing the Serving Layer',
+    'Physical Data Storage Structures',
+    'Logical Data Structures',
+    'The Serving Layer'
 ]
 
 # Create the markdown content
