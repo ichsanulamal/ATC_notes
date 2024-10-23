@@ -37,7 +37,7 @@ GitHub Copilot is an AI-powered tool integrated into code editors that assists d
 
 By following these guidelines, developers can effectively leverage GitHub Copilot to enhance their coding experience and productivity.
 
-# Getting Started with GitHub Copilot
+# Into to GitHub Copilot
 
 ## Setting Up GitHub Copilot
 1. **Choose an IDE:** GitHub Copilot works with various Integrated Development Environments (IDEs) such as Visual Studio Code, IntelliJ, and Eclipse.

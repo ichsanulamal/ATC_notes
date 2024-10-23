@@ -1,6 +1,6 @@
 # Data Version Control
 
-[[Getting Started/index]]
+[[Intro to Data Version Control/index]]
 
 [[Working with Pipelines & DVCLive/index]]
 
