@@ -1,0 +1,189 @@
+Using Lean to Improve Flow and Pull
+Anyone, at any level, can help make their organization more efficient. The simplest way is to eliminate waste from business processes. There are various Lean techniques that can help any organization build efficiency and quality into its operations.
+
+In this course, you'll learn about the visual workplace, identify key components of just-in-time, and explore the steps of the Kanban system. You'll also consider the goals of line balancing, and learn how to calculate takt time. This course also shows how you can improve communication how to improve Operations Managements by establishing a pull system that paces production with the rate of actual product demand, and distributing work evenly.
+
+Table of Contents
+    1. Video: Using Lean to Improve Flow and Pull (bs_oper46_a02_enus_07)
+
+    2. Video: Goals of the Visual Workplace (bs_oper46_a02_enus_01)
+
+    3. Video: Visual Workplace Tools (bs_oper46_a02_enus_02)
+
+    4. Video: Implementing a Just-in-time System (bs_oper46_a02_enus_03)
+
+    5. Video: Implementing a Kanban System (bs_oper46_a02_enus_04)
+
+    6. Video: Line Balancing Goals (bs_oper46_a02_enus_05)
+
+    7. Video: Line Balancing: Calculating Takt Time (bs_oper46_a02_enus_06)
+
+    Course HTML Resources
+
+1. Video: Using Lean to Improve Flow and Pull (bs_oper46_a02_enus_07)
+
+Objectives
+No Objective Provided
+[Course title: Using Lean to Improve Flow and Pull] You can help make your organization more efficient. The simplest way is to eliminate waste from your processes. There are various Lean techniques that can help make any organization run more smoothly. In this course, you'll learn about the goals and tools of the visual workplace, identify key components of just-in-time, and explore the steps of the Kanban system. You'll also consider the goals of line balancing, and learn how to calculate takt time.
+
+2. Video: Goals of the Visual Workplace (bs_oper46_a02_enus_01)
+
+Objectives
+identify the goals of the visual workplace
+[Topic title: Goals of the Visual Workplace] Ever tried to explain something to somebody over the phone, and they had no idea what you meant? Sometimes information that may seem obvious can be difficult to explain clearly in words.
+The brain can process visual information very quickly, so using visual cues can have a big impact on how effectively you are able to communicate with colleagues or customers. There are visual cues all over – think of road signs, traffic lights, and elevator buttons. At work you can expect to find process flow charts, status charts, indication lights, colored labels, and even simple arrows. The key to what makes visual cues so effective, is that they're simple and succinct.
+Visual cues help convey information quickly and they reduce the need for repeated verbal messages or costly documentation. It's much faster to look at a pie chart for resource allocation, for example, than to read a paragraph-long description of it.
+In a Lean working environment, a visual workplace uses visual cues effectively to convey information. You can expect to see signs, layouts, charts, and color codes. So an electrical hazard warning sign warns employees to stay out of range of energized equipment. And a color-coded filing system makes it easier for a filing clerk to put different forms into the right folders quickly. Hospital visitors can look at a simple map of the layout of the floor they're on to get where they want to go.
+When people can't find the resources they need to complete their tasks, they are wasting time and resources. It's also considered waste if people aren't clear about their roles and responsibilities, or if there are accidents and errors because people aren't doing their tasks correctly. A visual workplace reduces waste by presenting information clearly and objectively.
+In the service industry, a visual workplace is known as a visual office. Here employees can see at a glance what their role is, how the office is organized, and whether they are achieving their business goals. In manufacturing industries, such a workplace is called a visual factory. Through visual cues, managers can see the current status of all processes, and employees can see the correct procedures to follow. As a result, manufacturing errors and employee accidents are reduced.
+There are several goals of a visual workplace. The first is to ensure work is completed properly, safely, and on schedule. The second goal is to ensure procedures are standardized and order is sustained. And the third goal is to reduce employee stress and improve morale by providing employees with the information they need when they need it.
+So don't waste time or effort explaining things that could be communicated so much more effectively using visual cues.
+
+3. Video: Visual Workplace Tools (bs_oper46_a02_enus_02)
+
+In this video, you will learn how to match tools used in the visual workplace with their definitions.
+Objectives
+match tools used in the visual workplace with their definitions
+[Topic title: Visual Workplace Tools] The visual workplace isn't a one-size-fits-all solution to any problem. Rather, it's a blend of tools and techniques that complement one another. You'll need to consider the goals of your organization as well as the wants of your customers to decide whether it is suitable for your circumstances.
+There are several types of visual tools. Work instructions are short, simple guides on how to complete specific tasks. They should be placed near to where a person would carry out the task. Good work instructions are concise, easy to read, in a clear font, and supported with simple illustration if necessary. So instructions on how to load new paper in the office printer, for example, should be displayed near the printer, in a large font, with an illustration to show how to open the paper tray.
+Process flow diagrams show the correct sequence of steps in a process. This helps to ensure all workers who carry out the same task, do so in the same way. If the workflow is standardized, it's less likely employees will make mistakes or be frustrated by a task. Process flow diagrams tell employees exactly what to do. A graphic design company, for example, may standardize their graphic design process so each designer on the team has a copy of the process flow. Every designer now follows the same process. This means there aren't any differences between individual designers' work.
+Labels are used to identify equipment and materials. In a factory, labels could be used to identify the different levers on a machine. In an office, labels might be used to identify the department to which different supplies belong. When items are properly labeled, employees don't waste time looking for them.
+Andons are colored lights used to convey information. The most well-known example of andons is probably traffic lights – everybody knows when to stop, slow down, and go. Andons are any electronic signaling device that update you on the status of a process or warns you of impending danger. A customer service call center can have lights in different colors to warn when customer wait time is long.
+Status boards are useful when you need to update people about performance metrics and project status. These boards can be electronic or simple whiteboards. They let employees know whether they're on target to meet their deliverables. A courier service, for example, could display the number of packages delivered over a certain timeframe on status boards. All status boards have the same objective – they let people compare where they are with where they need to be.
+So there are different tools you can use to create an efficient visual workplace.
+
+4. Video: Implementing a Just-in-time System (bs_oper46_a02_enus_03)
+
+During this video, you will discover how to identify key components of a successful implementation of just-in-time.
+Objectives
+identify key components of a successful implementation of just-in-time
+[Topic title: Implementing a Just-in-time System] Many people stock up on supplies ahead of time, enough to last them a whole month. Others prefer to go to the store every few days to stock up on essentials, when and as they need to. In the world of operations management, the latter is known as a just-in-time approach.
+With this approach, rather than fill warehouses with supplies they might need, companies aim to order only what they do need, when they need it.
+Traditionally, inventory was regarded as an asset, regardless of whether it was used. Just-in-time applies Lean thinking to inventory management. So instead of considering it an asset, excess inventory is considered waste. That's because all those supplies need to be kept somewhere, and storage is expensive! Also, employees waste time if they have to search for supplies in crowded warehouses.
+When you implement a just-in-time approach, the driving force is customer demand. So a smartphone manufacturer only has the circuit boards, glass screens, and metal housings delivered once customers place an order for such products.
+There are two key components of successfully meeting customer demand with a just-in-time approach. The first is good communication. Companies should establish good communication with customers, employees, and suppliers if they want the just-in-time approach to work.
+This requires you to understand customer demands, needs, and quality expectations. You need to know what products your customers want and when they want them, so you can get the supplies you need.
+You'll also have to make sure employees are clear on the goals of just-in-time. Training programs can help achieve this.
+Finally, you'll have to communicate carefully with suppliers so you always have the right supplies when you need them, in order to fulfil customer demand.
+Once you know what your customers want, and your employees and suppliers are on track, you need to align manufacturing processes to the just-in-time approach using a pull system, rather than a push. With a push system, supplies are pushed through production based on future estimations of demand. This is potentially risky, because if a company has a large stock of supplies, and employees are always busy making more products, the company may end up with more products than they can sell if they estimated the demand incorrectly.
+A pull system, on the other hand, is based on actual product demand. No product is built until there is a definite need for it. A company doesn't accumulate large supply reserves. Instead, it fills smaller orders on an as-needed basis. So costs are reduced because neither supplies nor completed products require storage. The process answers the "pull" of customer demand.
+An effective just-in-time approach eliminates waste and reduces cost by establishing good communication with customers, employees, and suppliers; and by using a pull system for production.
+
+5. Video: Implementing a Kanban System (bs_oper46_a02_enus_04)
+
+Discover how to sequence the five steps involved in implementing a kanban system.
+Objectives
+sequence the five steps involved in implementing a kanban system
+[Topic title: Implementing a Kanban System] One of the telltale signs of an effective process, is if supplies are always available when they're needed. One way in which you can ensure this level of process efficiency, is using a Kanban system. Kanban is a signaling system that informs you when supplies or parts are needed, and in what quantity.
+Cards can be used as signals in a Kanban system. Each part in a car manufacturing plant, for example, has a Kanban card attached to it. Once a part is used, the card is detached and sent to the supply manager, who then provides a new part.
+In most modern production environments, the Kanban system is pull based and computerized – each message automatically triggers the replenishment of supply as needed.
+There are rules for a Kanban system to be effective. First, downstream processes may only withdraw items in the precise amount specified on the Kanban. Another rule states that upstream processes may only send items downstream in the precise amounts that have been withdrawn, as specified by the Kanban. According to a third rule, defective parts or incorrect amounts are never sent to the next downstream process. And the last rule states that a Kanban must accompany each item at all times.
+When you go about implementing a Kanban system, the process can be broken down into five steps. First, conduct a survey. The survey should tell you what supplies and parts are needed for the process to function effectively, and detail the sizes and quality of the supplies. In a car factory, the survey may reveal the assembly department needs 500 ¾ inch lug nuts.
+The next step is to establish minimum and maximum levels. The minimum level is the least amount needed to meet customer demand. When supplies go below this level, you need to reorder. It helps to establish a maximum supply level to avoid surplus inventory. For example, when there are fewer than 100 lug nuts left, the assembly department can't complete work orders for the day – but they can only store 700 nuts at a time.
+The third step is to create a supply order form – this helps ensure there is a consistent approach to supply ordering. The form should state the exact number of supplies or parts you need.
+The fourth step is to create a Kanban system. Use different colored cards for different types of supplies. Parts are assigned yellow cards, for example, while tools are assigned red.
+The last step is to establish standard work. A new system only works if it's applied consistently. Create a standard work chart so all employees know how to use the system. The assembly department has been trained to use the Kanban system used in their factory.
+By adhering to the rules and the steps in implementing a Kanban system, you support your organization's efforts at process efficiency.
+
+6. Video: Line Balancing Goals (bs_oper46_a02_enus_05)
+
+In this video, you will learn how to identify the goals of line balancing.
+Objectives
+identify the goals of line balancing
+[Topic title: Line Balancing Goals] An overburdened worker or team in any process can have a domino effect on production – causing delays and bottlenecks throughout the entire process. Line balancing is one way you can make sure this doesn't happen.
+If you have an unbalanced line, work is distributed unevenly across the line. Consider an example. The assembly line for a company that makes digital cameras has three teams – the first team assembles the cameras. A second, smaller team tests them, and a third team packages them once they're tested. But the testing team keeps falling behind – the assembly team is delivering completed cameras faster than they can test them. This is causing a bottleneck, which results in delays, and increased costs. It's also frustrating for all team members – the testing team is overworked; the packaging team wastes time waiting for tested cameras to arrive.
+In a balanced line, work is distributed evenly across the line. This means each employee completes the same amount of work in roughly the same amount of time. This establishes a continuous workflow and delays are eliminated as a result. The production manager at the camera company decides to move some members of the assembly team to the testing team. This way the testing team is able to keep up with assembly, because the line is more balanced – the completed cameras are arriving for testing at much the same rate as people are able to test them.
+Line balancing has two main goals. The first is to distribute work evenly among workers. This eliminates bottlenecks and wait time and ensures none of the workers are too busy, or idle. The production manager of the camera company divided work more evenly among the assemblers, testers, and packers – so none of them were overburdened or underburdened. The bottlenecks were removed, which eliminated the delay at the packaging phase.
+The second goal of line balancing is to ensure an optimal number of workers. Having an optimal number of workers means production neither exceeds nor fails to meet customer demand. As a production manager, you could study the flow of production to determine there are too many workers or not enough workers on a particular team. By placing optimal numbers of workers at each stage, you can ensure production flows smoothly.
+Occasionally, lines need to be rebalanced to accommodate periods of peak customer demand. During vacation season, for example, there may be a rise in demand for cameras.
+It is up to the production manager to adjust the distribution of a workload in a way that meets demand and ensures an optimal number of workers.
+
+7. Video: Line Balancing: Calculating Takt Time (bs_oper46_a02_enus_06)
+
+During this video, you will learn how to calculate takt time.
+Objectives
+calculate takt time
+[Topic title: Line Balancing: Calculating Takt Time] In a balanced production line, you ideally want your processing time to match customer demand. This is known as takt time – the work rate needed to meet customer demand. In a pull system, it means production responds to meet the pull of customer demand effectively.
+If you know the takt time, you can pace your production accurately. So you'll be able to deliver just enough products to keep up with demand. But first you'll need to perform a couple of calculations.
+When calculating takt time, you need to determine the available work time – in minutes. Then you divide the available work time by the customer demand. Customer demand is usually given in term of the number of products or services you need to produce to keep up with demand.
+For example, a call center is open for eight hours each day. Employees get a half-hour lunch break and two 15 minute breaks. First we deduct the breaks from the work day – that leaves us seven hours of available work time. Then we convert the hours to minutes by multiplying seven by 60, which gives us 420 minutes of available work time.
+Next we need to know the customer demand. On average, each employee receives 240 customer queries per day.
+Now we can calculate the takt time. So 420 minutes, divided by 240 customer queries gives a takt time of 1.75 minutes, or one minute 45 seconds. This means the call center employees need to deal with a query every 1 minute and 45 seconds to cover all of the queries.
+But what happens if production or service time is slower than takt time? Let's say the call center employee takes three minutes to deal with each query, instead of the expected one minute and 45 seconds. They won't be able to keep up with customer demand – customers are going to complain, because their queries aren't being dealt with on time. The employees will have to work overtime to clear the backlog – this makes them unhappy, and it costs the company money because they have to pay an overtime rate to the employees.
+If production or service time is faster than takt time, it means you're working faster than you need to, to meet customer demand. So if the call center employees answered one query every minute, agents will be idle sometimes – this is time the company still has to pay them for. In manufacturing, if workers produce faster than the takt time, there will be a surplus of product. Surplus is a waste of resources and money.
+The solution for both of these problems is the same… balance the line so you have the optimal number of workers performing at a takt time rate.
+Pacing your production or service time in this way, means you will be able to meet customer demands efficiently.
+
+Course HTML Resources
+•	Job Aid: Kanban Steps
+Use this job aid to identify how to apply the five steps in the Kanban process.
+Implementing a Kanban system involves a five-step process.
+Steps in a Kanban system
+Step	Example
+1. Conduct a survey of your supplies	A toy factory manager surveys the parts held in inventory.
+2. Establish minimum and maximum levels you require to sustain production	The manager discovers that workers must have at least five motors to keep production running, but no more than eight motors.
+3. Create a supply order form for each part or material	The manager creates a new supply order form so that a consistent system is used to order motors from the suppliers.
+4. Create the Kanban	The manager creates a Kanban card that will be used to trigger an order for a motor from the supply room.
+5. Establish Standard Work for how to use the Kanban system and train employees	After tweaking the system, the manager documents the new process and trains all staff on how to use it.
+Course: Using Lean to Improve Flow and Pull
+Topic: Implementing a Kanban System
+
+© 2016 Skillsoft Ireland Limited
+
+
+•	Glossary: Using Lean to Improve Flow and Pull
+Cycle time
+
+The time required to complete one cycle of an operation, or to complete a task or function from start to finish.
+
+Hoshin Kanri
+
+A Lean tools approach to strategic and operational planning involving the systematic analysis, planning, implementation, and reviewing of business processes, with the goals of managing change, developing employee capabilities, and improving performance.
+
+Jidoka
+
+A Lean strategy involving a standard process to reduce the number of defects produced. Employees and machines detect errors, stop the process, fix the presenting problem, and then investigate the root cause of the problem.
+
+JIT production
+
+See just-in-time production.
+
+Just-in-time production
+
+Abbreviated as JIT production, a system in which products are created only once they've been ordered by a customer.
+
+Kanban
+
+A system that makes use of cues – often in the form of cards – to inform employees when a process should be implemented, or when items should be moved to a subsequent step in a production process.
+
+Line balancing
+
+A Lean tool that allows you to optimize personnel use so that the workload is equitably distributed.
+
+Standard work
+
+The specification of a particular order in which different tasks are performed in a given process. These protocols are designed to be as efficient as possible.
+
+Takt time
+
+A German term meaning "pulse" or "rhythm." In a Lean approach, takt time is the time it must take to produce one product at a rate that keeps up with customer demand.
+
+Value stream
+
+All of the tasks and actions involved in creating and delivering value to customers – for example, through the design, production, and delivery of a product.
+
+Value-add activity
+
+A task or process that fulfills a customer's needs or preferences, changes the product or service in some way, and is done right the first time in the process.
+
+Visual workplace
+
+A workplace that effectively uses visual cues – such as signs, layouts, charts, and color codes – to convey information.
+
+5S
+
+A methodology for creating and maintaining a clean and ergonomically ordered work environment. The five components of this methodology are sort, set in order, shine, standardize, and sustain.
+
+ 
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

@@ -1,0 +1,1389 @@
+Six Sigma Techniques for Improvement
+To carry out business process improvement successfully, it’s important that you understand how to use some tools that are commonly used in Lean Six Sigma projects.
+
+This course covers common Lean tools used to improve process design and facilitate process control, including kaizen, kaizen blitz, and the plan-do-check-act (PDCA) cycle. You’ll also learn how to carry out a cost-benefit analysis, which is an important tool used during the process improvement process.
+
+This course is aligned with ASQ’s 2015 Six Sigma Yellow Belt Body of Knowledge.
+
+Table of Contents
+    1. Video: Six Sigma Techniques for Improvement (bs_apr11_a01_enus_01)
+
+    2. Video: Kaizen and Six Sigma (bs_apr11_a01_enus_02)
+
+    3. Video: The Kaizen Process (bs_apr11_a01_enus_03)
+
+    4. Video: Conducting a Kaizen Blitz (bs_apr11_a01_enus_04)
+
+    5. Video: Applying Kaizen in Your Organization (bs_apr11_a01_enus_05)
+
+    6. Video: Introduction to PDCA (bs_apr11_a01_enus_06)
+
+    7. Video: Steps in the PDCA Cycle (bs_apr11_a01_enus_07)
+
+    8. Video: Six Sigma and Cost-Benefit Analysis (bs_apr11_a01_enus_08)
+
+    9. Video: Identifying Benefits (bs_apr11_a01_enus_09)
+
+    10. Video: Identifying Costs (bs_apr11_a01_enus_10)
+
+    11. Video: Conducting a Cost-Benefit Analysis (bs_apr11_a01_enus_11)
+
+    12. Knowledge Check: Using Continuous Improvement Tools
+
+    Course HTML Resources
+
+1. Video: Six Sigma Techniques for Improvement (bs_apr11_a01_enus_01)
+
+No Objectives
+[Course title: Six Sigma Techniques for Improvement. The presenter is Ron Crabtree | CIRM, MLSSBB, SCOR-P, CSCTA.]
+
+In this course, we're going to look at some of the common tools used for Lean Six Sigma projects that help with continuous improvement. Including Kaizen events and the plan-do-check-act, or PDCA, cycle. We'll also look at how to carry out a cost-benefit analysis, which is an important tool used during the improve stage to select improvement projects.
+
+2. Video: Kaizen and Six Sigma (bs_apr11_a01_enus_02)
+
+Discover how to identify characteristics of continuous improvement.
+identify characteristics of kaizen
+[Topic title: Kaizen and Six Sigma.]
+
+In this topic, we're going to talk about the practice of Kaizen, and its usefulness in Six Sigma projects. So first, what exactly does Kaizen mean? Well, the word itself can be broken down into two parts. Kai, for change, and zen, for the better.
+
+Most often, we're going to bring the Kaizen into play at the improve stage of the DMAIC improvements cycle in Six Sigma. [A graph displays. The x-axis depicts Time and the y-axis depicts Measure. In a project without kaizen there is degradation and in a project with kaizen there is a continuous improvement.] The Kaizen framework is utilized to form a team and follow a vigorous process, leveraging many methods for rapid improvement. [A diagram depicting the six stages of team development displays, which are Forming, Storming, Norming, Performing, Adjourning, and Recognition.] I've run more than 500 different Kaizen events over the years. Some of them were completed in a single day. And some continue to operate as more of a Kaizen circle for a year or longer.
+
+Different kinds of situations where I've used Kaizen techniques would be in areas of manufacturing. Like implementing cellular manufacturing, one-piece flow, and reducing setup times for the equipment. In the service sector, we use Kaizens to reduce the handling times for technicians in a contact center providing customer service. Or for example, reducing the time it takes to hire somebody in a governmental agency. Or reducing the amount of backlog that our claims are stuck in insurance processing. And reducing the time for claims are all different examples of how Kaizen can come into play.
+
+There are three basic types of Kaizen activities we're likely to encounter. [A project timeline displays. The three types of kaizen activities are marked on the timeline, which are Kaizen super blitz that has a duration of 1 to 8 hours, Kaizen project that has a duration of 2 to 4 weeks, and Kaizen blitz that has a duration of 3 to 5 days.] Starting with the one called super blitz, a very quick intervention. Typically these are very narrow in scope and very quick hit in the nature of the project. So for example, let's just say we're going to look at how we order supplies in a small office. We can gather the information, identify what needs to be improved about the process with some simple process and value stream mapping techniques. Do our analysis, brainstorming, priority selection, and actually begin implementing the improvements the same day.
+
+Then we have what's called Kaizen blitz, and this was the more common way that people would practice Kaizen in most companies. It's generally associated with manufacturing, an area on the shop floor, for example. Where we can quickly move equipment, desks, the things we need to do the work, and reorganize them using 5S, cellular one-piece flow, and standard visual work. And then, we very quickly begin operating in a new fashion, with improved performance that we can measure.
+
+And the third type is the Kaizen project. This correlates a lot more strongly with the service sector, involving complex transactional environments and offices. Maybe the situation here is it's hard to find the data or get the data. Or maybe we're going to have an impact on policy decisions, or make changes to information technology. I can tell you with confidence that if there's IT changes to be made, that that's not going to happen in a single week. It usually takes a lot longer to make those changes happen. Making the effort much more of a project with many related elements and functions involved to be successful.
+
+Another way of thinking about Kaizen and how it comes into play is it really helps us go after the bulk of what we would call low hanging fruit. [An apple tree displays. It is demarcated into several layers, which are Best/Sweet fruits, Six Sigma, Lean, Bulk of fruits, Low hanging/Ground fruits, and Kaizen/Kaizen blitz from top to bottom.] It's useful here to imagine all improvement opportunities as hanging on a tree, like fruit. There are quick interval improvements in the low hanging zone. We don't need a lot of data to act. We can use simple value stream and process mapping methods to analyze opportunities. Isolate what needs to be improved, and know how we're going to know that things improved after the Kaizen. And let's just note here that this does not mean we cannot find some low hanging fruits with just Six Sigma. This is just an idea, not a general rule.
+
+Like Six Sigma, there are a lot of tools that come into play with the practice of Kaizen, no matter what type of Kaizen you're practicing. [A table displays. It contains two columns. The column headers are Process step and Lean tools used. The lean tool used for the process step Identify the problem is Kaizen activity worksheet. The lean tools used for the process step Gather and train your team are Task and training manuals and Standard work documents. The lean tools used for the process step Collect data are Flowcharts, Analysis of variance (ANOVA), Time study sheets, Process capability ratios, and Control charts. The lean tools used for the process step Analyze the data are Fishbone diagrams, Capacity charts, 5S, and Standard operating sheets. The lean tools used for the process step Recommend improvements are Project plans, Flow diagrams, Action plans, and Gantt charts. The lean tools used for the process step Implement and monitor changes are Rollout plan, Kaizen storyboard, and Stakeholder training.] For example, the Kaizen activity worksheet, which could also take the form of what's called an A3. An A3 is an 11-inch by 17-inch sheet of paper with lots of information on it, like the nature of the problem. Perhaps a fish bone diagram. Identifying the team members, the metrics, success factors, action items, and available performance data are typically used for identifying the problem to solve.
+
+From there, we move onto gathering and training our team, which would involve using training materials and standard work documents. As we collect data for Kaizens, we can use important tools like time study sheets, often called a time-in-motion study tool. We also look for a statistic called TAKT time, that's T-A-K-T. We use this drumbeat of time to help us create process capability ratios and understand how we are performing against customer demand for the quantities being produced in a given time period.
+
+Then we can move into analyzing the data. This is where capacity charts can come into play. Capacity charts are very helpful to us in lean projects. Because we want to uncover the capacity constraint resources by taking a page out of the theory of constraints line of thinking. In other words, what are the resources that are actually choking off the flow of value to our customers? We must identify those and go after breaking the bottlenecks they create.
+
+From there, we are recommending improvements with the associated action plans, flow diagrams, and other things we need to support an implementation. Then, of course, we begin moving out and actually implementing changes and making things happen. Using tools such as a rollout plan, a stakeholder training, and a Kaizen storyboard.
+
+A Kaizen storyboard tells the story in a pictorial way of where we started. And maybe, with some photographs, show some of the things we change with documentation, and then some before and after photographs. We will show a list of things we didn't complete in our three to five-day Kaizen event. And things that still need to be followed up on and completed over the next month or so.
+
+The best opportunities for using Kaizen often start with a problem that is clearly understood. We have a clear idea of what good will look like when we're done. You can't tackle too big of a scope with Kaizen because we want to complete it very quickly.
+
+Next, it could be very helpful to use Kaizen if the team is a bit resistant to change. Why? Kaizen is a team-based approach, and as such, helps break down resistance to change. Typically in a Kaizen, we can restructure the physical work very quickly, and get people on board with doing things that way. The more urgency there is and appetite for some risk to get immediate results, the more likely Kaizen is a good technique.
+
+Also, if we don't have a whole lot of time and energy to throw at a problem, it's a good way to go and get things done. To go after that low hanging fruit without a ton of resources being committed. Or maybe we just don't have enough resources, or we can't commit people long term to bigger projects. Again, Kaizen is a great technique we can pull from our toolbox to attack the problem at hand quickly and with a narrow focus.
+
+3. Video: The Kaizen Process (bs_apr11_a01_enus_03)
+
+In this video, you will learn how to sequence examples of activities that happen during the kaizen process.
+sequence examples of activities that happen during the kaizen process
+[Topic title: The Kaizen Process.]
+
+In this topic, we'll get into the step-by-step Kaizen process. So first of all, we need to start out with identifying the problem. Getting a handle on what are those strategic goals we're trying to support. What forms of waste are we going to go after and what are the benefits we're hoping to bring?
+
+For example, we may want to create a rating table to determine which two processes at a large manufacturer we should do first. [A Rating table displays. It contains various rows and columns. The column headers are Business drivers, Die cast process, and Assemble and pack process. The various Business drivers are Improve productivity, Increase customer satisfaction, Increase revenues, Produce results fast, Low risk, and Low cost. It also displays the Total and Average of the ratings.] We'd identify the business drivers for each process first. Like improving productivity, increasing customer satisfaction, revenues, getting results quickly, doing stuff that's low risk and low cost. Then we evaluate the relative impact we can likely make on each of those factors with a scale. For example, a rating of 1 would mean that we could make no real impact on the key factors. And a 4 would mean it would make a very high impact. And then we can see how the numbers fall out.
+
+Once you've done your ratings, you can determine which of the two has the most probable impact by adding up the ratings and figuring out the average. The process with the highest impact average is the one you'll probably want to tackle first. In the example here, we'd focus first on the assemble and pack process.
+
+The next step in the Kaizen process is gathering and training your team. Usually, our event leaders are the very first ones to be chosen for a Kaizen activity, which is generally true for Six Sigma projects as well. They provide leadership to the Kaizen events. Teams should also include a lean facilitator, a black belt, an executive sponsor, a value string champion, a team lead, and an event coordinator. These team members should meet regularly during the planning and implementation process to monitor progress and provide necessary resources.
+
+Remember, a Kaizen doesn't get planned on day one and then done on day five. It requires a lot of advanced preparation to ensure success. We might start planning weeks or even months in advance in some cases to prepare properly.
+
+The facilitator would often then direct the selection of the team members for the actual cross-functional Kaizen team, if this was not already done by leaders before they're ready to kick off our Kaizen. Let's take a look at a manufacturing example of a Kaizen event charter, which is a very important part of developing our team right from the get go. [A Kaizen event charter displays. It contains various rows and columns. The column headers are Event Scope, Team, and Schedule.] The first piece is getting the scope of our event figured out. In this case, we've got the value stream identified as a specific product. We have an event name so everybody knows what we're talking about. Then we've got some narrowing conditions. In other words, we're going to narrowly focus on a specific product within a series. And we're going to start with the delivery of components all the way back out to the last task, which is packaging. And then we have a limitation on box size that we need to deal with.
+
+From there, we identify the team. Who is the sponsor? Who is the champion? Who is the facilitator, the team lead, and coordinator? And then, finally, what's the plan? What's our schedule of events we want to accomplish throughout this Kaizen process? This includes beginning and ending dates, the time schedule shown here as from 8:30 to 5 o'clock. It includes where we're meeting and all these other details. When we publish this, it serves as a great way to keep everyone oriented about what we're doing, why we're doing it, and when we are doing it, and who's involved.
+
+Next, we need to collect and analyze the data. Our aim here is to get a pretty good understanding of what's going on, and gather as much data as we can as quickly as possible about the cycle time. The amount of time we're working on a process, defect rates, and the number of people it takes to do the work. And there's a couple of important sets of tools that we can use at this stage, such as a load chart with takt time.
+
+For example, if our takt time was 10 seconds, and the amount of time we need to spend on a task is taking 9 seconds, then it would probably be balanced. But if our takt time was 4 seconds, and it's taking as much as 9 seconds to get the task done, we know we're going to have a problem. We would be producing more than 50% slower than the customer demand time. And, of course, we can certainly use value stream maps to collect and analyze data as well. [A value stream map from a chemical supplier to a pharmacy distributor displays.] Once we have that data, we can create our current state value stream map. Take a look at where 5S can apply, where we can improve workflows, and then turn the team loose to immediately begin making some big improvements.
+
+There's many other data collection and analysis tools that are very useful. For example, the 5 Whys. Start with what's the issue that we're seeing, and then progressively asking why until we get down to the true actionable root cause that corrects all the prior whys. Cause and effect diagrams, or fishbone diagrams, are a helpful way to isolate likely causation factors for a stated problem. The use of Pareto charts and leveraging the all-important 80/20 rule is always important. What 20% of the issues are really 80% of our problem? And the use of check sheets that we can use to gather data, or a tick list or checklist that we can use to support our project.
+
+The next step is to recommend improvements. The Kaizen team member for an electronic manufacturing organization, for example, is targeting a specific electronic product and the final assembly process for that product. The team identified waiting, motion, and unbalanced lines as key ways that we need to attack. It proposes we would use a Kanban system, the process of 5S, line balancing, and the use of standardized work to improve the process. Other ideas could involve using tall work tables to minimize bending and reaching time. And to use inventory carts on trolleys with wheels so that we don't have to walk around so much or carry heavy weights.
+
+Then we've got to evaluate and prioritize the improvement ideas that have been generated. By doing this, we can create drafts, samples, maps, and prototypes of the planned improvements for testing and piloting. This process is similar in both the service and the manufacturing industry.
+
+Once we have tested our proposed changes and determined which we want to deploy, then we move into our last step in the process, which is implementing and monitoring changes. We would develop a schedule for going live, and we'd also consider specific training for implementation teams. For example, how to properly implement 5S or create standard visual work forms, along with error-proofing. The operators also need to know the new instructions in terms of assembling and the packaging task in the balanced line.
+
+Finally, the operators that supply components for this process need to know what to do when the Kanban is triggered. Once everybody is prepared, the team rolls out the new process on a planned start date. The team also needs to monitor project performance after the Kaizen event. This includes regular follow up on results and for improvements, creating standards, communicating results, and doing process audits. All of this helps to solidify the new process and could highlight further improvement needs in the future.
+
+4. Video: Conducting a Kaizen Blitz (bs_apr11_a01_enus_04)
+
+During this video, you will learn how to recognize examples of activities typically performed during each day of a kaizen blitz.
+recognize examples of activities typically performed during each day of a kaizen blitz
+[Topic title: Conducting a Kaizen Blitz.]
+
+In this topic, we're going to discuss the characteristics and the general process for conducting a Kaizen blitz. Kaizen blitz projects are events that focus on improving the entire value stream in the typical application. And, generally, these projects would unfold over a very short time, a week or less, and wrap up open issues within a few weeks.
+
+A Kaizen blitz is a planned Kaizen event that's conducted over a period of three to five days. That utilizes the Kaizen process to achieve value stream enhancement, and to eliminate non-value add waste in the process. It differs from the Kaizen event in terms of being more focused over a shorter duration, and having a more tangible outcome. Here's some important points to consider.
+
+First, a Kaizen blitz is a low-cost hands-on process. In which all the team members are given equal responsibilities and consideration when it comes to the ideas for things we're going to attack. It can produce solid performance improvements in a narrowly defined area. And is an excellent tool to invigorate a process improvement team.
+
+It isn't perfect in every situation and in a Kaizen blitz, there is no time for a prolonged analysis or second thoughts. It's more of a let's just do it kind of an approach. Although small problems and challenges can be eliminated pretty quickly. There is also the possibility that the big picture may be ignored, and the overall system functionality could suffer. It's all about planning and execution without losing sight of the big picture.
+
+Let's look at a typical 5-day process for the Kaizen blitz. [The 5-day process for the Kaizen blitz displays. Day 1 is Planning, Day 2 is Measuring and analyzing, Day 3 is Brainstorming, Day 4 is Implementing, and Day 5 is Fine-tuning and confirming. All of these lead to Significant improvements.] On Day 1, it's all about planning, getting through a project kick off meeting to help communicate the purpose of the project to the entire team. And often gives some training in the tools and methods the team is likely to utilize during the Kaizen. The problem statement is created and the scope is narrowed and clearly defined for the team. We establish project ground rules for established roles and responsibilities.
+
+I like to encourage creating a team code of conduct for how we're agreeing to behave with each other. And to honor each other throughout the entire process. We also have to determine what's the workload, the resources needed, and the boundaries. And from there, we can create work plans to document the project activities. Estimate our time and resources, and identify the measure of progress. You and your team can decide which tools will be used to gather and analyze the data. Often we'll do a waste walk at the beginning of the Kaizen blitz process to kick things off. Maybe taking video camera with us or a digital camera and take lots of pictures.
+
+I also like to do some brainstorming with our subject matter experts and customer, and supplier representatives around the notion of, what makes us crazy about this process. What frustrates us, what are the things we'd like to fix and improve? Put that on a flip chart, make that visible. Because later, we can use that when we get into brainstorming for what to improve during our Kaizen blitz.
+
+From there, we move into our Day 2 activities, and here we are going to measuring and analyzing. We want to begin to collect data and conduct interviews with the workers who actually do work in the process. We'll directly observe what's going on, and maybe use time and motion study techniques to take measurements. And identify items to address that characterize one or more of the seven or eight categories of waste. A process map of the current work area or the process being reviewed needs to be developed in most cases. The team would continue to analyze the data that's gathered. And would begin developing metrics for the workspace use, the distance traveled, throughput rates. Typical work and lead times for each step in the process are also important.
+
+Here, we'll also begin to generate ideas for waste elimination to present and work with the next day. These kinds of things could include getting a baseline of the current state performance. And things like safety, productivity, quality, and customer or stakeholder satisfaction for the process.
+
+As we move into Day 3, we meet with the team to brainstorm improvement ideas for fixing the constraints, and eliminating the waste identified on Day 2. Each idea is evaluated in the light of the collected data, and the resources required to implement it. Tools such as affinity diagrams and checklists help the team to reach consensus about which improvements to implement. Often after the improvement efforts have been determined, the team establishes what will be needed in terms of equipment, tools, templates, documentation, and work standards to carry out the improvement.
+
+On Day 4, we'll incorporate the collected data and get any approval needed for recommendations for process improvements, so that the team can create its project action plan. The team members are assigned responsibilities and the project work plans are expanded and updated. We'll also create a timeline that sequentially orders the improvement actions. You and your team members would typically meet with the operators and the process owners to explain, and demonstrate the process changes in the new procedures. It's good here to get their input, so that we don't miss any important considerations as we move into the implementation. Improvements are then implemented. And then throughout that day, we would observe, evaluate, adjust, re-observe, evaluate, and re-observe, and adjust as many times as needed to get it right.
+
+On Day 5, we then refine, approve, and document our process changes. Standard operating procedures or standard visual work can be drafted. And then tested to confirm that the measurable improvement has actually been accomplished. Final refinements are made in the processes documented as standard work.
+
+Here, we should be measuring the actual performance for safety, productivity, quality, and things like that at a bare minimum. And for what it's worth, I've repeatedly seen a 30% or better improvement in actual performance at the onset of Day 5 in Kaizen blitz events. Yes that's right, on Day 5, the process is already operating 30% or better is a possibility. Changes that require time to implement are incorporated into the future action plan, or Kaizen newspaper. So that a proper follow up in project management activity occurs to close out actions that have not yet been completed.
+
+And then, finally, the project is documented into a Kaizen storyboard for presentation to everybody impacted by the new processes. So wrapping this all up, it's really important to understand what the Kaizen blitz is all about. And how it fits into the bigger Lean Six Sigma initiative. [A diagram depicting how Kaizen blitz fits into the bigger Lean Six Sigma initiative displays. It displays the Tools and Process of the Lean/Kaizen blitz and the tools, methodology, and goals of Six sigma.] One of the things that's important to recognize is that Kaizen blitz can be very addictive. When we look at the notion of Six Sigma as the practice of different tools and methods that we use. Including statistics to help us identify specific point solutions we need to attack. For example, with Six Sigma, we look for exactly where in the process we need to reduce variation in the results.
+
+Many ideas for the Kaizen teams can turn into what's called the Kaizen circle. Where we chart our standing work group of employees with their managers who own this end-to-end process from day to day. They would be charged with owning any remaining action items. Making sure that we sustain the gains long term, and that we don't fall back into old habits.
+
+5. Video: Applying Kaizen in Your Organization (bs_apr11_a01_enus_05)
+
+In this video, find out how to determine the best approach for applying kaizen to a project.
+determine the best approach for applying kaizen to a project
+[Topic title: Applying Kaizen in Your Organization.]
+
+In this topic, we're going to take some time to talk about the realities, both good and bad, of applying Kaizen in your organization. Let's understand more about which problems or projects are more ideal for the practice of Kaizen. And let's note here that each application of Kaizen is unique and has to be fitted specifically and uniquely to each situation. The redesigning part of Kaizen helps us to think about processes and identify wasted steps. Where we can take out time, where we can apply different techniques like visual management, and an end-to-end view of the process. We typically would be looking at the layout of a factory space, a factory floor. Or in the service sector, the arrangement of desks and how we flow the work from area to area.
+
+We then can move into the implementation of methods, like work cells, 5S, Kanban or pull systems, or TPM or total productive maintenance. Things like setup reduction, improving overall workflows, balancing the work between different steps and the process at takt time. And creating standard visual work throughout the workplace to sustain the better process, and more can all come into play.
+
+Kaizen is not appropriate in all cases. Complex problems may require much longer timeframes to properly analyze, plan, and implement solutions. Also, let's recognize that Kaizen is just a tool, and we have to use this in the framework of an overall holistic strategy. Kaizen is very powerful and it's tempting to think we can Kaizen our way to success for every problem or challenge, but it isn't so. Kaizens are not necessarily appropriate for things like developing an overall company strategy, or redesigning products and services. Or perhaps identifying and managing enterprise risk, or doing acquisition work and things like that.
+
+There are other Lean Six Sigma methods that can come into play for those. So when we're not using Kaizen is when the problems are very complicated and require a very detailed analysis. Or really don't have a good overall Lean Six Sigma strategy to incorporate Kaizen into, and get ourselves into trouble because of that.
+
+A two by two grid could be used to determine the type of Kaizen event that's appropriate for your specific project. We have the vertical axis on the left of the impact of our performance. And then we have the horizontal axis with respect to the amount of effort. [A two by two grid displays. Upper right-hand quadrant is Chunk-out in smaller events, upper left-hand quadrant is Ideal, bottom right-hand quadrant is Worst, and the bottom left-hand quadrant is Fair. Effort is on the x-axis and Impact on Performance is on the y-axis. Effort is low to the left and high to the right. Impact on Performance is low to the bottom and high to the top.] Ideal would be less than two to four weeks in duration, because it has a high impact, and it has a low level of effort. A fair indicator would say, okay, impact is low, and the effort is low. Maybe you want to consider another tool. And then, in this upper right-hand quadrant, we might want to consider chunking this out into sub-efforts. Maybe we want to do several small Kaizen blitzes, instead of a full-blown enterprise Kaizen project. And then the worst-case scenario is it's just plain not appropriate for Kaizen to be used. It's a long term kind of thing. It requires tons of data, and maybe it's difficult to get teams together and really look at and fix the things we need to, to address using the Kaizen framework.
+
+Kaizen applied to manufacturing is typically associated with the improve phase of the DMAIC cycle. And this could include all kinds of organizations, automotive, pharmaceuticals, construction, and electronics. But the reality is that it's any kind of business that physically converts materials, parts, and does physical transformation in doing value-added activities to products. Let's remember here that in the context of manufacturing, Kaizen is best when success can be realized in days or weeks at most. Where we can get that clear, concise scope and it's not too complex.
+
+Some key outcomes we desire typically here are to make sure we're reducing time, reducing waste, and improving the overall capability of the process to get it right the first time. The other thing that's important to remember, if we don't need a lot of data to determine how to act, it's probably a good application for Kaizen in the manufacturing context.
+
+In the services sector, Kaizen relates to the improve phase in DMAIC. [A DMAIC cycle displaying it's six phases displays. The six phases are Define, Measure, Analyze, Improve, and Control.] In industries like banking, government, healthcare, hospitality, information technology, and the like. Just remember here that the service sector is all about converting information and/or doing non-manufacturing kinds of services, like healthcare. In fact, the majority of business processes out there that we may deal with in our careers are in fact more service-oriented, as opposed to manufacturing. As with manufacturing, you need to consider the scope and complexity.
+
+There are a few subtle differences about applying Kaizen in the service side of things I'd like you to know about. First of all, it's very difficult to complete a Kaizen in just a week in the service sector. Why is that? Often the changes we need to make would involve policy changes. Involve many functions, and we're going to need many inputs from others to get advice and wait for management decisions before we can act.
+
+And very often, we're going to find we need to make changes to information technology and service processes to actually implement the improvement. It's typically very difficult to implement large scale changes to IT in a week or less, in almost all organizations. And then, finally, very often in the service sector, it will mean new training, workforce skills, and new controls are required for the process. It takes longer to develop and deploy training and implement controls in most service processes than we might see in a manufacturing context.
+
+6. Video: Introduction to PDCA (bs_apr11_a01_enus_06)
+
+Learn how to recognize types of projects that are suitable for the PDCA cycle.
+recognize types of projects that are suitable for PDCA
+[Topic title: Introduction to PDCA.]
+
+In this topic, you're going to be learning more about plan-do-check-act, or PDCA. The formation of PDCA started with Dr. Walter Shewhart back in the early 20th century, and later with D Edwards Deming, and others. We use the plan-do-check-act cycle as a method to determine the sources of variation or issues, and to build and provide a continuous feedback loop. PDCA was popularized by Dr. D Edwards Deming, back in the 1950s.
+
+He proposed that analyzing business processes to determine sources of variation that causes deviation from customer expectations is the key to making any kind of improvement. He suggested that putting business processes into a continuous improvement cycle or feedback loop was very helpful. And making it more interactive in nature than perhaps to make might suggest. This feedback loop is used to identify and change parts of the process to improve its overall performance.
+
+The plan-do-check-act model is made up of four key steps. And to explain it, I'm going to use an example. Let's pretend we have a fishbone diagram, in which we've been able to identify that for poor forms design, there is a significant issue in a process. First, we would go into the plan phase. And maybe we'd be looking at a process associated with getting data right upfront from our customers. So we would study the forms and we would get customer inputs to those forms and how they use them and what they think the issues are. We might then review those forms with our subject matter experts.
+
+From there, we would move into the do part. And we would begin redesigning and updating our paper forms, and our online forms, so that they're easier to use, produce fewer errors, and improve the utility of the information. And we would begin to pilot the forms and use them, while, at the same time, we would monitor our customers' feedback in the check phase of PDCA. We will want to learn what they think about the changes and check to see what our subject matter experts see as the improvement.
+
+And then finally, we move into the act phase. We had identified the elements that are working and the issues that remain. And then we would initiate a plan to re-engage and continue improving the process in another loop of plan-do-check-act.
+
+So when can PDCA come into play? PDCA is best suited for small incremental changes like designing a new product or service element, or identifying and implementing new process improvement projects. Or maybe it relates to implementing changes. DMAIC comes into play here, as we move into the improve phase of that cycle. And PDCA links up nicely with that. And then it's all about driving continuous improvement. Remember that in PDCA, we're never done. It's a continuous improvement cycle. PDCA is a wonderful tool we can use to support the pursuit of perfection.
+
+7. Video: Steps in the PDCA Cycle (bs_apr11_a01_enus_07)
+
+In this video, you will learn how to recognize activities that take place during the steps of the PDCA cycle.
+recognize activities that take place during the steps of the PDCA cycle
+[Topic title: Steps in the PDCA Cycle.]
+
+In this topic, we're going to examine the four phases of the plan-do-check-act cycle. And get into the activities from step to step as we move through the process. First of all, we start out with planning. And here, we're going to identify the problem or the opportunity we're going to focus on for the initiative. We then move into exploring the actual root causes of the problem. And then we can leverage the many different tools that we've learned or we can learn in the practice of Lean Six Sigma. Including Drill down diagrams, Tree diagrams, Cause-and-effect or Ishikawa diagrams, 5 Whys, and Process mapping methods.
+
+An example of what we might put into play here would be as follows. Let's pretend that we're working in a computer technical support contact center. And to do our work, we require access to a knowledge base of technical solutions. In the plan phase, we might do a tree diagram and some process mapping. We might have identified that there are some issues with the use of our knowledge base. We need to do something about this problem because we're not getting consistent results. We're not leveraging our knowledge base properly. So what to work on and why, is pretty clear for the plan part of PDCA.
+
+Then we move into the do phase. And here, we would generate options for improvements and the different kinds of solutions that we want to implement in the do cycle. We want to move through ranking and prioritizing those options. And we learned how to do that with brainstorming and affinity diagramming techniques earlier in this training program.
+
+And then, of course, we need to test our solutions. We need to run a pilot project with actual subject matter experts, with real business processes to see how it works. So back to the example about our technical support contact center in a problem with our knowledge base, we would first start looking at where are the problems. And from there, we might say, we need to develop some standardized search strings, some shortcuts that can be used by the technicians to solution the different problems the customers have consistently.
+
+From there, we probably need to create some training. And then do the training, and launch a control pilot with a few of our subject matter experts, to determine how well our solution actually works. From there, we move into evaluating the pilot do-task in the check step. And here, we'll want to talk with our subject matter experts. Look at the actual application of the solution in play. We need to determine the effectiveness, which usually means we need to measure the outcomes and validate that we're actually getting the impact that we hope for. We need to gather information and revise our plan and be prepared to immediately repeat the do and the check steps.
+
+Imagining, if you will, a loop from the do to the check, back to the do, and back to the check, until we validate that what we're doing is going to work. For example, in the contact center that I suggest here as an example, perhaps we'll be monitoring the calls. Listening, keeping track of the amount of time and success rates. We could use computer tracking to count the number of times our knowledge base is being accessed. And we can ask our customers and our subject matter experts for specific feedback to see what kind of progress we might be making.
+
+Finally, we move on to the full implementation and standardization of the solution in the act cycle. We're going to monitor the process for the overall long-term effectiveness, in terms of hitting the goals and objectives we wanted to achieve in our PDCA project. We're going to repeat that process for continuous improvement.
+
+For example, with the contact center, in accessing the knowledge base, we could now roll out the solution to the entire contact center team. We wouldn't end there though. We would keep monitoring the usage of these new knowledge base searches. And we would monitor customer feedback to make sure it's continuing to improve. We should note any remaining issues that need to be handled. For example, maybe we need to trigger a new round of PDCA on the next level knowledge base use priorities that we've identified.
+
+8. Video: Six Sigma and Cost-Benefit Analysis (bs_apr11_a01_enus_08)
+
+During this video, you will learn how to recognize the importance of cost-benefit analysis as an improvement tool.
+recognize the importance of cost-benefit analysis as an improvement tool
+[Topic title: Six Sigma and Cost-Benefit Analysis.]
+
+In this topic, we're going to examine cost benefit analysis. Which is an important thing for us to consider in the practice of Six Sigma and Lean Six Sigma. First and foremost, it's a decision-making tool that we need to apply. We use quantitative data to get to the answers and the questions. It's a fairly simple analysis that we can use for non-complex situations. So let's consider an example here that's more personal.
+
+Let's say you use public transportation extensively to get back and forth to work or to school. The question might be, should I buy a new car and thereby reduce my stress associated with daily commuting? Or is the actual expense of a car going to mean I'm going to have a problem with paying my mortgage or my rent?
+
+Well, it's important to recognize here and define that the cost benefit analysis is around understanding and measuring the benefits of what we would get from doing something. Against the cost of actually making it happen. We could hope the benefits would greatly outweigh the costs. There's a number of reasons for cost benefit analysis. First of all is determining whether an initiative is worthwhile.
+
+Understanding, for example, what is the stress and the turnover? And what would it mean to us if we could improve that? Or the improvement of customer satisfaction and customer retention? How about the cost of poor customer loyalty and the cost to retain or go get new customers? What is the value of increased market share? And other benefit factors could all come into play as important reasons why. Why it is we want to go after and undertake that initiative.
+
+It's also useful to use cost-benefit analysis if we need to assess whether those costs are manageable beforehand. Remember, you can't control what can't be measured and managed. Cost-benefit analysis is used if we need to determine if those benefits actually exist. This is where having somebody from the financial part of the organization as part of your team can be quite helpful.
+
+And it's useful if we need to determine that the timing is right. We need to consider the other initiatives going on in the organization. Can we get the right amount of attention on this? The correct amount of resources and prioritization? We need to prioritize our projects. We want to make sure we're going after the low hanging fruit. [An apple tree displays. It is demarcated into several layers, which are Best/Sweet fruits, Six Sigma, Lean, Bulk of fruits, Low hanging/Ground fruits, and Kaizen/Kaizen blitz from top to bottom.] We need to ensure that we're going to be spending scarce time and money on things that give us the biggest bang for the money spent. We need to make sure that we're selecting the correct methods and use the entire Lean Six Sigma tool bag as we move forward.
+
+There's many applications of cost benefit analysis for Six Sigma. Particularly in the improve phase of DMAIC. If we look at the process improvement methods, we want to look at things where low investment is required is usually a good move. Things like machinery upgrade costs, significant capital investments. Time and money all need to be considered relative to the method chosen. With employee training, both time and money come into play here. It's not free to do training. New systems or information technologies are always going to have a lot of time. And, quite often, quite a large expense associated with it.
+
+And then there is the application of the tools. What are the specific kinds of problems we're trying to deal with? Cost benefit analysis can be used in conjunction with Plan-Do-Check-Act, TPM, Kaizen. And many other Lean Six Sigma methods to assess the benefit of using them. There's a number of considerations around our Six Sigma projects, in which a cost-benefit analysis is very useful. Starting with the expense associated with doing them.
+
+The initial step around gathering and analyzing data usually is the most time-consuming. And the biggest investment required. So we have to ask ourselves, if there's a $50,000 opportunity from benefit perspective. But we might spend $100,000 on the project, maybe that's a non-flyer right out of the box. We need to be clear about the return on investment requirements for our organization. Does this require intense organizational change to be successful? Do we need to do a force-field analysis and work through the risk of failure? There can be significant costs to pushing out communications. Collaboration, and meetings to get everybody on board. And then, certainly, there's other influences, like the speed of implementation.
+
+Generally, if we can't complete the project and show real benefits in less than six months, and preferably three months or less, it's going to be very difficult to sell this to the organization. Let's remember here that there are considerable benefits of Six Sigma, but we may have different costs to consider. We need to understand the company's risk tolerance profile as well. What is the benefit they need to see within what time period, and what kind of risk can they live with? Without knowing this, we could be in for some unpleasant surprises as we try to get approval for our projects. One of the challenges of the cost benefit analysis is to uncover all the types of cost. Both the obvious and the hidden, so that we can factor those into our analysis.
+
+There are several limitations of cost benefit analysis that need to be considered. Starting with, it can be unreliable when cash flows vary a lot from period to period. For example, a seasonal business or a business relying on product launches or service launches for its income. We need to consider the time value of money. This is where the finance folks can be very helpful. And as interest rates go up, this is a bigger and bigger consideration. Situations where it's difficult to predict revenues can certainly have an impact or a limitation on the cost benefit analysis. And then certainly, the value within a set of intangible benefits can be highly subjective.
+
+For example, the desirability of your company to attract and retain good talent. The overall brand value of your organization, or the value of improved morale across the entire work force. Are all things it is nearly impossible to put a hard monetary value to in most organizations.
+
+9. Video: Identifying Benefits (bs_apr11_a01_enus_09)
+
+Discover how to identify four categories of benefits.
+identify four categories of benefits
+[Topic title: Identifying Benefits.]
+
+In this topic, we're going to explore the different types or categories of benefits to consider within the practice of Six Sigma, when we do our cost-benefit analysis. [A diagram displays. It depicts the four major types of benefits, which are Tangible, Unquantifiable, Intangible, and Quantifiable.] The four major types are tangible benefits, typically associated with some form of current or money, as the case may be, in terms of hard, monetary savings.
+
+Then we have what are called unquantifiable benefits, and these are the ones that are hidden. It could be very hard for us to measure these in monetary values.
+
+Then we have the intangibles, like for example, how about the impact on the customer and their experience with us? And what's that worth to us?
+
+And then finally we have quantifiable. Things like return on investment, for example, or return on net assets, and other measurements like that from a financial services perspective. These are not clear cost down results for a given product or service, but over time, bring measurable benefit to the organization such as profit ratios, market share, and customer satisfaction scores.
+
+Tangible benefits typically are immediately obvious, for example, if you are capturing cost over time, you will be able to easily see the benefit with figures and numbers. Some universal examples of this could be things like the cost of labor as a percentage of daily operations, or the cost of poor quality. We could measure warranty cost or make right cost in the service sector, and easily be able to identify if those costs go down over time, which would be a tangible benefit.
+
+Then we have our quantifiable benefits, and these are certainly things that would be measurable. For example, we may see stock price going up over time. That would certainly be quantifiable. It's typically going to be expressed in some form of currency. Other examples of quantifiable benefits could be return on net assets over time, or earnings before income tax allowances, or about the cost of capital. And what our costs of capital are against the overall operating cost.
+
+How about reduction in employee turnover, in a way to quantify reduction in average training cost per year? How about customer retention? Retaining customers is always more beneficial and quantifiable, than having to go out and find new customers all the time. Market share growth is certainly quantifiable. And how about increasing margins, gross margins, if you will, in that product or service that we provide?
+
+Let's talk about intangible benefits, and let's note that this is the area where a cost-benefit analysis becomes more of an art than a science. Intangible benefits can be non-monetary in nature and thereby more difficult to recognize, and maybe not reported in a formal way. These could be very challenging to accurately measure. That said, they shouldn't be ignored, because they can be often be just as important and illustrative as tangible results.
+
+Some examples might be increasing customer satisfaction and tracking that. How do we measure that? Well, that can be very difficult to some industries. Or how do you measure morale and the improvement in employee attitudes? For example, how about the buzz about your company in the marketplace and in social media? A lot of buzz out there can be very attractive to employees to come to work for your company, or investors to help you fund growth in their future. That's a benefit for sure, but can you put a number to it?
+
+And then finally, we have unquantifiable benefits in the practice of Lean Six Sigma. And these could be totally unknown and hidden. Maybe we could think about here the degrees of agreement we're getting in an organization about what to change, and how to change it, and how to do it. If it is increasing or it could increase, we would become more successful at deploying Lean Six Sigma.
+
+How about the things that we can't measure, like the subtle impacts of improving employee morale, and working on reducing negative attitudes? Is there a lot less complaining? Maybe everybody's more interested now in supporting our overall company objectives, and in helping us to raise our performance to new levels. What's that worth to us? Yes, these are not really something we can quantify.
+
+10. Video: Identifying Costs (bs_apr11_a01_enus_10)
+
+In this video, you will learn how to recognize examples of costs you should consider when conducting a cost-benefit analysis.
+recognize examples of costs you should consider when doing a cost-benefit analysis
+[Topic title: Identifying Costs.]
+
+In this topic, we're going to talk more about the types of costs that you should consider during a cost-benefit analysis. There are two types of costs to explore, direct and hidden. Examples of direct costs include new software or new equipment. How about the materials we're going to need to implement our changes and improvements? And, of course, there's always labor and resources that come into play to accomplish our various kinds of projects. Maybe we would have to lease equipment to make our implementation happen or buy that new equipment and make payments on a lease basis. Certainly, property and buildings are direct costs, along with the cost of hiring, developing, training, and validating skills with staff.
+
+Examples of hidden costs include things like interest and bank fees that maybe are not directly distributed to our project. Taxes such as inventory taxes, for example, and what about waste? One of the things that happens a lot in both service and in manufacturing is what's called the hidden factory.
+
+The hidden factory is all the activities that happen to deal with problems of the process that aren't really measured or paid attention to. We'll often find those when we do process and value-stream mapping. [A sample value stream map displays.] All the fix-it rework loops for which the cost is buried and invisible to the organization. How about the losses of productivity, missed opportunities in the marketplace? Maybe our insurance premiums would go up because we've just put in some more expensive equipment. Or how about if employee morale goes in the wrong direction, because we don't handle things right in our projects? These are all examples of hidden costs that should be considered.
+
+So how do you determine your costs? Well, let's go through a scenario here to identify both the direct and hidden costs you might find. Let's pretend we're part of a Six Sigma team at a bottling company and we're considering changing a conveyor belt system at our main processing plant. Well, there's lots of direct costs to consider here, starting with the purchase cost of this new system. By the way, we're going to have costs associated with ripping out the old one and disposing of it. And then we're going to have to train employees on that new system.
+
+And there can be other direct costs, like electrical upgrades. We have the new wiring and panels to buy. We have to pull permits for that, and it will take labor to install the new wiring in the building. What about production downtime during the switchover? We may have lost sales or maybe we have to lay people off and pay unemployment during that time that we're changing out our bottling line. This goes on, but you get the idea.
+
+What about the hidden costs to consider? We could have a cost to finance that new system or maybe sales tax or property taxes we'll now be liable for because of the purchase that we've made. Floor space isn't free. What about the heating, lighting, cooling, and then all the other things associated with taking up more floor space?
+
+Maybe we have to spend more now on worker's compensation for operators. Because we've added more elements and more steps to the process. And then, of course, we have to ramp up folks with training, right? New training, learning the new methods, validating they're capable, and all those other things are not free.
+
+And lastly, we could be encouraging some lower morale with people that are going to resist the changes. Maybe we're going to spend a lot of extra time in meetings, onboarding folks. Or maybe in the union organization we're going to be dealing with grievances because we're changing the work. All of these things could be hidden costs associated with making major changes happen.
+
+11. Video: Conducting a Cost-Benefit Analysis (bs_apr11_a01_enus_11)
+
+During this video, you will learn how to recognize the steps in a cost-benefit analysis.
+recognize the steps in a cost-benefit analysis
+[Topic title: Conducting a Cost-Benefit Analysis.]
+
+Cost-benefit analysis is an extremely useful technique. And in this topic, we are going to dive into how to actually perform one. While it involves a lot of thinking and awareness, you might be surprised at how easy the process itself really is. There are four steps in a cost-benefit analysis. Identifying and expressing benefits, identifying and estimating cost, calculating the net gain or loss, and deciding on project viability.
+
+First, we are identifying and expressing benefits. And here we could very often hold an internal brainstorming session with those involved. And together, your team would list out all of the positive factors that can come into play. We work through identifying and quantifying the benefits and cost savings. The direct and indirect costs, things like scrap, rework, and the cost of poor quality. We can understand what the approved efficiencies would give us. And then we would need to express that in monetary terms over time.
+
+So for example, if we think about a project where we're going to drive a 10% gain in our overall productivity. And we're going to need to know accurately what that's worth to us to achieve this level. And over that two-month period, we're going to gradually improve our productivity and we would realize these benefits. What is the correct amount that we need to put a value to and be able to communicate clearly with the organization? From there, we need to identify and estimate the costs. We need to estimate both the direct and the hidden cost. These can include things like materials for equipment, hardware, and software.
+
+We need to understand what the impact could be on lost sales. For example, in a services organization, if we have to stop to make changes, we don't have any inventory, we can keep selling and make money on while we are doing it. We're kind of out of business during that time. What is that costing us? What are the resources we require like information technology licensing, consultants, and trainers during this time? Again, the list goes on and it's important to consider all stakeholders' inputs to determine the total cost so that you're not blindsided later.
+
+And then lastly, we need to express those costs and dollars per period as well. So that for the entire horizon of our project, the resulting benefits are accounted for. Next, we want to calculate the net gain or loss. So we identify what are our actual costs and then from that, what's the net gain we get from this project. A very small gain may be okay depending on the ROI criteria from the company. But if you have a recurring benefit, that may be much more attractive.
+
+How you do this typically is by laying out a table that shows in time buckets of weeks or months. That allows management to address your project for a go, no go approval. For example you might show the cost by month and the project cost overall over the implementation horizon. Then you could show the benefits in monetary terms over the project implementation horizon. And most importantly, the recurring benefits over time that will occur if you did not undertake the project.
+
+For example, for many Kaizen events, we find the cost can be between 10 and US $50,000 in the first 30 days to implement the improvements. [A table depicting Cost-benefit calculations displays. It has various rows and columns. It depicts the benefit data for various months. The column headers are Benefits, Amount, Costs, Amount, Net, and Gain or Loss?] The benefit in the first month might only be US $10,000, but the recurring benefit might be US $20,000 for the next five months. Expressing your one-time project cost of US $50,000 against the benefits of US $100,000 or more over the next six months may make it easy for management to give you a resounding yes to launch your project.
+
+From there, we need to move on to understanding and deciding on the viability of our project. And this, of course, will be based on the results from the previous step of calculating the net gain or loss. You can use a tree diagram such as this one to determine what your next steps should be. [A tree diagram displays.] For example, if we have an overall loss, you should be rejecting the project. That seems pretty obvious. But if we don't have a net loss and have a net gain, then maybe we should certainly consider the amount of gain and explore it some more. Is it inside our acceptance limit or outside of our limit? If it's outside, we should probably reject the project. But if it's still good, we should consider proceeding.
+
+Let's note here that when we are using the cost-benefit analysis to rank competing projects, we would select the project with the highest net gain, or return on investment. An element to this is understanding the payback period, the total cost versus the total benefits. The payback period is calculated by dividing the total cost by the total benefit.
+
+For example, if we were to complete our project in one quarter, at 44,800 in cost, and then see 49,000 in recurring quarterly savings. [A table depicting Cost-benefit calculations displays.] Then over the next three quarters, we would generate almost 150,000 of benefit. Which for me is a 300% return on investment over the first year of our project, after we implement it. Most organizations will improve something like this if they believe your numbers.
+
+Let's take a look at an example here. And let's just say that we had savings that we're generating on our project. And let's just say that the savings is $122,000 per month. And let's say that our cost was $88,000 to implement our project. Well, let's see now. We're going to move on and do a calculation here. We're going to take the $122,000 and we're going to divide it by this, right? So we're going to take $88,000, we're going to divide that by $122,000. What that gives us is a calculation of 0.72. Well, let's see now, what's that mean in terms of days? Well, there's about 31 days in a month. And if we multiply that, 0.72 times 31 days in the average month, then we would get to the result of 22 days to the ROI. In other words, after 22 days, we're beginning to measure an actual net benefit, a natural net of the return on investment on our project going forward.
+
+12. Knowledge Check: Using Continuous Improvement Tools
+identify characteristics of kaizen
+sequence examples of activities that happen during the kaizen process
+recognize examples of activities typically performed during each day of a kaizen blitz
+determine the best approach for applying kaizen to a project
+recognize types of projects that are suitable for PDCA
+recognize activities that take place during the steps of the PDCA cycle
+recognize the importance of cost-benefit analysis as an improvement tool
+identify four categories of benefits
+recognize examples of costs you should consider when doing a cost-benefit analysis
+recognize the steps in a cost-benefit analysis
+Question 1: Multiple Choice
+What projects would be good candidates for Kaizen?
+
+Options:
+1.
+Redesigning the layout of a work area
+2.
+Carrying out extensive data collection and analysis
+3.
+Introducing Lean Six Sigma to the organization
+4.
+Implementing 5S to improve a customer service area
+Answer
+1.
+Redesigning the layout of a work area
+4.
+Implementing 5S to improve a customer service area
+Feedback:
+Option 1:
+This is a correct option. Any projects that involve redesigning a process or physical space to reduce waste and improve efficiency would be appropriate for Kaizen.
+Option 2:
+This is an incorrect option. Projects that are complex and require detailed analysis are not good candidates for Kaizen since they are long-term projects and do not yield immediate results.
+Option 3:
+This is an incorrect option. Kaizen is appropriate only for organizations that already have an established, holistic Lean Six Sigma strategy.
+Option 4:
+This is a correct option. Any projects to implement work cells, 5S, Kanban-pull, or other Lean tools would be good candidates for Kaizen.
+Question 2: Multiple Choice
+Which options accurately describe Kaizen?
+
+Options:
+1.
+Types of Kaizen projects include Kaizen Blitz and super blitz
+2.
+It's a Japanese word that combines the words for "improve" and "for the better"
+3.
+Kaizen is a distinct methodology, separate from Six Sigma or Lean
+4.
+Kaizen is ideal for long-term projects that require in-depth analysis
+5.
+Kaizen projects are ideal for targeting obvious and fairly simple process improvements
+Answer
+1.
+Types of Kaizen projects include Kaizen Blitz and super blitz
+2.
+It's a Japanese word that combines the words for "improve" and "for the better"
+5.
+Kaizen projects are ideal for targeting obvious and fairly simple process improvements
+Feedback:
+Option 1:
+This is a correct option. There are generally three types of Kaizen projects: regular Kaizen, which lasts two to four weeks, a Kaizen Blitz, which lasts three to five days, and a Kaizen super blitz, which lasts for less than a day.
+Option 2:
+This is a correct option. The word Kaizen means "change for the better" in Japanese. It can be considered a Lean tool because the heart of Lean is continuous improvement.
+Option 3:
+This is an incorrect option. Kaizen is part of the Lean toolset and is used along with other Lean tools.
+Option 4:
+This is an incorrect option. Kaizen is ideal when immediate results are required and resources are limited.
+Option 5:
+This is a correct option. Kaizen lets you target that "low hanging fruit" - problem areas in a process that are easy to identify, don't require a lot of data, and are fairly simple to fix.
+Question 3: Ranking
+You're working for a customer support call center. The company wants to implement a Kaizen event to improve its operations.
+
+Place each activity in order according to its step in the Kaizen process.
+
+Options:
+A.
+Use a rating table to determine an objective of reducing wait times by 25%
+B.
+Study the current data entry process to gather baseline data
+C.
+Investigate why customer service data reports take so long to be processed
+D.
+Create a future state value-stream map
+E.
+Train call center operators in the new process
+F.
+Ask the CFO to be the executive sponsor for the Kaizen event
+Answer
+1.
+Use a rating table to determine an objective of reducing wait times by 25%
+One activity in step 1 is to state the problem. A rating table may help you do this.
+2.
+Ask the CFO to be the executive sponsor for the Kaizen event
+One activity in step 2 is to assemble a team, including a sponsor.
+3.
+Study the current data entry process to gather baseline data
+One activity in step 3 is to observe and record the current process.
+4.
+Investigate why customer service data reports take so long to be processed
+Step 4 is to analyze data. For example, this might involve investigating causes of delays.
+5.
+Create a future state value-stream map
+Step 5 is to make improvement recommendations. A future state value-stream map is useful for doing this.
+6.
+Train call center operators in the new process
+Step 6 is to implement and monitor changes. Training is one example of how the changes may be implemented.
+Question 4: Matching
+Match each activity to the appropriate day in a typical five-day Kaizen Blitz.
+
+Options:
+A.
+Brainstorming
+B.
+Implementing
+C.
+Fine tuning and documenting
+D.
+Planning
+E.
+Measuring and analyzing
+Targets:
+1.
+Day 1
+2.
+Day 3
+3.
+Day 4
+4.
+Day 5
+5.
+Day 2
+Answer
+1:
+Option D
+2:
+Option A
+3:
+Option B
+4:
+Option C
+5:
+Option E
+Feedback:
+Target 1:
+Activities on day one typically involve planning. They include holding the project kickoff, defining the problem statement and scope, establishing roles and responsibilities, and reviewing work plans, resources, and boundaries for the team.
+Target 2:
+Activities on day three typically involve brainstorming. They include collecting ideas for how to reduce waste or eliminate constraints within the process. Tools such as affinity diagrams and checklists are used to evaluate ideas. Assessment is based on collected data and on the resources required for implementation.
+Target 3:
+Activities on day four typically involve implementing improvements to the process. Throughout the day, the team observes, evaluates, adjusts, re-observes, and re-evaluates the process as part of the refinement cycle.
+Target 4:
+Activities on day five typically involve making final refinements and documenting process changes. The team fine tunes and tests the process to make sure measurable improvements have been made. The final activity is to document the event in the form of a Kaizen storyboard for presentation to everyone impacted by the new process.
+Target 5:
+Activities on day two typically involve measuring and analyzing. They include mapping the current process, directly observing the process, and taking measurements to identify items that fall within the seven categories of waste.
+Question 5: Multiple Choice
+A company's shipping process is prone to downtime. You have one month to resolve the issue. The project budget is limited, but the effort needed is also quite low.
+
+What type of Kaizen event is suitable?
+
+Options:
+1.
+A regular Kaizen project
+2.
+Not suited to a Kaizen event
+3.
+Chunked-out series of Kaizen Blitzes
+Answer
+1.
+A regular Kaizen project
+Feedback:
+Option 1:
+This is the correct option. A Kaizen project is suitable when effort is low, impact on performance is high, and there is around two to four weeks to make improvements. It's also useful when resources are too limited for long-term process improvements.
+Option 2:
+This option is incorrect. This project is suited to a Kaizen event because effort is low, impact is high, and the time available to make improvements is between two and four weeks.
+Option 3:
+This option is incorrect. This approach would be appropriate if the impact on performance was high and the effort was also expected to be high.
+Question 6: Multiple Choice
+What types of projects are suitable for PDCA?
+
+ 
+
+Options:
+1.
+Projects using only other Lean tools
+2.
+Designing a new product or service
+3.
+Continuous improvement initiatives
+4.
+Assessing the impact of changes on a process
+5.
+A new project to improve a process
+Answer
+2.
+Designing a new product or service
+3.
+Continuous improvement initiatives
+5.
+A new project to improve a process
+Feedback:
+Option 1:
+This is an incorrect option. Although a PDCA project may use other Lean tools that is not a requirement. Teams would not need extensive Six Sigma or Lean experience to use PDCA.
+Option 2:
+This is a correct option. PDCA works best on small, incremental projects, such as the creation of designs for a new product or implementing changes to a process.
+Option 3:
+This is a correct option. Because PDCA is cyclic in nature, it is ideal for any continuous improvement initiatives. Once you complete the "act" step, you can draw up new improvement plans and go through the PDCA process again.
+Option 4:
+This is an incorrect option. There are better tools for assessing the impact of changes and degree of improvement, such as hypothesis testing and control charts. PDCA would be more suited to implementing the changes.
+Option 5:
+This is a correct option. Because PDCA involves a step for planning, it is suitable for new projects and initiatives.
+Question 7: Multiple Choice
+What activities are part of the "do" step in the PDCA cycle?
+
+Options:
+1.
+Perform a pilot test on a solution that best addresses the problem
+2.
+Generate options that will solve the problem and implement the best one
+3.
+Survey stakeholders to determine how the problem is affecting them
+4.
+Develop a list of potential solutions
+Answer
+1.
+Perform a pilot test on a solution that best addresses the problem
+4.
+Develop a list of potential solutions
+Feedback:
+Option 1:
+This is a correct option. Once you come up with a list of possible solutions, you should test the best one or two to see if they will be effective.
+Option 2:
+This is an incorrect option. During this step, you're just generating options and testing them. Implementation doesn't come until the "act" step.
+Option 3:
+This is an incorrect option. The focus of the "do" step is generating and testing options for solutions.
+Option 4:
+This is a correct option. During the "do" step, you generate options for improvements and solutions. You may even want to prioritize them to facilitate the testing phase.
+Question 8: Multiple Choice
+Specific activities take place during each step in the PDCA cycle.
+
+What do you do during the "plan" stage?
+
+Options:
+1.
+Get a better understanding of the problem you're dealing with
+2.
+Create a schedule and budget for the project
+3.
+Develop solutions that will address the problem you're facing
+4.
+Gather data to determine whether any processes are out of control
+Answer
+1.
+Get a better understanding of the problem you're dealing with
+Feedback:
+Option 1:
+This is the correct option. During planning, you identify the problem or opportunity. You might use tools to explore the root causes of the problem as well.
+Option 2:
+This is an incorrect option. Although these are activities that might normally take place during project planning, that's not the focus of the "plan" step in the PDCA process.
+Option 3:
+This is an incorrect option. Generating solutions is actually part of the next step in the process.
+Option 4:
+This is an incorrect option. PDCA assumes you already know there is a problem. During the "plan" step of PDCA, you determine the nature of the problem and its root causes.
+Question 9: Multiple Choice
+What happens during the "check" stage in the PDCA cycle?
+
+Options:
+1.
+Repeat the plan-do-check steps, if necessary
+2.
+Check with the project sponsor to ensure resources are available for implementation
+3.
+Prepare the rollout strategy
+4.
+Determine how effective the proposed solution is
+Answer
+1.
+Repeat the plan-do-check steps, if necessary
+4.
+Determine how effective the proposed solution is
+Feedback:
+Option 1:
+This is a correct option. After testing the solution, you may need to adjust what you believe about the problem, repeating the "plan" stage. Or maybe you need to repeat "do" and "check" by looking at other options and testing those.
+Option 2:
+This is an incorrect option. The focus of the "check" stage is on the results of the pilot test. You're checking to determine the effectiveness of the proposed solution.
+Option 3:
+This is an incorrect option. The solution is only rolled out after you have determined whether it will work. That is the focus of this step: to determine how effective it is based on the results of the pilot test.
+Option 4:
+This is a correct option. As the name suggests, during "check" you need to evaluate the success of the pilot testing. Then you can make necessary adjustments to the solution.
+Question 10: Multiple Choice
+You're at the final step in PDCA before the cycle begins again.
+
+What happens during the "act" step?
+
+Options:
+1.
+Implement the finalized solution and monitor it for effectiveness
+2.
+Use Lean tools that allow you to fully analyze the process and proposed solution
+3.
+Celebrate the end of the project and move on to consider other problems or opportunities
+4.
+Consider how the cycle could be repeated
+Answer
+1.
+Implement the finalized solution and monitor it for effectiveness
+4.
+Consider how the cycle could be repeated
+Feedback:
+Option 1:
+This is a correct option. This is where the solution is rolled out. You need to monitor it to ensure that it actually hits the goals and objectives you wanted to achieve.
+Option 2:
+This is an incorrect option. By the time you get to the "act" step, the analysis is complete for a time and you focus on implementing the best solution.
+Option 3:
+This is an incorrect option. The idea behind the PDCA cycle is that you are never really done. At this point, you should look for ways to continuously improve upon the improvements you've made.
+Option 4:
+This is a correct option. Because PDCA is a cyclic model, part of the "act" step is to consider how you can engage in continuous improvement.
+Question 11: Multiple Choice
+Why is cost-benefit analysis such an important improvement tool?
+
+Options:
+1.
+It lets you estimate the monetary value of proposed improvement strategies
+2.
+It's a relatively simple but powerful decision-making tool
+3.
+It is a good tool for determining the benefits of a strategy when cash flow is unsteady
+4.
+It's easy to predict both short- and long-term benefits of a solution
+Answer
+1.
+It lets you estimate the monetary value of proposed improvement strategies
+2.
+It's a relatively simple but powerful decision-making tool
+Feedback:
+Option 1:
+This is a correct option. Not many tools are better at quantifying the value of a proposed solution. Once you have the results for a set of options, you can prioritize them and select the best one.
+Option 2:
+This is a correct option. Cost-benefit analysis helps you make decisions based on quantitative data. All you do is total anticipated costs and subtract them from anticipated benefits.
+Option 3:
+This is an incorrect option. Cost-benefit analysis is actually quite unreliable when cash flows vary from one period to another.
+Option 4:
+This is an incorrect option. Although cost-benefit analysis is simple in terms of its basic "benefits minus costs" formula, you do have to calculate the time value of money, which is not simple to do.
+Question 12: Multiple Choice
+The first step in doing a cost-benefit analysis is to identify the benefits of the solution.
+
+What are the four categories of benefits?
+
+Options:
+1.
+Quantifiable
+2.
+Unquantifiable
+3.
+Direct
+4.
+Hidden
+5.
+Intangible
+6.
+Tangible
+Answer
+1.
+Quantifiable
+2.
+Unquantifiable
+5.
+Intangible
+6.
+Tangible
+Feedback:
+Option 1:
+This is a correct option. Quantifiable benefits are the ones that you can easily measure and express in units of currency. An example would be an increase in the value of company stocks.
+Option 2:
+This is a correct option. Unquantifiable benefits are those that are hidden and cannot be measured. Examples might include raised awareness or a change in organizational culture.
+Option 3:
+This is an incorrect option. This is actually a category of cost. The equivalent in the categories of benefits would be tangible or quantifiable.
+Option 4:
+This is an incorrect option. This is actually a category of cost. The equivalent in the categories of benefits would be intangible or unquantifiable.
+Option 5:
+This is a correct option. Intangible benefits are difficult to recognize and put a price on. They can be a challenge to measure accurately. One example is increased customer satisfaction.
+Option 6:
+This is a correct option. Tangible benefits are the ones that are immediately obvious and would be directly reflected in the improved performance of the process. An example would be a decreased number of defects.
+Question 13: Matching
+Costs are generally considered to be direct or hidden.
+
+Label each example according to the category to which it belongs. Each category may receive more than one match.
+
+Options:
+A.
+Creation of new procedure manuals
+B.
+Employees disagree with the change
+C.
+Increased worker's comp fees
+D.
+Downtime while new system is installed
+E.
+Paying workers overtime
+F.
+Installation of new machinery
+Targets:
+1.
+Hidden
+2.
+Direct
+Answer
+1:
+Option B, Option C, Option D
+2:
+Option A, Option E, Option F
+Feedback:
+Target 1:
+Hidden costs are things that are less obvious and harder to measure, such as low morale, HR fees, and waste.
+Target 2:
+The most obvious costs include anything that involves labor and the purchase of materials, such as installation, overtime, and tasks that need to be done.
+Question 14: Ranking
+Place the steps you should take when carrying out a cost-benefit analysis in the correct order.
+
+Options:
+A.
+Identify and express benefits
+B.
+Identify and estimate costs
+C.
+Calculate net gain or loss
+D.
+Decide on project viability
+Answer
+1.
+Identify and express benefits
+The first step to take when conducting a cost-benefit analysis is to identify and express benefits, which you can do by organizing a brainstorming session and noting all positive factors discovered.
+2.
+Identify and estimate costs
+The second step in a cost-benefit analysis is to identify and estimate costs, which may include the costs of materials, labor, and resources.
+3.
+Calculate net gain or loss
+The third step is to calculate net gain or loss, which can tell you the return on your and investment.
+4.
+Decide on project viability
+The fourth and final step of a cost-benefit analysis is to decide on project viability; depending on the calculation arrived at in the preceding step, you will either proceed with or reject a project.
+Course HTML Resources
+•	Glossary: Six Sigma Techniques for Improvement
+affinity diagram
+
+An analytical tool that allows a group of people to physically organize large volumes of data, such as ideas, opinions, facts, or issues, into groups based on their natural relationships or affinities.
+
+alpha risk (α risk)
+
+The most risk someone is willing to take in rejecting the H0 when it's actually true. It occurs when the Ha is accepted due to an overreaction or when there's not enough statistical evidence to support the Ha but it's accepted anyway. This situation is usually related to a Type I error.
+
+alternative hypothesis (Ha)
+
+Assumes that any differences in the observed data are due to a real effect.
+
+analytical statistics
+
+Statistical methods for analyzing and interpreting data to enable inferences, generalizations, estimates, predictions, or decisions to be made about the process producing a product or service. Also known as inferential statistics.
+
+Attribute
+
+A skill, quality, or characteristic that a person or system should possess in order to perform effectively.
+
+attribute data
+
+Data that can be counted. Also known as attributes data or discrete data.
+
+bar chart
+
+A chart utilizing a series of bars to compare characteristics of two or more items at a specific point in time.
+
+bell curve
+
+The graphic representation of Gaussian normal probability distribution, shaped like a bell.
+
+beta risk (β risk)
+
+The risk of failing to reject the H0 when it's actually false and should be rejected. This situation is related to a Type II error and can be thought of as underreacting – in other words, statistical evidence exists to reject the H0 (that there is no real difference or effect) but instead it's ignored.
+
+Bias
+
+The difference between the average measured value and a reference value.
+
+Black Belt
+
+A professional trained in Six Sigma methodologies and principles. See also Yellow Belt, Green Belt, Master Black Belt, Champion, and Six Sigma.
+
+Calibration
+
+The process of comparing a measurement device to a standard of known accuracy.
+
+Causation
+
+Something that brings about or increases the likelihood of an effect.
+
+cause-and-effect diagram
+
+Also called a fishbone or Ishikawa diagram, a graphical presentation of the potential causes of a recognized problem. The structure of the diagram is typically presented as a main arrow (representing effect) off of which smaller arrows (representing causes) branch in a pattern similar to a fish skeleton.
+
+center line
+
+The line on a control chart of the long-term average or a standard value of the measure being plotted.
+
+central limit theorem
+
+A statistical concept that states that as the sample size increases, the distribution of the sample means approaches a normal distribution. This holds true regardless of the shape of the population from which the samples are drawn. See also normal distribution.
+
+central tendency
+
+1. The average value of a dataset. Measures of central tendency include mean, median, and mode. 2. On a chart, the point about which a group of values is clustered.
+
+Champion
+
+An executive or manager who supports, or champions, a Six Sigma initiative within the organization, provides leadership to the project team, and ensures the team has the organizational support required to successfully complete the initiative. May also use organizational authority to keep a Six Sigma project moving if organizational barriers are met. See also Six Sigma.
+
+Checksheet
+
+Tables, forms, and worksheets used for data collection.
+
+confidence interval
+
+A pair of values within which it can be determined, with a certain level of confidence, that a population parameter value will fall.
+
+Constraint
+
+The limiting element in a system that restricts production. Constraints may be physical or nonphysical.
+
+continuous data
+
+See variable.
+
+control chart
+
+A run chart with the addition of statistically calculated control limits placed above and below the process average line. See control limits and run chart.
+
+control limits
+
+The boundaries of a process within specified confidence levels.
+
+COQ
+
+Abbreviation for cost of quality, which is a term often used synonymously with cost of poor quality.
+
+Correlation
+
+The measurement of the association between two variables.
+
+correlation coefficient
+
+A statistical measure that represents the linear relationship between two variables plotted on the x and y axes of a scatter diagram. This is often referred to as the r statistic.
+
+critical to quality
+
+Abbreviated as CTQ. Factors important to customers in a given process. Data from Voice of Customer leads to the discovery of CTQs, which can be translated into distinct and measurable requirements.
+
+CTQ
+
+See critical to quality.
+
+customer segmentation
+
+The process of categorizing customers in a way that focuses on who produces the most value for the product being improved.
+
+cyclical variation
+
+Interpiece variation; variation from piece to piece or unit to unit. It can also be variation from one operator to another or from machine to machine.
+
+Dataset
+
+Any organized collection of data.
+
+defects per million opportunities
+
+See DPMO.
+
+defects per unit
+
+See DPU.
+
+Define – Measure – Analyze – Design – Validate
+
+See DMADV.
+
+degrees of freedom
+
+Abbreviated as df, the number of independent data values that are used in estimating the value of a population parameter. In estimation, it is calculated as the number of independent observations minus the number of parameters estimated.
+
+dependent variable
+
+A variable that can be affected by another variable's output. Also called a response variable, the dependent variable is always plotted on the vertical or y axis.
+
+Design for Six Sigma
+
+Abbreviated as DFSS, a systematic methodology that utilizes tools, training, and measurements to enable the design of products and processes that both meet customer expectations and can be produced at Six Sigma quality levels.
+
+df
+
+See degrees of freedom.
+
+DFSS
+
+See Design for Six Sigma.
+
+discrete data
+
+See attribute data.
+
+Dispersion
+
+A description of the distribution of all the data in a dataset measured as an average deviation, such as standard deviation, around some central value, such as the mean. See also standard deviation.
+
+DMADV
+
+A core methodology for implementing DFSS that runs through the following phases: Define – Measure – Analyze – Design – Validate.
+
+DMAIC
+
+Acronym for the Define, Measure, Analyze, Improve, Control process, which is commonly employed when an organization wishes to improve on an existing process by using Six Sigma.
+
+DPMO
+
+Abbreviation for defects per million opportunities. The actual number of defects occurring divided by the total number of opportunities for a defect and multiplied by one million. Also referred to as parts per million (ppm).
+
+DPU
+
+Abbreviation for defects per unit. Calculated by dividing the total number of defects by the number of units or products.
+
+empirical rule
+
+States that in a normal distribution, all values will fall within three standard deviations of the population mean. Also known as the 68-95-99.7% rule.
+
+enumerative statistics
+
+Statistical methods for summarizing or describing the data collected. Also known as descriptive statistics.
+
+flow chart
+
+A graphical representation of a process that shows the sequence of events in that process.
+
+FMEA
+
+Abbreviation for failure modes and effects analysis, a tool that provides a structured method for analyzing potential failure modes and effects and how these may influence design perimeters.
+
+Frequency
+
+The number of occurrences or observed values in a specified subgroup, sample, or population.
+
+functional deployment map
+
+A process map that is a visual representation of the who, what, where, and when information about a process.
+
+Green Belt
+
+Typically full-time employees in an organization who play a vital role in Six Sigma project teams. They operate in support or under the supervision of Black Belts and usually spend about 25-30% of their time on Six Sigma projects. Green Belts are trained in the Six Sigma DMAIC methodology, which provides them with additional knowledge and skills essential to bringing projects to success. They often lead small-scale improvement projects and analyze and solve Six Sigma problems within their respective areas. See also Yellow Belt, Black Belt, Six Sigma, Master Black Belt, and Champion.
+
+header card
+
+A card used to express a general idea that connects a group of ideas in an affinity diagram.
+
+Heterogeneity
+
+1. The condition of a population when all units are not identical with respect to the characteristic of interest. 2. The degree to which a characteristic or property is evenly distributed within a population.
+
+Histogram
+
+A graphic representation of variation in a dataset.
+
+Homogeneity
+
+1. The condition of a population when all units are identical with respect to the characteristic of interest. 2. The degree to which a characteristic or property varies between units in a population.
+
+hypothesis testing
+
+Determines if any observed differences between two or more samples are due to random chance or real effect.
+
+in-control
+
+A process where the statistical measure being evaluated is influenced only by common cause variation.
+
+independent event
+
+An event that has no effect on the occurrence of other events.
+
+independent variable
+
+A variable that can be changed to achieve a desired output. Also known as the explanatory variable, input variable, or predictor, it is always plotted on the horizontal or x axis.
+
+input variable
+
+An attribute whose value may vary over the course of an experiment (including simulations), across samples, or during the operation of a system. In multi-vari analysis, the input variable is denoted as "x."
+
+interrelationship digraph
+
+A planning and management tool used to discover and depict the causal relationships that exist between different aspects of a complex problem.
+
+interval estimates
+
+Represent a range, or interval, within which the true value of a population parameter is likely to fall with a predetermined probability on the basis of sampling statistics.
+
+JIT
+
+Abbreviation for just-in-time, a production and material-requirements planning methodology used in the implementation of Lean systems. The core of this methodology is that inventory is limited to only what is needed at the time it is needed, and only in the quantity that is necessary for production.
+
+just-in-time
+
+See JIT.
+
+Kaizen
+
+A rapid project-based method of continuous improvement and waste elimination.
+
+kaizen blitz
+
+A kaizen event conducted over a period of three to five days.
+
+Kano analysis
+
+Graphically represents how customer satisfaction is impacted by a problem.
+
+key input variable
+
+See KIV.
+
+key output variable
+
+See KOV.
+
+key performance indicator
+
+A business performance measurement that reflects an organization's goals, measures progress toward goals, is quantifiable, and is tied to an organization's success.
+
+KIV
+
+Abbreviation for key input variable. Any process input that has the potential to impact process outputs.
+
+KOV
+
+Abbreviation for key output variable. Any process output that fulfills or leads to fulfillment of Six Sigma deployment goals.
+
+LCL
+
+Abbreviation for lower control limit. See control limits.
+
+least-squares regression model
+
+A model used to determine the line that is closest to all the data points simultaneously.
+
+Linearity
+
+Accuracy over different values.
+
+margin of error
+
+A term used to explain the fact that all surveys are subject to some uncertainty about how well the sample represents the population.
+
+Master Black Belt
+
+A professional trained in Six Sigma methodologies. Master Black Belts teach individuals the Six Sigma principles and act as mentors for lower-ranking belts. See also Yellow Belt, Green Belt, Black Belt, Champion, and Six Sigma.
+
+Mean
+
+The average value of all the values in a dataset. It is calculated by adding all the values in a set of data and dividing by the number of values. See also dataset.
+
+measurement error
+
+The difference between the measured value and the true value, represented by the accepted reference standard.
+
+Median
+
+The middle value when a set of data is arranged in order from smallest to largest.
+
+Mode
+
+The number that occurs most frequently in a set of data.
+
+multiple linear regression
+
+A model used to determine the relationship between one output and multiple inputs.
+
+multi-vari analysis
+
+A graphical technique that provides a way to view and analyze the effects of multiple sources of process variation at a time.
+
+multi-vari chart
+
+A chart that graphically displays the effect that two or more input variables, "x"s, have on an output variable, "y"s.
+
+nominal variable
+
+A variable that describes a name or category. See also variable.
+
+normal distribution
+
+The distribution of data is said to be normal when most of the values in the dataset are close to the mean, and the standard deviation is small. See also standard deviation.
+
+null hypothesis (H0)
+
+Assumes that any difference observed in data is not real and happens due to random chance.
+
+one-sample test for means
+
+Compares the mean of a sample from a population against a hypothesized, or specified, value. Also known as a one-population test for means.
+
+opportunity costs
+
+The costs associated with pursuing one opportunity over another.
+
+ordinal variable
+
+A categorical variable for which the possible categories can be placed in a specific order. See also variable.
+
+output variable
+
+In multi-vari analysis, the output variable is denoted as "y."
+
+Pareto chart
+
+A chart used to evaluate the frequency of occurrence of risks. It is based on the Pareto principle.
+
+Pareto principle
+
+A rule of thumb used in business stating that 80% of effects are generated by 20% of causes.
+
+PDCA cycle
+
+Acronym for plan-do-check-act cycle, a four-step cycle that aims for continual process improvement.
+
+PEST analysis
+
+A method used to analyze the risks or opportunities presented by an organization's external business environment, including political, economic, social, and technological factors.
+
+plan-do-check-act cycle
+
+See PDCA cycle.
+
+point estimates
+
+Statistics used when trying to find a single value to estimate a population parameter, such as the sample mean and sample proportion defective.
+
+Population
+
+A complete set of items that share at least one common measurable characteristic and that is subject to statistical analysis.
+
+population parameter
+
+1. An entire group of units that share at least one common measurable characteristic. 2. The set of all possible outcomes of a statistical determination.
+
+Precision
+
+1. The reproducibility of a single measurement. 2. How closely two or more measurements agree.
+
+probability event
+
+In statistical probability, an outcome or collection of outcomes that is a subset of the sample space. See also sample space.
+
+Process FMEA
+
+A tool used to analyze transactional processes, such as manufacturing and assembly processes, to identify failure modes and their effects caused by these processes.
+
+process map
+
+A tool used to analyze processes in a project. A process map is essentially a detailed flow chart that uses symbols to represent the sequence of events in the process. It shows all tasks, activities, and decisions made during the course of a process. See also flow chart.
+
+process model
+
+A visual representation of a process.
+
+proportion defective
+
+Number of defective units divided by total number of units.
+
+p-value
+
+The probability of getting a result as extreme as or more extreme than that observed if the null hypothesis, H0, is true.
+
+quality function deployment
+
+Abbreviated to QFD, a structured method in which customer needs and desires are translated into technical requirements and design requisites.
+
+r
+
+The symbol for range. See range.
+
+RACI chart
+
+A graphical representation that assigns one of four levels of responsibility to individual members on a team: Responsible, Accountable, Consult, or Inform. See also responsibility matrix.
+
+Range
+
+The spectrum between the highest and lowest numbers in a set of data.
+
+Regression
+
+The determination of a statistical relationship between factors.
+
+relational matrix
+
+A tool to compare the importance of process outputs with the contributions of their inputs.
+
+Repeatability
+
+The precision, or closeness, of measurements of the same units by the same measurer.
+
+Replication
+
+Occurs when an entire experiment with all treatments is performed more than once. It helps quantify experimental error by resetting the experiment and doing it again.
+
+Residual
+
+The difference between the values obtained from the samples and the values predicted by the regression model. Residuals are analyzed to identify errors in the model.
+
+responsibility matrix
+
+A matrix mapping roles to assigned tasks. Used in clarifying roles and responsibilities for an initiative. See also RACI chart.
+
+run chart
+
+A graphic plot of some parameter of process performance.
+
+s
+
+See standard deviation.
+
+Sample
+
+A subset or subgroup with a known probability of selection collected from a complete population to represent that population in statistical analysis. See population.
+
+sample attribute
+
+A quality of a sample such as representativeness or variance. See attribute.
+
+sample set
+
+The collection of outcomes in each event.
+
+sample space
+
+The set of all possible outcomes, both event and nonevent outcomes. In the probability formula, it is represented by the letter "S."
+
+sigma
+
+The standard deviation of a statistical population.
+
+simple linear regression
+
+A model used to determine the relationship between one output and one input.
+
+SIPOC diagram
+
+A high-level process map that depicts the suppliers, inputs, processes, outputs, and customers of a process.
+
+Six Sigma
+
+A quality management approach that aims to reduce variation, cycle time, and waste, and to produce products or services within customer specifications.
+
+Skew
+
+The measure of the degree by which the sample population deviates from symmetry. In a skewed distribution, the mean, median, and mode will not be the same value.
+
+standard deviation
+
+Represented by s, a measure of dispersion that indicates the spread of the dataset values around the mean, or average.
+
+Statistical Process Control
+
+Abbreviated to SPC, a statistical methodology for analyzing and controlling the variation of a process.
+
+statistical significance
+
+Ensures that the observed difference or relationship in the dataset is real and not by mere chance.
+
+T
+
+See throughput.
+
+temporal variation
+
+Time-related variation. Data plotted over time can indicate time-related changes and help point to the root causes of variation by identifying when the variation does or does not occur.
+
+test statistic
+
+Indicates whether sample data is consistent with the population parameter, or whether it's less than or greater than the parameter. The calculation of the test statistic is then used to interpret the test results and determine if a null hypothesis can be rejected or not.
+
+Throughput
+
+Represented by T, the rate of production or the rate of processing.
+
+Tolerance
+
+The permissible range of variation in a particular measurement. See variation.
+
+tolerance interval
+
+Estimates a range – an upper and lower limit of tolerance – within which a certain percentage of each individual measurement in the population should fall.
+
+tollgate review
+
+A review that takes place at the end of each DMAIC phase, allowing evaluation of the project's deliverables based on the project measures.
+
+Traceability
+
+The ability to prove that a measuring system gives measurements that are calibrated to reference standards.
+
+tree diagram
+
+A planning and management tool used to break projects, goals, and other complex items down into successively more specific details.
+
+t-test
+
+Used to calculate a test statistic when the variance of the larger population is unknown and the sample size is less than 30.
+
+Type I error
+
+Most often associated with α risk. Occurs when a null hypothesis that is actually correct is rejected.
+
+Type II error
+
+Occurs when a person fails to reject a null hypothesis that is actually incorrect. Most often associated with β risk.
+
+u
+
+The symbol for defects per unit.
+
+UCL
+
+Abbreviation for upper control limit. See control limits.
+
+unbiased estimator
+
+When the mean of all possible sample values is equal to the corresponding population parameter, it's an unbiased estimator.
+
+Variable
+
+A symbol used to represent an input value in a mathematical equation.
+
+Variance
+
+The square of the standard deviation. See standard deviation.
+
+Variation
+
+A change of condition as observed within certain limits.
+
+Voice of the Customer (VOC)
+
+Describes the process of capturing customer requirements.
+
+Xbar
+
+The mathematical symbol for average.
+
+Yellow Belt
+
+Typically full-time employees in an organization who play a supporting role during Six Sigma improvement projects. They operate in support of Green Belts or Black Belts. Yellow Belts are introduced to the DMAIC methodology that equips them with basic knowledge and tools for providing support and solving problems. See also Green Belt, Black Belt, Six Sigma, Master Black Belt, and Champion.
+
+z-score
+
+A statistical calculation for estimating the standard deviation of the sampling distribution around the population mean.
+
+z-test
+
+Used when the standard deviation is known or the sample is large (greater than or equal to 30). The population must also conform to a normal distribution for this test to hold.
+
+5S
+
+A methodology of waste elimination through workspace organization.
+
+ 
+
+© 2024 Skillsoft Ireland Limited - All rights reserved.

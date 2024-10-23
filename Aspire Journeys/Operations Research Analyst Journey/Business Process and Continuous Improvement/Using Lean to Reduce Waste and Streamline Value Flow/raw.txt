@@ -1,0 +1,219 @@
+Using Lean to Reduce Waste and Streamline Value Flow
+Companies are always looking for new ways to improve business efficiency and increase quality. To run a business at optimal capacity, you need to reduce or eliminate waste from processes and improve production flow.
+
+In this course, you'll learn about Lean strategies to reduce waste by determining which operations add value and which don't. You'll explore the concept of continuous flow, and discover how to balance work processes to make production flow more efficient. You’ll define what waste is, where it exists, and what causes it. You’ll also examine aspects of muda, continuous flow, line balancing, and value and non-value-add, and practical Lean techniques for improving Operations Management.
+
+Table of Contents
+    1. Video: Using Lean to Reduce Waste and Streamline Value Flow (bs_oper46_a03_enus_07)
+
+    2. Video: Value-add and Non-value-add Activities (bs_oper46_a03_enus_01)
+
+    3. Video: Eliminate Waste: Overproduction and Inventory (bs_oper46_a03_enus_02)
+
+    4. Video: Eliminate Waste: Motion, Waiting, and Transportation (bs_oper46_a03_enus_03)
+
+    5. Video: Eliminate Waste: Overprocessing and Defects (bs_oper46_a03_enus_04)
+
+    6. Video: Line Balancing: Calculating Cycle Time and Takt Time (bs_oper46_a03_enus_05)
+
+    7. Video: Line Balancing: Balancing the Work (bs_oper46_a03_enus_06)
+
+    Course HTML Resources
+
+1. Video: Using Lean to Reduce Waste and Streamline Value Flow (bs_oper46_a03_enus_07)
+
+Objectives
+No Objective Provided
+[Course title: Using Lean to Reduce Waste and Streamline Value Flow] Companies are always looking for new ways to improve business efficiency. To run a business at optimal capacity, you need to reduce or eliminate waste and improve the flow of production. In this course, you'll learn about Lean strategies to reduce forms of waste by determining which of a company's activities add value and which don't. You'll also explore the concept of continuous flow, and discover how to balance work processes to enhance production flow to improve efficiency.
+
+2. Video: Value-add and Non-value-add Activities (bs_oper46_a03_enus_01)
+
+Objectives
+classify production activities as value-add, non-value-add, or necessary non-value-add
+[Topic title: Value-add and Non-value-add Activities] Since different people in an organization value different things, you need an objective and organized process to figure out which activities are really useful and which are wasteful. Lean provides clear guidance on what's valuable for a business and what constitutes waste, so it's a really useful approach.
+According to Lean, value is a rating of how well a product or service meets a customer's requirements. Simply put, if a customer is willing to pay for it, it has value.
+By identifying value in this way – from a customer's perspective – you can optimize the business by minimizing or removing activities that are redundant, and modifying required activities so they use fewer resources.
+Activities that make a product or service more valuable from a customer's point of view are considered value-add activities. Polishing a completed product and delivering the product to a customer are value-add activities. Similarly, a programmer who writes code is adding value; as is a banker who negotiates the interest on a loan on behalf of a customer.
+To determine if a procedure or activity adds value, you need to be able to answer "Yes" to three questions: Does it fulfil a customer's need or preference? Does it change the product or service in some way? Is it done right the first time in the process?
+Non-value-add activities, by comparison, don't add any extra value to the end product or service from a customer's perspective. For example, transporting components and conducting inspections are non-value-add activities. In an office setting, making and storing extra copies of documents doesn't change the service provided, so this activity doesn't add value, either.
+However, some non-value-add activities are necessary even if they don't change a product or service, meet customer preferences, or ensure a task is completed right the first time. These necessary, non-value-add activities may be required to operate a business, or to meet regulatory or accreditation standards. For example, writing a production report or paying wages, are all necessary for running a business efficiently but they add no direct value for the customer.
+In a Lean approach, value-add activities are done right the first time to meet customers' needs or preferences, or to change a product or service for the better.
+
+3. Video: Eliminate Waste: Overproduction and Inventory (bs_oper46_a03_enus_02)
+
+In this video, find out how to identify strategies for eliminating waste caused by overproduction and inventory.
+Objectives
+identify strategies for eliminating waste caused by overproduction and inventory
+[Topic title: Eliminate Waste: Overproduction and Inventory] Deciding to eliminate waste in your organization is easier said than done. You need to be able to recognize waste and understand what causes it. Lean defines waste – or muda – as any use of resources that goes beyond what a customer requires and is willing to pay for.
+The seven types of waste you may encounter are overproduction, overprocessing, motion, waiting, transportation, inventory, and defects.
+Overproduction – or producing more than you need – is viewed as the worst type of waste, because it leads to excess inventory. You produced too much, and now, for instance, you have boxes of winter boots left in stock that you can't sell during summer season.
+Excess inventory is linked to overproduction, so these types of waste typically have similar causes.
+In a push-based system, production is based on future predictions of demand. This can sometimes lead to waste. For example, if the forecasted customer demand is overestimated, excess winter boots produced accumulate as inventory.
+Just-in-case manufacturing, or JIC, is another potential cause of waste. This type of production involves deliberately overproducing or keeping a large volume of inventory as a buffer, in case of production or supply problems later on. Clothing manufacturers know that customer demand for sweaters has a seasonal element and may keep large inventories or intentionally overproduce to prevent low stock risks.
+Large batches are another potential cause of waste. For example, it may not be economically viable to produce only small batches of plastic soda bottles due to high costs and time delays associated with setting up or changing over a production process. If there isn't an immediate demand for all the bottles in a large batch, the result is waste.
+Poor communication with suppliers, between facilities or stages in the production process, or an unreliable supply chain can result in downstream bottlenecks being ignored. If production outstrips demand, again this causes waste.
+You can combat these and eliminate overproduction and excess inventory using Lean strategies.
+Consider changing from a push-based production to a pull system. This can help ensure you purchase only what the customer or next process needs – like producing a specific amount of boots during winter.
+To counter JIC thinking, you could install poka yoke, or "mistake-proofing" mechanisms, to help detect production issues before they become bottlenecks. For example, installing fixtures that automatically stop when there's an error to help protect equipment capacity.
+Instead of producing huge batches of one component, you can redesign workflows to keep batch sizes at the sales demand level. This helps reduce changeover times, which means you produce smaller batches more cheaply.
+You can ensure good communication flow between facilities and suppliers by installing shared software, which updates in real-time. This helps ensure each component or item is supplied only as needed.
+Knowing the causes of overproduction and excess inventory waste can help you to implement the appropriate Lean strategies to resolve them.
+
+4. Video: Eliminate Waste: Motion, Waiting, and Transportation (bs_oper46_a03_enus_03)
+
+Learn how to identify strategies for eliminating motion, waiting, and transportation waste.
+Objectives
+identify strategies for eliminating motion, waiting, and transportation waste
+[Topic title: Eliminate Waste: Motion, Waiting, and Transportation] There are seven forms of waste – overproduction, overprocessing, motion, waiting, transportation, inventory, and defects. Of those seven, motion, waiting, and transportation waste are closely linked. These share similar root causes, so you can use similar strategies to counteract them.
+Motion refers to how employees are required to move – from their desk to the printer in another room, for example – while creating a product or providing a service. Employees may waste time waiting for another process – or print job – to complete before performing a task or service. And all forms of transportation, other than delivering a product to the customer, are considered wasteful.
+The root causes of motion, waiting, and transportation waste are poor design, poor layout, and inadequate training.
+Poorly designed processes may be a leftover of a push-based production environment, used to create large batch sizes. These bloated processes may cause supply shortages and an unreliable supply chain, which generate waiting waste. Also, excess inventory needs to be moved to a warehouse, which causes transportation waste.
+If processes aren't carefully designed and workloads balanced, it results in a disorganized or poor work area layout. Employees may need to wait for various handoffs or approvals, or for others to finish before continuing their work. For example, if an employee keeps another waiting while searching for the right wrench in a shared toolbox. Complex material flows or shared equipment may generate the need for transportation to collect inventory or equipment.
+If employees aren't cross-trained and are only able to perform work on one component of a process, this isn't effective. For example, if only one person is trained to do welding, this results in employees moving from station to station. This is known as excess transport. Inadequate training and cross-training can also lead to operators not knowing how to maintain equipment or fix problems with it. This can lead to downtime, which adds to the waiting waste.
+To combat motion, transport, and waiting waste, you can apply a mix of solutions such as good housekeeping, improved layout, and cross-training
+Employees of a ship-building company are forced to walk fairly long distances to fetch various tools and components. They also wait for components to be finished before assembling them. Additionally, the company spends a lot of money on forklifts and cranes to transport finished components for assembly.
+To counter these wastes, teams assemble all equipment used for one component in a single area. They also cross-train employees so they can use all equipment and perform basic maintenance tasks. This reduces waiting times and the need to move machinery, and employees don't need to walk far to complete their tasks.
+You can implement Lean strategies to combat the waste commonly associated with motion, waiting, and transportation.
+
+5. Video: Eliminate Waste: Overprocessing and Defects (bs_oper46_a03_enus_04)
+
+In this video, you will learn how to identify elimination strategies for waste caused by overprocessing and defects.
+Objectives
+identify elimination strategies for waste caused by overprocessing and defects
+[Topic title: Eliminate Waste: Overprocessing and Defects] Getting rid of wasteful work practices may be easier than you think.
+Overprocessing is waste caused by applying more processes than are necessary to create a product, service, or component. For example, using overly large or complex equipment makes you guilty of overprocessing.
+Defects – flaws in a product or service – are inherently wasteful, because they force a product to be discarded or reworked. So where there are defects, there is likely unnecessary rework, which is a form of overprocessing.
+If you have waste, you need to find out what caused it.
+One method is 5 Whys, or asking "why" five times whenever a problem occurs. For example, why did this customer file a complaint? Because an error appeared the web site. Why was there an error? Because a programmer inserted inaccurate code. Why didn't someone check it for accuracy? Because that's not part of the process. And so on.
+You'll soon find that defects and overprocessing have some root causes in common – poor training, non-standard work procedures, and poor communication.
+Lack of trust, incorrect equipment or software, misunderstandings, and lack of innovation also contribute to overprocessing.
+Defects occur for various reasons – poor processes, variations in a process, or machines that are inaccurately designed or engineered. Insufficient on-the-job training may cause a lack of skills, which can create defects.
+You can eliminate overprocessing and defects by implementing Lean strategies.
+You can make your production processes "mistake proof" using poka yoke measures. These can take the form of equipment sensors or software checks – a system that automatically detects if a component is defective, for example. By enabling employees to trust in the quality of a process, you prevent overprocessing in the form of multiple checks or inspections.
+When employees know what to do, they're less likely to make mistakes. And having fewer mistakes help prevent defects. By providing training, you can ensure employees have a good understanding of processes and equipment capacity.
+Variations cause errors, so minimizing variation helps to reduce defects. To fix variation, you can implement statistical process control, or SPC, which involves analyzing variations within a process. For example, the operations manager at a company that produces sheet metal products applied SPC to detect variation. He found they could significantly reduce defects by installing a laser cutting device.
+Like SPC, standard work minimizes variation. It ensures a task is completed the same way each time. If operators always use exactly four turns to tighten a screw, for example, screws are less likely to come loose.
+Another initiative you can use to reduce waste is kaizen, or continuous improvement. For example, once supervisors at a grocery store started working as a team, they realized they only needed one manager to sign off on an order.
+Lean strategies help support your organization's efforts to eliminate overprocessing and defect waste.
+
+6. Video: Line Balancing: Calculating Cycle Time and Takt Time (bs_oper46_a03_enus_05)
+
+During this video, you will learn how to match cycle time and takt time to their descriptions.
+Objectives
+match cycle time and takt time to their descriptions
+[Topic title: Line Balancing: Calculating Cycle Time and Takt Time] It's a fact that people get more work done if there are fewer interruptions. In a production environment, the same principle applies. A production process that's free from interruptions, delays, and backlogs – from beginning to end – is said to have a good "flow."
+The goal is to create continuous flow – ensuring that everyone receives the right work, in the correct quantity, at the right time.
+The Lean method for achieving continuous flow is known as line balancing. In a balanced line, work is distributed evenly across the line. This means each employee completes the same amount of work in roughly the same amount of time, which establishes a continuous workflow.
+Line balancing is a process consisting of several steps.
+You start the line balancing process by calculating cycle time. Cycle time is the time it takes an operator to complete a task and move a product or component to the next operator in line. When calculating cycle time, explain to operators what you'll be doing and why, then observe and time their actions.
+One way you can capture this data is with a cycle time worksheet. You enter operator names in one column, task descriptions in another column, and sample times in a third column. Consider capturing video footage to record what each operator does and how long it takes them.
+From the sample times you observe, you can extract the key data you'll use next.
+You use the most frequent time as a baseline from which to improve the time to low repeatable, if possible. The most frequent time is also used to calculate the total cycle time for the tasks in the process.
+You use the high time to isolate potentially recurring problems in the process.
+You use the low repeatable times to set realistic target times for each task.
+Next, you calculate the total cycle time by adding up the most frequent time values for each task.
+Once you've calculated the cycle time, you're ready to calculate the takt time – a measure of how fast operators must work to meet customer demand. To calculate takt time, you divide the net available time per period by the customer demand per period.
+Consider an example of a precision tool manufacturing plant. Say each shift at the plant lasts eight hours, or 480 minutes. Customer demand is 120 products per shift. To determine takt time, you divide 480 by 120. This gives you 4 minutes per unit product. In practice, you need to adjust the net operating time to include time operators spend on breaks, meetings, and other activities.
+Calculating cycle time and takt time are vital first steps in the line balancing process.
+
+7. Video: Line Balancing: Balancing the Work (bs_oper46_a03_enus_06)
+
+Discover how to identify the final three steps for balancing a production line.
+Objectives
+identify the final three steps for balancing a production line
+[Topic title: Line Balancing: Balancing the Work] As with any process, you're not done until you've completed all the steps! The first two steps of the line balancing process, which is used to ensure continuous flow, involves calculating the cycle time and takt time. Once you've calculated both, a few more steps remain.
+First, you need to create an operator balance chart. This chart is typically a bar graph that depicts the current state of work.
+When you create the chart, ensure you represent the cycle times on the vertical axis. You use the horizontal axis to represent the operators – remember to add a line to depict takt time. Each bar in the chart should show an operator's most frequent time for completing a task.
+If all tasks are completed in less time than the takt time, this tells you tasks are unbalanced and overproduction is likely an issue.
+Consider an example consisting of three operators – operator A, B, and C. Operator A has a cycle time of 3 minutes, operator B has a cycle time of 2 minutes, and operator C has a cycle time of 2.6 minutes. The takt time is 4 minutes, and there's a total cycle time of 7.6 minutes.
+To create the operator balance chart, you need to determine the ideal number of operators. The formula for this is: the total cycle time divided by takt time.
+In our example, the takt time for manufacturing is 4 minutes and the total cycle time is 7.6 minutes. The ideal number of operators for the process is calculated as 7.6 minutes divided by 4, which equals 1.9. And because having 0.9 of a person doesn't make sense, we round that up. So ideally, you only need 2 operators for the process in this instance.
+You can then use this information to perform the final step in balancing the work. You use the ideal number of operators, in this case 2, to balance the work according to the two bars. Both operators need to complete their tasks within 4 minutes to meet takt time. So you divide the work as evenly as possible between operators A and B.
+It's not always possible to divide labor in a way that lets you achieve perfect takt time, especially when you're working with uneven numbers. In that case, it's best to give the final worker in the process slightly less work than they would need to meet takt time, to allow extra time for moving a product to the next process.
+You need to use good judgment when distributing work to ensure you do so in the best possible way – everyone should work as close to takt time as possible. No workers should be overloaded.
+To balance a line, you can use cycle time and takt time as basis for determining the optimal number of operators needed per process in order to divide work evenly.
+
+Course HTML Resources
+•	Job Aid: Line Balancing Process
+Use this job aid to review the five steps you perform to balance the work in a production line.
+Step 1 – Calculate cycle time
+Inform operators of what you'll be doing and why. Then video the workers completing the process and time each task. Enter the observed data into a cycle time worksheet. Include the following information:
+
+ten sample times for completing each task
+the most frequent time, highest time, and lowest repeatable time for each task
+Based on the data you've gathered, you then calculate total cycle time for the process by adding the most frequent time for each task.
+
+Step 2 – Calculate takt time
+You calculate takt time by dividing net operating time per period by customer requirements per period. Note that the net operating time value should be adjusted to reflect time that operators spend on activities other than working on the process – such as time spent on breaks or in meetings.
+
+Step 3 – Create an operator balance chart
+In an operator balance chart, the vertical axis shows number of minutes taken for each task recorded on the cycle time worksheet. The horizontal axis shows each operator. This chart should show the current state with the most frequent cycle times. You can also add a line depicting takt time across the operator cycle time columns.
+
+Step 4 – Determine the ideal number of operators
+To determine the ideal number of operators, you divide total cycle time by the takt time. Again the total cycle time is the sum of the most frequent cycle times entered in the cycle time worksheet. If the result includes decimal places, you can round it off.
+
+Step 5 – Balancing the work
+As the final step, you create a future state operator balance chart that shows the ideal number of operators calculated in step 4, all working as close to takt time as possible. If the time and work can't be divided evenly, use common sense and ensure that the final operator has slightly less work – to allow extra time for moving a product or component to the next process.
+
+Course: Using Lean to Reduce Waste and Streamline Value Flow
+Topic: Line Balancing: Balancing the Work
+
+© 2016 Skillsoft Ireland Limited
+
+
+•	Glossary: Using Lean to Reduce Waste and Streamline Value Flow
+Cycle time
+
+The time required to complete one cycle of an operation, or to complete a task or function from start to finish.
+
+Hoshin Kanri
+
+A Lean tools approach to strategic and operational planning involving the systematic analysis, planning, implementation, and reviewing of business processes, with the goals of managing change, developing employee capabilities, and improving performance.
+
+Jidoka
+
+A Lean strategy involving a standard process to reduce the number of defects produced. Employees and machines detect errors, stop the process, fix the presenting problem, and then investigate the root cause of the problem.
+
+JIT production
+
+See just-in-time production.
+
+Just-in-time production
+
+Abbreviated as JIT production, a system in which products are created only once they've been ordered by a customer.
+
+Kanban
+
+A system that makes use of cues – often in the form of cards – to inform employees when a process should be implemented, or when items should be moved to a subsequent step in a production process.
+
+Line balancing
+
+A Lean tool that allows you to optimize personnel use so that the workload is equitably distributed.
+
+Standard work
+
+The specification of a particular order in which different tasks are performed in a given process. These protocols are designed to be as efficient as possible.
+
+Takt time
+
+A German term meaning "pulse" or "rhythm." In a Lean approach, takt time is the time it must take to produce one product at a rate that keeps up with customer demand.
+
+Value stream
+
+All of the tasks and actions involved in creating and delivering value to customers – for example, through the design, production, and delivery of a product.
+
+Value-add activity
+
+A task or process that fulfills a customer's needs or preferences, changes the product or service in some way, and is done right the first time in the process.
+
+Visual workplace
+
+A workplace that effectively uses visual cues – such as signs, layouts, charts, and color codes – to convey information.
+
+5S
+
+A methodology for creating and maintaining a clean and ergonomically ordered work environment. The five components of this methodology are sort, set in order, shine, standardize, and sustain.
+
+ 
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

@@ -1,22 +1,18 @@
 import os
 
 # Define the header and file name
-h1 = "Business Process and Continuous Improvement"
+h1 = "Learning and Development"
 file_name = "index.md"
 
 # Define the list of topics
 topics = [
-    'Enabling Business Process Improvement',
-    'Exploring Business Process Automation',
-    'Using Lean to Perfect Organizational Processes',
-    'Using Lean to Improve Flow and Pull',
-    'Using Lean to Reduce Waste and Streamline Value Flow',
-    'Applying Value Stream Mapping in Lean Business',
-    'Six Sigma Techniques for Improvement',
-    'Basics of Process Mapping, 2nd Edition',
-    'Lean Thinking: Banish Waste and Create Wealth in Your Corporation',
-    'Creating a Lean Culture: Tools to Sustain Lean Conversions, Third Edition',
-    'The Lean Strategy'
+    'Building Success through Self-improvement',
+    'Unleashing Your Self-confidence',
+    'Becoming a Continuous Learner',
+    'How to Learn Effectively',
+    'Career Moves: Be Strategic About Your Future, Revised and Enhanced Edition',
+    'Learning Technologies in the Workplace: How to Successfully Implement Learning Technologies',
+    'Low-Hanging Fruit: 77 Eye-Opening Ways to Improve Productivity and Profits'
 ]
 
 # Create the markdown content

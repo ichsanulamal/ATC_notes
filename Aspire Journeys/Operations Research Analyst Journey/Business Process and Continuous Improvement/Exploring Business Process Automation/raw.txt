@@ -1,0 +1,436 @@
+Exploring Business Process Automation
+Business tasks that are monotonous, repetitive, and routine are prone to human error, cause boredom, and erode employee motivation. Business automation can reduce risk and save time, and it offers a wide range of other business benefits, including putting employees to better use working on tasks that require creative, critical, and higher ordered thinking skills. Implementing business process automation (BPA) can increase productivity, but it’s not suitable for every situation.
+
+In this course, you'll learn about BPA, including digital automation, how and where to apply it, and the benefits of successful implementation. You'll also learn how to identify appropriate opportunities, as well as best practices for its use and pitfalls to avoid.
+
+Table of Contents
+    1. Video: Exploring Business Process Automation (bs_dgt15_a01_enus_01)
+
+    2. Video: Introduction to Business Process Automation (bs_dgt15_a01_enus_02)
+
+    3. Video: Benefits of Business Process Automation (bs_dgt15_a01_enus_03)
+
+    4. Video: Types of Business Process Automation (bs_dgt15_a01_enus_04)
+
+    5. Video: Best Practices for Business Process Automation (bs_dgt15_a01_enus_05)
+
+    6. Video: When to Use Business Process Automation (bs_dgt15_a01_enus_06)
+
+    7. Video: Common Mistakes in Business Process Automation (bs_dgt15_a01_enus_07)
+
+    8. Knowledge Check: Business Process Automation
+
+    Course HTML Resources
+
+1. Video: Exploring Business Process Automation (bs_dgt15_a01_enus_01)
+
+Objectives
+No Objective Provided
+[Video description begins] Course title: Exploring Business Process Automation. [Video description ends]
+
+Business tasks that are monotonous, repetitive, and routine are prone to human error, cause boredom, and erode employee motivation. Business automation can reduce risk and save time, and it offers a wide range of other business benefits, including putting employees to better use working on tasks that require creative, critical, and higher order thinking skills. Implementing business process automation (BPA) can increase productivity, but it’s not suitable for every situation.
+
+In this course, you'll learn about business process automation, including digital automation, how and where to apply it, and the benefits of successful implementation. You'll also learn how to identify appropriate opportunities, and best practices for its use and pitfalls to avoid.
+2. Video: Introduction to Business Process Automation (bs_dgt15_a01_enus_02)
+
+In this video, you will learn how to recognize a description of business process automation.
+Objectives
+recognize a description of business process automation
+[Video description begins] Topic title: Introduction to Business Process Automation. [Video description ends]
+
+If time is money, many businesses squander a disproportionate amount of both. They waste valuable employee hours on routine and structured processes. Time that could be better spent on more critical tasks. Business process automation, or BPA, involves automating routine business tasks through computing technology. BPA is versatile and can be used to streamline many time consuming business processes. Many insurance companies use it to authorize premium rates. Other businesses apply it to generate invoices, update employee records. Newswire services even automate some news and sports stories.
+
+There are many benefits to using BPA. Since BPA digitizes information, making data easier to manage, this reduces business operation costs and maximizes time saved. By automating simple processes, less human oversight is required and employees are freed up to do more interesting and complex problem-solving work. Because BPA can be used for a range of different purposes, no two business' application strategies will be alike.
+
+How it's integrated into a business depends on the context and the organization's unique needs. Marketing specialists at a web app integrator, for example, could use BPA when compiling user information to craft new content. By setting up automation processes between various applications, they can get survey responses sent straight to their online Google Sheet accounts. BPA generates a spreadsheet of information, which saves them a lot of time compared to doing all those inputs manually.
+
+A great benefit of BPA, is to apply it in a way that actually augments human efforts to customer or partner facing processes that drive growth and differentiation through variable work handling at a greater scale For example, a distribution company selling primarily to big box retailers had no window into what customers were ordering, until after the warehouse fulfilled it. In addition, they would get a weekly report, which required manual entry into accounting software.
+
+Now automated, when an order is placed, it's instantly created in the accounting software and sent to the warehouse. Once fulfilled, an invoice is automatically issued and sent out to the client. This gives the company real time visibility into what has been ordered, what's unfulfilled, what's shipped, and when they've been paid.
+
+All of this data is available on any internet connected device, and requires little human intervention beyond oversight. For any business to get started with BPA, it needs to understand the benefits of Business Process Automation, and the different types of automation solutions available. It needs to become familiar with how to identify their specific opportunities for BPA, and the best practices for implementing them. Finally, businesses must learn to recognize and avoid the most common mistakes in starting and using BPA. Organizations can create competitive advantage by rethinking business processes that redefine how they compete.
+
+This can be in response to significant industry changes and can be strategic, what markets and products/services are being delivered to market, or more operational, rethinking how to operationalize the business strategy. Planned out and implemented properly, business process automation also has the potential to allow businesses to optimize productivity, saving time and money, and redeploying employees to more complex, meaningful, and fulfilling work tasks. While each company will apply it in its own way to meet its own specific needs, BPA has a wide range of benefits for the savvy organization.
+3. Video: Benefits of Business Process Automation (bs_dgt15_a01_enus_03)
+
+During this video, you will learn how to recognize the benefits of automating business processes.
+Objectives
+recognize the benefits of business process automation
+[Video description begins] Topic title: Benefits of Business Process Automation. [Video description ends]
+
+Business process automation, or BPA, can provide a wide array of business benefits. Its dual purpose of streamlining tasks and alleviating pressure on employees means that it can be transforming when used appropriately. BPA can drive growth, lead to lower cost of resources and more consistent execution of processes with 24/7 availability.
+
+It can allow offloading of mundane tasks to free up scarce human resources, expand capacity of a process, and work with data volumes that exceed human capacity. The first step to achieving these benefits is to examine the fundamental characteristics of work activities to determine if business process automation could be used instead of or alongside a person, and for what benefit. BPA can also streamline communication, increase process visibility, and lead to better accountability.
+
+For example, one architectural design firm used to have frequent communication breakdowns. People weren't receiving the correct files and a lot of information simply couldn't be accounted for. The company missed deadlines and nobody wanted to claim responsibility for the problems.
+
+After implementing automated workflow technology, management is now able to see all pending requests at once, determine the status of each assignment, easily follow progress, and monitor who is doing what. In the past, managers had to cut and paste snippets from long e-mail threads before sending updates to customers.
+
+Now the workflow technology keeps track of all e-mail messages and makes updating customers easy. Additionally, managers can now assign responsibilities like important sign offs to staff members. This means not everyone has to be intimately involved in a process at all times, freeing people up to do more complex work.
+
+By setting up workflow approval hierarchies, the right people have the right information as a process moves down the line. Workflow automation has affected many areas of the business, transformed company communication, and greatly boosted the firm's overall productivity. Automation can also reduce costs and manual errors. By exchanging human vulnerabilities for the accuracy of a machine, you bypass the costs associated with manual errors.
+
+Late payments, slow sales approvals, and payments for goods never received are all very expensive. Automation produces more consistent product and service delivery, too. Customers seek out and remain loyal to a company when they can expect a certain quality from their products or services.
+
+By adhering to strict quality controls through the use of BPA, you make your customers happy and they come back. Automation is all about benefiting the company and the people who work for it. Using BPA, an organization can experience a wealth of positive impacts and revolutionize the way it does business.
+4. Video: Types of Business Process Automation (bs_dgt15_a01_enus_04)
+
+In this video, you will learn how to distinguish between the types of business process automation.
+Objectives
+distinguish between the types of business process automation
+[Video description begins] Topic title: Types of Business Process Automation. [Video description ends]
+
+Currently, there are several enablers of process automation for business. Each type of business process automation is meant for a specific work context depending on the nature of the organization. Essentially, context decides which one to use. The first type is robotic process automation, or RPA, which can be used to automate high volume, routine administrative tasks to improve accuracy and lower costs.
+
+Keep in mind that unlike a simple excel type of macro which simply runs through the same list of instructions over and over, RPA can perform different actions across multiple systems. It can process information and send the information on to other digital systems, giving it a wide range of applications. For example, an insurance company can use automation to streamline the process of how its insurance brokers get paid in response to each policy sold.
+
+Software retrieves the insurance premium data online and checks the sales data for errors. At a call center, RPA can track packages and request customer information automatically for call center representatives. But RPA doesn't replace call center agents altogether. This automation makes the call center's agent's job easier, leaving them free to give their attention to more pressing matters, like servicing their customers.
+
+The next type of automation may eventually reinvent the future of business someday. Using cognitive automation, also known as machine learning, computers are taught to identify patterns in large volumes of data. This is a type of recognition automation. Whether it's a face in a photo or common shopping habits, these applications recognize patterns and use algorithms to make predictions.
+
+On Amazon.com, customers can check its recommendations based on what they've searched for or bought previously. This service provides customers with a new potential shopping list. A third type of automation is that of workflows. Workflow automation uses a series of actions to streamline steps in a business process. Adopting workflow software gives managers a high-level overview of task delegation.
+
+Set out like a task map, it shows who's doing what, when and where tasks go after. Using this software, teams see who's responsible for which action and who they should report to. More time is spent doing work and less on administration and paper shuffling. Different types of BPA offer solutions that simplify inefficient or error-prone human-intensive business processes. It's a matter of deciding, which solution is most appropriate to the process you need to automate.
+5. Video: Best Practices for Business Process Automation (bs_dgt15_a01_enus_05)
+
+Learn how to identify the best practices for implementing business process automation.
+Objectives
+identify the best practices for implementing business process automation
+[Video description begins] Topic title: Best Practices for Business Process Automation. [Video description ends]
+
+Business process automation or BPA, brings with it more effective ways of doing what you've always done. And several best practices exist to ensure your organization maximizes its potential. In the initial stages of automation investment, it can be easy to go overboard. The expenditures start piling up, and some of the technology goes unused.
+
+In these instances, the return on investment won't be as high as anticipated. To avoid this, revisit the company's goals and define the goals for BPA. This limits wasted resources while targeting those processes that most need to be streamlined. Focus objectives and manage expectations to keep initial automation projects narrow and simple in scope, and aggressively manage any scope creep.
+
+Control automation costs to deliver quantifiable value and resource efficiency gains. Next, a team of experts should identify the champions for BPA. These individuals advocate for the initiative, support its goals, and provide ongoing oversight as needed. BPA champions communicate goals, interact with stakeholders, and motivate team members. Three very important elements of a BPA initiative.
+
+Champions should be selected from business operations to ensure buy-in across the organization and guarantee automation success, since they are already key players lying at the heart of the business. Process reengineering is often constrained by "we've always done it this way" thinking, and support from key leaders of the business is critical to overcoming that thinking. It's imperative that decision makers allow business operations to take the lead, but with the support of the IT organization.
+
+Business operations must own the automation projects and select tasks for automation, as they know where technology will be most appropriately and effectively applied. The business can also identify and inventory available skills or deficiencies that might impact automation initiatives. However, you must be sure to involve IT early on. IT ensures oversight of the automation technology and software. Some BPA efforts can disturb underlying computer systems. IT experts have the skills to manage technical functions, and can vet the technical aspects of the project from its outside.
+
+IT can make sure that IT operating environments are standardized where possible. Enabling processes to be re-designed, re-developed, and automated with lower risks and at a lower cost. Importantly, IT resources also design the rules to prevent software from exposing sensitive data. Companies like the telecommunication service provider O2, use the technical knowhow of their IT department to ensure greater automation efficiency by vetting software for safety, developing security access rules, and maintaining a fully backed-up infrastructure.
+
+The team involved in a BPA project must train employees in the automation process as they're the ones working directly with new and updated processes. Training employees during the automation implementation phase means they'll be up to speed and comfortable with the technology when it goes live. Lastly, the organization needs a human failover option.
+
+This means in the case of emergencies, like a server going down, a human needs to do a manual switch from one system to another. Because machines lack judgment, a human must intervene if necessary. Some processes, such as those using robotics to perform medical procedures, have zero tolerance for failure. It's best practice to always have an expert on hand to oversee automated processes.
+
+It's also important to regularly communicate business value metrics with key operations and business stakeholders to demonstrate progress and maintain momentum for the BPA initiative. Employing best practices ensures the organization maximizes the benefits of BPA. Where automated systems experience problems, these best practices can limit or even eradicate the potential for negative consequences.
+6. Video: When to Use Business Process Automation (bs_dgt15_a01_enus_06)
+
+In this video, you will learn how to recognize situations that are suitable for business process automation.
+Objectives
+recognize situations that are suitable for business process automation
+[Video description begins] Topic title: When to Use Business Process Automation [Video description ends]
+
+Not all processes are suitable candidates for business process automation, also known as BPA. Knowing when and where to most effectively automate is essential to a successful BPA integration. Predictable and repetitive tasks are first on the list.
+
+Consider tasks that are associated with assembly, software updates, security monitoring, time tracking, order filling, shipping, inventory management, purchasing, and billing. These all include many predictable and fairly routine processes. There's no question about the importance of these processes but automation can enable them to be completed faster, freeing up employees for higher value added tasks.
+
+Another useful candidate for BPA is self-service employee portals. For example, a portal you log in to to keep track of various administrative functions, such as making changes to your 401K investment options, or HR elections. Because no HR person is required to keep track of these administrative processes once automated, data is immediately available and the HR professional's time can be put to more valuable use to the organization.
+
+Document management is another suitable candidate for automation. By digitizing documents that would otherwise end up in a landfill, like paid invoices, old salary lists and former employee records, organizations ensure a more paperless environment and a more efficient workflow for processes, such as budget approvals, obtaining electronic signatures, or archiving old records.
+
+Decision-making that is machine-addressable can also be streamlined through automation. Consider the financial sector. If someone applies for a loan, they might have to wait while their documentation is processed by someone who has experience in underwriting loans. That person needs to authenticate their identity and validate their income and employment information which can be time consuming when done manually. With automation, a customer can find out on the spot if they qualify.
+
+While BPA seems to have the potential to revolutionize many industries, there are some instances when automation isn't suitable. Processes that involve dealing with customers directly may only be partly automated. At a call center for instance, if there is no option to hear a human voice, clients may be dissatisfied. Similarly, automation can't be expected to make decisions best left to humans.
+
+For example, high value front office work processes can be challenging to automate because they can be complex and highly variable. Keep in mind though that flexible work flows can be designed that leave space for workers to adapt their practices and parts of the processes can still likely be automated. In instances that rely on machine learning, a device can't be expected to know absolutely everything.
+
+Language recognition, for instance, is an endeavor that could result in incorrect translations if fully automated, because pronunciation, like language and meaning, is nuanced. Automation of business processes can make sense in many situations but not all processes will benefit from it.
+
+The organization must decide to what extent these technologies will be most effectively utilized and where things are best left in human hands.
+
+7. Video: Common Mistakes in Business Process Automation (bs_dgt15_a01_enus_07)
+
+During this video, you will discover how to avoid common mistakes when rolling out business process automation in an organization.
+Objectives
+identify how to avoid common mistakes in rolling out business process automation in an organization
+[Video description begins] Topic title: Common Mistakes in Business Process Automation. [Video description ends]
+
+Automating business processes while highly beneficial can pose some serious challenges. Since most problems only manifest further down the line, adopting a proactive approach in the initial stages can help the organization avoid common mistakes. When companies think ahead, they get ahead.
+
+It's important to make the benefits of business process automation, BPA, clear to employees as the human element is often overlooked when introducing automation. While BPA has been shown to complement many existing jobs, there are likely to be fears that it replaces jobs. In these cases, employees may become anxious or possibly even sabotage the company's automation efforts. To counteract these concerns, the organization must communicate with their people to keep them informed on precisely how their jobs will be affected. If a company communicates openly beforehand, the process becomes transparent and fosters buy in all around, allaying employees' fears.
+
+The next proactive approach is to start with the work when automating, not the job. It's ill advised to try and automate someone's entire role, rather than focusing on how automation can benefit different specific aspects of what they do. When adopting automation, the idea is to provide tools that make someone's job easier, not replace the person with a machine. Going in with a mindset that certain functional aspects will be automated not the entire job will lead to more successful implementations.
+
+After all, human oversight and judgment can't be replaced. The company must ensure processes are fully documented before automating them. A team should interview employees to discover and document the scope of their jobs. If the company cannot effectively map out each step in a process, the results of an automation effort could be chaotic and messy. The right expertise must be called upon to define all tasks that make up a process, what the order of tasks is, and determine the ideal output. These efforts can save an organization from failed process automation attempts.
+
+And finally, don't automate flawed processes, rather improve inefficient business processes before automating them. If a process is problematic, automation might only exacerbate the issues. Through optimization, a team of experts must identify and eliminate any bottlenecks that are slowing down a process, such as duplicate operations or unnecessary tasks. The organization can do this by developing process standards and procedures for evaluation.
+
+Having such standards in place will reveal the stability, speed, or flexibility of processes as well as any flaws. Even efficient processes should be made as lean as possible prior to an automation effort. An organization's level of preparedness can make or break its automation efforts. Laying the groundwork is crucial for boosting BPA efficiency in the future, and ensure the endeavor gets off the ground without a glitch.
+
+8. Knowledge Check: Business Process Automation
+Business tasks that are monotonous, repetitive, and routine are prone to human error, cause boredom, and erode employee motivation. Business automation can reduce risk and save time, and it offers a wide range of other business benefits, including putting employees to better use working on tasks that require creative, critical, and higher ordered thinking skills. Implementing business process automation (BPA) can increase productivity, but it’s not suitable for every situation.
+
+In this course, you'll learn about BPA, including digital automation, how and where to apply it, and the benefits of successful implementation. You'll also learn how to identify appropriate opportunities, as well as best practices for its use and pitfalls to avoid.
+
+Objectives
+recognize a description of business process automation
+recognize the benefits of business process automation
+distinguish between the types of business process automation
+identify the best practices for implementing business process automation
+recognize situations that are suitable for business process automation
+identify how to avoid common mistakes in rolling out business process automation in an organization
+Question 1: Multiple Choice
+What does business process automation entail?
+
+Options:
+1.
+Coding algorithms to suit business needs
+2.
+Eliminating tasks that have been performed more than once
+3.
+Automating simple and repetitive processes using computer technology
+4.
+Automating complex processes so employees are free to perform simpler tasks
+Answer
+3.
+Automating simple and repetitive processes using computer technology
+Feedback:
+Option 1:
+This option is incorrect. Coding algorithms isn't a requirement for using business process automation.
+Option 2:
+This option is incorrect. Rather than removing them, automation streamlines simple, repetitive tasks.
+Option 3:
+This is the correct option. This is a major benefit of automation, because employees can concentrate on tasks requiring more thought and judgment.
+Option 4:
+This option is incorrect. Automation streamlines simple, repetitive tasks.
+Question 2: Multiple Choice
+What are the benefits of business process automation?
+
+Options:
+1.
+A modified customer experience
+2.
+Cost reductions and minimized manual errors
+3.
+Minimized costs achieved by replacing employees
+4.
+More consistent product and service delivery
+5.
+Better process visibility
+Answer
+2.
+Cost reductions and minimized manual errors
+4.
+More consistent product and service delivery
+5.
+Better process visibility
+Feedback:
+Option 1:
+This option is incorrect. The point of automation is to make processes work seamlessly. They'll experience the same quality as before.
+Option 2:
+This option is correct. Automation cuts down on errors because it makes the process constant. It also prevents delays.
+Option 3:
+This option is incorrect. Automation doesn't replace people, but focuses instead on certain elements of their jobs.
+Option 4:
+This option is correct. Automation streamlines business processes, so tasks will become more uniform and less time consuming.
+Option 5:
+This option is correct. Because automation streamlines communication and accountability, it's possible to anticipate problems and avoid them.
+Question 3: Matching
+Match each type of business process automation to an example.
+
+Options:
+A.
+Workflow automation
+B.
+Robotic process automation
+C.
+Cognitive automation
+Targets:
+1.
+Creating a virtual map during document approval so the document owners can track the status of the process
+2.
+Speeding up package tracking and ensuring shipping information is readily available
+3.
+Learning to identify voices on the radio through learning and experience
+Answer
+1:
+Option A
+2:
+Option B
+3:
+Option C
+Feedback:
+Target 3:
+Workflow automation replaces predictable and repeatable patterns of business activity, such as when a document needs approval, using a virtual map to review the status of the process.
+Target 3:
+Robotic process automation streamlines high volume, routine administrative tasks. For example, a system that tracks packages and has the shipping information readily available on request.
+Target 3:
+Cognitive automation recognize patterns and can find meaning in big data, such as being able to identify voices on the radio through repeated learning and experience.
+Question 4: Multiple Choice
+Which best practices help implement business process automation?
+
+Options:
+1.
+Identify champions to oversee the automation process
+2.
+Allow the IT Department to take the lead, and let business operations take a small role
+3.
+Train employees early in business automation processes, and have a human failover option
+4.
+Allow employees to learn on the job when using new automated processes
+5.
+Define the goals for business process automation
+6.
+Allow business operations to take the lead, and involve the IT Department early on
+Answer
+1.
+Identify champions to oversee the automation process
+3.
+Train employees early in business automation processes, and have a human failover option
+5.
+Define the goals for business process automation
+6.
+Allow business operations to take the lead, and involve the IT Department early on
+Feedback:
+Option 1:
+This option is correct. Automation works well when there's buy-in from the company. The champions are the ones who secure it.
+Option 2:
+This option is incorrect. It's good to involve the IT Department in the early stages of planning, but business operations should take the lead.
+Option 3:
+This option is correct. Employees need to get accustomed to the process sooner rather than later. It's also crucial to have someone oversee the system, in case it goes down.
+Option 4:
+This option is incorrect. Employees should be trained alongside a process's implementation.
+Option 5:
+This option is correct. Without a strategy in place, roles might be confused and tasks might be duplicated.
+Option 6:
+This option is correct. Business operations should oversee new automated business processes. IT should assist, but not manage the system.
+Question 5: Multiple Choice
+Which situations are suitable for automation?
+
+Options:
+1.
+An employee updates her personal information for company records
+2.
+An employee wants to use a self-driving car to navigate traffic in narrow, densely-populated streets
+3.
+A manager wants to move through the process of administration quicker for quality assurance
+4.
+A business wants to know if they qualify for a substantial loan
+5.
+An employee wants to use a machine translator on a business trip
+6.
+Employees have to order new supplies every day
+Answer
+1.
+An employee updates her personal information for company records
+3.
+A manager wants to move through the process of administration quicker for quality assurance
+4.
+A business wants to know if they qualify for a substantial loan
+6.
+Employees have to order new supplies every day
+Feedback:
+Option 1:
+This option is correct. With an online self-service portal, she can make changes to her information that will be reflected immediately.
+Option 2:
+This option is incorrect. Even with supervision, this car is bound to make mistakes, as it can't read everything happening in the narrow environment.
+Option 3:
+This option is correct. With document management, only the people involved directly in the process will need to sign off on a task.
+Option 4:
+This option is correct. With automation, difficult decision making becomes machine addressable. The system can automatically calculate the credit score and alert whether the business qualifies for the loan or not.
+Option 5:
+This option is incorrect. There are many variants of accents, and the computer won't be able to process them all.
+Option 6:
+This option is correct. Ordering similar supplies daily is a rote and repetitive task, which is suitable for automation.
+Question 6: Multiple Choice
+What can be done to avoid common mistakes when implementing automation?
+
+Options:
+1.
+Ensure processes are documented before automating them
+2.
+Make the benefits of automation clear to employees
+3.
+Improve inefficient processes before automating them
+4.
+Improve inefficient processes by introducing automation
+5.
+Start with the work, not the job
+6.
+Start with the job, not the work
+Answer
+1.
+Ensure processes are documented before automating them
+2.
+Make the benefits of automation clear to employees
+3.
+Improve inefficient processes before automating them
+5.
+Start with the work, not the job
+Feedback:
+Option 1:
+This option is correct. Documenting processes will ensure a smooth transition to automation. Not doing so might lead to confusion about what was meant to be automated.
+Option 2:
+This option is correct. By making the transformation process transparent for employees, they can learn to use and understand the benefits of automation as it gets implemented.
+Option 3:
+This option is correct. If an inefficient process gets streamlined, it will get done faster but remain inefficient. The idea is to make a process better before making it faster.
+Option 4:
+This option is incorrect. An inefficient process will just be made faster; it won't be made efficient.
+Option 5:
+This option is correct. Automating individual processes means someone's job will get easier. The goal is to improve processes, not to replace jobs.
+Option 6:
+This option is incorrect. Automation starts with the work, not the job. The point isn't to see how a job can be replaced, but rather how parts of the work can be improved.
+Course HTML Resources
+•	Glossary: Exploring Business Process Automation
+BPA
+
+See business process automation.
+
+business process automation
+
+Abbreviated as BPA, a strategy used in business to automate processes to minimize costs. It involves integrating applications, restructuring labor resources, and using software applications to optimize these processes.
+
+cognitive automation
+
+An automation strategy involving machine learning.
+
+machine learning
+
+An application of artificial intelligence in which computers are taught to recognize patterns and find meaning in big data.
+
+macro
+
+A sequence of code to perform a single task when called upon by the user.
+
+RPA
+
+See robotic process automation.
+
+robotic process automation
+
+Abbreviated as RPA, an automation strategy which centers around streamlining high-volume administrative tasks.
+
+workflow automation
+
+An automation strategy which consists of a series of automated actions for steps in a business process.
+
+
+•	Job Aid: Best Practices and Situations for Implementing BPA
+Purpose: Use this job aid to help you identify best practices, suitable situations, and common mistakes and solutions for business process automation.
+
+Your organization should follow best practices when implementing business process automation, and recognize situations in which it can be implemented effectively.
+
+Best practices and suitable situations for implementing business process automation
+Best practices and suitable situations for implementing business process automation table
+Best practices	Suitable situations
+1. Define the goals for business process automation	Repetitive and routine tasks
+2. Identify champions for business process automation	Self-service employee portals
+3. Allow business operations to take the lead	Document management
+4. Involve the IT Department early on	Difficult decision making, which is machine-addressable
+5. Train employees in the automation process	 
+6. Have a human failover option, in case of emergencies	 
+It's also important to recognize common mistakes and how they can be avoided when providing solutions for business process automation.
+
+Common mistakes and solutions for business process automation
+Common mistakes and solutions for business process automation table
+Common mistake	Solution
+Employees get overlooked when automating business processes	Make the benefits clear to employees
+Entire jobs are targeted for automation, instead of individual work processes	Start with the work, not the job
+Organizations don't document and detail work processes before automating them	Ensure processes are documented before automating them
+Inefficient business processes get automated	Improve inefficient processes before automating them
+Course: Exploring Business Process Automation
+Topic: Best Practices for Business Process Automation
+
+© 2023 Skillsoft Ireland Limited - All rights reserved.

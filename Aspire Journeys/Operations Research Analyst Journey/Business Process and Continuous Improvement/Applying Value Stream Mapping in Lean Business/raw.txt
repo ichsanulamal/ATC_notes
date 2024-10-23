@@ -1,0 +1,216 @@
+Applying Value Stream Mapping in Lean Business
+To understand how something works, you need to observe it, noting how it fits into a larger pattern.
+
+In this course, you'll learn about adding value stream maps to your operations – visual representations of the flows that lead to a product or service being created. Value stream mapping is a Lean technique helps you make your Operations Management more efficient. You'll also learn about creating a future-state value stream map, and eliminating process blocks. The course also covers how recognize how a value stream map improves an organization's efficiency. And it explores ways to identify sources of waste and issues with quality.
+
+Table of Contents
+    1. Video: Applying Value Stream Mapping in Lean Business (bs_oper46_a04_enus_08)
+
+    2. Video: Value Stream Mapping (bs_oper46_a04_enus_01)
+
+    3. Video: The Value Stream Mapping Process (bs_oper46_a04_enus_02)
+
+    4. Video: Gathering Data for Value Stream Mapping (bs_oper46_a04_enus_03)
+
+    5. Video: Creating a Value Stream Map (bs_oper46_a04_enus_04)
+
+    6. Video: Identifying Waste in a Value Stream Map (bs_oper46_a04_enus_05)
+
+    7. Video: Identifying Process Blocks in a Value Stream Map (bs_oper46_a04_enus_06)
+
+    8. Video: Pull Systems in Future State Mapping (bs_oper46_a04_enus_07)
+
+    Course HTML Resources
+
+1. Video: Applying Value Stream Mapping in Lean Business (bs_oper46_a04_enus_08)
+
+No Objectives
+[Course title: Applying Value Stream Mapping in Lean Business] To understand how something works, you need to observe it, noting how it fits into a larger pattern. In this course, you'll learn about creating value stream maps – visual representations of the material and information flows that lead to a product or service being created. Value stream mapping makes it easier to identify where inefficiencies are occurring and why. You'll also learn about creating a future-state value stream map, and eliminating sources of waste and process blocks.
+
+2. Video: Value Stream Mapping (bs_oper46_a04_enus_01)
+
+recognize the key objectives of value stream mapping
+[Topic title: Value Stream Mapping] When trying to identify – and fix – inefficiencies in a process, it helps to get a "big picture" of the process.
+One way of getting such a big picture is using a value stream map, which is, in a sense, a "picture" or overview of a value stream. [A diagram of a value stream map in which the production flow, involving several processes, from the starting point to the actual delivery to the customer is shown.]
+When we talk about a value stream, we mean the flow of materials and information that brings a product or service to a customer. It's the way in which value is delivered – from the source, or starting point to the actual delivery of the item to the customer. The flow of a value stream can be disrupted by any obstacles or waste – such as wasted time, unnecessary motion, or excess inventory.
+Before you can figure out where waste is occurring and how to make the value flow more efficient, you must first have a clear picture of the full value stream.
+A value stream map is a useful way of getting just such a picture – it's a graphical representation of an entire value stream, including material and information flows. It provides an overview of the complex relationships within the value stream and shows the flow of steps in product management-and-information systems that support value-add activities.
+The proper process for value stream mapping is to create two maps -- one to reflect the current state of a process or system and one to reflect its future state.
+The current-state value stream map is a visual representation of a process as it currently stands. This provides a starting point for identifying waste and its causes. [The value stream map diagram is shown with four processes.]
+The future-state value stream map represents where you want the process to be once improvements have been made – or its targeted state. It highlights areas in the process where improvements are needed and what value flows should be changed for a leaner production and information flow. [The same value stream map is shown but this time with three processes indicating improvements.]
+To create a current-state value stream map, you measure, document, and analyze the complex relationships between process steps. This gives you insight into both decision-making and physical processes, which helps you plan improvements to operations and organizational structure.
+Because the future-state value stream map depicts the goals for improvement initiatives, planned improvements are added here.
+The value stream mapping process begins with you identifying a product or service for which you want to create a map. Then you create a current-state map of the value stream for that product or service. You follow this by assessing the current value stream, identifying waste and opportunities for improvement. Then you create a future-state map. Finally, you develop and implement a plan to bring the value stream closer to the future state you've depicted.
+An understanding of the functions of value stream mapping is key to effectively planning for process improvements.
+
+3. Video: The Value Stream Mapping Process (bs_oper46_a04_enus_02)
+
+In this video, you will learn how to sequence the steps in the value stream mapping process.
+sequence the steps in the value stream mapping process
+[Topic title: The Value Stream Mapping Process] Value stream mapping is a useful tool to check a process for inefficiencies – in much the same way a radiologist checks an X-ray for anomalies in the body.
+You start the value stream mapping process by identifying the product or service you want to analyze – in other words, which product or service that will benefit most from processes improvements. You should also decide on the scope of the map.
+It might help to consider which process has the highest number of defects, the highest product volume in either dollars or units, for example. You might also choose a product or service based on factors specific to its customers or destination.
+Value stream mapping is appropriate for routine or standardized processes and can be used in manufacturing and service environments.
+In manufacturing, you can map static activities or tasks – such as attaching keypads. These tasks have relatively low labor content and few alternative flows exist.
+In service industries, you work with four basic flows – people, processes, technology, and time. Mapping these flows can highlight interactions and management controls, and show how changes to one of the flows impacts the other three.
+For instance, in an office environment, many flows start with paper or e-mail requests. You can map the activities required for a specific service by following the progress of these requests.
+Once you've identified the product or service to map, you create a current-state map of the value stream. This shows work processes as they are currently. The map makes it possible to identify improvement opportunities, and acts as a baseline against which you can compare future results. Though you are focused on the current state, you need to gather data for the whole process.
+Next, you assess the current state to identify sources of waste – for example, wasted time and excess inventory.
+Then, you can begin creating a future-state map. This is done to eliminate sources of waste and to balance the production line to meet customer demand. The future state map provides a strategic plan for improving a value stream based on a visualization of what you'd like a process to be in future.
+To complete the value stream mapping process, you develop and implement a plan to achieve the future state you've mapped. Typically, areas for improvement are broadly highlighted on the future-state map.
+Use the value stream map to highlight the goals and objectives for the team working with the relevant processes when developing the plan. The team reviews the future-state map to determine how to make the improvements. You can help along their progress by rewarding efficient work and improvement suggestions.
+Knowing these key steps in analyzing a value stream for inefficiencies gives you a "big picture" view, which will help you and your team develop improvement plans that will have the most positive impact.
+
+4. Video: Gathering Data for Value Stream Mapping (bs_oper46_a04_enus_03)
+
+During this video, you will learn how to identify the types of data required to create a current-state value stream map.
+identify the types of data required to create a current-state value stream map
+[Topic title: Gathering Data for Value Stream Mapping] Say you're in the process of creating a value stream map. As with any map, you can't draw it until you've gathered all the relevant data.
+So first, you gather the baseline data you'll use to plan your process improvements. Data gathering is a three-step process: you gather the data, draw the shell of the map, and then flesh out the information it contains.
+Gathering data requires tools, which include a clipboard with each process listed, a stopwatch, a list of questions you can use to obtain relevant data, and – in some situations – a video camera.
+Value stream mapping requires specific data – cycle times, changeover times, uptime, number of operators at each station, inventory amounts, batch sizes, working time, and defect rate.
+To gather this data, you observe workers doing their jobs. You first watch those completing the last step in the process and work your way back to the start.
+While watching workers, ask them questions about the process. They know the process better than anyone. For example, if you want to find out about information flows, ask workers how they're informed about what to work on next, how often they receive a schedule, how they pass work on once it's completed, and how they access new components.
+Consider a situation where a process improvement team for a large electronics manufacturer targets the cell phone battery manufacturing process and begins gathering data for a current-state value stream map. The team documents that 2,000 batteries are delivered every week to the manufacturer's two main customers, the warehouse has three weeks of stored inventory, and delivery details are e-mailed to customers.
+The team walks through the process from the end to the beginning -- from packaging, to testing, formation, cell assembly, and finally electrode coating. For each step, the team documents the number of operators, cycle times, inventory numbers, changeover times, and uptimes for equipment.
+Workers tell the team that the production manager delivers the daily schedule in person to workers in all areas except packaging.
+After you've gathered the relevant information, like the team in the electronics company, you're ready to begin mapping the current state.
+As a member of a process improvement team you also need to know what information to gather when working with service-based businesses. Unlike in manufacturing, in service delivery, understanding key flows is necessary before attempting any process improvement. These key flows include the time flow, so it's useful, for example, to ask how long workers need to pack a delivery truck.
+Process flows are another key flow, for example, it's important to find out how many trucks you have to make deliveries.
+Equally important is information flow – determining how information is delivered.
+People and communication flows enable you to determine who does what and when.
+And now you know, the how, the what, and the why of data gathering for value stream mapping.
+
+5. Video: Creating a Value Stream Map (bs_oper46_a04_enus_04)
+
+In this video, find out how to match the symbols used in the mapping process to the data they represent.
+match the symbols used in the mapping process to the data they represent
+[Topic title: Creating a Value Stream Map] Once you've identified a product or service to improve, you're ready to create the current-state value stream map to gain an overview of the process.
+First add the customer and supplier at either ends of the map. Next, add the processes, starting with the final step – this is typically the delivery of the finished product.
+Let's say you work for a manufacturer of cell phone batteries that has two main customers. To create the shell of the map, start with the source symbols, which are rectangles with jagged tops. Put the supplier on the left side, the usual starting point for a material flow – and put the customer on the right side, the usual end point for a material flow.
+You represent delivery from the supplier to the customer with truck symbols. Then you add five rectangles for the main processes, which are electrode coating, cell assembly, formation, testing, and packaging.
+Once you've created the shell, you're ready to map the production flow.
+Next, connect the processes with push arrows – which are striped, straight arrows – indicating material flow pushed to the next phase.
+Then, add the number of operators and the circular operator icon for each process to the top of the process boxes. For example, the electrode coating process uses three operators.
+Now, add process data for each process. These contain details about cycle times, changeover times, and uptimes. The electrode coating process, for example, has a cycle time of 5 minutes, a changeover time of 45 minutes, and an uptime of 90%.
+Place inventory triangles – triangles with an "I" in the middle – to the left of each process that uses inventory and record the amount of inventory. For example, the inventory icon to the left of the cell assembly process shows 4,400 items of inventory are passed to it.
+The next step is to add narrow, straight information arrows between icons to show the information flow. For example, production planning control sends a weekly schedule to the production manager, who sends a daily schedule to the relevant personnel.
+After this, add jagged, or zigzag, arrows – these indicate when the customer sends a quarterly demand to production planning control and production planning control sends a quarterly production plan to the suppliers. The jagged arrows between processes, suppliers, and customers indicate electronic aspects of the information flow between these entities.
+Putting a lead-time ladder, which resembles a digital wave form, along the bottom of the map is the final step. In the ladder, the peaks represent the lead time between each process.
+The troughs represent the value-added time associated with each process.
+To get the total lead time, you total the lead time associated with each process. The total value-added time is the total of the time indicated in the troughs – in the case of the cell battery manufacturer, 43 minutes.
+So building a current-state map puts you in a good position to understand the current state of the process needing improvement.
+
+6. Video: Identifying Waste in a Value Stream Map (bs_oper46_a04_enus_05)
+
+Learn how to identify sources of waste in the current state map.
+identify sources of waste in the current-state map
+[Topic title: Identifying Waste in a Value Stream Map] When analyzing value streams, you're trying to root out inefficiencies – in other words, you're figuring out what doesn't add value, or is wasteful.
+When analyzing future-state value stream maps, you need to ensure all waste is removed because these maps are meant to provide strategic direction for future improvements and for measuring performance. If anything is wasted, these predictions may be off.
+So when developing a future-state value stream map, you first identify sources of waste highlighted in the current-state map. Then you identify process blocks – areas where bottlenecks are occurring – and try to balance the production line.
+Once you've identified waste, use the 5 Whys process – asking five "why" questions – to help determine its root cause.
+For instance, say an operator spends ten minutes gathering required components, you could ask them why it took so long. Perhaps they explain that the stock is kept in a separate room in five different boxes. So you ask why it's in so many boxes. And so on until you get to the source of the problem.
+Consider the types of waste you encounter.
+Excess motion, for one, is unnecessary movement and time spent walking around. For example, in a home theater system assembly line, workers may make several trips to collect components. A way to combat this motion waste is to put the components closer to the workers and giving them a trolley to collect a bunch at once.
+Another type of waste to root out is overproduction, which occurs if more components or products are created than are needed. For example, a worker at a bicycle manufacturer welds three bicycle handlebars a minute. The next worker in the line sands the welds and drills holes for assembly. This second worker can't keep up with the pace and the number of handlebars awaiting processing gets larger and larger. Adding a third worker at the second station could solve this problem.
+Excess inventory is wasteful too, because it means materials, components, or products are stored unnecessarily. A pile of components or a bin of bolts at a particular point in an assembly line is an example of excess inventory. The components take up space.
+To reduce inventory, you can implement single-piece production. You could also consider using pull systems that call for the number of parts needed as they're needed, or kanban systems that signal when inventory needs to be replenished.
+When unnecessary processes are performed on a component or product, this is overprocessing waste. For example, adding three layers of paint when two is sufficient. To fix overprocessing, you simply remove the unnecessary processing steps.
+By now you should have a good idea of the types of waste to look out for when analyzing a value stream. Only once you've discovered where the waste is in the system, can you work on reducing or removing it.
+
+7. Video: Identifying Process Blocks in a Value Stream Map (bs_oper46_a04_enus_06)
+
+In this video, you will learn how to identify process blocks in a current state map by using cycle time and takt time.
+identify process blocks in a current state map using cycle time and takt time
+[Topic title: Identifying Process Blocks in a Value Stream Map] In any process, you won't get the desired results if there are any bottlenecks. In a value stream, such a bottleneck is known as a process block.
+So you need to identify process blocks as soon as sources of waste have been identified. A process is blocked if cycle time exceeds takt time.
+Cycle time is the time it takes to complete a cycle, or task, excluding any waiting or queuing time. And takt time is the time a task must be completed in for production to continue at a rate that matches customer demand, given the work time that's available.
+Determining the time it takes to complete a task is fairly easy but you need to calculate takt time. The formula for this is net operating time per period divided by the customer requirements for that period.
+But what's the net operating time? It's the number of working hours per shift, minus time taken for breaks and meetings.
+Consider an example. At an electronics manufacturer, the team calculates takt time by dividing the available time per shift – 7 hours, which is 420 minutes – by the required output per shift – 35 products. So 420 divided by 35 equals a takt time of 12 minutes.
+As the cycle time of the painting process is 14 minutes, there's a block, because this exceeds the takt time.
+A bar chart is useful for finding process blocks. This allows you to chart out the completion time of each process and check these against the takt time. For example, if a bar chart shows the cycle time of three processes as 20 minutes, 15 minutes, and 18 minutes, and the takt time is 15 minutes, the first and last processes are bottlenecks, because their cycle times exceed takt time.
+After identifying process blocks, your response depends on the type of process. When you have highly regulated and repeatable processes, you use line balancing. You'd use a pull system for less stable or regulated processes.
+Ensuring work is divided evenly among all operators, with cycle times matching takt time, is the overall goal of line balancing.
+When line balancing, after noting the most frequent cycle times for each task within a process, you create an operator cycle time chart. Next, you redistribute work, or even workers, to ensure all tasks finish at a similar time and within takt time.
+You may need to bring in additional workers, or alter equipment or processes.
+With predictable, repeatable processes, you can also remove bottlenecks by redesigning processes into one-piece flows. This involves merging two or more processes so that one seamless process produces a finished product.
+To do this, manufacturing areas are generally set up in U-shape designs with each task flowing to the next, without interruptions or work in process inventory.
+The one-piece flow design can also be useful in service environments.
+Identifying and addressing process blocks are key steps in weeding out inefficiencies in a value stream.
+
+8. Video: Pull Systems in Future State Mapping (bs_oper46_a04_enus_07)
+
+During this video, you will discover how to recognize the features of a pull system for future state mapping.
+recognize the features of a pull system for future state mapping
+[Topic title: Pull Systems in Future State Mapping] How do you improve efficiency in a situation where processes change often or aren't repeatable?
+One way is to implement a pull production system to balance the production line. With a push system, materials and information move forward once a process is complete. This doesn't consider whether there's enough capacity to continue processing at the next stage or even if there's a requirement of materials. In contrast, with pull systems, materials and information move only when they're needed by a process further down the line.
+Consider a customer ordering stools for his bar. A push system would send the order to the first process in the production line and then push the product through each subsequent process.
+If a pull system is used, the order goes directly to the inspection process, finished products are pulled from inventory, and then orders are pulled from the painting process.
+When you create pull systems, you typically use either post kanbans or signal kanbans. A kanban is a trigger that signals when inventory must be replenished. Kanbans can be used internally or to signal external suppliers.
+Post kanbans typically use a two-card ordering system. One card is used when withdrawing inventory and another is used for ordering new stock.
+In value stream maps, a post kanban is typically depicted as an icon resembling a glass.
+Signal kanbans are visual signals that trigger replenishment. For example, two bins of components may be kept. When one bin is empty, it signals that the operator should refill it. Alternatively, sensors and lights can indicate when a particular inventory level is reached, signaling the need for components from an earlier process.
+In the bar stool manufacturing example, the team creates a future-state value stream map and uses a post kanban to alert painters when they should get more materials from operators for the fabrication process.
+The team uses signal kanbans, to notify staff whenever the inventory levels for the inspection and fabrication processes drop below a minimum threshold. Rectangles labeled "P" show that the signal kanbans in this instance, are for production, and specify the number of components to be produced by an upstream process.
+Kaizen stars indicate the details of how the kanbans will work as part of a kaizen improvement initiative.
+The pull arrows in a future-state map indicate that the flow of products between suppliers, the manufacturing process, and customers will be based on the pull of customer demand.
+In addition to the icons you've already used, there are other future-state icons. Supermarkets, a limited inventory controlled by kanbans. The supermarket icon is a back-to-front capital letter "E."
+FIFO lanes indicate a predetermined limit for inventory between processes that follows the first-in-first-out rule. Processes are represented as different shapes.
+And U-shaped cells represent the physical arrangement of a work area to accommodate one-piece flows.
+Now you know, to deal with inefficiencies in unrepeatable or changing processes, you should implement a pull system.
+
+Course HTML Resources
+•	Glossary: Applying Value Stream Mapping in Lean Business
+cycle time
+
+The time required to complete one cycle of an operation, or to complete a task or function from start to finish.
+
+Hoshin Kanri
+
+A Lean tools approach to strategic and operational planning involving the systematic analysis, planning, implementation, and reviewing of business processes, with the goals of managing change, developing employee capabilities, and improving performance.
+
+Jidoka
+
+A Lean strategy involving a standard process to reduce the number of defects produced. Employees and machines detect errors, stop the process, fix the presenting problem, and then investigate the root cause of the problem.
+
+JIT production
+
+just-in-time production. Abbreviated as JIT production, a system in which products are created only once they've been ordered by a customer.
+
+Kanban
+
+A system that makes use of cues – often in the form of cards – to inform employees when a process should be implemented, or when items should be moved to a subsequent step in a production process.
+
+line balancing
+
+A Lean tool that allows you to optimize personnel use so that the workload is equitably distributed.
+
+standard work
+
+The specification of a particular order in which different tasks are performed in a given process. These protocols are designed to be as efficient as possible.
+
+takt time
+
+A German term meaning "pulse" or "rhythm." In a Lean approach, takt time is the time it must take to produce one product at a rate that keeps up with customer demand.
+
+value stream
+
+All of the tasks and actions involved in creating and delivering value to customers – for example, through the design, production, and delivery of a product.
+
+value-add activity
+
+A task or process that fulfills a customer's needs or preferences, changes the product or service in some way, and is done right the first time in the process.
+
+visual workplace
+
+A workplace that effectively uses visual cues – such as signs, layouts, charts, and color codes – to convey information.
+
+ 
+
+
+•	Job Aid: Applying Value Stream Mapping in Lean Business
+Use this job aid to review the icons typically used in value stream maps.
+
+
+© 2024 Skillsoft Ireland Limited - All rights reserved.

@@ -1,0 +1,194 @@
+Using Lean to Perfect Organizational Processes
+Regardless of the industry or sector you’re involved in, it’s likely that your organization has several competitors offering similar products or services. With so much choice available, consumers are increasingly looking for products or services that offer them the most value, and that can be delivered in the most efficient manner. To meet this demand, organizations must perfect their processes and operations management.
+
+This course introduces powerful Lean tools, such as 5S, jidoka, and Hoshin Kanri, for optimizing perfection and quality in a manufacturing or service organization. They’ll help you organize workplaces, meet strategic objectives, problem solve, enhance operations, improve processes and efficiency, and reduce waste.
+
+Table of Contents
+    1. Video: Using Lean to Perfect Organizational Processes (bs_oper46_a01_enus_07)
+
+    2. Video: The 5S Process for Workplace Organization (bs_oper46_a01_enus_01)
+
+    3. Video: Hoshin Kanri and the PDCA Cycle (bs_oper46_a01_enus_02)
+
+    4. Video: Hoshin Kanri Strategies and Project Stages (bs_oper46_a01_enus_03)
+
+    5. Video: Using Jidoka to Solve Problems (bs_oper46_a01_enus_04)
+
+    6. Video: Using Standard Work to Optimize Processes (bs_oper46_a01_enus_05)
+
+    7. Video: Standard Work Strategies for Eliminating Waste (bs_oper46_a01_enus_06)
+
+    Course HTML Resources
+
+1. Video: Using Lean to Perfect Organizational Processes (bs_oper46_a01_enus_07)
+
+In this course, you'll discover how to perfect operations and product quality. You'll also discover how to use 5S and Hoshin Kanri to organize workplaces and meet strategic objectives. Finally, you'll learn about jidoka, standard work, and how to solve problems with it.
+Objectives
+No Objective Provided
+[Course title: Using Lean to Perfect Organizational Processes] With information about value for money at their fingertips, consumers are more discerning now than ever before. So organizations pursue perfection and optimize efficiency to stand out from the crowd. In this course, you'll learn about four potent Lean tools empowering your organization to perfect operations and product quality. 5S and Hoshin Kanri can help you organize workplaces and meet strategic objectives. Using jidoka, you can solve problems and with standard work, you can eliminate waste.
+
+2. Video: The 5S Process for Workplace Organization (bs_oper46_a01_enus_01)
+
+By tackling a disordered workspace, you can put it in order using a Japanese five-step process known as 5S. In this video, you'll learn the steps of the 5S process for workplace organization.
+Objectives
+match the steps in the 5S process to the activities they involve
+[Topic title: The 5S Process for Workplace Organization] Time spent looking for an important tool or document is time wasted. It's a known fact that disorganized workplaces slow people down. By comparison, people make fewer mistakes in an organized setting and they're more productive because there's no time or effort spent searching for materials.
+You can put a workplace in order using a Japanese five-step process, known as 5S. Translated into English, the five S's are: sort, set in order, shine, standardize, and sustain.
+When tackling a disordered workspace, it's best to start by sorting through all tools and materials. Mark anything you don't need with a red tag. Once you've documented all tagged items, decide if they should be stored or discarded. How to track your progress? Take before and after pictures!
+Now that you've gotten rid of anything you don't need, it's time to organize the tools and materials that are essential to your job. Set these in order so they're easy to find, use, and put away again. Remember, 5S is about saving time and effort so set tools and equipment in the most logical and easy-to-reach places. For example, a repairman might hang his tools on a row of hooks above his workspace in the order he tends to use them. Marking the items and their designated places with visual cues, like matching colors, can help keep everything in its place.
+What next? Loathe it or love it – cleaning is an essential part of an organized workplace. Performing the shine step means cleaning surfaces and equipment at least once a day. Shine also includes repainting the areas designated in the set in order step. Many people put off cleaning, so it's crucial to make shine an integral and scheduled aspect of daily work.
+Now it's time to standardize the processes you've used for sorting, setting in order, and shining. The standardize step is a powerful way to improve productivity, because it ensures everyone knows their responsibilities; steps are performed quickly and efficiently – soon becoming a habit.
+Consider a removal company, standardizing the process of setting up new customer files. Through testing and experience, the organization has determined the most efficient set of steps for creating, filling out, and uploading files to their database. By displaying this process at each workstation, all staff can quickly grasp and perform the optimal steps.
+By now, your workplace is in great shape – but it won't stay that way unless you sustain your progress. Enhance compliance by using monitoring and evaluation. You'll have an easier time sustaining organized processes if you get buy-in from your workforce. Let your team know why 5S is important and support them in making the necessary changes.
+Ensure you don't miss a step when using 5S. All five steps work together to help create a perfectly organized workplace.
+
+3. Video: Hoshin Kanri and the PDCA Cycle (bs_oper46_a01_enus_02)
+
+Hoshin Kanri is a methodology for setting and managing strategic direction. It maps to the various stages of the PDCA cycle. In this video, you'll learn about the key concepts that make up Hoshin Kanri.
+Objectives
+match steps in the PDCA cycle to actions that would be carried out at each step
+[Topic title: Hoshin Kanri and the PDCA Cycle] If you're looking for a way to help your organization adapt, innovate, and align its actions with strategic goals, the Hoshin Kanri methodology for setting and managing strategic direction can help you do just that. With Hoshin Kanri, you envision an ideal future for your business and then develop strategies to bring that vision to life.
+Ever heard of Plan-Do-Check-Act, or PDCA? Just like Hoshin Kanri, it's a dynamic approach that focuses on continuous improvement. In fact, Hoshin Kanri maps to the various stages of the PDCA cycle.
+Let's break it down. In the plan phase, you assess and define the problems your organization is facing. When troubleshooting a problem, it helps to determine the root cause. Figure out why the problem exists and then develop a strategy for dealing with it. Consider the management team of a specialty coffee shop who decide to implement Hoshin Kanri in an effort to boost sales.
+During the plan phase, they identify the problem of losing customers who are put off by long queues. Why is the waiting period so long? There aren't enough coffee machines to process multiple orders at once. The team reviews the budget and decides to purchase an additional machine.
+In the do phase, you implement the strategy identified during planning. In the coffee shop example, the do phase involves purchasing and installing a new coffee machine.
+Now it's time to assess if what you've planned and implemented is working – the check phase. The management team discovers the wait time has gone down and sales are up, but they think there's still room for improvement. They notice some staff speed through the orders while others work slowly, constantly checking the recipe cards.
+What you do in the act phase depends on the outcome of the check phase. If your strategy was successful, then standardize it. If your strategy didn't achieve what you hoped for, you'll need to identify corrective actions for improving it. This takes you back to the start of the cycle, where you plan to address the problem.
+In the coffee shop example, during the act phase, the management team decides to plan a strategy to improve the slower baristas' speed and efficiency – ultimately boosting profits and customer satisfaction.
+Because the act phase links around to the plan phase, PDCA is a cycle of continuous improvement. By assessing the results of putting your plan into action and then repeating the steps of planning, implementing, monitoring, and assessing, you'll get closer and closer to operational perfection.
+
+4. Video: Hoshin Kanri Strategies and Project Stages (bs_oper46_a01_enus_03)
+
+Successful Hoshin Kanri initiatives are implemented using a cycle of planning, execution, and reflection. In this video, you will learn the stages of Hoshin Kanri initiatives.
+Objectives
+match the strategies for using Hoshin Kanri to the stages of a project
+[Topic title: Hoshin Kanri Strategies and Project Stages] If customers start taking their business elsewhere, you have a problem. It's important to act quickly to resolve the issue.
+Consider an example. Executive managers of a plastics manufacturer have found the organization is steadily losing market share to competitors. Using Hoshin Kanri, they hope to determine why customers are leaving to remedy the issue.
+Hoshin Kanri initiatives can be divided into stages – planning, execution, and reflection. Each stage maps to steps in the Plan-Do-Check-Act, or PDCA, cycle. The planning stage maps to the Plan phase of PDCA.
+Before you take action, you need to decide what you want to achieve. Successful planning involves setting goals and objectives for the initiative. In the manufacturer's case, one objective is to reduce operating costs to 5% below those of their closest competitor.
+You'll also need a way to monitor progress toward your goals – that's why determining metrics is another part planning. You've also got to identify tactics for implementing the plan and assign specific responsibilities to the staff involved. The manufacturer's management team sets the metric of reducing operational costs by $2 million using the tactic of 5S to develop more ergonomic, cost-effective production processes.
+Then, during the execution stage, the do and check phases of PDCA are performed. It's time to implement tactics and use metrics to monitor performance. In the case of the plastics manufacturer, staff members carry out their assigned responsibilities and the management team analyzes weekly cost and revenue reports to measure progress toward target metrics. For a successful Hoshin Kanri initiative, conduct weekly reviews of each subproject and keep teams on track by reiterating the planned goals.
+Once you've executed the plan, you need to assess how it went. You may be surprised to learn that many companies go wrong at this point. It's risky to underestimate the importance of the reflection stage. Without learning from your mistakes, chances are you'll repeat them. True success is only achievable when you reflect on an initiative and analyze what worked, and what failed. So always build time for reflection into your plan.
+The reflection stage maps to the act phase of PDCA, where you standardize successful tactics and strategize improvements when objectives haven't been met.
+During the reflection stage, the manufacturing team notes that the revised production processes weren't maintained after initiation. They were only taught once, so behavioral change didn't last. To address this issue, the team posts checklists in work areas and plans to closely monitor compliance. Work will be corrected as necessary until the improved procedures become habit. This tactic is added to the updated plan, along with assigned responsibility for monitoring compliance. Once again, the project moves through the cycle with the team reflecting on its success and returning to the planning stage, if necessary.
+By implementing Hoshin Kanri initiatives, you can optimize project management to achieve strategic goals.
+
+5. Video: Using Jidoka to Solve Problems (bs_oper46_a01_enus_04)
+
+It's important to react if you spot a defect or problem with something you're working on. If you're following Lean principles, you can use jidoka – a four-step process for problem solving.
+Objectives
+sequence examples of activities that occur during the jidoka process
+[Topic title: Using Jidoka to Solve Problems] It's important to react if you spot a defect or problem with something you're working on. If you're following Lean principles, you can use jidoka – a four-step process for problem solving.
+Let's start with the first step: detecting an error. This could occur through observation, delays, or changes in pattern. Many problems – such as broken parts or distorted graphics – may be found through visual inspection. Sometimes an odd smell or sound may also alert people that there's a problem.
+Pay attention to delays because they're often an early indication that something isn't right upstream. If ignored, they can cascade downstream and create significant backlogs. Also watch out for any disruption of a standardized process or pattern, which may indicate a problem.
+If possible, get some machine assistance by installing a device to identify any abnormalities in a product or process. This type of device is an example of a poka yoke. An error message that pops up is an example of a computer software poka yoke designed to detect problems and alert users. In manufacturing, if a piece is misaligned or misshaped, a poka yoke could alert the operator with flashing lights or a beeping sound.
+With jidoka, the second step is stopping the process. If you're working in a manufacturing setting, this could involve stopping the production line. In the service industry, for example, this could mean halting the process of completing a form to avoid including incorrect information.
+Next, limit wasted time and resources by fixing the immediate problem – do what it takes to get things up and running again. This could entail finding a way to bypass malfunctioning equipment or replacing a defective component. In the service industry, a quick fix might be getting missing information from a different source.
+Remember, these are just temporary countermeasures. They don't address why the errors occur in the first place. That's why the fourth step is investigating the root cause of a problem before installing a poka yoke – or another strategy – to prevent the problem from recurring.
+Let's say you identify root causes, such as a faulty piece of equipment or a worker who isn't using a specified process. You handle these issues using corrective actions – these fix the problem and prevent the problem from recurring. This can include replacing a faulty piece of equipment and improving worker training.
+Depending on the root cause, you might benefit from the corrective action of installing a poka yoke. An example of this is data entry software, which prevents users from advancing to a new screen until required fields have been completed.
+Effective problem solving is essential for operational success. By using jidoka, you don't just solve problems – you permanently eliminate them.
+
+6. Video: Using Standard Work to Optimize Processes (bs_oper46_a01_enus_05)
+
+Standard work enhances efficiency by keeping processes consistent so outcomes are always the same. In this video, you will learn about the operational strengths of your organization. You will also discover how to standardize work to ensure consistent excellence.
+Objectives
+identify success factors for implementing the principles of standard work
+[Topic title: Using Standard Work to Optimize Processes] Some recipes promise to "work perfectly every time." And some do, delivering consistently fantastic – and delicious – results. But recipes don't just belong in the kitchen; step-by-step processes for achieving optimum results are a fundamental component of Lean organizations. This is reflected in the concept of standard work. Standard work enhances efficiency by keeping processes consistent so outcomes are always the same.
+Think about the operational strengths of your organization. How would you standardize these processes to ensure consistent excellence? First you'll need to study and document each step in the current process. Identify the tasks, the sequence of the tasks, and the time workers should spend on each task. As you do this, look for ways of improving the process by identifying any waste or problem areas.
+Once you develop solutions for problems, create easy-to-follow work charts depicting the ideal process to distribute among workers. If workers notice waste, or think of a better way of doing a task, then update the work charts accordingly.
+So standard work helps improve efficiency. But that's not its only benefit. Standardizing work improves cost-effectiveness, enhances safety, and leads to faster and more stable operating times. It also results in improved maintenance and better product quality.
+For standard work to succeed, all members of your organization – from the CEO to the production staff – need to commit to Lean and standard work processes. For example, if you get everyone involved in problem-solving around what constitutes best practices, staff need to take ownership of the processes and buy into following them. Remember – people generally want to do a good job, so knowing how to do a job well boosts confidence and improves morale.
+No matter how much time and effort you put into creating and distributing an efficient, cost-effective "recipe" – your work will be wasted if employees ignore the protocol. That's why enforced compliance is the third success factor for standard work. All deviations from best practice standards should be noted and discouraged. Even small deviations add up and soon the whole process could become erratic and slow, or defective.
+Standard work is an extremely powerful tool you can use to make the most of organizational resources to consistently deliver excellent results.
+
+7. Video: Standard Work Strategies for Eliminating Waste (bs_oper46_a01_enus_06)
+
+Standard work strategies for eliminating waste help organizations optimize their efficiency.
+Objectives
+match different waste types with standard work strategies for eliminating waste
+[Topic title: Standard Work Strategies for Eliminating Waste] Organizations are forever looking for ways to cut costs and reduce waste. Wasted resources eat into profit margins, which poses a threat to organizational success. By applying standard work principles that eliminate waste, organizations can optimize their efficiency.
+But before you can get rid of waste, you need to be able to recognize it. And there are several types of waste.
+Transport waste is the unnecessary moving of raw materials, work in progress, or finished goods between facilities. This not only costs money; it can damage inventory and degenerate product quality. For example, a tire manufacturer can eliminate transport waste by moving work areas, equipment, or machinery closer together, rather than spread out across multiple factories.
+Motion waste is the unnecessary movement of people or machines while working. For example, if an administrator has to stand and bend repeatedly while scanning documents, this is wasted motion. By using standard work to optimize the spatial arrangement of offices and workstations you can remedy this.
+If you work in manufacturing, you might have encountered overstocked storage rooms or warehouses full of unused raw materials – inventory and overproduction waste. Among other causes, excess inventory and overproduction could result from unreliable suppliers or inaccurate demand forecasting. Prevent both these waste types by matching the storage and production of goods with customer demand.
+Also, be on the lookout for times when your product or service isn't moving or being processed. Time spent waiting is wasted. It's a common issue, especially in organizations with unreliable supply chains, poor material flow, or ineffective production planning. To eliminate this waste type, perfect the flow of items, documents, and information through the production line and value stream.
+Organizations often face pressure to use the latest high-tech systems and machines, but when these don't outperform simpler options, the investment is wasted. Overprocessing waste occurs when processes are carried out that don't actually add value. This type of waste is often accompanied by unnecessary, needlessly precise, or overly complex processes. Tackle this waste type by accurately identifying customer needs to find ways to reduce or simplify production.
+Defects are another type of waste. Defective products entering the market can spell disaster, so organizations use quality control systems to identify defects before a product reaches the customer. But by that stage, a lot of materials, time, and energy have gone into the product. Whether it's scrapped or reworked, the defect is causing waste. Eliminate defects by ensuring quality at source, providing adequate training, and using reliable equipment.
+Although waste can occur in manufacturing and service organizations, the causes of waste and strategies for eliminating it will differ.
+Identifying and eliminating waste helps to ensure your organization runs at peak efficiency.
+
+Course HTML Resources
+•	Glossary: Using Lean to Perfect Organizational Processes
+Cycle time
+
+The time required to complete one cycle of an operation, or to complete a task or function from start to finish.
+
+Hoshin Kanri
+
+A Lean tools approach to strategic and operational planning involving the systematic analysis, planning, implementation, and reviewing of business processes, with the goals of managing change, developing employee capabilities, and improving performance.
+
+Jidoka
+
+A Lean strategy involving a standard process to reduce the number of defects produced. Employees and machines detect errors, stop the process, fix the presenting problem, and then investigate the root cause of the problem.
+
+JIT production
+
+See just-in-time production.
+
+Just-in-time production
+
+Abbreviated as JIT production, a system in which products are created only once they've been ordered by a customer.
+
+Kanban
+
+A system that makes use of cues – often in the form of cards – to inform employees when a process should be implemented, or when items should be moved to a subsequent step in a production process.
+
+Line balancing
+
+A Lean tool that allows you to optimize personnel use so that the workload is equitably distributed.
+
+Standard work
+
+The specification of a particular order in which different tasks are performed in a given process. These protocols are designed to be as efficient as possible.
+
+Takt time
+
+A German term meaning "pulse" or "rhythm." In a Lean approach, takt time is the time it must take to produce one product at a rate that keeps up with customer demand.
+
+Value stream
+
+All of the tasks and actions involved in creating and delivering value to customers – for example, through the design, production, and delivery of a product.
+
+Value-add activity
+
+A task or process that fulfills a customer's needs or preferences, changes the product or service in some way, and is done right the first time in the process.
+
+Visual workplace
+
+A workplace that effectively uses visual cues – such as signs, layouts, charts, and color codes – to convey information.
+
+5S
+
+A methodology for creating and maintaining a clean and ergonomically ordered work environment. The five components of this methodology are sort, set in order, shine, standardize, and sustain.
+
+ 
+
+
+•	Job Aid: Eliminating the Seven Wastes
+Use this job aid to identify and eliminate the seven types of waste.
+Seven Wastes
+Type of waste	Description	Manufacturing	Service
+Transport	Unnecessary transport of raw materials, parts, work in progress, or finished products between places	Move work areas, equipment, or machinery closer together	Arrange processes by person or reduce paper documentation
+Motion	Needless movement of people or machines while working	Optimize the spatial arrangement of production lines and use 'just enough' equipment	Optimize the spatial arrangement of offices and workstations
+Inventory	Overstocked raw materials, parts, work in progress, or finished products	Reduce volumes held in storage	Reduce software, databases, paper records, or e-files
+Overproduction	Creating more products than customers require, or creating more complex products than required	Only produce goods that customers require	Only produce services or information that customers require
+Waiting	When a product or a service isn't flowing through the process because of delays	Improve the flow of items through the production line and value stream	Improve the flow of information and documents between people, and through the value stream
+Overprocessing	When work is being carried out on a product or service that isn't actually needed or valuable	Accurately identify customer needs, then reduce or simplify production	Accurately identify customer needs, then reduce or simplify services provided and administrative processes
+Defects	Mistakes, faults, or abnormalities in work in progress, finished products, or services	Ensure quality at source, provide adequate training, and use reliable equipment	Ensure accuracy at source, provide adequate training, and use the right software
+Course: Using Lean to Perfect Organizational Processes
+Topic: Standard Work Strategies for Eliminating Waste
+
+© 2017 Skillsoft Ireland Limited
+
+© 2022 Skillsoft Ireland Limited - All rights reserved.

@@ -1,5 +1,7 @@
 # Unleashing Your Self-confidence
 
+# Unleashing Your Self-confidence
+
 Self-confidence is the trust you have in your abilities and judgment, shaped by your thoughts and feelings. Here are the key elements that create self-confidence:
 
 - **Identity**: 
